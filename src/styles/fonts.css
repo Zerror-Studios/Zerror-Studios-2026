@@ -44,16 +44,20 @@
   src: url(../../public/fonts/perfectly_nineties/67fcd59caa79d68d8f41d825_PerfectlyNineties-Regular.otf);
 }
 
-@media (min-width: 1024px) {
+:root {
+  font-size: 12px;
+}
+
+@media (min-width: 750px) {
   :root {
-    font-size: .98vw;
+    font-size: 0.98vw;
   }
 }
 
 .pfn {
   font-family: pfn-regular;
 }
-.pfn_italic{
+.pfn_italic {
   font-family: pfn-italic;
 }
 

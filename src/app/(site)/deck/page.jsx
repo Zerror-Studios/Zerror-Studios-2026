@@ -2,13 +2,26 @@
 import gsap from "gsap";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function deck() {
+
+  const flickerRefs = useRef([]);
+
+
+  useEffect(() => {
+    flickerRefs.current.forEach((el) => {
+      if (!el) return;
+
+      const delay = Math.random() * 10;
+      el.style.animationDelay = `${delay}s`;
+    });
+  }, []);
+
   const handelMouseEnter = (item) => {
     gsap.to(item, {
       backgroundColor: "#2147c4",
@@ -19,7 +32,7 @@ export default function deck() {
 
   const handelMouseLeave = (item) => {
     gsap.to(item, {
-      backgroundColor: "#012CBA",
+      backgroundColor: "#002bba",
       ease: "power1.in",
       duration: 0.4,
     });
@@ -652,9 +665,9 @@ export default function deck() {
       ".SXCrd",
       {
         xPercent: 0,
-        yPercent: -100, 
+        yPercent: -100,
         scale: 1.3,
-        opacity:0,
+        opacity: 0,
         opacity: 1,
       },
       {
@@ -664,7 +677,7 @@ export default function deck() {
         stagger: {
           each: 0.05,
           from: "end",
-          grid: [4, 3], 
+          grid: [4, 3],
         },
         duration: 0.1,
         scale: 1,
@@ -719,38 +732,6 @@ export default function deck() {
     "div11",
   ];
 
-  useEffect(() => {
-    // 🔹 ONLY divs jinke andar text hai
-    const textDivs = Array.from(
-      document.querySelectorAll(".glitch-item")
-    ).filter((el) => el.innerText.trim().length > 0);
-
-    const glitchRandomTwo = () => {
-      if (textDivs.length < 2) return;
-
-      // 🔹 Random 2 select
-      const selected = gsap.utils.shuffle([...textDivs]).slice(0, 2);
-
-      gsap.fromTo(
-        selected,
-        { opacity: 1 },
-        {
-          opacity: 0,
-          duration: 0.12,
-          repeat: 3, // 1→0→1→0→1
-          yoyo: true,
-          ease: "power1.inOut",
-          onComplete: () => {
-            // next glitch after random delay
-            gsap.delayedCall(gsap.utils.random(1.5, 3), glitchRandomTwo);
-          },
-        }
-      );
-    };
-
-    // initial delay
-    gsap.delayedCall(0.02, glitchRandomTwo);
-  }, []);
 
   return (
     <>
@@ -776,9 +757,8 @@ export default function deck() {
                 <a key={i} href={`#${aHash[i]}`}>
                   <div
                     key={i}
-                    className={`w-5 h-2.5  border-b border-[#666666] hover:w-7 hover:border-[#d9d9d9]  ${item} transition-all ease-in-out cursor-pointer duration-100 ${
-                      i === 0 && "w-10 border-white"
-                    } `}
+                    className={`w-5 h-2.5  border-b border-[#666666] hover:w-7 hover:border-[#d9d9d9]  ${item} transition-all ease-in-out cursor-pointer duration-100 ${i === 0 && "w-10 border-white"
+                      } `}
                   ></div>
                 </a>
               );
@@ -786,10 +766,10 @@ export default function deck() {
           </div>
 
           {/* Card-1 */}
-          <div className="w-[69%]  crd card1 h-[76vh] p-3 bg-[#012CBA] absolute top-[12%] left-1/2 -translate-x-1/2 rounded-xl select-none">
+          <div className="w-[69%]  crd card1 h-[76vh] p-3 bg-[#002bba] absolute top-[12%] left-1/2 -translate-x-1/2 rounded-xl select-none">
             <div className="w-full h-1/3 flex">
               {[
-                "Pich dech 2025--",
+                "Pich deck 2026--",
                 "Over Capabilities",
                 "",
                 "",
@@ -811,11 +791,13 @@ export default function deck() {
                       handelMouseLeave(`.hoverBgAnimateT${i}`)
                     }
                     key={i}
-                    className={` w-1/12 glitch-item  hoverBgAnimateT${i}  border bg-[#2147c400] border-[#2147c4] flex ${
-                      i == 0 && "items-end"
-                    } text-[#f5f5f5b6] rounded-xl text-[11px] p-2 `}
+                    ref={(el) => (flickerRefs.current.push(el))}
+                    className={` w-1/12 flicker   hoverBgAnimateT${i}  border bg-[#2147c400] border-[#2147c4] flex ${i == 0 && "items-end"
+                      } text-[#f5f5f5b6] rounded-xl text-[11px] p-2 `}
                   >
-                    {item}
+                    <p>
+                      {item}
+                    </p>
                   </div>
                 );
               })}
@@ -825,6 +807,7 @@ export default function deck() {
                 (item, i) => {
                   return (
                     <div
+                      ref={(el) => (flickerRefs.current.push(el))}
                       onMouseEnter={() =>
                         handelMouseEnter(`.hoverBgAnimateM${i}`)
                       }
@@ -832,9 +815,11 @@ export default function deck() {
                         handelMouseLeave(`.hoverBgAnimateM${i}`)
                       }
                       key={i}
-                      className={` w-1/12 glitch-item  hoverBgAnimateM${i} border bg-[#2147c400] border-[#2147c4] flex rounded-xl text-[11px] p-2 text-[#f5f5f5b6] `}
+                      className={` w-1/12 flicker   hoverBgAnimateM${i} border bg-[#2147c400] border-[#2147c4] flex rounded-xl text-[11px] p-2 text-[#f5f5f5b6] `}
                     >
-                      {item}
+                      <p>
+                        {item}
+                      </p>
                     </div>
                   );
                 }
@@ -857,6 +842,7 @@ export default function deck() {
               ].map((item, i) => {
                 return (
                   <div
+                    ref={(el) => (flickerRefs.current.push(el))}
                     onMouseEnter={() =>
                       handelMouseEnter(`.hoverBgAnimateB${i}`)
                     }
@@ -864,25 +850,25 @@ export default function deck() {
                       handelMouseLeave(`.hoverBgAnimateB${i}`)
                     }
                     key={i}
-                    className={` w-1/12 glitch-item  hoverBgAnimateB${i} border bg-[#2147c400] border-[#2147c4] flex rounded-xl  ${
-                      i == 3 && "items-end"
-                    }  ${i == 9 && "items-end"}  ${
-                      i == 11 && "items-end"
-                    } text-[11px] p-2 text-[#f5f5f5b6] `}
+                    className={` w-1/12 flicker  hoverBgAnimateB${i} border bg-[#2147c400] border-[#2147c4] flex rounded-xl  ${i == 3 && "items-end"
+                      }  ${i == 9 && "items-end"}  ${i == 11 && "items-end"
+                      } text-[11px] p-2 text-[#f5f5f5b6] `}
                   >
-                    {item}
+                    <p>
+                      {item}
+                    </p>
                   </div>
                 );
               })}
             </div>
             <div className="w-full h-full absolute top-0 left-0 gap-5 pointer-events-none flex justify-center items-center">
-              <h1 className="text-white font3 text-[3.3vw]">ZERROR STUDIO</h1>
+              <p className="text-white font3 text-6xl font-medium">ZERROR STUDIOS</p>
             </div>
           </div>
 
           {/* Card-2 */}
           <div className="w-[69%] crd card2 h-[76%] px-10 py-10 bg-white absolute top-[99%] left-1/2 -translate-x-1/2 rounded-xl select-none flex flex-col justify-between">
-            <p className="font3 text-[2.5rem]">Hi, we are Zerror Studio</p>
+            <p className="font3 text-[2.5rem]">Hi, we are Zerror Studios</p>
             <div className="w-full h-fit flex justify-between ">
               <p className=" uppercase font1 text-[14px]">
                 Here How we Got FROM 0 To 30
@@ -1146,7 +1132,7 @@ export default function deck() {
   "
         >
           {/* CARD 1 */}
-          <div className="w-full h-full hover:bg-[#012CBA] transition-all ease-in cursor-pointer duration-200 SXCrd p-3 bg-[#012CBA] rounded-xl select-none relative overflow-hidden">
+          <div className="w-full h-full hover:bg-[#002bba] transition-all ease-in cursor-pointer duration-200 SXCrd p-3 bg-[#002bba] rounded-xl select-none relative overflow-hidden">
             <div className="w-full h-[33%] flex gap-1">
               {[
                 "Pich dech 2025--",
@@ -1166,7 +1152,7 @@ export default function deck() {
                   onMouseEnter={() => handelMouseEnter(`.hoverBgAnimateT${i}`)}
                   onMouseLeave={() => handelMouseLeave(`.hoverBgAnimateT${i}`)}
                   key={i}
-                  className={`w-1/12 hoverBgAnimateT${i} border bg-[#012cba00] border-[#2147c4]
+                  className={`w-1/12 hoverBgAnimateT${i} border bg-[#002bba00] border-[#2147c4]
             flex items-center justify-center text-[#ffffffb6]
             rounded-lg text-[7px] p-1`}
                 >
@@ -1176,7 +1162,7 @@ export default function deck() {
             </div>
 
             <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
-              <h1 className="text-white font3 text-[20px]">Zerror Studio</h1>
+              <p className="text-white font3 text-[20px]">Zerror Studio</p>
             </div>
           </div>
 

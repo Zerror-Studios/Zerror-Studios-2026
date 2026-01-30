@@ -84,7 +84,7 @@ const Hero = () => {
 
 
   return (
-    <div data-theme="dark" className=" hero_paren w-full relative">
+    <div className=" hero_paren w-full relative">
 
       <div className="site-background fixed top-0 left-0   w-full h-screen z-[-1]">
         <HeroScene />
@@ -93,7 +93,7 @@ const Hero = () => {
       <div className=" txt_slider_paren w-full h-[400vh]  ">
         <div className="w-full h-screen top-0 sticky overflow-hidden">
           <div className=" z-[2] hero_scroll_txt w-full translate-x-[30vw] absolute top-[80%] -translate-y-1/2 text-white  whitespace-nowrap left-0  ">
-            <p className=" split_hero_title text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
+            <p className=" split_hero_title text-9xl md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
           </div>
         </div>
       </div>

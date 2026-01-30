@@ -37,7 +37,11 @@ const footerRows = [
         hover: "group-hover:bottom-[80%]",
       },
       {},
-      {},
+      {
+        text: "|",
+        align: "absolute top-[5%] left-[5%]",
+        hover: "group-hover:top-[88%]",
+      },
       { img: "/svg/o.svg", hover: "hover:pb-10" },
       {},
     ],
@@ -45,10 +49,18 @@ const footerRows = [
   {
     id: "S",
     items: [
-      {},
+      {
+        text: "|",
+        align: "absolute bottom-[5%] left-[5%]",
+        hover: "group-hover:bottom-[88%]",
+      },
       { img: "/svg/z.svg", hover: "hover:pb-10" },
       {},
-      {},
+      {
+        text: "|",
+        align: "absolute top-[5%] left-[5%]",
+        hover: "group-hover:top-[88%]",
+      },
       {},
       { img: "/svg/r.svg", hover: "hover:pb-10" },
       {
@@ -85,7 +97,11 @@ const footerRows = [
         align: "absolute top-[5%] left-[5%]",
         hover: "group-hover:top-[82%]",
       },
-      {},
+      {
+        text: "|",
+        align: "absolute bottom-[5%] left-[5%]",
+        hover: "group-hover:bottom-[88%]",
+      },
       {},
       {
         text: "© 2025 Zerror Studio. All rights reserved. Made by the Zerror Team.",
@@ -102,17 +118,19 @@ const Footer = () => {
 
   useEffect(() => {
     flickerRefs.current.forEach((el) => {
-      const delay = Math.random() * 10;
+      if (!el) return;
 
+      const delay = Math.random() * 10;
       el.style.animationDelay = `${delay}s`;
     });
   }, []);
 
+
   return (
-    <div className="w-full h-screen bg_blue  padding relative z-100">
-      <div className="w-full h-full p-3">
+    <div className="w-full md:h-screen bg_blue  padding relative z-100">
+      <div className="w-full  md:h-full p-3">
         {footerRows.map((row) => (
-          <div key={row.id} className="w-full h-1/3 grid grid-cols-9">
+          <div key={row.id} className="w-full h-[50vh] md:h-1/3 grid grid-cols-3 md:grid-cols-9">
             {row.items.map((item, i) => {
               const selector = `.hoverBg${row.id}${i}`;
               const isImage = !!item.img;
@@ -138,7 +156,7 @@ const Footer = () => {
                   {item.text && (
                     <span
                       ref={(el) => (flickerRefs.current.push(el))}
-                      className={` flicker text-xs leading-tight  uppercase text-[#f5f5f5]  transition-all duration-300  ${item.align}
+                      className={` flicker text-xs leading-tight tracking-wider  uppercase text-[#f5f5f5]  transition-all duration-300  ${item.align}
                         ${item.hover}
                      `}
                       style={{

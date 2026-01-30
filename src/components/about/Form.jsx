@@ -1,58 +1,20 @@
 import React from "react";
 import gsap from "gsap";
 import SplitText from "gsap/dist/SplitText";
+import Button from "../common/Button";
 gsap.registerPlugin(SplitText);
 
 const Form = ({ closeForm }) => {
 
   return (
-    <div className=" form_paren opacity-0 hidden  w-[90vw] h-full  px-20 flex-col justify-center  relative  text-white ">
+    <div className=" form_paren opacity-0 hidden  w-[80vw] h-full  p-10 px-20  justify-center  relative  text-white ">
 
-      <button onClick={closeForm} className="absolute cursor-pointer leading-none right-5 top-5 text-2xl z-10">
-        ✕
-      </button>
+      <button onClick={closeForm} className="absolute cursor-pointer leading-none right-10 top-10 text-2xl z-10">✕</button>
 
-      <div className="w-full  pt-10 ">
-        <div className="w-full  grid grid-cols-[28%_30%_42%]">
-          <div className="">
-            <p className=' capitalize pfn  text-5xl   leading-none'>  Become a <br /> Zerrorian </p>
-          </div>
-          <div className="text-xs pt-4">
-            <p className=''>Integral parts </p>
-            <p className=''>of zerror</p>
-          </div>
-          <div className="capitalize    text-3xl  ">
-            <p className="font-medium leading-10"> <span className='opacity-0 pointer-events-none'>.......................</span> The people behind Zerror are designers, developers, and strategists who care deeply about craft, clarity, and impact.</p>
-          </div>
+      <div className="w-1/2 h-full flex flex-col justify-between ">
+        <div className="">
+          <p className=' capitalize pfn  text-5xl   leading-none'>  Become a <br /> Zerrorian </p>
         </div>
-      </div>
-
-      <form
-        className="w-full mt-10  grid grid-cols-1 md:grid-cols-2  gap-x-16 gap-y-8  text-white "
-      >
-        {/* Full Name */}
-        <Input label="Full Name *" />
-
-        {/* Role Dropdown */}
-        <Select
-          label="Role *"
-          options={["Founder", "Designer", "Developer", "Marketing", "Other"]}
-        />
-
-        {/* Email */}
-        <Input label="Email *" type="email" />
-
-        {/* Phone */}
-        <Input label="Phone Number *" type="tel" />
-
-        <Input label="Tell us about yourself *" type="tel" className="md:col-span-2" />
-
-        <div
-          className="full h-fit border bg-[#1239B7]  hover:bg-[#143cbe] transition-all duration-150 ease-in border-[#ffffff42] rounded-sm flex justify-center items-center py-4 cursor-pointer"
-        >
-          <p>Attach Resume</p>
-        </div>
-
         <div className="w-full">
           <p className="text-[#f5f5f59d] select-none cursor-pointer">
             By clicking connect you accept our{" "}
@@ -63,14 +25,37 @@ const Form = ({ closeForm }) => {
             <span className="text-white">hello@zerrorstudios.com </span>
           </p>
         </div>
-      </form>
-
-      {/* SubmitBtN */}
-      <div className="w-full mt-10 center">
-        <button className=" border border-white rounded-lg px-4 py-2 bg-white text_blue font-medium">
-          SUBMIT
-        </button>
       </div>
+
+      <form className="w-1/2 pl-20  flex flex-col  justify-between   text-white ">
+        <div className=" w-full flex flex-col gap-y-10">
+
+          <Input label="Full Name *" />
+
+          <Select
+            label="Role *"
+            options={["Founder", "Designer", "Developer", "Marketing", "Other"]}
+          />
+
+          <Input label="Email *" type="email" />
+
+          <Input label="Phone Number *" type="tel" />
+
+          <Input label="Tell us about yourself *" type="tel"/>
+
+          <button
+            className="full w-full hover:gap-x-4 h-fit border   hover:bg-[#0b3bd6] transition-all duration-150  border-[#ffffff42] rounded-lg gap-x-2 flex  justify-center items-center py-3 cursor-pointer"
+          >
+            <img className="invert-100 w-4" src="/icons/attach_file.png" alt="" />
+            <p>Attach Resume</p>
+          </button>
+
+        </div>
+
+        <div className="w-full  center">
+         <Button type="submit" title="Submit" variant="fill" />
+        </div>
+      </form>
 
     </div>
   );

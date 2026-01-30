@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SiteLayout({ children }) {
   const pathname = usePathname();
 
-  const skipFooterPaths = ["/deck", "/contact"];
+  const skipFooterPaths = ["/deck", "/contact", "/work"];
 
   useEffect(() => {
     const timeout = setTimeout(() => {

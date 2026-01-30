@@ -109,7 +109,7 @@ const HeroSection = () => {
             </div>
 
             {/* Img */}
-            <div className="w-full aspect-5/6 mt-8 bg-[#002BBA] overflow-hidden relative">
+            <div className="w-full aspect-5/6 mt-12 bg-[#002BBA] overflow-hidden relative">
               <div
                 ref={gridRefR}
                 style={{

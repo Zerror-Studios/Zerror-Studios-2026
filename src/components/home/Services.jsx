@@ -35,6 +35,8 @@ const Services = () => {
 
   useGSAP(() => {
 
+    if (window.innerWidth < 750) return
+
     const split_wrd = SplitText.create(".split_wrd", { type: "words, chars" });
     gsap.set(split_wrd.words, { y: 50, opacity: 0, display: "inline-block" })
 
@@ -60,6 +62,7 @@ const Services = () => {
   })
 
   useEffect(() => {
+
     const items = document.querySelectorAll(".service-item");
 
     const observer = new IntersectionObserver((entries) => {
@@ -93,15 +96,15 @@ const Services = () => {
 
   return (
     <>
-      <div className="w-full relative h-screen center flex-col gap-y-8 text-center">
-        <p className="text-8xl pb-5 leading-none pfn w-[70%] bg-clip-text text-transparent bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
+      <div className="w-full relative py-20 px-5 md:p-0 md:h-screen center text-center">
+        <p className=" text-7xl md:text-8xl pb-5 leading-none pfn md:w-[70%] bg-clip-text text-transparent bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
           To build zero-error digital products where design and technology move as one.
         </p>
       </div>
 
-      <div className=" services_paren overflow-hidden w-full h-screen relative  grid grid-cols-2 gap-x-24 ">
+      <div className=" services_paren overflow-hidden w-full md:h-screen relative  grid grid-cols-1  md:grid-cols-2 gap-x-24 ">
 
-        <div className="h-full flex flex-col items-center gap-y-12 justify-between absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className=" hidden md:flex h-full flex-col items-center gap-y-12 justify-between absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="w-px bg-[#D3D3D3] h-full"></div>
           <div className="size-3.5 opacity-0 shrink-0 bg_blue rounded-full "></div>
           <div className="w-px bg-[#D3D3D3] h-full"></div>
@@ -114,14 +117,14 @@ const Services = () => {
           return (
             <div
               key={item.id}
-              className={`service-item  w-full group center flex-col gap-y-5  text-center h-full ${i === 0 || i === 1 ? "" : "border-t border-[#D3D3D3]"
+              className={`service-item  w-full group center flex-col gap-y-5  text-center h-full max-sm:border-t max-sm:border-[#D3D3D3] max-sm:py-8 ${i === 0 || i === 1 ? "" : "md:border-t border-[#D3D3D3]"
                 }`}
             >
-              <p className="text-3xl uppercase font-bold w-[40%]  text_blue leading-none transition-all duration-300">
+              <p className="text-3xl uppercase font-bold w-[70%] md:w-[40%]  text_blue leading-none transition-all duration-300">
                 {item.title}
               </p>
 
-              <p className="w-1/2 text_blue leading-tight">
+              <p className=" w-[80%] md:w-1/2 text_blue leading-tight">
                 {item.services.map((service, i) => (
                   <span key={i} className="inline-block">
                     {splitToChars(service)}
@@ -139,7 +142,7 @@ const Services = () => {
           );
         })}
 
-        <div className="expand_circ overflow-hidden size-3.5 z-10 center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shrink-0 bg_blue rounded-full ">
+        <div className=" max-sm:hidden! expand_circ overflow-hidden size-3.5 z-10 center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shrink-0 bg_blue rounded-full ">
           <div className="w-screen  padding text-white grid grid-cols-[28%_30%_42%]">
             <div className="">
               <p className=' split_wrd text-6xl  pfn leading-none'>Our <br /> Clients</p>

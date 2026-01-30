@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
+import Button from "../common/Button";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -181,7 +182,7 @@ const Our_Services = () => {
   return (
     <div ref={parentRef} className={` serv_page_paren  w-full padding relative py-0! h-[400vh] `}>
 
-      <div className="sticky w-full h-screen top-0 center  ">
+      <div className="sticky w-full h-screen top-0 pointer-events-none z-[-1] center  ">
         <canvas
           ref={canvasRef}
           width={400}
@@ -202,11 +203,8 @@ const Our_Services = () => {
               {servicesContent[0].description}
             </p>
 
-            <button className="px-4 w-fit  font-semibold text-sm uppercase text_blue py-2 rounded-md border-[#012CBA] border-[2px] ">
-              <p className="translate-y-px">
-                view more
-              </p>
-            </button>
+            <Button title="View More" />
+
           </div>
         </div>
       </div>
@@ -230,11 +228,8 @@ const Our_Services = () => {
                   {item.description}
                 </p>
 
-                <button className="px-4 w-fit  font-semibold text-sm uppercase text_blue py-2 rounded-md border-[#012CBA] border-[2px] ">
-                  <p className="translate-y-px">
-                    view more
-                  </p>
-                </button>
+                <Button title="View More" />
+
               </div>
             </div>
           </div>

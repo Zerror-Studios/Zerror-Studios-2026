@@ -9,7 +9,7 @@ const contact = () => {
   const [Num, SetNum] = useState(1);
 
   return (
-    <div className="w-full h-screen flex bg-[#012CBA]">
+    <div className="w-full h-screen flex bg-[#002bba]">
       {/* Left */}
       <div className="w-1/2 h-screen relative">
         <p className=" absolute bottom-[4%] left-[4%] flex flex-col pfn text-8xl text-white">
@@ -39,15 +39,13 @@ const contact = () => {
 
           {/* BTN-Section */}
           <div
-            className={`w-full flex items-center ${Num == 1 && "justify-end"} ${
-              Num == 4 && "hidden"
-            }  justify-between absolute bottom-0`}
+            className={`w-full flex items-center ${Num == 1 && "justify-end"} ${Num == 4 && "hidden"
+              }  justify-between absolute bottom-0`}
           >
             <button
               onClick={() => SetNum(Num - 1)}
-              className={`bg-white ${
-                Num == 1 && "hidden"
-              }  text_blue px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors `}
+              className={`bg-white ${Num == 1 && "hidden"
+                }  text_blue px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors `}
             >
               Prev
             </button>

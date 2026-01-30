@@ -163,7 +163,7 @@ const createCloud = () => {
     return (
         <div>
             <div className="w-full pt-32 center text_blue text-center space-y-10 flex-col">
-                <p className='text-8xl pfn    leading-none'>Ready for your <br />
+                <p className=' text-7xl md:text-8xl pfn    leading-none'>Ready for your <br />
                     game-changing <br /> <span className='pfn_italic'> website? </span> </p>
 
                 <p className=' '>Step on the Zerror Studios and <br />
@@ -186,15 +186,20 @@ const createCloud = () => {
                     onMouseEnter={handleEnter}
                     onMouseMove={handleMove}
                     onMouseLeave={handleLeave}
-                    className="relative h-[30vw] my-[5vw]  w-[65%] perspective-[1000px]"
+                    className="relative h-[70vh] md:h-[30vw] my-[5vw]  w-[65%] perspective-[1000px]"
                 >
                     <div
                         ref={img1Ref}
                         className="absolute top-0 rotate-[-5deg] transform-style-preserve-3d"
                     >
                         <img
-                            className="w-full pointer-events-none select-none"
+                            className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_back.svg"
+                            alt=""
+                        />
+                        <img
+                            className="w-full md:hidden pointer-events-none select-none"
+                            src="/images/homePage/mobile_ticket_back.svg"
                             alt=""
                         />
                     </div>
@@ -204,8 +209,13 @@ const createCloud = () => {
                         className="absolute top-0 rotate-[3deg] transform-style-preserve-3d"
                     >
                         <img
-                            className="w-full pointer-events-none select-none"
+                            className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_front.svg"
+                            alt=""
+                        />
+                        <img
+                            className="w-full md:hidden pointer-events-none select-none"
+                            src="/images/homePage/mobile_ticket_front.svg"
                             alt=""
                         />
                     </div>

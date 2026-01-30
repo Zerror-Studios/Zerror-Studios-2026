@@ -1,0 +1,147 @@
+"use client";
+import React, { useEffect, useRef } from 'react'
+import { Swiper, SwiperSlide } from "swiper/react"
+
+import "swiper/css"
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import SplitText from 'gsap/dist/SplitText';
+
+const projectsData = [
+  {
+    title: "Disrptve",
+    img: "https://plus.unsplash.com/premium_photo-1684769161054-2fa9a998dcb6?q=80&w=1204&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "Website Design"
+  },
+  {
+    title: "Disrptve",
+    img: "https://images.unsplash.com/photo-1759978244716-ed4b77300a47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "Website Design"
+  },
+  {
+    title: "Disrptve",
+    img: "https://images.unsplash.com/photo-1583306346437-f2143c0f11fc?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "Website Design"
+  },
+  {
+    title: "Disrptve",
+    img: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "Website Design"
+  },
+  {
+    title: "Disrptve",
+    img: "https://images.unsplash.com/photo-1531384370597-8590413be50a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "Website Design"
+  },
+]
+
+const MoreProjects = () => {
+
+    useGSAP(() => {
+
+
+        const more_project_header_split_wrd = SplitText.create(
+            ".more_project_header_split_wrd",
+            {
+                type: "lines",
+                linesClass: "wrk-line",
+            }
+        );
+
+        gsap.fromTo(more_project_header_split_wrd.lines, {
+            yPercent: 100,
+            opacity: 0,
+        }, {
+            yPercent: 0,
+            opacity: 1,
+            ease: "power3.out",
+            stagger: 0.03,
+            scrollTrigger: {
+                trigger: ".more_project_header",
+                start: "top 50%",
+                toggleActions: "play none none reverse",
+                // scrub: true,
+                // markers: true
+            }
+        })
+    })
+
+
+    useEffect(() => {
+
+        const swiper = document.querySelector(".mySwiper");
+        const dragBtn = document.querySelector(".drag_btn");
+
+        swiper.addEventListener("mousemove", (e) => {
+            gsap.to(dragBtn, {
+                x: e.clientX - 50,
+                y: e.clientY - 40,
+                opacity: 1,
+                duration: 0.2,
+                ease: "power3.out",
+            });
+        });
+
+        swiper.addEventListener("mouseleave", () => {
+            gsap.to(dragBtn, {
+                opacity: 0,
+                duration: 0.3,
+            });
+        });
+    }, []);
+
+    return (
+        <div>
+            <div className=" more_project_header w-screen py-32!  padding text_blue grid grid-cols-[28%_30%_42%]">
+                <div className="">
+                    <p className=' more_project_header_split_wrd text-6xl capitalize pfn leading-none'>selected <br /> works</p>
+                </div>
+                <div className="text-xs pt-4">
+                    <p className='more_project_header_split_wrd'>Brands we’ve </p>
+                    <p className='more_project_header_split_wrd'>worked with.</p>
+                </div>
+                <div className="text-4xl  pl-2">
+                    <p className=" more_project_header_split_wrd font-medium leading-11 "> <span className='opacity-0 pointer-events-none'>.........................</span> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful.</p>
+                </div>
+            </div>
+
+            <div className="padding py-0! relative ">
+
+                <div
+                    className="drag_btn fixed top-0 left-0 pointer-events-none text-sm bg-white/15 backdrop-blur-[1.25rem] rounded-lg z-[10] px-3 py-1.5 opacity-0 scale-100">
+                    <p className="font-medium">DRAG</p>
+                </div>
+
+                <Swiper
+                    slidesPerView={"auto"}
+                    spaceBetween={20}
+                    className="mySwiper relative cursor-grab active:cursor-grabbing  text_blue">
+
+                    {projectsData.map((item, i) => (
+                        <SwiperSlide key={i} style={{ width: "35vw" }}>
+                            <div
+                                className=" w-full"
+                            >
+                                <div className=" w-full aspect-[5/6]">
+                                    <img src={item.img} alt="" className="cover" />
+                                </div>
+                                <div className="mt-2">
+                                    <div className="w-full flex items-center justify-between">
+                                        <p className="text-xl font-semibold  uppercase">{item.title}</p>
+                                        <p className="text-xl font-semibold  uppercase">2025</p>
+                                    </div>
+                                    <p className="text-sm">{item.category}</p>
+
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))}
+
+                </Swiper>
+            </div>
+        </div>
+    )
+}
+
+export default MoreProjects

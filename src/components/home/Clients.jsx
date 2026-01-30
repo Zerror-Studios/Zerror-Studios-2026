@@ -143,10 +143,24 @@ const Clients = () => {
     }, []);
 
     return (
-        <div className=' clients_paren relative bg_blue -mt-1 text-white w-full'>
+        <div className=' clients_paren relative bg_blue -mt-1 pt-10 text-white w-full'>
+
+            <div className=" md:hidden w-screen space-y-8 mb-10  padding text-white ">
+                <div className="">
+                    <p className=' split_wrd text-5xl  pfn leading-none'>Our <br /> Clients</p>
+                </div>
+                <div className="text-sm pt-4">
+                    <p className='split_wrd'>Brands we’ve </p>
+                    <p className='split_wrd'>worked with.</p>
+                </div>
+                <div className="text-2xl pl-2">
+                    <p className=" split_wrd font-medium "> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful. From strategy to launch, we focus on thoughtful design, clean code, and meaningful user experiences.</p>
+                </div>
+            </div>
+
             <div
                 ref={containerRef}
-                className="w-full grid grid-cols-5 ">
+                className="w-full grid grid-cols-3 md:grid-cols-5 ">
                 {clientsData.map((item, i) => {
                     return (
                         <div key={i} className="client-box w-full  overflow-hidden border border-white/10 relative aspect-square center">
@@ -166,7 +180,7 @@ const Clients = () => {
                                     alt="loading" title="Disrptive"
                                 /> */}
                             </div>
-                            <div className="w-full  uppercase text-sm absolute z-[4] bottom-0 flex justify-between p-3">
+                            <div className="w-full  uppercase text-xs md:text-sm absolute z-[4] bottom-0 flex justify-between p-2 md:p-3">
                                 <p>Manifest</p>
                                 <p>2025</p>
                             </div>

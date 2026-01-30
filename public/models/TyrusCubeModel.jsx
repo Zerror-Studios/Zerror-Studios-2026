@@ -35,7 +35,7 @@ export default function TyrusCubeModel(props) {
     tl.to('.tyrus_canvas', {
       top: '0%',
       left: '0%',
-      ease: 'none',
+      ease: 'linear',
       duration: 0.2,
     })
 
@@ -43,7 +43,7 @@ export default function TyrusCubeModel(props) {
       scrollRef.current.rotation,
       {
         x: Math.PI * 2,
-        ease: 'none',
+        ease: 'linear',
         duration: 0.2,
       },
       '<'
@@ -52,7 +52,7 @@ export default function TyrusCubeModel(props) {
     tl.fromTo(
       scrollRef.current.scale,
       { x: 0.6, y: 0.6, z: 0.6 },
-      { x: 1, y: 1, z: 1, ease: 'none', duration: 0.2 },
+      { x: 1, y: 1, z: 1, ease: 'linear', duration: 0.2 },
       '<'
     )
 
@@ -60,7 +60,7 @@ export default function TyrusCubeModel(props) {
       scrollRef.current.rotation,
       {
         x: Math.PI * 5,
-        ease: 'none',
+        ease: 'linear',
       },
       '<+=0.2'
     )

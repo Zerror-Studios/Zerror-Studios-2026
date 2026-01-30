@@ -4,6 +4,7 @@ import gsap from "gsap";
 import CustomEase from "gsap/dist/CustomEase";
 import { Link } from "next-view-transitions";
 import React, { useEffect, useRef, useState } from 'react'
+import Button from "../common/Button";
 
 const caseStudies = [
     {
@@ -133,7 +134,7 @@ const OurWork = () => {
 
     return (
         <div className="work_paren w-full relative bg-white">
-            <div className="w-full grid grid-cols-2 padding gap-x-5 gap-y-10">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-10">
                 {caseStudies.map((item, i) => (
                     <Link
                         href={"/work/disrptve"}
@@ -145,7 +146,7 @@ const OurWork = () => {
                             onMouseEnter={() => handleMouseEnter(i)}
                             onMouseMove={(e) => handleMouseMove(e, i)}
                             onMouseLeave={() => handleMouseLeave(i)}
-                            className="w-full relative aspect-square bg_blue overflow-hidden"
+                            className="w-full relative aspect-3/4 md:aspect-square bg_blue overflow-hidden"
                         >
                             <div style={{
                                 clipPath: "inset(40%)",
@@ -169,11 +170,7 @@ const OurWork = () => {
                 ))}
             </div>
             <div className="w-full center py-10">
-                <Link href={"/work"}>
-                    <button className="px-4 font-semibold uppercase text_blue py-2 rounded-md border-[#012CBA] border-[2px] ">
-                        view All
-                    </button>
-                </Link>
+                <Button link="/work" title="View All"  />
             </div>
         </div>
     );

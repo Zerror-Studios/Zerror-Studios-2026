@@ -161,34 +161,34 @@ const OurTeam = () => {
       width: "100vw",
       height: "100vh",
       duration: 0.8,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     });
     gsap.set(".form_paren", {
       display: "flex",
       delay: 0.8
     });
     gsap.to(".inner_paren", {
-      width: "90%",
-      height: "44vw",
+      width: "80%",
+      height: "42vw",
       duration: 0.8,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     });
     gsap.to(".dummy_txt", {
       opacity: 0,
       duration: 0.4,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     });
     gsap.to(".form_paren", {
       opacity: 1,
       duration: 0.4,
       delay: 0.9,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     });
     gsap.to(".form_blur_overlay", {
       opacity: 1,
       pointerEvents: "auto",
       duration: 0.8,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     })
   }
 
@@ -200,7 +200,7 @@ const OurTeam = () => {
     gsap.to(".form_paren", {
       opacity: 0,
       duration: 0.2,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     });
     gsap.set(".form_paren", {
       display: "none",
@@ -212,13 +212,13 @@ const OurTeam = () => {
       height: "100%",
       duration: 0.5,
       delay: 0.3,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     });
     gsap.to(".dummy_txt", {
       opacity: 1,
       duration: 0.4,
       delay: 0.4,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     });
 
     gsap.to(card, {
@@ -228,7 +228,7 @@ const OurTeam = () => {
       height: rect.height,
       duration: 0.8,
       delay: 0.3,
-      ease: "power3.inOut",
+      ease: "expo.inOut",
       onComplete: () => {
         gsap.set(card, {
           position: "relative",
@@ -250,7 +250,7 @@ const OurTeam = () => {
       opacity: 0,
       duration: 0.8,
       pointerEvents: "none",
-      ease: "power3.inOut",
+      ease: "expo.inOut",
     })
 
   }
@@ -270,19 +270,19 @@ const OurTeam = () => {
               onMouseLeave={handleLeave}
               className="   relative overflow-hidden"
             >
-              <div className="card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
               {/* Blocks */}
               <div className="absolute inset-0 grid grid-cols-7 z-10">
                 {[...Array(70)].map((_, i) => (
                   <div
-                    key={i}
-                    className="grid_blocks shrink-0  w-full aspect-square bg-white opacity-0 pointer-events-none"
+                  key={i}
+                  className="grid_blocks shrink-0  w-full aspect-square bg-white opacity-0 pointer-events-none"
                   />
                 ))}
               </div>
 
               {/* Image */}
-              <div className="w-full aspect-4/5">
+              <div className="w-full relative aspect-4/5">
+                  <div className="card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
                 <Image
                   width={400}
                   height={500}
@@ -311,7 +311,7 @@ const OurTeam = () => {
 
               <Form closeForm={closeForm} />
 
-              <div className="dummy_txt absolute  bottom-8 left-8 space-y-5 w-[80%]">
+              <div className="dummy_txt absolute pointer-events-none  bottom-8 left-8 space-y-5 w-[80%]">
                 <p className="pfn leading-none text-6xl">
                   Become A <br /> Zerrorian
                 </p>

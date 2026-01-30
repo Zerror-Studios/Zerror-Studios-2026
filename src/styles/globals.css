@@ -7,7 +7,7 @@
 body {
   --scene-mix: 0;
   --primary_text: #002bba;
-  --primary_bg: #012cba;
+  --primary_bg: #002bba;
   overflow-x: hidden;
   background-color: white;
   width: 100%;
@@ -33,7 +33,12 @@ button {
   justify-content: center;
 }
 .padding {
-  padding: 2.5rem;
+  padding: 1rem;
+}
+@media (min-width: 750px) {
+  .padding {
+    padding: 2.5rem;
+  }
 }
 .cover {
   width: 100%;
