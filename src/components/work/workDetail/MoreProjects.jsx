@@ -124,7 +124,7 @@ const MoreProjects = () => {
                     className="mySwiper relative cursor-grab active:cursor-grabbing  text_blue">
 
                     {projectsData.map((item, i) => (
-                        <SwiperSlide key={i} className='  w-[80vw]! md:w-[35vw]!'>
+                        <SwiperSlide key={i} className='  w-[90vw]! md:w-[35vw]!'>
                             <div
                                 className=" w-full"
                             >

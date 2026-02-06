@@ -8,99 +8,91 @@ gsap.registerPlugin(ScrollTrigger)
 
 const WorkDetailGallery = () => {
 
-const container = useRef(null);
 
-useGSAP(
-  () => {
+  useGSAP(
+    () => {
 
-    gsap.to(".mob_1", {
-      y: -300,
-      ease: "linear",
-      scrollTrigger: {
-        trigger: ".mob_1",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+      gsap.to(".mob_1", {
+        y: -300,
+        ease: "linear",
+        scrollTrigger: {
+          trigger: ".mob_1",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          markers: true,
+        },
+      });
 
-    gsap.to(".mob_2", {
-      y: -300,
-      ease: "linear",
-      scrollTrigger: {
-        trigger: ".mob_2",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+      gsap.to(".mob_2", {
+        y: -300,
+        ease: "linear",
+        scrollTrigger: {
+          trigger: ".mob_2",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          markers: true,
+        },
+      });
 
-    gsap.to(".mob_3", {
-      y: -300,
-      ease: "linear",
-      scrollTrigger: {
-        trigger: ".mob_3",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+      gsap.to(".mob_3", {
+        y: -300,
+        ease: "linear",
+        scrollTrigger: {
+          trigger: ".mob_3",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          markers: true,
+        },
+      });
 
-    /* ----------------------------------
-       CLIP IMAGE REVEAL
-    ---------------------------------- */
 
-    const clipImgTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".clip_img_effect",
-        start: "top 60%",
-        toggleActions: "play none none reverse",
-      },
-    });
+      const clipImgTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".clip_img_effect",
+          start: "top 60%",
+          markers: true,
+          toggleActions: "play none none reverse",
+        },
+      });
 
-    clipImgTl.fromTo(
-      ".clip_img_effect",
-      {
-        clipPath: "inset(50%)",
-        opacity: 0,
-      },
-      {
-        clipPath: "inset(0%)",
-        opacity: 1,
-        stagger: 0.03,
-        duration: 1,
-        ease: "expo.out",
-      }
-    );
+      clipImgTl.fromTo(
+        ".clip_img_effect",
+        {
+          clipPath: "inset(50%)",
+          opacity: 0,
+        },
+        {
+          clipPath: "inset(0%)",
+          opacity: 1,
+          stagger: 0.03,
+          duration: 1,
+          ease: "expo.out",
+        }
+      );
 
-    clipImgTl.fromTo(
-      ".clip_img_effect_img",
-      {
-        scale: 1.5,
-      },
-      {
-        scale: 1,
-        stagger: 0.03,
-        duration: 1,
-        ease: "expo.out",
-      },
-      "<"
-    );
-
-    const refreshST = () => ScrollTrigger.refresh();
-    window.addEventListener("load", refreshST);
-
-    return () => {
-      window.removeEventListener("load", refreshST);
-    };
-  },
-  { scope: container }
-);
+      clipImgTl.fromTo(
+        ".clip_img_effect_img",
+        {
+          scale: 1.5,
+        },
+        {
+          scale: 1,
+          stagger: 0.03,
+          duration: 1,
+          ease: "expo.out",
+        },
+        "<"
+      );
+    }
+  );
 
 
   return (
     <>
-      <div ref={container} className="wrk_images_parent w-full">
+      <div className="wrk_images_parent w-full">
         <div className="w-full center flex-col  relative">
           <img className='w-full h-full absolute z-[-1] ' src="/images/work/bg_img1.png" alt="" />
           <img className=' w-[90%]' src="/images/work/image_1.png" alt="" />

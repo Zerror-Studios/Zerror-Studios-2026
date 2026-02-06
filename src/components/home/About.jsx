@@ -18,6 +18,13 @@ const About = () => {
         const txt_anime_2 = SplitText.create(".txt_anime_2", { type: "words, chars" });
         gsap.set([txt_anime.chars, txt_anime_2.words], { yPercent: 100, display: "inline-block" })
 
+        if (window.innerWidth < 750) {
+            gsap.set(".circ_1", { x: "-20vw" })
+            gsap.set(".circ_2", { x: "35vw" })
+            gsap.set(".circ_3", { x: "80vw" })
+            gsap.set(".circ_4", { x: "80vw" })
+        }
+
         var tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".about_paren",
@@ -73,11 +80,6 @@ const About = () => {
                     duration: 1
                 })
         } else {
-            tl.set(".circ_1", { x: "-20vw" })
-            tl.set(".circ_2", { x: "35vw" })
-            tl.set(".circ_3", { x: "80vw" })
-            tl.set(".circ_4", { x: "80vw" })
-
             tl.to(".circ_2", {
                 x: "-6.5vw",
                 ease: "linear"

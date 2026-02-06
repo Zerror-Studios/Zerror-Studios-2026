@@ -193,7 +193,7 @@ const Header = () => {
                         </div>
                       </div>
                       {menu.sublinks && (
-                        <div className=" mt-5 md:mt-0 w-full md:w-1/2 relative border-l border-r border-black/10 px-6 gap-y-5 gap-x-5 grid grid-cols-2">
+                        <div className=" max-sm:hidden mt-5 md:mt-0 w-full md:w-1/2 relative border-l border-r border-black/10 px-6 gap-y-5 gap-x-5 grid grid-cols-2">
                           <div className=" h-full absolute top-0 left-[47%] border-l border-black/10"></div>
                           {
                             menu.sublinks?.map((sublink, i) => (
@@ -224,7 +224,7 @@ const Header = () => {
 
           </div>
 
-          <Link href={`${pathname === "/deck" ? "/" : "/deck"}`} className='relative z-[100] pointer-events-auto'>
+          <Link href={`${pathname === "/deck" ? "/" : "/deck"}`} className='relative z-[100] h-fit pointer-events-auto'>
             <div className={` menu_deck relative w-16 h-12 cursor-pointer group ${openMenu ? " bg-white" : "bg-black/15! backdrop-blur-[1.25rem]"} transition-all duration-300  rounded-lg overflow-hidden flex items-center relative justify-center`}>
               <div className={`w-4  h-3 border  rounded-xs group-hover:top-1/2 group-hover:left-1/2  transition-all duration-300 absolute top-[55%] left-[54%] ${openMenu ? "border-[#002bba]" : "border-[#fafafa]"}  -translate-x-[50%] -translate-y-[50%] `}></div>
               <div className={`w-4  h-3 border-l border-t  group-hover:top-1/2 group-hover:left-1/2  rounded-xs transition-all duration-300 absolute top-[50%] left-[50%] ${openMenu ? "border-[#002bba]" : "border-[#fafafa]"}  -translate-x-[50%] -translate-y-[50%] `}></div>

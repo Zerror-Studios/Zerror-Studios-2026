@@ -214,7 +214,7 @@ const Footer = () => {
       </div>
       <div className=" h-full w-full md:hidden relative text-white uppercase">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <img src="/logo_white.svg" alt="logo" /></div>
+          <img className="scale-150" src="/logo_white.svg" alt="logo" /></div>
 
         <div className=" grid grid-cols-3">
           {mobileFooterData.map((item, index) => {
