@@ -7,3 +7,13 @@ text-lg
 text-base
 text-sm
 text-xs
+
+
+
+/////////mobile//////////////
+
+text - 6xl
+text-3xl
+text-2xl
+text-base
+text-xs

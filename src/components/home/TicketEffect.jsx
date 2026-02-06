@@ -163,7 +163,7 @@ const createCloud = () => {
     return (
         <div>
             <div className="w-full pt-32 center text_blue text-center space-y-10 flex-col">
-                <p className=' text-7xl md:text-8xl pfn    leading-none'>Ready for your <br />
+                <p className=' text-7xl md:text-8xl pfn  leading-none'>Ready for your <br />
                     game-changing <br /> <span className='pfn_italic'> website? </span> </p>
 
                 <p className=' '>Step on the Zerror Studios and <br />
@@ -186,7 +186,7 @@ const createCloud = () => {
                     onMouseEnter={handleEnter}
                     onMouseMove={handleMove}
                     onMouseLeave={handleLeave}
-                    className="relative h-[70vh] md:h-[30vw] my-[5vw]  w-[65%] perspective-[1000px]"
+                    className="relative h-[70vh] md:h-[30vw] my-[5vw]  w-full center md:w-[65%] perspective-[1000px]"
                 >
                     <div
                         ref={img1Ref}

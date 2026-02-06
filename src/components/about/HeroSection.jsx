@@ -50,16 +50,16 @@ const HeroSection = () => {
   return (
     <div className=" about_hero_paren  w-full   padding">
 
-      <div className="w-full aboutTitle flex py-44  ">
-        <p className="text-8xl leading-none capitalize pfn text_blue">
+      <div className="w-full aboutTitle flex py-44 max-sm:pb-20  ">
+        <p className=" text-6xl md:text-8xl leading-none capitalize pfn text_blue">
           We believe a great user experience is not just intuitive it’s
           entertaining. Because clarity is good, but delight is better.
         </p>
       </div>
 
-      <div className="w-full flex">
-        <div className="w-1/2  space-y-10">
-          <div className="w-[60%] ">
+      <div className="w-full flex flex-col md:flex-row">
+        <div className=" w-full md:w-1/2  space-y-5 md:space-y-10">
+          <div className="md:w-[60%] ">
             <p className="pfn text_blue text-3xl">
               We make stuff look good. We make it work better. Creative.
               Scalable. Reliable. Fresh. Tech-first. Entertaining.
@@ -86,9 +86,9 @@ const HeroSection = () => {
         </div>
 
         {/* Right */}
-        <div className="w-1/2 flex flex-col text_blue items-end ">
+        <div className=" w-full mt-16 md:w-1/2 flex flex-col text_blue items-end ">
           {/* cont*/}
-          <div className="w-1/2 flex flex-col gap-3">
+          <div className=" w-full md:w-1/2 flex flex-col gap-3">
             {/* Text */}
             <p className=" uppercase text-lg  font-semibold">
               Why we exist
@@ -109,7 +109,7 @@ const HeroSection = () => {
             </div>
 
             {/* Img */}
-            <div className="w-full aspect-5/6 mt-12 bg-[#002BBA] overflow-hidden relative">
+            <div className="w-full aspect-5/6 mt-4 md:mt-12 bg-[#002BBA] overflow-hidden relative">
               <div
                 ref={gridRefR}
                 style={{

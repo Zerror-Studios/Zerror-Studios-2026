@@ -22,6 +22,7 @@ const WorkDetail = () => {
   useGSAP(
     () => {
       ScrollTrigger.refresh()
+      if (window.innerWidth < 750) return
       gsap.to(".wrk_hero_img", {
         y: 400,
         filter: "brightness(0.3)",
@@ -44,15 +45,15 @@ const WorkDetail = () => {
       <div className="w-full wrk_hero overflow-hidden h-screen relative">
         <img
           className="cover wrk_hero_img brightness-100"
-          src="/images/work/video_thumbnail.png"
+          src="https://www.disrptve.com/images/projects/superYou/heroImg.webp"
         />
       </div>
 
-      <WorkDetailDesc/>
+      <WorkDetailDesc />
 
       <WorkDetailGallery />
 
-      <MoreProjects/>
+      <MoreProjects />
 
       <TicketEffect />
 

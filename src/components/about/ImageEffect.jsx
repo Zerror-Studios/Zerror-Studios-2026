@@ -103,7 +103,7 @@ const ImageEffect = () => {
     <>
       <div className="w-full h-[700vh] relative IVMainCont">
         {/* Cont */}
-        <div className="w-full h-screen sticky top-0 left-0 flex flex-col justify-center items-center text_blue scene">
+        <div className="w-full h-screen sticky top-0 left-0 flex text-center flex-col justify-center items-center text_blue scene">
 
           <p className=" uppercase font-medium">
             WHY US?
@@ -146,12 +146,12 @@ const ImageEffect = () => {
                     {/* Text-1 */}
                     <div className="w-full OT1 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[6rem] leading-none overflow-hidden text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI1 font-bold translate-y-[100%]">15 YEAR</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[6rem] leading-none overflow-hidden text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI1 font-bold translate-y-[100%]">OF EXPERTIES</p>
                       </div>
                     </div>
@@ -159,12 +159,12 @@ const ImageEffect = () => {
                     {/* Text-2 */}
                     <div className="w-full OT2 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[6rem] leading-none overflow-hidden text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI2 font-bold translate-y-[100%]">100+</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[6rem] leading-none overflow-hidden text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI2 font-bold translate-y-[100%]">AWARDS</p>
                       </div>
                     </div>
@@ -172,12 +172,12 @@ const ImageEffect = () => {
                     {/* Text-3 */}
                     <div className="w-full OT3 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[6rem] leading-none overflow-hidden text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
                         <p className=" OTI3 font-bold translate-y-[100%]">1500+</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[6rem] leading-none overflow-hidden text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
                         <p className=" OTI3 font-bold translate-y-[100%]">PROJECTS</p>
                       </div>
                     </div>

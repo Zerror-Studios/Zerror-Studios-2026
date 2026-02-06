@@ -9,31 +9,31 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import SplitText from 'gsap/dist/SplitText';
 
 const projectsData = [
-  {
-    title: "Disrptve",
-    img: "https://plus.unsplash.com/premium_photo-1684769161054-2fa9a998dcb6?q=80&w=1204&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Website Design"
-  },
-  {
-    title: "Disrptve",
-    img: "https://images.unsplash.com/photo-1759978244716-ed4b77300a47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Website Design"
-  },
-  {
-    title: "Disrptve",
-    img: "https://images.unsplash.com/photo-1583306346437-f2143c0f11fc?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Website Design"
-  },
-  {
-    title: "Disrptve",
-    img: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Website Design"
-  },
-  {
-    title: "Disrptve",
-    img: "https://images.unsplash.com/photo-1531384370597-8590413be50a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Website Design"
-  },
+    {
+        title: "Disrptve",
+        img: "https://plus.unsplash.com/premium_photo-1684769161054-2fa9a998dcb6?q=80&w=1204&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Website Design"
+    },
+    {
+        title: "Disrptve",
+        img: "https://images.unsplash.com/photo-1759978244716-ed4b77300a47?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Website Design"
+    },
+    {
+        title: "Disrptve",
+        img: "https://images.unsplash.com/photo-1583306346437-f2143c0f11fc?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Website Design"
+    },
+    {
+        title: "Disrptve",
+        img: "https://images.unsplash.com/photo-1618220179428-22790b461013?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Website Design"
+    },
+    {
+        title: "Disrptve",
+        img: "https://images.unsplash.com/photo-1531384370597-8590413be50a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Website Design"
+    },
 ]
 
 const MoreProjects = () => {
@@ -93,7 +93,7 @@ const MoreProjects = () => {
 
     return (
         <div>
-            <div className=" more_project_header w-screen py-32!  padding text_blue grid grid-cols-[28%_30%_42%]">
+            <div className=" more_project_header w-screen space-y-24 md:space-y-0  py-10! md:py-32!  padding text_blue md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
                     <p className=' more_project_header_split_wrd text-6xl capitalize pfn leading-none'>selected <br /> works</p>
                 </div>
@@ -101,8 +101,8 @@ const MoreProjects = () => {
                     <p className='more_project_header_split_wrd'>Brands we’ve </p>
                     <p className='more_project_header_split_wrd'>worked with.</p>
                 </div>
-                <div className="text-4xl  pl-2">
-                    <p className=" more_project_header_split_wrd font-medium leading-11 "> <span className='opacity-0 pointer-events-none'>.........................</span> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful.</p>
+                <div className=" text-2xl md:text-4xl  md:pl-2">
+                    <p className=" more_project_header_split_wrd font-medium md:leading-11 "> <span className='opacity-0 max-sm:hidden pointer-events-none'>.........................</span> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful.</p>
                 </div>
             </div>
 
@@ -115,11 +115,16 @@ const MoreProjects = () => {
 
                 <Swiper
                     slidesPerView={"auto"}
-                    spaceBetween={20}
+                    spaceBetween={10}
+                    breakpoints={{
+                        768: {
+                            spaceBetween: 20,
+                        },
+                    }}
                     className="mySwiper relative cursor-grab active:cursor-grabbing  text_blue">
 
                     {projectsData.map((item, i) => (
-                        <SwiperSlide key={i} style={{ width: "35vw" }}>
+                        <SwiperSlide key={i} className='  w-[80vw]! md:w-[35vw]!'>
                             <div
                                 className=" w-full"
                             >

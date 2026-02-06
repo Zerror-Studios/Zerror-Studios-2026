@@ -36,9 +36,9 @@ const WorkDetailDesc = () => {
     })
 
     return (
-        <div className="w-full py-32! text_blue  padding grid grid-cols-[80%_20%]">
-            <div className=" w-[60%]  space-y-10">
-                <p className='wrk_anim_txt pfn  text-8xl '>
+        <div className="w-full py-16! md:py-32! text_blue  padding md:grid grid-cols-[80%_20%]">
+            <div className=" md:w-[60%]  space-y-10">
+                <p className='wrk_anim_txt pfn text-6xl md:text-8xl '>
                     Disrupting the Norm
                 </p>
                 <div className="  space-y-5  capitalize leading-tight text-lg">
@@ -51,7 +51,7 @@ const WorkDetailDesc = () => {
                 </div>
             </div>
 
-            <div className="space-y-10 pt-16">
+            <div className="space-y-10 pt-16 grid grid-cols-2 md:grid-cols-1">
                 <div className="space-y-2">
                     <p className='wrk_anim_txt font-semibold text-xl uppercase'>CLIENT</p>
                     <p className='wrk_anim_txt'>Disrptve</p>
@@ -59,7 +59,6 @@ const WorkDetailDesc = () => {
                 <div className="space-y-2">
                     <p className='wrk_anim_txt font-semibold text-xl uppercase'>Project type</p>
                     <div className="">
-
                         <p className='wrk_anim_txt'>Product Build</p>
                         <p className='wrk_anim_txt'>Full-Stack App</p>
                         <p className='wrk_anim_txt'>Scalable Platform</p>

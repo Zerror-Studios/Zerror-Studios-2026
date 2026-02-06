@@ -96,8 +96,8 @@ const Services = () => {
 
   return (
     <>
-      <div className="w-full relative py-20 px-5 md:p-0 md:h-screen center text-center">
-        <p className=" text-7xl md:text-8xl pb-5 leading-none pfn md:w-[70%] bg-clip-text text-transparent bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
+      <div className="w-full relative py-24 px-5 md:p-0 md:h-screen center text-center">
+        <p className=" text-6xl md:text-8xl pb-5 leading-none pfn md:w-[70%] bg-clip-text text-transparent bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
           To build zero-error digital products where design and technology move as one.
         </p>
       </div>

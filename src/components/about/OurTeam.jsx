@@ -167,12 +167,21 @@ const OurTeam = () => {
       display: "flex",
       delay: 0.8
     });
-    gsap.to(".inner_paren", {
-      width: "80%",
-      height: "42vw",
-      duration: 0.8,
-      ease: "expo.inOut",
-    });
+    if (window.innerWidth < 750) {
+      gsap.to(".inner_paren", {
+        width: "90%",
+        height: "90vh",
+        duration: 0.8,
+        ease: "expo.inOut",
+      });
+    } else {
+      gsap.to(".inner_paren", {
+        width: "80%",
+        height: "45vw",
+        duration: 0.8,
+        ease: "expo.inOut",
+      });
+    }
     gsap.to(".dummy_txt", {
       opacity: 0,
       duration: 0.4,
@@ -259,8 +268,8 @@ const OurTeam = () => {
   return (
     <div className="w-full relative">
       <div className=" form_blur_overlay opacity-0 fixed top-0 left-0 z-[9999] backdrop-blur-xs pointer-events-none w-full h-screen"></div>
-      <div className="w-full px-10 pb-42">
-        <div className="grid gap-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="w-full px-4 md:px-10 pb-10 md:pb-42">
+        <div className="grid gap-x-4 gap-y-10  md:gap-20 grid-cols-2  md:grid-cols-4">
 
           {teamMembers.map((member, index) => (
             <div
@@ -274,15 +283,15 @@ const OurTeam = () => {
               <div className="absolute inset-0 grid grid-cols-7 z-10">
                 {[...Array(70)].map((_, i) => (
                   <div
-                  key={i}
-                  className="grid_blocks shrink-0  w-full aspect-square bg-white opacity-0 pointer-events-none"
+                    key={i}
+                    className="grid_blocks shrink-0  w-full aspect-square bg-white opacity-0 pointer-events-none"
                   />
                 ))}
               </div>
 
               {/* Image */}
               <div className="w-full relative aspect-4/5">
-                  <div className="card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
+                <div className="card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
                 <Image
                   width={400}
                   height={500}
@@ -311,8 +320,8 @@ const OurTeam = () => {
 
               <Form closeForm={closeForm} />
 
-              <div className="dummy_txt absolute pointer-events-none  bottom-8 left-8 space-y-5 w-[80%]">
-                <p className="pfn leading-none text-6xl">
+              <div className="dummy_txt absolute pointer-events-none bottom-4 md:bottom-8 left-4 md:left-8 space-y-5 w-[80%]">
+                <p className="pfn leading-none text-4xl md:text-6xl">
                   Become A <br /> Zerrorian
                 </p>
                 <p className="leading-tight">

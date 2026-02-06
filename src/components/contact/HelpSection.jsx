@@ -15,7 +15,7 @@ const HelpSection = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-18 flex flex-col">
-        <p className="text-4xl">
+        <p className=" text-2xl  md:text-4xl">
           Happy to hear from you, Mridula. How can we help you?
         </p>
 

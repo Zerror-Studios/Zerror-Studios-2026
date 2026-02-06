@@ -9,20 +9,20 @@ const contact = () => {
   const [Num, SetNum] = useState(1);
 
   return (
-    <div className="w-full h-screen flex bg-[#002bba]">
+    <div className="w-full h-screen flex flex-col md:flex-row  bg-[#002bba]">
       {/* Left */}
-      <div className="w-1/2 h-screen relative">
-        <p className=" absolute bottom-[4%] left-[4%] flex flex-col pfn text-8xl text-white">
+      <div className=" max-sm:hidden w-full md:w-1/2 h-screen relative">
+        <p className=" absolute bottom-[4%] left-[4%] flex flex-col pfn text-6xl md:text-8xl text-white">
           Let’s <br />
           Talk
         </p>
       </div>
 
       {/* Right */}
-      <div className="w-1/2 h-screen flex justify-end items-end pb-[2vw] pr-[5vw] relative">
-        <div className="w-full h-[80vh] relative">
+      <div className=" w-full  md:w-1/2 h-screen flex justify-end items-center max-sm:p-4  md:items-end md:pb-[2vw] md:pr-[5vw] relative">
+        <div className="w-full pt-6 md:pt-0 h-[80vh] relative">
           {/* Sections with smooth transitions */}
-          <div className="w-full h-full relative overflow-hidden">
+          <div className="w-full h-full relative ">
             <div className={`absolute inset-0 transition-all duration-500 ${Num === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
               <FormSection />
             </div>
@@ -40,7 +40,7 @@ const contact = () => {
           {/* BTN-Section */}
           <div
             className={`w-full flex items-center ${Num == 1 && "justify-end"} ${Num == 4 && "hidden"
-              }  justify-between absolute bottom-0`}
+              }  justify-between absolute -botttom-5 md:bottom-0`}
           >
             <button
               onClick={() => SetNum(Num - 1)}

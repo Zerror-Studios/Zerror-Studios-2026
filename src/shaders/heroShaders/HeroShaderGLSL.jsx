@@ -23,7 +23,7 @@ uniform float gradStrength;
 
 uniform float sceneMix;
 
-#define t (time * 3.0) / 2.0
+#define t (time * 3.0) / 1.0
 #define X uv.x*32.0
 #define Y uv.y*32.0
 

@@ -145,15 +145,15 @@ const Clients = () => {
     return (
         <div className=' clients_paren relative bg_blue -mt-1 pt-10 text-white w-full'>
 
-            <div className=" md:hidden w-screen space-y-8 mb-10  padding text-white ">
+            <div className=" md:hidden w-screen space-y-20 mb-10  padding text-white ">
                 <div className="">
-                    <p className=' split_wrd text-5xl  pfn leading-none'>Our <br /> Clients</p>
+                    <p className=' split_wrd text-6xl  pfn leading-none'>Our <br /> Clients</p>
                 </div>
-                <div className="text-sm pt-4">
+                <div className="text-xs ">
                     <p className='split_wrd'>Brands we’ve </p>
                     <p className='split_wrd'>worked with.</p>
                 </div>
-                <div className="text-2xl pl-2">
+                <div className="text-2xl">
                     <p className=" split_wrd font-medium "> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful. From strategy to launch, we focus on thoughtful design, clean code, and meaningful user experiences.</p>
                 </div>
             </div>

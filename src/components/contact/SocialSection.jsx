@@ -25,12 +25,12 @@ const SocialSection = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-10 flex flex-col">
-        <p className="text-4xl">
+        <p className=" text-2xl  md:text-4xl">
           How did you hear about us?
         </p>
 
         {/* Next */}
-        <div className="grid grid-cols-2 gap-4 max-w-2xl w-full">
+        <div className="grid grid-cols-2 gap-4  w-full">
         {cards.map((card) => (
           <div
             key={card.id}

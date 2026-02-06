@@ -73,7 +73,39 @@ button {
   height: 100%;
   content: "";
 }
+@media (max-width: 750px) {
+  .mob_cir {
+    background-color: #002bba;
+    overflow: hidden;
+  }
+  .mob_cir:after {
+    background: url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+      50% / 512px 512px;
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+    transform: rotateY(180deg) rotateX(180deg);
+  }
 
+  .mob_cir:before {
+    background:
+      url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+        50% / 512px 512px,
+      blue;
+    background-blend-mode: color;
+    mix-blend-mode: hard-light;
+    opacity: 0.1;
+  }
+  .mob_cir:before,
+  .mob_cir:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
+}
 .menu_deck::after {
   content: "";
   position: absolute;
@@ -174,12 +206,12 @@ button {
   border-bottom: 3px solid #ffffff;
   bottom: -1px;
   left: 0px;
-  transform: translateX(-100%);
+  width: 0;
   transition: all 0.3s ease;
 }
 .content-name {
   position: absolute;
-  bottom: 5px;
+  top: 5px;
   left: 0px;
   transition: all 0.3s ease;
 }
@@ -191,7 +223,7 @@ button {
 }
 .form input:focus + .label-name::after,
 .form input:valid + .label-name::after {
-  transform: translateX(0%);
+  width: 100%;
 }
 .made {
   position: absolute;

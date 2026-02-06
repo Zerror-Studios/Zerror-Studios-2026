@@ -4,7 +4,7 @@ const FormSection = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-18 flex flex-col">
-        <p className="text-4xl">
+        <p className=" text-2xl  md:text-4xl">
           Tell us a little bit about yourself and we will get back to you as
           soon as we can
         </p>

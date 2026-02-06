@@ -7,13 +7,13 @@ gsap.registerPlugin(SplitText);
 const Form = ({ closeForm }) => {
 
   return (
-    <div className=" form_paren opacity-0 hidden  w-[80vw] h-full  p-10 px-20  justify-center  relative  text-white ">
+    <div className=" form_paren max-sm:flex-col opacity-0 hidden  w-[90vw] md:w-[80vw] h-full  p-5 py-10 md:p-20  justify-between md:justify-center  relative  text-white ">
 
       <button onClick={closeForm} className="absolute cursor-pointer leading-none right-10 top-10 text-2xl z-10">✕</button>
 
-      <div className="w-1/2 h-full flex flex-col justify-between ">
+      <div className="w-full space-y-5 mb-10 md:mb-0 md:space-y-0 md:h-full flex flex-col justify-between ">
         <div className="">
-          <p className=' capitalize pfn  text-5xl   leading-none'>  Become a <br /> Zerrorian </p>
+          <p className=' capitalize pfn text-4xl md:text-5xl   leading-none'>  Become a <br /> Zerrorian </p>
         </div>
         <div className="w-full">
           <p className="text-[#f5f5f59d] select-none cursor-pointer">
@@ -27,21 +27,29 @@ const Form = ({ closeForm }) => {
         </div>
       </div>
 
-      <form className="w-1/2 pl-20  flex flex-col  justify-between   text-white ">
+      <form className="w-full   flex flex-col space-y-5  md:space-y-0  justify-between   text-white ">
         <div className=" w-full flex flex-col gap-y-10">
 
-          <Input label="Full Name *" />
+          <div className="grid grid-cols-2 gap-x-5 md:gap-x-10">
+            <Input label="First Name *" />
+            <Input label="Last Name *" />
+          </div>
 
           <Select
             label="Role *"
             options={["Founder", "Designer", "Developer", "Marketing", "Other"]}
           />
+          <div className="grid grid-cols-2 gap-x-5 md:gap-x-10">
+            <Input label="Email *" type="email" />
+            <Input label="Phone Number *" type="tel" />
+          </div>
 
-          <Input label="Email *" type="email" />
-
-          <Input label="Phone Number *" type="tel" />
-
-          <Input label="Tell us about yourself *" type="tel"/>
+          <div className="form relative h-[10vw]">
+            <input name="name" required className="" />
+            <label htmlFor="name" className="label-name">
+              <span className="content-name">Tell us a little bit about yourself</span>
+            </label>
+          </div>
 
           <button
             className="full w-full hover:gap-x-4 h-fit border   hover:bg-[#0b3bd6] transition-all duration-150  border-[#ffffff42] rounded-lg gap-x-2 flex  justify-center items-center py-3 cursor-pointer"
@@ -53,7 +61,7 @@ const Form = ({ closeForm }) => {
         </div>
 
         <div className="w-full  center">
-         <Button type="submit" title="Submit" variant="fill" />
+          <Button type="submit" title="Submit" variant="fill" />
         </div>
       </form>
 
@@ -64,13 +72,11 @@ const Form = ({ closeForm }) => {
 export default Form;
 
 const Input = ({ label, type = "text", className }) => (
-  <div className={`text-white ${className} `}>
-    <div className="form relative  overflow-hidden  pt-4">
-      <input type={type} name="name" required />
-      <label htmlFor="name" className="label-name">
-        <span className="content-name">{label}</span>
-      </label>
-    </div>
+  <div className={` form relative  text-white ${className} `}>
+    <input type={type} name="name" required />
+    <label htmlFor="name" className="label-name">
+      <span className="content-name">{label}</span>
+    </label>
   </div>
 );
 

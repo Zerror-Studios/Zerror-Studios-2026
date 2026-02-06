@@ -39,10 +39,7 @@ const Hero = () => {
       }
     );
 
-    const sliderTween = gsap.to(".hero_scroll_txt", {
-      transform: "translateX(-270vw) translateY(-50%)",
-      top: "50%",
-      ease: "linear",
+    var sliderTween = gsap.timeline({
       scrollTrigger: {
         trigger: '.txt_slider_paren',
         start: 'top top',
@@ -51,7 +48,19 @@ const Hero = () => {
         // markers: true,
       }
     })
-
+    if (window.innerWidth > 750) {
+      sliderTween.to(".hero_scroll_txt", {
+        transform: "translateX(-270vw) translateY(-50%)",
+        top: "50%",
+        ease: "linear",
+      })
+    } else {
+      sliderTween.to(".hero_scroll_txt", {
+        transform: "translateX(-2950px) translateY(-50%)",
+        top: "50%",
+        ease: "linear",
+      })
+    }
     const text_chars = split_hero_title.chars.slice(11);
     text_chars.forEach((char) => {
       gsap.fromTo(
@@ -71,6 +80,7 @@ const Hero = () => {
         });
     });
 
+
     gsap.to([".site-background", ".drop_ltr_z", ".works_paren_header"], {
       scrollTrigger: {
         trigger: ".work_paren",
@@ -86,9 +96,10 @@ const Hero = () => {
   return (
     <div className=" hero_paren w-full relative">
 
-      <div className="site-background fixed top-0 left-0   w-full h-screen z-[-1]">
+      <div className="site-background site-background-desktop hidden lg:block fixed bg_blue top-0 left-0   w-full h-screen z-[-1]">
         <HeroScene />
       </div>
+      <div className="site-background site-background-mobile lg:hidden fixed bg_blue top-0 left-0   w-full h-screen z-[-1] bg_blue "></div>
 
       <div className=" txt_slider_paren w-full h-[400vh]  ">
         <div className="w-full h-screen top-0 sticky overflow-hidden">
@@ -100,16 +111,19 @@ const Hero = () => {
 
 
       <div className="w-full   padding text-white ">
-        <div className="w-full  grid grid-cols-[28%_30%_42%]">
+        <div className="w-full  space-y-24 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
           <div className="">
-            <p className=' capitalize pfn  text-6xl   leading-none'>about us</p>
+            <p className='capitalize pfn  text-6xl   leading-none'>about us</p>
           </div>
           <div className="text-xs pt-4">
             <p className=''>Who</p>
             <p className=''>We Are?</p>
           </div>
           <div className="capitalize    text-4xl  pl-2">
-            <p className="font-medium leading-11"> <span className='opacity-0 pointer-events-none'>...............</span> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+            <p className=" max-sm:hidden font-medium leading-11"> <span className='opacity-0 pointer-events-none'>...............</span> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+          </div>
+          <div className="capitalize    text-2xl">
+            <p className=" md:hidden font-medium "> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
           </div>
         </div>
       </div>

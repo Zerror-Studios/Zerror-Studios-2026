@@ -153,8 +153,8 @@ const Our_Services = () => {
         ease: "linear",
         scrollTrigger: {
           trigger: parentRef.current,
-          start: "5% top",
-          end: "bottom bottom",
+          start: "4% top",
+          end: "103% bottom",
           scrub: true
         },
         onUpdate: draw
@@ -179,27 +179,50 @@ const Our_Services = () => {
     }
   }, [])
 
+
+useEffect(() => {
+  const canvas = canvasRef.current
+  if (!canvas) return
+
+  const resizeCanvas = () => {
+    const isMobile = window.innerWidth < 768
+    const size = isMobile ? 250 : 400
+    const dpr = window.devicePixelRatio || 1
+
+    canvas.style.width = `${size}px`
+    canvas.style.height = `${size}px`
+
+    canvas.width = size * dpr
+    canvas.height = size * dpr
+
+  }
+
+  resizeCanvas()
+  window.addEventListener("resize", resizeCanvas)
+
+  return () => window.removeEventListener("resize", resizeCanvas)
+}, [])
+
+
   return (
     <div ref={parentRef} className={` serv_page_paren  w-full padding relative py-0! h-[400vh] `}>
 
       <div className="sticky w-full h-screen top-0 pointer-events-none z-[-1] center  ">
         <canvas
           ref={canvasRef}
-          width={400}
-          height={400}
           className="block"
         />
       </div>
 
-      <div className="absolute padding w-full h-screen left-0 top-0">
-        <div className="w-full h-screen grid grid-cols-[70%_30%]">
-          <div className="w-1/2">
-            <p className=" w-[70%] text-6xl text_blue pfn">
+      <div className="absolute padding  w-full h-screen left-0 top-0">
+        <div className="w-full h-screen pt-[2.5rem] md:pt-0 space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
+          <div className="  md:w-1/2">
+            <p className=" md:w-[70%] text-4xl md:text-6xl text_blue pfn">
               {servicesContent[0].title}
             </p>
           </div>
-          <div className=" space-y-10 ">
-            <p className="text-3xl font-medium text_blue">
+          <div className=" space-y-5 md:space-y-10 ">
+            <p className=" text-lg leading-tight md:text-3xl font-medium text_blue">
               {servicesContent[0].description}
             </p>
 
@@ -215,16 +238,16 @@ const Our_Services = () => {
             key={index}
             className={`w-full h-screen flex justify-start pt-[2.5rem] border-t border-black/50  `}
           >
-            <div className="w-full grid grid-cols-[70%_30%]">
+            <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
               {/* Left */}
-              <div className="w-1/2">
-                <p className=" w-[70%] text-6xl text_blue pfn">
+              <div className="  md:w-1/2">
+                <p className=" md:w-[70%] text-4xl md:text-6xl text_blue pfn">
                   {item.title}
                 </p>
               </div>
               {/* Right */}
-              <div className=" space-y-10 ">
-                <p className="text-3xl font-medium text_blue">
+              <div className=" space-y-5 md:space-y-10 ">
+                <p className=" text-lg leading-tight md:text-3xl font-medium text_blue">
                   {item.description}
                 </p>
 

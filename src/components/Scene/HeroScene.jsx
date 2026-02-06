@@ -59,8 +59,8 @@ export default function SunBackground() {
     const animate = (now) => {
       const t = (now - start) * 0.0003;
 
-      mouse.x += (targetMouse.x - mouse.x) * 0.05;
-      mouse.y += (targetMouse.y - mouse.y) * 0.05;
+      mouse.x += (targetMouse.x - mouse.x) * 0.15;
+      mouse.y += (targetMouse.y - mouse.y) * 0.15;
 
       const maxRadius = Math.sqrt(
         canvas.width * canvas.width +
@@ -74,14 +74,13 @@ export default function SunBackground() {
 
       gl.uniform1f(u("time"), t);
       gl.uniform2f(u("resolution"), canvas.width, canvas.height);
-      gl.uniform2f(u("mouse"), mouse.x, canvas.height - mouse.y);
-      gl.uniform1f(u("inRadius"), radius * 0.3);
-      gl.uniform1f(u("outRadius"), radius);
+      gl.uniform2f(u("mouse"), mouse.x * 1.3, (canvas.height - mouse.y) * 1.3);
+      gl.uniform1f(u("inRadius"), radius * 0.45);
+      gl.uniform1f(u("outRadius"), radius * 0.75);
+      gl.uniform1f(u("gradLength"), 1.2);
+      gl.uniform1f(u("gradStrength"), 0.35);
       gl.uniform2f(u("center"), canvas.width / 2, centerY);
-      gl.uniform1f(u("gradLength"), 2);
-      gl.uniform1f(u("gradStrength"), 0.0); // no intro glow
-      gl.uniform1f(u("sceneMix"), 1.0);     // no transition
-
+      gl.uniform1f(u("sceneMix"), 1.0);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       requestAnimationFrame(animate);
     };

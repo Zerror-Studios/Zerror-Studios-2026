@@ -104,13 +104,52 @@ const footerRows = [
       },
       {},
       {
-        text: "© 2025 Zerror Studio. All rights reserved. Made by the Zerror Team.",
+        text: "© 2025 Zerror Studios. All rights reserved. Made by the Zerror Team.",
         align: "absolute bottom-[5%] left-[5%]",
         hover: "group-hover:bottom-[67%]",
       },
     ],
   },
 ];
+
+const mobileFooterData = [
+  {
+    label: "Built to last", alignment: "flex items-end"
+  }
+  , {}
+  , {
+    links: [
+      {
+        label: "Home",
+        href: "/"
+      }, {
+        label: "About",
+        href: "/about"
+      },
+      {
+        label: "Work",
+        href: "/work"
+      },
+      {
+        label: "services",
+        href: "/services"
+      },
+      {
+        label: "Contact",
+        href: "/contact"
+      }
+    ]
+  }, {}, {}, {}, {}, {}, {
+    label: "crafted with intent", alignment: "flex items-end"
+  }
+  , {
+    label: "Mumbai, India", alignment: "text-end"
+  }
+  , {}
+  , {
+    label: "© 2025 Zerror Studio. All rights reserved. Made by the Zerror Team.", alignment: "flex items-end"
+  }
+]
 
 const Footer = () => {
 
@@ -128,7 +167,7 @@ const Footer = () => {
 
   return (
     <div className="w-full md:h-screen bg_blue  padding relative z-100">
-      <div className="w-full  md:h-full p-3">
+      <div className="w-full hidden md:block  md:h-full p-3">
         {footerRows.map((row) => (
           <div key={row.id} className="w-full h-[50vh] md:h-1/3 grid grid-cols-3 md:grid-cols-9">
             {row.items.map((item, i) => {
@@ -172,6 +211,49 @@ const Footer = () => {
             })}
           </div>
         ))}
+      </div>
+      <div className=" h-full w-full md:hidden relative text-white uppercase">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <img src="/logo_white.svg" alt="logo" /></div>
+
+        <div className=" grid grid-cols-3">
+          {mobileFooterData.map((item, index) => {
+            if (Object.keys(item).length === 0) {
+              return <div className={`h-[25vh]  ${item.alignment} p-3 border border-white/10 rounded-xl`} key={index} />;
+            }
+
+            if (item.label) {
+              return (
+                <div
+                  ref={(el) => (flickerRefs.current.push(el))}
+                  key={index} className={` h-[25vh] flicker ${item.alignment} p-3 border border-white/10 rounded-xl text-xs uppercase`}>
+                  <p>
+                    {item.label}
+                  </p>
+                </div>
+              );
+            }
+
+            if (item.links) {
+              return (
+                <div
+                key={index} className={` h-[25vh] ${item.alignment} p-3 border border-white/10 rounded-xl flex flex-col gap-2`}>
+                  {item.links.map((link, i) => (
+                    <a
+                    ref={(el) => (flickerRefs.current.push(el))}
+                      key={i}
+                      href={link.href}
+                      className="flicker text-xs hover:underline"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              );
+            }
+          })}
+        </div>
+
       </div>
     </div>
   );
