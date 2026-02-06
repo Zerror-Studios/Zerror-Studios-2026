@@ -20,7 +20,7 @@ const WorkDetailGallery = () => {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-          markers: true,
+          // markers: true,
         },
       });
 
@@ -32,7 +32,7 @@ const WorkDetailGallery = () => {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-          markers: true,
+          // markers: true,
         },
       });
 
@@ -44,7 +44,7 @@ const WorkDetailGallery = () => {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-          markers: true,
+          // markers: true,
         },
       });
 
@@ -53,7 +53,7 @@ const WorkDetailGallery = () => {
         scrollTrigger: {
           trigger: ".clip_img_effect",
           start: "top 60%",
-          markers: true,
+          // markers: true,
           toggleActions: "play none none reverse",
         },
       });

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import SplitText from "gsap/dist/SplitText";
 import Button from "../common/Button";
+import Select from "../common/Select";
+import Input from "../common/Input";
 gsap.registerPlugin(SplitText);
 
 const Form = ({ closeForm }) => {
@@ -45,11 +47,19 @@ const Form = ({ closeForm }) => {
           </div>
 
           <div className="form relative h-[10vw]">
-            <input name="name" required className="" />
-            <label htmlFor="name" className="label-name">
-              <span className="content-name">Tell us a little bit about yourself</span>
+            <textarea
+              name="about"
+              required
+              placeholder=" "
+              className="w-full resize-none scroller_none outline-none bg-transparent"
+            />
+            <label className="label-name">
+              <span className="content-name">
+                Tell us a little bit about yourself
+              </span>
             </label>
           </div>
+
 
           <button
             className="full w-full hover:gap-x-4 h-fit border   hover:bg-[#0b3bd6] transition-all duration-150  border-[#ffffff42] rounded-lg gap-x-2 flex  justify-center items-center py-3 cursor-pointer"
@@ -71,27 +81,3 @@ const Form = ({ closeForm }) => {
 
 export default Form;
 
-const Input = ({ label, type = "text", className }) => (
-  <div className={` form relative  text-white ${className} `}>
-    <input type={type} name="name" required />
-    <label htmlFor="name" className="label-name">
-      <span className="content-name">{label}</span>
-    </label>
-  </div>
-);
-
-const Select = ({ label, options }) => (
-  <div className="text-white cursor-pointer flex flex-col justify-end pb-2">
-    <label className="block font-medium mb-2 text-white">
-      {label}
-    </label>
-    <select className="w-full bg-transparent border-b border-[#ffffff42] text-white  outline-none transition-all duration-300">
-      <option value="">Select</option>
-      {options.map((opt) => (
-        <option key={opt} value={opt} className="text-blue-800">
-          {opt}
-        </option>
-      ))}
-    </select>
-  </div>
-);
