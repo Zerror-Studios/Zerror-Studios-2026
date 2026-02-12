@@ -72,7 +72,7 @@ const HeroSection = () => {
               style={{
                 gridTemplateColumns: "repeat(20,1fr)"
               }}
-              className=" absolute pointer-events-none top-0 left-0 w-full h-full  z-40 grid"
+              className=" hidden absolute pointer-events-none top-0 left-0 w-full h-full  z-40 lg:grid"
             >
               {Array.from({ length: totalCells }).map((_, i) => (
                 <div key={i} className="bg-white opacity-100" />
@@ -115,7 +115,7 @@ const HeroSection = () => {
                 style={{
                   gridTemplateColumns: "repeat(10,1fr)"
                 }}
-                className=" absolute pointer-events-none top-0 left-0 w-full h-full  z-40 grid"
+                className=" hidden absolute pointer-events-none top-0 left-0 w-full h-full  z-40 lg:grid"
               >
                 {Array.from({ length: totalCells }).map((_, i) => (
                   <div key={i} className="bg-white w-full aspect-square opacity-100" />

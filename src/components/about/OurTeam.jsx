@@ -265,6 +265,43 @@ const OurTeam = () => {
   }
 
 
+  const cardHandleMove = (e) => {
+    if (!ctaRef.current || isOpen) return;
+
+    const bounds = ctaRef.current.getBoundingClientRect();
+
+    const x = e.clientX - bounds.left;
+    const y = e.clientY - bounds.top;
+
+    const centerX = bounds.width / 2;
+    const centerY = bounds.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    gsap.to(ctaRef.current, {
+      rotateX,
+      rotateY,
+      duration: 0.3,
+      ease: "expo.out",
+      transformPerspective: 1000,
+      transformOrigin: "center",
+    });
+  };
+
+  const cardHandleLeave = () => {
+    if (!ctaRef.current) return;
+
+    gsap.to(ctaRef.current, {
+      rotateX: 0,
+      rotateY: 0,
+      duration: 0.5,
+      ease: "expo.out",
+    });
+  };
+
+
+
   return (
     <div className="w-full relative">
       <div className=" form_blur_overlay opacity-0 fixed top-0 left-0 z-[9999] backdrop-blur-xs pointer-events-none w-full h-screen"></div>
@@ -313,9 +350,12 @@ const OurTeam = () => {
 
           <div
             ref={ctaRef}
+            onMouseMove={cardHandleMove}
+            onMouseLeave={cardHandleLeave}
             onClick={!isOpen ? openForm : undefined}
-            className="w-full h-full center overflow-hidden relative"
+            className={`w-full h-full center  overflow-hidden relative ${isOpen ? "cursor-default" : "cursor-pointer"}  `}
           >
+
             <div className=" inner_paren w-full h-full overflow-hidden text-white bg_blue  ">
 
               <Form closeForm={closeForm} />

@@ -233,6 +233,13 @@ button {
   width: 100%;
 }
 
+.form input:hover + .label-name::after,
+.form textarea:hover + .label-name::after,
+.form button:hover + .label-name::after {
+  width: 100%;
+}
+
+
 .form button {
   width: 100%;
   border: none;

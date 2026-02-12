@@ -33,7 +33,7 @@ const Select = ({ label, options = [] }) => {
         <span className="content-name">{label}</span>
       </label>
 
-      <span className="absolute right-0 top-6 pointer-events-none">
+      <span className={`absolute right-0 top-2 pointer-events-none ${value && " top-6"}  `}>
         <svg
           className={`w-4 h-4 transition-transform ${open ? "rotate-180" : ""}`}
           fill="none"

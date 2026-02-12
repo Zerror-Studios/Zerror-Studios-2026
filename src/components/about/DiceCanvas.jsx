@@ -29,11 +29,15 @@ const DiceCanvas = () => {
     })
   })
 
+  const isMobile =
+    typeof window !== "undefined" &&
+    window.innerWidth < 750
+
   return (
     <div className="CanvasDiv w-full overflow-hidden h-screen fixed top-0 left-0 z-[999] pointer-events-none ">
       <Canvas
         className="tyrus_canvas absolute top-[-42%] left-[-46%] w-full h-full pointer-events-none "
-        camera={{ position: [0, 0, 7], fov: 45 }}
+        camera={{ position: isMobile ? [0, 0, 10] : [0, 0, 7], fov: 45 }}
       >
         <TyrusCubeModel />
         <Environment preset="studio" />
