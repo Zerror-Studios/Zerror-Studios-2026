@@ -61,8 +61,8 @@ const Button = ({
     }
 
     const buttonClasses = `
-    button_paren px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm flex items-center leading-none
-    font-semibold uppercase rounded-md text_blue
+    button_paren px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm flex items-center 
+     uppercase rounded-md text_blue
     ${variant === "fill"
             ? "bg-white"
             : "border-[#002bba] border-[2px]"}
@@ -75,7 +75,7 @@ const Button = ({
             onMouseLeave={ButtonLeave}
             className={buttonClasses}
         >
-            <p className="">{title}</p>
+            <p className="  translate-y-[.05rem]">{title}</p>
             <div className="arrow_paren w-0 overflow-hidden">
                 <div className="arrow_inner translate-y-full">
                     <RiArrowRightUpLine size={20} />

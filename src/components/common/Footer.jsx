@@ -130,6 +130,10 @@ const mobileFooterData = [
         label: "Work",
         href: "/work"
       },
+    ],
+    alignment: "flex justify-end"
+  }, {}, {}, {
+    links: [
       {
         label: "services",
         href: "/services"
@@ -139,11 +143,11 @@ const mobileFooterData = [
         href: "/contact"
       }
     ]
-  }, {}, {}, {}, {}, {}, {
+  }, {}, {}, {
     label: "crafted with intent", alignment: "flex items-end"
   }
   , {
-    label: "Mumbai, India", alignment: "text-end"
+    label: "Mumbai, India", alignment: "text-start"
   }
   , {}
   , {
@@ -166,8 +170,8 @@ const Footer = () => {
 
 
   return (
-    <div className="w-full md:h-screen bg_blue  padding relative z-100">
-      <div className="w-full hidden md:block  md:h-full p-3">
+    <div className=" noise-bg w-full md:h-screen bg_blue  padding relative z-100">
+      <div className=" relative z-10 w-full hidden md:block  md:h-full p-3">
         {footerRows.map((row) => (
           <div key={row.id} className="w-full h-[50vh] md:h-1/3 grid grid-cols-3 md:grid-cols-9">
             {row.items.map((item, i) => {
@@ -195,7 +199,7 @@ const Footer = () => {
                   {item.text && (
                     <span
                       ref={(el) => (flickerRefs.current.push(el))}
-                      className={` flicker text-xs leading-tight tracking-wider  uppercase text-[#f5f5f5]  transition-all duration-300  ${item.align}
+                      className={` flicker text-xs font-thin leading-tight tracking-wider  uppercase text-[#f5f5f5]  transition-all duration-300  ${item.align}
                         ${item.hover}
                      `}
                       style={{
@@ -212,7 +216,7 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <div className=" h-full w-full md:hidden relative text-white uppercase">
+      <div className=" relative z-10 h-full w-full md:hidden relative text-white uppercase">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img className="scale-150" src="/logo_white.svg" alt="logo" /></div>
 
@@ -226,7 +230,7 @@ const Footer = () => {
               return (
                 <div
                   ref={(el) => (flickerRefs.current.push(el))}
-                  key={index} className={` h-[25vh] flicker ${item.alignment} p-3 border border-white/10 rounded-xl text-xs uppercase`}>
+                  key={index} className={` h-[25vh] flicker ${item.alignment} p-3 border border-white/10 rounded-xl text-xs font-thin uppercase`}>
                   <p>
                     {item.label}
                   </p>
@@ -237,13 +241,13 @@ const Footer = () => {
             if (item.links) {
               return (
                 <div
-                key={index} className={` h-[25vh] ${item.alignment} p-3 border border-white/10 rounded-xl flex flex-col gap-2`}>
+                  key={index} className={` h-[25vh] ${item.alignment} p-3 border border-white/10 rounded-xl flex flex-col gap-2`}>
                   {item.links.map((link, i) => (
                     <a
-                    ref={(el) => (flickerRefs.current.push(el))}
+                      ref={(el) => (flickerRefs.current.push(el))}
                       key={i}
                       href={link.href}
-                      className="flicker text-xs hover:underline"
+                      className="flicker text-xs  hover:underline"
                     >
                       {link.label}
                     </a>

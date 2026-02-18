@@ -201,42 +201,41 @@ const About = () => {
                 height: "100vh",
                 ease: "linear",
             })
+            .to(".drop_ltr_z", {
+                opacity: 0,
+                duration: 0.001
+            }, ">")
             .to(wrk_split_wrd.words, {
                 y: 0,
                 opacity: 1,
                 stagger: 0.01
             })
-            .to(".drop_ltr_z", {
-                opacity: 0,
-                duration: 0.001
-            }, ">")
-
     })
 
 
     return (
         <>
-            <div className=" about_paren   text-white   w-full h-[500vh] relative ">
+            <div className=" about_paren   text-white   w-full h-[800vh] md:h-[700vh] relative ">
 
                 <div className="sticky top-0 center w-full h-screen overflow-hidden">
                     <div className="circ_1 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className=' abt_spt_1 text-[5vw] md:text-3xl uppercase font-medium '>Creativity</p>
+                            <p className=' abt_spt_1 text-[5vw] md:text-3xl uppercase font-semibold '>Creativity</p>
                         </div>
                     </div>
                     <div className="circ_2 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className='abt_spt_2 text-[5vw] md:text-3xl uppercase font-medium '>Efficiency</p>
+                            <p className='abt_spt_2 text-[5vw] md:text-3xl uppercase font-semibold '>Efficiency</p>
                         </div>
                     </div>
                     <div className="circ_3 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className='abt_spt_3 text-[5vw] md:text-3xl uppercase font-medium '>Entertainment</p>
+                            <p className='abt_spt_3 text-[5vw] md:text-3xl uppercase font-semibold '>Entertainment</p>
                         </div>
                     </div>
                     <div className="circ_4 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className='abt_spt_4 text-[5vw] md:text-3xl uppercase font-medium '>Empathy</p>
+                            <p className='abt_spt_4 text-[5vw] md:text-3xl uppercase font-semibold '>Empathy</p>
                         </div>
                     </div>
 
@@ -291,19 +290,19 @@ const About = () => {
                     </div>
 
                     <div className=" works_paren_header center fixed overflow-hidden  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 bg-white">
-                        <div className="w-full  padding text_blue space-y-24 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+                        <div className="w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                             <div className="">
-                                <p className=' wrk_split_wrd  pfn  text-6xl   leading-none'>Selected  <br />Works</p>
+                                <p className=' wrk_split_wrd  pfn  text-5xl md:text-6xl    leading-none'>Selected  <br />Works</p>
                             </div>
-                            <div className="text-xs pt-4">
-                                <p className='wrk_split_wrd '>Thoughtful Design.</p>
-                                <p className='wrk_split_wrd '>Strong Technology.</p>
+                            <div className="text-xs max-sm:hidden pt-4">
+                                <p className='wrk_split_wrd font-thin '>Thoughtful Design.</p>
+                                <p className='wrk_split_wrd font-thin '>Strong Technology.</p>
                             </div>
                             <div className=" max-sm:hidden text-4xl pl-2">
-                                <p className=" wrk_split_wrd font-medium leading-11"> <span className='opacity-0 pointer-events-none'>................</span> We exist to end that trade off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+                                <p className=" wrk_split_wrd  leading-11"> <span className='opacity-0 pointer-events-none'>................</span> We exist to end that trade off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
                             </div>
                             <div className=" md:hidden text-2xl ">
-                                <p className=" wrk_split_wrd font-medium"> We exist to end that trade off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+                                <p className=" wrk_split_wrd"> We exist to end that trade off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
                             </div>
                         </div>
                     </div>

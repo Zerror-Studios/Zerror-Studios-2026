@@ -39,7 +39,60 @@ const OurWork = () => {
     const cardRefs = useRef([]);
     const posRefs = useRef([]);
 
+    const isMobile =
+  typeof window !== "undefined" &&
+  window.matchMedia("(hover: none)").matches;
+
+
+  useEffect(() => {
+  if (!isMobile) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const card = entry.target;
+        const hoverVid = card.querySelector(".hover_vid");
+
+        if (!hoverVid) return;
+
+        if (entry.isIntersecting) {
+          gsap.to(hoverVid, {
+            opacity: 1,
+            clipPath: "inset(0%)",
+            duration: 1,
+            ease: "revealEase",
+          });
+
+          // center video on mobile
+          gsap.set(hoverVid, {
+            x: (card.offsetWidth - hoverVid.offsetWidth) / 2,
+            y: (card.offsetHeight - hoverVid.offsetHeight) / 2,
+          });
+        } else {
+          gsap.to(hoverVid, {
+            opacity: 0,
+            clipPath: "inset(40%)",
+            duration: 0.8,
+            ease: "revealEase",
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.55, // tweak for when it should trigger
+    }
+  );
+
+  cardRefs.current.forEach((card) => {
+    if (card) observer.observe(card);
+  });
+
+  return () => observer.disconnect();
+}, []);
+
+
     const handleMouseEnter = (index) => {
+          if (isMobile) return;
         activeIndex.current = index;
 
         const card = cardRefs.current[index];
@@ -68,6 +121,7 @@ const OurWork = () => {
 
 
     const handleMouseMove = (e, index) => {
+          if (isMobile) return;
         mousePos.current.x = e.clientX;
         mousePos.current.y = e.clientY;
 
@@ -119,6 +173,7 @@ const OurWork = () => {
     }, []);
 
     const handleMouseLeave = (index) => {
+          if (isMobile) return;
         activeIndex.current = null;
 
         const hoverVid =

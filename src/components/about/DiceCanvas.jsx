@@ -9,6 +9,16 @@ gsap.registerPlugin(ScrollTrigger);
 const DiceCanvas = () => {
 
   useGSAP(() => {
+
+    gsap.to(".tyrus_canvas", {
+      opacity: 1,
+      ease: "expo.out",
+      duration: .8,
+      delay: 1.5
+    })
+
+
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".canvas_space",
@@ -36,7 +46,7 @@ const DiceCanvas = () => {
   return (
     <div className="CanvasDiv w-full overflow-hidden h-screen fixed top-0 left-0 z-[999] pointer-events-none ">
       <Canvas
-        className="tyrus_canvas absolute top-[-42%] left-[-46%] w-full h-full pointer-events-none "
+        className="tyrus_canvas opacity-0 absolute top-[-42%] left-[-46%] w-full h-full pointer-events-none "
         camera={{ position: isMobile ? [0, 0, 10] : [0, 0, 7], fov: 45 }}
       >
         <TyrusCubeModel />

@@ -45,6 +45,24 @@ button {
   height: 100%;
   object-fit: cover;
 }
+.noise-bg:after  {
+  background:
+    url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+      50% / 512px 512px,
+    blue;
+  background-blend-mode: color;
+  mix-blend-mode: hard-light;
+  opacity: 0.1;
+}
+.noise-bg:before  {
+  background:
+    url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+      50% / 512px 512px,
+    blue;
+  background-blend-mode: color;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+}
 
 .site-background:after {
   background: url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
@@ -63,6 +81,8 @@ button {
   mix-blend-mode: hard-light;
   opacity: calc(0.1 * var(--scene-mix));
 }
+.noise-bg:before,
+.noise-bg:after,
 .site-background:before,
 .site-background:after {
   position: absolute;
@@ -265,3 +285,21 @@ button {
 }
 
 /* Page transition using view transition api */
+
+::view-transition-old(root) {
+  animation: page-fade-out 0.5s ease-in forwards;
+}
+
+::view-transition-new(root) {
+  animation: page-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes page-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

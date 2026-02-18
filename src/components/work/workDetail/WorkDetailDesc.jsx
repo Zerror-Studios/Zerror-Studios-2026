@@ -38,7 +38,7 @@ const WorkDetailDesc = () => {
     return (
         <div className="w-full py-16! md:py-32! text_blue  padding md:grid grid-cols-[80%_20%]">
             <div className=" md:w-[60%]  space-y-10">
-                <p className='wrk_anim_txt pfn text-6xl md:text-8xl '>
+                <p className='wrk_anim_txt pfn text-5xl md:text-8xl '>
                     Disrupting the Norm
                 </p>
                 <div className="  space-y-5  capitalize leading-tight text-lg">

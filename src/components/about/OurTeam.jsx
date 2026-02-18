@@ -134,6 +134,13 @@ const OurTeam = () => {
 
   const openForm = () => {
 
+    gsap.to(ctaRef.current, {
+      rotateX: 0,
+      rotateY: 0,
+      duration: 0.5,
+      ease: "expo.out",
+    });
+
     const card = ctaRef.current;
     const rect = card.getBoundingClientRect();
 
@@ -330,8 +337,8 @@ const OurTeam = () => {
               <div className="w-full relative aspect-4/5">
                 <div className="card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
                 <Image
-                  width={400}
-                  height={500}
+                  width={100}
+                  height={125}
                   src={member.img}
                   alt={member.name}
                   className="cover"
@@ -353,10 +360,10 @@ const OurTeam = () => {
             onMouseMove={cardHandleMove}
             onMouseLeave={cardHandleLeave}
             onClick={!isOpen ? openForm : undefined}
-            className={`w-full h-full center  overflow-hidden relative ${isOpen ? "cursor-default" : "cursor-pointer"}  `}
+            className={`   w-full h-full center  overflow-hidden relative ${isOpen ? "cursor-default" : "cursor-pointer"}  `}
           >
 
-            <div className=" inner_paren w-full h-full overflow-hidden text-white bg_blue  ">
+            <div className="  inner_paren w-full h-full overflow-hidden text-white bg_blue  ">
 
               <Form closeForm={closeForm} />
 

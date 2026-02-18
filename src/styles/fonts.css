@@ -1,3 +1,16 @@
+/* helvetica Font */
+@font-face {
+  font-family: helvetica-light;
+  src: url(../../public/fonts/helvetica/HelveticaNeueLight.otf);
+}
+@font-face {
+  font-family: helvetica-medium;
+  src: url(../../public/fonts/helvetica/HelveticaNeueMedium.otf);
+}
+@font-face {
+  font-family: ibm-semibold;
+  src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf);
+}
 /* IBM Font */
 @font-face {
   font-family: ibm-regular;
@@ -55,17 +68,20 @@
 }
 
 .pfn {
-  font-family: pfn-regular;
+  font-family: spirit;
 }
 .pfn_italic {
-  font-family: pfn-italic;
+  font-family: spirit;
+  font-style: italic;
 }
-
+.font-thin{
+  font-family: helvetica-light;
+}
 .font-medium {
-  font-family: pp-medium;
+  font-family:  helvetica-medium;
 }
 .font-semibold {
-  font-family: pp-semibold;
+  font-family: helvetica-medium;
 }
 .spirit {
   font-family: spirit;
@@ -78,5 +94,5 @@ input,
 li,
 ul,
 button {
-  font-family: pp-regular;
+  font-family:  helvetica-medium;
 }

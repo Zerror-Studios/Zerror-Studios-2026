@@ -61,109 +61,109 @@ const TicketEffect = () => {
         });
     };
 
-useEffect(() => {
-  const button = document.querySelector(".contact_btn");
-  const plane = document.querySelector(".plane");
+    useEffect(() => {
+        const button = document.querySelector(".contact_btn");
+        const plane = document.querySelector(".plane");
 
-  let isAnimating = false;
-  let cloudInterval = null;
+        let isAnimating = false;
+        let cloudInterval = null;
 
-  const tl = gsap.timeline({
-    paused: true,
-    onComplete: () => {
-      isAnimating = false;
-      clearInterval(cloudInterval);
-    },
-  });
+        const tl = gsap.timeline({
+            paused: true,
+            onComplete: () => {
+                isAnimating = false;
+                clearInterval(cloudInterval);
+            },
+        });
 
-  tl.to(plane, {
-    duration: 10,
-    ease: "power2.inOut",
-    motionPath: {
-      path: [
-        { x: 0, y: 0 },
-        { x: 500, y: -400 },
-        { x: 260, y: -20 },
-        { x: -100, y: -400 },
-        { x: -500, y: -100 },
-        { x: -600, y: -400 },
-        { x: 0, y: 0 },
-      ],
-      autoRotate: true,
-    },
-    width: "20rem",
-  }).to(
-    plane,
-    {
-      width: "1.25rem",
-      ease: "expo.out",
-      duration: 1,
-    },
-    "<+=9"
-  );
+        tl.to(plane, {
+            duration: 10,
+            ease: "power2.inOut",
+            motionPath: {
+                path: [
+                    { x: 0, y: 0 },
+                    { x: 500, y: -400 },
+                    { x: 260, y: -20 },
+                    { x: -100, y: -400 },
+                    { x: -500, y: -100 },
+                    { x: -600, y: -400 },
+                    { x: 0, y: 0 },
+                ],
+                autoRotate: true,
+            },
+            width: "20rem",
+        }).to(
+            plane,
+            {
+                width: "1.25rem",
+                ease: "expo.out",
+                duration: 1,
+            },
+            "<+=9"
+        );
 
-const createCloud = () => {
-  const cloud = document.createElement("img");
-  cloud.src = "/svg/cloud.png";
-  cloud.className = "cloud";
+        const createCloud = () => {
+            const cloud = document.createElement("img");
+            cloud.src = "/svg/cloud.png";
+            cloud.className = "cloud";
 
-  document.body.appendChild(cloud);
+            document.body.appendChild(cloud);
 
-  const rect = plane.getBoundingClientRect();
+            const rect = plane.getBoundingClientRect();
 
-  // PLACE IT EXACTLY BEHIND THE PLANE
-  gsap.set(cloud, {
-    x: rect.left + rect.width / 2,
-    y: rect.top + rect.height / 2,
-    rotation: gsap.getProperty(plane, "rotation"),
-    scale: gsap.utils.random(0.6, 1),
-  });
+            // PLACE IT EXACTLY BEHIND THE PLANE
+            gsap.set(cloud, {
+                x: rect.left + rect.width / 2,
+                y: rect.top + rect.height / 2,
+                rotation: gsap.getProperty(plane, "rotation"),
+                scale: gsap.utils.random(0.6, 1),
+            });
 
-  // FADE IN → FADE OUT
-  gsap.fromTo(
-    cloud,
-    { opacity: 0 },
-    {
-      opacity: 1,
-      duration: 0.15,
-      ease: "power1.out",
-    }
-  );
+            // FADE IN → FADE OUT
+            gsap.fromTo(
+                cloud,
+                { opacity: 0 },
+                {
+                    opacity: 1,
+                    duration: 0.15,
+                    ease: "power1.out",
+                }
+            );
 
-  gsap.to(cloud, {
-    opacity: 0,
-    scale: "+=2",
-    duration: 1.8,
-    ease: "power2.out",
-    delay: 0.2,
-    onComplete: () => cloud.remove(),
-  });
-};
+            gsap.to(cloud, {
+                opacity: 0,
+                scale: "+=2",
+                duration: 1.8,
+                ease: "power2.out",
+                delay: 0.2,
+                onComplete: () => cloud.remove(),
+            });
+        };
 
 
-  const handleMouseEnter = () => {
-    if (isAnimating) return;
-    isAnimating = true;
+        const handleMouseEnter = () => {
+            if (isAnimating) return;
+            isAnimating = true;
 
-    // spawn clouds while plane is flying
-    cloudInterval = setInterval(createCloud, 120);
+            // spawn clouds while plane is flying
+            cloudInterval = setInterval(createCloud, 120);
 
-    tl.restart();
-  };
+            tl.restart();
+        };
 
-  button.addEventListener("mouseenter", handleMouseEnter);
+        button.addEventListener("mouseenter", handleMouseEnter);
 
-  return () => {
-    clearInterval(cloudInterval);
-    button.removeEventListener("mouseenter", handleMouseEnter);
-  };
-}, []);
+        return () => {
+            clearInterval(cloudInterval);
+            button.removeEventListener("mouseenter", handleMouseEnter);
+        };
+    }, []);
 
 
     return (
         <div>
             <div className="w-full pt-32 center text_blue text-center space-y-10 flex-col">
-                <p className=' text-7xl md:text-8xl pfn  leading-none'>Ready for your <br />
+                <p className=' text-5xl md:text-8xl pfn  leading-none'>Ready for your <br />
                     game-changing <br /> <span className='pfn_italic'> website? </span> </p>
 
                 <p className=' '>Step on the Zerror Studios and <br />

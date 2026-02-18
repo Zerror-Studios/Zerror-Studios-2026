@@ -862,7 +862,7 @@ export default function deck() {
               })}
             </div>
             <div className="w-full h-full absolute top-0 left-0 gap-5 pointer-events-none flex justify-center items-center">
-              <p className="text-white font3 text-6xl font-medium">ZERROR STUDIOS</p>
+              <p className="text-white font3 text-5xl md:text-6xl  font-medium">ZERROR STUDIOS</p>
             </div>
           </div>
 

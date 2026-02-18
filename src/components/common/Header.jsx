@@ -1,9 +1,9 @@
-import { RiArrowRightUpLine } from '@remixicon/react';
 import gsap from 'gsap';
-import { Link } from 'next-view-transitions'
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import ViewTransitionLink from '../hooks/ViewTransitionLink';
+import { Link } from 'next-view-transitions';
 
 const menuLinks = [
   {
@@ -59,6 +59,8 @@ const socialLinks = [
 ]
 
 const Header = () => {
+
+  const [pendingNavigation, setPendingNavigation] = useState(null);
 
   const [openMenu, setOpenMenu] = useState(false)
 
@@ -151,16 +153,16 @@ const Header = () => {
         opacity: 0,
         duration: .5,
         ease: "expo.out"
-      }, "<+=0.2")
+      }, "<")
     }
 
   }, [openMenu])
 
   return (
     <>
-      <div className="w-full pointer-events-none fixed py-5  z-[9999] center">
-        <div className="w-full relative z-[99999] flex justify-center gap-x-3 ">
-          <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-sm z-[9] top-0 left-0 transition-all duration-300 ease-out ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
+      <div className="w-full pointer-events-none fixed py-5! padding   z-[9999] center">
+        <div className="w-full relative z-[99999] flex justify-center gap-x-1 md:gap-x-3 ">
+          <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-sm z-[9] top-0 left-0 transition-all duration-500  ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
 
           <div onClick={() => setOpenMenu(!openMenu)} className={`menu_paren pointer-events-auto relative z-[100] w-[80vw] md:w-[38vw]  rounded-lg  transition-all duration-300 ease-out ${openMenu ? "rounded-b bg-white" : "bg-black/15! backdrop-blur-[1.25rem]"}  `}>
 
@@ -181,7 +183,12 @@ const Header = () => {
               <div className="">
                 {
                   menuLinks.map((menu) => (
-                    <Link onClick={() => setOpenMenu(false)} href={menu.href} key={menu.id} className={`w-full relative  text_blue  capitalize  border-b border-black/10 py-4 flex flex-col md:flex-row  justify-between ${pathname === menu.href ? "" : "group"} `}>
+                    <ViewTransitionLink
+                      href={menu.href}
+                      delay={350}
+                      onClick={() => {
+                        setOpenMenu(false);
+                      }} key={menu.id} className={`w-full relative  text_blue  capitalize  border-b border-black/10 py-4 flex flex-col md:flex-row  justify-between ${pathname === menu.href ? "" : "group"} `}>
                       {pathname === menu.href && <div className="w-full h-full  absolute  bg-[#00000010] top-0 left-0 z-[9]"></div>}
                       <div className="flex px-6 gap-x-3">
                         <div
@@ -205,7 +212,7 @@ const Header = () => {
                           }
                         </div>
                       )}
-                    </Link>
+                    </ViewTransitionLink>
                   ))
                 }
               </div>
@@ -221,7 +228,6 @@ const Header = () => {
                 ))}
               </div>
             </div>
-
           </div>
 
           <Link href={`${pathname === "/deck" ? "/" : "/deck"}`} className='relative z-[100] h-fit pointer-events-auto'>
@@ -231,7 +237,6 @@ const Header = () => {
               <div className={`w-4  h-3 border-l border-t  group-hover:top-1/2 group-hover:left-1/2  rounded-xs transition-all duration-300 absolute top-[45%] left-[46%]  ${openMenu ? "border-[#002bba]" : "border-[#fafafa]"} -translate-x-[50%] -translate-y-[50%] `}></div>
             </div>
           </Link>
-
 
         </div>
       </div>

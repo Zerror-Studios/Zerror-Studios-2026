@@ -53,70 +53,70 @@ const ImageEffect = () => {
     TLVI.to(
       ".OTI1",
       {
-         delay:0.5,
-        y:0,
-        ease:"linear"
+        delay: 0.5,
+        y: 0,
+        ease: "linear"
       },
     );
     TLVI.to(
       ".OTI1",
       {
-        delay:0.5,
-        y:'100%',
-        ease:"linear"
+        delay: 0.5,
+        y: '100%',
+        ease: "linear"
       },
     );
     TLVI.to(
       ".OTI2",
       {
-        y:0,
-        ease:"linear"
+        y: 0,
+        ease: "linear"
       },
     );
     TLVI.to(
       ".OTI2",
       {
-        delay:0.5,
-        y:'100%',
-        ease:"linear"
+        delay: 0.5,
+        y: '100%',
+        ease: "linear"
       },
     );
     TLVI.to(
       ".OTI3",
       {
-        y:0,
-        ease:"linear"
+        y: 0,
+        ease: "linear"
       },
     );
     TLVI.to(
       ".OTI3",
       {
-        delay:0.5,
-        y:'100%',
-        ease:"linear"
+        delay: 0.5,
+        y: '100%',
+        ease: "linear"
       },
     );
-    
+
   }, []);
 
   return (
     <>
-      <div className="w-full h-[700vh] relative IVMainCont">
+      <div className="w-full h-[600vh] relative IVMainCont">
         {/* Cont */}
         <div className="w-full h-screen sticky top-0 left-0 flex text-center flex-col justify-center items-center text_blue scene">
 
           <p className=" uppercase font-medium">
             WHY US?
           </p>
-          <p className="  text-6xl leading-none font-semibold">
+          <p className="  text-5xl md:text-6xl  leading-none font-semibold">
             5 Reasons
           </p>
-          <p className="  text-6xl leading-none font-semibold">
+          <p className="  text-5xl md:text-6xl  leading-none font-semibold">
             To Be With Zerrorian
           </p>
 
           {/* Video & Img  */}
-          <div className=" absolute w-[300px] h-[400px] top-[200%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-700 cardVI center overflow-hidden ">
+          <div className=" absolute w-[300px] h-[400px] top-[150%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-700 cardVI center overflow-hidden ">
             <div className="w-[100vw] h-[100vh]  relative center">
               {/* Img */}
               <div className="w-[100vw] h-[100vh] absolute top-0 left-0 z-40  VCI ">
@@ -133,7 +133,7 @@ const ImageEffect = () => {
                   autoPlay
                   muted
                   loop
-                  src="https://www.pexels.com/download/video/6773762/"
+                  src="/videos/about_video.mp4"
                   className="w-[100%] h-full object-cover "
                 ></video>
               </div>
@@ -146,12 +146,12 @@ const ImageEffect = () => {
                     {/* Text-1 */}
                     <div className="w-full OT1 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI1 font-bold translate-y-[100%]">15 YEAR</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI1 font-bold translate-y-[100%]">OF EXPERTIES</p>
                       </div>
                     </div>
@@ -159,12 +159,12 @@ const ImageEffect = () => {
                     {/* Text-2 */}
                     <div className="w-full OT2 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI2 font-bold translate-y-[100%]">100+</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI2 font-bold translate-y-[100%]">AWARDS</p>
                       </div>
                     </div>
@@ -172,12 +172,12 @@ const ImageEffect = () => {
                     {/* Text-3 */}
                     <div className="w-full OT3 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className=" OTI3 font-bold translate-y-[100%]">1500+</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-6xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className=" OTI3 font-bold translate-y-[100%]">PROJECTS</p>
                       </div>
                     </div>

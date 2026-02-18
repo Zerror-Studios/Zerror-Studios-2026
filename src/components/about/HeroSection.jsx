@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { useGSAP } from "@gsap/react";
+import SplitText from "gsap/dist/SplitText";
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HeroSection = () => {
   const rows = 20;
@@ -47,11 +49,26 @@ const HeroSection = () => {
     };
   }, []);
 
+  useGSAP(() => {
+    const splitText = SplitText.create(".split_t", { type: "lines" });
+
+    gsap.fromTo(splitText.lines, {
+      yPercent: 50,
+      opacity: 0,
+    }, {
+      yPercent: 0,
+      opacity: 1,
+      ease: "expo.out",
+      delay: .5,
+      stagger: 0.03,
+    })
+  })
+
   return (
     <div className=" about_hero_paren  w-full   padding">
 
       <div className="w-full aboutTitle flex py-44 max-sm:pb-20  ">
-        <p className=" text-6xl md:text-8xl leading-none capitalize pfn text_blue">
+        <p className=" split_t text-5xl md:text-8xl leading-none capitalize pfn text_blue">
           We believe a great user experience is not just intuitive it’s
           entertaining. Because clarity is good, but delight is better.
         </p>
@@ -60,7 +77,7 @@ const HeroSection = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className=" w-full md:w-1/2  space-y-5 md:space-y-10">
           <div className="md:w-[60%] ">
-            <p className="pfn text_blue text-3xl">
+            <p className=" split_t pfn text_blue text-3xl">
               We make stuff look good. We make it work better. Creative.
               Scalable. Reliable. Fresh. Tech-first. Entertaining.
             </p>
@@ -90,18 +107,18 @@ const HeroSection = () => {
           {/* cont*/}
           <div className=" w-full md:w-1/2 flex flex-col gap-3">
             {/* Text */}
-            <p className=" uppercase text-lg  font-semibold">
+            <p className=" split_t uppercase text-lg  font-semibold">
               Why we exist
             </p>
             <div className="w-full flex flex-col gap-3">
-              <p className=" font-medium leading-tight">
+              <p className=" split_t font-medium leading-tight">
                 We’re here to help you stand out—even in a crowded digital
                 world. From turning napkin sketches into fully functional
                 platforms to moving fast without breaking your brand, we focus
                 on building experiences that scale smoothly and entertain, not
                 just inform or convert.
               </p>
-              <p className=" font-medium leading-tight">
+              <p className=" split_t font-medium leading-tight">
                 While most teams do either design or development, few truly
                 understand both—and even fewer do it fast. We’re here to change
                 that.

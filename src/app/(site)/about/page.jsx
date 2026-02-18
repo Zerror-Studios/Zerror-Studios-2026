@@ -8,9 +8,36 @@ import OurTeam from "@/components/about/OurTeam";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const about = () => {
+
+  useGSAP(()=>{
+    const clipImgTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".clip_img_effect",
+          start: "top 60%",
+          // markers: true,
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      clipImgTl.fromTo(
+        ".clip_img_effect",
+        {
+          clipPath: "inset(50%)",
+          opacity: 0,
+        },
+        {
+          clipPath: "inset(0%)",
+          opacity: 1,
+          stagger: 0.03,
+          duration: 1,
+          ease: "expo.out",
+        }
+      );
+  })
 
   return (
     <>
@@ -23,7 +50,20 @@ const about = () => {
         </div>
       </div>
 
-      <ImageEffect />
+      <div className="w-full h-screen md:hidden! center">
+        <div className=" clip_img_effect w-[100%] h-[100%] ">
+          <video
+            autoPlay
+            muted
+            loop
+            src="/videos/about_video.mp4"
+            className="cover "
+          ></video>
+        </div>
+      </div>
+      <div className="w-full max-sm:hidden">
+        <ImageEffect />
+      </div>
       <InfoSection />
       <OurTeam />
 
