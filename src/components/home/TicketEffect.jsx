@@ -113,8 +113,8 @@ const TicketEffect = () => {
 
             // PLACE IT EXACTLY BEHIND THE PLANE
             gsap.set(cloud, {
-                x: rect.left + rect.width / 2,
-                y: rect.top + rect.height / 2,
+                x: rect.left + rect.width / 10,
+                y: rect.top + rect.height / 10,
                 rotation: gsap.getProperty(plane, "rotation"),
                 scale: gsap.utils.random(0.6, 1),
             });
@@ -166,7 +166,7 @@ const TicketEffect = () => {
                 <p className=' text-5xl md:text-8xl pfn  leading-none'>Ready for your <br />
                     game-changing <br /> <span className='pfn_italic'> website? </span> </p>
 
-                <p className=' '>Step on the Zerror Studios and <br />
+                <p className=' leading-tight font-thin '>Step on the Zerror Studios and <br />
                     request a project with a few clicks.</p>
 
                 <button className="contact_btn relative flex group items-center gap-1">

@@ -64,7 +64,7 @@ const footerRows = [
       {},
       { img: "/svg/r.svg", hover: "hover:pb-10" },
       {
-        text: "Bengaluru, India",
+        text: "Mumbai, India",
         align: "absolute top-[5%] left-[5%]",
         hover: "group-hover:top-[85%]",
       },
@@ -104,7 +104,7 @@ const footerRows = [
       },
       {},
       {
-        text: "© 2025 Zerror Studios. All rights reserved. Made by the Zerror Team.",
+        text: "©2025 Zerror Studios. All rights reserved.",
         align: "absolute bottom-[5%] left-[5%]",
         hover: "group-hover:bottom-[67%]",
       },
@@ -118,6 +118,11 @@ const mobileFooterData = [
   }
   , {}
   , {
+    label: "I", alignment: "flex items-end"
+  }, {
+    label: "I", alignment: "flex items-end"
+
+  }, {}, {
     links: [
       {
         label: "Home",
@@ -130,10 +135,6 @@ const mobileFooterData = [
         label: "Work",
         href: "/work"
       },
-    ],
-    alignment: "flex justify-end"
-  }, {}, {}, {
-    links: [
       {
         label: "services",
         href: "/services"
@@ -143,15 +144,19 @@ const mobileFooterData = [
         href: "/contact"
       }
     ]
-  }, {}, {}, {
+  }, {
+    label: "Mumbai, India", alignment: " flex items-end text-start"
+  }, {}, {
     label: "crafted with intent", alignment: "flex items-end"
   }
   , {
-    label: "Mumbai, India", alignment: "text-start"
+    label: "© 2025 Zerror Studio.", alignment: ""
   }
-  , {}
   , {
-    label: "© 2025 Zerror Studio. All rights reserved. Made by the Zerror Team.", alignment: "flex items-end"
+    label: "I", alignment: "flex items-start"
+  }
+  , {
+    label: " All rights reserved.", alignment: "flex items-end"
   }
 ]
 

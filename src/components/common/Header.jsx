@@ -180,7 +180,7 @@ const Header = () => {
             </div>
 
             <div className=" drop_menu h-0 opacity-0 overflow-hidden pointer-events-none w-full bg-white rounded-b-lg   ">
-              <div className="">
+              <nav>
                 {
                   menuLinks.map((menu) => (
                     <ViewTransitionLink
@@ -215,7 +215,7 @@ const Header = () => {
                     </ViewTransitionLink>
                   ))
                 }
-              </div>
+              </nav>
               <div className=" py-4 px-6  flex flex-col gap-y-2">
                 {socialLinks.map((link, i) => (
                   <Link href={link.href} target='_blank' key={i} className="w-fit overflow-hidden  pb-1 text_blue group    ">

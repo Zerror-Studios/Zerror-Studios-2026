@@ -47,7 +47,7 @@ button {
 }
 .noise-bg:after  {
   background:
-    url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+    url(../../public/images/homePage/noise.webp)
       50% / 512px 512px,
     blue;
   background-blend-mode: color;
@@ -56,7 +56,7 @@ button {
 }
 .noise-bg:before  {
   background:
-    url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+    url(../../public/images/homePage/noise.webp)
       50% / 512px 512px,
     blue;
   background-blend-mode: color;
@@ -65,7 +65,7 @@ button {
 }
 
 .site-background:after {
-  background: url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+  background: url(../../public/images/homePage/noise.webp)
     50% / 512px 512px;
   mix-blend-mode: overlay;
   opacity: calc(0.5 * var(--scene-mix));
@@ -74,7 +74,7 @@ button {
 
 .site-background:before {
   background:
-    url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+    url(../../public/images/homePage/noise.webp)
       50% / 512px 512px,
     blue;
   background-blend-mode: color;
@@ -99,7 +99,7 @@ button {
     overflow: hidden;
   }
   .mob_cir:after {
-    background: url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+    background: url(../../public/images/homePage/noise.webp)
       50% / 512px 512px;
     mix-blend-mode: overlay;
     opacity: 0.5;
@@ -108,7 +108,7 @@ button {
 
   .mob_cir:before {
     background:
-      url(https://soleilnoir.com/wp-content/themes/soleil-noir/static/images/noise.png)
+      url(../../public/images/homePage/noise.webp)
         50% / 512px 512px,
       blue;
     background-blend-mode: color;

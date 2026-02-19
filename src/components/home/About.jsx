@@ -299,7 +299,7 @@ const About = () => {
                                 <p className='wrk_split_wrd font-thin '>Strong Technology.</p>
                             </div>
                             <div className=" max-sm:hidden text-4xl pl-2">
-                                <p className=" wrk_split_wrd  leading-11"> <span className='opacity-0 pointer-events-none'>................</span> We exist to end that trade off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+                                <p className=" wrk_split_wrd   "> <span className='opacity-0 pointer-events-none'>................</span> We exist to end that trade off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
                             </div>
                             <div className=" md:hidden text-2xl ">
                                 <p className=" wrk_split_wrd"> We exist to end that trade off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>

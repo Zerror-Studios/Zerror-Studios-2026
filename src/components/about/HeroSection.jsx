@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -96,7 +97,7 @@ const HeroSection = () => {
               ))}
             </div>
 
-            <img src={'/images/about/AboutMainBg.jpg'} alt="l-Img" className="cover" />
+            <img src={'/images/about/AboutMainBg.webp'} alt="l-Img" className="cover" />
 
           </div>
 
@@ -138,7 +139,7 @@ const HeroSection = () => {
                   <div key={i} className="bg-white w-full aspect-square opacity-100" />
                 ))}
               </div>
-              <img src={'/images/about/AboutMainBg.jpg'} alt="l-Img" className="cover" />
+              <img src={'/images/about/AboutMainBg.webp'} alt="l-Img" className="cover" />
             </div>
           </div>
         </div>

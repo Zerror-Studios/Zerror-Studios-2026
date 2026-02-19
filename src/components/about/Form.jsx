@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+"use client";
+import React from "react";
 import gsap from "gsap";
 import SplitText from "gsap/dist/SplitText";
 import Button from "../common/Button";
@@ -18,13 +19,13 @@ const Form = ({ closeForm }) => {
           <p className=' capitalize pfn text-4xl md:text-5xl md:text-6xl   leading-none'>  Become a <br /> Zerrorian </p>
         </div>
         <div className="w-full">
-          <p className="text-[#f5f5f59d] select-none cursor-pointer">
+          <p className="text-[#f5f5f59d] select-none  font-thin cursor-pointer">
             By clicking connect you accept our{" "}
-            <span className="text-white">Privacy Policy </span>
+            <span className="text-white font-thin underline">Privacy Policy </span>
           </p>
-          <p className="text-[#f5f5f59d] select-none cursor-pointer">
+          <p className="text-[#f5f5f59d] select-none font-thin cursor-pointer">
             Prefer email ? {" "}
-            <span className="text-white">hello@zerrorstudios.com </span>
+            <span className="text-white  font-thin underline">hello@zerrorstudios.com </span>
           </p>
         </div>
       </div>
@@ -54,7 +55,7 @@ const Form = ({ closeForm }) => {
               className="w-full resize-none scroller_none outline-none bg-transparent"
             />
             <label className="label-name">
-              <span className="content-name">
+              <span className="content-name font-thin">
                 Tell us a little bit about yourself
               </span>
             </label>
@@ -65,7 +66,7 @@ const Form = ({ closeForm }) => {
             className="full w-full hover:gap-x-4 h-fit border   hover:bg-[#0b3bd6] transition-all duration-150  border-[#ffffff42] rounded-lg gap-x-2 flex  justify-center items-center py-3 cursor-pointer"
           >
             <img className="invert-100 w-4" src="/icons/attach_file.png" alt="" />
-            <p>Attach Resume</p>
+            <p className="font-thin">Attach Resume</p>
           </button>
 
         </div>

@@ -165,7 +165,7 @@ const Services = () => {
               <p className='split_wrd font-thin'>worked with.</p>
             </div>
             <div className="text-4xl  pl-2">
-              <p className=" split_wrd font-medium leading-11"> <span className='opacity-0 pointer-events-none'>...........................</span> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful. From strategy to launch, we focus on thoughtful design, clean code, and meaningful user experiences.</p>
+              <p className=" split_wrd font-medium  "> <span className='opacity-0 pointer-events-none'>...........................</span> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful. From strategy to launch, we focus on thoughtful design, clean code, and meaningful user experiences.</p>
             </div>
           </div>
         </div>

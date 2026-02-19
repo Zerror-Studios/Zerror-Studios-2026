@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import PixelTrail from "@/components/about/PixelTrail";
@@ -18,7 +19,7 @@ const ImageEffect = () => {
     });
     TLVI.to(".cardVI", {
       top: "50%",
-      ease: "linear",
+      ease: "power1.out",
     });
     TLVI.to(".cardVI", {
       rotateY: 90,
@@ -55,7 +56,7 @@ const ImageEffect = () => {
       {
         delay: 0.5,
         y: 0,
-        ease: "linear"
+        ease: "power2.out"
       },
     );
     TLVI.to(
@@ -63,14 +64,14 @@ const ImageEffect = () => {
       {
         delay: 0.5,
         y: '100%',
-        ease: "linear"
+        ease: "power2.out"
       },
     );
     TLVI.to(
       ".OTI2",
       {
         y: 0,
-        ease: "linear"
+        ease: "power2.out"
       },
     );
     TLVI.to(
@@ -78,24 +79,24 @@ const ImageEffect = () => {
       {
         delay: 0.5,
         y: '100%',
-        ease: "linear"
+        ease: "power2.out"
       },
     );
     TLVI.to(
       ".OTI3",
       {
         y: 0,
-        ease: "linear"
+        ease: "power2.out"
       },
     );
-    TLVI.to(
-      ".OTI3",
-      {
-        delay: 0.5,
-        y: '100%',
-        ease: "linear"
-      },
-    );
+    // TLVI.to(
+    //   ".OTI3",
+    //   {
+    //     delay: 0.5,
+    //     y: '100%',
+    //     ease: "linear"
+    //   },
+    // );
 
   }, []);
 
@@ -121,7 +122,7 @@ const ImageEffect = () => {
               {/* Img */}
               <div className="w-[100vw] h-[100vh] absolute top-0 left-0 z-40  VCI ">
                 <img
-                  src={"/images/about/AboutMainBg.jpg"}
+                  src={"/images/about/AboutMainBg.webp"}
                   alt="IMGR"
                   className="w-[100vw] h-[100vh] object-cover  whitespace-nowrap"
                 />
@@ -146,12 +147,12 @@ const ImageEffect = () => {
                     {/* Text-1 */}
                     <div className="w-full OT1 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI1 font-bold translate-y-[100%]">15 YEAR</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI1 font-bold translate-y-[100%]">OF EXPERTIES</p>
                       </div>
                     </div>
@@ -159,12 +160,12 @@ const ImageEffect = () => {
                     {/* Text-2 */}
                     <div className="w-full OT2 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI2 font-bold translate-y-[100%]">100+</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className="OTI2 font-bold translate-y-[100%]">AWARDS</p>
                       </div>
                     </div>
@@ -172,12 +173,12 @@ const ImageEffect = () => {
                     {/* Text-3 */}
                     <div className="w-full OT3 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className=" OTI3 font-bold translate-y-[100%]">1500+</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[4rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
+                      <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
                         <p className=" OTI3 font-bold translate-y-[100%]">PROJECTS</p>
                       </div>
                     </div>

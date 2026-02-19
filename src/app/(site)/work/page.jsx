@@ -7,19 +7,16 @@ import { PerspectiveCamera } from "@react-three/drei";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import Vertex from "../shaders/Vertex.glsl";
-// import fragmen from "../shaders/fragmen.glsl";
 
 import {Vertex, Fragment} from '@/shaders/plpShaders/PLPShaderGLSL' 
-import { useRouter } from "next/navigation";
+import { useTransitionRouter } from "next-view-transitions";
 
-// import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 const plp = () => {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const meshRef = useRef();
   const img = [
     "/images/plpImg/img1.webp",

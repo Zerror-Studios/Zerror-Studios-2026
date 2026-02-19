@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -215,7 +216,7 @@ const OurTeam = () => {
 
     gsap.to(".form_paren", {
       opacity: 0,
-      duration: 0.2,
+      duration: 0.3,
       ease: "expo.inOut",
     });
     gsap.set(".form_paren", {
@@ -227,13 +228,13 @@ const OurTeam = () => {
       width: "100%",
       height: "100%",
       duration: 0.5,
-      delay: 0.3,
+      delay: 0.4,
       ease: "expo.inOut",
     });
     gsap.to(".dummy_txt", {
       opacity: 1,
       duration: 0.4,
-      delay: 0.4,
+      delay: 0.45,
       ease: "expo.inOut",
     });
 
@@ -371,7 +372,7 @@ const OurTeam = () => {
                 <p className="pfn leading-none text-4xl md:text-6xl">
                   Become A <br /> Zerrorian
                 </p>
-                <p className="leading-tight">
+                <p className="leading-tight font-thin">
                   Join us in creating great work share your resume.
                 </p>
               </div>

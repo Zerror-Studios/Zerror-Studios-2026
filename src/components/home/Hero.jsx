@@ -17,13 +17,13 @@ const Hero = () => {
       type: "words",
     });
 
-    const first_text_words = split.words.slice(0, 5);
-    const text_words = split.words.slice(5);
+    const first_text_words = split.words.slice(0, 2);
+    const text_words = split.words.slice(2);
 
     gsap.from(first_text_words, {
       yPercent: 100,
       opacity: 0,
-      delay:0.5,
+      delay: 0.5,
       stagger: 0.03,
       ease: "expo.out",
     })
@@ -142,7 +142,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className=" hero_mob_txt  w-full overflow-hidden  md:hidden! pt-[60vh]! padding pb-32! text-white  ">
+      <div className=" hero_mob_txt  w-full overflow-hidden  md:hidden! pt-[calc(100svh-22vw)]! padding pb-[33vh]! text-white  ">
         <p className=" mob_split_hero_title  text-[18vw] leading-[20vw] md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
       </div>
 
@@ -157,7 +157,7 @@ const Hero = () => {
             <p className='font-thin'>We Are?</p>
           </div>
           <div className="capitalize    text-4xl  pl-2">
-            <p className=" max-sm:hidden font-medium leading-11"> <span className='opacity-0 pointer-events-none'>...............</span> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+            <p className=" max-sm:hidden font-medium  "> <span className='opacity-0 pointer-events-none'>...............</span> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
           </div>
           <div className="capitalize    text-2xl">
             <p className=" md:hidden font-medium "> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>

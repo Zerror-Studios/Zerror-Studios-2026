@@ -30,7 +30,7 @@ const Select = ({ label, options = [] }) => {
       </button>
 
       <label className="label-name">
-        <span className="content-name">{label}</span>
+        <span className="content-name font-thin">{label}</span>
       </label>
 
       <span className={`absolute right-0 top-2 pointer-events-none ${value && " top-6"}  `}>
@@ -53,7 +53,7 @@ const Select = ({ label, options = [] }) => {
                 setValue(opt);
                 setOpen(false);
               }}
-              className="w-full text-left px-4 py-3  text-[#002bba] transition-colors hover:bg-[#002bba20]"
+              className="w-full text-left px-4 py-3 font-thin  text-[#002bba] transition-colors hover:bg-[#002bba20]"
             >
               {opt}
             </button>

@@ -13,7 +13,7 @@ const InfoSection = () => {
           <p className='font-thin'>of zerror</p>
         </div>
         <div className="capitalize   text-2xl md:text-4xl  md:pl-2">
-          <p className="font-medium md:leading-11"> <span className='opacity-0 max-sm:hidden pointer-events-none'>...............</span> The people behind Zerror are designers, developers, and strategists who care deeply about craft, clarity, and impact.</p>
+          <p className="font-medium  "> <span className='opacity-0 max-sm:hidden pointer-events-none'>...............</span> The people behind Zerror are designers, developers, and strategists who care deeply about craft, clarity, and impact.</p>
         </div>
       </div>
     </div>
