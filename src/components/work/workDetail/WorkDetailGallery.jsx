@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -9,8 +9,8 @@ gsap.registerPlugin(ScrollTrigger)
 const WorkDetailGallery = () => {
 
 
-  useGSAP(
-    () => {
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
 
       gsap.to(".mob_1", {
         y: -300,
@@ -20,7 +20,6 @@ const WorkDetailGallery = () => {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-          // markers: true,
         },
       });
 
@@ -32,7 +31,6 @@ const WorkDetailGallery = () => {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-          // markers: true,
         },
       });
 
@@ -44,30 +42,23 @@ const WorkDetailGallery = () => {
           start: "top bottom",
           end: "bottom top",
           scrub: true,
-          // markers: true,
         },
       });
-
 
       const clipImgTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".clip_img_effect",
           start: "top 60%",
-          // markers: true,
           toggleActions: "play none none reverse",
         },
       });
 
       clipImgTl.fromTo(
         ".clip_img_effect",
-        {
-          clipPath: "inset(50%)",
-          opacity: 0,
-        },
+        { clipPath: "inset(50%)", opacity: 0 },
         {
           clipPath: "inset(0%)",
           opacity: 1,
-          stagger: 0.03,
           duration: 1,
           ease: "expo.out",
         }
@@ -75,19 +66,23 @@ const WorkDetailGallery = () => {
 
       clipImgTl.fromTo(
         ".clip_img_effect_img",
-        {
-          scale: 1.5,
-        },
+        { scale: 1.5 },
         {
           scale: 1,
-          stagger: 0.03,
           duration: 1,
           ease: "expo.out",
         },
         "<"
       );
-    }
-  );
+
+    });
+
+    return () => ctx.revert(); // 🔥 CLEANUP FIX
+  });
+
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, []);
 
 
   return (

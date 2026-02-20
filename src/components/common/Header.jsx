@@ -101,10 +101,9 @@ const Header = () => {
       openMenuTl.to(".sublinks_title_paren", {
         opacity: 1,
         transform: "translateY(0%)",
-        duration: 1,
         ease: "expo.out",
         stagger: 0.1
-      }, "<+=0.5")
+      }, "<+=0.2")
 
     } else {
       if (window.lenis) { window.lenis.start() }
@@ -112,7 +111,6 @@ const Header = () => {
       closeMenuTl.to(".sublinks_title_paren", {
         opacity: 0,
         transform: "translateY(1rem)",
-        duration: 1,
         ease: "expo.out",
         stagger: {
           amount: 0.1,
@@ -164,7 +162,7 @@ const Header = () => {
         <div className="w-full relative z-[99999] flex justify-center gap-x-1 md:gap-x-3 ">
           <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-sm z-[9] top-0 left-0 transition-all duration-500  ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
 
-          <div onClick={() => setOpenMenu(!openMenu)} className={`menu_paren pointer-events-auto relative z-[100] w-[80vw] md:w-[38vw]  rounded-lg  transition-all duration-300 ease-out ${openMenu ? "rounded-b bg-white" : "bg-black/15! backdrop-blur-[1.25rem]"}  `}>
+          <div onClick={() => setOpenMenu(!openMenu)} className={`menu_paren pointer-events-auto relative z-[100] w-[80vw] md:w-[39vw]  rounded-lg  transition-all duration-300 ease-out ${openMenu ? "rounded-b bg-white" : "bg-black/15! backdrop-blur-[1.25rem]"}  `}>
 
             <div className={`menu_header   cursor-pointer group px-6 w-full flex items-center justify-between h-12    `}>
               <div className="relative flex items-center ">

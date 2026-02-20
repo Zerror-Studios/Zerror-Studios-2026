@@ -13,6 +13,14 @@ const Hero = () => {
 
   useGSAP(() => {
 
+        gsap.to(
+      ".mob_split_hero_title",
+      {
+        opacity: 1,
+        ease: "power2.out"
+      }
+    );
+
     const split = SplitText.create(".mob_split_hero_title", {
       type: "words",
     });
@@ -48,12 +56,10 @@ const Hero = () => {
 
     const split_hero_title = SplitText.create(".split_hero_title", { type: "words, chars" });
 
-    gsap.fromTo(
-      ".site-background",
-      { "--scene-mix": 0 },
+    gsap.to(
+      ".split_hero_title",
       {
-        "--scene-mix": 1,
-        duration: 2,
+        opacity: 1,
         ease: "power2.out"
       }
     );
@@ -137,13 +143,13 @@ const Hero = () => {
       <div className=" max-sm:hidden txt_slider_paren w-full h-[400vh]  ">
         <div className="w-full h-screen top-0 sticky overflow-hidden">
           <div className=" z-[2] hero_scroll_txt w-full translate-x-[30vw] absolute top-[80%] -translate-y-1/2 text-white  md:whitespace-nowrap left-0  ">
-            <p className=" split_hero_title text-8xl md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
+            <p className=" split_hero_title opacity-0 text-8xl md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
           </div>
         </div>
       </div>
 
       <div className=" hero_mob_txt  w-full overflow-hidden  md:hidden! pt-[calc(100svh-22vw)]! padding pb-[33vh]! text-white  ">
-        <p className=" mob_split_hero_title  text-[18vw] leading-[20vw] md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
+        <p className=" mob_split_hero_title opacity-0  text-[18vw] leading-[20vw] md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
       </div>
 
 

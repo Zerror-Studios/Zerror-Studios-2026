@@ -45,6 +45,7 @@ button {
   height: 100%;
   object-fit: cover;
 }
+
 .noise-bg:after  {
   background:
     url(../../public/images/homePage/noise.webp)
@@ -68,7 +69,7 @@ button {
   background: url(../../public/images/homePage/noise.webp)
     50% / 512px 512px;
   mix-blend-mode: overlay;
-  opacity: calc(0.5 * var(--scene-mix));
+  opacity: 0.5;
   transform: rotateY(180deg) rotateX(180deg);
 }
 
@@ -79,7 +80,7 @@ button {
     blue;
   background-blend-mode: color;
   mix-blend-mode: hard-light;
-  opacity: calc(0.1 * var(--scene-mix));
+  opacity: 0.1;
 }
 .noise-bg:before,
 .noise-bg:after,
