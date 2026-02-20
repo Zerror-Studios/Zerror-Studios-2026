@@ -186,11 +186,26 @@ const TicketEffect = () => {
                     onMouseEnter={handleEnter}
                     onMouseMove={handleMove}
                     onMouseLeave={handleLeave}
-                    className="relative h-[70vh] md:h-[30vw] my-[5vw]  w-full center md:w-[65%] perspective-[1000px]"
+                    className="relative mb-14 mt-5 md:mt-12 md:mb-36  w-full center md:w-[65%] perspective-[1000px]"
                 >
+
+                    <div
+                        className="opacity-0 pointer-events-none"
+                    >
+                        <img
+                            className="w-full hidden md:block pointer-events-none select-none"
+                            src="/images/homePage/ticket_back.svg"
+                            alt=""
+                        />
+                        <img
+                            className="w-full md:hidden pointer-events-none select-none"
+                            src="/images/homePage/mobile_ticket_back.svg"
+                            alt=""
+                        />
+                    </div>
                     <div
                         ref={img1Ref}
-                        className="absolute top-0 rotate-[-5deg] transform-style-preserve-3d"
+                        className=" ticket_1 absolute top-0 md:rotate-[-5deg] transform-style-preserve-3d"
                     >
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"
@@ -206,7 +221,7 @@ const TicketEffect = () => {
 
                     <div
                         ref={img2Ref}
-                        className="absolute top-0 rotate-[3deg] transform-style-preserve-3d"
+                        className=" ticket_2 absolute top-0 md:rotate-[3deg] transform-style-preserve-3d"
                     >
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"

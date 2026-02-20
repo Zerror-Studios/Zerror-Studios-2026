@@ -179,6 +179,47 @@ button {
   will-change: transform, opacity;
 }
 
+@media (max-width:750px) {
+
+  .ticket_1{
+    animation: ticket_animation_1 3.3s ease infinite;
+  }
+
+  @keyframes ticket_animation_1 {
+    0%{
+      transform: rotate(-5deg);
+    }
+    9%{
+      transform: rotate(0deg);
+    }
+    18%{
+      transform: rotate(-5deg);
+    }
+    100%{
+      transform: rotate(-5deg);
+    }
+  }
+
+  .ticket_2{
+    animation: ticket_animation_2 3.3s ease infinite;
+  }
+
+  @keyframes ticket_animation_2 {
+    0%{
+      transform: rotate(3deg);
+    }
+    9%{
+      transform: rotate(0deg);
+    }
+    18%{
+      transform: rotate(3deg);
+    }
+    100%{
+      transform: rotate(3deg);
+    }
+  }
+
+}
 .flicker {
   animation: flicker 2s infinite alternate;
 }
