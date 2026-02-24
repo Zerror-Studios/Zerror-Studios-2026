@@ -17,15 +17,12 @@ export default function LenisScroll({ children }) {
     // if (window.innerWidth < 1024) return
 
     const instance = new Lenis({
-      duration: 1.5,
-      easing: (t) => 1 - Math.pow(1 - t, 4),
-      smoothWheel: true,
-      smoothTouch: true,
-      direction: "vertical",
-      gestureDirection: "vertical",
-      wheelMultiplier: 0.8,
-      touchMultiplier: 1.2,
-      infinite: false,
+      smooth: !0,
+      lerp: .1,
+      wheelMultiplier: .7,
+      gestureOrientation: "vertical",
+      normalizeWheel: !1,
+      smoothTouch: !1
     });
 
     lenis.current = instance;
