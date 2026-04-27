@@ -32,7 +32,7 @@ export default function deck() {
 
   const handelMouseLeave = (item) => {
     gsap.to(item, {
-      backgroundColor: "#002bba",
+      backgroundColor: "#0000FF",
       ease: "power1.in",
       duration: 0.4,
     });
@@ -766,7 +766,7 @@ export default function deck() {
           </div>
 
           {/* Card-1 */}
-          <div className="w-[69%]  crd card1 h-[76vh] p-3 bg-[#002bba] absolute top-[12%] left-1/2 -translate-x-1/2 rounded-xl select-none">
+          <div className="w-[69%]  crd card1 h-[76vh] p-3 bg-[#0000FF] absolute top-[12%] left-1/2 -translate-x-1/2 rounded-xl select-none">
             <div className="w-full h-1/3 flex">
               {[
                 "Pich deck 2026--",
@@ -1132,7 +1132,7 @@ export default function deck() {
   "
         >
           {/* CARD 1 */}
-          <div className="w-full h-full hover:bg-[#002bba] transition-all ease-in cursor-pointer duration-200 SXCrd p-3 bg-[#002bba] rounded-xl select-none relative overflow-hidden">
+          <div className="w-full h-full hover:bg-[#0000FF] transition-all ease-in cursor-pointer duration-200 SXCrd p-3 bg-[#0000FF] rounded-xl select-none relative overflow-hidden">
             <div className="w-full h-[33%] flex gap-1">
               {[
                 "Pich dech 2025--",
@@ -1152,7 +1152,7 @@ export default function deck() {
                   onMouseEnter={() => handelMouseEnter(`.hoverBgAnimateT${i}`)}
                   onMouseLeave={() => handelMouseLeave(`.hoverBgAnimateT${i}`)}
                   key={i}
-                  className={`w-1/12 hoverBgAnimateT${i} border bg-[#002bba00] border-[#2147c4]
+                  className={`w-1/12 hoverBgAnimateT${i} border bg-[#0000FF00] border-[#2147c4]
             flex items-center justify-center text-[#ffffffb6]
             rounded-lg text-[7px] p-1`}
                 >

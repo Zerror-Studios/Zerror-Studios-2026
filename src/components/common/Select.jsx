@@ -53,7 +53,7 @@ const Select = ({ label, options = [] }) => {
                 setValue(opt);
                 setOpen(false);
               }}
-              className="w-full text-left px-4 py-3 font-thin  text-[#002bba] transition-colors hover:bg-[#002bba20]"
+              className="w-full text-left px-4 py-3 font-thin  text-[#0000FF] transition-colors hover:bg-[#0000FF20]"
             >
               {opt}
             </button>

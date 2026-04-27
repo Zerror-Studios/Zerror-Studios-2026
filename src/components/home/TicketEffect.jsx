@@ -163,10 +163,10 @@ const TicketEffect = () => {
     return (
         <div>
             <div className="w-full pt-32 center text_blue text-center space-y-10 flex-col">
-                <p className=' text-5xl md:text-8xl pfn  leading-none'>Ready for your <br />
-                    game-changing <br /> <span className='pfn_italic'> website? </span> </p>
+                <p className=' text-5xl md:text-8xl primary-font  leading-none'>Ready for your <br />
+                    game-changing <br /> <span className='primary-font_italic'> website? </span> </p>
 
-                <p className=' leading-tight font-thin '>Step on the Zerror Studios and <br />
+                <p className=' leading-tight '>Step on the Zerror Studios and <br />
                     request a project with a few clicks.</p>
 
                 <button className="contact_btn relative flex group items-center gap-1">

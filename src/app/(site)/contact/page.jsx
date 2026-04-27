@@ -37,10 +37,10 @@ const contact = () => {
         url="https://www.zerrorstudios.com/contact"
       />
 
-      <div className=" noise-bg relative w-full h-[100svh] flex flex-col md:flex-row overflow-hidden  bg-[#002bba]">
+      <div className=" noise-bg relative w-full h-[100svh] flex flex-col md:flex-row overflow-hidden  bg-[#0000FF]">
         {/* Left */}
         <div className=" max-sm:hidden w-full md:w-1/2 h-[100svh] relative z-10">
-          <p className=" split_t absolute bottom-[4%] left-[4%] flex flex-col pfn text-5xl md:text-8xl text-white">
+          <p className=" split_t absolute bottom-[4%] left-[4%] flex flex-col primary-font text-5xl md:text-8xl text-white">
             Let’s <br />
             Talk
           </p>

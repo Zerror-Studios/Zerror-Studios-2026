@@ -5,26 +5,7 @@ import CustomEase from "gsap/dist/CustomEase";
 import { Link } from "next-view-transitions";
 import React, { useEffect, useRef, useState } from 'react'
 import Button from "../common/Button";
-
-const caseStudies = [
-    {
-        cover_img: "https://images.prismic.io/rejouice-2024/aIOHDVGsbswqTQTM_dwdw3-gigapixel-lowresolutionv2-2x1.png?auto=format,compress&w=1920&h=1269&fm=avif",
-        cover_vid: "https://rejouice-2024.cdn.prismic.io/rejouice-2024/Z2BZoJbqstJ98kkL_RJ-HIGHLIGHT-Work-02.mp4",
-    },
-    {
-        cover_img: "https://images.prismic.io/rejouice-2024/Z3xV4pbqstJ99GIi_Duchateau-Cover.jpg?auto=format,compress&w=1920&h=1185&fm=avif",
-        cover_vid: "https://rejouice-2024.cdn.prismic.io/rejouice-2024/Z2BZvpbqstJ98kkM_RJ-HIGHLIGHT-Work-03.mp4",
-    },
-    {
-        cover_img: "https://images.prismic.io/rejouice-2024/Z1r5X5bqstJ98aZ9_oura.jpg?auto=format,compress&w=1920&h=1104&fm=avif",
-        cover_vid: "https://rejouice-2024.cdn.prismic.io/rejouice-2024/Z2BZfpbqstJ98kkB_RJ-HIGHLIGHT-Work-01.mp4",
-    },
-    {
-        cover_img: "https://images.prismic.io/rejouice-2024/Z1r5WZbqstJ98aZz_gencell-website.jpg?auto=format,compress&w=1920&h=1104&fm=avif",
-        cover_vid: "https://rejouice-2024.cdn.prismic.io/rejouice-2024/Z2BZoJbqstJ98kkL_RJ-HIGHLIGHT-Work-02.mp4",
-    },
-
-]
+import { caseStudies } from "@/data/ProjectsData";
 
 const INNER_PADDING = 60;
 gsap.registerPlugin(CustomEase);
@@ -40,59 +21,59 @@ const OurWork = () => {
     const posRefs = useRef([]);
 
     const isMobile =
-  typeof window !== "undefined" &&
-  window.matchMedia("(hover: none)").matches;
+        typeof window !== "undefined" &&
+        window.matchMedia("(hover: none)").matches;
 
 
-  useEffect(() => {
-  if (!isMobile) return;
+    useEffect(() => {
+        if (!isMobile) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const card = entry.target;
-        const hoverVid = card.querySelector(".hover_vid");
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const card = entry.target;
+                    const hoverVid = card.querySelector(".hover_vid");
 
-        if (!hoverVid) return;
+                    if (!hoverVid) return;
 
-        if (entry.isIntersecting) {
-          gsap.to(hoverVid, {
-            opacity: 1,
-            clipPath: "inset(0%)",
-            duration: 1,
-            ease: "revealEase",
-          });
+                    if (entry.isIntersecting) {
+                        gsap.to(hoverVid, {
+                            opacity: 1,
+                            clipPath: "inset(0%)",
+                            duration: 1,
+                            ease: "revealEase",
+                        });
 
-          // center video on mobile
-          gsap.set(hoverVid, {
-            x: (card.offsetWidth - hoverVid.offsetWidth) / 2,
-            y: (card.offsetHeight - hoverVid.offsetHeight) / 2,
-          });
-        } else {
-          gsap.to(hoverVid, {
-            opacity: 0,
-            clipPath: "inset(40%)",
-            duration: 0.8,
-            ease: "revealEase",
-          });
-        }
-      });
-    },
-    {
-      threshold: 0.55, // tweak for when it should trigger
-    }
-  );
+                        // center video on mobile
+                        gsap.set(hoverVid, {
+                            x: (card.offsetWidth - hoverVid.offsetWidth) / 2,
+                            y: (card.offsetHeight - hoverVid.offsetHeight) / 2,
+                        });
+                    } else {
+                        gsap.to(hoverVid, {
+                            opacity: 0,
+                            clipPath: "inset(40%)",
+                            duration: 0.8,
+                            ease: "revealEase",
+                        });
+                    }
+                });
+            },
+            {
+                threshold: 0.55, // tweak for when it should trigger
+            }
+        );
 
-  cardRefs.current.forEach((card) => {
-    if (card) observer.observe(card);
-  });
+        cardRefs.current.forEach((card) => {
+            if (card) observer.observe(card);
+        });
 
-  return () => observer.disconnect();
-}, []);
+        return () => observer.disconnect();
+    }, []);
 
 
     const handleMouseEnter = (index) => {
-          if (isMobile) return;
+        if (isMobile) return;
         activeIndex.current = index;
 
         const card = cardRefs.current[index];
@@ -121,7 +102,7 @@ const OurWork = () => {
 
 
     const handleMouseMove = (e, index) => {
-          if (isMobile) return;
+        if (isMobile) return;
         mousePos.current.x = e.clientX;
         mousePos.current.y = e.clientY;
 
@@ -173,7 +154,7 @@ const OurWork = () => {
     }, []);
 
     const handleMouseLeave = (index) => {
-          if (isMobile) return;
+        if (isMobile) return;
         activeIndex.current = null;
 
         const hoverVid =
@@ -190,9 +171,9 @@ const OurWork = () => {
     return (
         <div className="work_paren w-full relative bg-white">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-10">
-                {caseStudies.map((item, i) => (
+                {caseStudies.slice(0,4).map((item, i) => (
                     <Link
-                        href={"/work/disrptve"}
+                        href={`/work/${item.slug}`}
                         key={i}
                         className="w-full relative group space-y-2"
                     >
@@ -216,16 +197,16 @@ const OurWork = () => {
 
                         <div className="w-full text_blue">
                             <div className="flex  justify-between">
-                                <p className="text-xl font-semibold  uppercase">disrptve</p>
-                                <p className="text-xl font-semibold  uppercase">2025</p>
+                                <p className="text-xl font-semibold  uppercase">{item.title}</p>
+                                <p className="text-xl font-semibold  uppercase">{item.year}</p>
                             </div>
-                            <p className="  text-sm">Website Design</p>
+                            <p className="  text-sm">{item.category}</p>
                         </div>
                     </Link>
                 ))}
             </div>
             <div className="w-full center py-10">
-                <Button link="/work" title="View All"  />
+                <Button link="/work" title="View All" />
             </div>
         </div>
     );

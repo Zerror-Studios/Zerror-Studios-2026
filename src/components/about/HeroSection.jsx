@@ -69,7 +69,7 @@ const HeroSection = () => {
     <div className=" about_hero_paren  w-full   padding">
 
       <div className="w-full aboutTitle flex py-44 max-sm:pb-20  ">
-        <p className=" split_t text-5xl md:text-8xl leading-none capitalize pfn text_blue">
+        <p className=" split_t text-5xl md:text-8xl leading-none capitalize primary-font text_blue">
           We believe a great user experience is not just intuitive it’s
           entertaining. Because clarity is good, but delight is better.
         </p>
@@ -78,7 +78,7 @@ const HeroSection = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className=" w-full md:w-1/2  space-y-5 md:space-y-10">
           <div className="md:w-[60%] ">
-            <p className=" split_t pfn text_blue text-3xl">
+            <p className=" split_t primary-font text_blue text-3xl">
               We make stuff look good. We make it work better. Creative.
               Scalable. Reliable. Fresh. Tech-first. Entertaining.
             </p>
@@ -127,7 +127,7 @@ const HeroSection = () => {
             </div>
 
             {/* Img */}
-            <div className="w-full aspect-5/6 mt-4 md:mt-12 bg-[#002BBA] overflow-hidden relative">
+            <div className="w-full aspect-5/6 mt-4 md:mt-12 bg-[#0000FF] overflow-hidden relative">
               <div
                 ref={gridRefR}
                 style={{

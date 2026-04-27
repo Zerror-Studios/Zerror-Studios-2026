@@ -95,7 +95,7 @@ const MoreProjects = () => {
         <div>
             <div className=" more_project_header w-screen space-y-16 md:space-y-0  py-10! md:py-32!  padding text_blue md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
-                    <p className=' more_project_header_split_wrd text-5xl md:text-6xl  capitalize pfn leading-none'>selected <br /> works</p>
+                    <p className=' more_project_header_split_wrd text-5xl md:text-6xl  capitalize primary-font leading-none'>selected <br /> works</p>
                 </div>
                 <div className="text-xs max-sm:hidden pt-4">
                     <p className='more_project_header_split_wrd font-thin'>Brands we’ve </p>

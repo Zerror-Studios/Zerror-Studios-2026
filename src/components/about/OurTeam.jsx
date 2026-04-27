@@ -13,70 +13,70 @@ gsap.registerPlugin(ScrollTrigger);
 const teamMembers = [
   {
     id: 1,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
+    name: "Rohit Tiwari",
+    role: "Founder And CEO",
     img: "/images/outTeam/1.png",
   },
   {
     id: 2,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
+    name: "Anand Vishwakarma",
+    role: "Lead Developer / Project Manager",
     img: "/images/outTeam/2.png",
   },
-  {
-    id: 3,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
-    img: "/images/outTeam/3.png",
-  },
-  {
+    {
     id: 4,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
+    name: "Ayush Ahirwar",
+    role: "Jr. Full Stack Developer",
     img: "/images/outTeam/4.png",
   },
   {
+    id: 3,
+    name: "Sunny Kurmi",
+    role: " Sr. Frontend Developer",
+    img: "/images/outTeam/3.png",
+  },
+  {
     id: 5,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
+    name: "Inderjit Singh",
+    role: "Jr. Frontend Developer",
     img: "/images/outTeam/1.png",
   },
   {
     id: 6,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
+    name: "Mridulla",
+    role: "Ui/UX Designer",
     img: "/images/outTeam/2.png",
   },
   {
     id: 7,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
+    name: "Lingkan",
+    role: "Ui/UX Designer",
     img: "/images/outTeam/3.png",
   },
-  {
-    id: 8,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
-    img: "/images/outTeam/4.png",
-  },
-  {
-    id: 9,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
-    img: "/images/outTeam/2.png",
-  },
-  {
-    id: 10,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
-    img: "/images/outTeam/3.png",
-  },
-  {
-    id: 11,
-    name: "ARTUR SHARF",
-    role: "Co-Founder And Lead Architect",
-    img: "/images/outTeam/3.png",
-  },
+  // {
+  //   id: 8,
+  //   name: "ARTUR SHARF",
+  //   role: "Co-Founder And Lead Architect",
+  //   img: "/images/outTeam/4.png",
+  // },
+  // {
+  //   id: 9,
+  //   name: "ARTUR SHARF",
+  //   role: "Co-Founder And Lead Architect",
+  //   img: "/images/outTeam/2.png",
+  // },
+  // {
+  //   id: 10,
+  //   name: "ARTUR SHARF",
+  //   role: "Co-Founder And Lead Architect",
+  //   img: "/images/outTeam/3.png",
+  // },
+  // {
+  //   id: 11,
+  //   name: "ARTUR SHARF",
+  //   role: "Co-Founder And Lead Architect",
+  //   img: "/images/outTeam/3.png",
+  // },
 ];
 
 const OurTeam = () => {
@@ -335,15 +335,16 @@ const OurTeam = () => {
               </div>
 
               {/* Image */}
-              <div className="w-full relative aspect-4/5">
-                <div className="card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
-                <Image
+              <div className="   w-full relative aspect-4/5">
+                        <div className="skeleton_box w-full h-full skeleton_animate"></div>
+                <div className=" card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
+                {/* <Image
                   width={100}
                   height={125}
                   src={member.img}
                   alt={member.name}
                   className="cover"
-                />
+                /> */}
               </div>
 
               {/* Text */}
@@ -369,7 +370,7 @@ const OurTeam = () => {
               <Form closeForm={closeForm} />
 
               <div className="dummy_txt absolute pointer-events-none bottom-4 md:bottom-8 left-4 md:left-8 space-y-5 w-[80%]">
-                <p className="pfn leading-none text-4xl md:text-6xl">
+                <p className="primary-font leading-none text-4xl md:text-6xl">
                   Become A <br /> Zerrorian
                 </p>
                 <p className="leading-tight font-thin">

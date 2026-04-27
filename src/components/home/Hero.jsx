@@ -13,7 +13,7 @@ const Hero = () => {
 
   useGSAP(() => {
 
-        gsap.to(
+    gsap.to(
       ".mob_split_hero_title",
       {
         opacity: 1,
@@ -89,7 +89,7 @@ const Hero = () => {
     })
     if (window.innerWidth > 750) {
       sliderTween.to(".hero_scroll_txt", {
-        transform: "translateX(-300vw) translateY(-50%)",
+        transform: "translateX(-320vw) translateY(-50%)",
         top: "50%",
         ease: "linear",
       })
@@ -156,17 +156,17 @@ const Hero = () => {
       <div className="w-full   padding text-white ">
         <div className="w-full  space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
           <div className="">
-            <p className='capitalize pfn  text-5xl md:text-6xl    leading-none'>about us</p>
+            <p className='capitalize primary-font  text-5xl md:text-6xl    leading-none'>about us</p>
           </div>
           <div className=" max-sm:hidden text-xs pt-4">
             <p className='font-thin'>Who</p>
             <p className='font-thin'>We Are?</p>
           </div>
           <div className="capitalize    text-4xl  pl-2">
-            <p className=" max-sm:hidden font-medium  "> <span className='opacity-0 pointer-events-none'>...............</span> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+            <p className=" max-sm:hidden   "> <span className='opacity-0 pointer-events-none'>...............</span>  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</p>
           </div>
           <div className="capitalize    text-2xl">
-            <p className=" md:hidden font-medium "> We exist to end that trade-off.  At Zerror, design and technology move as one — from first thought to final build. Every decision is intentional. Every detail measured. Every release stable.</p>
+            <p className=" md:hidden  ">  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</p>
           </div>
         </div>
       </div>

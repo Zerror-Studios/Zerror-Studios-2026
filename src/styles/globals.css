@@ -345,3 +345,25 @@ button {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+
+
+.skeleton_animate {
+  background: linear-gradient(
+    90deg,
+    rgba(211, 211, 211, 0.25) 0%,
+    rgba(211, 211, 211, 0.5) 50%,
+    rgba(211, 211, 211, 0.25) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.3s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

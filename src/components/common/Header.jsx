@@ -228,13 +228,13 @@ const Header = () => {
             </div>
           </div>
 
-          <Link href={`${pathname === "/deck" ? "/" : "/deck"}`} className='relative z-[100] h-fit pointer-events-auto'>
+          {/* <Link href={`${pathname === "/deck" ? "/" : "/deck"}`} className='relative z-[100] h-fit pointer-events-auto'>
             <div className={` menu_deck relative w-16 h-12 cursor-pointer group ${openMenu ? " bg-white" : "bg-black/15! backdrop-blur-[1.25rem]"} transition-all duration-300  rounded-lg overflow-hidden flex items-center relative justify-center`}>
-              <div className={`w-4  h-3 border  rounded-xs group-hover:top-1/2 group-hover:left-1/2  transition-all duration-300 absolute top-[55%] left-[54%] ${openMenu ? "border-[#002bba]" : "border-[#fafafa]"}  -translate-x-[50%] -translate-y-[50%] `}></div>
-              <div className={`w-4  h-3 border-l border-t  group-hover:top-1/2 group-hover:left-1/2  rounded-xs transition-all duration-300 absolute top-[50%] left-[50%] ${openMenu ? "border-[#002bba]" : "border-[#fafafa]"}  -translate-x-[50%] -translate-y-[50%] `}></div>
-              <div className={`w-4  h-3 border-l border-t  group-hover:top-1/2 group-hover:left-1/2  rounded-xs transition-all duration-300 absolute top-[45%] left-[46%]  ${openMenu ? "border-[#002bba]" : "border-[#fafafa]"} -translate-x-[50%] -translate-y-[50%] `}></div>
+              <div className={`w-4  h-3 border  rounded-xs group-hover:top-1/2 group-hover:left-1/2  transition-all duration-300 absolute top-[55%] left-[54%] ${openMenu ? "border-[#0000FF]" : "border-[#fafafa]"}  -translate-x-[50%] -translate-y-[50%] `}></div>
+              <div className={`w-4  h-3 border-l border-t  group-hover:top-1/2 group-hover:left-1/2  rounded-xs transition-all duration-300 absolute top-[50%] left-[50%] ${openMenu ? "border-[#0000FF]" : "border-[#fafafa]"}  -translate-x-[50%] -translate-y-[50%] `}></div>
+              <div className={`w-4  h-3 border-l border-t  group-hover:top-1/2 group-hover:left-1/2  rounded-xs transition-all duration-300 absolute top-[45%] left-[46%]  ${openMenu ? "border-[#0000FF]" : "border-[#fafafa]"} -translate-x-[50%] -translate-y-[50%] `}></div>
             </div>
-          </Link>
+          </Link> */}
 
         </div>
       </div>

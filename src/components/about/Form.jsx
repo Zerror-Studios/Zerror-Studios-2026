@@ -16,7 +16,7 @@ const Form = ({ closeForm }) => {
 
       <div className="w-full space-y-5 mb-10 md:mb-0 md:space-y-0 md:h-full flex flex-col justify-between ">
         <div className="">
-          <p className=' capitalize pfn text-4xl md:text-5xl md:text-6xl   leading-none'>  Become a <br /> Zerrorian </p>
+          <p className=' capitalize primary-font text-4xl md:text-5xl md:text-6xl   leading-none'>  Become a <br /> Zerrorian </p>
         </div>
         <div className="w-full">
           <p className="text-[#f5f5f59d] select-none  font-thin cursor-pointer">

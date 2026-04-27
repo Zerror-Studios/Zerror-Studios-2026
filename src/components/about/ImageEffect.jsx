@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const ImageEffect = () => {
+  
   useEffect(() => {
     const TLVI = gsap.timeline({
       scrollTrigger: {
@@ -148,7 +149,7 @@ const ImageEffect = () => {
                     <div className="w-full OT1 absolute top-0 left-0 ">
                       {/* top */}
                       <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
-                        <p className="OTI1 font-bold translate-y-[100%]">15 YEAR</p>
+                        <p className="OTI1 font-bold translate-y-[100%]">5 YEAR</p>
                       </div>
 
                       {/* bottom */}
@@ -174,7 +175,7 @@ const ImageEffect = () => {
                     <div className="w-full OT3 absolute top-0 left-0 ">
                       {/* top */}
                       <div className="w-full h-[3.5rem] md:h-[6rem] leading-none overflow-hidden text-5xl md:text-8xl flex text-center justify-center items-center" >
-                        <p className=" OTI3 font-bold translate-y-[100%]">1500+</p>
+                        <p className=" OTI3 font-bold translate-y-[100%]">100+</p>
                       </div>
 
                       {/* bottom */}

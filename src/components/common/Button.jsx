@@ -65,7 +65,7 @@ const Button = ({
      uppercase rounded-md text_blue
     ${variant === "fill"
             ? "bg-white"
-            : "border-[#002bba] border-[2px]"}
+            : "border-[#0000FF] border-[2px]"}
   `
 
     const ButtonContent = (

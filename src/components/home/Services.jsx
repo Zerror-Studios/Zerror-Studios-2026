@@ -33,6 +33,14 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
 
 const Services = () => {
 
+  const chunkArray = (arr, size) => {
+    const result = [];
+    for (let i = 0; i < arr.length; i += size) {
+      result.push(arr.slice(i, i + size));
+    }
+    return result;
+  };
+
   useGSAP(() => {
 
     if (window.innerWidth < 750) return
@@ -97,7 +105,7 @@ const Services = () => {
   return (
     <>
       <div className="w-full relative py-24 px-5 md:p-0 md:h-screen center text-center">
-        <p className=" text-5xl md:text-8xl pb-5 leading-none pfn md:w-[70%] bg-clip-text text-transparent bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
+        <p className=" text-5xl md:text-8xl pb-5 leading-none primary-font md:w-[70%] bg-clip-text text-transparent bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
           To build zero-error digital products where design and technology move as one.
         </p>
       </div>
@@ -124,16 +132,20 @@ const Services = () => {
                 {item.title}
               </p>
 
-              <p className="  max-sm:hidden w-[80%] md:w-[48%]  text_blue leading-tight">
-                {item.services.map((service, i) => (
-                  <span key={i} className="inline-block">
-                    {splitToChars(service)}
+              <p className="max-sm:hidden  text_blue leading-tight">
+                {chunkArray(item.services, 2).map((pair, i) => (
+                  <span key={i} className="block">
+                    {pair.map((service, j) => (
+                      <span key={j} className="inline-block">
+                        {splitToChars(service)}
 
-                    {i !== item.services.length - 1 && (
-                      <span className="inline-block mx-1">
-                        {splitToChars("/")}
+                        {j !== pair.length - 1 && (
+                          <span className="inline-block mx-1">
+                            {splitToChars("/")}
+                          </span>
+                        )}
                       </span>
-                    )}
+                    ))}
                   </span>
                 ))}
               </p>
@@ -158,14 +170,17 @@ const Services = () => {
         <div className=" noise-bg max-sm:hidden! expand_circ overflow-hidden size-3.5 z-10 center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shrink-0 bg_blue rounded-full ">
           <div className="w-screen relative z-10  padding text-white grid grid-cols-[28%_30%_42%]">
             <div className="">
-              <p className=' split_wrd text-5xl md:text-6xl   pfn leading-none'>Our <br /> Clients</p>
+              <p className=' split_wrd text-5xl md:text-6xl   primary-font leading-none'>Our <br /> Clients</p>
             </div>
             <div className="text-xs pt-4">
               <p className='split_wrd font-thin'>Brands we’ve </p>
               <p className='split_wrd font-thin'>worked with.</p>
             </div>
             <div className="text-4xl  pl-2">
-              <p className=" split_wrd font-medium  "> <span className='opacity-0 pointer-events-none'>...........................</span> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful. From strategy to launch, we focus on thoughtful design, clean code, and meaningful user experiences.</p>
+              <p className="split_wrd">
+                <span className='opacity-0 pointer-events-none'>...........................</span>
+                We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.
+              </p>
             </div>
           </div>
         </div>

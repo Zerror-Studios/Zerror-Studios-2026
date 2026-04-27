@@ -38,7 +38,7 @@ const WorkDetailDesc = () => {
     return (
         <div className="w-full py-16! md:py-32! text_blue  padding md:grid grid-cols-[80%_20%]">
             <div className=" md:w-[60%]  space-y-10">
-                <p className='wrk_anim_txt pfn text-5xl md:text-8xl '>
+                <p className='wrk_anim_txt primary-font text-5xl md:text-8xl '>
                     Disrupting the Norm
                 </p>
                 <div className="  space-y-5  capitalize leading-tight text-lg">
@@ -53,17 +53,17 @@ const WorkDetailDesc = () => {
 
             <div className="space-y-10 pt-20 grid grid-cols-2 md:grid-cols-1">
                 <div className="space-y-5 md:space-y-0">
-                <div className="space-y-1">
-                    <p className='wrk_anim_txt font-semibold text-xl uppercase'>CLIENT</p>
-                    <p className='wrk_anim_txt'>Disrptve</p>
-                </div>
-                <div className="space-y-1 md:hidden">
-                    <p className='wrk_anim_txt  font-semibold text-xl uppercase'>team</p>
-                    <div className="">
-                        <p className='wrk_anim_txt'>Product Design </p>
-                        <p className='wrk_anim_txt'> Development</p>
+                    <div className="space-y-1">
+                        <p className='wrk_anim_txt font-semibold text-xl uppercase'>CLIENT</p>
+                        <p className='wrk_anim_txt'>Disrptve</p>
                     </div>
-                </div>
+                    <div className="space-y-1 md:hidden">
+                        <p className='wrk_anim_txt  font-semibold text-xl uppercase'>team</p>
+                        <div className="">
+                            <p className='wrk_anim_txt'>Product Design </p>
+                            <p className='wrk_anim_txt'> Development</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="space-y-1">
                     <p className='wrk_anim_txt font-semibold text-xl uppercase'>Project type</p>

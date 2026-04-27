@@ -11,27 +11,27 @@ gsap.registerPlugin(ScrollTrigger)
 const servicesContent = [
   {
     id: 1,
-    title: "Website Development",
+    title: "Website Design & Development",
     description:
-      "We Design And Develop Websites That Are More Than Just Good-Looking—They’re Engineered For Speed, Clarity, And Conversion.",
+      "Designing and building web platforms as structured systems where UX, performance, and engineering work in sync. Every layer is intentional — ensuring clarity, scalability, and long-term reliability.",
   },
   {
     id: 2,
-    title: "E-Commerce Development",
+    title: "Custom Software Development",
     description:
-      "We Design And Develop Websites That Are More Than Just Good-Looking—They’re Engineered For Speed, Clarity, And Conversion.",
+      "Creating tailored digital systems built around specific workflows and operational needs. Modular, scalable, and engineered for efficiency — enabling flexibility as products and teams evolve.",
   },
   {
     id: 3,
-    title: "Branding, Marketing & SEO",
+    title: "Ecommerce Development",
     description:
-      "We Design And Develop Websites That Are More Than Just Good-Looking—They’re Engineered For Speed, Clarity, And Conversion.",
+      "Building commerce systems that balance experience, performance, and growth. Designed to scale with users and products while maintaining clarity, speed, and conversion efficiency.",
   },
   {
     id: 4,
     title: "Branding, Marketing & SEO",
     description:
-      "We Design And Develop Websites That Are More Than Just Good-Looking—They’re Engineered For Speed, Clarity, And Conversion.",
+      "Developing brand and growth systems that ensure consistency across every touchpoint. From identity to visibility, each element is structured to perform, adapt, and scale over time.",
   },
 ];
 
@@ -180,28 +180,30 @@ const Our_Services = () => {
   }, [])
 
 
-useEffect(() => {
-  const canvas = canvasRef.current
-  if (!canvas) return
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
 
-  const resizeCanvas = () => {
-    const isMobile = window.innerWidth < 768
-    const size = isMobile ? 250 : 400
-    const dpr = window.devicePixelRatio || 1
+    const resizeCanvas = () => {
+      const width = window.innerWidth
+      const isMobile = width < 768
+      const isTablet = width >= 768 && width < 1024
+      const size = isMobile ? 250 : isTablet ? 300 : 400
+      const dpr = window.devicePixelRatio || 1
 
-    canvas.style.width = `${size}px`
-    canvas.style.height = `${size}px`
+      canvas.style.width = `${size}px`
+      canvas.style.height = `${size}px`
 
-    canvas.width = size * dpr
-    canvas.height = size * dpr
+      canvas.width = size * dpr
+      canvas.height = size * dpr
 
-  }
+    }
 
-  resizeCanvas()
-  window.addEventListener("resize", resizeCanvas)
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
 
-  return () => window.removeEventListener("resize", resizeCanvas)
-}, [])
+    return () => window.removeEventListener("resize", resizeCanvas)
+  }, [])
 
 
   return (
@@ -217,16 +219,16 @@ useEffect(() => {
       <div className="absolute padding  w-full h-screen left-0 top-0">
         <div className="w-full h-screen pt-[2.5rem] md:pt-0 space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
           <div className="  md:w-1/2">
-            <p className=" md:w-[70%] text-4xl md:text-6xl text_blue pfn">
+            <p className=" md:w-[70%] text-4xl md:text-6xl text_blue primary-font">
               {servicesContent[0].title}
             </p>
           </div>
           <div className=" space-y-5 md:space-y-10 ">
-            <p className=" text-lg leading-tight md:text-3xl font-medium text_blue">
+            <p className=" text-lg leading-tight md:text-3xl  text_blue">
               {servicesContent[0].description}
             </p>
 
-            <Button title="View More" />
+            {/* <Button title="View More" /> */}
 
           </div>
         </div>
@@ -241,17 +243,17 @@ useEffect(() => {
             <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
               {/* Left */}
               <div className="  md:w-1/2">
-                <p className=" md:w-[70%] text-4xl md:text-6xl text_blue pfn">
+                <p className=" md:w-[70%] text-4xl md:text-6xl text_blue primary-font">
                   {item.title}
                 </p>
               </div>
               {/* Right */}
               <div className=" space-y-5 md:space-y-10 ">
-                <p className=" text-lg leading-tight md:text-3xl font-medium text_blue">
+                <p className=" text-lg leading-tight md:text-3xl  text_blue">
                   {item.description}
                 </p>
 
-                <Button title="View More" />
+                {/* <Button title="View More" /> */}
 
               </div>
             </div>

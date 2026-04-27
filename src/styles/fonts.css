@@ -1,3 +1,51 @@
+/* rock grotesk */
+@font-face {
+  font-family: grotesk-thin;
+  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Thin.woff2);
+}
+@font-face {
+  font-family: grotesk-light;
+  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Light.woff2);
+}
+@font-face {
+  font-family: grotesk-regular;
+  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Regular.woff2);
+}
+@font-face {
+  font-family: grotesk-medium;
+  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Medium.woff2);
+}
+@font-face {
+  font-family: grotesk-bold;
+  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Bold.woff2);
+}
+
+/* Alt Riviera */
+@font-face {
+  font-family: riviera-extralight;
+  src: url(../../public/fonts/alt_riviera/ALTRiviera-Extralight.otf);
+}
+@font-face {
+  font-family: riviera-light;
+  src: url(../../public/fonts/alt_riviera/ALTRiviera-Light.otf);
+}
+@font-face {
+  font-family: riviera-regular;
+  src: url(../../public/fonts/alt_riviera/ALTRiviera-Regular.otf);
+}
+@font-face {
+  font-family: riviera-medium;
+  src: url(../../public/fonts/alt_riviera/ALTRiviera-Medium.otf);
+}
+@font-face {
+  font-family: riviera-bold;
+  src: url(../../public/fonts/alt_riviera/ALTRiviera-Bold.otf);
+}
+@font-face {
+  font-family: riviera-extrabold;
+  src: url(../../public/fonts/alt_riviera/ALTRiviera-Extrabold.otf);
+}
+
 /* helvetica Font */
 @font-face {
   font-family: helvetica-light;
@@ -7,10 +55,7 @@
   font-family: helvetica-medium;
   src: url(../../public/fonts/helvetica/HelveticaNeueMedium.otf);
 }
-@font-face {
-  font-family: ibm-semibold;
-  src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf);
-}
+
 /* IBM Font */
 @font-face {
   font-family: ibm-regular;
@@ -67,24 +112,21 @@
   }
 }
 
-.pfn {
-  font-family: spirit;
+.primary-font {
+  font-family: riviera-regular, sans-serif;
 }
-.pfn_italic {
-  font-family: spirit;
+.primary-font_italic {
+  font-family: riviera-regular, sans-serif;
   font-style: italic;
 }
-.font-thin{
-  font-family: helvetica-light;
+.font-thin {
+  font-family: grotesk-light, sans-serif;
 }
 .font-medium {
-  font-family:  helvetica-medium;
+  font-family: grotesk-medium, sans-serif;
 }
 .font-semibold {
-  font-family: helvetica-medium;
-}
-.spirit {
-  font-family: spirit;
+  font-family: grotesk-medium, sans-serif;
 }
 
 a,
@@ -94,5 +136,5 @@ input,
 li,
 ul,
 button {
-  font-family:  helvetica-medium;
+  font-family: grotesk-regular, sans-serif;
 }
