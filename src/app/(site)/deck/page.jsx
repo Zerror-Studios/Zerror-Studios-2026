@@ -964,7 +964,7 @@ export default function deck() {
                   className="w-full h-full object-cover object-center"
                   width={1000}
                   height={1000}
-                  alt=""
+                  alt="loading img"
                 />
               </div>
               <div className="w-[50%] text-[1rem] font1 flex flex-col  gap-5">
@@ -1082,7 +1082,7 @@ export default function deck() {
                   className="w-full h-full object-cover object-center"
                   width={1000}
                   height={1000}
-                  alt=""
+                  alt="loading img"
                 />
               </div>
               <div className="w-[50%] text-[1rem] font1 flex flex-col  gap-5">
@@ -1257,7 +1257,7 @@ export default function deck() {
                   src="/img.jpg"
                   width={500}
                   height={500}
-                  alt=""
+                  alt="loading img"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -1366,7 +1366,7 @@ export default function deck() {
                   src="/img.jpg"
                   width={500}
                   height={500}
-                  alt=""
+                  alt="loading img"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -1394,7 +1394,7 @@ export default function deck() {
                   src="/img.jpg"
                   width={500}
                   height={500}
-                  alt=""
+                  alt="loading img"
                   className="w-full h-full object-cover"
                 />
               </div>

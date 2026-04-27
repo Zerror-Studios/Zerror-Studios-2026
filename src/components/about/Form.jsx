@@ -65,7 +65,7 @@ const Form = ({ closeForm }) => {
           <button
             className="full w-full hover:gap-x-4 h-fit border   hover:bg-[#0b3bd6] transition-all duration-150  border-[#ffffff42] rounded-lg gap-x-2 flex  justify-center items-center py-3 cursor-pointer"
           >
-            <img className="invert-100 w-4" src="/icons/attach_file.png" alt="" />
+            <img className="invert-100 w-4" src="/icons/attach_file.png" alt="loading img" />
             <p className="font-thin">Attach Resume</p>
           </button>
 

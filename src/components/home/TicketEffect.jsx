@@ -195,12 +195,12 @@ const TicketEffect = () => {
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_back.svg"
-                            alt=""
+                            alt="loading img"
                         />
                         <img
                             className="w-full md:hidden pointer-events-none select-none"
                             src="/images/homePage/mobile_ticket_back.svg"
-                            alt=""
+                            alt="loading img"
                         />
                     </div>
                     <div
@@ -210,12 +210,12 @@ const TicketEffect = () => {
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_back.svg"
-                            alt=""
+                            alt="loading img"
                         />
                         <img
                             className="w-full md:hidden pointer-events-none select-none"
                             src="/images/homePage/mobile_ticket_back.svg"
-                            alt=""
+                            alt="loading img"
                         />
                     </div>
 
@@ -226,12 +226,12 @@ const TicketEffect = () => {
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_front.svg"
-                            alt=""
+                            alt="loading img"
                         />
                         <img
                             className="w-full md:hidden pointer-events-none select-none"
                             src="/images/homePage/mobile_ticket_front.svg"
-                            alt=""
+                            alt="loading img"
                         />
                     </div>
                 </div>

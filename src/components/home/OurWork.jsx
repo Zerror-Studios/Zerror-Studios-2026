@@ -171,7 +171,7 @@ const OurWork = () => {
     return (
         <div className="work_paren w-full relative bg-white">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-10">
-                {caseStudies.slice(0,4).map((item, i) => (
+                {caseStudies.slice(0, 4).map((item, i) => (
                     <Link
                         href={`/work/${item.slug}`}
                         key={i}
@@ -189,10 +189,10 @@ const OurWork = () => {
                                 willChange: "transform, clip-path, opacity"
 
                             }} className="hover_vid absolute z-10 top-0 opacity-0 left-0 pointer-events-none aspect-[303/389] w-[18rem] ">
-                                <video loop muted autoPlay playsInline className="cover" src={item.cover_vid} alt="" />
+                                <video loop muted autoPlay playsInline className="cover" src={item.cover_vid} alt="loading img" />
                             </div>
 
-                            <img className="cover group-hover:brightness-[.3] transition-all duration-300 brightness-100  ease-[cubic-bezier(0.4, 0, 0.2, 1]  " src={item.cover_img} alt="" />
+                            <img className="cover group-hover:brightness-[.3] transition-all duration-300 brightness-100  ease-[cubic-bezier(0.4, 0, 0.2, 1]  " src={item.cover_img} alt="loading img" />
                         </div>
 
                         <div className="w-full text_blue">

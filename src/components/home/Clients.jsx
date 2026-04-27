@@ -7,102 +7,103 @@ import React, { useEffect, useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger);
 
 const clientsData = [
-    {   id:1,
+    {
+        id: 1,
         title: "Vishwa Samudra",
         icon: "/images/homePage/clients/1_Vishwa_Samudra.png"
     },
     {
-        id:2,
+        id: 2,
         title: "Rupay",
         icon: "/images/homePage/clients/2_Rupay.png"
     },
     {
-        id:3,
+        id: 3,
         title: "Devgn",
         icon: "/images/homePage/clients/3_Devgn.png"
     },
     {
-        id:4,
+        id: 4,
         title: "Flipkart",
         icon: "/images/homePage/clients/4_Flipkart.png"
     },
     {
-        id:5,
+        id: 5,
         title: "Golden",
         icon: "/images/homePage/clients/5_Golden.png"
     },
     {
-        id:6,
+        id: 6,
         title: "Imagine",
         icon: "/images/homePage/clients/6_Imagine.png"
     },
     {
-        id:7,
+        id: 7,
         title: "Kuwait Airways",
         icon: "/images/homePage/clients/7_Kuwait.png"
     },
     {
-        id:8,
+        id: 8,
         title: "TATA Motors",
         icon: "/images/homePage/clients/8_TATA.png"
     },
     {
-        id:9,
+        id: 9,
         title: "Piramal",
         icon: "/images/homePage/clients/9_Piramal.png"
     },
     {
-        id:10,
+        id: 10,
         title: "Prominance",
         icon: "/images/homePage/clients/10_Prominance.png"
     },
     {
-        id:11,
+        id: 11,
         title: "Proost",
         icon: "/images/homePage/clients/11_Proost.png"
     },
     {
-        id:12,
+        id: 12,
         title: "Punjab Kings",
         icon: "/images/homePage/clients/12_Punjab Kings.png"
     },
     {
-        id:13,
+        id: 13,
         title: "Flaunt Your Ink",
         icon: "/images/homePage/clients/13_Flaunt Your Ink.png"
     },
     {
-        id:14,
+        id: 14,
         title: "Shivdutt Das Art Foundation",
         icon: "/images/homePage/clients/14_SDAF.png"
     },
     {
-        id:15,
+        id: 15,
         title: "Superyou",
         icon: "/images/homePage/clients/15_Superyou.png"
     },
     {
-        id:16,
+        id: 16,
         title: "The Laundry House",
         icon: "/images/homePage/clients/16_TLH.png"
     },
     {
-        id:17,
+        id: 17,
         title: "Candor Foods",
         icon: "/images/homePage/clients/17_Candor_Foods.png"
     },
     {
-        id:18,
+        id: 18,
         title: "Guyana",
         icon: "/images/homePage/clients/18_Guyana.png"
     },
     {
-        id:19,
+        id: 19,
         title: "Ellementry",
         icon: "/images/homePage/clients/19_Ellementry.png"
     },
     {
-        id:20,
+        id: 20,
         title: "Dalhousie Public school",
         icon: "/images/homePage/clients/20_Dalhousie.png"
     },
@@ -212,7 +213,7 @@ const Clients = () => {
                                 ))}
                             </div>
                             <div className="w-full h-full center">
-                                <img className='client-icon w-[90%] absolute z-[1]' src={item.icon} alt="" />
+                                <img className='client-icon w-[90%] absolute z-[1]' src={item.icon} alt="loading img" />
                                 {/* <img
                                     className="client-img absolute w-full h-full object-cover opacity-0 "
                                     src="https://www.zerrorstudios.com/projects/Manifest/manifest_cover.webp"

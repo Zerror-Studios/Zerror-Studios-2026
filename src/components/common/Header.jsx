@@ -167,7 +167,7 @@ const Header = () => {
             <div className={`menu_header   cursor-pointer group px-6 w-full flex items-center justify-between h-12    `}>
               <div className="relative flex items-center ">
                 <div className="absolute block overflow-hidden w-20 ">
-                  <Image width={50} height={20} className={`w-full ${openMenu ? "translate-y-0" : " translate-y-5 "}  transition-all duration-300 ease-out `} src="/logo.svg" alt="" />
+                  <Image width={50} height={20} className={`w-full ${openMenu ? "translate-y-0" : " translate-y-5 "}  transition-all duration-300 ease-out `} src="/logo.svg" alt="loading img" />
                 </div>
                 <p className={`uppercase text-sm leading-none translate-y-[1px] text-white ${openMenu ? "opacity-0" : ""} transition-all duration-300 ease-out `}>MENU</p>
               </div>
@@ -191,7 +191,7 @@ const Header = () => {
                       <div className="flex px-6 gap-x-3">
                         <div
                           className=" menu_img_paren opacity-0 aspect-[4.25/3] group-hover:aspect-[5/3] transition-all duration-300 ease-out overflow-hidden rounded-xs h-[4.5rem] ">
-                          <Image width={100} height={75} src={menu.img} alt="" className={` menu_img  cover scale-[1.5] ${pathname === menu.href ? "grayscale-100" : ""} `} />
+                          <Image width={100} height={75} src={menu.img} alt="loading img" className={` menu_img  cover scale-[1.5] ${pathname === menu.href ? "grayscale-100" : ""} `} />
                         </div>
                         <div className="w-fit h-fit block overflow-hidden translate-y-[1.55rem]">
                           <p className={`menu_title_a font-medium text-lg  translate-y-[115%] leading-none ${pathname === menu.href ? "opacity-[.4]" : ""} `}>{menu.title}</p>

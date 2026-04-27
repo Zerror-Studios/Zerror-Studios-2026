@@ -129,7 +129,7 @@ const MoreProjects = () => {
                                 className=" w-full"
                             >
                                 <div className=" w-full aspect-[5/6]">
-                                    <img src={item.img} alt="" className="cover" />
+                                    <img src={item.img} alt="loading img" className="cover" />
                                 </div>
                                 <div className="mt-2">
                                     <div className="w-full flex items-center justify-between">
