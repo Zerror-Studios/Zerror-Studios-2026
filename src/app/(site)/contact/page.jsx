@@ -1,4 +1,6 @@
 "use client";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import FormSection from "@/components/contact/FormSection";
 import HelpSection from "@/components/contact/HelpSection";
 import SocialSection from "@/components/contact/SocialSection";
@@ -13,6 +15,14 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const contact = () => {
   const [Num, SetNum] = useState(1);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    phoneNumber: "",
+    email: "",
+    helpType: "",
+    socialSources: [],
+  });
 
   useGSAP(() => {
     const splitText = SplitText.create(".split_t", { type: "lines" });
@@ -29,8 +39,56 @@ const contact = () => {
     })
   })
 
+  const handleSubmit = async () => {
+    // 🔴 VALIDATION FIRST
+    if (!formData.firstName.trim()) {
+      toast.error("First name is required");
+      return;
+    }
+
+    if (!formData.phoneNumber.trim()) {
+      toast.error("Phone number is required");
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      toast.error("Email is required");
+      return;
+    }
+
+    // Optional: email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Enter a valid email");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // ⚠️ you missed this earlier
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Message sent successfully 🚀");
+        SetNum(4);
+      } else {
+        toast.error("Something went wrong");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Server error");
+    }
+  };
+
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
       <WebPageSchema
         name="Contact Zerror Studios"
         description="Get in touch with Zerror Studios to discuss GSAP-powered websites, creative development, and immersive digital experiences."
@@ -52,13 +110,13 @@ const contact = () => {
             {/* Sections with smooth transitions */}
             <div className="w-full h-full relative ">
               <div className={`absolute inset-0 transition-all duration-500 ${Num === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
-                <FormSection />
+                <FormSection formData={formData} setFormData={setFormData} />
               </div>
               <div className={`absolute inset-0 transition-all duration-500 ${Num === 2 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
-                <HelpSection />
+                <HelpSection formData={formData} setFormData={setFormData} />
               </div>
               <div className={`absolute inset-0 transition-all duration-500 ${Num === 3 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
-                <SocialSection />
+                <SocialSection formData={formData} setFormData={setFormData} />
               </div>
               <div className={`absolute inset-0 transition-all duration-500 ${Num === 4 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`}>
                 <ThanksSection />
@@ -73,16 +131,28 @@ const contact = () => {
               <button
                 onClick={() => SetNum(Num - 1)}
                 className={`bg-white ${Num == 1 && "hidden"
-                  }  text_blue px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors `}
+                  }  text_blue px-8 py-3 rounded-lg font-medium hover:bg-[#002bba] hover:text-white! hover:border-white border transition-colors `}
               >
                 Prev
               </button>
 
               <button
-                onClick={() => SetNum(Num + 1)}
-                className="bg-white text_blue px-8 py-3 rounded-lg font-medium hover:bg-blue-50 transition-colors "
+                className="bg-white text_blue px-8 py-3 rounded-lg font-medium hover:bg-[#002bba] hover:text-white! hover:border-white border transition-colors "
+                onClick={() => {
+                  if (Num === 1) {
+                    if (!formData.firstName || !formData.email || !formData.phoneNumber) {
+                      toast.error("Please fill all required fields");
+                      return;
+                    }
+                    SetNum(2);
+                  } else if (Num === 3) {
+                    handleSubmit();
+                  } else {
+                    SetNum(Num + 1);
+                  }
+                }}
               >
-                Next
+                {Num === 3 ? "Submit" : "Next"}
               </button>
             </div>
           </div>

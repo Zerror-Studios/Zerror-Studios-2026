@@ -1,6 +1,6 @@
 import React from "react";
 
-const FormSection = () => {
+const FormSection = ({ formData, setFormData }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-18 flex flex-col">
@@ -19,6 +19,10 @@ const FormSection = () => {
               <input
                 type="text"
                 name="firstName"
+                value={formData.firstName}
+                onChange={(e) =>
+                  setFormData({ ...formData, firstName: e.target.value })
+                }
                 className="w-full bg-transparent border-b-2 border-white text-white placeholder-blue-300 focus:outline-none focus:border-blue-200 pb-2  transition-colors"
                 required
               />
@@ -31,6 +35,10 @@ const FormSection = () => {
               <input
                 type="tel"
                 name="phoneNumber"
+                value={formData.phoneNumber}
+  onChange={(e) =>
+    setFormData({ ...formData, phoneNumber: e.target.value })
+  }
                 className="w-full bg-transparent border-b-2 border-white text-white placeholder-blue-300 focus:outline-none focus:border-blue-200 pb-2  transition-colors"
                 required
               />
@@ -43,6 +51,10 @@ const FormSection = () => {
               <input
                 type="email"
                 name="email"
+                value={formData.email}
+  onChange={(e) =>
+    setFormData({ ...formData, email: e.target.value })
+  }
                 className="w-full bg-transparent border-b-2 border-white text-white placeholder-blue-300 focus:outline-none focus:border-blue-200 pb-2  transition-colors"
                 required
               />

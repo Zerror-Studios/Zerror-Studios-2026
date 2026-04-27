@@ -109,6 +109,32 @@ export default function TyrusCubeModel(props) {
     isDragging.current = false
   }
 
+  useEffect(() => {
+    const mat = materials.Material_0
+
+    if (!mat) return
+
+    // remove all maps
+    mat.map = null
+    mat.normalMap = null
+    mat.roughnessMap = null
+    mat.metalnessMap = null
+    mat.emissiveMap = null
+    mat.aoMap = null
+    mat.bumpMap = null
+    mat.displacementMap = null
+
+    // reset emissive
+    mat.emissive.set(0x000000)
+
+    // apply your color + shine
+    mat.color.set("#0D397D")
+    mat.metalness = 0.8
+    mat.roughness = 0.4
+
+    mat.needsUpdate = true
+  }, [materials])
+
   return (
     <group ref={scrollRef} {...props} dispose={null}>
       <group

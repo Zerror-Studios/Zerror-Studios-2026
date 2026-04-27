@@ -8,6 +8,7 @@ const Button = ({
     link,
     title,
     variant = "outline",
+    ...props
 }) => {
 
     const ButtonHover = () => {
@@ -84,9 +85,19 @@ const Button = ({
         </button>
     )
 
-    if (link) {
-        return <Link href={link}>{ButtonContent}</Link>
+if (link) {
+    const isExternal = link.startsWith("http")
+
+    if (isExternal) {
+        return (
+            <a href={link} target="_blank" rel="noopener noreferrer">
+                {ButtonContent}
+            </a>
+        )
     }
+
+    return <Link href={link}>{ButtonContent}</Link>
+}
 
     return ButtonContent
 }

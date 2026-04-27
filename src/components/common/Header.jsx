@@ -47,14 +47,10 @@ const menuLinks = [
 const socialLinks = [
   {
     title: "instagram",
-    href: ""
+    href: "https://www.instagram.com/wearezerrorians/"
   }, {
     title: "linkedin",
-    href: ""
-  },
-  {
-    title: "behance",
-    href: ""
+    href: "https://www.linkedin.com/company/official-zerror-studios/"
   }
 ]
 
@@ -162,7 +158,7 @@ const Header = () => {
         <div className="w-full relative z-[99999] flex justify-center gap-x-1 md:gap-x-3 ">
           <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-sm z-[9] top-0 left-0 transition-all duration-500  ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
 
-          <div onClick={() => setOpenMenu(!openMenu)} className={`menu_paren pointer-events-auto relative z-[100] w-[80vw] md:w-[39vw]  rounded-lg  transition-all duration-300 ease-out ${openMenu ? "rounded-b bg-white" : "bg-black/15! backdrop-blur-[1.25rem]"}  `}>
+          <div onClick={() => setOpenMenu(!openMenu)} className={`menu_paren pointer-events-auto relative z-[100] w-[80vw] md:w-[40vw]  rounded-lg  transition-all duration-300 ease-out ${openMenu ? "rounded-b bg-white" : "bg-black/15! backdrop-blur-[1.25rem]"}  `}>
 
             <div className={`menu_header   cursor-pointer group px-6 w-full flex items-center justify-between h-12    `}>
               <div className="relative flex items-center ">

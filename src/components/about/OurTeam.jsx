@@ -14,13 +14,13 @@ const teamMembers = [
   {
     id: 1,
     name: "Rohit Tiwari",
-    role: "Founder And CEO",
+    role: "Founder & CEO",
     img: "/images/outTeam/1.png",
   },
   {
     id: 2,
     name: "Anand Vishwakarma",
-    role: "Lead Developer / Project Manager",
+    role: "CTO /Sr. Full Stack Developer",
     img: "/images/outTeam/2.png",
   },
     {
@@ -43,14 +43,14 @@ const teamMembers = [
   },
   {
     id: 6,
-    name: "Mridulla",
-    role: "Ui/UX Designer",
+    name: "Mridulla Devi",
+    role: "UI/UX Designer",
     img: "/images/outTeam/2.png",
   },
   {
     id: 7,
-    name: "Lingkan",
-    role: "Ui/UX Designer",
+    name: "Lingkan Mondal",
+    role: "UI/UX Designer",
     img: "/images/outTeam/3.png",
   },
   // {
