@@ -149,7 +149,7 @@ const ImageEffect = () => {
 
           {/* Video & Img  */}
           <div className=" absolute w-[300px] h-[400px] top-[150%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-700 cardVI center overflow-hidden ">
-            <div className="w-[100vw] h-[100vh]  relative center">
+            <div className="w-[100vw] h-[100vh]  relative ">
               {/* Img */}
               <div className="w-[100vw] h-[100vh] absolute top-0 left-0 z-40  VCI ">
                 <img
@@ -172,18 +172,18 @@ const ImageEffect = () => {
 
               {/* Text-Animater */}
               <div className="w-[100vw] shrink-0 h-screen relative z-80 ">
-                <div className="w-full h-fit absolute top-[80%] left-0 -translate-y-1/2">
+                <div className="w-full h-fit absolute top-1/2 left-[1rem] md:left-[2.5rem] -translate-y-1/2">
                   <div className="w-full h-fit relative text-white">
 
                     {/* Text-1 */}
                     <div className="w-full OT1 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className="OTI1 font-bold uppercase translate-y-[100%]">5+ years of hands-on</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className="OTI1 font-bold uppercase translate-y-[100%]">product and digital execution</p>
                       </div>
                     </div>
@@ -191,12 +191,12 @@ const ImageEffect = () => {
                     {/* Text-2 */}
                     <div className="w-full OT2 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className="OTI2 font-bold uppercase translate-y-[100%]">Trusted by 50+ </p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className="OTI2 font-bold uppercase translate-y-[100%]">clients across industries</p>
                       </div>
                     </div>
@@ -204,12 +204,12 @@ const ImageEffect = () => {
                     {/* Text-3 */}
                     <div className="w-full OT3 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className=" OTI3 font-bold uppercase translate-y-[100%]">200+ websites and</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className=" OTI3 font-bold uppercase translate-y-[100%]">digital products shipped</p>
                       </div>
                     </div>
@@ -217,12 +217,12 @@ const ImageEffect = () => {
                     {/* Text-4 */}
                     <div className="w-full OT4 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className=" OTI4 font-bold uppercase translate-y-[100%]">15M+ lines of </p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className=" OTI4 font-bold uppercase translate-y-[100%]">production-grade code written</p>
                       </div>
                     </div>
@@ -230,12 +230,12 @@ const ImageEffect = () => {
                     {/* Text-5 */}
                     <div className="w-full OT5 absolute top-0 left-0 ">
                       {/* top */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className=" OTI5 font-bold uppercase translate-y-[100%]">Design × Technology</p>
                       </div>
 
                       {/* bottom */}
-                      <div className="w-full h-[1.2rem] md:h-[3.5rem] leading-none overflow-hidden text-xl md:text-6xl  flex text-center justify-center items-center" >
+                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
                         <p className=" OTI5 font-bold uppercase translate-y-[100%]">under one roof</p>
                       </div>
                     </div>

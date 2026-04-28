@@ -228,14 +228,14 @@ const Footer = () => {
         <div className=" grid grid-cols-3">
           {mobileFooterData.map((item, index) => {
             if (Object.keys(item).length === 0) {
-              return <div className={`h-[25vh]  ${item.alignment} p-3 border border-white/10 rounded-xl`} key={index} />;
+              return <div className={`h-[25svh]  ${item.alignment} p-3 border border-white/10 rounded-xl`} key={index} />;
             }
 
             if (item.label) {
               return (
                 <div
                   ref={(el) => (flickerRefs.current.push(el))}
-                  key={index} className={` h-[25vh] flicker ${item.alignment} p-3 border border-white/10 rounded-xl text-xs font-thin uppercase`}>
+                  key={index} className={` h-[25svh] flicker ${item.alignment} p-3 border border-white/10 rounded-xl text-xs font-thin uppercase`}>
                   <p>
                     {item.label}
                   </p>
@@ -246,7 +246,7 @@ const Footer = () => {
             if (item.links) {
               return (
                 <div
-                  key={index} className={` h-[25vh] ${item.alignment} p-3 border border-white/10 rounded-xl flex flex-col gap-2`}>
+                  key={index} className={` h-[25svh] ${item.alignment} p-3 border border-white/10 rounded-xl flex flex-col gap-2`}>
                   {item.links.map((link, i) => (
                     <a
                       ref={(el) => (flickerRefs.current.push(el))}
