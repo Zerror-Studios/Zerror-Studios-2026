@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap';
 import { MotionPathPlugin } from "gsap/dist/MotionPathPlugin";
+import { Link } from 'next-view-transitions';
 
 gsap.registerPlugin(MotionPathPlugin);
 
@@ -169,7 +170,7 @@ const TicketEffect = () => {
                 <p className=' leading-tight '>Step on the Zerror Studios and <br />
                     request a project with a few clicks.</p>
 
-                <button className="contact_btn relative flex group items-center gap-1">
+                <Link href="/contact" className="contact_btn relative flex group items-center gap-1">
                     <div className="w-0 group-hover:w-full transition-all duration-300 absolute bg_blue bottom-1 rounded-full h-px"></div>
                     <p>Contact</p>
                     <img
@@ -177,7 +178,7 @@ const TicketEffect = () => {
                         src="/svg/plane.svg"
                         alt="plane"
                     />
-                </button>
+                </Link>
 
 
 
