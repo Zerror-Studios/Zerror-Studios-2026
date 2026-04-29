@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import SplitText from 'gsap/dist/SplitText'
 import React, { useEffect } from 'react'
+import useDevice from '../hooks/useDevice'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,8 @@ const ServicesData = [
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
 
 const Services = () => {
+
+  const { isMobile, isDesktop } = useDevice();
 
   const chunkArray = (arr, size) => {
     const result = [];
@@ -71,6 +74,8 @@ const Services = () => {
 
   useEffect(() => {
 
+    if (window.innerWidth < 750) return
+
     const items = document.querySelectorAll(".service-item");
 
     const observer = new IntersectionObserver((entries) => {
@@ -99,13 +104,13 @@ const Services = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile, isDesktop]);
 
 
   return (
     <>
       <div className="w-full relative py-24 px-5 md:p-0 md:h-screen center text-center">
-        <p className=" text-5xl md:text-8xl pb-5 leading-none primary-font md:w-[70%] bg-clip-text text-transparent bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
+        <p className=" max-sm:text-[#002bba] text-5xl md:text-8xl pb-5 leading-none primary-font md:w-[70%] md:bg-clip-text md:text-transparent md:bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
           To build zero-error digital products where design and technology move as one.
         </p>
       </div>
@@ -132,23 +137,26 @@ const Services = () => {
                 {item.title}
               </p>
 
-              <p className="max-sm:hidden  text_blue leading-tight">
-                {chunkArray(item.services, 2).map((pair, i) => (
-                  <span key={i} className="block">
-                    {pair.map((service, j) => (
-                      <span key={j} className="inline-block">
-                        {splitToChars(service)}
+              {isDesktop && (
+                <p className="max-sm:hidden  text_blue leading-tight">
+                  {chunkArray(item.services, 2).map((pair, i) => (
+                    <span key={i} className="block">
+                      {pair.map((service, j) => (
+                        <span key={j} className="inline-block">
+                          {splitToChars(service)}
 
-                        {j !== pair.length - 1 && (
-                          <span className="inline-block mx-1">
-                            {splitToChars("/")}
-                          </span>
-                        )}
-                      </span>
-                    ))}
-                  </span>
-                ))}
-              </p>
+                          {j !== pair.length - 1 && (
+                            <span className="inline-block mx-1">
+                              {splitToChars("/")}
+                            </span>
+                          )}
+                        </span>
+                      ))}
+                    </span>
+                  ))}
+                </p>
+              )}
+
               <p className=" md:hidden w-[80%] md:w-1/2 text_blue leading-tight">
                 {item.services.map((service, i) => (
                   <span key={i} className="inline-block">
@@ -166,7 +174,7 @@ const Services = () => {
             </div>
           );
         })}
-
+      
         <div className=" noise-bg max-sm:hidden! expand_circ overflow-hidden size-3.5 z-10 center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shrink-0 bg_blue rounded-full ">
           <div className="w-screen relative z-10  padding text-white grid grid-cols-[28%_30%_42%]">
             <div className="">

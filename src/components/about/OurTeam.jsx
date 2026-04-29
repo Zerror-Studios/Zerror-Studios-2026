@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import Flip from "gsap/dist/Flip";
 import Image from "next/image";
 import Form from "./Form";
+import useDevice from "../hooks/useDevice";
 gsap.registerPlugin(Flip);
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,7 +24,7 @@ const teamMembers = [
     role: "CTO /Sr. Full Stack Developer",
     img: "/images/outTeam/2.png",
   },
-    {
+  {
     id: 4,
     name: "Ayush Ahirwar",
     role: "Jr. Full Stack Developer",
@@ -80,11 +81,10 @@ const teamMembers = [
 ];
 
 const OurTeam = () => {
-
+  const { isMobile, isDesktop } = useDevice();
   const [isOpen, setIsOpen] = useState(false);
   const ctaRef = useRef(null);
   const placeholderRef = useRef(null);
-
 
   const cardsRef = useRef([]);
   const tlRef = useRef([]);
@@ -117,7 +117,7 @@ const OurTeam = () => {
           ease: "linear",
         }, 0);
     });
-  }, []);
+  }, [isDesktop]);
 
   const handleEnter = (index) => {
     tlRef.current.forEach((tl, i) => {
@@ -325,6 +325,7 @@ const OurTeam = () => {
               className="   relative overflow-hidden"
             >
               {/* Blocks */}
+              {isDesktop && (
               <div className="absolute inset-0 grid grid-cols-7 z-10">
                 {[...Array(70)].map((_, i) => (
                   <div
@@ -333,10 +334,11 @@ const OurTeam = () => {
                   />
                 ))}
               </div>
+              )}
 
               {/* Image */}
               <div className="   w-full relative aspect-4/5">
-                        <div className="skeleton_box w-full h-full skeleton_animate"></div>
+                <div className="skeleton_box w-full h-full skeleton_animate"></div>
                 <div className=" card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
                 {/* <Image
                   width={100}

@@ -6,6 +6,8 @@ import { Link } from "next-view-transitions";
 import React, { useEffect, useRef, useState } from 'react'
 import Button from "../common/Button";
 import { caseStudies } from "@/data/ProjectsData";
+import useDevice from "../hooks/useDevice";
+import Image from "next/image";
 
 const INNER_PADDING = 60;
 gsap.registerPlugin(CustomEase);
@@ -15,15 +17,11 @@ CustomEase.create(
     "0.19, 1, 0.22, 1"
 )
 const OurWork = () => {
+    const { isMobile, isDesktop } = useDevice();
     const mousePos = useRef({ x: 0, y: 0 });
     const activeIndex = useRef(null);
     const cardRefs = useRef([]);
     const posRefs = useRef([]);
-
-    const isMobile =
-        typeof window !== "undefined" &&
-        window.matchMedia("(hover: none)").matches;
-
 
     useEffect(() => {
         if (!isMobile) return;
@@ -184,15 +182,19 @@ const OurWork = () => {
                             onMouseLeave={() => handleMouseLeave(i)}
                             className="w-full relative aspect-3/4 md:aspect-square bg_blue overflow-hidden"
                         >
-                            <div style={{
-                                clipPath: "inset(40%)",
-                                willChange: "transform, clip-path, opacity"
+                            {isDesktop && (
+                                <div style={{
+                                    clipPath: "inset(40%)",
+                                    willChange: "transform, clip-path, opacity"
 
-                            }} className="hover_vid absolute z-10 top-0 opacity-0 left-0 pointer-events-none aspect-[303/389] w-[18rem] ">
-                                <video loop muted autoPlay playsInline className="cover" src={item.cover_vid} alt="loading img" />
+                                }} className="hover_vid absolute z-10 top-0 opacity-0 left-0 pointer-events-none aspect-[303/389] w-[18rem] ">
+                                    <video loop muted autoPlay playsInline className="cover" src={item.cover_vid} alt="loading img" />
+                                </div>
+                            )}
+
+                            <div className="cover group-hover:brightness-[.3] transition-all duration-300 brightness-100  ease-[cubic-bezier(0.4, 0, 0.2, 1]  ">
+                                <Image src={item.cover_img} alt="loading img" className="cover" fill />
                             </div>
-
-                            <img className="cover group-hover:brightness-[.3] transition-all duration-300 brightness-100  ease-[cubic-bezier(0.4, 0, 0.2, 1]  " src={item.cover_img} alt="loading img" />
                         </div>
 
                         <div className="w-full text_blue">

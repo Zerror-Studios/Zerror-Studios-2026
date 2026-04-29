@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Vertex, Fragment } from '@/shaders/plpShaders/PLPShaderGLSL'
 import { useTransitionRouter } from "next-view-transitions";
 import { caseStudies } from "@/data/ProjectsData";
+import Image from "next/image";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -41,10 +42,10 @@ const plp = () => {
     const { size } = useThree();
     const uIntroCurve = useRef({ value: 0 });
 
-    const vFov = (fov * Math.PI) / 180; 
-    const viewHeight = 2 * Math.tan(vFov / 2) * distance; 
-    const planeHeight = viewHeight * 0.37; 
-    const planeWidth = planeHeight * 0.7; 
+    const vFov = (fov * Math.PI) / 180;
+    const viewHeight = 2 * Math.tan(vFov / 2) * distance;
+    const planeHeight = viewHeight * 0.37;
+    const planeWidth = planeHeight * 0.7;
     const gspY = planeHeight * 1;
 
     const CalculatePosition = useMemo(() => {
@@ -124,35 +125,35 @@ const plp = () => {
             invalidateOnRefresh: true,
           },
         })
-        .to(meshRef.current.rotation, {
-          y: step === 1 ? Math.PI / 2 : -Math.PI * (step - 1.5),
-          ease: "linear",
-        }, "a")
-        .to(meshRef.current.position, {
-          y: planeHeight * step,
-          ease: "linear",
-        }, "a")
-        .to(".displayText", {
-          y: `${-34 * step}px`,
-          ease: "power3.inOut",
-        }, "a")
-        .to(".numText", {
-          y: `${-60.25 * step}px`,
-          ease: "power3.inOut",
-        }, "a")
-        .to(".mentionText", {
-          y: `${-16 * step}px`,
-          ease: "power3.inOut",
-        }, "a")
-        .to(".highlightDiv", {
-          x: `${30 * step}px`,
-          ease: "power3.inOut",
-        }, "a");
+          .to(meshRef.current.rotation, {
+            y: step === 1 ? Math.PI / 2 : -Math.PI * (step - 1.5),
+            ease: "linear",
+          }, "a")
+          .to(meshRef.current.position, {
+            y: planeHeight * step,
+            ease: "linear",
+          }, "a")
+          .to(".displayText", {
+            y: `${-34 * step}px`,
+            ease: "power3.inOut",
+          }, "a")
+          .to(".numText", {
+            y: `${-60.25 * step}px`,
+            ease: "power3.inOut",
+          }, "a")
+          .to(".mentionText", {
+            y: `${-16 * step}px`,
+            ease: "power3.inOut",
+          }, "a")
+          .to(".highlightDiv", {
+            x: `${30 * step}px`,
+            ease: "power3.inOut",
+          }, "a");
       });
     }, []);
 
     // ================= SCROLL SPEED =================
-    const uScrollSpeed = useRef({ value: 0 }); 
+    const uScrollSpeed = useRef({ value: 0 });
     const scrollVelocity = useRef(0);
 
     useEffect(() => {
@@ -227,75 +228,34 @@ const plp = () => {
     );
   };
 
+  useGSAP(() => {
+    gsap.to(".scroll_paren", {
+      opacity: 1
+    })
+  })
+
   return (
     <>
-      <div className="w-full min-h-screen relative">
+      <div className=" scroll_paren opacity-0 w-full min-h-screen relative">
         <div className="w-full h-screen sticky top-0 left-0">
           <Canvas className="w-full h-screen bg-[#f5f5f5]">
             <PerspectiveCamera makeDefault fov={fov} position={[0, 0, distance]} />
             <MESH />
           </Canvas>
 
-          {/* UI (UNCHANGED STRUCTURE) */}
-          <div className="w-full OptionCont h-screen absolute top-0 left-0 flex pointer-events-none justify-center items-center">
-            <div className="w-full h-screen flex text-center justify-center items-center pointer-events-none">
-              <div className="w-full h-screen relative flex justify-center pointer-events-none px-[20px]">
-
-                {/* <div className="w-fit WEBETEXT opacity-0 h-fit flex flex-col gap-1 text-[#0000FF] text-start absolute top-[23%] left-[70%]">
-                  <p className="">Website Design</p>
-                  <p className="">
-                    {caseStudies[0]?.year}
-                  </p>
-                </div> */}
-
-                <div className="midsection absolute top-[73%] max-sm:left-[10%] whitespace-nowrap left-[70%] RF_Font w-fit h-[2rem] flex flex-col text-start pointer-events-none text-[#0000FF] PNR_Font text-[1.5rem] leading-[1.5rem] overflow-hidden opacity-0 tracking-tight">
-                  {caseStudies.map((item, i) => (
-                    <span key={i} className="displayText font-medium text-3xl">{item.title}</span>
-                  ))}
-                </div>
-
-                <div className=" max-sm:scale-75 text-[#0000FF] pointer-events-none numTextCont opacity-0 absolute top-[20%] left-[10%] max-sm:left-[0%] text-[16px] flex justify-center items-end px-[20px]">
-                  <span className="h-[4rem] text-[4rem] flex justify-center items-center">0</span>
-                  <span className="w-fit h-[4rem] flex flex-col leading-[4rem] text-[4rem] overflow-hidden">
-                    {caseStudies.map((_, i) => (
-                      <span key={i} className="numText">{i + 1}</span>
-                    ))}
-                  </span>
-                  / {String(caseStudies.length).padStart(2, "0")}
-                </div>
-
-                <div className="mentionCont pointer-events-none opacity-0 w-fit h-fit absolute top-[80%] left-[70%] max-sm:left-[10%] translate-y-[-50%] flex flex-col text-start text-[16px] text-[#0000FF] leading-[16px] tracking-tight">
-                  <span className="w-fit h-[16px] overflow-hidden flex flex-col">
-                    {caseStudies.map((item, i) => (
-                      <span key={i} className="mentionText">{item.category}</span>
-                    ))}
-                  </span>
-                  <span className="w-fit h-[16px] overflow-hidden flex flex-col">
-                    {caseStudies.map((item, i) => (
-                      <span key={i} className="mentionText">{item.year}</span>
-                    ))}
-                  </span>
-                  {/* <span>UXUI, WEB DEVELOPMENT</span> */}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom thumbnails */}
-          <div className="bottomImgCont OptionCont absolute opacity-0 bottom-0 pointer-events-none left-0 w-full h-[70px] z-[100] flex justify-center items-center">
-            <div className="w-fit h-fit flex relative bg-amber-700">
+          <div className="bottomImgCont OptionCont absolute opacity-0 bottom-5 pointer-events-none left-0 w-full  z-[100] flex justify-center items-center">
+            <div className="w-fit h-fit flex relative">
               {caseStudies.map((item, index) => (
-                <div key={index} className="w-[30px] h-[40px] overflow-hidden">
-                  <img className="w-full h-full object-cover" src={item.cover_img} alt={item.title} />
+                <div key={index} className="w-[2vw] aspect-3/4 overflow-hidden">
+                  <Image className="cover" width={20} height={20} src={item.cover_img} alt={item.title} />
                 </div>
               ))}
+              <div className="highlightDiv w-[2.7vw] pointer-events-none aspect-3/4 absolute border-[2px] top-[50%] left-[-5px] translate-y-[-49%] border-[#002bba]"></div>
 
-              <div className="highlightDiv w-[40px] pointer-events-none h-[50px] absolute border-[2px] top-[50%] left-[-5px] translate-y-[-49%] border-white"></div>
             </div>
           </div>
         </div>
 
-        {/* Dynamic scroll sections */}
         {caseStudies.map((_, i) => (
           <div key={i} className={`cont${i + 1} h-screen w-full ${i === 0 ? "z-50" : ""}`}></div>
         ))}

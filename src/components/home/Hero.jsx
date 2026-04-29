@@ -6,10 +6,13 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import SplitText from "gsap/dist/SplitText";
 import { useGSAP } from "@gsap/react";
+import useDevice from "../hooks/useDevice";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+
+  const { isMobile, isDesktop } = useDevice();
 
   useGSAP(() => {
 
@@ -49,7 +52,7 @@ const Hero = () => {
         // markers: true,
       },
     });
-  });
+  }, [isMobile, isDesktop]);
 
 
   useGSAP(() => {
@@ -129,28 +132,36 @@ const Hero = () => {
       },
       display: "none"
     })
-  });
+  }, [isMobile, isDesktop]);
 
 
   return (
-    <div className=" hero_paren w-full relative">
+    <div className=" hero_paren w-full relative min-h-screen">
 
-      <div className="site-background site-background-desktop hidden lg:block fixed bg_blue top-0 left-0   w-full h-screen z-[-1]">
-        <HeroScene />
-      </div>
-      <div className="site-background site-background-mobile lg:hidden fixed bg_blue top-0 left-0   w-full h-screen z-[-1] bg_blue "></div>
+      {isDesktop && (
+        <div className="site-background site-background-desktop hidden lg:block fixed bg_blue top-0 left-0   w-full h-screen z-[-1]">
+          <HeroScene />
+        </div>
+      )}
+      {isMobile && (
+        <div className="site-background site-background-mobile lg:hidden fixed bg_blue top-0 left-0   w-full h-screen z-[-1] bg_blue "></div>
+      )}
 
-      <div className=" max-sm:hidden txt_slider_paren w-full h-[400vh]  ">
-        <div className="w-full h-screen top-0 sticky overflow-hidden">
-          <div className=" z-[2] hero_scroll_txt w-full translate-x-[30vw] absolute top-[80%] -translate-y-1/2 text-white  md:whitespace-nowrap left-0  ">
-            <p className=" split_hero_title opacity-0 text-8xl md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
+      {isDesktop && (
+        <div className=" max-sm:hidden txt_slider_paren w-full h-[400vh]  ">
+          <div className="w-full h-screen top-0 sticky overflow-hidden">
+            <div className=" z-[2] hero_scroll_txt w-full translate-x-[30vw] absolute top-[80%] -translate-y-1/2 text-white  md:whitespace-nowrap left-0  ">
+              <p className=" split_hero_title opacity-0 text-8xl md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className=" hero_mob_txt  w-full overflow-hidden  md:hidden! pt-[calc(100svh-22vw)]! padding pb-[33vh]! text-white  ">
-        <p className=" mob_split_hero_title opacity-0  text-[18vw] leading-[20vw] md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
-      </div>
+      {isMobile && (
+        <div className=" hero_mob_txt  w-full overflow-hidden  md:hidden! pt-[calc(100svh-22vw)]! padding pb-[33vh]! text-white  ">
+          <p className=" mob_split_hero_title opacity-0  text-[15.5vw] leading-[15vw]   md:text-[12vw] font-bold origin-bottom-left ">We design and build thoughtful digital experiences that go beyond visuals.</p>
+        </div>
+      )}
 
 
       <div className="w-full   padding text-white ">
@@ -158,10 +169,12 @@ const Hero = () => {
           <div className="">
             <p className='capitalize primary-font  text-5xl md:text-6xl    leading-none'>about us</p>
           </div>
-          <div className=" max-sm:hidden text-xs pt-4">
-            <p className='font-thin'>Who</p>
-            <p className='font-thin'>We Are?</p>
-          </div>
+          {isDesktop && (
+            <div className=" max-sm:hidden text-xs pt-4">
+              <p className='font-thin'>Who</p>
+              <p className='font-thin'>We Are?</p>
+            </div>
+          )}
           <div className="capitalize    text-4xl  pl-2">
             <p className=" max-sm:hidden   "> <span className='opacity-0 pointer-events-none'>...............</span>  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</p>
           </div>

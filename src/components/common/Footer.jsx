@@ -104,7 +104,7 @@ const footerRows = [
       },
       {},
       {
-        text: "©2025 Zerror Studios. All rights reserved.",
+        text: `©${new Date().getFullYear()} Zerror Studios. All rights reserved.`,
         align: "absolute bottom-[5%] left-[5%]",
         hover: "group-hover:bottom-[67%]",
       },
@@ -150,7 +150,7 @@ const mobileFooterData = [
     label: "crafted with intent", alignment: "flex items-end"
   }
   , {
-    label: "© 2025 Zerror Studio.", alignment: ""
+    label: `©${new Date().getFullYear()} Zerror Studios.`, alignment: ""
   }
   , {
     label: "I", alignment: "flex items-start"

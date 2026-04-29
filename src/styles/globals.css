@@ -119,6 +119,7 @@ button {
   .mob_cir:before,
   .mob_cir:after {
     position: absolute;
+    border-radius: 100%;
     top: 0;
     left: 0;
     z-index: 2;

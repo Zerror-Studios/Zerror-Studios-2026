@@ -1,11 +1,15 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-const Select = ({ label, options = [] }) => {
+const Select = ({ label, options = [], name, onChange }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const ref = useRef(null);
-
+  const handleSelect = (opt) => {
+    setValue(opt);
+    onChange(name, opt);
+    setOpen(false);
+  };
   useEffect(() => {
     const handler = (e) => {
       if (ref.current && !ref.current.contains(e.target)) {
@@ -49,11 +53,8 @@ const Select = ({ label, options = [] }) => {
           {options.map((opt) => (
             <button
               key={opt}
-              onClick={() => {
-                setValue(opt);
-                setOpen(false);
-              }}
-              className="w-full text-left px-4 py-3 font-thin  text-[#0000FF] transition-colors hover:bg-[#0000FF20]"
+              onClick={() => handleSelect(opt)}
+              className="w-full text-left px-4 py-3 font-thin hover:text-white font-medium  text-[#0000FF] transition-colors hover:bg-[#EA4E3D]"
             >
               {opt}
             </button>

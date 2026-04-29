@@ -4,132 +4,90 @@ import React, { useEffect, useRef, useState } from "react";
 import PixelTrail from "@/components/about/PixelTrail";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { useGSAP } from "@gsap/react";
+import SplitText from "gsap/dist/SplitText";
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const ImageEffect = () => {
-  
-  useEffect(() => {
-    const TLVI = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".IVMainCont",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true,
-        // markers: true,
-      },
-    });
-    TLVI.to(".cardVI", {
-      top: "50%",
-      ease: "power1.out",
-    });
-    TLVI.to(".cardVI", {
-      rotateY: 90,
-      ease: "linear",
-    });
-    TLVI.to(
-      ".VCI ",
-      {
-        opacity: 0,
-        ease: "linear",
-      },
-      "a11"
-    );
-    TLVI.to(
-      ".cardVI",
-      {
-        rotateY: 0,
-        ease: "linear",
-      },
-      "a11"
-    );
-    TLVI.to(
-      ".cardVI",
-      {
-        delay: 0.5,
+
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+
+      const wrappers = gsap.utils.toArray(".ot-wrapper");
+
+      // hide all except first
+      gsap.set(wrappers, { opacity: 0 });
+      gsap.set(wrappers[0], { opacity: 1 });
+
+      const splits = wrappers.map((wrapper) => {
+        const text = wrapper.querySelector(".ot-text");
+
+        const split = SplitText.create(text, {
+          type: "lines",
+          linesClass: "line-child"
+        });
+
+        // wrap each line (for overflow hidden)
+        split.lines.forEach(line => {
+          const wrap = document.createElement("div");
+          wrap.style.overflow = "hidden";
+          line.parentNode.insertBefore(wrap, line);
+          wrap.appendChild(line);
+        });
+
+        gsap.set(split.lines, { yPercent: 100 });
+
+        return split;
+      });
+
+      const TLVI = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".IVMainCont",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
+
+      // existing animations
+      TLVI.to(".cardVI", { top: "50%" });
+      TLVI.to(".cardVI", { rotateY: 90 });
+
+      TLVI.to(".VCI", { opacity: 0 }, "a11");
+      TLVI.to(".cardVI", { rotateY: 0 }, "a11");
+      TLVI.to(".cardVI", {
         width: "100%",
         height: "100vh",
-        ease: "linear",
-      },
-      "a11"
-    );
-    TLVI.to(
-      ".OTI1",
-      {
-        delay: 0.5,
-        y: 0,
-        ease: "power2.out"
-      },
-    );
-    TLVI.to(
-      ".OTI1",
-      {
-        delay: 0.5,
-        y: '100%',
-        ease: "power2.out"
-      },
-    );
-    TLVI.to(
-      ".OTI2",
-      {
-        y: 0,
-        ease: "power2.out"
-      },
-    );
-    TLVI.to(
-      ".OTI2",
-      {
-        delay: 0.5,
-        y: '100%',
-        ease: "power2.out"
-      },
-    );
-    TLVI.to(
-      ".OTI3",
-      {
-        y: 0,
-        ease: "power2.out"
-      },
-    );
-    TLVI.to(
-      ".OTI3",
-      {
-        delay: 0.5,
-        y: '100%',
-        ease: "linear"
-      },
-    );
-    TLVI.to(
-      ".OTI4",
-      {
-        y: 0,
-        ease: "power2.out"
-      },
-    );
-    TLVI.to(
-      ".OTI4",
-      {
-        delay: 0.5,
-        y: '100%',
-        ease: "linear"
-      },
-    );
-    TLVI.to(
-      ".OTI5",
-      {
-        y: 0,
-        ease: "power2.out"
-      },
-    );
-    // TLVI.to(
-    //   ".OTI3",
-    //   {
-    //     delay: 0.5,
-    //     y: '100%',
-    //     ease: "linear"
-    //   },
-    // );
+      });
 
-  }, []);
+      // 🔥 text animation
+      splits.forEach((split, i) => {
+        const lines = split.lines;
+
+        TLVI.to(wrappers[i], { opacity: 1 });
+
+        TLVI.to(lines, {
+          yPercent: 0,
+          stagger: 0.04,
+          ease: "power2.out"
+        });
+
+        if (i !== splits.length - 1) {
+          TLVI.to(lines, {
+            delay: 0.2,
+            yPercent: 100,
+            stagger: 0.04,
+            ease: "power2.in"
+          });
+
+          TLVI.to(wrappers[i], { opacity: 0 });
+        }
+      });
+
+    });
+
+    return () => ctx.revert();
+  });
 
   return (
     <>
@@ -140,10 +98,10 @@ const ImageEffect = () => {
           <p className=" uppercase font-medium">
             WHY US?
           </p>
-          <p className="  text-5xl md:text-6xl  leading-none font-semibold">
+          <p className="  text-5xl md:text-6xl  leading-none font-medium">
             5 Reasons
           </p>
-          <p className="  text-5xl md:text-6xl  leading-none font-semibold">
+          <p className="  text-5xl md:text-6xl  leading-none font-medium">
             To Be With Zerror
           </p>
 
@@ -165,6 +123,7 @@ const ImageEffect = () => {
                   autoPlay
                   muted
                   loop
+                  playsInline
                   src="/videos/about_video.mp4"
                   className="w-[100%] h-full object-cover "
                 ></video>
@@ -172,74 +131,25 @@ const ImageEffect = () => {
 
               {/* Text-Animater */}
               <div className="w-[100vw] shrink-0 h-screen relative z-80 ">
-                <div className="w-full h-fit absolute top-1/2 left-[1rem] md:left-[2.5rem] -translate-y-1/2">
-                  <div className="w-full h-fit relative text-white">
+                <div className="w-full h-fit absolute top-[20%] md:top-[42%] left-[1rem] md:left-[2.5rem] ">
+                  <div className="w-full h-fit text-start! font-semibold relative text-white">
 
-                    {/* Text-1 */}
-                    <div className="w-full OT1 absolute top-0 left-0 ">
-                      {/* top */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className="OTI1 font-bold uppercase translate-y-[100%]">5+ years of hands-on</p>
-                      </div>
-
-                      {/* bottom */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className="OTI1 font-bold uppercase translate-y-[100%]">product and digital execution</p>
-                      </div>
+                    <div className="OT w-full relative text-5xl md:text-6xl capitalize">
+                      {[
+                        "5+ years of hands-on product and digital execution",
+                        "Trusted by 50+ clients across industries",
+                        "200+ websites and digital products shipped",
+                        "15M+ lines of production-grade code written",
+                        "Design × Technology under one roof",
+                      ].map((text, i) => (
+                        <div
+                          key={i}
+                          className="ot-wrapper absolute top-0 left-0 w-full md:w-1/2"
+                        >
+                          <p className="ot-text">{text}</p>
+                        </div>
+                      ))}
                     </div>
-
-                    {/* Text-2 */}
-                    <div className="w-full OT2 absolute top-0 left-0 ">
-                      {/* top */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className="OTI2 font-bold uppercase translate-y-[100%]">Trusted by 50+ </p>
-                      </div>
-
-                      {/* bottom */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className="OTI2 font-bold uppercase translate-y-[100%]">clients across industries</p>
-                      </div>
-                    </div>
-
-                    {/* Text-3 */}
-                    <div className="w-full OT3 absolute top-0 left-0 ">
-                      {/* top */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className=" OTI3 font-bold uppercase translate-y-[100%]">200+ websites and</p>
-                      </div>
-
-                      {/* bottom */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className=" OTI3 font-bold uppercase translate-y-[100%]">digital products shipped</p>
-                      </div>
-                    </div>
-
-                    {/* Text-4 */}
-                    <div className="w-full OT4 absolute top-0 left-0 ">
-                      {/* top */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className=" OTI4 font-bold uppercase translate-y-[100%]">15M+ lines of </p>
-                      </div>
-
-                      {/* bottom */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className=" OTI4 font-bold uppercase translate-y-[100%]">production-grade code written</p>
-                      </div>
-                    </div>
-
-                    {/* Text-5 */}
-                    <div className="w-full OT5 absolute top-0 left-0 ">
-                      {/* top */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className=" OTI5 font-bold uppercase translate-y-[100%]">Design × Technology</p>
-                      </div>
-
-                      {/* bottom */}
-                      <div className="w-full h-[1.3rem] md:h-[3.5rem] leading-none overflow-hidden text-2xl md:text-6xl  flex  items-center" >
-                        <p className=" OTI5 font-bold uppercase translate-y-[100%]">under one roof</p>
-                      </div>
-                    </div>
-
 
                   </div>
                 </div>
