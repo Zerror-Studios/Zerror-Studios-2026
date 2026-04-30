@@ -215,7 +215,7 @@ const About = () => {
 
     return (
         <>
-            <div className=" about_paren   text-white   w-full h-[800vh] md:h-[700vh] relative ">
+            <div className=" about_paren   text-white z-10   w-full h-[800vh] md:h-[700vh] relative ">
 
                 <div className="sticky top-0 center w-full h-screen overflow-hidden">
                     <div className="circ_1 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
@@ -289,7 +289,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className=" works_paren_header center fixed overflow-hidden  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 bg-white">
+                    <div className=" works_paren_header center fixed overflow-hidden z-10  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 bg-white">
                         <div className="w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                             <div className="">
                                 <p className=' wrk_split_wrd  primary-font  text-5xl md:text-6xl    leading-none'>Selected  <br />Works</p>

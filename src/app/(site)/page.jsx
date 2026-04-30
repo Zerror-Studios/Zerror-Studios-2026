@@ -48,7 +48,7 @@ export const metadata = {
     siteName: "Zerror Studios",
     images: [
       {
-        url: "https://www.zerrorstudios.com/logo.svg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: "Zerror Studios – Creative Web Studio",
@@ -62,7 +62,7 @@ export const metadata = {
     title: "Zerror Studios | GSAP & Next.js Creative Web Studio",
     description:
       "GSAP-powered animated websites, Next.js development, and immersive digital experiences for modern brands.",
-    images: ["https://www.zerrorstudios.com/og.jpg"],
+    images: ["/og.png"],
   },
 };
 

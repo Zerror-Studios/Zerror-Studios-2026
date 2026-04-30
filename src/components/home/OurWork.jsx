@@ -167,7 +167,7 @@ const OurWork = () => {
     };
 
     return (
-        <div className="work_paren w-full relative bg-white">
+        <div className="work_paren w-full relative z-10 bg-white">
             <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-10">
                 {caseStudies.slice(0, 4).map((item, i) => (
                     <Link

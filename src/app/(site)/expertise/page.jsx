@@ -30,6 +30,7 @@ export const metadata = {
     url: "https://www.zerrorstudios.com/expertise",
     siteName: "Zerror Studios",
     type: "website",
+    images: ["/og.png"],
   },
 
   twitter: {
@@ -37,6 +38,7 @@ export const metadata = {
     title: "Expertise | Zerror Studios",
     description:
       "Explore Zerror Studios’ expertise in animation-driven web experiences and modern development stacks.",
+    images: ["/og.png"],
   },
 };
 

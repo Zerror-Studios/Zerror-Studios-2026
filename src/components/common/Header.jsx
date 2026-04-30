@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import ViewTransitionLink from '../hooks/ViewTransitionLink';
 import { Link } from 'next-view-transitions';
+import { useGSAP } from '@gsap/react';
 
 const menuLinks = [
   {
@@ -152,9 +153,17 @@ const Header = () => {
 
   }, [openMenu])
 
+  useGSAP(()=>{
+      gsap.to(".header_paren",{
+        transform:"translateY(0)",
+        delay:1,
+        ease:"power2.inOut"
+      })
+  })
+
   return (
     <>
-      <div className="w-full pointer-events-none fixed py-5! padding   z-[9999] center">
+      <div className=" header_paren translate-y-[-5rem] w-full pointer-events-none fixed py-5! padding   z-[9999] center">
         <div className="w-full relative z-[99999] flex justify-center gap-x-1 md:gap-x-3 ">
           <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-sm z-[9] top-0 left-0 transition-all duration-500  ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
 

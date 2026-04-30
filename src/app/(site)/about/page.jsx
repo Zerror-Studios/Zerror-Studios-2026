@@ -18,7 +18,7 @@ const about = () => {
     <>
 
       <WebPageSchema
-        name="About Zerror Studios"
+        name="About |  Zerror Studios"
         description="Zerror Studios is a creative web studio focused on storytelling, motion design, and high-performance digital experiences for modern brands."
         url="https://www.zerrorstudios.com/about"
       />
@@ -68,6 +68,7 @@ export const metadata = {
     url: "https://www.zerrorstudios.com/about",
     siteName: "Zerror Studios",
     type: "website",
+    images: ["/og.png"],
   },
 
   twitter: {
@@ -75,5 +76,6 @@ export const metadata = {
     title: "About | Zerror Studios",
     description:
       "A creative studio crafting animation-driven websites and immersive digital experiences.",
+    images: ["/og.png"],
   },
 };

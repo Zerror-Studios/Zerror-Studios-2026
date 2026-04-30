@@ -23,6 +23,21 @@ const Hero = () => {
         ease: "power2.out"
       }
     );
+    gsap.to(
+     [ ".abt_paren",".site-background"],
+      {
+        opacity: 1,
+        delay: 1,
+        ease: "power2.out"
+      }
+    );
+    gsap.to(
+      ".hero_paren",
+      {
+        backgroundColor: "transparent",
+        delay: 2,
+      }
+    );
 
     const split = SplitText.create(".mob_split_hero_title", {
       type: "words",
@@ -64,6 +79,21 @@ const Hero = () => {
       {
         opacity: 1,
         ease: "power2.out"
+      }
+    );
+    gsap.to(
+      [".abt_paren",".site-background"],
+      {
+        opacity: 1,
+        delay: 1,
+        ease: "power2.out"
+      }
+    );
+    gsap.to(
+      ".hero_paren",
+      {
+        backgroundColor: "transparent",
+        delay: 2,
       }
     );
 
@@ -136,19 +166,18 @@ const Hero = () => {
 
 
   return (
-    <div className=" hero_paren w-full relative min-h-screen">
-
+    <div className=" hero_paren bg-[#002bba] w-full relative min-h-screen">
       {isDesktop && (
-        <div className="site-background site-background-desktop hidden lg:block fixed bg_blue top-0 left-0   w-full h-screen z-[-1]">
+        <div className="site-background opacity-0 site-background-desktop hidden lg:block fixed bg_blue top-0 left-0   w-full h-screen z-[1]">
           <HeroScene />
         </div>
       )}
       {isMobile && (
-        <div className="site-background site-background-mobile lg:hidden fixed bg_blue top-0 left-0   w-full h-screen z-[-1] bg_blue "></div>
+        <div className="site-background opacity-0 site-background-mobile lg:hidden fixed bg_blue top-0 left-0   w-full h-screen z-[1] bg_blue "></div>
       )}
 
       {isDesktop && (
-        <div className=" max-sm:hidden txt_slider_paren w-full h-[400vh]  ">
+        <div className=" max-sm:hidden txt_slider_paren relative z-10 w-full h-[400vh]  ">
           <div className="w-full h-screen top-0 sticky overflow-hidden">
             <div className=" z-[2] hero_scroll_txt w-full translate-x-[30vw] absolute top-[80%] -translate-y-1/2 text-white  md:whitespace-nowrap left-0  ">
               <p className=" split_hero_title opacity-0 text-8xl md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
@@ -158,13 +187,13 @@ const Hero = () => {
       )}
 
       {isMobile && (
-        <div className=" hero_mob_txt  w-full overflow-hidden  md:hidden! pt-[calc(100svh-22vw)]! padding pb-[33vh]! text-white  ">
+        <div className=" hero_mob_txt  w-full relative z-10 overflow-hidden  md:hidden! pt-[calc(100svh-22vw)]! padding pb-[33vh]! text-white  ">
           <p className=" mob_split_hero_title opacity-0  text-[15.5vw] leading-[15vw]   md:text-[12vw] font-bold origin-bottom-left ">We design and build thoughtful digital experiences that go beyond visuals.</p>
         </div>
       )}
 
 
-      <div className="w-full   padding text-white ">
+      <div className=" abt_paren relative z-10 opacity-0 w-full   padding text-white ">
         <div className="w-full  space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
           <div className="">
             <p className='capitalize primary-font  text-5xl md:text-6xl    leading-none'>about us</p>

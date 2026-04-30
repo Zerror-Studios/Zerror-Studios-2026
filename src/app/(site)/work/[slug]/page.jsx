@@ -55,7 +55,7 @@ const WorkDetail = () => {
           <img src={project.cover_img} className='cover blur-[2px]' alt="loading img" />
         )}
         <div className="absolute bottom-14 bg-white/60 p-10 space-y-5 backdrop-blur-2xl text-center flex flex-col justify-center items-center rounded-sm">
-          <h1 className='  text-5xl leading-none uppercase primary-font text_blue'>This Page is under development</h1>
+          <h1 className='  text-3xl md:text-5xl leading-none uppercase primary-font text_blue'>This Page is under development</h1>
           <Button title="View Live Site" link={project.liveLink} />
         </div>
 
