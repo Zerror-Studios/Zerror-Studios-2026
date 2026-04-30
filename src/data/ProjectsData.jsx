@@ -46,7 +46,7 @@ export const caseStudies = [
         slug: "bros-moving",
         liveLink: "https://bros-moving.vercel.app/",
         category: "Logistic Transport",
-        cover_img: "/images/projects/brosmoving/cover_img.png",
+        cover_img: "/images/projects/brosMoving/cover_img.png",
     },
         {
         id: 10,
