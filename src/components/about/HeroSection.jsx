@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import SplitText from "gsap/dist/SplitText";
 import useDevice from "../hooks/useDevice";
+import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HeroSection = () => {
@@ -74,22 +75,22 @@ const HeroSection = () => {
     <div className=" about_hero_paren  w-full   padding">
 
       <div className="w-full aboutTitle flex py-44 max-sm:pb-20  ">
-        <p className=" split_t text-5xl md:text-8xl leading-none capitalize primary-font text_blue">
+        <h1 className=" split_t text-5xl md:text-8xl  leading-none capitalize primary-font text_blue">
           We believe a great user experience is not just intuitive it’s
           entertaining. Because clarity is good, but delight is better.
-        </p>
+        </h1>
       </div>
 
       <div className="w-full flex flex-col md:flex-row">
         <div className=" w-full md:w-1/2  space-y-5 md:space-y-10">
-          <div className="md:w-[60%] ">
-            <p className=" split_t primary-font text_blue text-3xl">
+          <div className="md:w-[80%] ">
+            <h2 className=" split_t primary-font text_blue text-3xl">
               We make stuff look good. We make it work better. Creative.
               Scalable. Reliable. Fresh. Tech-first. Entertaining.
-            </p>
+            </h2>
           </div>
 
-          <div className="w-full ImgEffectContL  aspect-5/6  overflow-hidden relative">
+          <div className="w-full ImgEffectContL relative  aspect-5/6  overflow-hidden relative">
 
             {isDesktop && (
               <div
@@ -105,7 +106,7 @@ const HeroSection = () => {
               </div>
             )}
 
-            <img src={'/images/about/AboutMainBg.webp'} alt="l-Img" className="cover" />
+            <Image fill src={'/images/about/img_2.avif'} alt="l-Img" className="cover" />
 
           </div>
 
@@ -116,9 +117,9 @@ const HeroSection = () => {
           {/* cont*/}
           <div className=" w-full md:w-1/2 flex flex-col gap-3">
             {/* Text */}
-            <p className=" split_t uppercase text-lg  font-semibold">
+            <h3 className=" split_t  uppercase text-xl font-medium">
               Why we exist
-            </p>
+            </h3>
             <div className="w-full flex flex-col gap-3">
               <p className=" split_t leading-tight">
                 We’re here to help you stand out—even in a crowded digital
@@ -149,7 +150,7 @@ const HeroSection = () => {
                   ))}
                 </div>
               )}
-              <img src={'/images/about/AboutMainBg.webp'} alt="l-Img" className="cover" />
+            <Image fill src={'/images/about/img_1.avif'} alt="l-Img" className="cover" />
             </div>
           </div>
         </div>

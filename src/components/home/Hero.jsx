@@ -1,6 +1,5 @@
 "use client";
-import { Canvas } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import HeroScene from "@/components/Scene/HeroScene.jsx";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -24,7 +23,7 @@ const Hero = () => {
       }
     );
     gsap.to(
-     [ ".abt_paren",".site-background"],
+      [".abt_paren", ".site-background"],
       {
         opacity: 1,
         delay: 1,
@@ -67,7 +66,7 @@ const Hero = () => {
         // markers: true,
       },
     });
-  }, [isMobile, isDesktop]);
+  }, [isMobile]);
 
 
   useGSAP(() => {
@@ -82,7 +81,7 @@ const Hero = () => {
       }
     );
     gsap.to(
-      [".abt_paren",".site-background"],
+      [".abt_paren", ".site-background"],
       {
         opacity: 1,
         delay: 1,
@@ -162,7 +161,7 @@ const Hero = () => {
       },
       display: "none"
     })
-  }, [isMobile, isDesktop]);
+  }, [isDesktop]);
 
 
   return (
@@ -196,7 +195,7 @@ const Hero = () => {
       <div className=" abt_paren relative z-10 opacity-0 w-full   padding text-white ">
         <div className="w-full  space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
           <div className="">
-            <p className='capitalize primary-font  text-5xl md:text-6xl    leading-none'>about us</p>
+            <h2 className='capitalize primary-font  text-5xl  leading-none'>about us</h2>
           </div>
           {isDesktop && (
             <div className=" max-sm:hidden text-xs pt-4">
@@ -204,11 +203,11 @@ const Hero = () => {
               <p className='font-thin'>We Are?</p>
             </div>
           )}
-          <div className="capitalize    text-4xl  pl-2">
-            <p className=" max-sm:hidden   "> <span className='opacity-0 pointer-events-none'>...............</span>  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</p>
+          <div className="capitalize    text-3xl  pl-2">
+            <h3 className=" max-sm:hidden secondary-font"> <span className='opacity-0 pointer-events-none'>...............</span>  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</h3>
           </div>
-          <div className="capitalize    text-2xl">
-            <p className=" md:hidden  ">  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</p>
+          <div className="capitalize    text-3xl">
+            <h3 className=" md:hidden secondary-font">  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</h3>
           </div>
         </div>
       </div>

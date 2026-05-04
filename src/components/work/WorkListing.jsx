@@ -10,7 +10,6 @@ import Image from "next/image";
 import { Vertex, Fragment } from "@/shaders/plpShaders/PLPShaderGLSL";
 import { useTransitionRouter } from "next-view-transitions";
 import { caseStudies } from "@/data/ProjectsData";
-
 gsap.registerPlugin(useGSAP);
 
 const CAMERA_DISTANCE = 600;
@@ -375,7 +374,7 @@ const WorkListing = () => {
           {caseStudies.map((item, index) => (
             <div
               key={index}
-              className="thumbItem scale-0 opacity-0 relative w-[7vw] md:w-[2.5vw] aspect-[3/4] overflow-hidden cursor-pointer"
+              className="thumbItem scale-0 opacity-0 relative w-[6vw] md:w-[2.5vw] aspect-[3/4] overflow-hidden cursor-pointer"
               onClick={() => snapRef.current?.(index)}
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget.querySelector("img"), {
@@ -415,27 +414,27 @@ const WorkListing = () => {
       <div className="w-full max-sm:py-24! pointer-events-none absolute text_blue h-[100svh] padding inset-0 flex flex-col-reverse md:flex-row md:items-center justify-between">
 
         {/* Project info — top right */}
-        <div className=" uppercase">
-          <h2 className="opacity-0 proj-title  text-xl  md:text-3xl font-medium leading-none">
+        <div className=" uppercase space-y-1 pointer-events-auto">
+          <h2 className="opacity-0 proj-title primary-font text-2xl  md:text-3xl font-medium leading-none">
             {caseStudies[0].title}
           </h2>
-          <h3 className="opacity-0 proj-category  text-xs  md:text-xl font-medium leading-none">
+          <h3 className="opacity-0 proj-category secondary-font capitalize   font-medium leading-none">
             {caseStudies[0].category}
           </h3>
-          <h3 className="opacity-0 proj-year  text-xs  md:text-xl font-medium leading-none">
+          <h3 className="opacity-0 proj-year secondary-font   font-medium leading-none">
             {caseStudies[0].year}
           </h3>
         </div>
 
         {/* Index — bottom left */}
         <div className=" current_id_paren opacity-0 flex text-end items-end">
-          <p className="proj-index  text-3xl  md:text-5xl font-medium leading-none">
+          <h2 className="proj-index primary-font  text-3xl   md:text-5xl  leading-none">
             {padIndex(1)}
-          </p>
-          <p className=" text-3xl  md:text-5xl font-medium leading-none">
+          </h2>
+          <h2 className=" text-3xl primary-font  md:text-5xl  leading-none">
             {`/`}
-          </p>
-          <p className=" text-xl  md:text-3xl font-medium leading-none">{caseStudies.length}</p>
+          </h2>
+          <h3 className=" primary-font text-xl  md:text-3xl  mb-0.5 md:mb-1 leading-none">{caseStudies.length}</h3>
         </div>
 
       </div>

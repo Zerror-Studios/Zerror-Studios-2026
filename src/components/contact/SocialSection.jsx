@@ -32,9 +32,9 @@ const SocialSection = ({ formData, setFormData }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-10 flex flex-col">
-        <p className=" text-2xl  md:text-4xl">
+        <h3 className=" secondary-font   text-3xl">
           How did you hear about us?
-        </p>
+        </h3>
 
         {/* Next */}
         <div className="grid grid-cols-2 gap-4  w-full">

@@ -1,9 +1,8 @@
 "use client"
-import { motion, useMotionValue, useSpring } from "framer-motion";
 import gsap from "gsap";
 import CustomEase from "gsap/dist/CustomEase";
 import { Link } from "next-view-transitions";
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Button from "../common/Button";
 import { caseStudies } from "@/data/ProjectsData";
 import useDevice from "../hooks/useDevice";
@@ -69,7 +68,6 @@ const OurWork = () => {
         return () => observer.disconnect();
     }, []);
 
-
     const handleMouseEnter = (index) => {
         if (isMobile) return;
         activeIndex.current = index;
@@ -98,7 +96,6 @@ const OurWork = () => {
         });
     };
 
-
     const handleMouseMove = (e, index) => {
         if (isMobile) return;
         mousePos.current.x = e.clientX;
@@ -106,7 +103,6 @@ const OurWork = () => {
 
         updatePosition(index);
     };
-
 
     const updatePosition = (index) => {
         const card = cardRefs.current[index];
@@ -199,10 +195,10 @@ const OurWork = () => {
 
                         <div className="w-full text_blue">
                             <div className="flex  justify-between">
-                                <p className="text-xl font-semibold  uppercase">{item.title}</p>
-                                <p className="text-xl font-semibold  uppercase">{item.year}</p>
+                                <h4 className="text-xl  primary-font  uppercase">{item.title}</h4>
+                                <h4 className="text-xl primary-font  uppercase">{item.year}</h4>
                             </div>
-                            <p className="  text-sm">{item.category}</p>
+                            <p className="leading-none">{item.category}</p>
                         </div>
                     </Link>
                 ))}

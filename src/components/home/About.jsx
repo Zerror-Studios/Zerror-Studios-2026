@@ -220,22 +220,22 @@ const About = () => {
                 <div className="sticky top-0 center w-full h-screen overflow-hidden">
                     <div className="circ_1 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className=' abt_spt_1 text-[5vw] md:text-3xl uppercase font-semibold '>Creativity</p>
+                            <h3 className=' abt_spt_1 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Creativity</h3>
                         </div>
                     </div>
                     <div className="circ_2 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className='abt_spt_2 text-[5vw] md:text-3xl uppercase font-semibold '>Efficiency</p>
+                            <h3 className='abt_spt_2 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Efficiency</h3>
                         </div>
                     </div>
                     <div className="circ_3 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className='abt_spt_3 text-[5vw] md:text-3xl uppercase font-semibold '>Entertainment</p>
+                            <h3 className='abt_spt_3 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Entertainment</h3>
                         </div>
                     </div>
                     <div className="circ_4 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <p className='abt_spt_4 text-[5vw] md:text-3xl uppercase font-semibold '>Empathy</p>
+                            <h3 className='abt_spt_4 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Empathy</h3>
                         </div>
                     </div>
 
@@ -292,17 +292,17 @@ const About = () => {
                     <div className=" works_paren_header center fixed overflow-hidden z-10  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 bg-white">
                         <div className="w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                             <div className="">
-                                <p className=' wrk_split_wrd  primary-font  text-5xl md:text-6xl    leading-none'>Selected  <br />Works</p>
+                                <h2 className=' wrk_split_wrd  primary-font   text-5xl  leading-none'>Selected  <br />Works</h2>
                             </div>
                             <div className="text-xs max-sm:hidden pt-4">
                                 <p className='wrk_split_wrd font-thin '>Thoughtful Design.</p>
                                 <p className='wrk_split_wrd font-thin '>Strong Technology.</p>
                             </div>
-                            <div className=" max-sm:hidden text-4xl pl-2">
-                                <p className=" wrk_split_wrd   "> <span className='opacity-0 pointer-events-none'>..............</span> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</p>
+                            <div className=" max-sm:hidden text-3xl pl-2">
+                                <h3 className=" wrk_split_wrd secondary-font"> <span className='opacity-0 pointer-events-none'>..............</span> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</h3>
                             </div>
-                            <div className=" md:hidden text-2xl ">
-                                <p className=" wrk_split_wrd"> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</p>
+                            <div className=" md:hidden text-3xl ">
+                                <h3 className=" wrk_split_wrd secondary-font"> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</h3>
                             </div>
                         </div>
                     </div>

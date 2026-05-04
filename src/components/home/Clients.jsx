@@ -1,8 +1,8 @@
 "use client"
-import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import React, { useEffect, useRef } from 'react'
+import Image  from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -187,14 +187,14 @@ const Clients = () => {
 
             <div className=" relative z-10 md:hidden w-screen space-y-16 mb-10  padding text-white ">
                 <div className="">
-                    <p className=' split_wrd text-5xl md:text-6xl   primary-font leading-none'>Our <br /> Clients</p>
+                    <h2 className=' split_wrd text-5xl   primary-font leading-none'>Our <br /> Clients</h2>
                 </div>
                 <div className="text-xs max-sm:hidden ">
                     <p className='split_wrd font-thin'>Brands we’ve </p>
                     <p className='split_wrd font-thin'>worked with.</p>
                 </div>
-                <div className="text-2xl">
-                    <p className=" split_wrd "> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful. From strategy to launch, we focus on thoughtful design, clean code, and meaningful user experiences.</p>
+                <div className="text-3xl secondary-font">
+                    <h3 className=" split_wrd "> We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.</h3>
                 </div>
             </div>
 
@@ -212,17 +212,11 @@ const Clients = () => {
                                     />
                                 ))}
                             </div>
-                            <div className="w-full h-full center">
-                                <img className='client-icon w-[90%] absolute z-[1]' src={item.icon} alt="loading img" />
-                                {/* <img
-                                    className="client-img absolute w-full h-full object-cover opacity-0 "
-                                    src="https://www.zerrorstudios.com/projects/Manifest/manifest_cover.webp"
-                                    alt="loading" title="Disrptive"
-                                /> */}
+                            <div className="w-full h-full relative center">
+                                <Image fill className='client-icon absolute z-[1]' src={item.icon} alt="loading img" />
                             </div>
-                            <div className="w-full  uppercase text-xs md:text-sm absolute z-[4] bottom-0 flex justify-between p-2 md:p-3">
-                                <p>{item.title}</p>
-                                {/* <p>2025</p> */}
+                            <div className="w-full  uppercase  absolute z-[4] bottom-0 flex justify-between p-2 text-xs">
+                                <h5 className='secondary-font leading-none'>{item.title}</h5>
                             </div>
                         </div>
                     )

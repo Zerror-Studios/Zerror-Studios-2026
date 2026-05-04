@@ -1,4 +1,3 @@
-// "use client";
 import React from "react";
 import DiceCanvas from "@/components/about/DiceCanvas";
 import HeroSection from "@/components/about/HeroSection";
@@ -8,7 +7,6 @@ import OurTeam from "@/components/about/OurTeam";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import WebPageSchema from "@/components/seo/WebPageSchema";
 gsap.registerPlugin(ScrollTrigger);
 

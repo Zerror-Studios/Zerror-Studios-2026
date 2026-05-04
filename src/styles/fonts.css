@@ -1,92 +1,112 @@
 /* rock grotesk */
 @font-face {
   font-family: grotesk-thin;
+  font-display: swap;
   src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Thin.woff2);
 }
 @font-face {
   font-family: grotesk-light;
+  font-display: swap;
   src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Light.woff2);
 }
 @font-face {
   font-family: grotesk-regular;
+  font-display: swap;
   src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Regular.woff2);
 }
 @font-face {
   font-family: grotesk-medium;
+  font-display: swap;
   src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Medium.woff2);
 }
 @font-face {
   font-family: grotesk-bold;
+  font-display: swap;
   src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Bold.woff2);
 }
 
 /* Alt Riviera */
 @font-face {
   font-family: riviera-extralight;
+  font-display: swap;
   src: url(../../public/fonts/alt_riviera/ALTRiviera-Extralight.otf);
 }
 @font-face {
   font-family: riviera-light;
+  font-display: swap;
   src: url(../../public/fonts/alt_riviera/ALTRiviera-Light.otf);
 }
 @font-face {
   font-family: riviera-regular;
+  font-display: swap;
   src: url(../../public/fonts/alt_riviera/ALTRiviera-Regular.otf);
 }
 @font-face {
   font-family: riviera-medium;
+  font-display: swap;
   src: url(../../public/fonts/alt_riviera/ALTRiviera-Medium.otf);
 }
 @font-face {
   font-family: riviera-bold;
+  font-display: swap;
   src: url(../../public/fonts/alt_riviera/ALTRiviera-Bold.otf);
 }
 @font-face {
   font-family: riviera-extrabold;
+  font-display: swap;
   src: url(../../public/fonts/alt_riviera/ALTRiviera-Extrabold.otf);
 }
 
 /* helvetica Font */
 @font-face {
   font-family: helvetica-light;
+  font-display: swap;
   src: url(../../public/fonts/helvetica/HelveticaNeueLight.otf);
 }
 @font-face {
   font-family: helvetica-medium;
+  font-display: swap;
   src: url(../../public/fonts/helvetica/HelveticaNeueMedium.otf);
 }
 
 /* IBM Font */
 @font-face {
   font-family: ibm-regular;
+  font-display: swap;
   src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf);
 }
 @font-face {
   font-family: ibm-medium;
+  font-display: swap;
   src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf);
 }
 @font-face {
   font-family: ibm-semibold;
+  font-display: swap;
   src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf);
 }
 
 /* Spirit sharp */
 @font-face {
   font-family: spirit;
+  font-display: swap;
   src: url(../../public/fonts/spirits/fonnts.com-Spirits-Sharp-Light.otf);
 }
 
 /* PP Neu */
 @font-face {
   font-family: pp-semibold;
+  font-display: swap;
   src: url(../../public/fonts/pp_neu/67fcd4974b30a00d13095558_PPNeueMontreal-SemiBold.otf);
 }
 @font-face {
   font-family: pp-regular;
+  font-display: swap;
   src: url(../../public/fonts/pp_neu/67fcd4974b30a00d13095559_PPNeueMontreal-Regular.otf);
 }
 @font-face {
   font-family: pp-medium;
+  font-display: swap;
   src: url(../../public/fonts/pp_neu/67fcd4974b30a00d1309555a_PPNeueMontreal-Medium.otf);
 }
 
@@ -94,11 +114,13 @@
 
 @font-face {
   font-family: pfn-italic;
+  font-display: swap;
   src: url(../../public/fonts/perfectly_nineties/67fcd59c403eb3237ee8acf8_PerfectlyNineties-Italic.otf);
 }
 
 @font-face {
   font-family: pfn-regular;
+  font-display: swap;
   src: url(../../public/fonts/perfectly_nineties/67fcd59caa79d68d8f41d825_PerfectlyNineties-Regular.otf);
 }
 
@@ -113,22 +135,18 @@
 }
 
 .primary-font {
-  font-family: riviera-regular, sans-serif;
+  font-family: riviera-medium, sans-serif;
+}
+.secondary-font {
+  font-family: grotesk-regular, sans-serif;
 }
 .primary-font_italic {
   font-family: riviera-regular, sans-serif;
   font-style: italic;
 }
-.font-thin {
-  font-family: grotesk-light, sans-serif;
+.grotsek-thin {
+  font-family: grotesk-thin, sans-serif;
 }
-.font-medium {
-  font-family: grotesk-medium, sans-serif;
-}
-.font-semibold {
-  font-family: grotesk-medium, sans-serif;
-}
-
 a,
 p,
 span,

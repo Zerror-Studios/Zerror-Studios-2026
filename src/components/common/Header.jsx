@@ -153,12 +153,12 @@ const Header = () => {
 
   }, [openMenu])
 
-  useGSAP(()=>{
-      gsap.to(".header_paren",{
-        transform:"translateY(0)",
-        delay:1,
-        ease:"power2.inOut"
-      })
+  useGSAP(() => {
+    gsap.to(".header_paren", {
+      transform: "translateY(0)",
+      delay: 1,
+      ease: "power2.inOut"
+    })
   })
 
   return (
@@ -174,7 +174,7 @@ const Header = () => {
                 <div className="absolute block overflow-hidden w-20 ">
                   <Image width={50} height={20} className={`w-full ${openMenu ? "translate-y-0" : " translate-y-5 "}  transition-all duration-300 ease-out `} src="/logo.svg" alt="loading img" />
                 </div>
-                <p className={`uppercase text-sm leading-none translate-y-[1px] text-white ${openMenu ? "opacity-0" : ""} transition-all duration-300 ease-out `}>MENU</p>
+                <p className={`uppercase  leading-none translate-y-[3px] text-white ${openMenu ? "opacity-0" : ""} transition-all duration-300 ease-out `}>MENU</p>
               </div>
               <div className={`ros_paren flex flex-col transition-all duration-150 ease-out ${openMenu ? "gap-y-0" : " gap-y-1 group-hover:gap-y-2.5"} `}>
                 <div className={`w-7 bar_1   h-px   transition-all duration-150 ease-out ${openMenu ? "rotate-[40deg] translate-y-[1px] bg_blue" : "bg-white"} `}></div>
@@ -194,12 +194,14 @@ const Header = () => {
                       }} key={menu.id} className={`w-full relative  text_blue  capitalize  border-b border-black/10 py-4 flex flex-col md:flex-row  justify-between ${pathname === menu.href ? "" : "group"} `}>
                       {pathname === menu.href && <div className="w-full h-full  absolute  bg-[#00000010] top-0 left-0 z-[9]"></div>}
                       <div className="flex px-6 gap-x-3">
-                        <div
-                          className=" menu_img_paren opacity-0 aspect-[4.25/3] group-hover:aspect-[5/3] transition-all duration-300 ease-out overflow-hidden rounded-xs h-[4.5rem] ">
-                          <Image width={100} height={75} src={menu.img} alt="loading img" className={` menu_img  cover scale-[1.5] ${pathname === menu.href ? "grayscale-100" : ""} `} />
-                        </div>
-                        <div className="w-fit h-fit block overflow-hidden translate-y-[1.55rem]">
-                          <p className={`menu_title_a font-medium text-lg  translate-y-[115%] leading-none ${pathname === menu.href ? "opacity-[.4]" : ""} `}>{menu.title}</p>
+                        <div className="flex h-fit  items-center gap-x-2">
+                          <div
+                            className=" menu_img_paren  relative opacity-0 aspect-[4.25/3] group-hover:aspect-[5/3] transition-all duration-300 ease-out overflow-hidden rounded-xs h-[4.5rem] ">
+                            <Image fill src={menu.img} alt="loading img" className={` menu_img  cover scale-[1.5] ${pathname === menu.href ? "grayscale-100" : ""} `} />
+                          </div>
+                          <div className="w-fit h-fit block overflow-hidden ">
+                            <p className={`menu_title_a  secondary-font  translate-y-[115%] leading-none ${pathname === menu.href ? "opacity-[.4]" : ""} `}>{menu.title}</p>
+                          </div>
                         </div>
                       </div>
                       {menu.sublinks && (
@@ -208,7 +210,7 @@ const Header = () => {
                           {
                             menu.sublinks?.map((sublink, i) => (
                               <div key={i} className="  sublinks_title_paren translate-y-4 w-full opacity-0 text-sm space-y-2 hover:pl-2 transition-all duration-150">
-                                <p className=' leading-none font-semibold'>0{i + 1}/</p>
+                                <p className=' leading-none font-bold'>0{i + 1}/</p>
                                 <p className=' leading-4 w-[95%]'>{sublink}</p>
                               </div>
                             ))

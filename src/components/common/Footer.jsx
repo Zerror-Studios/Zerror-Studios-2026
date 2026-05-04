@@ -176,6 +176,7 @@ const Footer = () => {
 
   return (
     <div className=" noise-bg w-full md:h-screen bg_blue  padding relative z-100">
+      
       <div className=" relative z-10 w-full hidden md:block  md:h-full p-3">
         {footerRows.map((row) => (
           <div key={row.id} className="w-full h-[50vh] md:h-1/3 grid grid-cols-3 md:grid-cols-9">
@@ -221,7 +222,8 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <div className=" relative z-10 h-full w-full md:hidden relative text-white uppercase">
+
+      <div className=" relative z-10 h-full w-full md:hidden text-white uppercase">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img className="scale-150" src="/logo_white.svg" alt="logo" /></div>
 

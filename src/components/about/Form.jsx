@@ -66,7 +66,7 @@ const Form = ({ closeForm }) => {
 
         <div className="w-full space-y-5 mb-10 md:mb-0 md:space-y-0 md:h-full flex flex-col justify-between ">
           <div className="">
-            <p className=' capitalize primary-font text-4xl md:text-5xl md:text-6xl   leading-none'>  Become a <br /> Zerrorian </p>
+            <h2 className=' capitalize primary-font text-3xl md:text-5xl   leading-none'>  Become a <br /> Zerrorian </h2>
           </div>
           <div className="w-full">
             <p className="text-[#f5f5f59d] select-none  font-thin cursor-pointer">
@@ -81,7 +81,7 @@ const Form = ({ closeForm }) => {
         </div>
 
         <form className="w-full   flex flex-col space-y-5  md:space-y-0  justify-between   text-white " onSubmit={handleSubmit}>
-          <div className=" w-full flex flex-col gap-y-10">
+          <div className=" w-full flex flex-col max-sm:mb-10 gap-y-10">
 
             <div className="grid grid-cols-2 gap-x-5 md:gap-x-10">
               <Input name="firstName" label="First Name *" onChange={handleChange} />

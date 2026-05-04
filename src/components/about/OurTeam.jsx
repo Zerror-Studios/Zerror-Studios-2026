@@ -21,7 +21,7 @@ const teamMembers = [
   {
     id: 2,
     name: "Anand Vishwakarma",
-    role: "CTO /Sr. Full Stack Developer",
+    role: "CTO / Sr. Full Stack Developer",
     img: "/images/outTeam/2.png",
   },
   {
@@ -54,30 +54,6 @@ const teamMembers = [
     role: "UI/UX Designer",
     img: "/images/outTeam/3.png",
   },
-  // {
-  //   id: 8,
-  //   name: "ARTUR SHARF",
-  //   role: "Co-Founder And Lead Architect",
-  //   img: "/images/outTeam/4.png",
-  // },
-  // {
-  //   id: 9,
-  //   name: "ARTUR SHARF",
-  //   role: "Co-Founder And Lead Architect",
-  //   img: "/images/outTeam/2.png",
-  // },
-  // {
-  //   id: 10,
-  //   name: "ARTUR SHARF",
-  //   role: "Co-Founder And Lead Architect",
-  //   img: "/images/outTeam/3.png",
-  // },
-  // {
-  //   id: 11,
-  //   name: "ARTUR SHARF",
-  //   role: "Co-Founder And Lead Architect",
-  //   img: "/images/outTeam/3.png",
-  // },
 ];
 
 const OurTeam = () => {
@@ -314,7 +290,7 @@ const OurTeam = () => {
     <div className="w-full relative">
       <div className=" form_blur_overlay opacity-0 fixed top-0 left-0 z-[9999] backdrop-blur-xs pointer-events-none w-full h-screen"></div>
       <div className="w-full px-4 md:px-10 pb-10 md:pb-42">
-        <div className="grid gap-x-4 gap-y-10  md:gap-20 grid-cols-2  md:grid-cols-4">
+        <div className="grid gap-x-2  gap-y-6 md:gap-x-4 md:gap-y-10  md:gap-20 grid-cols-2  md:grid-cols-4">
 
           {teamMembers.map((member, index) => (
             <div
@@ -351,10 +327,10 @@ const OurTeam = () => {
 
               {/* Text */}
               <div>
-                <p className="text-xl font-semibold mt-2 uppercase text_blue">
+                <h4 className="text-xl leading-none primary-font mt-3 uppercase text_blue">
                   {member.name}
-                </p>
-                <p className="text_blue text-sm">{member.role}</p>
+                </h4>
+                <p className="text_blue leading-none mt-1">{member.role}</p>
               </div>
             </div>
           ))}
@@ -372,9 +348,9 @@ const OurTeam = () => {
               <Form closeForm={closeForm} />
 
               <div className="dummy_txt absolute pointer-events-none bottom-4 md:bottom-8 left-4 md:left-8 space-y-5 w-[80%]">
-                <p className="primary-font leading-none text-4xl md:text-6xl">
+                <h2 className="primary-font leading-none text-3xl md:text-5xl">
                   Become A <br /> Zerrorian
-                </p>
+                </h2>
                 <p className="leading-tight font-thin">
                   Join us in creating great work share your resume.
                 </p>

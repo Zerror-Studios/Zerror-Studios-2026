@@ -95,15 +95,15 @@ const ImageEffect = () => {
         {/* Cont */}
         <div className="w-full h-screen sticky top-0 left-0 flex text-center flex-col justify-center items-center text_blue scene">
 
-          <p className=" uppercase font-medium">
+          <p className=" uppercase  font-medium">
             WHY US?
           </p>
-          <p className="  text-5xl md:text-6xl  leading-none font-medium">
+          <h2 className="  text-5xl  primary-font  leading-none font-medium">
             5 Reasons
-          </p>
-          <p className="  text-5xl md:text-6xl  leading-none font-medium">
+          </h2>
+          <h2 className="  text-5xl primary-font  leading-none font-medium">
             To Be With Zerror
-          </p>
+          </h2>
 
           {/* Video & Img  */}
           <div className=" absolute w-[300px] h-[400px] top-[150%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-700 cardVI center overflow-hidden ">
@@ -134,7 +134,7 @@ const ImageEffect = () => {
                 <div className="w-full h-fit absolute top-[20%] md:top-[42%] left-[1rem] md:left-[2.5rem] ">
                   <div className="w-full h-fit text-start! font-semibold relative text-white">
 
-                    <div className="OT w-full relative text-5xl md:text-6xl capitalize">
+                    <div className="OT w-full relative text-5xl capitalize">
                       {[
                         "5+ years of hands-on product and digital execution",
                         "Trusted by 50+ clients across industries",
@@ -146,7 +146,7 @@ const ImageEffect = () => {
                           key={i}
                           className="ot-wrapper absolute top-0 left-0 w-full md:w-1/2"
                         >
-                          <p className="ot-text">{text}</p>
+                          <h2 className="ot-text primary-font font-medium">{text}</h2>
                         </div>
                       ))}
                     </div>

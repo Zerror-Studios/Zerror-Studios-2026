@@ -109,13 +109,13 @@ const Services = () => {
 
   return (
     <>
-      <div className="w-full relative py-24 px-5 md:p-0 md:h-screen center text-center">
-        <p className=" max-sm:text-[#002bba] text-5xl md:text-8xl pb-5 leading-none primary-font md:w-[70%] md:bg-clip-text md:text-transparent md:bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
+      <div className="w-full relative py-24 px-5 md:p-0 md:h-screen z-10 bg-white center text-center">
+        <h1 className="max-sm:text-[#002bba] text-5xl md:text-8xl  pb-5 leading-none primary-font md:w-[70%] md:bg-clip-text md:text-transparent md:bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
           To build zero-error digital products where design and technology move as one.
-        </p>
+        </h1>
       </div>
 
-      <div className=" services_paren overflow-hidden w-full md:h-screen relative  grid grid-cols-1  md:grid-cols-2 gap-x-24 ">
+      <div className=" services_paren overflow-hidden bg-white w-full md:h-screen relative  z-10 grid grid-cols-1  md:grid-cols-2 gap-x-24 ">
 
         <div className=" hidden md:flex h-full flex-col items-center gap-y-12 justify-between absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="w-px bg-[#D3D3D3] h-full"></div>
@@ -133,9 +133,9 @@ const Services = () => {
               className={`service-item  w-full group center flex-col gap-y-5  text-center h-full  max-sm:border-t max-sm:border-[#D3D3D3] max-sm:py-8 ${i === 0 || i === 1 ? "" : "md:border-t border-[#D3D3D3]"
                 }`}
             >
-              <p className="text-3xl uppercase font-bold w-[80%] md:w-[40%]  text_blue leading-none transition-all duration-300">
+              <h3 className="text-3xl primary-font uppercase  w-[80%] md:w-[40%]  text_blue leading-none transition-all duration-300">
                 {item.title}
-              </p>
+              </h3>
 
               {isDesktop && (
                 <p className="max-sm:hidden  text_blue leading-tight">
@@ -156,39 +156,40 @@ const Services = () => {
                   ))}
                 </p>
               )}
+              {isMobile && (
+                <p className=" md:hidden w-[80%] md:w-1/2 text_blue leading-tight">
+                  {item.services.map((service, i) => (
+                    <span key={i} className="inline-block">
+                      {service}
 
-              <p className=" md:hidden w-[80%] md:w-1/2 text_blue leading-tight">
-                {item.services.map((service, i) => (
-                  <span key={i} className="inline-block">
-                    {service}
-
-                    {i !== item.services.length - 1 && (
-                      <span className="inline-block mx-1">
-                        {"/"}
-                      </span>
-                    )}
-                  </span>
-                ))}
-              </p>
+                      {i !== item.services.length - 1 && (
+                        <span className="inline-block mx-1">
+                          {"/"}
+                        </span>
+                      )}
+                    </span>
+                  ))}
+                </p>
+              )}
 
             </div>
           );
         })}
-      
+
         <div className=" noise-bg max-sm:hidden! expand_circ overflow-hidden size-3.5 z-10 center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shrink-0 bg_blue rounded-full ">
           <div className="w-screen relative z-10  padding text-white grid grid-cols-[28%_30%_42%]">
             <div className="">
-              <p className=' split_wrd text-5xl md:text-6xl   primary-font leading-none'>Our <br /> Clients</p>
+              <h2 className=' split_wrd primary-font   text-5xl  leading-none'>Our <br /> Clients</h2>
             </div>
             <div className="text-xs pt-4">
               <p className='split_wrd font-thin'>Brands we’ve </p>
               <p className='split_wrd font-thin'>worked with.</p>
             </div>
-            <div className="text-4xl  pl-2">
-              <p className="split_wrd">
+            <div className="text-3xl  pl-2">
+              <h3 className="split_wrd secondary-font">
                 <span className='opacity-0 pointer-events-none'>...........................</span>
                 We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.
-              </p>
+              </h3>
             </div>
           </div>
         </div>

@@ -219,14 +219,14 @@ const Our_Services = () => {
       <div className="absolute padding  w-full h-screen left-0 top-0">
         <div className="w-full h-screen pt-[2.5rem] md:pt-0 space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
           <div className="  md:w-1/2">
-            <p className=" md:w-[70%] text-4xl md:text-6xl text_blue primary-font">
+            <h2 className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
               {servicesContent[0].title}
-            </p>
+            </h2>
           </div>
           <div className=" space-y-5 md:space-y-10 ">
-            <p className=" text-lg leading-tight md:text-3xl  text_blue">
+            <h3 className="text-3xl secondary-font  text_blue">
               {servicesContent[0].description}
-            </p>
+            </h3>
 
             {/* <Button title="View More" /> */}
 
@@ -243,15 +243,15 @@ const Our_Services = () => {
             <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
               {/* Left */}
               <div className="  md:w-1/2">
-                <p className=" md:w-[70%] text-4xl md:text-6xl text_blue primary-font">
+                <h2 className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
                   {item.title}
-                </p>
+                </h2>
               </div>
               {/* Right */}
               <div className=" space-y-5 md:space-y-10 ">
-                <p className=" text-lg leading-tight md:text-3xl  text_blue">
+                <h3 className=" text-3xl secondary-font  text_blue">
                   {item.description}
-                </p>
+                </h3>
 
                 {/* <Button title="View More" /> */}
 

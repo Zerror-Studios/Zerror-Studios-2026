@@ -94,10 +94,10 @@ const ContactHome = () => {
             <div className=" noise-bg bg_blue relative w-full h-[100svh] flex flex-col md:flex-row overflow-hidden">
                 {/* Left */}
                 <div className=" max-sm:hidden w-full md:w-1/2 h-[100svh] relative z-10">
-                    <p className=" split_t absolute bottom-[4%] left-[4%] flex flex-col primary-font text-5xl md:text-8xl text-white">
+                    <h1 className=" split_t absolute bottom-[4%] left-[4%] flex flex-col primary-font text-5xl md:text-8xl text-white">
                         Let’s <br />
                         Talk
-                    </p>
+                    </h1>
                 </div>
 
                 {/* Right */}
@@ -129,7 +129,10 @@ const ContactHome = () => {
                                 className={`bg-white ${Num == 1 && "hidden"
                                     }  text_blue px-8 py-3 rounded-lg font-medium hover:bg-[#002bba] hover:text-white! hover:border-white border transition-colors `}
                             >
+                                                            <p className="translate-y-0.5 uppercase">
                                 Prev
+                                </p>
+                                    
                             </button>
 
                             <button
@@ -148,7 +151,9 @@ const ContactHome = () => {
                                     }
                                 }}
                             >
+                                <p className="translate-y-0.5 uppercase">
                                 {Num === 3 ? "Submit" : "Next"}
+                                </p>
                             </button>
                         </div>
                     </div>
