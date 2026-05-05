@@ -11,25 +11,25 @@ const menuLinks = [
     id: 1,
     title: "Home",
     href: "/",
-    img: "/images/menu/1.webp"
+    img: "/images/menu/home.png"
   },
   {
     id: 2,
     title: "about",
     href: "/about",
-    img: "/images/menu/2.webp"
+    img: "/images/menu/about.png"
   },
   {
     id: 3,
     title: "our work",
     href: "/work",
-    img: "/images/menu/3.webp"
+    img: "/images/menu/work.png"
   },
   {
     id: 4,
     title: "expertise",
     href: "/expertise",
-    img: "/images/menu/4.webp",
+    img: "/images/menu/expertise.png",
     sublinks: [
       "Website Development",
       "E-commerce Development",
@@ -41,7 +41,7 @@ const menuLinks = [
     id: 5,
     title: "contact",
     href: "/contact",
-    img: "/images/menu/5.webp"
+    img: "/images/menu/contact.png"
   },
 ]
 

@@ -15,8 +15,61 @@ gsap.registerPlugin(useGSAP);
 const CAMERA_DISTANCE = 600;
 const RADIUS = 300;
 
-function scrambleText(element, newText, duration = 0.8) {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&";
+function createScrambler(element) {
+  const chars = "▤▨▧▦▩";
+  let frame = 0;
+  let running = false;
+  let targetText = "";
+  let resolve = false;
+
+  const update = () => {
+    if (!running) return;
+
+    frame++;
+    const progress = resolve ? Math.min(frame / 20, 1) : 0;
+
+    element.textContent = targetText
+      .split("")
+      .map((char, i) => {
+        if (char === " ") return " ";
+        if (resolve && i < Math.floor(progress * targetText.length)) return char;
+        return chars[Math.floor(Math.random() * chars.length)];
+      })
+      .join("");
+
+    if (resolve && progress === 1) {
+      running = false;
+      element.textContent = targetText;
+      return;
+    }
+
+    requestAnimationFrame(update);
+  };
+
+  return {
+    start(text) {
+      targetText = text;
+      resolve = false;
+      frame = 0;
+      if (!running) {
+        running = true;
+        update();
+      }
+    },
+    stopAndResolve(text) {
+      targetText = text;
+      resolve = true;
+      frame = 0;
+      if (!running) {
+        running = true;
+        update();
+      }
+    },
+  };
+}
+
+function scrambleText(element, newText, duration = 0.2) {
+  const chars = "▤▨▧▦▩";
   const totalFrames = Math.round(duration * 60);
   let frame = 0;
 
@@ -59,6 +112,7 @@ function getThumbWidth() {
 }
 
 function Scene({ fov, meshRef, snapRef, onCardClick }) {
+  const scramblers = useRef({});
   const total = caseStudies.length;
   const textures = caseStudies.map((item) => useTexture(item.cover_img));
 
@@ -69,6 +123,8 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
   const snapTimer = useRef(null);
   const rawY = useRef(0);
   const currentIndex = useRef(0);
+
+  const isSnapping = useRef(false);
 
   const vFov = (fov * Math.PI) / 180;
   const viewHeight = 2 * Math.tan(vFov / 2) * CAMERA_DISTANCE;
@@ -87,6 +143,7 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
   );
 
   const snapTo = (index) => {
+    isSnapping.current = true;
     const clamped = Math.max(0, Math.min(total - 1, index));
     const distance = Math.abs(clamped - currentIndex.current);
     currentIndex.current = clamped;
@@ -96,13 +153,25 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
     const thumbWidth = getThumbWidth();
     const project = caseStudies[clamped];
 
-    scrollVelocity.current = Math.min(1.5 + distance * 0.8, 4);
+    scramblers.current.index.stopAndResolve(padIndex(clamped + 1));
+    scramblers.current.title.stopAndResolve(project.title);
+    scramblers.current.category.stopAndResolve(project.category);
+    scramblers.current.year.stopAndResolve(project.year);
 
+    // scrollVelocity.current = Math.min(1.5 + distance * 0.8, 4);
+    gsap.to(uScrollSpeed.current, {
+      value: 0,
+      duration: 0.4,
+      ease: "power2.out",
+    });
     gsap.to(meshRef.current.position, {
       y: getTargetY(clamped),
       duration: 0.75,
       ease: "power3.out",
       overwrite: true,
+      onComplete: () => {
+        isSnapping.current = false;
+      }
     });
 
     gsap.to(meshRef.current.rotation, {
@@ -119,19 +188,17 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
       overwrite: true,
     });
 
-    // ── Target each thumb img directly by DOM node, not CSS selector ──
     const allThumbs = document.querySelectorAll(".thumbItem img");
     allThumbs.forEach((img, i) => {
       gsap.to(img, {
         filter: i === clamped ? "grayscale(0) blur(0px)" : "grayscale(1) blur(1px)",
-        scale:1,
+        scale: 1,
         duration: 0.4,
         ease: "power2.out",
-        overwrite: true, // kills any conflicting mouseLeave tween
+        overwrite: true,
       });
     });
 
-    // Scramble text
     const indexEl = document.querySelector(".proj-index");
     const titleEl = document.querySelector(".proj-title");
     const categoryEl = document.querySelector(".proj-category");
@@ -145,7 +212,7 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
 
   useEffect(() => {
     snapRef.current = snapTo;
-    snapRef.activeIndex = 0; // initial
+    snapRef.activeIndex = 0;
   }, [total, gap, planeHeight]);
 
   useEffect(() => {
@@ -186,12 +253,14 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
   useEffect(() => {
     const onWheel = (e) => {
       if (!meshRef.current) return;
-
+      if (isSnapping.current) return;
+      const prevY = rawY.current;
       const delta = e.deltaY * 0.3;
       rawY.current = Math.max(
         getTargetY(0),
         Math.min(getTargetY(total - 1), rawY.current + delta)
       );
+      const didMove = Math.abs(rawY.current - prevY) > 0.5;
 
       gsap.to(meshRef.current.position, {
         y: rawY.current,
@@ -204,7 +273,15 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
       const floorIdx = Math.max(0, Math.min(total - 2, Math.floor(rawIndex)));
       const t = rawIndex - floorIdx;
       const rotY = getTargetRotY(floorIdx) + (getTargetRotY(floorIdx + 1) - getTargetRotY(floorIdx)) * t;
+      if (didMove && scramblers.current.title) {
+        const previewIndex = Math.round(rawY.current / gap);
+        const project = caseStudies[previewIndex];
 
+        scramblers.current.index.start(padIndex(previewIndex + 1));
+        scramblers.current.title.start(project.title);
+        scramblers.current.category.start(project.category);
+        scramblers.current.year.start(project.year);
+      }
       gsap.to(meshRef.current.rotation, {
         y: rotY,
         duration: 0.15,
@@ -243,6 +320,8 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
 
     const onTouchMove = (e) => {
       if (!meshRef.current) return;
+      if (isSnapping.current) return;
+      const prevY = rawY.current;
       const deltaY = (touchStartY - e.touches[0].clientY) * 1.2;
       touchStartY = e.touches[0].clientY;
 
@@ -262,7 +341,17 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
       const floorIdx = Math.max(0, Math.min(total - 2, Math.floor(rawIndex)));
       const t = rawIndex - floorIdx;
       const rotY = getTargetRotY(floorIdx) + (getTargetRotY(floorIdx + 1) - getTargetRotY(floorIdx)) * t;
+      const didMove = Math.abs(rawY.current - prevY) > 0.5;
 
+      if (didMove && scramblers.current.title) {
+        const previewIndex = Math.round(rawY.current / gap);
+        const project = caseStudies[previewIndex];
+
+        scramblers.current.index.start(padIndex(previewIndex + 1));
+        scramblers.current.title.start(project.title);
+        scramblers.current.category.start(project.category);
+        scramblers.current.year.start(project.year);
+      }
       gsap.to(meshRef.current.rotation, {
         y: rotY,
         duration: 0.1,
@@ -296,6 +385,11 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
   }, [total, gap, planeHeight]);
 
   useFrame(() => {
+    if (isSnapping.current) {
+      uScrollSpeed.current.value = 0;
+      return;
+    }
+
     uScrollSpeed.current.value += (scrollVelocity.current - uScrollSpeed.current.value) * 0.1;
     scrollVelocity.current *= 0.85;
   });
@@ -309,6 +403,15 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
     });
     tl.to(".OptionCont", { opacity: 0, onComplete: () => onCardClick(index) }, 0);
   };
+
+  useEffect(() => {
+    scramblers.current = {
+      index: createScrambler(document.querySelector(".proj-index")),
+      title: createScrambler(document.querySelector(".proj-title")),
+      category: createScrambler(document.querySelector(".proj-category")),
+      year: createScrambler(document.querySelector(".proj-year")),
+    };
+  }, []);
 
   return (
     <group ref={meshRef} rotation={[0, Math.PI * 1.5, 0]}>
@@ -379,7 +482,7 @@ const WorkListing = () => {
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget.querySelector("img"), {
                   filter: "grayscale(0) blur(0px)",
-                  scale:0.9,
+                  scale: 0.9,
                   duration: 0.3,
                   ease: "power2.out",
                   overwrite: "auto",
@@ -391,7 +494,7 @@ const WorkListing = () => {
                 if (index === activeIndex) return; // don't re-gray the active thumb
                 gsap.to(e.currentTarget.querySelector("img"), {
                   filter: "grayscale(1) blur(1px)",
-                  scale:1,
+                  scale: 1,
                   duration: 0.3,
                   ease: "power2.out",
                   overwrite: "auto",

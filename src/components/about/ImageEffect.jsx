@@ -106,26 +106,27 @@ const ImageEffect = () => {
           </h2>
 
           {/* Video & Img  */}
-          <div className=" absolute w-[300px] h-[400px] top-[150%] left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-700 cardVI center overflow-hidden ">
-            <div className="w-[100vw] h-[100vh]  relative ">
+          <div className=" absolute w-[300px] h-[400px] top-[150%] left-1/2 -translate-x-1/2 -translate-y-1/2  cardVI center overflow-hidden ">
+            <div className="w-full h-full relative ">
               {/* Img */}
-              <div className="w-[100vw] h-[100vh] absolute top-0 left-0 z-40  VCI ">
-                <img
-                  src={"/images/about/AboutMainBg.webp"}
+              <div className="w-full h-full absolute top-0 left-0 z-40  VCI ">
+                <Image
+                fill
+                  src={"/images/about/card_img.png"}
                   alt="IMGR"
-                  className="w-[100vw] h-[100vh] object-cover  whitespace-nowrap"
+                  className="cover"
                 />
               </div>
 
               {/* Video */}
-              <div className="w-[100%] h-[100%] absolute center top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 z-20  VCV ">
+              <div className="w-screen h-screen absolute center top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 z-20  VCV ">
                 <video
                   autoPlay
                   muted
                   loop
                   playsInline
                   src="/videos/about_video.mp4"
-                  className="w-[100%] h-full object-cover "
+                  className="cover "
                 ></video>
               </div>
 

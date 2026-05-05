@@ -56,7 +56,7 @@ const page = () => {
         description="Explore Zerror Studios' portfolio of web projects, featuring interactive experiences, animations, and modern development technologies."
         url="https://www.zerrorstudios.com/work"
         />
-        <h1 className='opacity-0 pointer-events-none'>Explore Latest Work</h1>
+        <h1 className='opacity-0 fixed  pointer-events-none'>Explore Latest Work</h1>
       <WorkListing />
     </>
   )

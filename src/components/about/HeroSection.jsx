@@ -106,7 +106,7 @@ const HeroSection = () => {
               </div>
             )}
 
-            <Image fill src={'/images/about/img_2.avif'} alt="l-Img" className="cover" />
+            <Image fill src={'/images/about/gen_img_1.png'} alt="l-Img" className="cover" />
 
           </div>
 
@@ -150,7 +150,7 @@ const HeroSection = () => {
                   ))}
                 </div>
               )}
-            <Image fill src={'/images/about/img_1.avif'} alt="l-Img" className="cover" />
+            <Image fill src={'/images/about/gen_img_2.png'} alt="l-Img" className="cover" />
             </div>
           </div>
         </div>
