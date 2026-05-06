@@ -1,6 +1,9 @@
+import useDevice from '@/components/hooks/useDevice';
 import WebPageSchema from '@/components/seo/WebPageSchema'
+import MobileWorkListing from '@/components/work/MobileWorkListing';
 import WorkListing from '@/components/work/WorkListing'
 import React from 'react'
+import WorkClient from './WorkClient';
 
 export const metadata = {
   title: "Work | Zerror Studios",
@@ -29,7 +32,7 @@ export const metadata = {
     url: "https://www.zerrorstudios.com/work",
     siteName: "Zerror Studios",
     type: "website",
-     images: [
+    images: [
       {
         url: "/og.png",
         width: 1200,
@@ -49,15 +52,16 @@ export const metadata = {
 };
 
 const page = () => {
+
   return (
     <>
       <WebPageSchema
         name="Work | Zerror Studios"
         description="Explore Zerror Studios' portfolio of web projects, featuring interactive experiences, animations, and modern development technologies."
         url="https://www.zerrorstudios.com/work"
-        />
-        <h1 className='opacity-0 fixed  pointer-events-none'>Explore Latest Work</h1>
-      <WorkListing />
+      />
+      <h1 className='opacity-0 fixed  pointer-events-none'>Explore Latest Work</h1>
+      <WorkClient />
     </>
   )
 }
