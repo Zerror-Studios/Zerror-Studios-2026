@@ -15,6 +15,8 @@ const Hero = () => {
 
   useGSAP(() => {
 
+    if (window.innerWidth > 1020) return
+
     gsap.to(
       ".mob_split_hero_title",
       {
@@ -39,14 +41,14 @@ const Hero = () => {
     );
 
     const split = SplitText.create(".mob_split_hero_title", {
-      type: "words",
+      type: "lines",
     });
 
-    const first_text_words = split.words.slice(0, 2);
-    const text_words = split.words.slice(2);
+    const first_text_words = split.lines.slice(0, 1);
+    const text_words = split.lines.slice(1);
 
     gsap.from(first_text_words, {
-      yPercent: 100,
+      yPercent: 50,
       opacity: 0,
       delay: 0.5,
       stagger: 0.03,
@@ -54,7 +56,7 @@ const Hero = () => {
     })
 
     gsap.from(text_words, {
-      yPercent: 100,
+      yPercent: 50,
       opacity: 0,
       stagger: 0.03,
       ease: "expo.out",
@@ -68,8 +70,8 @@ const Hero = () => {
     });
   }, [isMobile]);
 
-
   useGSAP(() => {
+    if (window.innerWidth < 1020) return
 
     const split_hero_title = SplitText.create(".split_hero_title", { type: "words, chars" });
 

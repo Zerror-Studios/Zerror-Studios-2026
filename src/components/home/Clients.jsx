@@ -183,7 +183,7 @@ const Clients = () => {
     }, []);
 
     return (
-        <div className=' noise-bg clients_paren relative bg_blue -mt-1 pt-10 text-white w-full'>
+        <div className=' noise-bg clients_paren relative bg_blue mt-[-2px] text-white w-full'>
 
             <div className=" relative z-10 md:hidden w-screen space-y-16 mb-10  padding text-white ">
                 <div className="">
