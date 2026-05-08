@@ -50,7 +50,7 @@ button {
   background:
     url(../../public/images/homePage/noise.webp)
       50% / 512px 512px,
-    blue;
+    var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
   opacity: 0.1;
@@ -59,7 +59,7 @@ button {
   background:
     url(../../public/images/homePage/noise.webp)
       50% / 512px 512px,
-    blue;
+    var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
   opacity: 0.5;
@@ -77,7 +77,7 @@ button {
   background:
     url(../../public/images/homePage/noise.webp)
       50% / 512px 512px,
-    blue;
+    var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
   opacity: 0.1;
@@ -96,7 +96,7 @@ button {
 }
 @media (max-width: 750px) {
   .mob_cir {
-    background-color: #002bba;
+    background-color: var(--primary_bg);
     overflow: hidden;
   }
   .mob_cir:after {
@@ -111,7 +111,7 @@ button {
     background:
       url(../../public/images/homePage/noise.webp)
         50% / 512px 512px,
-      blue;
+      var(--primary_bg);
     background-blend-mode: color;
     mix-blend-mode: hard-light;
     opacity: 0.1;

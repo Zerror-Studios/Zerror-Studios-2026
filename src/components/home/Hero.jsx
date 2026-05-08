@@ -24,6 +24,19 @@ const Hero = () => {
         ease: "power2.out"
       }
     );
+
+    const Mob_split_lines = SplitText.create(".mob_split_hero_title", {
+      type: "lines",
+    });
+
+    gsap.from(Mob_split_lines.lines, {
+      yPercent: 50,
+      opacity: 0,
+      delay: 0.5,
+      stagger: 0.03,
+      ease: "expo.out",
+    })
+
     gsap.to(
       [".abt_paren", ".site-background"],
       {
@@ -40,34 +53,6 @@ const Hero = () => {
       }
     );
 
-    const split = SplitText.create(".mob_split_hero_title", {
-      type: "lines",
-    });
-
-    const first_text_words = split.lines.slice(0, 1);
-    const text_words = split.lines.slice(1);
-
-    gsap.from(first_text_words, {
-      yPercent: 50,
-      opacity: 0,
-      delay: 0.5,
-      stagger: 0.03,
-      ease: "expo.out",
-    })
-
-    gsap.from(text_words, {
-      yPercent: 50,
-      opacity: 0,
-      stagger: 0.03,
-      ease: "expo.out",
-      scrollTrigger: {
-        trigger: ".hero_mob_txt",
-        start: "10% top",
-        end: "bottom 0%",
-        scrub: true,
-        // markers: true,
-      },
-    });
   }, [isMobile]);
 
   useGSAP(() => {
@@ -168,14 +153,10 @@ const Hero = () => {
 
   return (
     <div className=" hero_paren bg-[#002bba] w-full relative min-h-screen">
-      {isDesktop && (
-        <div className="site-background opacity-0 site-background-desktop hidden lg:block fixed bg_blue top-0 left-0   w-full h-screen z-[1]">
-          <HeroScene />
-        </div>
-      )}
-      {isMobile && (
-        <div className="site-background opacity-0 site-background-mobile lg:hidden fixed bg_blue top-0 left-0   w-full h-screen z-[1] bg_blue "></div>
-      )}
+
+      <div className="site-background opacity-0 site-background-desktop  fixed bg_blue top-0 left-0   w-full h-screen z-[1]">
+        <HeroScene />
+      </div>
 
       {isDesktop && (
         <div className=" max-sm:hidden txt_slider_paren relative z-10 w-full h-[400vh]  ">
@@ -188,7 +169,7 @@ const Hero = () => {
       )}
 
       {isMobile && (
-        <div className=" hero_mob_txt  w-full relative z-10 overflow-hidden  md:hidden! pt-[calc(100svh-22vw)]! padding pb-[33vh]! text-white  ">
+        <div className=" hero_mob_txt  w-full relative z-10 overflow-hidden  md:hidden! pt-[calc(50svh)]! padding pb-[33vh]! text-white  ">
           <p className=" mob_split_hero_title opacity-0  text-[15.5vw] leading-[15vw]   md:text-[12vw] font-bold origin-bottom-left ">We design and build thoughtful digital experiences that go beyond visuals.</p>
         </div>
       )}

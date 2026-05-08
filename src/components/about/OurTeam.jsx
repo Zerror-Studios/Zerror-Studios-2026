@@ -16,43 +16,43 @@ const teamMembers = [
     id: 1,
     name: "Rohit Tiwari",
     role: "Founder & CEO",
-    img: "/images/outTeam/1.png",
+    img: "/images/outTeam/rohit.png",
   },
   {
     id: 2,
     name: "Anand Vishwakarma",
     role: "CTO / Sr. Full Stack Developer",
-    img: "/images/outTeam/2.png",
+    img: "/images/outTeam/anand.png",
   },
   {
     id: 4,
     name: "Ayush Ahirwar",
     role: "Jr. Full Stack Developer",
-    img: "/images/outTeam/4.png",
+    img: "/images/outTeam/ayush.png",
   },
   {
     id: 3,
     name: "Sunny Kurmi",
     role: " Sr. Frontend Developer",
-    img: "/images/outTeam/3.png",
+    img: "/images/outTeam/sunny.png",
   },
   {
     id: 5,
     name: "Inderjit Singh",
     role: "Jr. Frontend Developer",
-    img: "/images/outTeam/1.png",
+    img: "/images/outTeam/inderjeet.png",
   },
   {
     id: 6,
     name: "Mridulla Devi",
     role: "UI/UX Designer",
-    img: "/images/outTeam/2.png",
+    img: "/images/outTeam/mridulla.png",
   },
   {
     id: 7,
     name: "Lingkan Mondal",
     role: "UI/UX Designer",
-    img: "/images/outTeam/3.png",
+    img: "/images/outTeam/lingkan.png",
   },
 ];
 
@@ -314,15 +314,15 @@ const OurTeam = () => {
 
               {/* Image */}
               <div className="   w-full relative aspect-4/5">
-                <div className="skeleton_box w-full h-full skeleton_animate"></div>
+                {/* <div className="skeleton_box w-full h-full skeleton_animate"></div> */}
                 <div className=" card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
-                {/* <Image
+                <Image
                   width={100}
                   height={125}
                   src={member.img}
                   alt={member.name}
                   className="cover"
-                /> */}
+                />
               </div>
 
               {/* Text */}

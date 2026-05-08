@@ -2,7 +2,7 @@
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import React, { useEffect, useRef } from 'react'
-import Image  from 'next/image';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,6 +112,10 @@ const clientsData = [
 const Clients = () => {
 
     const containerRef = useRef(null);
+    const visibleClients =
+        typeof window !== "undefined" && window.innerWidth < 768
+            ? clientsData.slice(0, clientsData.length - 2)
+            : clientsData;
 
     useEffect(() => {
         const boxes = containerRef.current.querySelectorAll(".client-box");
@@ -183,7 +187,7 @@ const Clients = () => {
     }, []);
 
     return (
-        <div className=' noise-bg clients_paren relative bg_blue mt-[-2px] text-white w-full'>
+        <div className=' noise-bg clients_paren relative z-10 max-sm:pt-5 bg_blue mt-[-2px] text-white w-full'>
 
             <div className=" relative z-10 md:hidden w-screen space-y-16 mb-10  padding text-white ">
                 <div className="">
@@ -201,7 +205,7 @@ const Clients = () => {
             <div
                 ref={containerRef}
                 className=" relative z-10 w-full grid grid-cols-3 md:grid-cols-5 ">
-                {clientsData.map((item, i) => {
+                {visibleClients.map((item, i) => {
                     return (
                         <div key={i} className="client-box w-full  overflow-hidden border border-white/10 relative aspect-square center">
                             <div className="w-full h-full absolute grid grid-cols-7 pointer-events-none">
