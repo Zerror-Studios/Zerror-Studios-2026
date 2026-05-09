@@ -317,14 +317,11 @@ const OurTeam = () => {
                 {/* <div className="skeleton_box w-full h-full skeleton_animate"></div> */}
                 <div className=" card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
                 <Image
-                  width={100}
-                  height={125}
+                  fill
                   src={member.img}
                   alt={member.name}
-                  className="cover grayscale brightness-0"
+                  className="cover brightness-[1.4]"
                 />
-
-                <div className="absolute inset-0 bg-[#002bba] mix-blend-screen pointer-events-none" />
               </div>
 
               {/* Text */}
