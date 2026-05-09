@@ -316,8 +316,8 @@ const OurTeam = () => {
               <div className="   w-full relative aspect-4/5">
                 {/* <div className="skeleton_box w-full h-full skeleton_animate"></div> */}
                 <div className=" card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
-                <Image
-                  fill
+                <img
+                  // fill
                   src={member.img}
                   alt={member.name}
                   className="cover brightness-[1.4]"
