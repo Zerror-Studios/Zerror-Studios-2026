@@ -321,8 +321,10 @@ const OurTeam = () => {
                   height={125}
                   src={member.img}
                   alt={member.name}
-                  className="cover"
+                  className="cover grayscale brightness-0"
                 />
+
+                <div className="absolute inset-0 bg-[#002bba] mix-blend-screen pointer-events-none" />
               </div>
 
               {/* Text */}
