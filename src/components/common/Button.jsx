@@ -1,3 +1,4 @@
+"use client";
 import { RiArrowRightUpLine } from '@remixicon/react'
 import gsap from 'gsap'
 import { Link } from 'next-view-transitions'
@@ -85,19 +86,19 @@ const Button = ({
         </button>
     )
 
-if (link) {
-    const isExternal = link.startsWith("http")
+    if (link) {
+        const isExternal = link.startsWith("http")
 
-    if (isExternal) {
-        return (
-            <a href={link} target="_blank" rel="noopener noreferrer">
-                {ButtonContent}
-            </a>
-        )
+        if (isExternal) {
+            return (
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                    {ButtonContent}
+                </a>
+            )
+        }
+
+        return <Link href={link}>{ButtonContent}</Link>
     }
-
-    return <Link href={link}>{ButtonContent}</Link>
-}
 
     return ButtonContent
 }
