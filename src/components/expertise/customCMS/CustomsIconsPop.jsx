@@ -44,7 +44,7 @@ const CustomsIconsPop = () => {
                 {/* Heading section styled like InfoSection */}
                 <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
-                        <h2 className='capitalize primary-font text-5xl leading-none'>
+                        <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>
                             Ecosystem.
                         </h2>
                     </div>
@@ -53,7 +53,7 @@ const CustomsIconsPop = () => {
                         <p className='font-thin'>Platforms</p>
                     </div>
                     <div className="capitalize text-3xl md:pl-2">
-                        <h3 className="leading-tight">
+                        <h3 data-para-effect className="leading-tight">
                             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                             Seamlessly connect your digital world with industry-leading applications built for scale and speed.
                         </h3>
@@ -117,7 +117,7 @@ const CustomsIconsPop = () => {
                                     </div>
                                     
                                     {/* Active Indicator */}
-                                    <div className={`absolute -bottom-1.5 w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeBg === item.bgImg ? 'bg-[#002bba]/80' : 'bg-transparent'}`}></div>
+                                    <div className={`absolute -bottom-1.5 w-1.5 h-1.5 rounded-full transition-all duration-300 ${activeBg === item.bgImg ? 'bg-[#ffffff]' : 'bg-transparent'}`}></div>
                                 </div>
                             );
                         })}
