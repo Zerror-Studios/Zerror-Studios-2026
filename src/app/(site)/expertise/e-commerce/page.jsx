@@ -10,14 +10,13 @@ const page = () => {
   return (
     <>
       <DetailedExpertiseHero
-        expertiseName="E-commerce"
-        expertiseImage="/images/expertisePage/e-comm/hero_img.png"
-        expertiseDescription="We provide a powerful eCommerce dashboard with greater flexibility and advanced features to help you manage your store effortlessly."
-        expertiseHeading={<>Build to sell. designed <br /> to grow.</>}
+        expertiseName="Shopify shops with brand energy and conversion focus."
+        expertiseHeading={<>Crafting eCommerce <br /> that actually converts.</>}
+        btnsLabels={["shopify","brand-driven","conversion"]}
       />
       <EcommCategorySlider />
       <EcommCmsCards/>
-      <EcommStoreSection/>
+      {/* <EcommStoreSection/> */}
       <EcommPriceSection/>
       <WebDevClients/>
       <TicketEffect/>

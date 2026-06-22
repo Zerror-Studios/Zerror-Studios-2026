@@ -1,5 +1,10 @@
+"use client";
 import { RiCheckLine, RiCloseLine } from '@remixicon/react';
 import React from 'react'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger)
 
 const features = [
     { name: "Fully custom design freedom", zcommerce: true, shopify: true },
@@ -24,20 +29,41 @@ const CrossIcon = () => (
 );
 
 const EcommPriceSection = () => {
+
+     useGSAP(()=>{
+        gsap.from(".sclw_1",{
+           scale:0,
+            stagger:0.1,
+            scrollTrigger:{
+                trigger:".price_section_table",
+                start:"top center",
+                toggleActions:"play none none reverse"
+            }
+        })
+        gsap.from(".sclw_2",{
+           scale:0,
+            stagger:0.1,
+            scrollTrigger:{
+                trigger:".price_section_table",
+                start:"top center",
+                toggleActions:"play none none reverse"
+            }
+        })
+    })
     return (
         <div className="w-full padding py-10! md:py-32! text_blue">
 
             {/* ── Heading — matches InfoSection.jsx ──────────── */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
-                    <h2 className='capitalize primary-font text-5xl leading-none'>Why Businesses <br /> Choose Zcom</h2>
+                    <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Why Businesses <br /> Choose Zcom</h2>
                 </div>
                 <div className="text-xs max-sm:hidden pt-4">
                     <p className='font-thin'>Why</p>
                     <p className='font-thin'>Choose Us</p>
                 </div>
                 <div className="capitalize text-3xl md:pl-2">
-                    <h3 className="">
+                    <h3 data-para-effect className="">
                         <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                         Understand The Difference Between Ready-Made Platforms And Fully Custom-Built Solutions.
                     </h3>
@@ -45,7 +71,7 @@ const EcommPriceSection = () => {
             </div>
 
             {/* ── Comparison Table ────────────────────────────── */}
-            <div className="w-full mt-12 md:mt-20 border border-[#002bba]/20 rounded-xl overflow-hidden">
+            <div className="price_section_table w-full mt-12 md:mt-20 border border-[#002bba]/20 rounded-xl overflow-hidden">
 
                 {/* Table header */}
                 <div className="w-full grid grid-cols-[1fr_1fr_1fr] md:grid-cols-[2fr_1fr_1fr] bg_blue text-white">
@@ -70,10 +96,10 @@ const EcommPriceSection = () => {
                         <div className="px-4 md:px-10 py-5 md:py-7 flex items-center">
                             <p className="text-sm md:text-xl text-[#002bba]">{feature.name}</p>
                         </div>
-                        <div className="px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
+                        <div className=" sclw_1 px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
                             {feature.zcommerce ? <CheckIcon /> : <CrossIcon />}
                         </div>
-                        <div className="px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
+                        <div className=" sclw_2 px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
                             {feature.shopify ? <CheckIcon /> : <CrossIcon />}
                         </div>
                     </div>

@@ -1,4 +1,9 @@
+"use client";
 import React from 'react'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger)
 
 const cards = [
     {
@@ -24,19 +29,33 @@ const cards = [
 ]
 
 const BrandingWhyUs = () => {
+
+ useGSAP(()=>{
+        gsap.from(".why_us_img",{
+            opacity:0,
+            stagger:0.15,
+            scrollTrigger:{
+                trigger:".wy_use_i_pren",
+                start:"top center",
+                toggleActions:"play none none reverse"
+            }
+        })
+    })
+
+
     return (
         <div className="w-full padding py-10! md:py-32! text_blue bg-white">
             {/* Heading */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
-                    <h2 className='capitalize primary-font text-5xl leading-none'>Why Us</h2>
+                    <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Why Us</h2>
                 </div>
                 <div className="text-xs max-sm:hidden pt-4">
                     <p className='font-thin'>What We</p>
                     <p className='font-thin'>Build</p>
                 </div>
                 <div className="capitalize text-3xl  md:pl-2">
-          <h3 className="">
+          <h3 data-para-effect className="">
             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
             We Combine Sharp Strategic Thinking With Hands-On Execution. Every Brand We Build, Every Campaign We Run — It's Designed To Perform, Not Just Look Good.
           </h3>
@@ -44,7 +63,7 @@ const BrandingWhyUs = () => {
             </div>
 
             {/* Grid */}
-            <div className="w-full mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-4 border-t border-b border-[#002bba]/10">
+            <div className=" wy_use_i_pren w-full mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-4 border-t border-b border-[#002bba]/10">
                 {cards.map((card, i) => (
                     <div 
                         key={i} 
@@ -53,14 +72,14 @@ const BrandingWhyUs = () => {
                         }`}
                     >
                         <div className="space-y-12">
-                            <div className="w-32 h-32 md:w-44 md:h-44 relative">
+                            <div className="why_us_img w-32 h-32 md:w-44 md:h-44 relative">
                                 <img src={card.image} alt={card.title} className="w-full h-full object-contain" />
                             </div>
                             <p className=" font-medium text-black/60 leading-tight">
                                 {card.desc}
                             </p>
                         </div>
-                        <h4 className="text-3xl  primary-font mt-12 leading-none text_blue">
+                        <h4 data-para-effect className="text-3xl  primary-font mt-12 leading-none text_blue">
                             {card.title}
                         </h4>
                     </div>

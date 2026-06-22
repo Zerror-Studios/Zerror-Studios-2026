@@ -3,4 +3,5 @@ h2 - 5xl medium - primary -                       --            3xl
 3xl                                                              
 xl
 base
+sm
 xs

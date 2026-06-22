@@ -4,6 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import Image from "next/image";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger)
 
 const categories = ["Fashion", "Jewellery", "Health", "Food", "Lifestyle"];
 
@@ -71,6 +75,19 @@ const EcommCategorySlider = () => {
         }, 200); 
     };
 
+     useGSAP(()=>{
+        gsap.from(".cat_inner_slides",{
+            xPercent:100,
+            opacity:0,
+            stagger:0.15,
+            scrollTrigger:{
+                trigger:".ecomm_cat_slider_wrap",
+                start:"top center",
+                toggleActions:"play none none reverse"
+            }
+        })
+    })
+
     return (
         <div
             ref={containerRef}
@@ -79,12 +96,12 @@ const EcommCategorySlider = () => {
             <div className="w-full   padding py-0!  text-white ">
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b  md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
-                        <h2 className=' capitalize primary-font   text-5xl  leading-none'>High-performance  E-Commerce, built for  you.<br /> </h2>
+                        <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>High-performance  E-Commerce, built for  you.<br /> </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4">
                     </div>
                     <div className="capitalize text-3xl  md:pl-2">
-                        <h3 className="">
+                        <h3 data-para-effect className="">
                             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                             We design and develop high-performing eCommerce experiences tailored to your brand optimized for seamless journeys across mobile and web, and built to drive conversions.
                         </h3>
@@ -129,7 +146,7 @@ const EcommCategorySlider = () => {
                     {filteredSlides.map((slide, i) => (
                         <SwiperSlide
                             key={`${activeCategory}-${i}`}
-                            className="w-[85vw]! md:w-[40vw]! lg:w-[60vw]!"
+                            className="cat_inner_slides w-[85vw]! md:w-[40vw]! lg:w-[60vw]!"
                         >
                             <div className="w-full rounded-xl overflow-hidden">
                                 <div className="w-full aspect-video relative bg-white/5">

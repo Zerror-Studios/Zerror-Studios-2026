@@ -30,20 +30,33 @@ const EcommCmsCards = () => {
             },
         });
     });
+
+    useGSAP(()=>{
+        gsap.from(".cms_crd",{
+            xPercent:100,
+            opacity:0,
+            stagger:0.15,
+            scrollTrigger:{
+                trigger:sliderRef.current,
+                start:"top center",
+                toggleActions:"play none none reverse"
+            }
+        })
+    })
     return (
         <div ref={containerRef} className="w-full h-[250vw] relative">
             <div  className='w-full sticky top-0 overflow-hidden mt-10! md:mt-32! h-screen flex gap-y-[5vh] flex-col justify-center'>
                 <div className="w-full   padding py-0!  text_blue ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                         <div className="">
-                            <h2 className=' capitalize primary-font   text-5xl  leading-none'>Manage your eCommerce with our CMS </h2>
+                            <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Manage your eCommerce with our CMS </h2>
                         </div>
                         <div className="text-xs max-sm:hidden pt-4">
                             <p className='font-thin'>Total control, zero </p>
                             <p className='font-thin'>restrictions</p>
                         </div>
                         <div className="capitalize text-3xl  md:pl-2">
-                            <h3 className="">
+                            <h3 data-para-effect className="">
                                 <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                                 From storefront design to backend workflows, everything is tailored to match your brand, processes, and goals.
                             </h3>
@@ -51,7 +64,7 @@ const EcommCmsCards = () => {
                     </div>
                 </div>
                 <div ref={sliderRef} className=" padding py-0! w-full flex gap-x-5">
-                    <div className="w-[30vw] aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
                             <h4 className='text-3xl primary-font'>Smart Inventory Management</h4>
                             <p className='leading-tight'>Monitor sales, Conversion rates .</p>
@@ -61,7 +74,7 @@ const EcommCmsCards = () => {
                         </div>
                     </div>
 
-                    <div className="w-[30vw] aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="pl-20 py-20">
                             <img src="/images/expertisePage/e-comm/cmsCards/card_2.png" alt="" />
                         </div>
@@ -71,7 +84,7 @@ const EcommCmsCards = () => {
                         </div>
                     </div>
 
-                    <div className="w-[30vw] aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
                             <h4 className='text-3xl primary-font'>Analytics & Reports</h4>
                             <p className='leading-tight'>Monitor sales, Conversion rates and Customer behaviour with detailed Custom Reports</p>
@@ -81,7 +94,7 @@ const EcommCmsCards = () => {
                         </div>
                     </div>
 
-                    <div className="w-[30vw] aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="pl-10 py-10 pb-0">
                             <img src="/images/expertisePage/e-comm/cmsCards/card_4.png" alt="" />
                         </div>
@@ -91,7 +104,7 @@ const EcommCmsCards = () => {
                         </div>
                     </div>
 
-                    <div className="w-[30vw] aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
                             <h4 className='text-3xl primary-font'>Integrations and extensions</h4>
                             <p className='leading-tight'>Unite your digital world through integrations with popular social platforms and multi-media accounts.</p>
@@ -101,7 +114,7 @@ const EcommCmsCards = () => {
                         </div>
                     </div>
 
-                    <div className="w-[30vw] aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
                             <h4 className='text-3xl primary-font'>Website analytics</h4>
                             <p className='leading-tight'>Monitor sales, Conversion rates and Customer behaviour with detailed Custom Reports</p>
@@ -111,7 +124,7 @@ const EcommCmsCards = () => {
                         </div>
                     </div>
 
-                    <div className="w-[30vw] aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
                             <h4 className='text-3xl primary-font'>Marketing Campaigns</h4>
                             <p className='leading-tight'>Launch bulk mail, SMS Campaign using Designers template direct from your dashboard</p>
@@ -121,7 +134,7 @@ const EcommCmsCards = () => {
                         </div>
                     </div>
 
-                    <div className="w-[30vw]  aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
+                    <div className="w-[30vw]  cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
                             <h4 className='text-3xl primary-font'>Review Management</h4>
                             <p className='leading-tight'>Easily customize every part of your store to fit your brand</p>

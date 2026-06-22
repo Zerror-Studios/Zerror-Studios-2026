@@ -3,6 +3,10 @@ import { RiArrowLeftLine, RiArrowRightLine, RiDoubleQuotesR } from '@remixicon/r
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import React, { useRef, useState } from 'react'
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger)
 
 const data = [
     {
@@ -42,19 +46,33 @@ const WebDevClients = () => {
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
     const swiperRef = useRef(null);
+        const containerRef = useRef()
+
+    useGSAP(()=>{
+        gsap.from(".clien_crds",{
+            xPercent:100,
+            opacity:0,
+            stagger:0.15,
+            scrollTrigger:{
+                trigger:containerRef.current,
+                start:"top center",
+                toggleActions:"play none none reverse"
+            }
+        })
+    })
 
     return (
         <>
-            <div className="w-full   padding   text_blue ">
+            <div  className="w-full   padding   text_blue ">
                 <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
-                        <h2 className=' capitalize primary-font   text-5xl  leading-none'>what our clients  <br /> say about us </h2>
+                        <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>what our clients  <br /> say about us </h2>
                     </div>
                     <div className="text-xs max-sm:hidden capitalize pt-4">
                         <p className='font-thin'>testimonial</p>
                     </div>
                     <div className="capitalize text-3xl  md:pl-2">
-                        <h3 className="">
+                        <h3 data-para-effect className="">
                             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                             Your business is unique your CMS should be too.
                         </h3>
@@ -88,7 +106,7 @@ const WebDevClients = () => {
                     <RiArrowRightLine size={20} />
                 </button>
             </div>
-            <div className="padding ">
+            <div ref={containerRef} className="padding ">
                 <Swiper
                     onReachEnd={() => setIsEnd(true)}
                     onReachBeginning={() => setIsBeginning(true)}
@@ -120,7 +138,7 @@ const WebDevClients = () => {
                     {data.map((item) => (
                         <SwiperSlide
                             key={item.id}
-                            className=" w-[90vw]! md:w-[35vw]! "
+                            className="clien_crds w-[90vw]! md:w-[35vw]! "
                         >
                             <div className="w-full aspect-4/3 rounded-3xl flex flex-col justify-between p-10 bg-blue-50">
                                 <div className="w-full flex justify-between items-center">

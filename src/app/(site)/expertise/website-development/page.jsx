@@ -11,10 +11,9 @@ const page = () => {
   return (
     <>
       <DetailedExpertiseHero
-        expertiseName="website development"
-        expertiseImage="/images/expertisePage/website-development/hero_img.png"
-        expertiseDescription="Not just websites, we create experiences people remember."
-        expertiseHeading={<>Build Your Website <br /> With Ease</>}
+        expertiseName="Scroll-stopping sites. Motion-first experiences. "
+        expertiseHeading={<>Designed to feel. <br /> Built to perform.</>}
+        btnsLabels={["UI/UX","Motion","development"]}
       />
       <WebDevProjectsSwiper />
       <WebDevExperiencesCards />

@@ -1,15 +1,22 @@
+import CustomsIconsPop from '@/components/expertise/customCMS/CustomsIconsPop'
+import CustomTechinicalCards from '@/components/expertise/customCMS/CustomTechinicalCards'
 import DetailedExpertiseHero from '@/components/expertise/DetailedExpertiseHero'
 import React from 'react'
 
 const page = () => {
   return (
     <>
-         <DetailedExpertiseHero
-        expertiseName="Custom CMS Development"
-        expertiseImage="/images/expertisePage/e-comm/hero_img.png"
-        expertiseDescription="Flexible, scalable, and built from the ground up to match your workflows, your team, and your goals"
-        expertiseHeading={<>Develop faster. <br /> Manage content <br /> effortlessly.</>}
+      <DetailedExpertiseHero
+        expertiseName="content first. future ready."
+        expertiseHeading={
+          <>
+            Custom CMS solutions <br /> built for growth.
+          </>
+        }
+        btnsLabels={["headless cms", "content strategy", "enterprise scalability"]}
       />
+      <CustomTechinicalCards/>
+      <CustomsIconsPop/>
     </>
   )
 }

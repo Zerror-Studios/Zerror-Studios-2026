@@ -368,3 +368,15 @@ button {
     background-position: 200% 0;
   }
 }
+
+.line-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: fit-content;
+  display: block;
+}
+.split-line {
+  display: block;
+  text-align: inherit;
+  will-change: transform;
+}

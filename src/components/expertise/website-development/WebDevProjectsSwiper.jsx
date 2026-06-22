@@ -1,10 +1,13 @@
 "use client";
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import "swiper/css"
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger)
 
 
 const imgData = [
@@ -22,6 +25,22 @@ const imgData = [
     },
 ]
 const WebDevProjectsSwiper = () => {
+
+    const containerRef = useRef()
+
+
+    useGSAP(()=>{
+        gsap.from(".inner_slides",{
+            xPercent:100,
+            opacity:0,
+            stagger:0.15,
+            scrollTrigger:{
+                trigger:containerRef.current,
+                start:"top center",
+                toggleActions:"play none none reverse"
+            }
+        })
+    })
 
     useEffect(() => {
 
@@ -45,15 +64,16 @@ const WebDevProjectsSwiper = () => {
             });
         });
     }, []);
+
     return (
         <>
-            <div className="w-full mt-32 h-screen flex flex-col justify-center items-center space-y-16 relative">
+            <div ref={containerRef} className="w-full mt-32 h-screen flex flex-col justify-center items-center space-y-16 relative">
                 <div className="absolute w-full h-full inset-0">
                     <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="website-dev" fill className='cover' />
                 </div>
 
                 <div className="">
-                    <h3 className=" text-3xl md:text-5xl  text-center text-white primary-font leading-tight relative z-10">
+                    <h3 data-para-effect className=" text-3xl md:text-5xl  text-center text-white primary-font leading-tight relative z-10">
                         Design Your <br /> Business Now
                     </h3>
                 </div>
@@ -77,7 +97,7 @@ const WebDevProjectsSwiper = () => {
                         className="mySwiper  relative cursor-grab active:cursor-grabbing">
 
                         {imgData.map((item, i) => (
-                            <SwiperSlide key={i} className=' rounded-xl overflow-hidden w-[90vw]! aspect-video md:w-[55vw]!'>
+                            <SwiperSlide key={i} className=' inner_slides rounded-xl overflow-hidden w-[90vw]! aspect-video md:w-[55vw]!'>
                                 <div
                                     className=" w-full h-full "
                                 >
