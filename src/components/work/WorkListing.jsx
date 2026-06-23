@@ -462,7 +462,7 @@ const WorkListing = () => {
 
   return (
     <div className="scroll_paren opacity-0 w-full h-[100svh] overflow-hidden relative">
-      <Canvas className="w-full h-[100svh] bg-[#f5f5f5]">
+      <Canvas className="w-full h-[100svh] bg-[#f6f8ff]">
         <PerspectiveCamera makeDefault fov={fov} position={[0, 0, CAMERA_DISTANCE]} />
         <Scene
           fov={fov}

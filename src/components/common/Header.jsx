@@ -28,10 +28,11 @@ const menuLinks = [
     title: "Expertise",
     href: "/expertise",
     sublinks: [
-      "Website Development",
-      "E-commerce Development",
-      "Custom CMS Development",
-      "Branding, Marketing & SEO"
+      { title: "All", href: "/expertise" },
+      { title: "Website Development", href: "/expertise/website-development" },
+      { title: "E-commerce Development", href: "/expertise/e-commerce" },
+      { title: "Custom CMS Development", href: "/expertise/custom-cms-development" },
+      { title: "Branding, Marketing & SEO", href: "/expertise/branding-marketing-and-seo" },
     ]
   },
   {
@@ -79,7 +80,7 @@ const Header = () => {
         duration: .5,
         ease: "expo.out"
       }, "<")
-      setTimeout(() => setOpenExpertise(false), 500); 
+      setTimeout(() => setOpenExpertise(false), 500);
     }
   }, [openMenu])
 
@@ -97,34 +98,32 @@ const Header = () => {
         <div className="w-full relative z-99999 flex justify-center gap-x-1 md:gap-x-3 ">
           <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-sm z-9 top-0 left-0 transition-all duration-500 ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
 
-          <div className={`menu_paren pointer-events-auto relative z-100 w-[90vw] md:w-[45vw] max-w-125 rounded-lg transition-all duration-300 ease-out ${openMenu ? "bg-[#ffffff] " : "bg-black/15! backdrop-blur-[1.25rem]"} `}>
+          <div className={`menu_paren pointer-events-auto relative z-100 w-[90vw] md:w-[45vw] max-w-125 rounded-lg transition-all duration-300 ease-out ${openMenu ? "bg-[#3D3D3D] " : "bg-[#66666670]! backdrop-blur-[1.25rem]"} `}>
 
             <div onClick={() => setOpenMenu(!openMenu)} className={`menu_header cursor-pointer group px-6 w-full flex items-center justify-between h-14 `}>
               <div className="relative flex items-center w-25">
-                <div className="block overflow-hidden w-5 h-5 relative">
-                  <Image fill className={`object-contain transition-all duration-300 ease-out`} src="/svg/letter_z.svg" alt="logo" />
-                </div>
-                <div className={`block overflow-hidden w-26 h-26 absolute ${openMenu ? "opacity-100" : "opacity-0"} transition-all duration-300 ease-out `}>
-                  <Image fill className={` absolute object-contain transition-all duration-300 ease-out`} src="/svg/zerror.svg" alt="logo" />
+                <div className="block overflow-hidden w-20 h-20 relative">
+                  <Image fill className={`object-contain transition-all duration-300 ease-out`} src="/logo_white.svg" alt="logo" />
                 </div>
               </div>
               <div className="flex-1 flex justify-center relative h-full items-center">
-                <p className={`absolute text-sm   uppercase  ${openMenu ? "opacity-100" : "opacity-0"} text_blue transition-all duration-300 ease-out whitespace-nowrap`}>Cases With Teeth</p>
+                <p className={`absolute text-sm text-white  uppercase  ${openMenu ? "opacity-100" : "opacity-0"}  transition-all duration-300 ease-out whitespace-nowrap`}>Cases With Teeth</p>
                 <p className={`absolute  text-sm text-white uppercase  ${!openMenu ? "opacity-100" : "opacity-0"} transition-all duration-300 ease-out`}>Menu</p>
               </div>
 
               <div onClick={(e) => setOpenMenu(!openMenu)} className={`ros_paren flex flex-col justify-center items-end w-25 transition-all duration-150 ease-out ${openMenu ? "gap-y-0" : " gap-y-1.5 group-hover:gap-y-2"} `}>
-                <div className={`w-6 h-px transition-all duration-150 ease-out ${openMenu ? "rotate-45 translate-y-px bg-[#002bba]" : "bg-white"} `}></div>
-                <div className={`w-6 h-px transition-all duration-150 ease-out ${openMenu ? "-rotate-45 bg-[#002bba]" : "bg-white"} `}></div>
+                <div className={`w-6 h-px transition-all duration-150 ease-out bg-white `}></div>
+                <div className={`w-6 h-px transition-all duration-150 ease-out bg-white `}></div>
+                <div className={`w-6 h-px transition-all duration-150 ease-out bg-white `}></div>
               </div>
             </div>
 
-            <div className="drop_menu h-0 opacity-0 overflow-hidden pointer-events-none w-full bg-[#ffffff] rounded-b-lg">
+            <div className="drop_menu h-0 opacity-0 overflow-hidden pointer-events-none w-full bg-[#3D3D3D] rounded-b-lg">
               <nav className="flex flex-col">
                 {menuLinks.map((menu) => (
-                  <div key={menu.id} className=" group w-full relative text_blue border-b border-black/10 flex flex-col">
+                  <div key={menu.id} className=" group w-full relative first:border-t text-white  border-b border-white/20 flex flex-col">
                     <div
-                      className={`flex justify-between items-center px-6 h-14 cursor-pointer hover:bg-[#002bba20] transition-colors`}
+                      className={`flex justify-between items-center px-6 h-14 cursor-pointer hover:bg-[#515151] transition-colors`}
                       onClick={() => {
                         if (menu.sublinks) {
                           setOpenExpertise(!openExpertise);
@@ -144,7 +143,15 @@ const Header = () => {
                             </div>
                           </div>
                           <div className="overflow-hidden -translate-y-0.5">
-                            <span className="menu_title_a translate-y-[115%] text-xl leading-none">...</span>
+                            <div className="menu_title_a translate-y-[115%] flex items-center gap-x-0.75">
+                              <div className="size-0.75 bg-white"></div>
+                              <div className="space-y-0.75">
+                                <div className={`size-0.75 bg-white transition-all duration-300 ${openExpertise ? "translate-y-1.5" : ""} `}></div>
+                                <div className="size-0.75 bg-white"></div>
+                                <div className={`size-0.75 bg-white transition-all duration-300 ${openExpertise ? "-translate-y-1.5" : ""} `}></div>
+                              </div>
+                              <div className="size-0.75 bg-white"></div>
+                            </div>
                           </div>
                         </div>
                       ) : (
@@ -165,17 +172,22 @@ const Header = () => {
                           {menu.sublinks.map((sublink, i) => (
                             <ViewTransitionLink
                               key={i}
-                              href="/expertise"
+                              href={sublink.href}
                               delay={500}
                               onClick={() => setOpenMenu(false)}
-                              className="group/sublink flex items-center py-3 pl-10 hover:bg-[#002bba20] transition-all duration-300"
+                              className="group/sublink flex items-center py-3 pl-6 hover:bg-[#515151] transition-all duration-300"
                             >
-                              <div className="w-0 opacity-0 overflow-hidden -translate-y-0.5 transition-all duration-300 group-hover/sublink:w-4 group-hover/sublink:opacity-100">
-                                <AnimatedPixelIcon />
+                              <div className=" relative center size-4">
+                                <div className=" group-hover/sublink:opacity-0 transition-opacity duration-300 size-4 absolute center inset-0">
+                                  <div className="size-1 aspect-square -translate-x-1/2 -translate-y-[30%] bg-white shrink-0 "></div>
+                                </div>
+                                <div className="w-0 opacity-0 overflow-hidden -translate-y-0.5 transition-all duration-300 group-hover/sublink:w-4 group-hover/sublink:opacity-100">
+                                  <AnimatedPixelIcon />
+                                </div>
                               </div>
 
-                              <p className="text_blue transition-all duration-300 ">
-                                {sublink}
+                              <p className="text-white transition-all duration-300 ">
+                                {sublink.title}
                               </p>
                             </ViewTransitionLink>
                           ))}
@@ -186,10 +198,24 @@ const Header = () => {
                 ))}
               </nav>
 
-              <div className="p-6 flex flex-col gap-y-3">
-                <button className="w-full py-4 text-sm   text-white bg_blue border border-transparent hover:border-[#002bba] hover:bg-transparent! hover:text-[#002bba] transition-all duration-300 uppercase">
+              <div className="p-6 py-2">
+                <a
+                  href="/pdf/Zerror Studios - Business Deck.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full rounded-sm py-4 text-xs center text-white bg_blue border hover:border-transparent border-[#ffffff50] bg-transparent! text-[#ffffff] hover:bg-white! hover:text-black transition-all duration-300 uppercase flex"
+                >
                   Our Pitchdeck
-                </button>
+                </a>
+              </div>
+
+              <div className="w-full pt-0 p-6 grid grid-cols-2 gap-x-1">
+                <ViewTransitionLink href={"/contact"} delay={500} className='bg-white hover:bg-transparent hover:text-white hover:border-white/50 border border-transparent transition-all duration-300 rounded-sm text-xs uppercase py-4 center'>
+                  <p>Schedule a call</p>
+                </ViewTransitionLink>
+                <ViewTransitionLink href={"/contact"} delay={500} className='bg-white hover:bg-transparent hover:text-white hover:border-white/50 border border-transparent transition-all duration-300 rounded-sm text-xs uppercase py-4 center'>
+                  <p>Start a project</p>
+                </ViewTransitionLink>
               </div>
             </div>
           </div>

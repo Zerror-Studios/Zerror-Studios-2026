@@ -793,7 +793,7 @@ export default function deck() {
                     key={i}
                     ref={(el) => (flickerRefs.current.push(el))}
                     className={` w-1/12 flicker   hoverBgAnimateT${i}  border bg-[#2147c400] border-[#2147c4] flex ${i == 0 && "items-end"
-                      } text-[#f5f5f5b6] rounded-xl text-[11px] p-2 `}
+                      } text-[#f6f8ffb6] rounded-xl text-[11px] p-2 `}
                   >
                     <p>
                       {item}
@@ -815,7 +815,7 @@ export default function deck() {
                         handelMouseLeave(`.hoverBgAnimateM${i}`)
                       }
                       key={i}
-                      className={` w-1/12 flicker   hoverBgAnimateM${i} border bg-[#2147c400] border-[#2147c4] flex rounded-xl text-[11px] p-2 text-[#f5f5f5b6] `}
+                      className={` w-1/12 flicker   hoverBgAnimateM${i} border bg-[#2147c400] border-[#2147c4] flex rounded-xl text-[11px] p-2 text-[#f6f8ffb6] `}
                     >
                       <p>
                         {item}
@@ -852,7 +852,7 @@ export default function deck() {
                     key={i}
                     className={` w-1/12 flicker  hoverBgAnimateB${i} border bg-[#2147c400] border-[#2147c4] flex rounded-xl  ${i == 3 && "items-end"
                       }  ${i == 9 && "items-end"}  ${i == 11 && "items-end"
-                      } text-[11px] p-2 text-[#f5f5f5b6] `}
+                      } text-[11px] p-2 text-[#f6f8ffb6] `}
                   >
                     <p>
                       {item}

@@ -58,7 +58,7 @@ export default function AnimatedPixelIcon() {
   return (
     <div
       ref={iconRef}
-      className="relative w-[10px] h-[10px] text-[#002bba] shrink-0"
+      className="relative w-[10px] h-[10px] text-white shrink-0"
     >
       {/* ALT */}
       <div className="absolute inset-0 opacity-0 js-icon-alt">

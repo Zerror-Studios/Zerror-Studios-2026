@@ -36,13 +36,6 @@ const disciplines = [
     },
     {
         num: "05",
-        title: "E-commerce",
-        subtitle: "[ WHAT driven growth ]",
-        list: ["Performance Marketing", "Commerce Builds", "Retention & Growth"],
-        desc: "We know how to grow online stores. From custom Shopify stacks to enterprise-ready app flows, we build systems that scale. Sharp design. Solid data. Seamless marketing.",
-    },
-    {
-        num: "06",
         title: "Growth that doesn’t quit",
         subtitle: "[ WHAT growth compounds ]",
         list: ["CRO & Experimentation", "Funnel & UX Optimization", "Email & Lifecycle Flows"],
@@ -64,7 +57,7 @@ const BrandingDisciplines = () => {
         gsap.utils.toArray(".disc_chld").forEach((item, index, array)=>{
             if (index !== array.length - 1) {
                 tl.to(item,{
-                    height:"6vh",
+                    height:"5rem",
                     ease: "none"
                 })
             }

@@ -176,7 +176,7 @@ const Footer = () => {
 
   return (
     <div className=" noise-bg w-full md:h-screen bg_blue  padding relative z-100">
-      
+
       <div className=" relative z-10 w-full hidden md:block  md:h-full p-3">
         {footerRows.map((row) => (
           <div key={row.id} className="w-full h-[50vh] md:h-1/3 grid grid-cols-3 md:grid-cols-9">
@@ -205,7 +205,7 @@ const Footer = () => {
                   {item.text && (
                     <span
                       ref={(el) => (flickerRefs.current.push(el))}
-                      className={` flicker text-xs font-thin leading-tight tracking-wider  uppercase text-[#f5f5f5]  transition-all duration-300  ${item.align}
+                      className={` flicker text-xs font-thin leading-tight tracking-wider  uppercase text-[#f6f8ff]  transition-all duration-300  ${item.align}
                         ${item.hover}
                      `}
                       style={{

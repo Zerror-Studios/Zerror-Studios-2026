@@ -380,3 +380,54 @@ button {
   text-align: inherit;
   will-change: transform;
 }
+
+
+
+.arc {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.arc_container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.arc_item {
+  position: absolute;
+  left: 64%;
+  top: 50%;
+  --rel-index: calc(var(--index) - var(--progress) * (var(--total-items) - 1));
+
+  --radius: 45vw;
+  --theta: calc(var(--rel-index) * 35deg);
+  --x: calc(var(--radius) * (cos(var(--theta)) - 1));
+  --y: calc(var(--radius) * sin(var(--theta)));
+
+  transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)))
+    rotate(calc(1 * var(--theta)));
+
+  transform-origin: center center;
+  white-space: nowrap;
+  transition:
+    color 0.3s ease,
+    transform 0.1s linear;
+
+  will-change: transform;
+}
+
+.arc_text {
+  opacity: max(0, 1 - (var(--rel-index) * var(--rel-index)));
+  pointer-events: none;
+}
+
+.arc_num {
+  opacity: max(0.3, 1 - (var(--rel-index) * var(--rel-index)));
+}

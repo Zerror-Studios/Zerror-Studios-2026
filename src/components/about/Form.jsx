@@ -69,11 +69,11 @@ const Form = ({ closeForm }) => {
             <h2 className=' capitalize primary-font text-3xl md:text-5xl   leading-none'>  Become a <br /> Zerrorian </h2>
           </div>
           <div className="w-full">
-            <p className="text-[#f5f5f59d] select-none  font-thin cursor-pointer">
+            <p className="text-[#f6f8ff9d] select-none  font-thin cursor-pointer">
               By clicking connect you accept our{" "}
               <span className="text-white font-thin underline">Privacy Policy </span>
             </p>
-            <p className="text-[#f5f5f59d] select-none font-thin cursor-pointer">
+            <p className="text-[#f6f8ff9d] select-none font-thin cursor-pointer">
               Prefer email ? {" "}
               <span className="text-white  font-thin underline">hello@zerrorstudios.com </span>
             </p>

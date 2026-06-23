@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger)
 const services = [
     {
         title: "UI/UX Design",
-        animationData: icon1,
+        // animationData: icon4,
         description: "Creating intuitive interfaces that enhance usability and user satisfaction."
     },
     {
@@ -26,12 +26,12 @@ const services = [
     },
     {
         title: "GSAP Animations",
-        animationData: icon3,
+        animationData: icon1,
         description: "Crafting smooth interactive animations that elevate digital experiences."
     },
     {
         title: "SEO Optimization",
-        animationData: icon4,
+        animationData: icon3,
         description: "Improving search visibility to drive organic traffic and growth."
     },
     {
@@ -41,7 +41,7 @@ const services = [
     },
     {
         title: "AWS Cloud Hosting",
-        animationData: icon6,
+        // animationData: icon6,
         description: "Deploying secure cloud infrastructure with scalable hosting solutions."
     }
 ];
@@ -67,7 +67,7 @@ const ServiceCard = ({ service }) => {
             <div
                 className={`iner_crd w-full  cursor-pointer bg-[#f4f4f4] group-hover:bg-[#002bba] transition-all duration-300 hover:text-white rounded-2xl flex flex-col justify-between p-6 md:p-8 `}
             >
-                <div className="w-18 flex justify-start text-[#002bba] group-hover:text-white [&_path]:!stroke-current [&_path]:!fill-current transition-colors duration-300">
+                <div className="w-18 h-18 flex justify-start text-[#002bba] group-hover:text-white [&_path]:!stroke-current [&_path]:!fill-current transition-colors duration-300">
                     <Lottie
                         lottieRef={lottieRef}
                         animationData={service?.animationData}

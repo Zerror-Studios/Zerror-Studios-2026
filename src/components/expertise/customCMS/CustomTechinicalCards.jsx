@@ -61,12 +61,12 @@ const CustomTechinicalCards = () => {
 
     return (
         <div className="w-full border-t border-[#002bba] ">
-            <div className="padding py-12 md:py-24 text_blue">
+            <div className="padding py-12! md:py-24! text_blue">
                 {/* Heading section styled like InfoSection */}
                 <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
                         <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>
-                            Technical Core.
+                            Technical <br /> Core.
                         </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4">
@@ -88,7 +88,7 @@ const CustomTechinicalCards = () => {
                         {[technicalCards[0], technicalCards[2]].map((card, index) => {
                             const Icon = card.icon;
                             return (
-                                <div key={`left-${index}`} className={` tech_card_1 p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg_blue text-white`}>
+                                <div key={`left-${index}`} className={` tech_card_1 p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg-[#f4f4f4] hover:bg-[#002bba]! transition-colors duration-300 hover:text-white`}>
                                     <div className="flex justify-between items-start gap-4">
                                         <h4 data-para-effect className="text-3xl font-bold max-w-[80%] uppercase leading-tight tracking-tight">
                                             {card.title}
@@ -114,7 +114,7 @@ const CustomTechinicalCards = () => {
                         {[technicalCards[1], technicalCards[3]].map((card, index) => {
                             const Icon = card.icon;
                             return (
-                                <div key={`right-${index}`} className={`tech_card_2 p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg_blue text-white`}>
+                                <div key={`right-${index}`} className={` tech_card_2 p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg-[#f4f4f4] hover:bg-[#002bba]! transition-colors duration-300 hover:text-white`}>
                                     <div className="flex justify-between items-start gap-4">
                                         <h4 className="text-3xl font-bold max-w-[80%] uppercase leading-tight tracking-tight">
                                             {card.title}
