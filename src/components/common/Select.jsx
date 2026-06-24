@@ -54,7 +54,7 @@ const Select = ({ label, options = [], name, onChange }) => {
             <button
               key={opt}
               onClick={() => handleSelect(opt)}
-              className="w-full text-left px-4 py-3 font-thin hover:text-white font-medium  text-[#0000FF] transition-colors hover:bg-[#EA4E3D]"
+              className="w-full text-left px-4 py-3 font-thin hover:text-white font-medium  text-[#002bba] transition-colors hover:bg-[#EA4E3D]"
             >
               {opt}
             </button>

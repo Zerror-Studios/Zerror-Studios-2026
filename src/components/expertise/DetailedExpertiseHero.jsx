@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import SplitText from 'gsap/dist/SplitText'
 import { useGSAP } from '@gsap/react'
+import ClientsMarquee from './ClientsMarquee';
 const DetailedExpertiseHero = ({
     expertiseName,
     expertiseHeading,
@@ -77,15 +78,17 @@ const DetailedExpertiseHero = ({
                 </div>
             </div>
 
+            <ClientsMarquee/>
+
             <div className="w-full py-14 flex">
                 <div className="w-1/2 pr-32 space-y-10 text_blue">
-                    <h3 data-para-effect className='text-5xl'>{introHeading}</h3>
+                    <h3  className=' paragraph_split text-5xl'>{introHeading}</h3>
 
                     <p className='text-xl leading-tight'>{introText}</p>
                 </div>
                 <div className="w-1/2 flex flex-col gap-10">
                     <div className="w-full aspect-video overflow-hidden">
-                        <video data-img-effect className='cover' loop autoPlay muted playsInline src={videoSrc}></video>
+                        <video  className=' blink_btn cover' loop autoPlay muted playsInline src={videoSrc}></video>
                     </div>
                 </div>
             </div>

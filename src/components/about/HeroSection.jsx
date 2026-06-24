@@ -136,7 +136,7 @@ const HeroSection = () => {
             </div>
 
             {/* Img */}
-            <div className="w-full aspect-5/6 mt-4 md:mt-12 bg-[#0000FF] overflow-hidden relative">
+            <div className="w-full aspect-5/6 mt-4 md:mt-12 bg-[#002bba] overflow-hidden relative">
               {isDesktop && (
                 <div
                   ref={gridRefR}
@@ -150,7 +150,7 @@ const HeroSection = () => {
                   ))}
                 </div>
               )}
-            <Image fill src={'/images/about/gen_img_4.png'} alt="l-Img" className="cover" />
+              <Image fill src={'/images/about/gen_img_4.png'} alt="l-Img" className="cover" />
             </div>
           </div>
         </div>
