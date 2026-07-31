@@ -26,7 +26,7 @@ const Exp_HeroSection = () => {
   return (
     <div className=" noise-bg  relative w-full h-screen bg_blue flex flex-col  max-sm:pt-44! py-24! md:py-0 justify-between   padding md:pb-32! md:grid grid-cols-[70%_30%] md:items-end   text-white z-90">
 
-        <h1 className="md: w-[80%] split_t text-5xl md:text-8xl capitalize primary-font relative z-10 ">
+        <h1 className="md:w-[80%] split_t text-5xl md:text-8xl capitalize primary-font relative z-10 ">
           Design and technology, unified as one system
         </h1>
 

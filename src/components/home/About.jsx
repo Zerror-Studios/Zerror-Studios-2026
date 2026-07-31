@@ -290,19 +290,19 @@ const About = () => {
                     </div>
 
                     <div className=" works_paren_header center fixed overflow-hidden z-10  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 bg-white">
-                        <div className="w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+                        <div className=" works_paren_header_in w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                             <div className="">
-                                <h2 className=' wrk_split_wrd  primary-font   text-5xl  leading-none'>Selected  <br />Works</h2>
+                                <h2 className=' wrk_split_wrd  primary-font   text-5xl  leading-none'>Our<br />Expertise</h2>
                             </div>
                             <div className="text-xs max-sm:hidden pt-4">
                                 <p className='wrk_split_wrd font-thin '>Thoughtful Design.</p>
                                 <p className='wrk_split_wrd font-thin '>Strong Technology.</p>
                             </div>
                             <div className=" max-sm:hidden text-3xl pl-2">
-                                <h3 className=" wrk_split_wrd secondary-font"> <span className='opacity-0 pointer-events-none'>..............</span> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</h3>
+                                <h3 className=" wrk_split_wrd secondary-font"> <span className='opacity-0 pointer-events-none'>..............</span> We create scalable, performance- driven digital systems where design and engineering operate as one — built for clarity, adaptability, and long-term impact.</h3>
                             </div>
                             <div className=" md:hidden text-3xl ">
-                                <h3 className=" wrk_split_wrd secondary-font"> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</h3>
+                                <h3 className=" wrk_split_wrd secondary-font"> We create scalable, performance- driven digital systems where design and engineering operate as one — built for clarity, adaptability, and long-term impact.</h3>
                             </div>
                         </div>
                     </div>

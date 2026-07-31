@@ -187,20 +187,23 @@ const Clients = () => {
     }, []);
 
     return (
-        <div className=' noise-bg clients_paren relative z-10 max-sm:pt-5 bg_blue mt-[-2px] text-white w-full'>
+        <div className=' noise-bg clients_paren relative z-10 max-sm:pt-5 bg_blue pt-6 md:pt-12 text-white w-full'>
 
-            <div className=" relative z-10 md:hidden w-screen space-y-16 mb-10  padding text-white ">
-                <div className="">
-                    <h2 className=' split_wrd text-5xl   primary-font leading-none'>Our <br /> Clients</h2>
-                </div>
-                <div className="text-xs max-sm:hidden ">
-                    <p className='split_wrd font-thin'>Brands we’ve </p>
-                    <p className='split_wrd font-thin'>worked with.</p>
-                </div>
-                <div className="text-3xl secondary-font">
-                    <h3 className=" split_wrd "> We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.</h3>
-                </div>
+            <div className="w-screen relative z-10  padding text-white grid grid-cols-[28%_30%_42%]">
+            <div className="">
+              <h2 data-para-effect className='  primary-font   text-5xl  leading-none'>Our <br /> Clients</h2>
             </div>
+            <div className="text-xs pt-4">
+              <p data-para-effect className=' font-thin'>Brands we’ve </p>
+              <p data-para-effect className=' font-thin'>worked with.</p>
+            </div>
+            <div className="text-3xl  pl-2">
+              <h3 data-para-effect className=" secondary-font">
+                <span className='opacity-0 pointer-events-none'>...........................</span>
+                We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.
+              </h3>
+            </div>
+          </div>
 
             <div
                 ref={containerRef}

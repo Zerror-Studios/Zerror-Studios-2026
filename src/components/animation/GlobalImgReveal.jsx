@@ -23,6 +23,8 @@ const GlobalImgReveal = () => {
 
         el.dataset.imgInitialized = "true"
 
+        const scroller = el.closest(".overflow-y-scroll") || el.closest(".overflow-y-auto") || window
+
         gsap.set(el, {
           opacity: 0,
           scale: 1.2,
@@ -37,6 +39,7 @@ const GlobalImgReveal = () => {
 
           scrollTrigger: {
             trigger: el,
+            scroller: scroller,
             start: "top 85%",
             toggleActions: "play none none reverse",
           },
@@ -44,6 +47,7 @@ const GlobalImgReveal = () => {
       })
 
     })
+
 
     const timeout = setTimeout(() => {
       ScrollTrigger.refresh()

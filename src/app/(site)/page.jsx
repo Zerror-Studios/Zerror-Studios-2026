@@ -1,3 +1,4 @@
+import Our_Services from "@/components/expertise/Our_Services";
 import About from "@/components/home/About";
 import Clients from "@/components/home/Clients";
 import Hero from "@/components/home/Hero";
@@ -76,8 +77,8 @@ export default function HomePage() {
       />
       <Hero />
       <About />
+      <Our_Services />
       <OurWork />
-      <Services />
       <Clients />
       <TicketEffect />
     </>

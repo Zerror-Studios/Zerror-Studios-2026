@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 import Button from "../common/Button";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,24 +13,28 @@ const servicesContent = [
   {
     id: 1,
     title: "Website Design & Development",
+    href: "/expertise/website-development",
     description:
       "Designing and building web platforms as structured systems where UX, performance, and engineering work in sync. Every layer is intentional — ensuring clarity, scalability, and long-term reliability.",
   },
   {
     id: 2,
-    title: "Custom Software Development",
-    description:
-      "Creating tailored digital systems built around specific workflows and operational needs. Modular, scalable, and engineered for efficiency — enabling flexibility as products and teams evolve.",
-  },
-  {
-    id: 3,
     title: "Ecommerce Development",
+    href: "/expertise/e-commerce",
     description:
       "Building commerce systems that balance experience, performance, and growth. Designed to scale with users and products while maintaining clarity, speed, and conversion efficiency.",
   },
   {
+    id: 3,
+    title: "Custom Software Development",
+    href: "/expertise/custom-cms-development",
+    description:
+      "Creating tailored digital systems built around specific workflows and operational needs. Modular, scalable, and engineered for efficiency — enabling flexibility as products and teams evolve.",
+  },
+  {
     id: 4,
     title: "Branding, Marketing & SEO",
+    href: "/expertise/branding-marketing-and-seo",
     description:
       "Developing brand and growth systems that ensure consistency across every touchpoint. From identity to visibility, each element is structured to perform, adapt, and scale over time.",
   },
@@ -213,9 +218,28 @@ const Our_Services = () => {
     }
   }, [])
 
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".serv_page_paren",
+        start: "top bottom",
+        end: "top top",
+        scrub: true
+      }
+    })
+
+    tl.to(".works_paren_header",{
+      yPercent:-100,
+      ease:"linear"
+    })
+    tl.to(".works_paren_header_in",{
+      opacity:0,
+    },"<")
+  })
+
 
   return (
-    <div ref={parentRef} className={` serv_page_paren  w-full padding relative py-0! h-[400vh] `}>
+    <div ref={parentRef} className={` serv_page_paren  w-full padding z-10 bg-white relative py-0! h-[400vh] `}>
 
       <div className="sticky w-full h-screen top-0 left-0 pointer-events-none z-[-1] center  ">
         <canvas
@@ -228,16 +252,16 @@ const Our_Services = () => {
       <div className="absolute padding  w-full h-screen left-0 top-0">
         <div className="w-full h-screen pt-[2.5rem] md:pt-0 space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
           <div className="  md:w-1/2">
-            <h2 className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
+            <h2 data-para-effect className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
               {servicesContent[0].title}
             </h2>
           </div>
           <div className=" space-y-5 md:space-y-10 ">
-            <h3 className="text-3xl secondary-font  text_blue">
+            <h3 data-para-effect className="text-3xl secondary-font  text_blue">
               {servicesContent[0].description}
             </h3>
 
-            {/* <Button title="View More" /> */}
+            <Button link={servicesContent[0].href} title="View More" />
 
           </div>
         </div>
@@ -247,22 +271,22 @@ const Our_Services = () => {
         return (
           <div
             key={index}
-            className={`w-full h-screen flex justify-start pt-[2.5rem] border-t border-black/50  `}
+            className={`w-full h-screen flex justify-start pt-[2.5rem] border-t last:border-b border-black/50  `}
           >
             <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
               {/* Left */}
               <div className="  md:w-1/2">
-                <h2 className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
+                <h2 data-para-effect className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
                   {item.title}
                 </h2>
               </div>
               {/* Right */}
               <div className=" space-y-5 md:space-y-10 ">
-                <h3 className=" text-3xl secondary-font  text_blue">
+                <h3 data-para-effect className=" text-3xl secondary-font  text_blue">
                   {item.description}
                 </h3>
 
-                {/* <Button title="View More" /> */}
+                <Button link={item.href} title="View More" />
 
               </div>
             </div>

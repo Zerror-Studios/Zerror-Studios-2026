@@ -1,3 +1,4 @@
+import { getCalApi } from "@calcom/embed-react";
 import gsap from 'gsap';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -28,7 +29,6 @@ const menuLinks = [
     title: "Expertise",
     href: "/expertise",
     sublinks: [
-      { title: "All", href: "/expertise" },
       { title: "Website Development", href: "/expertise/website-development" },
       { title: "E-commerce Development", href: "/expertise/e-commerce" },
       { title: "Custom CMS Development", href: "/expertise/custom-cms-development" },
@@ -92,6 +92,20 @@ const Header = () => {
     })
   })
 
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "45min" });
+      cal("ui", {
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#002bba" },
+          dark: { "cal-brand": "#ffffff" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
   return (
     <>
       <div className="header_paren -translate-y-24 w-full pointer-events-none fixed py-5! padding z-9999 center">
@@ -103,7 +117,7 @@ const Header = () => {
             <div onClick={() => setOpenMenu(!openMenu)} className={`menu_header cursor-pointer group px-6 w-full flex items-center justify-between h-14 `}>
               <div className="relative flex items-center w-25">
                 <div className="block overflow-hidden w-20 h-20 relative">
-                  <Image fill className={`object-contain transition-all duration-300 ease-out ${openMenu ? "" : ""}`} src="/logo_white.svg" alt="logo"  />
+                  <Image fill className={`object-contain transition-all duration-300 ease-out ${openMenu ? "" : ""}`} src="/logo_white.svg" alt="logo" />
                 </div>
               </div>
               <div className="flex-1 flex justify-center relative h-3 items-center overflow-hidden">
@@ -209,9 +223,13 @@ const Header = () => {
               </div>
 
               <div className="w-full pt-0 p-6 grid grid-cols-2 gap-x-1">
-                <ViewTransitionLink href={"/contact"} onClick={() => setOpenMenu(false)} delay={500} className='bg-[#ffffff] text-black hover:bg-transparent hover:text-[#ffffff] hover:border-[#ffffff]/40 border border-transparent transition-all duration-300 rounded-sm text-xs uppercase py-4 center'>
+                <div 
+                  data-cal-namespace="45min"
+                  data-cal-link="zerror-studios-0hosjx/schedule-a-call"
+                  data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"auto"}'
+                  className='bg-[#ffffff] text-black hover:bg-transparent hover:text-[#ffffff] hover:border-[#ffffff]/40 border border-transparent transition-all duration-300 rounded-sm text-xs uppercase py-4 center cursor-pointer'>
                   <p>Schedule a call</p>
-                </ViewTransitionLink>
+                </div>
                 <ViewTransitionLink href={"/contact"} onClick={() => setOpenMenu(false)} delay={500} className='bg-[#ffffff] text-black hover:bg-transparent hover:text-[#ffffff] hover:border-[#ffffff]/40 border border-transparent transition-all duration-300 rounded-sm text-xs uppercase py-4 center'>
                   <p>Start a project</p>
                 </ViewTransitionLink>

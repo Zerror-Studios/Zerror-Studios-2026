@@ -163,7 +163,23 @@ const OurWork = () => {
     };
 
     return (
-        <div className="work_paren w-full relative z-10 bg-white">
+        <div className="work_paren w-full pt-6 md:pt-12 relative z-10 bg-white">
+
+            <div className="w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+                <div className="">
+                    <h2 data-para-effect className='   primary-font   text-5xl  leading-none'>Selected  <br />Works</h2>
+                </div>
+                <div className="text-xs max-sm:hidden pt-4">
+                    <p className=' font-thin '>Thoughtful Design.</p>
+                    <p className=' font-thin '>Strong Technology.</p>
+                </div>
+                <div className=" max-sm:hidden text-3xl pl-2">
+                    <h3 data-para-effect className="  secondary-font"> <span className='opacity-0 pointer-events-none'>..............</span> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</h3>
+                </div>
+                <div className=" md:hidden text-3xl ">
+                    <h3 className="  secondary-font"> A selection of system-driven work where design and technology operate as one. Each project is built with structure, precision, and scalability — creating solutions that are clear, adaptable, and engineered to perform.</h3>
+                </div>
+            </div>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-10">
                 {caseStudies.slice(0, 4).map((item, i) => (
                     <Link

@@ -27,6 +27,8 @@ const GlobalParaReveal = () => {
 
         el.dataset.splitInitialized = "true"
 
+        const scroller = el.closest(".overflow-y-scroll") || el.closest(".overflow-y-auto") || window
+
         const split = new SplitText(el, {
           type: "lines",
           linesClass: "split-line",
@@ -60,6 +62,7 @@ const GlobalParaReveal = () => {
 
           scrollTrigger: {
             trigger: el,
+            scroller: scroller,
             start: "top 85%",
             toggleActions: "play none none reverse",
           },
@@ -67,6 +70,7 @@ const GlobalParaReveal = () => {
       })
 
     })
+
 
     const timeout = setTimeout(() => {
       ScrollTrigger.refresh()
