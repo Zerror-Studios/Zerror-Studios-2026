@@ -8,6 +8,7 @@ body {
   --scene-mix: 0;
   --primary_text: #002bba;
   --primary_bg: #002bba;
+  --toastify-z-index: 9999999 !important;
   overflow-x: hidden;
   background-color: white;
   width: 100%;
@@ -46,19 +47,17 @@ button {
   object-fit: cover;
 }
 
-.noise-bg:after  {
+.noise-bg:after {
   background:
-    url(../../public/images/homePage/noise.webp)
-      50% / 512px 512px,
+    url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
     var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
   opacity: 0.1;
 }
-.noise-bg:before  {
+.noise-bg:before {
   background:
-    url(../../public/images/homePage/noise.webp)
-      50% / 512px 512px,
+    url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
     var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
@@ -66,8 +65,7 @@ button {
 }
 
 .site-background:after {
-  background: url(../../public/images/homePage/noise.webp)
-    50% / 512px 512px;
+  background: url(../../public/images/homePage/noise.webp) 50% / 512px 512px;
   mix-blend-mode: overlay;
   opacity: 0.5;
   transform: rotateY(180deg) rotateX(180deg);
@@ -75,8 +73,7 @@ button {
 
 .site-background:before {
   background:
-    url(../../public/images/homePage/noise.webp)
-      50% / 512px 512px,
+    url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
     var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
@@ -100,8 +97,7 @@ button {
     overflow: hidden;
   }
   .mob_cir:after {
-    background: url(../../public/images/homePage/noise.webp)
-      50% / 512px 512px;
+    background: url(../../public/images/homePage/noise.webp) 50% / 512px 512px;
     mix-blend-mode: overlay;
     opacity: 0.5;
     transform: rotateY(180deg) rotateX(180deg);
@@ -109,8 +105,7 @@ button {
 
   .mob_cir:before {
     background:
-      url(../../public/images/homePage/noise.webp)
-        50% / 512px 512px,
+      url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
       var(--primary_bg);
     background-blend-mode: color;
     mix-blend-mode: hard-light;
@@ -180,46 +175,44 @@ button {
   will-change: transform, opacity;
 }
 
-@media (max-width:750px) {
-
-  .ticket_1{
+@media (max-width: 750px) {
+  .ticket_1 {
     animation: ticket_animation_1 3.3s ease infinite;
   }
 
   @keyframes ticket_animation_1 {
-    0%{
+    0% {
       transform: rotate(-5deg);
     }
-    9%{
+    9% {
       transform: rotate(0deg);
     }
-    18%{
+    18% {
       transform: rotate(-5deg);
     }
-    100%{
+    100% {
       transform: rotate(-5deg);
     }
   }
 
-  .ticket_2{
+  .ticket_2 {
     animation: ticket_animation_2 3.3s ease infinite;
   }
 
   @keyframes ticket_animation_2 {
-    0%{
+    0% {
       transform: rotate(3deg);
     }
-    9%{
+    9% {
       transform: rotate(0deg);
     }
-    18%{
+    18% {
       transform: rotate(3deg);
     }
-    100%{
+    100% {
       transform: rotate(3deg);
     }
   }
-
 }
 .flicker {
   animation: flicker 2s infinite alternate;
@@ -302,7 +295,6 @@ button {
   width: 100%;
 }
 
-
 .form button {
   width: 100%;
   border: none;
@@ -338,16 +330,22 @@ button {
 }
 
 @keyframes page-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes page-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-
 
 .skeleton_animate {
   background: linear-gradient(
@@ -380,8 +378,6 @@ button {
   text-align: inherit;
   will-change: transform;
 }
-
-
 
 .arc {
   position: sticky;
@@ -430,4 +426,33 @@ button {
 
 .arc_num {
   opacity: max(0.3, 1 - (var(--rel-index) * var(--rel-index)));
+}
+
+/* Pitchdeck Card Stacking Styles */
+.pitchdeck-card > section,
+[class^="slide_"] > section,
+[class*=" slide_"] > section {
+  height: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.pitchdeck-dot {
+  width: 1.5rem;
+  opacity: 0.4;
+  height: 2px;
+  background-color: var(--primary_bg, #002bba);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.pitchdeck-dot.active-slide,
+.pitchdeck-dot-wrapper:hover .pitchdeck-dot {
+  width: 2.5rem;
+  opacity: 1;
+}
+.pitchdeck-dot-wrapper:hover .pitchdeck-dot {
+  width: 2.5rem;
+  margin-block: .25rem;
+  opacity: 1;
 }

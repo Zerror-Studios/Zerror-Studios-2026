@@ -2,9 +2,9 @@ import React from 'react';
 
 const Slide01 = () => {
   return (
-    <section className="h-screen w-full snap-start p-1 relative">
-      <div className="w-full p-5 h-full bg_blue flex items-end text-white">
-        <h1 data-para-effect className="text-8xl primary-font">
+    <section className="w-full h-full">
+      <div className="w-full p-5 h-full noise-bg bg_blue flex items-end text-white">
+        <h1 data-para-effect className="text-5xl z-10 w-[70%] primary-font">
           Great ideas often get lost between
           design and development. Few can
           do both, fewer still do it fast.

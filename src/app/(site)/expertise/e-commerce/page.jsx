@@ -12,13 +12,14 @@ const page = () => {
   return (
     <>
       <DetailedExpertiseHero
-        expertiseName="Commerce experiences designed to sell"
-        expertiseHeading={<>Crafting eCommerce <br /> that actually converts.</>}
-        btnsLabels={["Shopify ecomm", "Storefront UX", "Conversion"]}
-        introHeading={<>A store should make buying feel natural, fast, and aligned with the brand people came for.</>}
-        introText="We build commerce experiences that balance storytelling, product discovery, checkout flow, and performance."
+        expertiseName="Commerce that earns the cart"
+        expertiseHeading={<>Commerce built to sell. <br /> And scale.</>}
+        btnsLabels={["Storefront UX", "Checkout", "Zcom"]}
+        introHeading={<>A store should make buying feel effortless — natural, fast, and true to the brand people came for.</>}
+        introText="We build commerce that balances storytelling, discovery, and a checkout that never fumbles the sale."
         videoSrc={heroVideo}
-        supportingText="From product cards to cart behavior, every detail is shaped around shopper confidence, fewer drop-offs, and a smoother path to purchase."
+        supportingText="From product cards to cart behaviour, every detail is shaped around shopper confidence — fewer
+drop-offs, smoother paths to purchase, and buyers who return."
         features={[
           { label: "Add-to-cart rate", value: "+39%" },
           { label: "Checkout drop-off", value: "-28%" },

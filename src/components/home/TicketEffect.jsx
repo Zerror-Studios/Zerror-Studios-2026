@@ -164,11 +164,10 @@ const TicketEffect = () => {
     return (
         <>
             <div className="w-full pt-32 center text_blue text-center space-y-10 bg-white relative z-10 flex-col">
-                <p data-para-effect className=' text-5xl md:text-8xl primary-font  leading-none'>Ready to launch <br />
-                    Something <br /> <span className='primary-font_italic'> Remarkable </span> </p>
+                <p data-para-effect className=' text-5xl md:text-8xl primary-font  leading-none'>Ready to build <br />
+                    Something with<br /> <span className='primary-font_italic'> zero errors? </span> </p>
 
-                <p className=' leading-tight '>Step on the Zerror Studios and <br />
-                    request a project with a few clicks.</p>
+                <p className=' leading-tight '>Your next version starts here. <br /> Tell us what you're making.</p>
 
                 <Link href="/contact" className="contact_btn relative flex group items-center gap-1">
                     <div className="w-0 group-hover:w-full transition-all duration-300 absolute bg_blue bottom-1 rounded-full h-px"></div>

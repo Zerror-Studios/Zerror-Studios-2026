@@ -1,62 +1,95 @@
-import React from 'react';
+"use client";
+import React, { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Slide06 = () => {
+  const container = useRef();
+
+  useGSAP(() => {
+    gsap.to('.line-anim', 
+      {
+        width: "100%",
+        duration: 1,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top center",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  }, { scope: container });
+
   return (
-    <section className="h-screen w-full snap-start p-1 relative">
+    <section ref={container} className="w-full h-full ">
 
-    <div className="w-full p-5 h-full bg-black flex flex-col justify-center text-white">
- 
-          <div className="grid grid-cols-6 py-3 border-t border-white">
-            <div data-para-effect className="text-7xl flex items-center leading-none md:text-9xl col-span-1 primary-font  text-white">01</div>
-              <h2 data-para-effect className="text-3xl flex items-center leading-none md:text-5xl font-medium col-span-3 ">Website Design &<br/>Development</h2>
-            <div data-para-effect className=" text-lg md:text-xl opacity-60 col-span-2">
-              <p>Mood boarding</p>
-              <p>U/UX Design</p>
-              <p>Front & Back End Development</p>
-              <p>Responsive Design</p>
-              <p>Performance & Security</p>
-            </div>
+      <div className="w-full p-5 h-full bg-black flex flex-col justify-center text-white">
+
+        {/* Row 1 */}
+        <div className="grid grid-cols-6 py-4">
+          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">01</div>
+          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">Website Design &<br />Development</h2>
+          <div className="opacity-60 col-span-2">
+            <p>Mood boarding</p>
+            <p>U/UX Design</p>
+            <p>Front & Back End Development</p>
+            <p>Responsive Design</p>
+            <p>Performance & Security</p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-6 py-3 border-t border-white">
-            <div data-para-effect className="text-7xl flex items-center leading-none md:text-9xl col-span-1 primary-font  text-white">02</div>
-              <h2 data-para-effect className="text-3xl flex items-center leading-none md:text-5xl font-medium col-span-3 ">Custom Software<br/>Development</h2>
-            <div data-para-effect className=" text-lg md:text-xl opacity-60 col-span-2">
-              <p>Content Architecture</p>
-              <p>Headless CMS</p>
-              <p>Admin Dashboards</p>
-              <p>Custom Workflows</p>
-              <p>Scalable Systems</p>
-            </div>
+        <div className="w-0 h-[1px] bg-white line-anim"></div>
+
+        {/* Row 2 */}
+        <div className="grid grid-cols-6 py-4">
+          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">02</div>
+          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">Custom Software<br />Development</h2>
+          <div className="opacity-60 col-span-2">
+            <p>Content Architecture</p>
+            <p>Headless CMS</p>
+            <p>Admin Dashboards</p>
+            <p>Custom Workflows</p>
+            <p>Scalable Systems</p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-6 py-3 border-t border-white">
-            <div data-para-effect className="text-7xl flex items-center leading-none md:text-9xl col-span-1 primary-font  text-white">03</div>
-              <h2 data-para-effect className="text-3xl flex items-center leading-none md:text-5xl font-medium col-span-3 ">eCommerce Solutions</h2>
-            <div data-para-effect className=" text-lg md:text-xl opacity-60 col-span-2">
-              <p>Store Strategy</p>
-              <p>UX-Led Design</p>
-              <p>Payment & Checkout</p>
-              <p>Platform Development</p>
-              <p>Scalable Infrastructure</p>
-            </div>
+        <div className="w-0 h-[1px] bg-white line-anim"></div>
+
+        {/* Row 3 */}
+        <div className="grid grid-cols-6 py-4">
+          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">03</div>
+          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">eCommerce Solutions</h2>
+          <div className="opacity-60 col-span-2">
+            <p>Store Strategy</p>
+            <p>UX-Led Design</p>
+            <p>Payment & Checkout</p>
+            <p>Platform Development</p>
+            <p>Scalable Infrastructure</p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-6 py-3 border-t border-b border-white">
-            <div data-para-effect className="text-7xl flex items-center leading-none md:text-9xl col-span-1 primary-font  text-white">04</div>
-              <h2 data-para-effect className="text-3xl flex items-center leading-none md:text-5xl font-medium col-span-3 ">Branding, Marketing &<br/>SEO</h2>
-            <div data-para-effect className=" text-lg md:text-xl opacity-60 col-span-2">
-              <p>Brand Identity</p>
-              <p>Visual Systems</p>
-              <p>Digital Marketing</p>
-              <p>SEO Strategy</p>
-              <p>Growth Optimisation</p>
-            </div>
+        <div className="w-0 h-[1px] bg-white line-anim"></div>
+
+        {/* Row 4 */}
+        <div className="grid grid-cols-6 py-4">
+          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">04</div>
+          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">Branding, Marketing &<br />SEO</h2>
+          <div className="opacity-60 col-span-2">
+            <p>Brand Identity</p>
+            <p>Visual Systems</p>
+            <p>Digital Marketing</p>
+            <p>SEO Strategy</p>
+            <p>Growth Optimisation</p>
           </div>
+        </div>
 
-    </div>
+      </div>
     </section>
-
   );
 };
 

@@ -2,29 +2,29 @@ import React from 'react';
 
 const Slide07 = () => {
   return (
-    <section className="h-screen w-full snap-start flex flex-col justify-center px-10 md:px-24 bg-black text-white relative">
+    <section className="w-full h-full flex flex-col justify-center bg-black text-white relative">
       
-      <div  className="w-full  grid grid-cols-2 md:grid-cols-4  items-center justify-items-center opacity-80">
+      <div className="w-full h-full grid grid-cols-2 md:grid-cols-4 grid-rows-4">
         {/* Placeholders for logos based on PDF */}
-        <div className=" aspect-square center text-2xl font-serif">Hollywood Reporter</div>
-        <div className=" aspect-square center text-2xl font-bold tracking-widest">Esquire</div>
-        <div className=" aspect-square center text-3xl italic font-serif">manifest</div>
-        <div className=" aspect-square center text-2xl font-serif">Robb Report</div>
+        <div className="center text-2xl font-serif border border-white/10">Hollywood Reporter</div>
+        <div className="center text-2xl font-bold tracking-widest border border-white/10">Esquire</div>
+        <div className="center text-3xl italic font-serif border border-white/10">manifest</div>
+        <div className="center text-2xl font-serif border border-white/10">Robb Report</div>
 
-        <div className=" aspect-square center text-5xl font-black">SKF</div>
-        <div className=" aspect-square center text-5xl font-bold">PO</div>
-        <div className=" aspect-square center text-3xl font-black tracking-widest">DISRPTVE</div>
-        <div className=" aspect-square center text-4xl font-bold">NOSH</div>
+        <div className="center text-5xl font-black border border-white/10">SKF</div>
+        <div className="center text-5xl font-bold border border-white/10">PO</div>
+        <div className="center text-3xl font-black tracking-widest border border-white/10">DISRPTVE</div>
+        <div className="center text-4xl font-bold border border-white/10">NOSH</div>
 
-        <div className=" aspect-square center text-xl font-medium">RP-Sanjiv Goenka</div>
-        <div className=" aspect-square center text-3xl font-black">MAD EARTH</div>
-        <div className=" aspect-square center text-3xl font-bold">RPSG Media</div>
-        <div className=" aspect-square center text-4xl font-light">akto</div>
+        <div className="center text-xl font-medium border border-white/10">RP-Sanjiv Goenka</div>
+        <div className="center text-3xl font-black border border-white/10">MAD EARTH</div>
+        <div className="center text-3xl font-bold border border-white/10">RPSG Media</div>
+        <div className="center text-4xl font-light border border-white/10">akto</div>
 
-        <div className=" aspect-square center text-3xl font-bold">HEFTY.ART</div>
-        <div className=" aspect-square center text-3xl font-serif tracking-widest">NAHARA</div>
-        <div className=" aspect-square center text-4xl font-serif italic">SDAF</div>
-        <div className=" aspect-square center text-2xl font-medium tracking-[0.2em]">RESIDE IN BEING</div>
+        <div className="center text-3xl font-bold border border-white/10">HEFTY.ART</div>
+        <div className="center text-3xl font-serif tracking-widest border border-white/10">NAHARA</div>
+        <div className="center text-4xl font-serif italic border border-white/10">SDAF</div>
+        <div className="center text-2xl font-medium tracking-[0.2em] border border-white/10">RESIDE IN BEING</div>
       </div>
 
     </section>

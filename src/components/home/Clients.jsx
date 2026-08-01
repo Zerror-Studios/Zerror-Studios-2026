@@ -194,13 +194,14 @@ const Clients = () => {
               <h2 data-para-effect className='  primary-font   text-5xl  leading-none'>Our <br /> Clients</h2>
             </div>
             <div className="text-xs pt-4">
-              <p data-para-effect className=' font-thin'>Brands we’ve </p>
-              <p data-para-effect className=' font-thin'>worked with.</p>
+              <p data-para-effect className=' font-thin'>The company </p>
+              <p data-para-effect className=' font-thin'>we keep.</p>
             </div>
             <div className="text-3xl  pl-2">
               <h3 data-para-effect className=" secondary-font">
                 <span className='opacity-0 pointer-events-none'>...........................</span>
-                We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.
+                From global publishing houses to founders on their first launch, we work with teams that value clarity,
+structure and scale.
               </h3>
             </div>
           </div>

@@ -182,15 +182,19 @@ const Hero = () => {
           </div>
           {isDesktop && (
             <div className=" max-sm:hidden text-xs pt-4">
-              <p className='font-thin'>Who</p>
-              <p className='font-thin'>We Are?</p>
+              <p className='font-thin'>Systems. Structure.</p>
+              <p className='font-thin'>Precision. Intent.</p>
             </div>
           )}
           <div className="capitalize w-full   text-3xl  pl-2">
-            <h3 className=" max-sm:hidden secondary-font"> <span className='opacity-0 pointer-events-none'>...............</span>  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</h3>
+            <h3 className=" max-sm:hidden secondary-font"> <span className='opacity-0 pointer-events-none'>...............</span>  Zerror is a design-led studio operating where design, technology and scalability meet. Great ideas
+often get lost between the two disciplines — few teams can do both, fewer still do it fast. We built
+Zerror to erase that gap, so ideas don't just survive. They shine</h3>
           </div>
           <div className="capitalize w-full   text-3xl">
-            <h3 className=" md:hidden secondary-font">  Zerror is a system-driven studio operating at the intersection of design and technology. We create structured, scalable solutions that bring clarity to complex digital environments — where every element is intentional, every interaction purposeful, and every system built to evolve.</h3>
+            <h3 className=" md:hidden secondary-font">  Zerror is a design-led studio operating where design, technology and scalability meet. Great ideas
+often get lost between the two disciplines — few teams can do both, fewer still do it fast. We built
+Zerror to erase that gap, so ideas don't just survive. They shine</h3>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { ViewTransitions } from "next-view-transitions";
 import GlobalParaReveal from "@/components/animation/GlobalParaReveal";
 import GlobalImgReveal from "@/components/animation/GlobalImgReveal";
+import { ProjectFormProvider } from "@/context/ProjectFormContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,25 +32,26 @@ export default function SiteLayout({ children }) {
   }, [pathname]);
 
   return (
-    <ViewTransitions>
-      <LenisScroll>
+    <ProjectFormProvider>
+      <ViewTransitions>
+        <LenisScroll>
 
-        <GlobalImgReveal />
-        <GlobalParaReveal />
+          <GlobalImgReveal />
+          <GlobalParaReveal />
 
-        <header>
-          {!["/pitchdeck"].includes(pathname) && <Header />}
-        </header>
+          <header>
+            <Header />
+          </header>
 
-        <main>
-          {children}
-        </main>
+          <main>
+            {children}
+          </main>
 
-        <footer>
-          {!skipFooterPaths.includes(pathname) && <Footer />}
-        </footer>
-      </LenisScroll>
-    </ViewTransitions>
-
+          <footer>
+            {!skipFooterPaths.includes(pathname) && <Footer />}
+          </footer>
+        </LenisScroll>
+      </ViewTransitions>
+    </ProjectFormProvider>
   );
 }
