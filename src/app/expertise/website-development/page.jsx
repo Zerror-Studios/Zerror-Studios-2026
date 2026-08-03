@@ -7,19 +7,43 @@ import WebDevProjectsSwiper from '@/components/expertise/website-development/Web
 import TicketEffect from '@/components/home/TicketEffect'
 import React from 'react'
 
+import { createMetadata } from "@/lib/seo";
+
+export const metadata = createMetadata({
+  title: "Custom Website Design & Development — Zerror Studios",
+  description: "Websites designed to be felt and engineered to last. Custom-built, motion-led and fast — for brands that want people to stop, stay and remember.",
+  path: "/expertise/website-development",
+});
+
 const heroVideo = "https://vz-f76b55f9-7b8.b-cdn.net/2b3c385c-35e7-406c-bb11-8c7d71d90001/playlist.m3u8"
 
 const page = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "provider": { "@id": "https://www.zerrorstudios.com/#org" },
+        "serviceType": ["custom website development", "GSAP website development", "Three.js development"]
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <DetailedExpertiseHero
-        expertiseName="Motion websites built for product teams"
-        expertiseHeading={<>Designed to feel. <br /> Built to perform.</>}
+        expertiseName="Websites worth stopping for"
+        expertiseHeading={<>Designed to be felt.<br /> Built to last.</>}
         btnsLabels={["UI/UX", "Motion", "Development"]}
-        introHeading={<>Your website is not just a page. It is the stage for your brand, product, and user journey.</>}
-        introText="We design and develop fast, expressive web experiences that guide attention, explain value, and turn visitors into action."
+        introHeading={<>You get about three seconds before someone decides you're worth their time. We make them count.</>}
+        introText="Motion with meaning, detail that rewards attention, and speed that never asks anyone to wait."
         videoSrc={heroVideo}
-        supportingText="Every interaction should feel effortless. We combine product thinking, visual systems, animation, and front-end engineering to make websites that look sharp and perform under pressure."
+        supportingText="Every site is custom — designed and built by one team, so what you approve is exactly what ships.
+No templates. Nothing lost in translation."
         features={[
           { label: "Bounce rate", value: "-41%" },
           { label: "Load time", value: "< 1.6s" },

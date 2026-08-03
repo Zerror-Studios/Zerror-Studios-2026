@@ -13,8 +13,8 @@ const InfoSection = () => {
           <p className='font-thin'>systems we build.</p>
         </div>
         <div className="capitalize text-3xl  md:pl-2">
-          <h3 className="">
-            <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
+          <h3 className="secondary-font">
+            <span className='opacity-0  max-sm:hidden pointer-events-none'>...............</span>
             Our team brings together design, engineering, and strategy to build systems with clarity and intent. Every discipline works as part of a unified process — creating work that is precise, scalable, and built to perform.
           </h3>
         </div>

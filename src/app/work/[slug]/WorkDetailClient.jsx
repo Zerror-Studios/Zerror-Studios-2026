@@ -48,6 +48,21 @@ const WorkDetail = () => {
   return (
     <div ref={containerRef}>
 
+      {project && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CreativeWork",
+              "name": `${project.title} Case Study — Zerror Studios`,
+              "about": project.title,
+              "creator": { "@id": "https://www.zerrorstudios.com/#org" }
+            })
+          }}
+        />
+      )}
+
       <div className="w-full h-screen relative center text-center">
         {project.cover_vid ? (
           <video src={project.cover_vid} loop autoPlay muted playsInline className='cover blur-[2px]'></video>

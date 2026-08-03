@@ -6,23 +6,47 @@ import WebDevClients from '@/components/expertise/website-development/WebDevClie
 import TicketEffect from '@/components/home/TicketEffect'
 import React from 'react'
 
+import { createMetadata } from "@/lib/seo";
+
+export const metadata = createMetadata({
+  title: "Custom Software & CMS Development — Zerror Studios",
+  description: "Dashboards, content systems and workflows built around how your team works. Software shaped to the business — never the other way around.",
+  path: "/expertise/custom-software-development",
+});
+
 const heroVideo = "/videos/expertise/custom_cms.mp4"
 
 const page = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "provider": { "@id": "https://www.zerrorstudios.com/#org" },
+        "serviceType": ["custom software development", "headless CMS development", "admin dashboard development"]
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <DetailedExpertiseHero
-        expertiseName="Custom CMS for fast-moving content teams"
+        expertiseName="Software shaped to the business"
         expertiseHeading={
           <>
-            Custom CMS solutions <br /> built for growth.
+            Built around <br /> how you work.
           </>
         }
         btnsLabels={["Headless CMS", "Content Ops", "Scalable Admin"]}
-        introHeading={<>Your CMS should feel simple for editors and powerful for the business behind it.</>}
-        introText="We create custom content systems that make publishing faster, governance cleaner, and future changes easier to manage."
+        introHeading={<>Off-the-shelf tools are fine — right up until your business stops being off-the-shelf.</>}
+        introText="We build content systems, dashboards and workflows that fit your operation exactly"
         videoSrc={heroVideo}
-        supportingText="From schema design to editorial workflows, we build CMS architecture around the way your team actually ships content, pages, products, and campaigns."
+        supportingText="When teams start working around their software instead of with it, growth has outrun the tools. We
+build the version that keeps up — and keeps scaling."
         features={[
           { label: "Publishing speed", value: "+67%" },
           { label: "Editor workflow steps", value: "-38%" },

@@ -18,10 +18,12 @@ export default function TyrusCubeModel(props) {
   const isDragging = useRef(false)
   const last = useRef({ x: 0, y: 0 })
 
-  const AUTO_ROTATE_SPEED = 0.005
+  const AUTO_ROTATE_SPEED = 0.3
 
   useEffect(() => {
     if (!scrollRef.current) return
+
+    gsap.set('.tyrus_canvas', { xPercent: -46, yPercent: -42 })
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -33,8 +35,8 @@ export default function TyrusCubeModel(props) {
     })
 
     tl.to('.tyrus_canvas', {
-      top: '0%',
-      left: '0%',
+      xPercent: 0,
+      yPercent: 0,
       ease: 'linear',
       duration: 0.2,
     })
@@ -71,15 +73,16 @@ export default function TyrusCubeModel(props) {
     }
   }, [])
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (!isDragging.current) {
-      dragTarget.current.x += AUTO_ROTATE_SPEED
+      dragTarget.current.y += AUTO_ROTATE_SPEED * delta
     }
 
+    const dampFactor = 1 - Math.exp(-10 * delta)
     dragCurrent.current.x +=
-      (dragTarget.current.x - dragCurrent.current.x) * 0.08
+      (dragTarget.current.x - dragCurrent.current.x) * dampFactor
     dragCurrent.current.y +=
-      (dragTarget.current.y - dragCurrent.current.y) * 0.08
+      (dragTarget.current.y - dragCurrent.current.y) * dampFactor
 
     dragRef.current.rotation.x = dragCurrent.current.x
     dragRef.current.rotation.y = dragCurrent.current.y

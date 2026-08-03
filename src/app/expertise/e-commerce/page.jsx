@@ -6,11 +6,34 @@ import EcommPriceSection from '@/components/expertise/e-comm/EcommPriceSection'
 import WebDevClients from '@/components/expertise/website-development/WebDevClients'
 import TicketEffect from '@/components/home/TicketEffect'
 
+import { createMetadata } from "@/lib/seo";
+
+export const metadata = createMetadata({
+  title: "eCommerce Development & the Zcom Platform — Zerror Studios",
+  description: "Commerce built to sell and scale. Shopify when it fits — Zcom, our own platform, when your business has outgrown templates.",
+  path: "/expertise/e-commerce",
+});
+
 const heroVideo = "https://vz-f76b55f9-7b8.b-cdn.net/a14fb47e-f79b-40cc-9dae-3fe784bcf05b/playlist.m3u8"
 
 const page = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "provider": { "@id": "https://www.zerrorstudios.com/#org" },
+        "serviceType": ["eCommerce development", "custom eCommerce platform development", "Shopify development"]
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <DetailedExpertiseHero
         expertiseName="Commerce that earns the cart"
         expertiseHeading={<>Commerce built to sell. <br /> And scale.</>}
@@ -21,14 +44,11 @@ const page = () => {
         supportingText="From product cards to cart behaviour, every detail is shaped around shopper confidence — fewer
 drop-offs, smoother paths to purchase, and buyers who return."
         features={[
-          { label: "Add-to-cart rate", value: "+39%" },
-          { label: "Checkout drop-off", value: "-28%" },
-          { label: "Product discovery speed", value: "+52%" },
-          { label: "Average order value", value: "+24%" },
-          { label: "Mobile cart completion", value: "+47%" },
-          { label: "Storefront load time", value: "< 1.8s" },
-          { label: "Repeat purchase intent", value: "+31%" },
-          { label: "Conversion readiness score", value: "96" },
+          { label: "Revenue growth", value: "" },
+          { label: "YoY", value: "+350%" },
+          { label: "Traffic growth", value: "+165%" },
+          { label: "Average order value", value: "↑" },
+          { label: " Repeat purchases", value: "↑" },
         ]}
       />
       <EcommCategorySlider />

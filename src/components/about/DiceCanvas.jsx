@@ -47,8 +47,9 @@ const DiceCanvas = () => {
   return (
     <div className="CanvasDiv w-full overflow-hidden h-screen fixed top-0 left-0 z-[999] pointer-events-none ">
       <Canvas
-        className="tyrus_canvas opacity-0 absolute top-[-42%] left-[-46%] w-full h-full pointer-events-none "
+        className="tyrus_canvas opacity-0 absolute top-0 left-0 w-full h-full pointer-events-none"
         camera={{ position: isMobile ? [0, 0, 10] : [0, 0, 7], fov: 45 }}
+        dpr={[1, 2]}
       >
         <TyrusCubeModel />
         <Environment preset="studio" />

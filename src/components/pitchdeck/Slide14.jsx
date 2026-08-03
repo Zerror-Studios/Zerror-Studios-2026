@@ -3,7 +3,7 @@ import React from 'react';
 const Slide14 = () => {
   return (
     <section className="w-full h-full ">
-      <div className="w-full p-5 md:p-10 h-full noise-bg bg_blue flex flex-col justify-center text-white">
+      <div className="w-full p-5 md:p-10 h-full    bg_blue flex flex-col justify-center text-white">
         <div className="w-[75%] space-y-10 z-10">
           <h2 data-para-effect className="text-5xl max-w-4xl primary-font leading-none">
             For founders who move fast & brands that refuse to look average.

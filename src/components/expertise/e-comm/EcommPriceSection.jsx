@@ -7,13 +7,13 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 
 const features = [
-    { name: "Fully custom design freedom", zcommerce: true, shopify: true },
-    { name: "No third-party plugin costs", zcommerce: true, shopify: false },
-    { name: "Built-in loyalty & referral system", zcommerce: true, shopify: true },
-    { name: "Lookbook & Look Creation Tool", zcommerce: true, shopify: false },
-    { name: "Integrated WhatsApp campaigns", zcommerce: true, shopify: true },
-    { name: "IP ownership on full payment", zcommerce: true, shopify: false },
-    { name: "Competitive long-term running costs", zcommerce: true, shopify: false },
+    { name: "Fully custom design freedom", zcom: true, shopify: true },
+    { name: "No third-party plugin costs", zcom: true, shopify: false },
+    { name: "Built-in loyalty & referral system", zcom: true, shopify: true },
+    { name: "Lookbook & Look Creation Tool", zcom: true, shopify: false },
+    { name: "Integrated WhatsApp campaigns", zcom: true, shopify: true },
+    { name: "IP ownership on full payment", zcom: true, shopify: false },
+    { name: "Competitive long-term running costs", zcom: true, shopify: false },
 ];
 
 const CheckIcon = () => (
@@ -65,7 +65,7 @@ const EcommPriceSection = () => {
                 <div className="capitalize text-3xl md:pl-2">
                     <h3 data-para-effect className="">
                         <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                        Understand The Difference Between Ready-Made Platforms And Fully Custom-Built Solutions.
+                        Ready-made platforms are built for everyone. Zcom is built for you
                     </h3>
                 </div>
             </div>
@@ -79,7 +79,7 @@ const EcommPriceSection = () => {
                         <p className="text-base md:text-xl  primary-font">Features</p>
                     </div>
                     <div className="px-4 md:px-10 py-4 md:py-6 flex items-center justify-center">
-                        <p className="text-xs md:text-base font-semibold uppercase tracking-wider">ZCommerce</p>
+                        <p className="text-xs md:text-base font-semibold uppercase tracking-wider">Zcom</p>
                     </div>
                     <div className="px-4 md:px-10 py-4 md:py-6 flex items-center justify-center gap-2">
                         <img src="/icons/shopify.svg" className='w-24' alt="" />
@@ -97,7 +97,7 @@ const EcommPriceSection = () => {
                             <p className="text-sm md:text-xl text-[#002bba]">{feature.name}</p>
                         </div>
                         <div className=" sclw_1 px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
-                            {feature.zcommerce ? <CheckIcon /> : <CrossIcon />}
+                            {feature.zcom ? <CheckIcon /> : <CrossIcon />}
                         </div>
                         <div className=" sclw_2 px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
                             {feature.shopify ? <CheckIcon /> : <CrossIcon />}

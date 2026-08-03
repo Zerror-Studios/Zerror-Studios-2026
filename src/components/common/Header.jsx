@@ -256,7 +256,7 @@ const Header = () => {
                   <Image fill className={`object-contain transition-all duration-300 ease-out ${openMenu ? "" : ""}`} src="/logo_white.svg" alt="logo" />
                 </div>
               </div>
-              <div className="flex-1 flex justify-center relative h-3 items-center overflow-hidden">
+              <div className="flex-1 flex justify-center relative h-3 items-center text-center whitespace-nowrap overflow-hidden">
                 <p className={`absolute text-sm  text-white font-medium uppercase  ${openMenu ? "-translate-y-full" : ""} transition-all duration-300 ease-out `}>Menu</p>
                 <p className={`absolute text-sm text-white font-medium uppercase transition-all duration-300 ease-out ${openMenu && !showProjectForm ? "translate-y-0!" : "translate-y-full"} `}>Cases With Teeth</p>
                 <p className={`absolute text-sm text-white font-medium uppercase transition-all duration-300 ease-out ${openMenu && showProjectForm ? "translate-y-0!" : "translate-y-full"} `}>YOU MADE IT</p>

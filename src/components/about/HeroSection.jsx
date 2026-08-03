@@ -75,9 +75,9 @@ const HeroSection = () => {
     <div className=" about_hero_paren  w-full   padding">
 
       <div className="w-full aboutTitle flex py-44 max-sm:pb-20  ">
-        <h1 className=" split_t text-5xl md:text-8xl  leading-none capitalize primary-font text_blue">
+        <h1 className=" split_t text-5xl md:text-8xl  leading-none capitalize primary-font text_blue w-[80%]">
           We believe a great user experience is not just intuitive it’s
-          entertaining. Because clarity is good, but delight is better.
+          entertaining. 
         </h1>
       </div>
 
@@ -85,8 +85,7 @@ const HeroSection = () => {
         <div className=" w-full md:w-1/2  space-y-5 md:space-y-10">
           <div className="md:w-[80%] ">
             <h2 className=" split_t primary-font text_blue text-3xl">
-              We make stuff look good. We make it work better. Creative.
-              Scalable. Reliable. Fresh. Tech-first. Entertaining.
+              For founders who dream in beta. For brands that refuse to look average. Your next version starts here.
             </h2>
           </div>
 
@@ -117,21 +116,18 @@ const HeroSection = () => {
           {/* cont*/}
           <div className=" w-full md:w-1/2 flex flex-col gap-3">
             {/* Text */}
-            <h3 className=" split_t  uppercase text-xl font-medium">
+            <h3 className=" split_t  uppercase text-xl font-semibold">
               Why we exist
             </h3>
             <div className="w-full flex flex-col gap-3">
               <p className=" split_t leading-tight">
-                We’re here to help you stand out—even in a crowded digital
-                world. From turning napkin sketches into fully functional
-                platforms to moving fast without breaking your brand, we focus
-                on building experiences that scale smoothly and entertain, not
-                just inform or convert.
+                Zerror. Zero error. Naming a studio after perfection is a risk — it means every launch has to keep the
+                promise. Good. That's the point. When your name is a standard, you hold it, or everyone knows you didn't.
               </p>
               <p className=" split_t leading-tight">
-                While most teams do either design or development, few truly
-                understand both—and even fewer do it fast. We’re here to change
-                that.
+                Great ideas usually break in the space between design and development — the handoff, where fonts shift, 
+                spacing slips and intent gets diluted. We removed the handoff. Designers and developers, one room, one 
+                system. What gets imagined is what gets shipped.
               </p>
             </div>
 

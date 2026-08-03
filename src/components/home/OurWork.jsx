@@ -174,12 +174,12 @@ const OurWork = () => {
                     <p className=' font-thin '>Technology that holds.</p>
                 </div>
                 <div className=" max-sm:hidden text-3xl pl-2">
-                    <h3 data-para-effect className="  secondary-font"> <span className='opacity-0 pointer-events-none'>..............</span> Work where design and technology move as one. No handoffs, no compromises, nothing lost in
+                    <h3 data-para-effect className="  secondary-font"> <span className='opacity-0 pointer-events-none' aria-hidden="true">..............</span> Work where design and technology move as one. No handoffs, no compromises, nothing lost in
 translation — every project built with structure, precision, and the patience to sweat details most
 people never notice. Built to perform. Built to last.
 </h3>
                 </div>
-                <div className=" md:hidden text-3xl ">
+                <div className=" md:hidden text-3xl " aria-hidden="true">
                     <h3 className="  secondary-font"> Work where design and technology move as one. No handoffs, no compromises, nothing lost in
 translation — every project built with structure, precision, and the patience to sweat details most
 people never notice. Built to perform. Built to last.

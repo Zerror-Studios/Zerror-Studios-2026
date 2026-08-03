@@ -5,19 +5,43 @@ import WebDevClients from '@/components/expertise/website-development/WebDevClie
 import TicketEffect from '@/components/home/TicketEffect'
 import React from 'react'
 
+import { createMetadata } from "@/lib/seo";
+
+export const metadata = createMetadata({
+  title: "Branding, Marketing & SEO — Zerror Studios",
+  description: "Identity, content and search — including AI search — built as one system, so being found and being remembered work together.",
+  path: "/expertise/branding-marketing-and-seo",
+});
+
 const heroVideo = "https://vz-f76b55f9-7b8.b-cdn.net/eb0dedc2-f474-4c0c-8efc-57751e3e5202/playlist.m3u8"
 
 const page = () => {
-    return (
-        <>
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "provider": { "@id": "https://www.zerrorstudios.com/#org" },
+        "serviceType": ["brand identity design", "SEO services", "AI search optimisation"]
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
           <DetailedExpertiseHero
-        expertiseName="Brand systems with search-ready clarity"
-        expertiseHeading={<>Building brands <br /> people remember.</>}
+        expertiseName="Found first. Remembered longer. "
+        expertiseHeading={<>Be found. <br /> Be remembered.</>}
         btnsLabels={["Strategy", "Identity", "SEO"]}
-        introHeading={<>A strong brand does more than look consistent. It makes every message easier to trust, find, and remember.</>}
-        introText="We shape positioning, identity, content direction, and organic visibility into one clear system for growth."
+        introHeading={<>A brilliant website nobody finds is a well-kept secret. We make sure yours isn't.</>}
+        introText="Identity, content and search built as one system — each making the others work harder."
         videoSrc={heroVideo}
-        supportingText="From visual identity to SEO structure, we build brands that feel distinct and work across campaigns, landing pages, social touchpoints, and search journeys."
+        supportingText="A strong brand makes every message easier to trust, easier to find, easier to recall. We shape all
+three together, because separately they underperform."
         features={[
           { label: "Brand recall lift", value: "+58%" },
           { label: "Organic visibility", value: "+72%" },

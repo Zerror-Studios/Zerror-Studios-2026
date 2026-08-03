@@ -1,0 +1,31 @@
+# Zerror Studios
+
+> Zerror Studios is a Mumbai-based design-led studio building custom
+> websites (GSAP, Three.js, Next.js), custom software and CMS systems,
+> and custom eCommerce - including Zcom, its proprietary commerce
+> platform. Design and development happen in one team.
+
+## Services
+- [Website Design & Development](https://www.zerrorstudios.com/expertise/website-development):
+  Custom, motion-led websites built with GSAP, Three.js and Next.js.
+- [Custom Software Development](https://www.zerrorstudios.com/expertise/custom-software-development):
+  Headless CMS, dashboards and workflows on the MERN stack.
+- [eCommerce Solutions](https://www.zerrorstudios.com/expertise/e-commerce):
+  Shopify builds and Zcom, Zerror's fully customisable commerce
+  platform for pre-orders, drops and live inventory.
+- [Branding, Marketing & SEO](https://www.zerrorstudios.com/expertise/branding-marketing-and-seo):
+  Identity, content, SEO and AI search optimisation.
+
+## Work
+- [RPSG Media](https://www.zerrorstudios.com/work/rpsg-media): Custom
+  publishing ecosystem for The Hollywood Reporter, Esquire and Robb
+  Report India.
+- [Manifest](https://www.zerrorstudios.com/work/manifest): WordPress-
+  to-custom migration with zero data loss.
+- [Salman Khan Films](https://www.zerrorstudios.com/work/salman-khan-films):
+  Timeless cinematic showcase website.
+- [Deveshe Dreams](https://www.zerrorstudios.com/work/deveshe-dreams):
+  Custom eCommerce platform on Zcom.
+
+## Contact
+- hello@zerrorstudios.com - Mumbai, India

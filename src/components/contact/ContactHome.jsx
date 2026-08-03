@@ -12,6 +12,8 @@ import { useGSAP } from "@gsap/react";
 import SplitText from "gsap/dist/SplitText";
 import WebPageSchema from "@/components/seo/WebPageSchema";
 gsap.registerPlugin(ScrollTrigger, SplitText);
+import HeroScene from "@/components/Scene/HeroScene.jsx";
+
 
 const ContactHome = () => {
 
@@ -91,7 +93,10 @@ const ContactHome = () => {
         <>
             <ToastContainer position="top-right" autoClose={3000} />
 
-            <div className=" noise-bg bg_blue relative w-full h-[100svh] flex flex-col md:flex-row overflow-hidden">
+                <div className="site-background  site-background-desktop  fixed bg_blue top-0 left-0   w-full h-screen z-[1]">
+                    <HeroScene />
+                  </div>
+            <div className="  bg_blue relative w-full h-[100svh] flex flex-col md:flex-row overflow-hidden">
                 {/* Left */}
                 <div className=" max-sm:hidden w-full md:w-1/2 h-[100svh] relative z-10">
                     <h1 className=" split_t absolute bottom-[4%] left-[4%] flex flex-col primary-font text-5xl md:text-8xl text-white">

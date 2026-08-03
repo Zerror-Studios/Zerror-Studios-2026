@@ -49,16 +49,16 @@ const EcommCmsCards = () => {
                 <div className="w-full   padding py-0!  text_blue ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                         <div className="">
-                            <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Manage your eCommerce with our CMS </h2>
+                            <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Meet Zcom.</h2>
                         </div>
                         <div className="text-xs max-sm:hidden pt-4">
-                            <p className='font-thin'>Total control, zero </p>
-                            <p className='font-thin'>restrictions</p>
+                            <p className='font-thin'>Total control,  </p>
+                            <p className='font-thin'>zero restrictions.</p>
                         </div>
                         <div className="capitalize text-3xl  md:pl-2">
                             <h3 data-para-effect className="">
                                 <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                                From storefront design to backend workflows, everything is tailored to match your brand, processes, and goals.
+                                Our own commerce platform. Not a theme, not a template — a system that bends to your business.
                             </h3>
                         </div>
                     </div>
@@ -79,15 +79,15 @@ const EcommCmsCards = () => {
                             <img src="/images/expertisePage/e-comm/cmsCards/card_2.png" alt="" />
                         </div>
                         <div className="p-10 space-y-2 w-[80%]">
-                            <h4 className='text-3xl primary-font'>Built for Customization</h4>
-                            <p className='leading-tight'>Easily customize every part of your store to fit your brand</p>
+                            <h4 className='text-3xl primary-font'>Made for your model</h4>
+                            <p className='leading-tight'>Pre-orders, drops, made-to-order: workflows templates refuse, built in from day one.</p>
                         </div>
                     </div>
 
                     <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
-                            <h4 className='text-3xl primary-font'>Analytics & Reports</h4>
-                            <p className='leading-tight'>Monitor sales, Conversion rates and Customer behaviour with detailed Custom Reports</p>
+                            <h4 className='text-3xl primary-font'>Live inventory</h4>
+                            <p className='leading-tight'>Stock tied to real production, updated in real time, visible at a glance.</p>
                         </div>
                         <div className="">
                             <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />
@@ -99,15 +99,15 @@ const EcommCmsCards = () => {
                             <img src="/images/expertisePage/e-comm/cmsCards/card_4.png" alt="" />
                         </div>
                         <div className="p-10 space-y-2 w-[80%]">
-                            <h4 className='text-3xl primary-font'>SEO tools</h4>
-                            <p className='leading-tight'>Expand your reach and show up more in global search engine results with a powerful set.</p>
+                            <h4 className='text-3xl primary-font'>Analytics that answe</h4>
+                            <p className='leading-tight'>Sales, conversion and customer behaviour in reports built around your questions.</p>
                         </div>
                     </div>
 
                     <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
-                            <h4 className='text-3xl primary-font'>Integrations and extensions</h4>
-                            <p className='leading-tight'>Unite your digital world through integrations with popular social platforms and multi-media accounts.</p>
+                            <h4 className='text-3xl primary-font'>Built-in loyalty & referrals</h4>
+                            <p className='leading-tight'> Repeat business by design, without a plugin bill attached.</p>
                         </div>
                         <div className="p-10">
                             <img src="/images/expertisePage/e-comm/cmsCards/card_5.png" alt="" />
@@ -116,8 +116,8 @@ const EcommCmsCards = () => {
 
                     <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
-                            <h4 className='text-3xl primary-font'>Website analytics</h4>
-                            <p className='leading-tight'>Monitor sales, Conversion rates and Customer behaviour with detailed Custom Reports</p>
+                            <h4 className='text-3xl primary-font'>Campaigns from the dashboard</h4>
+                            <p className='leading-tight'> Email, SMS and WhatsApp, sent from where you already work.</p>
                         </div>
                         <div className="">
                             <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />
@@ -126,8 +126,8 @@ const EcommCmsCards = () => {
 
                     <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
-                            <h4 className='text-3xl primary-font'>Marketing Campaigns</h4>
-                            <p className='leading-tight'>Launch bulk mail, SMS Campaign using Designers template direct from your dashboard</p>
+                            <h4 className='text-3xl primary-font'>Search-ready structure</h4>
+                            <p className='leading-tight'> Clean architecture that search engines, and AI engines, can actually read.</p>
                         </div>
                         <div className="">
                             <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />
@@ -136,8 +136,8 @@ const EcommCmsCards = () => {
 
                     <div className="w-[30vw]  cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="p-10 pb-0 space-y-2 ">
-                            <h4 className='text-3xl primary-font'>Review Management</h4>
-                            <p className='leading-tight'>Easily customize every part of your store to fit your brand</p>
+                            <h4 className='text-3xl primary-font'>Yours, fully</h4>
+                            <p className='leading-tight'>Complete IP ownership on full payment. Your store, your system, your asset.</p>
                         </div>
                         <div className="">
                             <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />

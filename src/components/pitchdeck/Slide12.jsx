@@ -29,7 +29,7 @@ const slideImages = [
 
 const Slide12 = () => {
   return (
-    <section className="w-full h-full overflow-hidden noise-bg bg_blue flex flex-col">
+    <section className="w-full h-full overflow-hidden    bg_blue flex flex-col">
       <div className="case-study-content z-10 w-full text-white p-6 md:p-10 flex flex-col space-y-16 relative">
 
         {/* Top Header & Details Section */}
@@ -38,7 +38,7 @@ const Slide12 = () => {
           {/* Left: Case Study Title */}
           <div className="lg:col-span-4">
             <h2 data-para-effect className="text-3xl primary-font">
-          Deveshe
+              Deveshe
               Dreams
             </h2>
           </div>

@@ -189,17 +189,17 @@ const Clients = () => {
     return (
         <div className=' noise-bg clients_paren relative z-10 max-sm:pt-5 bg_blue pt-6 md:pt-12 text-white w-full'>
 
-            <div className="w-screen relative z-10  padding text-white grid grid-cols-[28%_30%_42%]">
+            <div className=" padding w-full z-20 relative text-white space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
             <div className="">
-              <h2 data-para-effect className='  primary-font   text-5xl  leading-none'>Our <br /> Clients</h2>
+              <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Our <br /> Clients</h2>
             </div>
-            <div className="text-xs pt-4">
+            <div className="text-xs max-sm:hidden pt-4">
               <p data-para-effect className=' font-thin'>The company </p>
               <p data-para-effect className=' font-thin'>we keep.</p>
             </div>
-            <div className="text-3xl  pl-2">
+            <div className="capitalize text-3xl  md:pl-2">
               <h3 data-para-effect className=" secondary-font">
-                <span className='opacity-0 pointer-events-none'>...........................</span>
+                <span className='opacity-0  max-sm:hidden pointer-events-none' aria-hidden="true">...........................</span>
                 From global publishing houses to founders on their first launch, we work with teams that value clarity,
 structure and scale.
               </h3>

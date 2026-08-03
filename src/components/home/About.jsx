@@ -299,9 +299,9 @@ const About = () => {
                                 <p className='wrk_split_wrd font-thin '>Strong Technology.</p>
                             </div>
                             <div className=" max-sm:hidden text-3xl pl-2">
-                                <h3 className=" wrk_split_wrd secondary-font"> <span className='opacity-0 pointer-events-none'>..............</span> We create scalable, performance- driven digital systems where design and engineering operate as one — built for clarity, adaptability, and long-term impact.</h3>
+                                <h3 className=" wrk_split_wrd secondary-font"> <span className='opacity-0 pointer-events-none' aria-hidden="true">..............</span> We create scalable, performance- driven digital systems where design and engineering operate as one — built for clarity, adaptability, and long-term impact.</h3>
                             </div>
-                            <div className=" md:hidden text-3xl ">
+                            <div className=" md:hidden text-3xl " aria-hidden="true">
                                 <h3 className=" wrk_split_wrd secondary-font"> We create scalable, performance- driven digital systems where design and engineering operate as one — built for clarity, adaptability, and long-term impact.</h3>
                             </div>
                         </div>

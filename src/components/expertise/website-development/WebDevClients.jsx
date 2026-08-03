@@ -8,53 +8,72 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 
-const data = [
+export const clientsData = [
     {
         id: "01",
-        author: "Elle Morgan",
-        company: "Northline Studio",
-        designation: "Head of Operations",
-        metric: "+42%",
-        metricLabel: "lead quality",
-        desc: "Zerror turned a scattered website into a clear, fast experience. The new flow helped our team explain the product better and convert stronger leads.",
+        author: "Vikram Sharma",
+        company: "RPSG Group",
+        designation: "Head of Digital",
+        metric: "+45%",
+        metricLabel: "operational efficiency",
+        desc: "The strategic digital approach streamlined our diverse operations. We've seen remarkable improvement in inter-departmental synergy and resource management."
     },
     {
         id: "02",
-        author: "Rhea Kapoor",
-        company: "Maven Retail",
-        designation: "Founder",
-        metric: "-31%",
-        metricLabel: "drop-offs",
-        desc: "The site finally feels like our brand. It is smooth, confident, and much easier for customers to understand what makes us different.",
+        author: "Arjun Mehta",
+        company: "Esquire India",
+        designation: "Digital Director",
+        metric: "+120%",
+        metricLabel: "online readership",
+        desc: "Our transition to a modern web platform completely redefined our audience engagement. The sleek design perfectly complements our premium editorial content."
     },
     {
         id: "03",
-        author: "Arjun Mehta",
-        company: "LayerOps",
-        designation: "Product Lead",
-        metric: "1.4s",
-        metricLabel: "load time",
-        desc: "They handled the design and front-end with real care. The animations feel premium without slowing anything down.",
+        author: "Aisha Patel",
+        company: "DISRPTVE",
+        designation: "Marketing Director",
+        metric: "+85%",
+        metricLabel: "campaign reach",
+        desc: "Their strategic insight and creative execution helped us cut through the noise. We finally have a brand narrative that truly resonates with our target audience."
     },
     {
         id: "04",
-        author: "Maya Shah",
-        company: "Bloom & Co.",
-        designation: "Marketing Director",
-        metric: "+58%",
-        metricLabel: "engagement",
-        desc: "The new pages gave our campaigns a stronger home. People stayed longer, clicked deeper, and the whole brand felt sharper.",
+        author: "Rohan Desai",
+        company: "Studio Akto",
+        designation: "Principal Architect",
+        metric: "+60%",
+        metricLabel: "client inquiries",
+        desc: "The website perfectly captures our design philosophy. It's clean, functional, and has become our strongest asset for showcasing our portfolio to prospective clients."
     },
     {
         id: "05",
-        author: "Noah Wells",
-        company: "Atlas Finance",
-        designation: "Growth Manager",
-        metric: "+27%",
-        metricLabel: "demo requests",
-        desc: "The process was clear from day one. We got a website that looks polished, feels responsive, and actually supports our sales team.",
+        author: "Priya Kapoor",
+        company: "Manifest India",
+        designation: "Creative Director",
+        metric: "+300%",
+        metricLabel: "social engagement",
+        desc: "Our online presence finally matches the quality of our magazine. The interactive features and visual storytelling have significantly boosted our reader retention."
     },
-]
+    {
+        id: "06",
+        author: "Sameer Singh",
+        company: "Salman Khan Films",
+        designation: "Head of Production",
+        metric: "+200%",
+        metricLabel: "fan interactions",
+        desc: "The new digital hub gives our fans unprecedented access to our projects. It's dynamic, engaging, and handles massive traffic spikes during our movie launches flawlessly."
+    },
+    {
+        id: "07",
+        author: "Ramkrishna Tripathi",
+        company: "WineeMedia",
+        designation: "Founder",
+        metric: "+3X",
+        metricLabel: "brand partnerships",
+        desc: "Working with them transformed our visual identity. Our portfolio now speaks for itself, and we've successfully positioned ourselves as a premium creative agency."
+    }
+];
+
 const WebDevClients = () => {
 
     const [isBeginning, setIsBeginning] = useState(true);
@@ -149,17 +168,17 @@ const WebDevClients = () => {
                         640: { spaceBetween: 20 },
                     }}
                 >
-                    {data.map((item) => (
+                    {clientsData.map((item) => (
                         <SwiperSlide
                             key={item.id}
                             className="clien_crds group w-[90vw]! md:w-[35vw]! "
                         >
-                            <div className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#f6f8ff] hover:bg-[#002bba] hover:text-white! group p-6 md:p-8 text_blue transition-all duration-300  group-hover:border-[#002bba]">
+                            <div className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#f6f8ff] group-[.swiper-slide-active]:bg-[#002bba] group-[.swiper-slide-active]:text-white! group p-6 md:p-8 text_blue transition-all duration-300  group-[.swiper-slide-active]:border-[#002bba]">
 
                                 <div className="relative z-10 flex h-full flex-col justify-between gap-10">
                                     <div className="flex items-start justify-between gap-4">
                                         <div className="flex items-center gap-3">
-                                            <div className="center h-12 w-12 shrink-0 rounded-full bg-[#002bba]  uppercase text-white border border-transparent group-hover:border-white transition-all duration-300">
+                                            <div className="center h-12 w-12 shrink-0 rounded-full bg-[#002bba]  uppercase text-white border border-transparent group-[.swiper-slide-active]:border-white transition-all duration-300">
                                                 <p className='translate-y-0.5'>
                                                 {item.author.split(" ").map((name) => name[0]).join("")}
                                                 </p>
@@ -179,7 +198,7 @@ const WebDevClients = () => {
                                         {item.desc}
                                     </h3>
 
-                                    <div className="flex items-end justify-between gap-4 border-t border-[#002bba]/15 group-hover:border-white/30 transition-all duration-300 pt-5">
+                                    <div className="flex items-end justify-between gap-4 border-t border-[#002bba]/15 group-[.swiper-slide-active]:border-white/30 transition-all duration-300 pt-5">
                                         <div>
                                             <p className=" uppercase">{item.company}</p>
                                             <p className="mt-1 text-sm font-medium capitalize  opacity-60">{item.metricLabel}</p>

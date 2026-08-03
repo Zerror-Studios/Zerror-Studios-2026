@@ -187,11 +187,11 @@ const Hero = () => {
             </div>
           )}
           <div className="capitalize w-full   text-3xl  pl-2">
-            <h3 className=" max-sm:hidden secondary-font"> <span className='opacity-0 pointer-events-none'>...............</span>  Zerror is a design-led studio operating where design, technology and scalability meet. Great ideas
+            <h3 className=" max-sm:hidden secondary-font"> <span className='opacity-0 pointer-events-none' aria-hidden="true">...............</span>  Zerror is a design-led studio operating where design, technology and scalability meet. Great ideas
 often get lost between the two disciplines — few teams can do both, fewer still do it fast. We built
 Zerror to erase that gap, so ideas don't just survive. They shine</h3>
           </div>
-          <div className="capitalize w-full   text-3xl">
+          <div className="capitalize w-full   text-3xl" aria-hidden="true">
             <h3 className=" md:hidden secondary-font">  Zerror is a design-led studio operating where design, technology and scalability meet. Great ideas
 often get lost between the two disciplines — few teams can do both, fewer still do it fast. We built
 Zerror to erase that gap, so ideas don't just survive. They shine</h3>

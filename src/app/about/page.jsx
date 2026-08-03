@@ -7,20 +7,20 @@ import OurTeam from "@/components/about/OurTeam";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import WebPageSchema from "@/components/seo/WebPageSchema";
+import { createMetadata } from "@/lib/seo";
+
 gsap.registerPlugin(ScrollTrigger);
+
+export const metadata = createMetadata({
+  title: "About Zerror Studios — Named After a Standard",
+  description: "Zerror means zero error. A Mumbai studio where designers and developers build side by side, so nothing gets lost between idea and launch.",
+  path: "/about",
+});
 
 const about = () => {
 
   return (
     <>
-
-      <WebPageSchema
-        name="About |  Zerror Studios"
-        description="Zerror Studios is a creative web studio focused on storytelling, motion design, and high-performance digital experiences for modern brands."
-        url="https://www.zerrorstudios.com/about"
-      />
-
       <HeroSection />
 
       <div className=" canvas_space w-full flex justify-center items-end pb-20 h-screen ">
@@ -38,42 +38,3 @@ const about = () => {
 };
 
 export default about;
-
-
-
-export const metadata = {
-  title: "About",
-  description:
-    "Learn about Zerror Studios — a creative web studio building animation-led digital experiences for brands that want to stand out.",
-
-  keywords: [
-    "about Zerror Studios",
-    "creative web studio",
-    "digital experience agency",
-    "GSAP animation studio",
-    "Next.js creative agency",
-    "brand-focused development",
-  ].join(", "),
-
-  alternates: {
-    canonical: "https://www.zerrorstudios.com/about",
-  },
-
-  openGraph: {
-    title: "About | Zerror Studios",
-    description:
-      "Zerror Studios is a creative web studio focused on storytelling, motion, and high-performance digital experiences.",
-    url: "https://www.zerrorstudios.com/about",
-    siteName: "Zerror Studios",
-    type: "website",
-    images: ["/og.png"],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "About | Zerror Studios",
-    description:
-      "A creative studio crafting animation-driven websites and immersive digital experiences.",
-    images: ["/og.png"],
-  },
-};

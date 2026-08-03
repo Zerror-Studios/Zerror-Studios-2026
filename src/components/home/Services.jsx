@@ -187,7 +187,7 @@ const Services = () => {
             </div>
             <div className="text-3xl  pl-2">
               <h3 className="split_wrd secondary-font">
-                <span className='opacity-0 pointer-events-none'>...........................</span>
+                <span className='opacity-0 pointer-events-none' aria-hidden="true">...........................</span>
                 We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.
               </h3>
             </div>

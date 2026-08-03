@@ -1,5 +1,24 @@
   /** @type {import('next').NextConfig} */
   const nextConfig = {
+    async redirects() {
+      return [
+        {
+          source: '/services',
+          destination: '/expertise',
+          permanent: true,
+        },
+        {
+          source: '/studio',
+          destination: '/about',
+          permanent: true,
+        },
+        {
+          source: '/expertise/custom-cms-development',
+          destination: '/expertise/custom-software-development',
+          permanent: true,
+        },
+      ];
+    },
     experimental: {
       viewTransition: true,
     },

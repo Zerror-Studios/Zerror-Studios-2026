@@ -96,14 +96,15 @@ const EcommCategorySlider = () => {
             <div className="w-full   padding py-0!  text-white ">
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b  md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
-                        <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>High-performance  E-Commerce, built for  you.<br /> </h2>
+                        <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Shopify or a <br /> custom platform? </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4">
                     </div>
                     <div className="capitalize text-3xl  md:pl-2">
                         <h3 data-para-effect className="">
                             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                            We design and develop high-performing eCommerce experiences tailored to your brand optimized for seamless journeys across mobile and web, and built to drive conversions.
+                            We're not platform loyalists. Shopify is right for most stores, and we build it well. But some
+businesses don't fit a template — and forcing them never ends well.
                         </h3>
                     </div>
                 </div>

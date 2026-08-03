@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import SplitText from 'gsap/dist/SplitText';
+import Image from 'next/image';
 
 const projectsData = [
     {
@@ -128,8 +129,8 @@ const MoreProjects = () => {
                             <div
                                 className=" w-full"
                             >
-                                <div className=" w-full aspect-[5/6]">
-                                    <img src={item.img} alt="loading img" className="cover" />
+                                <div className=" w-full relative aspect-[5/6]">
+                                    <Image fill src={item.img} alt="loading img" className="cover" />
                                 </div>
                                 <div className="mt-2">
                                     <div className="w-full flex items-center justify-between">

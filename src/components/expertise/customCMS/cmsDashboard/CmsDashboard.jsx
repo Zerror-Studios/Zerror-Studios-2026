@@ -80,7 +80,7 @@ const CmsDashboard = () => {
           </div>
         </div>
         <div className="cms-browser-url">
-          <span>Zcommerce.com</span>
+          <span>Zcom.com</span>
         </div>
         <div className="cms-browser-actions">
           <RiShareBoxLine size={12} />
@@ -95,7 +95,7 @@ const CmsDashboard = () => {
         <nav className="cms-sidebar uppercase">
           <div>
             <div className="cms-sidebar-brand">
-              <span>Zcommerce</span>
+              <span>Zcom</span>
             </div>
             <div className="cms-sidebar-nav">
               {sidebarConfig.map((item) => (
