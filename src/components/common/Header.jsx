@@ -352,14 +352,14 @@ const Header = () => {
                 </nav>
 
                 <div className="p-6 py-2">
-                  <a
-                    href="/pdf/Zerror Studios - Business Deck.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <ViewTransitionLink
+                    href="/pitchdeck"
+                    delay={500}
+                    onClick={() => setOpenMenu(false)}
                     className="w-full rounded-sm py-4 text-xs center bg_blue border hover:border-transparent border-[#ffffff50] bg-transparent! text-[#ffffff] hover:bg-[#ffffff]! hover:text-black transition-all duration-300 uppercase flex"
                   >
                     Our Pitchdeck
-                  </a>
+                  </ViewTransitionLink>
                 </div>
 
                 <div className="w-full pt-0 p-6 grid grid-cols-2 gap-x-1">
