@@ -7,34 +7,38 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const ImageEffect = () => {
+  const flipCardBgRef = useRef(null);
+  const txtScrollBgRef = useRef(null);
+  const cardVIRef = useRef(null);
+  const textRefs = useRef([]);
+
   useGSAP(() => {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".flip_card_bg",
+        trigger: flipCardBgRef.current,
         start: "top top",
-        endTrigger: ".txt_scroll_bg",
+        // endTrigger: txtScrollBgRef.current,
         end: "top top",
         scrub: true,
       },
     });
 
-    tl.to(".cardVI", {
+    tl.to(cardVIRef.current, {
       width: "100vw",
       height: "100vh",
     });
 
     const textTl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".txt_scroll_bg",
+        trigger: txtScrollBgRef.current,
         start: "top top",
         end: "bottom bottom",
         scrub: true,
       },
     });
 
-    const textLines = gsap.utils.toArray(".animate-text");
-    textLines.forEach((text, i) => {
+    textRefs.current.forEach((text, i) => {
       textTl.to(text, { opacity: 1, transform: "translateY(0)" });
     });
   });
@@ -54,9 +58,9 @@ const ImageEffect = () => {
           </div>
         </div>
         {/* Sticky background scene */}
-        <div className="flip_card_bg relative">
+        <div ref={flipCardBgRef} className="flip_card_bg relative">
           <div className="  w-full h-screen sticky top-0 center ">
-            <div className=" w-75 h-100   cardVI center overflow-hidden relative  ">
+            <div ref={cardVIRef} className=" w-75 h-100   cardVI center overflow-hidden relative  ">
           <div className="absolute w-screen h-screen center">
 
                 {/* Video */}
@@ -71,7 +75,7 @@ const ImageEffect = () => {
             </div>
           </div>
 
-          <div className="txt_scroll_bg padding py-0! w-full h-[300vh] relative z-[80] ">
+          <div ref={txtScrollBgRef} className="txt_scroll_bg padding py-0! w-full h-[300vh] relative z-[80] ">
             <div className="sticky top-0 h-screen flex justify-center gap-y-5 flex-col w-full pointer-events-none">
               {[
                 "5+ years of hands-on product and digital execution",
@@ -82,6 +86,7 @@ const ImageEffect = () => {
               ].map((text, i) => (
                 <h2
                   key={i}
+                  ref={(el) => (textRefs.current[i] = el)}
                   className="animate-text translate-y-5 text-3xl md:text-5xl max-w-2xl text-white  primary-font font-medium opacity-0"
                 >
                   {text}
