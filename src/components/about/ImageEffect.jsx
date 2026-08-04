@@ -19,12 +19,8 @@ const ImageEffect = () => {
       },
     });
 
-    tl.to(".cardVI", { rotateY: 90 });
-
-    tl.to(".VCI", { opacity: 0 }, "a11");
-    tl.to(".cardVI", { rotateY: 0 }, "a11");
     tl.to(".cardVI", {
-      width: "100%",
+      width: "100vw",
       height: "100vh",
     });
 
@@ -59,34 +55,21 @@ const ImageEffect = () => {
         </div>
         {/* Sticky background scene */}
         <div className="flip_card_bg relative">
-          <div className="  w-full h-screen sticky top-0 center perspective-distant">
-            <div className="absolute w-75 h-100   cardVI center overflow-hidden transform-3d ">
-              <div className="w-full h-full relative">
-                {/* Img */}
-                <div className="w-full h-full absolute top-0 left-0 z-40 VCI">
-                  <Image
-                    fill
-                    src={"/images/about/card_img.png"}
-                    alt="IMGR"
-                    className="cover"
-                  />
-                </div>
+          <div className="  w-full h-screen sticky top-0 center ">
+            <div className=" w-75 h-100   cardVI center overflow-hidden relative  ">
+          <div className="absolute w-screen h-screen center">
 
                 {/* Video */}
-                <div className="w-screen h-screen absolute center top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 z-20 VCV">
                   <video
                     autoPlay
                     muted
                     loop
                     playsInline
                     src="/videos/about_video.mp4"
-                    className="cover"
-                  ></video>
-                </div>
-              </div>
+                    className="cover"></video>
+                    </div>
             </div>
           </div>
-          <div className="w-full h-[50vh]"></div>
 
           <div className="txt_scroll_bg padding py-0! w-full h-[300vh] relative z-[80] ">
             <div className="sticky top-0 h-screen flex justify-center gap-y-5 flex-col w-full pointer-events-none">
