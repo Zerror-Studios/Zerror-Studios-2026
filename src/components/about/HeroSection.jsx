@@ -74,10 +74,10 @@ const HeroSection = () => {
 
   return (
     <div className=" about_hero_paren  w-full relative  padding pt-0!">
-
+{/* 
       <div className="w-full sticky top-0  h-screen z-100  center">
         <DiceCanvas />
-      </div>
+      </div> */}
 
       <div className="w-full aboutTitle flex -mt-[100vh] py-44 max-sm:pb-20  ">
         <h1 className=" split_t text-5xl md:text-8xl  leading-none  primary-font text_blue w-[80%]">
