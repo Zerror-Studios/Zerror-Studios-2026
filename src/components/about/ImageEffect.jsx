@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ImageEffect = () => {
   useGSAP(() => {
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".flip_card_bg",
@@ -58,8 +59,8 @@ const ImageEffect = () => {
         </div>
         {/* Sticky background scene */}
         <div className="flip_card_bg relative">
-          <div className="  w-full h-screen sticky top-0 center scene">
-            <div className="absolute w-75 h-100   cardVI center overflow-hidden">
+          <div className="  w-full h-screen sticky top-0 center perspective-distant">
+            <div className="absolute w-75 h-100   cardVI center overflow-hidden transform-3d ">
               <div className="w-full h-full relative">
                 {/* Img */}
                 <div className="w-full h-full absolute top-0 left-0 z-40 VCI">
