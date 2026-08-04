@@ -18,7 +18,7 @@ const ImageEffect = () => {
       scrollTrigger: {
         trigger: flipCardBgRef.current,
         start: "top top",
-        // endTrigger: txtScrollBgRef.current,
+        endTrigger: txtScrollBgRef.current,
         end: "top top",
         scrub: true,
       },
