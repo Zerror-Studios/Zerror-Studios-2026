@@ -308,14 +308,14 @@ const Header = () => {
                             </div>
                           </div>
                         ) : (
-                          <ViewTransitionLink href={menu.href} onClick={() => setOpenMenu(false)} delay={500} className="w-full h-full flex items-center">
+                          <Link href={menu.href} onClick={() => setOpenMenu(false)} delay={500} className="w-full h-full flex items-center">
                             <div className=" relative overflow-hidden flex gap-x-0 group-hover:gap-x-2 transition-all duration-300 items-center">
                               <div className=" w-0 group-hover:opacity-100 group-hover:w-2 transition-all duration-300 opacity-0 -translate-y-0.5">
                                 <AnimatedPixelIcon />
                               </div>
                               <p className={`menu_title_a translate-y-[115%] `}>{menu.title}</p>
                             </div>
-                          </ViewTransitionLink>
+                          </Link>
                         )}
                       </div>
 
@@ -323,7 +323,7 @@ const Header = () => {
                         <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openExpertise ? "max-h-64 " : "max-h-0"}`}>
                           <div className="flex flex-col">
                             {menu.sublinks.map((sublink, i) => (
-                              <ViewTransitionLink
+                              <Link
                                 key={i}
                                 href={sublink.href}
                                 delay={500}
@@ -342,7 +342,7 @@ const Header = () => {
                                 <p className="text-[#ffffff] transition-all duration-300 ">
                                   {sublink.title}
                                 </p>
-                              </ViewTransitionLink>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -352,14 +352,14 @@ const Header = () => {
                 </nav>
 
                 <div className="p-6 py-2">
-                  <ViewTransitionLink
+                  <Link
                     href="/pitchdeck"
                     delay={500}
                     onClick={() => setOpenMenu(false)}
                     className="w-full rounded-sm py-4 text-xs center bg_blue border hover:border-transparent border-[#ffffff50] bg-transparent! text-[#ffffff] hover:bg-[#ffffff]! hover:text-black transition-all duration-300 uppercase flex"
                   >
                     Our Pitchdeck
-                  </ViewTransitionLink>
+                  </Link>
                 </div>
 
                 <div className="w-full pt-0 p-6 grid grid-cols-2 gap-x-1">
