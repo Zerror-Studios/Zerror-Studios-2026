@@ -11,24 +11,20 @@ const CustomsCmsExplore = () => {
   const sectionRef = useRef(null);
 
   useGSAP(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".cms-dashboard-wrapper", {
-        y: 80,
-        opacity: 0,
-        scale: 0.96,
-        duration: 1,
-        delay: 0.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          toggleActions:"play none none reverse"
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    gsap.from(".cms-dashboard-wrapper", {
+      y: 80,
+      opacity: 0,
+      scale: 0.96,
+      duration: 1,
+      delay: 0.5,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 70%",
+        toggleActions: "play none none reverse"
+      },
+    });
+  }, { scope: sectionRef });
 
   return (
     <section

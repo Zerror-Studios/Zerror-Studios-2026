@@ -8,42 +8,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ImageEffect = () => {
   useGSAP(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".flip_card_bg",
-          start: "top top",
-          endTrigger: ".txt_scroll_bg",
-          end: "top top",
-          scrub: true,
-        },
-      });
-
-      tl.to(".cardVI", { rotateY: 90 });
-
-      tl.to(".VCI", { opacity: 0 }, "a11");
-      tl.to(".cardVI", { rotateY: 0 }, "a11");
-      tl.to(".cardVI", {
-        width: "100%",
-        height: "100vh",
-      });
-
-      const textTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".txt_scroll_bg",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      });
-
-      const textLines = gsap.utils.toArray(".animate-text");
-      textLines.forEach((text, i) => {
-        textTl.to(text, { opacity: 1, transform:"translateY(0)" });
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".flip_card_bg",
+        start: "top top",
+        endTrigger: ".txt_scroll_bg",
+        end: "top top",
+        scrub: true,
+      },
     });
 
-    return () => ctx.revert();
+    tl.to(".cardVI", { rotateY: 90 });
+
+    tl.to(".VCI", { opacity: 0 }, "a11");
+    tl.to(".cardVI", { rotateY: 0 }, "a11");
+    tl.to(".cardVI", {
+      width: "100%",
+      height: "100vh",
+    });
+
+    const textTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".txt_scroll_bg",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
+    const textLines = gsap.utils.toArray(".animate-text");
+    textLines.forEach((text, i) => {
+      textTl.to(text, { opacity: 1, transform: "translateY(0)" });
+    });
   });
 
   return (

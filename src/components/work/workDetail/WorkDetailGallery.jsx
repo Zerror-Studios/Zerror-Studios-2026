@@ -10,7 +10,6 @@ const WorkDetailGallery = () => {
 
 
   useGSAP(() => {
-    const ctx = gsap.context(() => {
 
       gsap.to(".mob_1", {
         y: -300,
@@ -76,14 +75,6 @@ const WorkDetailGallery = () => {
       );
 
     });
-
-    return () => ctx.revert(); // 🔥 CLEANUP FIX
-  });
-
-  useEffect(() => {
-    ScrollTrigger.refresh();
-  }, []);
-
 
   return (
     <>
