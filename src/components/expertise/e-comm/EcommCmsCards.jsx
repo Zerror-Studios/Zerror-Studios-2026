@@ -31,21 +31,21 @@ const EcommCmsCards = () => {
         });
     });
 
-    useGSAP(()=>{
-        gsap.from(".cms_crd",{
-            xPercent:100,
-            opacity:0,
-            stagger:0.15,
-            scrollTrigger:{
-                trigger:sliderRef.current,
-                start:"top center",
-                toggleActions:"play none none reverse"
+    useGSAP(() => {
+        gsap.from(".cms_crd", {
+            xPercent: 100,
+            opacity: 0,
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: sliderRef.current,
+                start: "top center",
+                toggleActions: "play none none reverse"
             }
         })
     })
     return (
         <div ref={containerRef} className="w-full h-[250vw] relative">
-            <div  className='w-full sticky top-0 overflow-hidden mt-10! md:mt-32! h-screen flex gap-y-[5vh] flex-col justify-center'>
+            <div className='w-full sticky top-0 overflow-hidden mt-10! md:mt-24! h-screen flex gap-y-[5vh] flex-col justify-center'>
                 <div className="w-full   padding py-0!  text_blue ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                         <div className="">
@@ -55,7 +55,7 @@ const EcommCmsCards = () => {
                             <p className='font-thin'>Total control,  </p>
                             <p className='font-thin'>zero restrictions.</p>
                         </div>
-                        <div className="capitalize text-3xl  md:pl-2">
+                        <div className=" text-3xl  md:pl-2">
                             <h3 data-para-effect className="">
                                 <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                                 Our own commerce platform. Not a theme, not a template — a system that bends to your business.

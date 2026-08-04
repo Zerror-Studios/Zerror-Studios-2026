@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import { useGSAP } from "@gsap/react"
+import { useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
@@ -11,84 +11,70 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
 const GlobalParaReveal = () => {
   const pathname = usePathname()
 
-  useGSAP(() => {
+  useEffect(() => {
+    let ctx;
+    let splits = [];
 
-    const splits = []
+    const initTimeout = setTimeout(() => {
+      document.fonts.ready.then(() => {
+        ctx = gsap.context(() => {
+          const elements = gsap.utils.toArray("[data-para-effect]")
 
-    const ctx = gsap.context(async () => {
+          elements.forEach((el) => {
+            if (el.dataset.splitInitialized) return
 
-      await document.fonts.ready
+            el.dataset.splitInitialized = "true"
 
-      const elements = gsap.utils.toArray("[data-para-effect]")
+            const scroller = el.closest(".overflow-y-scroll") || el.closest(".overflow-y-auto") || window
 
-      elements.forEach((el) => {
+            const split = new SplitText(el, {
+              type: "lines",
+              linesClass: "split-line",
+            })
 
-        if (el.dataset.splitInitialized) return
+            splits.push(split)
 
-        el.dataset.splitInitialized = "true"
+            split.lines.forEach((line) => {
+              const wrapper = document.createElement("div")
+              wrapper.style.overflow = "hidden"
+              line.parentNode.insertBefore(wrapper, line)
+              wrapper.appendChild(line)
+            })
 
-        const scroller = el.closest(".overflow-y-scroll") || el.closest(".overflow-y-auto") || window
+            gsap.set(split.lines, {
+              yPercent: 110,
+              x: 10,
+              willChange: "transform",
+            })
 
-        const split = new SplitText(el, {
-          type: "lines",
-          linesClass: "split-line",
+            gsap.to(split.lines, {
+              yPercent: 0,
+              x: 0,
+              duration: 1,
+              stagger: 0.08,
+              ease: "expo.out",
+              scrollTrigger: {
+                trigger: el,
+                scroller: scroller,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            })
+          })
         })
-
-        splits.push(split)
-
-        split.lines.forEach((line) => {
-
-          const wrapper = document.createElement("div")
-
-          wrapper.style.overflow = "hidden"
-
-          line.parentNode.insertBefore(wrapper, line)
-
-          wrapper.appendChild(line)
-        })
-
-        gsap.set(split.lines, {
-          yPercent: 110,
-          x:10,
-          willChange: "transform",
-        })
-
-        gsap.to(split.lines, {
-          yPercent: 0,
-          x:0,
-          duration: 1,
-          stagger: 0.08,
-          ease: "expo.out",
-
-          scrollTrigger: {
-            trigger: el,
-            scroller: scroller,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        })
+        ScrollTrigger.refresh()
       })
-
-    })
-
-
-    const timeout = setTimeout(() => {
-      ScrollTrigger.refresh()
     }, 500)
 
     return () => {
-
-      clearTimeout(timeout)
-
+      clearTimeout(initTimeout)
+      if (ctx) ctx.revert()
       splits.forEach((split) => split.revert())
-
       document
         .querySelectorAll("[data-para-effect]")
         .forEach((el) => {
           delete el.dataset.splitInitialized
         })
-
-      ctx.revert()
     }
 
   }, [pathname])

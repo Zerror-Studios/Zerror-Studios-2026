@@ -18,40 +18,40 @@ const features = [
 
 const CheckIcon = () => (
     <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-[#002bba] text-white flex items-center justify-center">
-       <RiCheckLine/>
+        <RiCheckLine />
     </div>
 );
 
 const CrossIcon = () => (
     <div className="w-6 h-6 md:w-8 md:h-8 rounded-full text-white bg-gray-200 flex items-center justify-center">
-      <RiCloseLine/>
+        <RiCloseLine />
     </div>
 );
 
 const EcommPriceSection = () => {
 
-     useGSAP(()=>{
-        gsap.from(".sclw_1",{
-           scale:0,
-            stagger:0.1,
-            scrollTrigger:{
-                trigger:".price_section_table",
-                start:"top center",
-                toggleActions:"play none none reverse"
+    useGSAP(() => {
+        gsap.from(".sclw_1", {
+            scale: 0,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".price_section_table",
+                start: "top center",
+                toggleActions: "play none none reverse"
             }
         })
-        gsap.from(".sclw_2",{
-           scale:0,
-            stagger:0.1,
-            scrollTrigger:{
-                trigger:".price_section_table",
-                start:"top center",
-                toggleActions:"play none none reverse"
+        gsap.from(".sclw_2", {
+            scale: 0,
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".price_section_table",
+                start: "top center",
+                toggleActions: "play none none reverse"
             }
         })
     })
     return (
-        <div className="w-full padding py-10! md:py-32! text_blue">
+        <div className="w-full padding py-10! md:py-24! text_blue">
 
             {/* ── Heading — matches InfoSection.jsx ──────────── */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
@@ -62,7 +62,7 @@ const EcommPriceSection = () => {
                     <p className='font-thin'>Why</p>
                     <p className='font-thin'>Choose Us</p>
                 </div>
-                <div className="capitalize text-3xl md:pl-2">
+                <div className=" text-3xl md:pl-2">
                     <h3 data-para-effect className="">
                         <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                         Ready-made platforms are built for everyone. Zcom is built for you

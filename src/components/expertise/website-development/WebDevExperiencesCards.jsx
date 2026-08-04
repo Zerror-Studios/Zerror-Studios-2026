@@ -3,9 +3,7 @@ import React, { useRef, useState } from 'react'
 import icon1 from "../../../../public/icons/animatedJson/icon1.json";
 import icon2 from "../../../../public/icons/animatedJson/icon2.json";
 import icon3 from "../../../../public/icons/animatedJson/icon3.json";
-import icon4 from "../../../../public/icons/animatedJson/icon4.json";
 import icon5 from "../../../../public/icons/animatedJson/icon5.json";
-import icon6 from "../../../../public/icons/animatedJson/icon6.json";
 import Lottie from 'lottie-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -16,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger)
 const services = [
     {
         title: "UI/UX Design",
-        // animationData: icon4,
         description: "Creating intuitive interfaces that enhance usability and user satisfaction."
     },
     {
@@ -41,7 +38,6 @@ const services = [
     },
     {
         title: "AWS Cloud Hosting",
-        // animationData: icon6,
         description: "Deploying secure cloud infrastructure with scalable hosting solutions."
     }
 ];
@@ -135,9 +131,9 @@ const WebDevExperiencesCards = () => {
                             <p className='font-thin'>How We</p>
                             <p className='font-thin'>Build</p>
                         </div>
-                        <div className="capitalize text-3xl  md:pl-2">
+                        <div className=" text-3xl  md:pl-2">
                             <h3 data-para-effect className="">
-                                <span  className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
+                                <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                                 Everything you need to build a modern, smooth, and high-performing <br /> website.
                             </h3>
                         </div>

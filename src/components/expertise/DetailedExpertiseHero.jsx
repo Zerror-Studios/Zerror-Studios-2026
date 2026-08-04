@@ -68,9 +68,9 @@ const DetailedExpertiseHero = ({
 
     return (
         <div className=' content_box opacity-0 padding'>
-            <div className="w-full pt-[15vw] pb-40 border-b flex flex-col items-center capitalize text_blue gap-y-5 text-center ">
+            <div className="w-full pt-[15vw] pb-40 border-b flex flex-col items-center text_blue gap-y-5 text-center ">
                 <p className='paragraph_split uppercase text-xs'>[ {expertiseName} ] </p>
-                <h1 className='heading_split text-8xl primary-font capitalize'>{expertiseHeading}</h1>
+                <h1 className='heading_split text-8xl primary-font '>{expertiseHeading}</h1>
                 <div className="flex flex-wrap gap-x-1">
                     {btnsLabels.map((item, i) => (
                         <button key={i} className='blink_btn text-xs uppercase px-4 py-2 bg-[#002bba20] leading-none'>{item}</button>

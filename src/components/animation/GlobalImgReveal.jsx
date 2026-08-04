@@ -11,60 +11,52 @@ gsap.registerPlugin(ScrollTrigger)
 const GlobalImgReveal = () => {
   const pathname = usePathname()
 
-  useGSAP(() => {
+  useEffect(() => {
+    let ctx;
 
-    const ctx = gsap.context(() => {
+    const initTimeout = setTimeout(() => {
+      ctx = gsap.context(() => {
+        const elements = gsap.utils.toArray("[data-img-effect]")
 
-      const elements = gsap.utils.toArray("[data-img-effect]")
+        elements.forEach((el) => {
+          if (el.dataset.imgInitialized) return
 
-      elements.forEach((el) => {
+          el.dataset.imgInitialized = "true"
 
-        if (el.dataset.imgInitialized) return
+          const scroller = el.closest(".overflow-y-scroll") || el.closest(".overflow-y-auto") || window
 
-        el.dataset.imgInitialized = "true"
+          gsap.set(el, {
+            opacity: 0,
+            scale: 1.2,
+            willChange: "transform, opacity",
+          })
 
-        const scroller = el.closest(".overflow-y-scroll") || el.closest(".overflow-y-auto") || window
-
-        gsap.set(el, {
-          opacity: 0,
-          scale: 1.2,
-          willChange: "transform, opacity",
-        })
-
-        gsap.to(el, {
-          opacity: 1,
-          scale: 1,
-          duration: 1.2,
-          ease: "power3.out",
-
-          scrollTrigger: {
-            trigger: el,
-            scroller: scroller,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
+          gsap.to(el, {
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              scroller: scroller,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          })
         })
       })
-
-    })
-
-
-    const timeout = setTimeout(() => {
       ScrollTrigger.refresh()
-    }, 300)
+    }, 500)
 
     return () => {
-      clearTimeout(timeout)
-
+      clearTimeout(initTimeout)
+      if (ctx) ctx.revert()
       document
         .querySelectorAll("[data-img-effect]")
         .forEach((el) => {
           delete el.dataset.imgInitialized
         })
-
-      ctx.revert()
     }
-
   }, [pathname])
 
   return null

@@ -118,7 +118,7 @@ onUpdate() {
                     />
                 </div>
 
-                <div className=" padding  z-10 py-0! capitalize w-[25%] top-24 right-0  absolute text-3xl  md:pl-2">
+                <div className=" padding  z-10 py-0!  w-[25%] top-24 right-0  absolute text-3xl  md:pl-2">
                     <h3 data-para-effect className="">
                         A custom CMS gives you the freedom to build exactly what you need.
                     </h3>

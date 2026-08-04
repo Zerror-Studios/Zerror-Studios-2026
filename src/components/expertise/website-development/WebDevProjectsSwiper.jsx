@@ -29,15 +29,15 @@ const WebDevProjectsSwiper = () => {
     const containerRef = useRef()
 
 
-    useGSAP(()=>{
-        gsap.from(".inner_slides",{
-            xPercent:100,
-            opacity:0,
-            stagger:0.15,
-            scrollTrigger:{
-                trigger:containerRef.current,
-                start:"top center",
-                toggleActions:"play none none reverse"
+    useGSAP(() => {
+        gsap.from(".inner_slides", {
+            xPercent: 100,
+            opacity: 0,
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top center",
+                toggleActions: "play none none reverse"
             }
         })
     })
@@ -67,7 +67,7 @@ const WebDevProjectsSwiper = () => {
 
     return (
         <>
-            <div ref={containerRef} className="w-full mt-32 h-screen flex flex-col justify-center items-center space-y-16 relative">
+            <div ref={containerRef} className="w-full mt-24 h-screen flex flex-col justify-center items-center space-y-16 relative">
                 <div className="absolute w-full h-full inset-0">
                     <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="website-dev" fill className='cover' />
                 </div>

@@ -173,17 +173,14 @@ const OurWork = () => {
                     <p className=' font-thin '>Thoughtful Design.</p>
                     <p className=' font-thin '>Technology that holds.</p>
                 </div>
-                <div className=" max-sm:hidden text-3xl pl-2">
-                    <h3 data-para-effect className="  secondary-font"> <span className='opacity-0 pointer-events-none' aria-hidden="true">..............</span> Work where design and technology move as one. No handoffs, no compromises, nothing lost in
-translation — every project built with structure, precision, and the patience to sweat details most
-people never notice. Built to perform. Built to last.
-</h3>
-                </div>
-                <div className=" md:hidden text-3xl " aria-hidden="true">
-                    <h3 className="  secondary-font"> Work where design and technology move as one. No handoffs, no compromises, nothing lost in
-translation — every project built with structure, precision, and the patience to sweat details most
-people never notice. Built to perform. Built to last.
-</h3>
+                <div className=" text-3xl  md:pl-2">
+                    <h3 data-para-effect className="secondary-font">
+                        <span className='opacity-0  max-sm:hidden pointer-events-none'>...............</span>
+                        Work where design and technology move as one. No handoffs, no compromises, nothing lost in
+                        translation — every project built with structure, precision, and the patience to sweat details most
+                        people never notice. Built to perform. Built to last.
+
+                    </h3>
                 </div>
             </div>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-10">

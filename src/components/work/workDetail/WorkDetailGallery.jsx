@@ -113,8 +113,8 @@ const WorkDetailGallery = () => {
           </div>
 
           <img className=' w-[75%]' src="/images/work/image_7.png" alt="loading img" />
-          <img className=' w-[75%] mt-32' src="/images/work/image_8.png" alt="loading img" />
-          <img className=' w-[75%] mt-32 mb-48' src="/images/work/image_10.png" alt="loading img" />
+          <img className=' w-[75%] mt-24' src="/images/work/image_8.png" alt="loading img" />
+          <img className=' w-[75%] mt-24 mb-48' src="/images/work/image_10.png" alt="loading img" />
 
           <img className=' mob_3 max-sm:w-[30vw] absolute right-20 bottom-[5%]' src="/images/work/image_9.png" alt="loading img" />
 

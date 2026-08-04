@@ -104,7 +104,7 @@ const WebDevClients = () => {
                     <div className="text-xs max-sm:hidden capitalize pt-4">
                         <p className='font-thin'>testimonial</p>
                     </div>
-                    <div className="capitalize text-3xl  md:pl-2">
+                    <div className=" text-3xl  md:pl-2">
                         <h3 data-para-effect className="">
                             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                             Your business is unique your CMS should be too.

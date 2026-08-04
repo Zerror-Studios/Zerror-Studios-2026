@@ -33,28 +33,28 @@ const Slide12 = () => {
       <div className="case-study-content z-10 w-full text-white p-6 md:p-10 flex flex-col space-y-16 relative">
 
         {/* Top Header & Details Section */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2 md:pt-4">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-10 gap-8 items-start pt-2 md:pt-4">
 
           {/* Left: Case Study Title */}
-          <div className="lg:col-span-4">
-            <h2 data-para-effect className="text-3xl primary-font">
-              Deveshe
+          <div className="lg:col-span-2">
+            <h2 data-para-effect className="text-4xl primary-font ">
+              Deveshe <br />
               Dreams
             </h2>
           </div>
 
           {/* Middle: Overview */}
-          <div className="lg:col-span-5 pr-0 lg:pr-4">
-            <h3 data-para-effect className=" uppercase mb-2 text-white">OVERVIEW</h3>
-            <p data-para-effect className=" leading-tight">
+          <div className="lg:col-span-6 pr-10">
+            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">OVERVIEW</h3>
+            <p data-para-effect className=" leading-tight text-sm ">
               Deveshe Dreams partnered with us to build a completely custom e-commerce platform reflecting the exclusivity, craftsmanship, and intentionality of their limited-collection fashion model. Traditional e-commerce systems built for mass retail couldn't support their operational workflows or premium brand positioning. We designed a proprietary platform tailored specifically to their business — combining sophisticated digital storytelling with custom infrastructure for pre-orders, collection drops, inventory management, and customer experience. The result was a significant transformation in both brand perception and business performance.
             </p>
           </div>
 
           {/* Right: Scope of Work */}
-          <div className="lg:col-span-3">
-            <h3 data-para-effect className=" uppercase mb-2 text-white">SCOPE OF WORK</h3>
-            <ul data-para-effect className=" space-y-2 leading-tight">
+          <div className="lg:col-span-2">
+            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">SCOPE OF WORK</h3>
+            <ul data-para-effect className=" space-y-1 text-sm leading-none">
               <li>Custom E-Commerce Platform Development</li>
               <li>Custom Storefront Design & Development</li>
               <li>Inventory & Collection Management Systems</li>

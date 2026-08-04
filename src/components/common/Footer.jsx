@@ -136,10 +136,6 @@ const mobileFooterData = [
         href: "/work"
       },
       {
-        label: "services",
-        href: "/services"
-      },
-      {
         label: "Contact",
         href: "/contact"
       }

@@ -33,28 +33,28 @@ const Slide11 = () => {
       <div className="case-study-content z-10 w-full text-white p-6 md:p-10 flex flex-col space-y-16 relative">
 
         {/* Top Header & Details Section */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2 md:pt-4">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-10 gap-8 items-start pt-2 md:pt-4">
 
           {/* Left: Case Study Title */}
-          <div className="lg:col-span-4">
-            <h2 data-para-effect className="text-3xl primary-font">
-              Salman
+          <div className="lg:col-span-2">
+            <h2 data-para-effect className="text-4xl primary-font ">
+              Salman <br />
               Khan Films
             </h2>
           </div>
 
           {/* Middle: Overview */}
-          <div className="lg:col-span-5 pr-0 lg:pr-4">
-            <h3 data-para-effect className=" uppercase mb-2 text-white">OVERVIEW</h3>
-            <p data-para-effect className=" leading-tight">
+          <div className="lg:col-span-6 pr-10">
+            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">OVERVIEW</h3>
+            <p data-para-effect className=" leading-tight text-sm ">
               Salman Khan Films partnered with us to create a premium digital showcase reflecting the scale, prestige, and timelessness of one of Bollywood's most recognized production houses. Rather than building a trend-driven entertainment website, the focus was on crafting a refined and cinematic digital experience designed to remain visually relevant across multiple film cycles. Through custom design, intentional motion, and restrained visual storytelling, we developed a platform that continues to feel contemporary years after launch.
             </p>
           </div>
 
           {/* Right: Scope of Work */}
-          <div className="lg:col-span-3">
-            <h3 data-para-effect className=" uppercase mb-2 text-white">SCOPE OF WORK</h3>
-            <ul data-para-effect className=" space-y-2 leading-tight">
+          <div className="lg:col-span-2">
+            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">SCOPE OF WORK</h3>
+            <ul data-para-effect className=" space-y-1 text-sm leading-none">
               <li>Custom Website Design & Development</li>
               <li>Creative Direction & Digital Experience Design</li>
               <li>Motion & Interaction Design</li>

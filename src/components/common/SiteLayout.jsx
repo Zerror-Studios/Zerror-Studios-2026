@@ -21,8 +21,33 @@ export default function SiteLayout({ children }) {
   const skipFooterPaths = ["/deck", "/contact", "/work", "/pitchdeck"];
 
   useEffect(() => {
+    window.history.scrollRestoration = "manual";
+
+    const resizeObserver = new ResizeObserver(() => {
+      ScrollTrigger.refresh();
+      if (window.lenis) {
+        window.lenis.resize();
+      }
+    });
+
+    resizeObserver.observe(document.body);
+
+    return () => resizeObserver.disconnect();
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    if (window.lenis) {
+      window.lenis.scrollTo(0, {
+        immediate: true,
+        force: true,
+      });
+    }
+
     const timeout = setTimeout(() => {
       ScrollTrigger.refresh();
+
       if (window.lenis) {
         window.lenis.resize();
       }

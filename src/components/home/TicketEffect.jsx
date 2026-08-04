@@ -163,9 +163,9 @@ const TicketEffect = () => {
 
     return (
         <>
-            <div className="w-full pt-32 center text_blue text-center space-y-10 bg-white relative z-10 flex-col">
+            <div className="w-full pt-24 center text_blue text-center space-y-10 bg-white relative z-10 flex-col">
                 <p data-para-effect className=' text-5xl md:text-8xl primary-font  leading-none'>Ready to build <br />
-                    Something with<br /> <span className='primary-font_italic'> zero errors? </span> </p>
+                    something with<br /> <span className='primary-font_italic'> zero errors? </span> </p>
 
                 <p className=' leading-tight '>Your next version starts here. <br /> Tell us what you're making.</p>
 

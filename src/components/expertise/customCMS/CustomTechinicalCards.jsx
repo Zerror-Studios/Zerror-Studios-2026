@@ -73,10 +73,10 @@ const CustomTechinicalCards = () => {
                         <p className='font-thin'>What We</p>
                         <p className='font-thin'>Build</p>
                     </div>
-                    <div className="capitalize text-3xl md:pl-2">
+                    <div className=" text-3xl md:pl-2">
                         <h3 data-para-effect className="leading-tight">
                             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                            We Select Technologies Not By Trend, But By Structural Integrity. Our Stack Is A Cohesive Ecosystem Of High-Performance Components.
+                            We select technologies not by trend, but by structural integrity. Our stack is a cohesive ecosystem of high-performance components.
                         </h3>
                     </div>
                 </div>

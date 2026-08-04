@@ -30,21 +30,21 @@ const cards = [
 
 const BrandingWhyUs = () => {
 
- useGSAP(()=>{
-        gsap.from(".why_us_img",{
-            opacity:0,
-            stagger:0.15,
-            scrollTrigger:{
-                trigger:".wy_use_i_pren",
-                start:"top center",
-                toggleActions:"play none none reverse"
+    useGSAP(() => {
+        gsap.from(".why_us_img", {
+            opacity: 0,
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: ".wy_use_i_pren",
+                start: "top center",
+                toggleActions: "play none none reverse"
             }
         })
     })
 
 
     return (
-        <div className="w-full padding py-10! md:py-32! text_blue bg-white">
+        <div className="w-full padding py-10! md:py-24! text_blue bg-white">
             {/* Heading */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
@@ -54,22 +54,21 @@ const BrandingWhyUs = () => {
                     <p className='font-thin'>What We</p>
                     <p className='font-thin'>Build</p>
                 </div>
-                <div className="capitalize text-3xl  md:pl-2">
-          <h3 data-para-effect className="">
-            <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-            We Combine Sharp Strategic Thinking With Hands-On Execution. Every Brand We Build, Every Campaign We Run — It's Designed To Perform, Not Just Look Good.
-          </h3>
-        </div>
+                <div className=" text-3xl  md:pl-2">
+                    <h3 data-para-effect className="">
+                        <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
+                        We combine sharp strategic thinking with hands-on execution. Every brand we build, every campaign we run — it's designed to perform, not just look good.
+                    </h3>
+                </div>
             </div>
 
             {/* Grid */}
-            <div className=" wy_use_i_pren w-full mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-4 border-t border-b border-[#002bba]/10">
+            <div className=" wy_use_i_pren w-full mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-4 border-t border-b border-[#002bba]/10">
                 {cards.map((card, i) => (
-                    <div 
-                        key={i} 
-                        className={`flex flex-col justify-between py-10 md:p-10 border-[#002bba]/10 ${
-                            i !== cards.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''
-                        }`}
+                    <div
+                        key={i}
+                        className={`flex flex-col justify-between py-10 md:p-10 border-[#002bba]/10 ${i !== cards.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''
+                            }`}
                     >
                         <div className="space-y-12">
                             <div className="why_us_img w-32 h-32 md:w-44 md:h-44 relative">

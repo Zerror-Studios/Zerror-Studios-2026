@@ -187,7 +187,7 @@ const Clients = () => {
     }, []);
 
     return (
-        <div className=' noise-bg clients_paren relative z-10 max-sm:pt-5 bg_blue pt-6 md:pt-12 text-white w-full'>
+        <div className=' noise-bg clients_paren relative z-10 max-sm:pt-5 bg_blue pt-6 md:pt-12 mt-6 md:mt-12 text-white w-full'>
 
             <div className=" padding w-full z-20 relative text-white space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
             <div className="">
@@ -197,7 +197,7 @@ const Clients = () => {
               <p data-para-effect className=' font-thin'>The company </p>
               <p data-para-effect className=' font-thin'>we keep.</p>
             </div>
-            <div className="capitalize text-3xl  md:pl-2">
+            <div className=" text-3xl  md:pl-2">
               <h3 data-para-effect className=" secondary-font">
                 <span className='opacity-0  max-sm:hidden pointer-events-none' aria-hidden="true">...........................</span>
                 From global publishing houses to founders on their first launch, we work with teams that value clarity,

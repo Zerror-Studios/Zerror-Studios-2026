@@ -32,9 +32,9 @@ const Slide06 = () => {
       <div className="w-full p-5 h-full bg-black flex flex-col justify-center text-white">
 
         {/* Row 1 */}
-        <div className="grid grid-cols-6 relative py-4">
-          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">01</div>
-          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">Website Design &<br />Development</h2>
+        <div className="grid grid-cols-7 relative py-4">
+          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">01</div>
+          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">Website Design &<br />Development</h2>
           <div className="opacity-60 col-span-2">
             <p>Mood boarding</p>
             <p>U/UX Design</p>
@@ -47,9 +47,9 @@ const Slide06 = () => {
 
 
         {/* Row 2 */}
-        <div className="grid grid-cols-6 relative py-4">
-          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">02</div>
-          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">Custom Software<br />Development</h2>
+        <div className="grid grid-cols-7 relative py-4">
+          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">02</div>
+          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">Custom Software<br />Development</h2>
           <div className="opacity-60 col-span-2">
             <p>Content Architecture</p>
             <p>Headless CMS</p>
@@ -62,9 +62,9 @@ const Slide06 = () => {
 
 
         {/* Row 3 */}
-        <div className="grid grid-cols-6 relative py-4">
-          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">03</div>
-          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">eCommerce Solutions</h2>
+        <div className="grid grid-cols-7 relative py-4">
+          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">03</div>
+          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">eCommerce <br /> Solutions</h2>
           <div className="opacity-60 col-span-2">
             <p>Store Strategy</p>
             <p>UX-Led Design</p>
@@ -77,9 +77,9 @@ const Slide06 = () => {
 
 
         {/* Row 4 */}
-        <div className="grid grid-cols-6 relative py-4">
-          <div data-para-effect className="text-7xl flex items-center leading-none col-span-1 primary-font text-white">04</div>
-          <h2 className="text-3xl flex items-center leading-none md:text-3xl font-medium col-span-3">Branding, Marketing &<br />SEO</h2>
+        <div className="grid grid-cols-7 relative py-4">
+          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">04</div>
+          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">Branding, Marketing <br /> & SEO</h2>
           <div className="opacity-60 col-span-2">
             <p>Brand Identity</p>
             <p>Visual Systems</p>

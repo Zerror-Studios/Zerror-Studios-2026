@@ -33,27 +33,27 @@ const Slide10 = () => {
       <div className="case-study-content z-10 w-full text-white p-6 md:p-10 flex flex-col space-y-16 relative">
 
         {/* Top Header & Details Section */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-2 md:pt-4">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-10 gap-8 items-start pt-2 md:pt-4">
 
           {/* Left: Case Study Title */}
-          <div className="lg:col-span-4">
-            <h2 data-para-effect className="text-3xl primary-font">
+          <div className="lg:col-span-2">
+            <h2 data-para-effect className="text-4xl primary-font ">
               Manifest
             </h2>
           </div>
 
           {/* Middle: Overview */}
-          <div className="lg:col-span-5 pr-0 lg:pr-4">
-            <h3 data-para-effect className=" uppercase mb-2 text-white">OVERVIEW</h3>
-            <p data-para-effect className=" leading-tight">
+          <div className="lg:col-span-6 pr-10">
+            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">OVERVIEW</h3>
+            <p data-para-effect className=" leading-tight text-sm ">
               Manifest partnered with us to migrate from a restrictive WordPress setup to a fully custom publishing platform built for scalability, performance, and long-term growth. The challenge wasn't just redesigning the experience — it was preserving five years of SEO authority, editorial content, media assets, and search rankings without downtime or data loss. We engineered a custom migration infrastructure and rebuilt the platform from the ground up, enabling a seamless transition with zero disruption to readers while significantly improving performance, flexibility, and publishing capabilities. The result was a 200% increase in traffic post-launch alongside a completely preserved content ecosystem.
             </p>
           </div>
 
           {/* Right: Scope of Work */}
-          <div className="lg:col-span-3">
-            <h3 data-para-effect className=" uppercase mb-2 text-white">SCOPE OF WORK</h3>
-            <ul data-para-effect className=" space-y-2 leading-tight">
+          <div className="lg:col-span-2">
+            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">SCOPE OF WORK</h3>
+            <ul data-para-effect className=" space-y-1 text-sm leading-none">
               <li>Custom CMS Development</li>
               <li>Wordpress Migration Infrastructure</li>
               <li>Website design & Development</li>

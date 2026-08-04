@@ -66,24 +66,24 @@ const EcommCategorySlider = () => {
         fadeTimeout.current = setTimeout(() => {
             setActiveCategory(cat);
             if (swiperRef.current) {
-                swiperRef.current.slideTo(0, 0); 
+                swiperRef.current.slideTo(0, 0);
             }
 
             requestAnimationFrame(() => {
                 setIsFading(false);
             });
-        }, 200); 
+        }, 200);
     };
 
-     useGSAP(()=>{
-        gsap.from(".cat_inner_slides",{
-            xPercent:100,
-            opacity:0,
-            stagger:0.15,
-            scrollTrigger:{
-                trigger:".ecomm_cat_slider_wrap",
-                start:"top center",
-                toggleActions:"play none none reverse"
+    useGSAP(() => {
+        gsap.from(".cat_inner_slides", {
+            xPercent: 100,
+            opacity: 0,
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: ".ecomm_cat_slider_wrap",
+                start: "top center",
+                toggleActions: "play none none reverse"
             }
         })
     })
@@ -91,7 +91,7 @@ const EcommCategorySlider = () => {
     return (
         <div
             ref={containerRef}
-            className="w-full bg_blue relative overflow-hidden py-10! md:py-32! mt-10! md:mt-32!"
+            className="w-full bg_blue relative overflow-hidden py-10! md:py-24! mt-10! md:mt-24!"
         >
             <div className="w-full   padding py-0!  text-white ">
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b  md:grid grid-cols-[28%_30%_42%]">
@@ -100,11 +100,11 @@ const EcommCategorySlider = () => {
                     </div>
                     <div className="text-xs max-sm:hidden pt-4">
                     </div>
-                    <div className="capitalize text-3xl  md:pl-2">
+                    <div className=" text-3xl  md:pl-2">
                         <h3 data-para-effect className="">
                             <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                             We're not platform loyalists. Shopify is right for most stores, and we build it well. But some
-businesses don't fit a template — and forcing them never ends well.
+                            businesses don't fit a template — and forcing them never ends well.
                         </h3>
                     </div>
                 </div>
@@ -116,8 +116,8 @@ businesses don't fit a template — and forcing them never ends well.
                         key={cat}
                         onClick={() => handleCategoryClick(cat)}
                         className={`ecomm_cat_pill px-5 py-2 pb-1.5 rounded-full text-sm  uppercase  border transition-all duration-300 cursor-pointer ${activeCategory === cat
-                                ? "bg-white font-semibold text-[#002bba] border-white"
-                                : "bg-transparent text-white border-white/40 hover:border-white hover:bg-white/10"
+                            ? "bg-white font-semibold text-[#002bba] border-white"
+                            : "bg-transparent text-white border-white/40 hover:border-white hover:bg-white/10"
                             }`}
                     >
                         {cat}

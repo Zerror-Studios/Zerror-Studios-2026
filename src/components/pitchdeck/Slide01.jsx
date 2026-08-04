@@ -9,7 +9,7 @@ const Slide01 = () => {
                 <HeroScene />
             </div>
             <div className="w-full p-5 h-full    bg_blue flex items-end text-white">
-                <h1 data-para-effect className="text-5xl z-10 w-[70%] primary-font">
+                <h1 data-para-effect className="text-6xl z-10  primary-font">
                     Great ideas often get lost between
                     design and development. Few can
                     do both, fewer still do it fast.

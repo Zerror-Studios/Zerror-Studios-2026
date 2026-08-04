@@ -76,10 +76,10 @@ const BrandingDisciplines = () => {
                 <div className="text-xs max-sm:hidden pt-4">
                     <p className='font-thin'>Services</p>
                 </div>
-                <div className="capitalize text-3xl md:pl-2">
+                <div className=" text-3xl md:pl-2">
                     <h3 data-para-effect className="leading-tight">
                         <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                        Six Core Disciplines. One Integrated Team. Designed To Work Together For Maximum Impact.
+                        Six core disciplines. One integrated team. Designed to work together for maximum impact.
                     </h3>
                 </div>
             </div>

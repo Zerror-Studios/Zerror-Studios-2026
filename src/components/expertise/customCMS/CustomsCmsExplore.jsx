@@ -33,7 +33,7 @@ const CustomsCmsExplore = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg_blue"
+      className="relative overflow-hidden bg_blue mb-10 md:mb-24"
     >
 
       <div className="py-10! md:py-24! space-y-12 " style={{ position: "relative", zIndex: 10 }}>
@@ -45,7 +45,7 @@ const CustomsCmsExplore = () => {
             </div>
             <div className="text-xs max-sm:hidden pt-4">
             </div>
-            <div className="capitalize text-3xl  md:pl-2">
+            <div className=" text-3xl  md:pl-2">
               <h3 data-para-effect className="">
                 <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
                 From content to commerce, our CMS gives you complete control to create, manage, and scale—without limitations.
