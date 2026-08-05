@@ -70,13 +70,13 @@ const EcommCmsCards = () => {
                             <p className='leading-tight'>Monitor sales, Conversion rates .</p>
                         </div>
                         <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_1.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_1.png" alt="Card 1 Graphic" />
                         </div>
                     </div>
 
                     <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="pl-20 py-20">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_2.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_2.png" alt="Card 2 Graphic" />
                         </div>
                         <div className="p-10 space-y-2 w-[80%]">
                             <h4 className='text-3xl primary-font'>Made for your model</h4>
@@ -90,13 +90,13 @@ const EcommCmsCards = () => {
                             <p className='leading-tight'>Stock tied to real production, updated in real time, visible at a glance.</p>
                         </div>
                         <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
                         </div>
                     </div>
 
                     <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
                         <div className="pl-10 py-10 pb-0">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_4.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_4.png" alt="Card 4 Graphic" />
                         </div>
                         <div className="p-10 space-y-2 w-[80%]">
                             <h4 className='text-3xl primary-font'>Analytics that answe</h4>
@@ -110,7 +110,7 @@ const EcommCmsCards = () => {
                             <p className='leading-tight'> Repeat business by design, without a plugin bill attached.</p>
                         </div>
                         <div className="p-10">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_5.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_5.png" alt="Card 5 Graphic" />
                         </div>
                     </div>
 
@@ -120,7 +120,7 @@ const EcommCmsCards = () => {
                             <p className='leading-tight'> Email, SMS and WhatsApp, sent from where you already work.</p>
                         </div>
                         <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
                         </div>
                     </div>
 
@@ -130,7 +130,7 @@ const EcommCmsCards = () => {
                             <p className='leading-tight'> Clean architecture that search engines, and AI engines, can actually read.</p>
                         </div>
                         <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
                         </div>
                     </div>
 
@@ -140,7 +140,7 @@ const EcommCmsCards = () => {
                             <p className='leading-tight'>Complete IP ownership on full payment. Your store, your system, your asset.</p>
                         </div>
                         <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="" />
+                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
                         </div>
                     </div>
 

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
+import { Link } from "next-view-transitions";
 
 const hoverIn = (selector) => {
   gsap.to(selector, {
@@ -246,14 +247,14 @@ const Footer = () => {
                 <div
                   key={index} className={` h-[25svh] ${item.alignment} p-3 border border-white/10 rounded-xl flex flex-col gap-2`}>
                   {item.links.map((link, i) => (
-                    <a
+                    <Link
                       ref={(el) => (flickerRefs.current.push(el))}
                       key={i}
                       href={link.href}
                       className="flicker text-xs  hover:underline"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               );

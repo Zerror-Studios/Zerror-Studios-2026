@@ -44,7 +44,7 @@ const WebDevProcessScroller = () => {
                         </div>
                         <div className="w-full flex-1  center">
                             <div className="w-[80%]">
-                                <img className='w-full' src={"/images/expertisePage/website-development/process_scroller/img1_a.png"} alt="process img" />
+                                <img className='w-full' src={"/images/expertisePage/website-development/process_scroller/img1_a.png"} alt="Graphic" />
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ const WebDevProcessScroller = () => {
                             <p className='text-8xl primary-font leading-none'>01</p>
                         </div>
                         <div className=" flex-1 w-full  relative overflow-hidden">
-                            <Image src="/images/expertisePage/website-development/process_scroller/img1_b.png" alt="process img" fill className='cover' />
+                            <Image src="/images/expertisePage/website-development/process_scroller/img1_b.png" alt="Img 1 b Graphic" fill className='cover' />
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const WebDevProcessScroller = () => {
                         </div>
                     </div>
                     <div className="w-[50%] h-full py-20! flex justify-end padding relative  ">
-                        <img src="/images/expertisePage/website-development/process_scroller/img2.png" alt="process img" className='h-full' />
+                        <img src="/images/expertisePage/website-development/process_scroller/img2.png" alt="Img 2 Graphic" className='h-full' />
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@ const WebDevProcessScroller = () => {
                         <div className="w-full h-full flex items-end justify-center overflow-hidden">
                             <img
                                 src="/images/expertisePage/website-development/process_scroller/img3.png"
-                                alt="process img"
+                                alt="Img 3 Graphic"
                                 className="max-h-full max-w-full w-auto h-auto object-contain"
                             />
                         </div>
@@ -97,7 +97,7 @@ const WebDevProcessScroller = () => {
                             After your review, we launch and can also help with hosting.</p>
                     </div>
                     <div className="w-[70%] h-full flex items-center justify-end py-20! padding ">
-                        <img className='h-full object-contain ' src="/images/expertisePage/website-development/process_scroller/img4.png" alt="" />
+                        <img className='h-full object-contain ' src="/images/expertisePage/website-development/process_scroller/img4.png" alt="Img 4 Graphic" />
                     </div>
                 </div>
 

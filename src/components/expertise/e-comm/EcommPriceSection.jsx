@@ -82,7 +82,7 @@ const EcommPriceSection = () => {
                         <p className="text-xs md:text-base font-semibold uppercase tracking-wider">Zcom</p>
                     </div>
                     <div className="px-4 md:px-10 py-4 md:py-6 flex items-center justify-center gap-2">
-                        <img src="/icons/shopify.svg" className='w-24' alt="" />
+                        <img src="/icons/shopify.svg" className='w-24' alt="Shopify Icon" />
                     </div>
                 </div>
 

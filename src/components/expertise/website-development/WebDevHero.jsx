@@ -13,7 +13,7 @@ const WebDevHero = () => {
             </div>
             <div className="w-full center">
                 <div className="w-[70%] aspect-video relative">
-                    <Image src="/images/expertisePage/website-development/hero_img.png" alt="website-dev" fill className='cover' />
+                    <Image src="/images/expertisePage/website-development/hero_img.png" alt="Hero img Graphic" fill className='cover' />
                 </div>
             </div>
         </>

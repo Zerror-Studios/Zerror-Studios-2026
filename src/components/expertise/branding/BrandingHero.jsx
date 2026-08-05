@@ -13,7 +13,7 @@ const BrandingHero = () => {
                         <p>Expertise</p>
                         <h1 className='text-9xl  capitalize'>Branding , <br /> marketing <br /> and SEO</h1>
                     </div>
-                    <img src="/images/expertisePage/branding/hero_circle.png" className='w-full' alt="" />
+                    <img src="/images/expertisePage/branding/hero_circle.png" className='w-full' alt="Hero circle Graphic" />
                 </div>
             </div>
         </>

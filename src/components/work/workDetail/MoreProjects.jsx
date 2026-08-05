@@ -130,7 +130,7 @@ const MoreProjects = () => {
                                 className=" w-full"
                             >
                                 <div className=" w-full relative aspect-[5/6]">
-                                    <Image fill src={item.img} alt="loading img" className="cover" />
+                                    <Image fill src={item.img} alt="Item img Graphic" className="cover" />
                                 </div>
                                 <div className="mt-2">
                                     <div className="w-full flex items-center justify-between">

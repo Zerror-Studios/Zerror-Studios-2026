@@ -250,40 +250,40 @@ const About = () => {
                     <div className=" div_scale overflow-hidden scale-[.4]  md:scale-[.25]  gap-4 absolute center">
                         <div className=" absolute  word_error flex gap-4">
                             <div className=" err_anim_letter">
-                                <img className='h-[10vw]' src="/svg/e.svg" alt="loading img" />
+                                <img className='h-[10vw]' src="/svg/e.svg" alt="E Graphic" />
                             </div>
                             <div className=" err_anim_letter">
-                                <img className='h-[10vw]' src="/svg/r.svg" alt="loading img" />
+                                <img className='h-[10vw]' src="/svg/r.svg" alt="R Graphic" />
                             </div>
                             <div className=" err_anim_letter">
-                                <img className='h-[10vw]' src="/svg/r.svg" alt="loading img" />
+                                <img className='h-[10vw]' src="/svg/r.svg" alt="R Graphic" />
                             </div>
                             <div className=" err_anim_letter">
-                                <img className='h-[10vw]' src="/svg/o.svg" alt="loading img" />
+                                <img className='h-[10vw]' src="/svg/o.svg" alt="O Graphic" />
                             </div>
                             <div className=" err_anim_letter">
-                                <img className='h-[10vw]' src="/svg/r.svg" alt="loading img" />
+                                <img className='h-[10vw]' src="/svg/r.svg" alt="R Graphic" />
                             </div>
                         </div>
                         <div className="  word_zerror flex">
                             <div className=" anim_letter opacity_z">
-                                <img className='h-[10vw]' src="/svg/z.svg" alt="loading img" />
+                                <img className='h-[10vw]' src="/svg/z.svg" alt="Z Graphic" />
                             </div>
                             <div className="flex gap-x-2 md:gap-x-4">
                                 <div className=" anim_letter">
-                                    <img className='h-[10vw]' src="/svg/e.svg" alt="loading img" />
+                                    <img className='h-[10vw]' src="/svg/e.svg" alt="E Graphic" />
                                 </div>
                                 <div className=" anim_letter">
-                                    <img className='h-[10vw]' src="/svg/r.svg" alt="loading img" />
+                                    <img className='h-[10vw]' src="/svg/r.svg" alt="R Graphic" />
                                 </div>
                                 <div className=" anim_letter">
-                                    <img className='h-[10vw]' src="/svg/r.svg" alt="loading img" />
+                                    <img className='h-[10vw]' src="/svg/r.svg" alt="R Graphic" />
                                 </div>
                                 <div className=" anim_letter">
-                                    <img className='h-[10vw]' src="/svg/o.svg" alt="loading img" />
+                                    <img className='h-[10vw]' src="/svg/o.svg" alt="O Graphic" />
                                 </div>
                                 <div className=" anim_letter">
-                                    <img className='h-[10vw]' src="/svg/r.svg" alt="loading img" />
+                                    <img className='h-[10vw]' src="/svg/r.svg" alt="R Graphic" />
                                 </div>
                             </div>
                         </div>

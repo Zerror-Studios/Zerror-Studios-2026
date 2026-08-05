@@ -114,7 +114,7 @@ onUpdate() {
                     <img
                         className="stroke_circle block w-full h-auto"
                         src="/images/expertisePage/custom-cms/stroke_circle.png"
-                        alt=""
+                        alt="Stroke circle Graphic"
                     />
                 </div>
 

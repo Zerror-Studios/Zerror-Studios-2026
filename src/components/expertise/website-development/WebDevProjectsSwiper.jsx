@@ -69,7 +69,7 @@ const WebDevProjectsSwiper = () => {
         <>
             <div ref={containerRef} className="w-full mt-24 h-screen flex flex-col justify-center items-center space-y-16 relative">
                 <div className="absolute w-full h-full inset-0">
-                    <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="website-dev" fill className='cover' />
+                    <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="Swiper bg Graphic" fill className='cover' />
                 </div>
 
                 <div className="">

@@ -22,7 +22,7 @@ const about = () => {
   return (
     <>
       <HeroSection />
-      <ImageEffect />
+      <ImageEffect  alt="Dynamic Graphic"/>
       <InfoSection />
       <OurTeam />
 

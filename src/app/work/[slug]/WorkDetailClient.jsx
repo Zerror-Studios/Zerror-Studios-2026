@@ -67,7 +67,7 @@ const WorkDetail = () => {
         {project.cover_vid ? (
           <video src={project.cover_vid} loop autoPlay muted playsInline className='cover blur-[2px]'></video>
         ) : (
-          <img src={project.cover_img} className='cover blur-[2px]' alt="loading img" />
+          <img src={project.cover_img} className='cover blur-[2px]' alt="Project cover img Graphic" />
         )}
         <div className="absolute bottom-14 bg-white/60 p-10 space-y-5 backdrop-blur-2xl text-center flex flex-col justify-center items-center rounded-sm">
           <h1 className='  text-3xl md:text-5xl leading-none uppercase primary-font text_blue'>This Page is under development</h1>
@@ -79,7 +79,7 @@ const WorkDetail = () => {
         <img
           className="cover wrk_hero_img brightness-100"
           src="https://www.disrptve.com/images/projects/superYou/heroImg.webp"
-        />
+         alt="HeroImg Graphic"/>
       </div> */}
 
       {/* <WorkDetailDesc />

@@ -221,7 +221,7 @@ structure and scale.
                                 ))}
                             </div>
                             <div className="w-full h-full relative center">
-                                <Image fill className='client-icon absolute z-[1]' src={item.icon} alt="loading img" />
+                                <Image fill className='client-icon absolute z-[1]' src={item.icon} alt="Item icon Graphic" />
                             </div>
                             <div className="w-full  uppercase  absolute z-[4] bottom-0 flex justify-between p-2 text-xs">
                                 <h5 className='secondary-font leading-none'>{item.title}</h5>

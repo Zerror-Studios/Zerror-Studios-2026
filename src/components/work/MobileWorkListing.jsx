@@ -17,7 +17,7 @@ const MobileWorkListing = () => {
                         className="w-full relative aspect-3/4 md:aspect-square bg_blue overflow-hidden"
                     >
                         <div className="cover group-hover:brightness-[.3] transition-all duration-300 brightness-100  ease-[cubic-bezier(0.4, 0, 0.2, 1]  ">
-                            <Image src={item.cover_img} alt="loading img" className="cover" fill />
+                            <Image src={item.cover_img} alt="Item cover img Graphic" className="cover" fill />
                         </div>
                     </div>
 

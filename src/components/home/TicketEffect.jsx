@@ -175,7 +175,7 @@ const TicketEffect = () => {
                     <img
                         className="w-5  absolute -right-7 contrast-[6]  plane"
                         src="/svg/plane.svg"
-                        alt="plane"
+                        alt="Plane Graphic"
                     />
                 </Link>
 
@@ -195,12 +195,12 @@ const TicketEffect = () => {
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_back.svg"
-                            alt="loading img"
+                            alt="Ticket back Graphic"
                         />
                         <img
                             className="w-full md:hidden pointer-events-none select-none"
                             src="/images/homePage/mobile_ticket_back.svg"
-                            alt="loading img"
+                            alt="Mobile ticket back Graphic"
                         />
                     </div>
                     <div
@@ -210,12 +210,12 @@ const TicketEffect = () => {
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_back.svg"
-                            alt="loading img"
+                            alt="Ticket back Graphic"
                         />
                         <img
                             className="w-full md:hidden pointer-events-none select-none"
                             src="/images/homePage/mobile_ticket_back.svg"
-                            alt="loading img"
+                            alt="Mobile ticket back Graphic"
                         />
                     </div>
 
@@ -226,12 +226,12 @@ const TicketEffect = () => {
                         <img
                             className="w-full hidden md:block pointer-events-none select-none"
                             src="/images/homePage/ticket_front.svg"
-                            alt="loading img"
+                            alt="Ticket front Graphic"
                         />
                         <img
                             className="w-full md:hidden pointer-events-none select-none"
                             src="/images/homePage/mobile_ticket_front.svg"
-                            alt="loading img"
+                            alt="Mobile ticket front Graphic"
                         />
                     </div>
                 </div>
