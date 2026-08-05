@@ -212,10 +212,7 @@ const Our_Services = () => {
       }
       imagesRef.current[idx] = img
     })
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
-    }
+    
   }, [])
 
   useGSAP(() => {

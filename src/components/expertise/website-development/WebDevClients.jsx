@@ -88,7 +88,7 @@ const WebDevClients = () => {
             stagger:0.15,
             scrollTrigger:{
                 trigger:containerRef.current,
-                start:"top center",
+                start:"top 70%",
                 toggleActions:"play none none reverse"
             }
         })

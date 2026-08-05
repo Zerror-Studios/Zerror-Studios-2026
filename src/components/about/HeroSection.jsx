@@ -57,30 +57,50 @@ const HeroSection = () => {
     };
   }, [isDesktop]);
 
-  useGSAP(() => {
-    const splitText = SplitText.create(".split_t", { type: "lines" });
+    useGSAP(() => {
+        const heading_split = SplitText.create(".heading_split", {
+            type: "lines",
+            linesClass: "split-line"
+        });
 
-    gsap.fromTo(splitText.lines, {
-      yPercent: 50,
-      opacity: 0,
-    }, {
-      yPercent: 0,
-      opacity: 1,
-      ease: "expo.out",
-      delay: .5,
-      stagger: 0.03,
-    })
-  })
+        [...heading_split.lines].forEach((line) => {
+            const wrapper = document.createElement("div");
+
+            wrapper.classList.add("line-wrapper");
+
+            line.parentNode.insertBefore(wrapper, line);
+            wrapper.appendChild(line);
+        });
+
+        gsap.set([heading_split.lines], { yPercent: 100, x: 10 });
+
+        const tl = gsap.timeline({
+            delay: 0.5
+        })
+        tl.to(".content_box", {
+            opacity: 1,
+            duration: 0.01
+        })
+        tl.to(heading_split.lines, {
+            yPercent: 0,
+            x: 0,
+            duration: 0.8,
+            ease: "expo.out",
+            stagger: 0.05,
+        }, "<");
+
+
+    });
 
   return (
-    <div className=" about_hero_paren  w-full relative  padding pt-0!">
+    <div className=" content_box opacity-0 about_hero_paren  w-full relative  padding pt-0!">
 
       <div className="w-full sticky top-0  h-screen z-100  center">
         <DiceCanvas />
       </div>
 
       <div className="w-full aboutTitle flex -mt-[100vh] py-44 max-sm:pb-20  ">
-        <h1 className=" split_t text-5xl md:text-8xl  leading-none  primary-font text_blue w-[80%]">
+        <h1 className=" heading_split text-5xl md:text-8xl  leading-none  primary-font text_blue w-[80%]">
           We believe a great user experience is not just intuitive it’s
           entertaining.
         </h1>
@@ -89,7 +109,7 @@ const HeroSection = () => {
       <div className="w-full flex flex-col md:flex-row">
         <div className=" w-full md:w-1/2  space-y-5 md:space-y-10">
           <div className="md:w-[80%] ">
-            <h2 className=" split_t primary-font text_blue text-3xl">
+            <h2 className=" heading_split primary-font text_blue text-3xl">
               For founders who dream in beta. For brands that refuse to look average. Your next version starts here.
             </h2>
           </div>
@@ -121,15 +141,15 @@ const HeroSection = () => {
           {/* cont*/}
           <div className=" w-full md:w-1/2 flex flex-col gap-3">
             {/* Text */}
-            <h3 className=" split_t  uppercase text-xl font-semibold">
+            <h3 className=" heading_split  uppercase text-xl font-semibold">
               Why we exist
             </h3>
             <div className="w-full flex flex-col gap-3">
-              <p className=" split_t leading-tight">
+              <p className=" heading_split leading-tight">
                 Zerror. Zero error. Naming a studio after perfection is a risk — it means every launch has to keep the
                 promise. Good. That's the point. When your name is a standard, you hold it, or everyone knows you didn't.
               </p>
-              <p className=" split_t leading-tight">
+              <p className=" heading_split leading-tight">
                 Great ideas usually break in the space between design and development — the handoff, where fonts shift,
                 spacing slips and intent gets diluted. We removed the handoff. Designers and developers, one room, one
                 system. What gets imagined is what gets shipped.

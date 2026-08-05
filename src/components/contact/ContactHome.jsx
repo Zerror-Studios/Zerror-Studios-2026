@@ -28,19 +28,39 @@ const ContactHome = () => {
     });
 
     useGSAP(() => {
-        const splitText = SplitText.create(".split_t", { type: "lines" });
+        const heading_split = SplitText.create(".heading_split", {
+            type: "lines",
+            linesClass: "split-line"
+        });
 
-        gsap.fromTo(splitText.lines, {
-            yPercent: 50,
-            opacity: 0,
-        }, {
-            yPercent: 0,
-            opacity: 1,
-            ease: "expo.out",
-            delay: .5,
-            stagger: 0.03,
+        [...heading_split.lines].forEach((line) => {
+            const wrapper = document.createElement("div");
+
+            wrapper.classList.add("line-wrapper");
+
+            line.parentNode.insertBefore(wrapper, line);
+            wrapper.appendChild(line);
+        });
+
+        gsap.set([heading_split.lines], { yPercent: 100, x: 10 });
+
+        const tl = gsap.timeline({
+            delay: 0.5
         })
-    })
+        tl.to(".content_box", {
+            opacity: 1,
+            duration: 0.01
+        })
+        tl.to(heading_split.lines, {
+            yPercent: 0,
+            x: 0,
+            duration: 0.8,
+            ease: "expo.out",
+            stagger: 0.05,
+        }, "<");
+
+
+    });
 
     const handleSubmit = async () => {
         // 🔴 VALIDATION FIRST
@@ -93,13 +113,14 @@ const ContactHome = () => {
         <>
             <ToastContainer position="top-right" autoClose={3000} />
 
-                <div className="site-background  site-background-desktop  fixed bg_blue top-0 left-0   w-full h-screen z-[1]">
-                    <HeroScene />
-                  </div>
+            <div className="site-background  site-background-desktop  fixed bg_blue top-0 left-0   w-full h-screen z-[1]">
+                <HeroScene />
+            </div>
+            
             <div className="  bg_blue relative w-full h-[100svh] flex flex-col md:flex-row overflow-hidden">
                 {/* Left */}
-                <div className=" max-sm:hidden w-full md:w-1/2 h-[100svh] relative z-10">
-                    <h1 className=" split_t absolute bottom-[4%] left-[4%] flex flex-col primary-font text-5xl md:text-8xl text-white">
+                <div className=" content_box max-sm:hidden w-full md:w-1/2 h-[100svh] relative z-10">
+                    <h1 className=" heading_split absolute bottom-[4%] left-[4%] flex flex-col primary-font text-5xl md:text-8xl text-white">
                         Let’s <br />
                         Talk
                     </h1>
@@ -134,10 +155,10 @@ const ContactHome = () => {
                                 className={`bg-white ${Num == 1 && "hidden"
                                     }  text_blue px-8 py-3 rounded-lg font-medium hover:bg-[#002bba] hover:text-white! hover:border-white border transition-colors `}
                             >
-                                                            <p className="translate-y-0.5 uppercase">
-                                Prev
+                                <p className="translate-y-0.5 uppercase">
+                                    Prev
                                 </p>
-                                    
+
                             </button>
 
                             <button
@@ -157,7 +178,7 @@ const ContactHome = () => {
                                 }}
                             >
                                 <p className="translate-y-0.5 uppercase">
-                                {Num === 3 ? "Submit" : "Next"}
+                                    {Num === 3 ? "Submit" : "Next"}
                                 </p>
                             </button>
                         </div>

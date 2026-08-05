@@ -34,7 +34,7 @@ const menuLinks = [
     sublinks: [
       { title: "Website Development", href: "/expertise/website-development" },
       { title: "E-commerce Development", href: "/expertise/e-commerce" },
-      { title: "Custom CMS Development", href: "/expertise/custom-cms-development" },
+      { title: "Custom CMS Development", href: "/expertise/custom-software-development" },
       { title: "Branding, Marketing & SEO", href: "/expertise/branding-marketing-and-seo" },
     ]
   },
@@ -308,14 +308,14 @@ const Header = () => {
                             </div>
                           </div>
                         ) : (
-                          <Link href={menu.href} onClick={() => setOpenMenu(false)} delay={500} className="w-full h-full flex items-center">
+                          <ViewTransitionLink href={menu.href} onClick={() => setOpenMenu(false)} delay={500} className="w-full h-full flex items-center">
                             <div className=" relative overflow-hidden flex gap-x-0 group-hover:gap-x-2 transition-all duration-300 items-center">
                               <div className=" w-0 group-hover:opacity-100 group-hover:w-2 transition-all duration-300 opacity-0 -translate-y-0.5">
                                 <AnimatedPixelIcon />
                               </div>
                               <p className={`menu_title_a translate-y-[115%] `}>{menu.title}</p>
                             </div>
-                          </Link>
+                          </ViewTransitionLink>
                         )}
                       </div>
 
@@ -323,7 +323,7 @@ const Header = () => {
                         <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openExpertise ? "max-h-64 " : "max-h-0"}`}>
                           <div className="flex flex-col">
                             {menu.sublinks.map((sublink, i) => (
-                              <Link
+                              <ViewTransitionLink
                                 key={i}
                                 href={sublink.href}
                                 delay={500}
@@ -342,7 +342,7 @@ const Header = () => {
                                 <p className="text-[#ffffff] transition-all duration-300 ">
                                   {sublink.title}
                                 </p>
-                              </Link>
+                              </ViewTransitionLink>
                             ))}
                           </div>
                         </div>
@@ -352,14 +352,14 @@ const Header = () => {
                 </nav>
 
                 <div className="p-6 py-2">
-                  <Link
+                  <ViewTransitionLink
                     href="/pitchdeck"
                     delay={500}
                     onClick={() => setOpenMenu(false)}
                     className="w-full rounded-sm py-4 text-xs center bg_blue border hover:border-transparent border-[#ffffff50] bg-transparent! text-[#ffffff] hover:bg-[#ffffff]! hover:text-black transition-all duration-300 uppercase flex"
                   >
                     Our Pitchdeck
-                  </Link>
+                  </ViewTransitionLink>
                 </div>
 
                 <div className="w-full pt-0 p-6 grid grid-cols-2 gap-x-1">
