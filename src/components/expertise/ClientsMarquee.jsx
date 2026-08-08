@@ -20,53 +20,53 @@ import Image from 'next/image'
     },
     {
         id: 4,
-        title: "Deveshe Dreams",
-        icon: "/images/homePage/clients/deveshe.svg"
-    },
-    {
-        id: 5,
         title: "Disrptve",
         icon: "/images/homePage/clients/disrptve.svg"
     },
     {
-        id: 6,
-        title: "Elue Archive",
-        icon: "/images/homePage/clients/elue.svg"
+        id: 5,
+        title: "Deveshe Dreams",
+        icon: "/images/homePage/clients/deveshe.svg"
     },
     {
-        id: 7,
+        id: 6,
         title: "Esquire India",
         icon: "/images/homePage/clients/esquire.svg"
     },
     {
-        id: 8,
+        id: 7,
         title: "Just Nosh",
         icon: "/images/homePage/clients/justnosh.svg"
     },
     {
-        id: 9,
-        title: "Kaai",
-        icon: "/images/homePage/clients/kaai.svg"
-    },
-    {
-        id: 10,
+        id: 8,
         title: "Mad Earth",
         icon: "/images/homePage/clients/madearth.svg"
     },
     {
-        id: 11,
+        id: 9,
+        title: "RAS",
+        icon: "/images/homePage/clients/ras.svg"
+    },
+    {
+        id: 10,
         title: "Manifest",
         icon: "/images/homePage/clients/manifest.svg"
     },
     {
+        id: 11,
+        title: "RPSG Media",
+        icon: "/images/homePage/clients/rpsgmedia.svg"
+    },
+    {
         id: 12,
-        title: "Nobo",
-        icon: "/images/homePage/clients/nobo.svg"
+        title: "SDAF",
+        icon: "/images/homePage/clients/sdaf.svg"
     },
     {
         id: 13,
-        title: "RAS",
-        icon: "/images/homePage/clients/ras.svg"
+        title: "SKF",
+        icon: "/images/homePage/clients/skf.svg"
     },
     {
         id: 14,
@@ -75,33 +75,33 @@ import Image from 'next/image'
     },
     {
         id: 15,
-        title: "RPSG Media",
-        icon: "/images/homePage/clients/rpsgmedia.svg"
-    },
-    {
-        id: 16,
-        title: "SDAF",
-        icon: "/images/homePage/clients/sdaf.svg"
-    },
-    {
-        id: 17,
-        title: "SKF",
-        icon: "/images/homePage/clients/skf.svg"
-    },
-    {
-        id: 18,
         title: "Studio Akto",
         icon: "/images/homePage/clients/studioakto.svg"
     },
     {
-        id: 19,
+        id: 16,
         title: "THR India",
         icon: "/images/homePage/clients/thr.svg"
     },
     {
-        id: 20,
+        id: 17,
         title: "Winee Media",
         icon: "/images/homePage/clients/winemedia.svg"
+    },
+    {
+        id: 18,
+        title: "Elue Archive",
+        icon: "/images/homePage/clients/elue.svg"
+    },
+    {
+        id: 19,
+        title: "Nobo",
+        icon: "/images/homePage/clients/nobo.svg"
+    },
+    {
+        id: 20,
+        title: "Kaai",
+        icon: "/images/homePage/clients/kaai.svg"
     }
 ]
 
