@@ -1,6 +1,9 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 import Slide01 from '@/components/pitchdeck/Slide01';
 import Slide02 from '@/components/pitchdeck/Slide02';
 import Slide03 from '@/components/pitchdeck/Slide03';
@@ -24,8 +27,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TOTAL_SLIDES = 14;
 
-const PitchDeckPage = () => {
+export default function PitchDeck() {
   const slideRefs = useRef([]);
+  const progressRefs = useRef([]);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+
+  const onAutoplayTimeLeft = (s, time, progress) => {
+    const activeIndex = s.realIndex;
+    progressRefs.current.forEach((ref, index) => {
+      if (ref) {
+        if (index < activeIndex) {
+          ref.style.width = '100%';
+        } else if (index > activeIndex) {
+          ref.style.width = '0%';
+        } else {
+          ref.style.width = `${Math.max(0, Math.min(100, (1 - progress) * 100))}%`;
+        }
+      }
+    });
+  };
+
+  const handleSlideChange = (s) => {
+    const activeIndex = s.realIndex;
+    progressRefs.current.forEach((ref, index) => {
+      if (ref) {
+        if (index < activeIndex) {
+          ref.style.width = '100%';
+        } else if (index > activeIndex) {
+          ref.style.width = '0%';
+        }
+      }
+    });
+  };
 
   const scrollToSlide = (index) => {
     let targetY = (index - 1) * window.innerHeight;
@@ -140,10 +173,9 @@ const PitchDeckPage = () => {
   });
 
   return (
-    <main className="relative">
-      {/* Sidebar Pagination Indicators */}
-      
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[999] flex justify-center w-14">
+    <main className="relative padding py-0! md:p-0!">
+
+      <div className="fixed max-sm:hidden right-6 top-1/2 -translate-y-1/2 z-[999] flex justify-center w-14">
         <div className="flex flex-col items-center gap-1">
           {Array.from({ length: TOTAL_SLIDES }).map((_, index) => {
             const slideNum = index + 1;
@@ -163,85 +195,132 @@ const PitchDeckPage = () => {
         </div>
       </div>
 
-      <div ref={el => slideRefs.current[0] = el} id="slide-01" className="w-full h-screen sticky top-0 center">
-        <div className="slide_1 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide01 />
+      <div className="md:hidden disable-gsap-mobile w-full flex flex-col h-svh  pb-4">
+        <div className="w-full h-28 pb-4 flex items-end ">
+          <div className="w-full flex items-center justify-between gap-1 h-1">
+            {Array.from({ length: TOTAL_SLIDES }).map((_, index) => (
+              <div 
+                key={index} 
+                className="flex-1 h-1 bg-black/10 rounded-full overflow-hidden cursor-pointer"
+                onClick={() => swiperInstance && swiperInstance.slideTo(index)}
+              >
+                <div
+                  ref={el => progressRefs.current[index] = el}
+                  className="h-full bg_blue w-0"
+                ></div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-full h-[calc(100%-7rem)] relative">
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            onAutoplayTimeLeft={onAutoplayTimeLeft}
+            onSlideChange={handleSlideChange}
+            onSwiper={setSwiperInstance}
+            spaceBetween={10}
+            className="w-full h-full rounded-md overflow-hidden absolute inset-0"
+          >
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide01 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide02 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide03 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide04 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide05 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide06 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide07 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide08 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide09 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide10 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide11 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide12 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide13 /></SwiperSlide>
+            <SwiperSlide className='rounded-md overflow-hidden'><Slide14 /></SwiperSlide>
+          </Swiper>
         </div>
       </div>
-      <div ref={el => slideRefs.current[1] = el} id="slide-02" className="w-full h-screen sticky top-0 center">
-        <div className="slide_2 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide02 />
-        </div>
-      </div>
-      <div ref={el => slideRefs.current[2] = el} id="slide-03" className="w-full h-screen sticky top-0 center">
-        <div className="slide_3 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide03 />
-        </div>
-      </div>
-      <div ref={el => slideRefs.current[3] = el} id="slide-04" className="w-full h-screen sticky top-0 center">
-        <div className="slide_4 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide04 />
-        </div>
-      </div>
-      <div ref={el => slideRefs.current[4] = el} id="slide-05" className="w-full h-screen sticky top-0 center">
-        <div className="slide_5 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide05 />
-        </div>
-      </div>
-      <div ref={el => slideRefs.current[5] = el} id="slide-06" className="w-full h-screen sticky top-0 center">
-        <div className="slide_6 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide06 />
-        </div>
-      </div>
-      <div ref={el => slideRefs.current[6] = el} id="slide-07" className="w-full h-screen sticky top-0 center">
-        <div className="slide_7 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide07 />
-        </div>
-      </div>
-      <div ref={el => slideRefs.current[7] = el} id="slide-08" className="w-full h-screen sticky top-0 center">
-        <div className="slide_8 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide08 />
-        </div>
-      </div>
-      <div ref={el => slideRefs.current[8] = el} id="slide-09" className="w-full h-screen sticky top-0 center">
-        <div className="slide_9 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide09 />
-        </div>
-      </div>
-      <div id="slide-09-spacer" className="w-full h-[150vh]"></div>
 
-      <div ref={el => slideRefs.current[9] = el} id="slide-10" className="w-full h-screen sticky top-0 center">
-        <div className="slide_10 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide10 />
-        </div>
-      </div>
-      <div id="slide-10-spacer" className="w-full h-[150vh]"></div>
 
-      <div ref={el => slideRefs.current[10] = el} id="slide-11" className="w-full h-screen sticky top-0 center">
-        <div className="slide_11 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide11 />
-        </div>
-      </div>
-      <div id="slide-11-spacer" className="w-full h-[150vh]"></div>
 
-      <div ref={el => slideRefs.current[11] = el} id="slide-12" className="w-full h-screen sticky top-0 center">
-        <div className="slide_12 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide12 />
+      <div className="hidden md:block">
+        <div ref={el => slideRefs.current[0] = el} id="slide-01" className="w-full h-screen sticky top-0 center">
+          <div className="slide_1 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide01 />
+          </div>
         </div>
-      </div>
-      <div id="slide-12-spacer" className="w-full h-[150vh]"></div>
-      <div ref={el => slideRefs.current[12] = el} id="slide-13" className="w-full h-screen sticky top-0 center">
-        <div className="slide_13 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide13 />
+        <div ref={el => slideRefs.current[1] = el} id="slide-02" className="w-full h-screen sticky top-0 center">
+          <div className="slide_2 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide02 />
+          </div>
         </div>
-      </div>
-      <div ref={el => slideRefs.current[13] = el} id="slide-14" className="w-full h-screen sticky top-0 center">
-        <div className="slide_14 border border-white/20 aspect-video w-[70%] brightness-100 rounded-xl overflow-hidden">
-          <Slide14 />
+        <div ref={el => slideRefs.current[2] = el} id="slide-03" className="w-full h-screen sticky top-0 center">
+          <div className="slide_3 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide03 />
+          </div>
+        </div>
+        <div ref={el => slideRefs.current[3] = el} id="slide-04" className="w-full h-screen sticky top-0 center">
+          <div className="slide_4 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide04 />
+          </div>
+        </div>
+        <div ref={el => slideRefs.current[4] = el} id="slide-05" className="w-full h-screen sticky top-0 center">
+          <div className="slide_5 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide05 />
+          </div>
+        </div>
+        <div ref={el => slideRefs.current[5] = el} id="slide-06" className="w-full h-screen sticky top-0 center">
+          <div className="slide_6 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide06 />
+          </div>
+        </div>
+        <div ref={el => slideRefs.current[6] = el} id="slide-07" className="w-full h-screen sticky top-0 center">
+          <div className="slide_7 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide07 />
+          </div>
+        </div>
+        <div ref={el => slideRefs.current[7] = el} id="slide-08" className="w-full h-screen sticky top-0 center">
+          <div className="slide_8 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide08 />
+          </div>
+        </div>
+        <div ref={el => slideRefs.current[8] = el} id="slide-09" className="w-full h-screen sticky top-0 center">
+          <div className="slide_9 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide09 />
+          </div>
+        </div>
+        <div id="slide-09-spacer" className="w-full h-[150vh]"></div>
+
+        <div ref={el => slideRefs.current[9] = el} id="slide-10" className="w-full h-screen sticky top-0 center">
+          <div className="slide_10 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide10 />
+          </div>
+        </div>
+        <div id="slide-10-spacer" className="w-full h-[150vh]"></div>
+
+        <div ref={el => slideRefs.current[10] = el} id="slide-11" className="w-full h-screen sticky top-0 center">
+          <div className="slide_11 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide11 />
+          </div>
+        </div>
+        <div id="slide-11-spacer" className="w-full h-[150vh]"></div>
+
+        <div ref={el => slideRefs.current[11] = el} id="slide-12" className="w-full h-screen sticky top-0 center">
+          <div className="slide_12 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide12 />
+          </div>
+        </div>
+        <div id="slide-12-spacer" className="w-full h-[150vh]"></div>
+        <div ref={el => slideRefs.current[12] = el} id="slide-13" className="w-full h-screen sticky top-0 center">
+          <div className="slide_13 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide13 />
+          </div>
+        </div>
+        <div ref={el => slideRefs.current[13] = el} id="slide-14" className="w-full h-screen sticky top-0 center">
+          <div className="slide_14 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+            <Slide14 />
+          </div>
         </div>
       </div>
     </main>
   );
 };
-
-export default PitchDeckPage;

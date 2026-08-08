@@ -6,11 +6,58 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const servicesData = [
+  {
+    id: '01',
+    title: <>Website Design & <br className='max-sm:hidden' />Development</>,
+    items: [
+      'Mood boarding',
+      'UI/UX Design',
+      'Front & Back End Development',
+      'Responsive Design',
+      'Performance & Security'
+    ]
+  },
+  {
+    id: '02',
+    title: <>Custom Software <br className='max-sm:hidden' />Development</>,
+    items: [
+      'Content Architecture',
+      'Headless CMS',
+      'Admin Dashboards',
+      'Custom Workflows',
+      'Scalable Systems'
+    ]
+  },
+  {
+    id: '03',
+    title: <>eCommerce <br className='max-sm:hidden' /> Solutions</>,
+    items: [
+      'Store Strategy',
+      'UX-Led Design',
+      'Payment & Checkout',
+      'Platform Development',
+      'Scalable Infrastructure'
+    ]
+  },
+  {
+    id: '04',
+    title: <>Branding, Marketing <br className='max-sm:hidden' /> & SEO</>,
+    items: [
+      'Brand Identity',
+      'Visual Systems',
+      'Digital Marketing',
+      'SEO Strategy',
+      'Growth Optimisation'
+    ]
+  }
+];
+
 const Slide06 = () => {
   const container = useRef();
 
   useGSAP(() => {
-    gsap.fromTo('.line-anim_ncs', 
+    gsap.fromTo('.line-anim_ncs',
       { scaleX: 0 },
       {
         scaleX: 1,
@@ -27,68 +74,26 @@ const Slide06 = () => {
   }, { scope: container });
 
   return (
-    <section ref={container} className="w-full h-full ">
-
-      <div className="w-full p-5 h-full bg-black flex flex-col justify-center text-white">
-
-        {/* Row 1 */}
-        <div className="grid grid-cols-7 relative py-4">
-          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">01</div>
-          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">Website Design &<br />Development</h2>
-          <div className="opacity-60 col-span-2">
-            <p>Mood boarding</p>
-            <p>U/UX Design</p>
-            <p>Front & Back End Development</p>
-            <p>Responsive Design</p>
-            <p>Performance & Security</p>
+    <section ref={container} className="w-full h-full overflow-y-auto md:overflow-visible">
+      <div className="w-full p-5 md:h-full bg-black flex flex-col justify-center text-white min-h-max ">
+        {servicesData.map((service, index) => (
+          <div key={index} className="flex flex-row flex-wrap md:grid md:grid-cols-7 relative py-6 md:py-4 gap-y-2 md:gap-y-0  md:items-stretch">
+            <h2 data-para-effect className="pr-6 md:pr-0 w-18 md:w-auto text-5xl md:text-8xl  nd:flex items-center leading-none md:col-span-2 primary-font text-white">
+              {service.id}
+            </h2>
+            <h2 className="flex-1 md:w-auto text-3xl md:text-3xl lg:text-4xl flex items-center leading-none font-medium md:col-span-3">
+              {service.title}
+            </h2>
+            <div className="w-full md:w-auto max-sm:pl-18 opacity-60 md:col-span-2 text-sm md:text-base  pt-2 md:pt-0">
+              {service.items.map((item, i) => (
+                <p key={i}>{item}</p>
+              ))}
+            </div>
+            {index < servicesData.length - 1 && (
+              <div className="w-full absolute bottom-0 left-0 origin-left scale-x-0 h-[1px] bg-white line-anim_ncs"></div>
+            )}
           </div>
-        <div className="w-full absolute bottom-0 left-0 origin-left scale-x-0 h-[1px] bg-white line-anim_ncs"></div>
-        </div>
-
-
-        {/* Row 2 */}
-        <div className="grid grid-cols-7 relative py-4">
-          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">02</div>
-          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">Custom Software<br />Development</h2>
-          <div className="opacity-60 col-span-2">
-            <p>Content Architecture</p>
-            <p>Headless CMS</p>
-            <p>Admin Dashboards</p>
-            <p>Custom Workflows</p>
-            <p>Scalable Systems</p>
-          </div>
-        <div className="w-full absolute bottom-0 left-0 origin-left scale-x-0 h-[1px] bg-white line-anim_ncs"></div>
-        </div>
-
-
-        {/* Row 3 */}
-        <div className="grid grid-cols-7 relative py-4">
-          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">03</div>
-          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">eCommerce <br /> Solutions</h2>
-          <div className="opacity-60 col-span-2">
-            <p>Store Strategy</p>
-            <p>UX-Led Design</p>
-            <p>Payment & Checkout</p>
-            <p>Platform Development</p>
-            <p>Scalable Infrastructure</p>
-          </div>
-        <div className="w-full absolute bottom-0 left-0 origin-left scale-x-0 h-[1px] bg-white line-anim_ncs"></div>
-        </div>
-
-
-        {/* Row 4 */}
-        <div className="grid grid-cols-7 relative py-4">
-          <div data-para-effect className="text-9xl flex items-center leading-none col-span-2 primary-font text-white">04</div>
-          <h2 className="text-4xl flex items-center leading-none md:text-4xl font-medium col-span-3">Branding, Marketing <br /> & SEO</h2>
-          <div className="opacity-60 col-span-2">
-            <p>Brand Identity</p>
-            <p>Visual Systems</p>
-            <p>Digital Marketing</p>
-            <p>SEO Strategy</p>
-            <p>Growth Optimisation</p>
-          </div>
-        </div>
-
+        ))}
       </div>
     </section>
   );

@@ -5,8 +5,8 @@ const Slide05 = () => {
 
     <section className="w-full h-full ">
       <div className="w-full p-5 h-full bg-black flex flex-col justify-center text-white">
-        <div className="w-[70%] space-y-5">
-          <p data-para-effect className="text-6xl  primary-font">
+        <div className="md:w-[70%] space-y-5">
+          <p data-para-effect className="text-4xl md:text-6xl   primary-font">
             For founders who <br />
             dream in beta</p>
           <p data-para-effect className='text-lg'>Zerror is a design-led IT consultancy built for modern digital

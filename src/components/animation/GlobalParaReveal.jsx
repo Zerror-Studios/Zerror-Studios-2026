@@ -18,7 +18,7 @@ const GlobalParaReveal = () => {
     const initTimeout = setTimeout(() => {
       document.fonts.ready.then(() => {
         ctx = gsap.context(() => {
-          const elements = gsap.utils.toArray("[data-para-effect]")
+          const elements = gsap.utils.toArray("[data-para-effect]").filter(el => !el.closest('.disable-gsap-mobile'))
 
           elements.forEach((el) => {
             if (el.dataset.splitInitialized) return

@@ -248,7 +248,7 @@ const Header = () => {
         <div className="w-full relative z-99999 flex justify-center gap-x-1 md:gap-x-3 ">
           <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-xs z-9 top-0 left-0 transition-all duration-500 ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
 
-          <div className={`menu_paren pointer-events-auto relative z-100 w-[90vw] md:w-[45vw] max-w-125 rounded-xl backdrop-blur-sm transition-all duration-300 ease-out ${openMenu ? "bg-black/15  shadow-xl shadow-black/10" : "bg-black/20  shadow-lg shadow-black/5"} `}>
+          <div className={`menu_paren pointer-events-auto relative z-100 w-full md:w-[30vw]  rounded-xl backdrop-blur-sm transition-all duration-300 ease-out ${openMenu ? "bg-black/15  shadow-xl shadow-black/10" : "bg-black/20  shadow-lg shadow-black/5"} `}>
 
             <div onClick={() => setOpenMenu(!openMenu)} className={`menu_header cursor-pointer group px-6 w-full flex items-center justify-between h-14 `}>
               <div className="relative flex items-center w-25">

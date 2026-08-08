@@ -16,7 +16,7 @@ const GlobalImgReveal = () => {
 
     const initTimeout = setTimeout(() => {
       ctx = gsap.context(() => {
-        const elements = gsap.utils.toArray("[data-img-effect]")
+        const elements = gsap.utils.toArray("[data-img-effect]").filter(el => !el.closest('.disable-gsap-mobile'))
 
         elements.forEach((el) => {
           if (el.dataset.imgInitialized) return

@@ -4,7 +4,7 @@ const Slide03 = () => {
   return (
     <section className="w-full h-full ">
       <div className="w-full p-5 h-full    bg_blue flex items-end text-white">
-        <p data-para-effect className="text-6xl z-10  primary-font">
+        <p data-para-effect className="text-4xl md:text-6xl  z-10  primary-font">
           Design shouldn’t fight development
           because choosing between beautiful
           design and reliable tech is outdated.

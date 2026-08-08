@@ -131,7 +131,6 @@ const About = () => {
             opacity: 0,
             duration: 0.2
         }, "<")
-
             .to(".opacity_z", {
                 opacity: 0,
                 duration: 0.01
@@ -157,14 +156,14 @@ const About = () => {
                 top: "0%",
                 rotate: 90,
                 left: "50%",
-                transform: "translateX(-50%)",
+                xPercent: -50,
                 ease: "linear",
             }, "<")
             .to(".bar_bottom", {
                 bottom: "0%",
                 rotate: 90,
                 right: "50%",
-                transform: "translateX(50%)",
+                xPercent: 50,
                 ease: "linear",
             }, "<")
 
@@ -172,7 +171,8 @@ const About = () => {
                 top: "50%",
                 rotate: 90,
                 left: "50%",
-                transform: "translateX(-50%) translateY(-50%)",
+                xPercent: -50,
+                yPercent: -50,
                 ease: "linear",
             })
             .to(".drop_ltr_z", {
@@ -183,7 +183,8 @@ const About = () => {
                 bottom: "50%",
                 rotate: 90,
                 right: "50%",
-                transform: "translateX(20%) translateY(50%)",
+                xPercent: 50,
+                yPercent: 50,
                 ease: "linear",
             }, "<")
 
@@ -197,7 +198,13 @@ const About = () => {
                 ease: "linear",
             })
             .to(".works_paren_header", {
+                width: "50vw",
+                height: "50vw",
+                ease: "linear",
+            })
+            .to(".works_paren_header", {
                 width: "100vw",
+                borderRadius: 0,
                 height: "100vh",
                 ease: "linear",
             })
@@ -289,7 +296,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className=" works_paren_header center fixed overflow-hidden z-10  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 bg-white">
+                    <div className=" works_paren_header center fixed overflow-hidden z-10  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 rounded-xs  md:rounded-lg bg-white">
                         <div className=" works_paren_header_in w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                             <div className="">
                                 <h2 className=' wrk_split_wrd  primary-font   text-5xl  leading-none'>Our<br />Expertise</h2>

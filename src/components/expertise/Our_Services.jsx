@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 import Button from "../common/Button";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger)
-
 
 const servicesContent = [
   {
@@ -102,10 +100,10 @@ const Our_Services = () => {
     const ctx = canvas.getContext("2d")
     const STRIPS = 32
     const imageSources = [
-      "/images/expertisePage/bit-mano.svg",
-      "/images/expertisePage/bit-pocima.svg",
-      "/images/expertisePage/bit-reloj.svg",
-      "/images/expertisePage/bit-trofeo.svg",
+      "/images/homePage/services/website_development.svg",
+      "/images/homePage/services/ecommerce.svg",
+      "/images/homePage/services/customcms.svg",
+      "/images/homePage/services/branding.svg",
     ]
 
     let loaded = 0
@@ -128,34 +126,48 @@ const Our_Services = () => {
       const next = imgs[segment + 1]
       if (!current || !next) return
 
-      const stagger = 0.6 / STRIPS
-      const animDuration = 0.1
+      const wH = window.innerHeight;
+      const cH = canvas.clientHeight;
+      const t_start = 0.5 - cH / (2 * wH);
+      const t_end = 0.5 + cH / (2 * wH);
+
+      const t_active = (t - t_start) / (t_end - t_start);
+
+      const animDuration = 3 / STRIPS;
+      const stagger = (1 - animDuration) / (STRIPS - 1);
 
       for (let i = 0; i < STRIPS; i++) {
         const revI = STRIPS - 1 - i
-        const srcY = sy + revI * stripSrcH
-        const dstY = revI * stripDstH
+
+        const srcY = Math.floor(sy + revI * stripSrcH)
+        const nextSrcY = Math.floor(sy + (revI + 1) * stripSrcH)
+        const curStripSrcH = nextSrcY - srcY
+
+        const dstY = Math.floor(revI * stripDstH)
+        const nextDstY = Math.floor((revI + 1) * stripDstH)
+        const curStripDstH = nextDstY - dstY
+
         const delay = i * stagger
-        let r = (t - delay) / animDuration
+        let r = (t_active - delay) / animDuration
         r = Math.max(0, Math.min(1, r))
 
-        const h1 = stripDstH * (1 - r)
+        const h1 = curStripDstH * (1 - r)
         if (h1 > 0) {
           ctx.save()
           ctx.beginPath()
-          ctx.rect(0, dstY + (stripDstH - h1), canvas.width, h1)
+          ctx.rect(0, dstY, canvas.width, Math.ceil(h1) + 1)
           ctx.clip()
-          ctx.drawImage(current, sx, srcY, sw, stripSrcH, 0, dstY, canvas.width, stripDstH)
+          ctx.drawImage(current, sx, srcY, sw, curStripSrcH, 0, dstY, canvas.width, curStripDstH + 1)
           ctx.restore()
         }
 
-        const h2 = stripDstH * r
+        const h2 = curStripDstH * r
         if (h2 > 0) {
           ctx.save()
           ctx.beginPath()
-          ctx.rect(0, dstY + (stripDstH - h2), canvas.width, h2)
+          ctx.rect(0, dstY, canvas.width, Math.ceil(h2) + 1)
           ctx.clip()
-          ctx.drawImage(next, sx, srcY, sw, stripSrcH, 0, dstY, canvas.width, stripDstH)
+          ctx.drawImage(next, sx, srcY, sw, curStripSrcH, 0, dstY, canvas.width, curStripDstH + 1)
           ctx.restore()
         }
       }
@@ -170,8 +182,8 @@ const Our_Services = () => {
         ease: "linear",
         scrollTrigger: {
           trigger: parentRef.current,
-          start: "4% top",
-          end: "103% bottom",
+          start: "top top",
+          end: "bottom bottom",
           scrub: true,
           invalidateOnRefresh: true,
         },
@@ -205,14 +217,12 @@ const Our_Services = () => {
             sy = (first.height - sh) / 2
           }
           cropRef.current = { sx, sy, sw, sh }
-
           initScroll()
           draw()
         }
       }
       imagesRef.current[idx] = img
     })
-    
   }, [])
 
   useGSAP(() => {
@@ -225,18 +235,17 @@ const Our_Services = () => {
       }
     })
 
-    tl.to(".works_paren_header",{
-      yPercent:-100,
-      ease:"linear"
+    tl.to(".works_paren_header", {
+      yPercent: -100,
+      ease: "linear"
     })
-    tl.to(".works_paren_header_in",{
-      opacity:0,
-    },"<")
+    tl.to(".works_paren_header_in", {
+      opacity: 0,
+    }, "<")
   })
 
-
   return (
-    <div ref={parentRef} className={` serv_page_paren  w-full padding z-10 bg-white relative py-0! h-[400vh] `}>
+    <div ref={parentRef} className={`serv_page_paren  w-full padding z-10 bg-white relative py-0! h-[400vh] `}>
 
       <div className="sticky w-full h-screen top-0 left-0 pointer-events-none z-[-1] center  ">
         <canvas
@@ -246,50 +255,34 @@ const Our_Services = () => {
         />
       </div>
 
-      <div className="absolute padding  w-full h-screen left-0 top-0">
-        <div className="w-full h-screen pt-[2.5rem] md:pt-0 space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
-          <div className="  md:w-1/2">
-            <h2 data-para-effect className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
-              {servicesContent[0].title}
-            </h2>
-          </div>
-          <div className=" space-y-5 md:space-y-10 ">
-            <h3 data-para-effect className="text-3xl secondary-font  text_blue">
-              {servicesContent[0].description}
-            </h3>
+      <div className="-mt-[100vh]">
+        {servicesContent.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className={`w-full h-screen flex justify-start pt-[2.5rem] border-t last:border-b border-black/50  `}
+            >
+              <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[65%_35%]">
+                {/* Left */}
+                <div className="  md:w-1/2">
+                  <h2 data-para-effect className=" md:w-[85%] capitalize text-5xl text_blue primary-font">
+                    {item.title}
+                  </h2>
+                </div>
+                {/* Right */}
+                <div className=" space-y-5 md:space-y-10 ">
+                  <h3 data-para-effect className=" text-3xl secondary-font  text_blue">
+                    {item.description}
+                  </h3>
 
-            <Button link={servicesContent[0].href} title="View More" />
+                  <Button link={item.href} title="View More" />
 
-          </div>
-        </div>
-      </div>
-
-      {servicesContent.slice(1, 4).map((item, index) => {
-        return (
-          <div
-            key={index}
-            className={`w-full h-screen flex justify-start pt-[2.5rem] border-t last:border-b border-black/50  `}
-          >
-            <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[70%_30%]">
-              {/* Left */}
-              <div className="  md:w-1/2">
-                <h2 data-para-effect className=" md:w-[70%]  capitalize text-5xl text_blue primary-font">
-                  {item.title}
-                </h2>
-              </div>
-              {/* Right */}
-              <div className=" space-y-5 md:space-y-10 ">
-                <h3 data-para-effect className=" text-3xl secondary-font  text_blue">
-                  {item.description}
-                </h3>
-
-                <Button link={item.href} title="View More" />
-
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
 
     </div>
   );

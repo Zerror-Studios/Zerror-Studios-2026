@@ -3,111 +3,9 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import React, { useEffect, useRef } from 'react'
 import Image from 'next/image';
+import { clientsData } from '../expertise/ClientsMarquee';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const clientsData = [
-    {
-        id: 1,
-        title: "Vishwa Samudra",
-        icon: "/images/homePage/clients/1_Vishwa_Samudra.png"
-    },
-    {
-        id: 2,
-        title: "Rupay",
-        icon: "/images/homePage/clients/2_Rupay.png"
-    },
-    {
-        id: 3,
-        title: "Devgn",
-        icon: "/images/homePage/clients/3_Devgn.png"
-    },
-    {
-        id: 4,
-        title: "Flipkart",
-        icon: "/images/homePage/clients/4_Flipkart.png"
-    },
-    {
-        id: 5,
-        title: "Golden",
-        icon: "/images/homePage/clients/5_Golden.png"
-    },
-    {
-        id: 6,
-        title: "Imagine",
-        icon: "/images/homePage/clients/6_Imagine.png"
-    },
-    {
-        id: 7,
-        title: "Kuwait Airways",
-        icon: "/images/homePage/clients/7_Kuwait.png"
-    },
-    {
-        id: 8,
-        title: "TATA Motors",
-        icon: "/images/homePage/clients/8_TATA.png"
-    },
-    {
-        id: 9,
-        title: "Piramal",
-        icon: "/images/homePage/clients/9_Piramal.png"
-    },
-    {
-        id: 10,
-        title: "Prominance",
-        icon: "/images/homePage/clients/10_Prominance.png"
-    },
-    {
-        id: 11,
-        title: "Proost",
-        icon: "/images/homePage/clients/11_Proost.png"
-    },
-    {
-        id: 12,
-        title: "Punjab Kings",
-        icon: "/images/homePage/clients/12_Punjab Kings.png"
-    },
-    {
-        id: 13,
-        title: "Flaunt Your Ink",
-        icon: "/images/homePage/clients/13_Flaunt Your Ink.png"
-    },
-    {
-        id: 14,
-        title: "Shivdutt Das Art Foundation",
-        icon: "/images/homePage/clients/14_SDAF.png"
-    },
-    {
-        id: 15,
-        title: "Superyou",
-        icon: "/images/homePage/clients/15_Superyou.png"
-    },
-    {
-        id: 16,
-        title: "The Laundry House",
-        icon: "/images/homePage/clients/16_TLH.png"
-    },
-    {
-        id: 17,
-        title: "Candor Foods",
-        icon: "/images/homePage/clients/17_Candor_Foods.png"
-    },
-    {
-        id: 18,
-        title: "Guyana",
-        icon: "/images/homePage/clients/18_Guyana.png"
-    },
-    {
-        id: 19,
-        title: "Ellementry",
-        icon: "/images/homePage/clients/19_Ellementry.png"
-    },
-    {
-        id: 20,
-        title: "Dalhousie Public school",
-        icon: "/images/homePage/clients/20_Dalhousie.png"
-    },
-]
 
 const Clients = () => {
 
@@ -129,7 +27,7 @@ const Clients = () => {
                 gsap.killTweensOf([icon, img, inr_boxes]);
 
                 gsap.to(icon, {
-                    filter: "invert(100%)",
+                    filter: "invert(0%)",
                     duration: 0.25,
                     ease: "power2.out",
                 });
@@ -155,7 +53,7 @@ const Clients = () => {
                 gsap.killTweensOf([icon, img, inr_boxes]);
 
                 gsap.to(icon, {
-                    filter: "invert(0%)",
+                    filter: "invert(100%)",
                     duration: 0.25,
                     ease: "power2.in",
                 });
@@ -211,7 +109,7 @@ structure and scale.
                 className=" relative z-10 w-full grid grid-cols-3 md:grid-cols-5 ">
                 {visibleClients.map((item, i) => {
                     return (
-                        <div key={i} className="client-box w-full  overflow-hidden border border-white/10 relative aspect-square center">
+                        <div key={i} className=" group client-box w-full  overflow-hidden border border-white/10 relative aspect-square center">
                             <div className="w-full h-full absolute grid grid-cols-7 pointer-events-none">
                                 {[...Array(49)].map((_, i) => (
                                     <div
@@ -220,10 +118,10 @@ structure and scale.
                                     />
                                 ))}
                             </div>
-                            <div className="w-full h-full relative center">
-                                <Image fill className='client-icon absolute z-[1]' src={item.icon} alt="Item icon Graphic" />
+                            <div className="size-50 relative center">
+                                <Image fill className='client-icon invert-100 absolute z-[1]' src={item.icon} alt="Item icon Graphic" />
                             </div>
-                            <div className="w-full  uppercase  absolute z-[4] bottom-0 flex justify-between p-2 text-xs">
+                            <div className="w-full  uppercase  absolute z-[4] bottom-0 flex justify-between p-2">
                                 <h5 className='secondary-font leading-none'>{item.title}</h5>
                             </div>
                         </div>

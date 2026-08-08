@@ -12,16 +12,19 @@ gsap.registerPlugin(ScrollTrigger)
 
 const imgData = [
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/img1.png",
+        img: "/images/expertisePage/website-development/webdev_swiper/slide1.svg",
     },
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/img2.png",
+        img: "/images/expertisePage/website-development/webdev_swiper/slide2.svg",
     },
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/img3.png",
+        img: "/images/expertisePage/website-development/webdev_swiper/slide3.svg",
     },
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/img4.png",
+        img: "/images/expertisePage/website-development/webdev_swiper/slide4.svg",
+    },
+    {
+        img: "/images/expertisePage/website-development/webdev_swiper/slide5.svg",
     },
 ]
 const WebDevProjectsSwiper = () => {
@@ -67,7 +70,7 @@ const WebDevProjectsSwiper = () => {
 
     return (
         <>
-            <div ref={containerRef} className="w-full mt-24 h-screen flex flex-col justify-center items-center space-y-16 relative">
+            <div ref={containerRef} className="w-full mt-24 py-12 flex flex-col justify-center items-center space-y-16 relative">
                 <div className="absolute w-full h-full inset-0">
                     <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="Swiper bg Graphic" fill className='cover' />
                 </div>
@@ -97,14 +100,10 @@ const WebDevProjectsSwiper = () => {
                         className="mySwiper  relative cursor-grab active:cursor-grabbing">
 
                         {imgData.map((item, i) => (
-                            <SwiperSlide key={i} className=' inner_slides rounded-xl overflow-hidden w-[90vw]! aspect-video md:w-[55vw]!'>
-                                <div
-                                    className=" w-full h-full "
-                                >
-                                    <div className=" w-full h-full">
+                            <SwiperSlide key={i} className=' inner_slides overflow-hidden w-[90vw]! aspect-video md:w-[65vw]!'>
+                                    <div className=" w-full h-full relative ">
                                         <Image fill src={item.img} alt={`Slide ${i + 1}`} className="cover" />
                                     </div>
-                                </div>
                             </SwiperSlide>
                         ))}
 
