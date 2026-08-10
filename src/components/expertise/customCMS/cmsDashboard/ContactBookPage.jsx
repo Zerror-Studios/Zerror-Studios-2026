@@ -1,23 +1,30 @@
 import React from "react";
 import {
+  RiAddLine,
   RiSearchLine,
   RiArrowDropDownLine,
   RiCheckboxBlankLine,
+  RiMoreFill,
 } from "@remixicon/react";
-import { paymentsData } from "./dashboardData";
+import { customersData } from "./dashboardData";
 
-const PaymentsPage = () => {
+const ContactBookPage = () => {
   return (
     <div className="cms-page-wrapper">
       {/* Header */}
       <div className="cms-page-header">
         <div className="cms-header-left">
           <h2 className="cms-page-title store-title">
-            <span className="back-arrow">&laquo;</span> Payments (62)
+            Customers (41)
           </h2>
           <div className="cms-page-subtitle">
-            Track payment status, transactions, and settlements.
+            View and manage your customer profiles and details.
           </div>
+        </div>
+        <div className="cms-header-right">
+          <button className="cms-btn-primary rounded-btn plus-btn">
+            + Add Customer
+          </button>
         </div>
       </div>
 
@@ -39,32 +46,36 @@ const PaymentsPage = () => {
           <thead>
             <tr>
               <th className="w-12 text-center"><RiCheckboxBlankLine size={16} color="#888" /></th>
-              <th>Customer</th>
-              <th>Payment date</th>
-              <th>Product/Service</th>
-              <th>Payment mode</th>
-              <th>Payment partner</th>
-              <th className="text-center">Status</th>
-              <th>Amount</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Member Status</th>
+              <th>Total Purchase</th>
+              <th>Last Activity</th>
+              <th className="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {paymentsData.map((p, i) => (
+            {customersData.map((c, i) => (
               <tr key={i}>
                 <td className="text-center">
                   <RiCheckboxBlankLine size={16} color="#ccc" className="checkbox-icon" />
                 </td>
-                <td className="text-black">{p.customer}</td>
-                <td className="text-black">{p.date}</td>
-                <td className="text-black" style={{ maxWidth: "150px" }}>{p.product}</td>
-                <td className="text-black">{p.mode}</td>
-                <td className="text-black">{p.partner}</td>
-                <td className="text-center">
-                  <span className={`cms-status-badge ${p.status === 'Successfull' ? 'success-badge' : p.status === 'Declined' ? 'declined-badge' : 'pending-badge'}`}>
-                    {p.status}
+                <td className="text-black">{c.name}</td>
+                <td className="text-black">{c.email}</td>
+                <td className="text-black">{c.phone}</td>
+                <td>
+                  <span className={`cms-status-badge ${c.memberStatus === 'Subscribed' ? 'success-badge' : 'neutral-badge'}`}>
+                    {c.memberStatus}
                   </span>
                 </td>
-                <td className="font-medium text-black">{p.amount}</td>
+                <td className="text-black">{c.purchase}</td>
+                <td className="text-black">{c.activity}</td>
+                <td className="text-center">
+                  <div className="cms-action-buttons">
+                    <button className="cms-icon-btn circle blue-light"><RiMoreFill size={16} color="#3b82f6" /></button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -74,4 +85,4 @@ const PaymentsPage = () => {
   );
 };
 
-export default PaymentsPage;
+export default ContactBookPage;

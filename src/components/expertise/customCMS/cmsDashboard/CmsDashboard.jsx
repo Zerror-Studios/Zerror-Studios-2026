@@ -1,33 +1,47 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import {
   RiLineChartLine,
   RiStoreLine,
   RiShoppingBagLine,
   RiBankCardLine,
-  RiShareBoxLine,
-  RiAddLine,
-  RiFileCopyLine,
-  RiArrowLeftSLine,
+  RiSearchLine,
+  RiNotification3Line,
+  RiMailLine,
   RiArrowRightSLine,
   RiHome4Line,
   RiSettings3Line,
-  RiLogoutBoxRLine,
-  RiUserSettingsLine,
+  RiContactsBook2Line,
+  RiFileTextLine,
+  RiMegaphoneLine,
+  RiArticleLine,
+  RiArrowUpLine
 } from "@remixicon/react";
 import HomePage from "./HomePage";
 import AnalyticsPage from "./AnalyticsPage";
 import StorePage from "./StorePage";
 import OrdersPage from "./OrdersPage";
 import PaymentsPage from "./PaymentsPage";
+import ContactBookPage from "./ContactBookPage";
+import FormSubmissionsPage from "./FormSubmissionsPage";
+import MarketingPage from "./MarketingPage";
+import BlogsPage from "./BlogsPage";
+import SettingsPage from "./SettingsPage";
 import "./cmsDashboard.css";
 
 const sidebarConfig = [
   { id: "home", label: "Home", Icon: RiHome4Line },
-  { id: "analytics", label: "Analytics", Icon: RiLineChartLine },
-  { id: "store", label: "Store", Icon: RiStoreLine },
+  { id: "analytics", label: "Analytics", Icon: RiLineChartLine, hasSub: true },
+  { id: "store", label: "Store", Icon: RiStoreLine, hasSub: true },
   { id: "orders", label: "Orders", Icon: RiShoppingBagLine },
   { id: "payments", label: "Payments", Icon: RiBankCardLine },
+  { id: "contact", label: "Contact Book", Icon: RiContactsBook2Line, hasSub: true },
+  { id: "forms", label: "Form Submissions", Icon: RiFileTextLine, hasSub: true },
+  { id: "marketing", label: "Marketing", Icon: RiMegaphoneLine, hasSub: true },
+  { id: "blogs", label: "Blogs", Icon: RiArticleLine, hasSub: true },
+  { id: "settings", label: "Settings", Icon: RiSettings3Line },
 ];
 
 const tabPageMap = {
@@ -36,14 +50,11 @@ const tabPageMap = {
   store: StorePage,
   orders: OrdersPage,
   payments: PaymentsPage,
-};
-
-const tabHeaderMap = {
-  home: { breadcrumb: ["Home Page", "Dashboard"], title: "Welcome Back" },
-  analytics: { breadcrumb: ["Home Page", "Analytics"], title: "Analytics Overview" },
-  store: { breadcrumb: ["Home Page", "Store"], title: "Store Manager" },
-  orders: { breadcrumb: ["Home Page", "Orders"], title: "Order Management" },
-  payments: { breadcrumb: ["Home Page", "Payments"], title: "Payment Center" },
+  contact: ContactBookPage,
+  forms: FormSubmissionsPage,
+  marketing: MarketingPage,
+  blogs: BlogsPage,
+  settings: SettingsPage,
 };
 
 const CmsDashboard = () => {
@@ -56,47 +67,67 @@ const CmsDashboard = () => {
     setTabKey((prev) => prev + 1); // Force re-mount for animations
   };
 
-  const ActivePage = tabPageMap[activeTab];
-  const header = tabHeaderMap[activeTab];
+  const contentRef = useRef(null);
+
+  useGSAP(() => {
+    if (contentRef.current) {
+      // Main fade-in and slide-up for the container
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      );
+      
+      // Staggered animation for internal elements (text, buttons, svgs, cards, table rows)
+      const elements = contentRef.current.querySelectorAll(
+        "h2, .cms-page-subtitle, button, svg, .cms-stat-box, .cms-panel, table tr, .cms-empty-state"
+      );
+      
+      if (elements.length > 0) {
+        gsap.fromTo(
+          elements,
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: "power2.out", delay: 0.1 }
+        );
+      }
+    }
+  }, { dependencies: [tabKey], scope: contentRef });
+
+  const ActivePage = tabPageMap[activeTab] || HomePage;
 
   return (
-    <div className="cms-browser cms-animate-scale-in">
-      {/* Browser chrome */}
-      <div className="cms-browser-bar">
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <div className="cms-browser-dots">
-            <span className="cms-browser-dot red" />
-            <span className="cms-browser-dot yellow" />
-            <span className="cms-browser-dot green" />
-          </div>
-          <div className="cms-browser-nav">
-            <RiFileCopyLine size={12} color="#666" />
-            <span className="cms-browser-nav-btn">
-              <RiArrowLeftSLine size={12} />
-            </span>
-            <span className="cms-browser-nav-btn">
-              <RiArrowRightSLine size={12} />
-            </span>
+    <div className="cms-app-container cms-animate-scale-in">
+      {/* Top Navigation Bar */}
+      <div className="cms-topbar">
+        <div className="cms-topbar-brand">
+          ZCOMMERCE
+        </div>
+        <div className="cms-topbar-search">
+          <div className="cms-search-input-wrapper">
+            <RiSearchLine size={14} className="cms-search-icon" />
+            <input type="text" placeholder="Search for tools, apps, help & more..." />
           </div>
         </div>
-        <div className="cms-browser-url">
-          <span>Zcom.com</span>
-        </div>
-        <div className="cms-browser-actions">
-          <RiShareBoxLine size={12} />
-          <RiAddLine size={12} />
-          <RiFileCopyLine size={12} />
+        <div className="cms-topbar-actions">
+          <button className="cms-icon-btn">
+            <RiNotification3Line size={16} />
+            <span className="cms-badge">2</span>
+          </button>
+          <button className="cms-icon-btn">
+            <RiMailLine size={16} />
+            <span className="cms-badge">2</span>
+          </button>
+          <button className="cms-profile-btn">
+            Nahara <span className="cms-profile-avatar">N</span>
+          </button>
         </div>
       </div>
 
-      {/* Dashboard */}
-      <div className="cms-dashboard">
+      {/* Main App Layout */}
+      <div className="cms-app-layout">
         {/* Sidebar */}
-        <nav className="cms-sidebar uppercase">
-          <div>
-            <div className="cms-sidebar-brand">
-              <span>Zcom</span>
-            </div>
+        <nav className="cms-app-sidebar">
+          <div className="cms-sidebar-scrollable">
             <div className="cms-sidebar-nav">
               {sidebarConfig.map((item) => (
                 <button
@@ -104,55 +135,40 @@ const CmsDashboard = () => {
                   className={`cms-sidebar-item ${activeTab === item.id ? "active" : ""}`}
                   onClick={() => handleTabChange(item.id)}
                 >
-                  <span className="sidebar-icon">
-                    <item.Icon size={14} />
-                  </span>
-                  {item.label}
+                  <div className="sidebar-item-left">
+                    <span className="sidebar-icon">
+                      <item.Icon size={16} />
+                    </span>
+                    {item.label}
+                  </div>
+                  {item.hasSub && (
+                    <span className="sidebar-chevron">
+                      <RiArrowRightSLine size={14} />
+                    </span>
+                  )}
                 </button>
               ))}
             </div>
           </div>
 
           <div className="cms-sidebar-footer">
-            <button className="cms-sidebar-action uppercase" type="button">
-              <RiUserSettingsLine size={15} />
-              Edit Profile
-            </button>
-            <button className="cms-sidebar-action uppercase" type="button">
-              <RiSettings3Line size={15} />
-              Settings
-            </button>
-            <button className="cms-sidebar-action uppercase" type="button">
-              <RiLogoutBoxRLine size={15} />
-              Logout
-            </button>
+            <div className="cms-sidebar-promo">
+              <div className="cms-promo-icon">
+                <RiArrowUpLine size={14} />
+              </div>
+              <p>Ready to go beyond basic plan</p>
+              <button className="cms-btn-primary full-width">View Plans</button>
+            </div>
+            <div className="cms-sidebar-credits">
+              <p>Developed by <strong>Zerror Studios</strong></p>
+              <p>© 2026 | Version 1.01.000</p>
+            </div>
           </div>
         </nav>
 
-        {/* Main content */}
-        <div className="cms-main">
-          <div className="cms-main-header cms-animate-fade-up">
-            <div>
-              <div className="cms-breadcrumb">
-                <span>{header.breadcrumb[0]}</span>
-                <span>/</span>
-                <span className="active-crumb">{header.breadcrumb[1]}</span>
-              </div>
-              <h2 className="cms-welcome-title">{header.title}</h2>
-              <p className="cms-welcome-subtitle">
-                Here&apos;s what&apos;s happening with your store today, May 09, 2026 ·{" "}
-                <a href="#">Last updated: 06:36 PM</a>
-              </p>
-            </div>
-            <div className="cms-header-actions">
-              <span className="cms-date-range">Apr 10 – May 9, 2026</span>
-              <button className="cms-btn-outline">+ Add Widget</button>
-              <button className="cms-btn-primary">Create a Report</button>
-            </div>
-          </div>
-
-          {/* Tab content */}
-          <div className="cms-tab-content" key={tabKey}>
+        {/* Main content area */}
+        <div className="cms-app-main">
+          <div data-lenis-prevent className="cms-tab-content" key={tabKey} ref={contentRef}>
             <ActivePage />
           </div>
         </div>

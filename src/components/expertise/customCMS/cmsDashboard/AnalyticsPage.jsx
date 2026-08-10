@@ -1,152 +1,364 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { analyticsData } from "./dashboardData";
+import React, { useMemo, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import {
+  RiArrowDropDownLine,
+  RiGlobalLine,
+  RiInformationLine,
+  RiArrowRightSLine,
+  RiArrowLeftSLine,
+  RiLineChartLine,
+} from "@remixicon/react";
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { analyticsOverview, trafficInsights, avgSessionsByDay } from "./dashboardData";
+
+// Data for Recharts AreaChart
+const sessionsChartData = [
+  { name: '13 Jul', value: 2 },
+  { name: '15 Jul', value: 8 },
+  { name: '17 Jul', value: 3 },
+  { name: '19 Jul', value: 5 },
+  { name: '21 Jul', value: 3 },
+  { name: '23 Jul', value: 10 },
+  { name: '25 Jul', value: 1 },
+  { name: '27 Jul', value: 12 },
+  { name: '29 Jul', value: 17 },
+  { name: '31 Jul', value: 4 },
+  { name: '02 Aug', value: 7 },
+  { name: '04 Aug', value: 5 },
+  { name: '06 Aug', value: 8 },
+  { name: '08 Aug', value: 27 },
+  { name: '10 Aug', value: 3 },
+];
+
+const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+// Highlighted countries (ISO-3 codes)
+const highlighted = ["IND", "USA", "IRL", "SWE", "NLD", "FRA", "AUS", "GBR"];
 
 const AnalyticsPage = () => {
-  const [animate, setAnimate] = useState(false);
+  const container = useRef();
 
-  useEffect(() => {
-    const timer = setTimeout(() => setAnimate(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
+  useGSAP(() => {
+    const tl = gsap.timeline();
 
-  // Build revenue chart
-  const months = analyticsData.monthlyRevenue;
-  const maxRevenue = Math.max(...months.map((m) => m.revenue));
-  const chartW = 300;
-  const chartH = 100;
-  const padding = 10;
+    // Header animation
+    tl.from(".cms-page-header > div", {
+      y: -20,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power3.out"
+    });
 
-  const revenuePoints = months.map((m, i) => ({
-    x: padding + (i / (months.length - 1)) * (chartW - padding * 2),
-    y: chartH - padding - (m.revenue / maxRevenue) * (chartH - padding * 2),
-  }));
+    // Stats boxes animation
+    tl.from(".cms-stat-box", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power3.out"
+    }, "-=0.4");
 
-  const linePath = revenuePoints.map((p, i) => (i === 0 ? `M${p.x},${p.y}` : `L${p.x},${p.y}`)).join(" ");
-  const areaPath = `${linePath} L${revenuePoints[revenuePoints.length - 1].x},${chartH} L${revenuePoints[0].x},${chartH} Z`;
+    // Divider
+    tl.from(".cms-divider", {
+      scaleX: 0,
+      transformOrigin: "left center",
+      opacity: 0,
+      duration: 0.6,
+      ease: "power3.inOut"
+    }, "-=0.4");
+
+    // Panels animation
+    tl.from(".cms-panel", {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power3.out"
+    }, "-=0.4");
+
+    // Traffic list items & Bar chart columns & Insight cards
+    tl.from(".cms-traffic-item, .cms-bar-col, .cms-insight-card", {
+      x: -10,
+      opacity: 0,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: "power2.out"
+    }, "-=0.2");
+
+  }, { scope: container });
 
   return (
-    <div className="cms-tab-page">
-      {/* Quick stats row */}
-      <div className="cms-stats-row" style={{ marginBottom: "0.75rem" }}>
-        <div className="cms-stat-card cms-animate-fade-up cms-delay-1">
-          <div className="cms-stat-card-title">Conversion Rate</div>
-          <div className="cms-stat-card-value">{analyticsData.conversionRate}%</div>
-          <div className="cms-stat-badge green">↑ 0.8%</div>
-          <div className="cms-stat-card-sub">vs last month</div>
+    <div className="cms-page-wrapper" ref={container}>
+      {/* Header */}
+      <div className="cms-page-header">
+        <div className="cms-header-left">
+          <h2 className="cms-page-title">Traffic Overview</h2>
+          <div className="cms-page-subtitle">
+            Track your site's traffic trends and get to know your visitors.
+          </div>
+          <div className="cms-date-picker-row">
+            <button className="cms-date-btn">
+              <span className="cms-blue-text">B</span> Jul 12, 2026 – Aug 10, 2026 <RiArrowDropDownLine size={16} />
+            </button>
+            <span className="cms-compare-text">compared to previous period (Dec 11, 2025)</span>
+          </div>
         </div>
-        <div className="cms-stat-card cms-animate-fade-up cms-delay-2">
-          <div className="cms-stat-card-title">Avg. Session</div>
-          <div className="cms-stat-card-value">{analyticsData.avgSessionDuration}</div>
-          <div className="cms-stat-badge green">↑ 12%</div>
-          <div className="cms-stat-card-sub">vs last month</div>
-        </div>
-        <div className="cms-stat-card cms-animate-fade-up cms-delay-3">
-          <div className="cms-stat-card-title">Bounce Rate</div>
-          <div className="cms-stat-card-value">{analyticsData.bounceRate}%</div>
-          <div className="cms-stat-badge blue">↓ 5%</div>
-          <div className="cms-stat-card-sub">improvement</div>
-        </div>
-        <div className="cms-stat-card highlight cms-animate-fade-up cms-delay-4">
-          <div className="cms-stat-card-title">Total Page Views</div>
-          <div className="cms-stat-card-value">3,013</div>
-          <div className="cms-stat-badge green">↑ 24%</div>
-          <div className="cms-stat-card-sub">vs last month</div>
+        <div className="cms-header-right">
+          <button className="cms-btn-primary rounded-btn">
+            <RiGlobalLine size={14} /> Live Site
+          </button>
         </div>
       </div>
 
-      <div className="cms-analytics-grid">
-        {/* Revenue chart */}
-        <div className="cms-card cms-animate-fade-up cms-delay-3">
-          <h4 className="cms-card-title" style={{ fontSize: "0.72rem", fontFamily: "grotesk-bold", color: "#111", marginBottom: "0.5rem" }}>
-            Monthly Revenue Trend
-          </h4>
-          <div className="cms-line-chart-container">
-            <svg width="100%" height="100%" viewBox={`0 0 ${chartW} ${chartH}`} preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#002bba" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="#002bba" stopOpacity="0.01" />
-                </linearGradient>
-              </defs>
-              {/* Grid lines */}
-              {[0.25, 0.5, 0.75].map((f, i) => (
-                <line key={i} className="cms-chart-grid-line" x1={padding} y1={chartH * f} x2={chartW - padding} y2={chartH * f} />
-              ))}
-              {/* Area */}
-              <path d={areaPath} className="cms-chart-area" style={{ opacity: animate ? 0.15 : 0, transition: "opacity 1s ease 1s" }} />
-              {/* Line */}
-              <path d={linePath} className={`cms-chart-line ${animate ? "cms-line-animate" : ""}`} />
-              {/* Dots */}
-              {revenuePoints.map((p, i) => (
-                <circle key={i} className="cms-chart-dot" cx={p.x} cy={p.y} r={3} style={{ opacity: animate ? 1 : 0, transition: `opacity 0.3s ease ${1.5 + i * 0.1}s` }} />
-              ))}
-              {/* Labels */}
-              {months.map((m, i) => (
-                <text key={i} className="cms-chart-label" x={revenuePoints[i].x} y={chartH - 1} textAnchor="middle">
-                  {m.month}
-                </text>
-              ))}
-            </svg>
+      {/* Stats Row */}
+      <div className="cms-stats-grid cols-3">
+        <div className="cms-stat-box border-none">
+          <div className="cms-stat-box-title">SITE SESSIONS</div>
+          <div className="cms-stat-box-body">
+            <div className="cms-stat-value">{analyticsOverview.siteSessions.value}</div>
+            <div className={`cms-stat-badge ${analyticsOverview.siteSessions.type}`}>{analyticsOverview.siteSessions.badge}</div>
           </div>
         </div>
+        <div className="cms-stat-box border-none">
+          <div className="cms-stat-box-title">UNIQUE VISITORS</div>
+          <div className="cms-stat-box-body">
+            <div className="cms-stat-value">{analyticsOverview.uniqueVisitors.value}</div>
+            <div className={`cms-stat-badge ${analyticsOverview.uniqueVisitors.type}`}>{analyticsOverview.uniqueVisitors.badge}</div>
+          </div>
+        </div>
+        <div className="cms-stat-box border-none">
+          <div className="cms-stat-box-title">SESSIONS PER USER</div>
+          <div className="cms-stat-box-body">
+            <div className="cms-stat-value">{analyticsOverview.sessionsPerUser.value}</div>
+            <div className={`cms-stat-badge ${analyticsOverview.sessionsPerUser.type}`}>{analyticsOverview.sessionsPerUser.badge}</div>
+          </div>
+        </div>
+      </div>
+      <div className="cms-divider" />
 
-        {/* Traffic Sources */}
-        <div className="cms-card cms-animate-fade-up cms-delay-4">
-          <h4 className="cms-card-title" style={{ fontSize: "0.72rem", fontFamily: "grotesk-bold", color: "#111", marginBottom: "0.6rem" }}>
-            Traffic Sources
-          </h4>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-            {analyticsData.trafficSources.map((source, i) => (
-              <div key={i}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6rem", marginBottom: "0.2rem" }}>
-                  <span style={{ color: "#333", fontFamily: "grotesk-medium" }}>{source.source}</span>
-                  <span style={{ color: "#888" }}>{source.visits} visits ({source.percent}%)</span>
+      {/* Two Column Layout */}
+      <div className="cms-two-col-layout" style={{ marginTop: '20px' }}>
+        {/* Left Column */}
+        <div className="cms-col-left">
+          {/* Sessions over time Chart */}
+          <div className="cms-panel">
+            <div className="cms-panel-header">Sessions over time</div>
+            <div style={{ width: '100%', height: '250px' }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={sessionsChartData} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#888' }} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#888' }} />
+                  <Tooltip />
+                  <Area type="monotone" dataKey="value" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#colorValue)" />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="cms-panel-link" style={{ marginTop: '0.5rem' }}>View Report</div>
+          </div>
+
+          <div className="cms-row-split">
+            {/* New vs returning */}
+            <div className="cms-panel half">
+              <div className="cms-panel-header">New vs returning visitors</div>
+              <div className="cms-donut-mock">
+                <div className="cms-donut-chart">
+                  <div className="cms-donut-center">
+                    <span className="small">Active Users</span>
+                    <span className="big">167</span>
+                  </div>
                 </div>
-                <div style={{ width: "100%", height: "0.35rem", background: "#f0f0f0", borderRadius: "1rem", overflow: "hidden" }}>
-                  <div
-                    style={{
-                      height: "100%",
-                      width: animate ? `${source.percent}%` : "0%",
-                      background: i === 0 ? "#002bba" : i === 1 ? "#28a745" : i === 2 ? "#3355cc" : "#888",
-                      borderRadius: "1rem",
-                      transition: `width 1.2s cubic-bezier(0.4,0,0.2,1) ${i * 0.15}s`,
-                    }}
-                  />
+                <div className="cms-donut-legend">
+                  <div className="legend-item"><span className="dot blue"></span> New <br/> 80% - 134</div>
+                  <div className="legend-item"><span className="dot light-blue"></span> Returning <br/> 14% - 24</div>
+                  <div className="legend-item"><span className="dot gray"></span> Recurring <br/> 5% - 9</div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+              <div className="cms-panel-link">View Report</div>
+            </div>
 
-      {/* Top pages */}
-      <div className="cms-card cms-animate-fade-up cms-delay-5" style={{ marginTop: "0.75rem" }}>
-        <h4 className="cms-card-title" style={{ fontSize: "0.72rem", fontFamily: "grotesk-bold", color: "#111", marginBottom: "0.5rem" }}>
-          Top Pages
-        </h4>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-          {analyticsData.pageViews.map((page, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "0.6rem", padding: "0.35rem 0", borderBottom: i < analyticsData.pageViews.length - 1 ? "1px solid #f6f8ff" : "none" }}>
-              <span style={{ color: "#002bba", fontFamily: "grotesk-medium" }}>{page.page}</span>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <div style={{ width: "5rem", height: "0.25rem", background: "#f0f0f0", borderRadius: "1rem", overflow: "hidden" }}>
-                  <div
-                    style={{
-                      height: "100%",
-                      width: animate ? `${(page.views / 1240) * 100}%` : "0%",
-                      background: "#002bba",
-                      borderRadius: "1rem",
-                      transition: `width 1s cubic-bezier(0.4,0,0.2,1) ${0.3 + i * 0.1}s`,
-                    }}
-                  />
+            {/* Sessions by device */}
+            <div className="cms-panel half">
+              <div className="cms-panel-header">Sessions by device</div>
+              <div className="cms-donut-mock">
+                <div className="cms-donut-chart device">
+                  <div className="cms-donut-center">
+                    <span className="small">Site sessions</span>
+                    <span className="big">217</span>
+                  </div>
                 </div>
-                <span style={{ color: "#333", fontFamily: "grotesk-medium", minWidth: "2.5rem", textAlign: "right" }}>
-                  {page.views.toLocaleString()}
-                </span>
+                <div className="cms-donut-legend">
+                  <div className="legend-item"><span className="dot light-blue"></span> desktop <br/> 59% - 127</div>
+                  <div className="legend-item"><span className="dot dark-blue"></span> mobile <br/> 41% - 90</div>
+                </div>
+              </div>
+              <div className="cms-panel-link">View Report</div>
+            </div>
+          </div>
+
+          {/* Sessions by country */}
+          <div className="cms-panel">
+            <div className="cms-panel-header">Sessions by country and region</div>
+            <div className="cms-map-mock-container large">
+              <div className="cms-map-left">
+                {/* Real World Map API integration */}
+                <div style={{ width: '100%', height: '220px', overflow: 'hidden' }}>
+                  <ComposableMap projectionConfig={{ scale: 120, center: [0, 20] }} width={600} height={300} style={{ width: "100%", height: "100%" }}>
+                    <Geographies geography={geoUrl}>
+                      {({ geographies }) =>
+                        geographies.map((geo) => {
+                          const isHighlighted = highlighted.includes(geo.id);
+                          return (
+                            <Geography
+                              key={geo.rsmKey}
+                              geography={geo}
+                              fill={isHighlighted ? "#3b82f6" : "#e0e7ff"}
+                              stroke="#ffffff"
+                              strokeWidth={0.5}
+                              style={{
+                                default: { outline: "none" },
+                                hover: { fill: "#2563eb", outline: "none" },
+                                pressed: { fill: "#1e40af", outline: "none" },
+                              }}
+                            />
+                          );
+                        })
+                      }
+                    </Geographies>
+                  </ComposableMap>
+                </div>
+              </div>
+              <div className="cms-map-right" style={{ paddingLeft: '1rem' }}>
+                <div className="cms-map-stat-label">COUNTRIES</div>
+                <div className="cms-traffic-list tight">
+                   <div className="cms-traffic-item">
+                     <div className="cms-traffic-header"><span>India &gt;</span><span>161</span></div>
+                     <div className="cms-progress-bar"><div className="cms-progress-fill blue" style={{ width: '100%' }}></div></div>
+                   </div>
+                   <div className="cms-traffic-item">
+                     <div className="cms-traffic-header"><span>United States &gt;</span><span>33</span></div>
+                     <div className="cms-progress-bar"><div className="cms-progress-fill blue" style={{ width: '25%' }}></div></div>
+                   </div>
+                   <div className="cms-traffic-item">
+                     <div className="cms-traffic-header"><span>Ireland</span><span>5</span></div>
+                     <div className="cms-progress-bar"><div className="cms-progress-fill blue" style={{ width: '5%' }}></div></div>
+                   </div>
+                   <div className="cms-traffic-item">
+                     <div className="cms-traffic-header"><span>Sweden</span><span>5</span></div>
+                     <div className="cms-progress-bar"><div className="cms-progress-fill blue" style={{ width: '5%' }}></div></div>
+                   </div>
+                   <div className="cms-traffic-item">
+                     <div className="cms-traffic-header"><span>Netherlands</span><span>3</span></div>
+                     <div className="cms-progress-bar"><div className="cms-progress-fill blue" style={{ width: '3%' }}></div></div>
+                   </div>
+                   <div className="cms-traffic-item">
+                     <div className="cms-traffic-header"><span>France &gt;</span><span>2</span></div>
+                     <div className="cms-progress-bar"><div className="cms-progress-fill blue" style={{ width: '2%' }}></div></div>
+                   </div>
+                </div>
+                <div className="cms-pagination-arrows">
+                  <button className="cms-icon-btn circle" style={{ border: '1px solid #eee', color: '#ccc' }}><RiArrowLeftSLine size={16} /></button>
+                  <button className="cms-icon-btn circle" style={{ border: '1px solid #3b82f6', color: '#3b82f6' }}><RiArrowRightSLine size={16} /></button>
+                </div>
               </div>
             </div>
-          ))}
+            <div className="cms-panel-link">View Report</div>
+          </div>
+        </div>
+
+        {/* Right Column */}
+        <div className="cms-col-right">
+          
+          {/* Sessions - By Source and Category */}
+          <div className="cms-panel">
+            <div className="cms-panel-header">Sessions <RiArrowDropDownLine size={16} /> By Source and Category <RiInformationLine size={14} className="ml-1" /></div>
+            <div className="cms-traffic-list separated">
+              <div className="cms-traffic-item">
+                <div className="cms-traffic-header">
+                  <span>google / organic</span>
+                  <span className="cms-green-text"><span className="arrow-up"></span> 0% 71</span>
+                </div>
+                <div className="cms-progress-bar">
+                  <div className="cms-progress-fill blue" style={{ width: '100%' }}></div>
+                </div>
+              </div>
+              <div className="cms-traffic-item">
+                <div className="cms-traffic-header">
+                  <span>(direct) / (none)</span>
+                  <span className="cms-green-text"><span className="arrow-up"></span> 0% 64</span>
+                </div>
+                <div className="cms-progress-bar">
+                  <div className="cms-progress-fill blue" style={{ width: '90%' }}></div>
+                </div>
+              </div>
+              <div className="cms-traffic-item">
+                <div className="cms-traffic-header">
+                  <span>ig / social</span>
+                  <span className="cms-green-text"><span className="arrow-up"></span> 0% 45</span>
+                </div>
+                <div className="cms-progress-bar">
+                  <div className="cms-progress-fill blue" style={{ width: '60%' }}></div>
+                </div>
+              </div>
+              <div className="cms-traffic-item">
+                <div className="cms-traffic-header">
+                  <span>(not set)</span>
+                  <span className="cms-green-text"><span className="arrow-up"></span> 0% 19</span>
+                </div>
+                <div className="cms-progress-bar">
+                  <div className="cms-progress-fill blue" style={{ width: '25%' }}></div>
+                </div>
+              </div>
+              <div className="cms-traffic-item">
+                <div className="cms-traffic-header">
+                  <span>canva.com / referral</span>
+                  <span className="cms-green-text"><span className="arrow-up"></span> 0% 14</span>
+                </div>
+                <div className="cms-progress-bar">
+                  <div className="cms-progress-fill blue" style={{ width: '20%' }}></div>
+                </div>
+              </div>
+            </div>
+            <div className="cms-panel-link">View Report</div>
+          </div>
+
+          {/* Avg sessions by day */}
+          <div className="cms-panel">
+            <div className="cms-panel-header">Avg. sessions by <span className="cms-blue-text inline-flex items-center">day <RiArrowDropDownLine size={16} /></span></div>
+            <div className="cms-bar-chart-mock">
+              {avgSessionsByDay.labels.map((label, idx) => (
+                <div className="cms-bar-col" key={idx}>
+                  <div className="cms-bar-fill" style={{ height: `${(avgSessionsByDay.values[idx] / 50) * 100}%` }}></div>
+                  <div className="cms-bar-label">{label}</div>
+                </div>
+              ))}
+            </div>
+            <div className="cms-panel-link">View Report</div>
+          </div>
+
+          {/* Traffic insights */}
+          <div className="cms-panel">
+            <div className="cms-panel-header">Traffic insights</div>
+            <div className="cms-insights-list">
+              {trafficInsights.map((insight, idx) => (
+                <div className="cms-insight-card" key={idx}>
+                  <div className="cms-insight-icon"><RiLineChartLine size={14} className={insight.type} /></div>
+                  <div className="cms-insight-content">
+                    <div className="cms-insight-title">{insight.title}</div>
+                    <div className="cms-insight-desc">{insight.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

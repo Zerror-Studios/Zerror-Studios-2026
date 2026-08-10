@@ -37,69 +37,69 @@ const cmsPoints = [
 const CustomWhyCms = () => {
     const containerRef = useRef(null);
 
-const audioPoolRef = useRef([]);
-const poolIndexRef = useRef(0);
+    const audioPoolRef = useRef([]);
+    const poolIndexRef = useRef(0);
 
-useGSAP(() => {
-    const POOL_SIZE = 8;
-    const pool = [];
-    for (let i = 0; i < POOL_SIZE; i++) {
-        const a = new Audio("/audio/tick.mp3");
-        a.volume = 1;
-        pool.push(a);
-    }
-    audioPoolRef.current = pool;
-
-    gsap.set(".stroke_circle", {
-        transformOrigin: "center center",
-    });
-
-    let lastStep = 0;
-
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1,
+    useGSAP(() => {
+        const POOL_SIZE = 8;
+        const pool = [];
+        for (let i = 0; i < POOL_SIZE; i++) {
+            const a = new Audio("/audio/tick.mp3");
+            a.volume = 1;
+            pool.push(a);
         }
+        audioPoolRef.current = pool;
+
+        gsap.set(".stroke_circle", {
+            transformOrigin: "center center",
+        });
+
+        let lastStep = 0;
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+            }
+        });
+
+        tl.to({}, {
+            duration: 1,
+            ease: "none",
+
+
+            onUpdate() {
+                const progress = tl.progress();
+
+                const rotationDeg = progress * 140;
+                const step = Math.floor(rotationDeg / 2);
+
+                if (step !== lastStep) {
+                    // Play a tick for every skipped step (covers fast scrolling)
+                    const diff = Math.abs(step - lastStep);
+                    const ticks = Math.min(diff, POOL_SIZE); // cap to pool size
+                    for (let i = 0; i < ticks; i++) {
+                        const audio = audioPoolRef.current[poolIndexRef.current % POOL_SIZE];
+                        audio.currentTime = 0;
+                        audio.play().catch(() => { });
+                        poolIndexRef.current++;
+                    }
+                    lastStep = step;
+                }
+
+                gsap.set(".stroke_circle", {
+                    rotation: progress * -140
+                });
+
+                gsap.set(".arc_container", {
+                    "--progress": progress
+                });
+            }
+        });
+
     });
-
-    tl.to({}, {
-        duration: 1,
-        ease: "none",
-
-
-onUpdate() {
-    const progress = tl.progress();
-
-    const rotationDeg = progress * 140;
-    const step = Math.floor(rotationDeg / 2);
-
-    if (step !== lastStep) {
-        // Play a tick for every skipped step (covers fast scrolling)
-        const diff = Math.abs(step - lastStep);
-        const ticks = Math.min(diff, POOL_SIZE); // cap to pool size
-        for (let i = 0; i < ticks; i++) {
-            const audio = audioPoolRef.current[poolIndexRef.current % POOL_SIZE];
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
-            poolIndexRef.current++;
-        }
-        lastStep = step;
-    }
-
-    gsap.set(".stroke_circle", {
-        rotation: progress * -140
-    });
-
-    gsap.set(".arc_container", {
-        "--progress": progress
-    });
-}
-    });
-
-}, []);
 
     return (
         <div
