@@ -1,49 +1,39 @@
 "use client";
 import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
-import { Swiper, SwiperSlide } from "swiper/react"
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-import "swiper/css"
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 
 const imgData = [
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/slide1.svg",
+        img: "/images/expertisePage/website-development/webdev_swiper/img1.svg",
     },
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/slide2.svg",
+        img: "/images/expertisePage/website-development/webdev_swiper/img2.svg",
     },
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/slide3.svg",
+        img: "/images/expertisePage/website-development/webdev_swiper/img3.svg",
     },
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/slide4.svg",
+        img: "/images/expertisePage/website-development/webdev_swiper/img4.svg",
     },
     {
-        img: "/images/expertisePage/website-development/webdev_swiper/slide5.svg",
+        img: "/images/expertisePage/website-development/webdev_swiper/img5.svg",
     },
 ]
 const WebDevProjectsSwiper = () => {
 
     const containerRef = useRef()
-
-
-    useGSAP(() => {
-        gsap.from(".inner_slides", {
-            xPercent: 100,
-            opacity: 0,
-            stagger: 0.15,
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top center",
-                toggleActions: "play none none reverse"
-            }
-        })
-    })
 
     useEffect(() => {
 
@@ -70,7 +60,7 @@ const WebDevProjectsSwiper = () => {
 
     return (
         <>
-            <div ref={containerRef} className="w-full mt-24 py-12 flex flex-col justify-center items-center space-y-16 relative">
+            <div ref={containerRef} className="w-full mt-24 py-24  space-y-16 relative">
                 <div className="absolute w-full h-full inset-0">
                     <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="Swiper bg Graphic" fill className='cover' />
                 </div>
@@ -80,7 +70,7 @@ const WebDevProjectsSwiper = () => {
                         Design Your <br /> Business Now
                     </h3>
                 </div>
-                <div className="padding py-0! relative ">
+                <div className=" py-0! relative ">
 
                     <div
                         className="drag_btn fixed top-0 left-0 pointer-events-none text-sm bg-white/15 backdrop-blur-[1.25rem] rounded-lg z-[10] px-3 py-1.5 opacity-0 scale-100">
@@ -88,26 +78,51 @@ const WebDevProjectsSwiper = () => {
                     </div>
 
                     <Swiper
-                        slidesPerView={"auto"}
+                        slidesPerView={'auto'}
+                        spaceBetween={0}
                         centeredSlides={true}
-                        spaceBetween={10}
+                        loop={true}
                         speed={800}
-                        breakpoints={{
-                            768: {
-                                spaceBetween: 20,
-                            },
+                        modules={[Autoplay]}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
                         }}
-                        className="mySwiper  relative cursor-grab active:cursor-grabbing">
+                        className="mySwiper relative cursor-grab active:cursor-grabbing"
+                    >
 
-                        {imgData.map((item, i) => (
-                            <SwiperSlide key={i} className=' inner_slides overflow-hidden w-[90vw]! aspect-video md:w-[65vw]!'>
-                                    <div className=" w-full h-full relative ">
-                                        <Image fill src={item.img} alt={`Slide ${i + 1}`} className="cover" />
-                                    </div>
+                        {imgData?.map((item, i) => (
+                            <SwiperSlide key={i} className=' inner_slides overflow-hidden w-[90vw]! aspect-video md:w-[50vw]!'>
+                                <div className=" w-full h-full relative rounded-lg overflow-hidden ">
+                                    <Image fill src={item.img} alt={`Slide ${i + 1}`} className="cover" />
+                                </div>
                             </SwiperSlide>
                         ))}
 
                     </Swiper>
+                    <style>{`
+                        .mySwiper .swiper-slide {
+                            transition: transform 0.8s ease, filter 0.8s ease;
+                            transform-origin: center;
+                            transform: scale(0.8) rotate(0deg) !important;
+                            filter: brightness(50%);
+                        }
+                        .mySwiper .swiper-slide-active {
+                            transform: scale(1) rotate(0deg) !important;
+                            filter: brightness(100%);
+                            z-index: 10;
+                        }
+                        .mySwiper .swiper-slide-next {
+                            transform: translateY(5%) scale(0.88) rotate(2deg) !important;
+                            filter: brightness(50%);
+                            z-index: 5;
+                        }
+                        .mySwiper .swiper-slide-prev {
+                            transform: translateY(5%) scale(0.88) rotate(-2deg) !important;
+                            filter: brightness(50%);
+                            z-index: 5;
+                        }
+                    `}</style>
                 </div>
             </div>
         </>

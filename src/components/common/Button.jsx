@@ -12,50 +12,56 @@ const Button = ({
     ...props
 }) => {
 
-    const ButtonHover = () => {
+    const ButtonHover = (e) => {
         const tl = gsap.timeline()
+        const target = e.currentTarget;
+        const arrowParen = target.querySelector('.arrow_paren');
+        const arrowInner = target.querySelector('.arrow_inner');
 
-        tl.to(".button_paren", {
+        tl.to(target, {
             gap: "1rem",
             ease: "expo.out",
             duration: .3
         })
-        tl.to(".arrow_paren", {
+        tl.to(arrowParen, {
             width: "1.5rem",
             ease: "expo.out",
             duration: .3
         }, "<")
-        tl.to(".arrow_inner", {
+        tl.to(arrowInner, {
             y: 0,
             ease: "expo.out",
             duration: .3
         })
-        tl.to(".button_paren", {
+        tl.to(target, {
             gap: ".25rem",
             ease: "expo.out",
             duration: .3
         })
     }
 
-    const ButtonLeave = () => {
+    const ButtonLeave = (e) => {
         const tl = gsap.timeline()
+        const target = e.currentTarget;
+        const arrowParen = target.querySelector('.arrow_paren');
+        const arrowInner = target.querySelector('.arrow_inner');
 
-        tl.to(".button_paren", {
+        tl.to(target, {
             gap: "1rem",
             ease: "expo.out",
             duration: .3
         })
-        tl.to(".arrow_inner", {
+        tl.to(arrowInner, {
             y: "100%",
             ease: "expo.out",
             duration: .3
         }, "<")
-        tl.to(".arrow_paren", {
+        tl.to(arrowParen, {
             width: "0rem",
             ease: "expo.out",
             duration: .3
         })
-        tl.to(".button_paren", {
+        tl.to(target, {
             gap: "0",
             ease: "expo.out",
             duration: .3
@@ -76,6 +82,8 @@ const Button = ({
             onMouseEnter={ButtonHover}
             onMouseLeave={ButtonLeave}
             className={buttonClasses}
+            onClick={props.onClick}
+            {...props}
         >
             <p className="  translate-y-[.05rem]">{title}</p>
             <div className="arrow_paren w-0 overflow-hidden">

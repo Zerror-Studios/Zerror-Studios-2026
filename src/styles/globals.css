@@ -213,16 +213,16 @@ button {
     opacity: 0.2;
   }
   5% {
-    opacity: 0.8;
+    opacity: 1;
   }
   10% {
     opacity: 0.2;
   }
   15% {
-    opacity: 0.8;
+    opacity: 1;
   }
   100% {
-    opacity: 0.8;
+    opacity: 1;
   }
 }
 

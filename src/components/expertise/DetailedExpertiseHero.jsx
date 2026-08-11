@@ -68,9 +68,9 @@ const DetailedExpertiseHero = ({
 
     return (
         <div className=' content_box opacity-0 padding'>
-            <div className="w-full pt-[15vw] pb-40 border-b flex flex-col items-center text_blue gap-y-5 text-center ">
+            <div className="w-full pt-[20vh] md:pt-[15vw] pb-40 border-b flex flex-col items-center text_blue gap-y-5 text-center ">
                 <p className='paragraph_split uppercase text-xs'>[ {expertiseName} ] </p>
-                <h1 className='heading_split text-8xl primary-font '>{expertiseHeading}</h1>
+                <h1 className='heading_split text-5xl md:text-8xl primary-font '>{expertiseHeading}</h1>
                 <div className="flex flex-wrap gap-x-1">
                     {btnsLabels.map((item, i) => (
                         <button key={i} className='blink_btn text-xs uppercase px-4 py-2 bg-[#002bba20] leading-none'>{item}</button>
@@ -80,22 +80,22 @@ const DetailedExpertiseHero = ({
 
             <ClientsMarquee/>
 
-            <div className="w-full py-14 flex">
-                <div className="w-1/2 pr-32 space-y-10 text_blue">
-                    <h3  className=' paragraph_split text-5xl'>{introHeading}</h3>
+            <div className="w-full pb-14 flex max-sm:flex-col-reverse max-sm:gap-y-5">
+                <div className="md:w-1/2 md:pr-32 space-y-5 md:space-y-10 text_blue">
+                    <h3  className=' paragraph_split text-3xl md:text-5xl'>{introHeading}</h3>
 
                     <p className='text-xl leading-tight'>{introText}</p>
                 </div>
-                <div className="w-1/2 flex flex-col gap-10">
+                <div className="md:w-1/2 flex flex-col gap-10">
                     <div className="w-full aspect-video overflow-hidden">
                         <video  className=' blink_btn cover' loop autoPlay muted playsInline src={videoSrc}></video>
                     </div>
                 </div>
             </div>
 
-            <div className="w-full  flex flex-col md:flex-row">
+            <div className="w-full  flex flex-col-reverse max-sm:gap-y-5 md:flex-row">
                 <div className="w-full md:w-1/2 flex items-end">
-                    <p className='w-[50%] leading-tight text-xl text_blue'>
+                    <p className='md:w-[50%] leading-tight text-xl text_blue'>
                         {supportingText}
                     </p>
                 </div>

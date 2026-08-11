@@ -21,7 +21,7 @@ export const clientsData = [
     {
         id: 4,
         title: "Robb Report",
-        icon: "/images/homePage/clients/robbreport.png"
+        icon: "/images/homePage/clients/robbreport.svg"
     },
     {
         id: 5,
@@ -31,7 +31,7 @@ export const clientsData = [
      {
         id: 6,
         title: "Point Of",
-        icon: "/images/homePage/clients/pointof.png"
+        icon: "/images/homePage/clients/po.svg"
     },
     {
         id: 7,
@@ -61,17 +61,17 @@ export const clientsData = [
     {
         id: 12,
         title: "Studio Akto",
-        icon: "/images/homePage/clients/studioakto.svg"
+        icon: "/images/homePage/clients/akto.svg"
     },
     {
         id: 13,
         title: "Heft art",
-        icon: "/images/homePage/clients/heftyart.png"
+        icon: "/images/homePage/clients/heftyart.svg"
     },
     {
         id: 14,
         title: "Nahara",
-        icon: "/images/homePage/clients/nahara.png"
+        icon: "/images/homePage/clients/nahara.svg"
     },
     {
         id: 15,
@@ -81,7 +81,7 @@ export const clientsData = [
     // {
     //     id: 16,
     //     title: "Reside in Being",
-    //     icon: "/images/homePage/clients/resideinbeing.png"
+    //     icon: "/images/homePage/clients/resideinbeing.svg"
     // },
 
 ]
@@ -89,10 +89,10 @@ export const clientsData = [
 const ClientsMarquee = () => {
     return (
         <>
-            <div className=" pt-5 ">
-                <Marquee gradient>
+            <div className=" h-32 md:h-44  flex items-center">
+                <Marquee gradientWidth={40}>
                     {clientsData.map((item, i) => (
-                        <div key={i} className="w-26 mx-18">
+                        <div key={i} className=" w-40 md:w-52 md:mx-8">
                             <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
                         </div>
                     ))}

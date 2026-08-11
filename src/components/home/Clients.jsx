@@ -27,7 +27,7 @@ const Clients = () => {
                 gsap.killTweensOf([icon, img, inr_boxes]);
 
                 gsap.to(icon, {
-                    filter: "invert(0%)",
+                    filter: "invert(100%)",
                     duration: 0.25,
                     ease: "power2.out",
                 });
@@ -53,7 +53,7 @@ const Clients = () => {
                 gsap.killTweensOf([icon, img, inr_boxes]);
 
                 gsap.to(icon, {
-                    filter: "invert(100%)",
+                    filter: "invert(0%)",
                     duration: 0.25,
                     ease: "power2.in",
                 });
@@ -120,12 +120,12 @@ const Clients = () => {
                             </div>
 
                             <div
-                            className=" size-16 md:size-32 lg:size-40 relative">
+                                className=" w-full h-full relative">
                                 <Image
                                     src={item.icon}
                                     fill
                                     alt="Item icon Graphic"
-                                    className=" client-icon invert-100 w-full h-auto object-contain"
+                                    className=" client-icon cover"
                                 />
                             </div>
                             <div className="w-full  uppercase  absolute z-[4] bottom-0 flex justify-between p-2">
