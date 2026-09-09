@@ -163,7 +163,7 @@ const OurWork = () => {
     };
 
     return (
-        <div className="work_paren w-full pt-6 md:pt-12 relative z-10 bg-white">
+        <div className="work_paren w-full py-8 md:py-16 space-y-8 md:space-y-16 relative z-10 bg-white">
 
             <div className="w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
@@ -222,7 +222,7 @@ const OurWork = () => {
                     </Link>
                 ))}
             </div>
-            <div className="w-full center py-10">
+            <div className="w-full center">
                 <Button link="/work" title="View All" />
             </div>
         </div>

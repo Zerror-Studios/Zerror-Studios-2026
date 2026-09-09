@@ -8,7 +8,6 @@ export const metadata = createPageMetadata("/expertise");
 const page = () => {
   return (
     <>
-      <Exp_HeroSection />
       <Our_Services />
     </>
   )

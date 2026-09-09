@@ -62,7 +62,7 @@ build the version that keeps up — and keeps scaling."
       <CustomTechinicalCards/>
       <CustomsCmsExplore/>
       <WebDevClients/>
-      <TicketEffect/>
+      {/* <TicketEffect/> */}
     </>
   )
 }

@@ -34,11 +34,11 @@ button {
   justify-content: center;
 }
 .padding {
-  padding: 1rem;
+  padding-inline: 1rem;
 }
 @media (min-width: 750px) {
   .padding {
-    padding: 2.5rem;
+    padding-inline: 2.5rem;
   }
 }
 .cover {
@@ -444,6 +444,6 @@ button {
 }
 .pitchdeck-dot-wrapper:hover .pitchdeck-dot {
   width: 2.5rem;
-  margin-block: .25rem;
+  margin-block: 0.25rem;
   opacity: 1;
 }

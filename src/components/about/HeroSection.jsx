@@ -107,7 +107,7 @@ const HeroSection = () => {
       </div>
 
       <div className="w-full flex flex-col md:flex-row">
-        <div className=" w-full md:w-1/2  space-y-5 md:space-y-10">
+        <div className=" w-full md:w-1/2  space-y-5">
           <div className="md:w-[80%] ">
             <h2 className=" heading_split primary-font text_blue text-3xl">
               For founders who dream in beta. For brands that refuse to look average. Your next version starts here.
@@ -157,7 +157,7 @@ const HeroSection = () => {
             </div>
 
             {/* Img */}
-            <div className="w-full aspect-5/6 mt-4 md:mt-12 bg-[#002bba] overflow-hidden relative">
+            <div className="w-full aspect-5/6 mt-5 bg-[#002bba] overflow-hidden relative">
               {isDesktop && (
                 <div
                   ref={gridRefR}

@@ -104,7 +104,7 @@ const CustomWhyCms = () => {
     return (
         <div
             ref={containerRef}
-            className="  py-0!  h-[200vh]! bg_blue text-white relative"
+            className="mt-8 md:mt-16  py-0!  h-[200vh]! bg_blue text-white relative"
         >
             <div className="arc flex flex-col  justify-center">
 

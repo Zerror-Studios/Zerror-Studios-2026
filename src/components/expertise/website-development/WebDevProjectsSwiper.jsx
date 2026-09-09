@@ -60,15 +60,15 @@ const WebDevProjectsSwiper = () => {
 
     return (
         <>
-            <div ref={containerRef} className="w-full mt-24 py-24  space-y-16 relative">
+            <div ref={containerRef} className="w-full mt-8 md:mt-16 py-8 md:py-16  space-y-16 relative">
                 <div className="absolute w-full h-full inset-0">
                     <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="Swiper bg Graphic" fill className='cover' />
                 </div>
 
                 <div className="">
-                    <h3 data-para-effect className=" text-3xl md:text-5xl  text-center text-white primary-font leading-tight relative z-10">
+                    <h2 data-para-effect className=" text-3xl md:text-5xl  text-center text-white primary-font leading-tight relative z-10">
                         Design Your <br /> Business Now
-                    </h3>
+                    </h2>
                 </div>
                 <div className=" py-0! relative ">
 

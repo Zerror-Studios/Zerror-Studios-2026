@@ -2,7 +2,8 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
+import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -64,84 +65,70 @@ const EcommCmsCards = () => {
                     </div>
                 </div>
                 <div ref={sliderRef} className=" padding py-0! w-full flex gap-x-5">
-                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="p-10 pb-0 space-y-2 ">
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img1.webp" alt="Card 1 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 pb-0 space-y-2 relative z-10">
                             <h4 className='text-3xl primary-font'>Smart Inventory Management</h4>
                             <p className='leading-tight'>Monitor sales, Conversion rates .</p>
                         </div>
-                        <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_1.png" alt="Card 1 Graphic" />
-                        </div>
                     </div>
 
-                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="pl-20 py-20">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_2.png" alt="Card 2 Graphic" />
-                        </div>
-                        <div className="p-10 space-y-2 w-[80%]">
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img2.webp" alt="Card 2 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 space-y-2 w-[80%] relative z-10">
                             <h4 className='text-3xl primary-font'>Made for your model</h4>
                             <p className='leading-tight'>Pre-orders, drops, made-to-order: workflows templates refuse, built in from day one.</p>
                         </div>
                     </div>
 
-                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="p-10 pb-0 space-y-2 ">
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img3.webp" alt="Card 3 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 pb-0 space-y-2 relative z-10">
                             <h4 className='text-3xl primary-font'>Live inventory</h4>
                             <p className='leading-tight'>Stock tied to real production, updated in real time, visible at a glance.</p>
                         </div>
-                        <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
-                        </div>
                     </div>
 
-                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="pl-10 py-10 pb-0">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_4.png" alt="Card 4 Graphic" />
-                        </div>
-                        <div className="p-10 space-y-2 w-[80%]">
-                            <h4 className='text-3xl primary-font'>Analytics that answe</h4>
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img4.webp" alt="Card 4 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 space-y-2 w-[80%] relative z-10">
+                            <h4 className='text-3xl primary-font'>Analytics that answer</h4>
                             <p className='leading-tight'>Sales, conversion and customer behaviour in reports built around your questions.</p>
                         </div>
                     </div>
 
-                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="p-10 pb-0 space-y-2 ">
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img5.webp" alt="Card 5 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 pb-0 space-y-2 relative z-10">
                             <h4 className='text-3xl primary-font'>Built-in loyalty & referrals</h4>
                             <p className='leading-tight'> Repeat business by design, without a plugin bill attached.</p>
                         </div>
-                        <div className="p-10">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_5.png" alt="Card 5 Graphic" />
-                        </div>
                     </div>
 
-                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="p-10 pb-0 space-y-2 ">
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img6.webp" alt="Card 6 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 space-y-2 relative z-10">
                             <h4 className='text-3xl primary-font'>Campaigns from the dashboard</h4>
                             <p className='leading-tight'> Email, SMS and WhatsApp, sent from where you already work.</p>
                         </div>
-                        <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
-                        </div>
                     </div>
 
-                    <div className="w-[30vw] cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="p-10 pb-0 space-y-2 ">
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img7.webp" alt="Card 7 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 pb-0 space-y-2 relative z-10">
                             <h4 className='text-3xl primary-font'>Search-ready structure</h4>
                             <p className='leading-tight'> Clean architecture that search engines, and AI engines, can actually read.</p>
                         </div>
-                        <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
-                        </div>
                     </div>
 
-                    <div className="w-[30vw]  cms_crd aspect-square shrink-0 flex flex-col justify-between text-white rounded-xl bg_blue">
-                        <div className="p-10 pb-0 space-y-2 ">
+                    <div className="pr-4 md:pr-10">
+                    <div className="w-[30vw]  cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img8.webp" alt="Card 8 Graphic" fill className="object-cover absolute z-0" />
+                        <div className="p-10 pb-0 space-y-2 relative z-10">
                             <h4 className='text-3xl primary-font'>Yours, fully</h4>
                             <p className='leading-tight'>Complete IP ownership on full payment. Your store, your system, your asset.</p>
                         </div>
-                        <div className="">
-                            <img src="/images/expertisePage/e-comm/cmsCards/card_3.png" alt="Card 3 Graphic" />
-                        </div>
+                    </div>
                     </div>
 
                 </div>

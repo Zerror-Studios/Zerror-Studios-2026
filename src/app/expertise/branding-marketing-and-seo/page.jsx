@@ -1,5 +1,6 @@
 import BrandingDisciplines from '@/components/expertise/branding/BrandingDisciplines'
 import BrandingWhyUs from '@/components/expertise/branding/BrandingWhyUs'
+import BrandingWorkflowSection from '@/components/expertise/branding/BrandingWorkflowSection'
 import DetailedExpertiseHero from '@/components/expertise/DetailedExpertiseHero'
 import WebDevClients from '@/components/expertise/website-development/WebDevClients'
 import TicketEffect from '@/components/home/TicketEffect'
@@ -33,7 +34,7 @@ const page = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-          <DetailedExpertiseHero
+      {/* <DetailedExpertiseHero
         expertiseName="Found first. Remembered longer. "
         expertiseHeading={<>Be found. <br /> Be remembered.</>}
         btnsLabels={["Strategy", "Identity", "SEO"]}
@@ -52,13 +53,14 @@ three together, because separately they underperform."
           { label: "Content engagement", value: "+44%" },
           { label: "Search-ready page score", value: "93" },
         ]}
-      />
-            <BrandingWhyUs />
-            <BrandingDisciplines/>
-      <WebDevClients/>
-            <TicketEffect />
-        </>
-    )
+      /> */}
+      {/* <BrandingWhyUs /> */}
+      <BrandingWorkflowSection />
+      <BrandingDisciplines />
+      <WebDevClients />
+      {/* <TicketEffect /> */}
+    </>
+  )
 }
 
 export default page

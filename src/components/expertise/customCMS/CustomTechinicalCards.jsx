@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useRef } from 'react';
 import { RiStackLine, RiShieldKeyholeLine, RiLinkM, RiFlashlightLine } from '@remixicon/react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -37,8 +37,78 @@ const technicalCards = [
     }
 ];
 
-const CustomTechinicalCards = () => {
+const TechCard = ({ card, className }) => {
+    const Icon = card.icon;
+    const cardRef = useRef(null);
+    const tlRef = useRef(null);
 
+    useGSAP(() => {
+        if (!cardRef.current) return;
+        const blocks = cardRef.current.querySelectorAll(".grid_blocks");
+
+        tlRef.current = gsap.timeline({
+            paused: true,
+            defaults: {
+                ease: "power2.out",
+            },
+        }).to(blocks, {
+            opacity: 1,
+            duration: 0.04,
+            ease: "expo.out",
+            stagger: {
+                each: 0.003,
+                from: "random",
+            },
+        });
+    }, { scope: cardRef });
+
+    const handleMouseEnter = () => {
+        tlRef.current?.play();
+    };
+
+    const handleMouseLeave = () => {
+        tlRef.current?.reverse();
+    };
+
+    return (
+        <div
+            ref={cardRef}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className={`${className} relative group rounded-2xl overflow-hidden`}
+        >
+            {/* Pixel Grid Blocks Overlay */}
+            <div className="absolute inset-0 grid grid-cols-[repeat(20,1fr)] z-10 pointer-events-none">
+                {[...Array(200)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="grid_blocks shrink-0 w-full aspect-square bg-[#002bba] opacity-0 pointer-events-none"
+                    />
+                ))}
+            </div>
+
+            <div className="w-full h-full p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg-[#f4f4f4] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white relative z-10">
+                <div className="flex justify-between items-start gap-4 relative z-10">
+                    <h4 data-para-effect className="text-3xl font-bold max-w-[80%] uppercase leading-tight tracking-tight text-[#002bba] group-hover:text-white transition-colors duration-300">
+                        {card.title}
+                    </h4>
+                    <div className="shrink-0 text-[#002bba] group-hover:text-white transition-colors duration-300">
+                        <Icon size={44} />
+                    </div>
+                </div>
+                <div className="mt-16 relative z-10 text-[#002bba] group-hover:text-white transition-colors duration-300">
+                    <p className="text-3xl font-bold mb-3">{card.num}</p>
+                    <div className="w-full h-px bg-current opacity-20 mb-5"></div>
+                    <p className="text-xl font-medium leading-tight opacity-90">
+                        {card.desc}
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const CustomTechinicalCards = () => {
 
     useGSAP(() => {
         const tl = gsap.timeline({
@@ -57,7 +127,6 @@ const CustomTechinicalCards = () => {
             y: 100
         }, "<+=0.2")
     })
-
 
     return (
         <div className="w-full border-t border-[#002bba] ">
@@ -85,54 +154,16 @@ const CustomTechinicalCards = () => {
                 <div className=" tech_crd_paren w-full mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {/* Left Column */}
                     <div className="flex flex-col gap-4 md:gap-6">
-                        {[technicalCards[0], technicalCards[2]].map((card, index) => {
-                            const Icon = card.icon;
-                            return (
-                                <div key={`left-${index}`} className={` tech_card_1 p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg-[#f4f4f4] hover:bg-[#002bba]! transition-colors duration-300 hover:text-white`}>
-                                    <div className="flex justify-between items-start gap-4">
-                                        <h4 data-para-effect className="text-3xl font-bold max-w-[80%] uppercase leading-tight tracking-tight">
-                                            {card.title}
-                                        </h4>
-                                        <div className="shrink-0 ">
-                                            <Icon size={44} />
-                                        </div>
-                                    </div>
-                                    <div className="mt-16">
-                                        <p className="text-3xl font-bold mb-3">{card.num}</p>
-                                        <div className="w-full h-px bg-current opacity-20 mb-5"></div>
-                                        <p className="text-xl font-medium leading-tight">
-                                            {card.desc}
-                                        </p>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                        {[technicalCards[0], technicalCards[2]].map((card, index) => (
+                            <TechCard key={`left-${index}`} card={card} className="tech_card_1" />
+                        ))}
                     </div>
 
                     {/* Right Column */}
                     <div className="flex flex-col gap-4 pt-44 md:gap-6">
-                        {[technicalCards[1], technicalCards[3]].map((card, index) => {
-                            const Icon = card.icon;
-                            return (
-                                <div key={`right-${index}`} className={` tech_card_2 p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg-[#f4f4f4] hover:bg-[#002bba]! transition-colors duration-300 hover:text-white`}>
-                                    <div className="flex justify-between items-start gap-4">
-                                        <h4 className="text-3xl font-bold max-w-[80%] uppercase leading-tight tracking-tight">
-                                            {card.title}
-                                        </h4>
-                                        <div className="shrink-0 ">
-                                            <Icon size={44} />
-                                        </div>
-                                    </div>
-                                    <div className="mt-16">
-                                        <p className="text-3xl font-bold mb-3">{card.num}</p>
-                                        <div className="w-full h-px bg-current opacity-20 mb-5"></div>
-                                        <p className="text-xl font-medium leading-tight">
-                                            {card.desc}
-                                        </p>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                        {[technicalCards[1], technicalCards[3]].map((card, index) => (
+                            <TechCard key={`right-${index}`} card={card} className="tech_card_2" />
+                        ))}
                     </div>
                 </div>
             </div>

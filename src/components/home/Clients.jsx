@@ -37,7 +37,7 @@ const Clients = () => {
                     duration: 0.05,
                     ease: "expo.out",
                     stagger: {
-                        each: 0.009,
+                        each: 0.005,
                         from: "random", // 🔥 much better than random
                     },
                 });
@@ -63,7 +63,7 @@ const Clients = () => {
                     duration: 0.05,
                     ease: "expo.in",
                     stagger: {
-                        each: 0.009,
+                        each: 0.005,
                         from: "random",
                     },
                 });
@@ -85,7 +85,7 @@ const Clients = () => {
     }, []);
 
     return (
-        <div className=' noise-bg clients_paren relative z-10 max-sm:pt-5 bg_blue pt-6 md:pt-12 mt-6 md:mt-12 text-white w-full'>
+        <div className=' noise-bg clients_paren relative z-10  bg_blue py-8 md:py-16 space-y-8 md:space-y-16 text-white w-full'>
 
             <div className=" padding w-full z-20 relative text-white space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
@@ -110,8 +110,8 @@ const Clients = () => {
                 {visibleClients.map((item, i) => {
                     return (
                         <div key={i} className=" group client-box w-full  overflow-hidden border border-white/10 relative aspect-square center">
-                            <div className="w-full h-full absolute grid grid-cols-7 pointer-events-none">
-                                {[...Array(49)].map((_, i) => (
+                            <div className="w-full h-full absolute grid grid-cols-12 pointer-events-none">
+                                {[...Array(144)].map((_, i) => (
                                     <div
                                         key={i}
                                         className="client_innr_box w-full aspect-square bg-white opacity-0"

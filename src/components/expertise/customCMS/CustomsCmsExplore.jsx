@@ -29,7 +29,7 @@ const CustomsCmsExplore = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg_blue mb-10 md:mb-24"
+      className="relative overflow-hidden bg_blue"
     >
 
       <div className="py-10! md:py-24! space-y-12 " style={{ position: "relative", zIndex: 10 }}>

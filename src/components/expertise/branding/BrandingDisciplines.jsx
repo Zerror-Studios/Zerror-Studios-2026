@@ -85,7 +85,7 @@ const BrandingDisciplines = () => {
             </div>
 
             <div className=" disc_paren w-full  h-[350vh] relative">
-                <div className="w-full sticky h-screen top-0 pt-24 flex flex-col justify-start">
+                <div className="w-full sticky h-screen top-0 pt-12 flex flex-col justify-start">
                     <div className="w-full border-b border-[#002bba]/20">
                         {disciplines.map((item, index) => (
                             <div

@@ -79,10 +79,11 @@ const OurTeam = () => {
         // blocks animation
         .to(blocks, {
           opacity: 1,
-          duration: 0.01,
+          duration: 0.05,
+          ease: "expo.out",
           stagger: {
-            each: 0.01,
-            from: "random",
+            each: 0.003,
+            from: "random", // 🔥 much better than random
           },
         }, 0)
 
@@ -287,9 +288,9 @@ const OurTeam = () => {
 
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative pb-8 md:pb-16">
       <div className=" form_blur_overlay opacity-0 fixed top-0 left-0 z-[9999] backdrop-blur-xs pointer-events-none w-full h-screen"></div>
-      <div className="w-full px-4 md:px-10 pb-10 md:pb-42">
+      <div className="w-full padding">
         <div className="grid gap-x-2  gap-y-6 md:gap-x-4 md:gap-y-10  md:gap-20 grid-cols-2  md:grid-cols-4">
 
           {teamMembers.map((member, index) => (
@@ -302,14 +303,14 @@ const OurTeam = () => {
             >
               {/* Blocks */}
               {isDesktop && (
-              <div className="absolute inset-0 grid grid-cols-7 z-10">
-                {[...Array(70)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="grid_blocks shrink-0  w-full aspect-square bg-white opacity-0 pointer-events-none"
-                  />
-                ))}
-              </div>
+                <div className="absolute inset-0 grid grid-cols-12 z-10">
+                  {[...Array(204)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="grid_blocks shrink-0  w-full aspect-square bg-white opacity-0 pointer-events-none"
+                    />
+                  ))}
+                </div>
               )}
 
               {/* Image */}

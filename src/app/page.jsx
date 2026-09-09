@@ -21,7 +21,7 @@ export default function HomePage() {
       <Our_Services />
       <OurWork />
       <Clients />
-      <TicketEffect />
+      {/* <TicketEffect /> */}
     </>
   );
 }

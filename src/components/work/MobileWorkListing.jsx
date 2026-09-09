@@ -6,7 +6,7 @@ import { Link } from 'next-view-transitions';
 
 const MobileWorkListing = () => {
     return (
-        <div className='padding pt-24! flex flex-col gap-y-10'>
+        <div className='padding pt-12! flex flex-col gap-y-10'>
             {caseStudies.map((item, i) => (
                 <Link
                     href={`/work/${item.slug}`}

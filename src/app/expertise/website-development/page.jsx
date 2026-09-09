@@ -2,12 +2,12 @@ import DetailedExpertiseHero from '@/components/expertise/DetailedExpertiseHero'
 import WebDevClients from '@/components/expertise/website-development/WebDevClients'
 import WebDevExperiencesCards from '@/components/expertise/website-development/WebDevExperiencesCards'
 import WebDevHero from '@/components/expertise/website-development/WebDevHero'
-import WebDevProcessScroller from '@/components/expertise/website-development/WebDevProcessScroller'
 import WebDevProjectsSwiper from '@/components/expertise/website-development/WebDevProjectsSwiper'
 import TicketEffect from '@/components/home/TicketEffect'
 import React from 'react'
 
 import { createMetadata } from "@/lib/seo";
+import WebDevProcess from '@/components/expertise/website-development/WebDevProcess'
 
 export const metadata = createMetadata({
   title: "Custom Website Design & Development — Zerror Studios",
@@ -42,8 +42,7 @@ const page = () => {
         introHeading={<>You get about three seconds before someone decides you're worth their time. We make them count.</>}
         introText="Motion with meaning, detail that rewards attention, and speed that never asks anyone to wait."
         videoSrc={heroVideo}
-        supportingText="Every site is custom — designed and built by one team, so what you approve is exactly what ships.
-No templates. Nothing lost in translation."
+        supportingText="Every site is custom — designed and built by one team, so what you approve is exactly what ships. No templates. Nothing lost in translation."
         features={[
           { label: "Bounce rate", value: "-41%" },
           { label: "Load time", value: "< 1.6s" },
@@ -57,9 +56,9 @@ No templates. Nothing lost in translation."
       />
       <WebDevProjectsSwiper />
       <WebDevExperiencesCards />
-      <WebDevProcessScroller />
+      <WebDevProcess/>
       <WebDevClients />
-      <TicketEffect />
+      {/* <TicketEffect /> */}
     </>
   )
 }

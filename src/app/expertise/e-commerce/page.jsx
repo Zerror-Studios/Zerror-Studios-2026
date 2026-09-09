@@ -56,7 +56,7 @@ drop-offs, smoother paths to purchase, and buyers who return."
       {/* <EcommStoreSection/> */}
       <EcommPriceSection/>
       <WebDevClients/>
-      <TicketEffect/>
+      {/* <TicketEffect/> */}
     </>
   )
 }

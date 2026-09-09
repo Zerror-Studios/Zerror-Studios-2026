@@ -2,7 +2,7 @@
 import { RiArrowLeftLine, RiArrowRightLine, RiDoubleQuotesR } from '@remixicon/react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
@@ -74,29 +74,134 @@ export const clientsData = [
     }
 ];
 
+const ClientTestimonialCard = ({ item }) => {
+    const cardRef = useRef(null);
+    const tlRef = useRef(null);
+
+    useEffect(() => {
+        if (!cardRef.current) return;
+        const slide = cardRef.current.closest(".swiper-slide");
+        const blocks = cardRef.current.querySelectorAll(".grid_blocks");
+
+        tlRef.current = gsap.timeline({
+            paused: true,
+            defaults: { ease: "power2.out" },
+        }).to(blocks, {
+            opacity: 1,
+            duration: 0.04,
+            ease: "expo.out",
+            stagger: {
+                each: 0.003,
+                from: "random",
+            },
+        });
+
+        const checkActive = () => {
+            if (slide && slide.classList.contains("swiper-slide-active")) {
+                tlRef.current?.play();
+            } else {
+                tlRef.current?.reverse();
+            }
+        };
+
+        checkActive();
+
+        if (!slide) return;
+        const observer = new MutationObserver(() => {
+            checkActive();
+        });
+
+        observer.observe(slide, { attributes: true, attributeFilter: ["class"] });
+        return () => observer.disconnect();
+    }, []);
+
+    const handleMouseEnter = () => {
+        tlRef.current?.play();
+    };
+
+    const handleMouseLeave = () => {
+        const slide = cardRef.current?.closest(".swiper-slide");
+        if (!slide?.classList.contains("swiper-slide-active")) {
+            tlRef.current?.reverse();
+        }
+    };
+
+    return (
+        <div
+            ref={cardRef}
+            className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#f6f8ff] group-[.swiper-slide-active]:text-white! group p-6 md:p-8 text_blue transition-colors duration-300 group-[.swiper-slide-active]:border-[#002bba]"
+        >
+            {/* Pixel Grid Blocks Overlay */}
+            <div className="absolute inset-0 grid grid-cols-12 md:grid-cols-15 z-0 pointer-events-none overflow-hidden rounded-[1rem]">
+                {[...Array(180)].map((_, i) => (
+                    <div
+                        key={i}
+                        className="grid_blocks shrink-0 w-full aspect-square bg-[#002bba] opacity-0 pointer-events-none"
+                    />
+                ))}
+            </div>
+
+            <div className="relative z-10 flex h-full flex-col justify-between gap-10">
+                <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="center h-12 w-12 shrink-0 rounded-full bg-[#002bba] group-[.swiper-slide-active]:bg-white  uppercase text-white group-[.swiper-slide-active]:text-[#002bba]  border border-transparent group-[.swiper-slide-active]:border-white transition-all duration-300">
+                            <p className='translate-y-0.5'>
+                                {item.author.split(" ").map((name) => name[0]).join("")}
+                            </p>
+                        </div>
+                        <div>
+                            <p className="font-semibold leading-none">{item.author}</p>
+                            <p className="mt-1 text-xs uppercase opacity-60">{item.designation}</p>
+                        </div>
+                    </div>
+
+                    <div className="center h-11 w-11 shrink-0 rounded-full border border-[#002bba]/20 bg-white text-[#002bba]">
+                        <RiDoubleQuotesR size={22} />
+                    </div>
+                </div>
+
+                <h3 className='max-w-[92%] text-2xl leading-none md:text-3xl '>
+                    {item.desc}
+                </h3>
+
+                <div className="flex items-end justify-between gap-4 border-t border-[#002bba]/15 group-[.swiper-slide-active]:border-white/30 transition-all duration-300 pt-5">
+                    <div>
+                        <p className="uppercase">{item.company}</p>
+                        <p className="mt-1 text-sm font-medium capitalize opacity-60">{item.metricLabel}</p>
+                    </div>
+
+                    <div className="text-right">
+                        <p className="primary-font text-5xl leading-none">{item.metric}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const WebDevClients = () => {
 
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
     const swiperRef = useRef(null);
-        const containerRef = useRef()
+    const containerRef = useRef()
 
-    useGSAP(()=>{
-        gsap.from(".clien_crds",{
-            xPercent:100,
-            opacity:0,
-            stagger:0.15,
-            scrollTrigger:{
-                trigger:containerRef.current,
-                start:"top 70%",
-                toggleActions:"play none none reverse"
+    useGSAP(() => {
+        gsap.from(".clien_crds", {
+            xPercent: 100,
+            opacity: 0,
+            stagger: 0.15,
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top 70%",
+                toggleActions: "play none none reverse"
             }
         })
     })
 
     return (
-        <>
-            <div  className="w-full   padding   text_blue ">
+        <div className='my-8 md:my-16 space-y-8 md:space-y-16'>
+            <div className="w-full   padding   text_blue ">
                 <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
                         <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>what our clients  <br /> say about us </h2>
@@ -141,6 +246,7 @@ const WebDevClients = () => {
             </div>
             <div ref={containerRef} className="padding ">
                 <Swiper
+                    loop={true}
                     onReachEnd={() => setIsEnd(true)}
                     onReachBeginning={() => setIsBeginning(true)}
                     onFromEdge={() => {
@@ -173,48 +279,12 @@ const WebDevClients = () => {
                             key={item.id}
                             className="clien_crds group w-[90vw]! md:w-[35vw]! "
                         >
-                            <div className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#f6f8ff] group-[.swiper-slide-active]:bg-[#002bba] group-[.swiper-slide-active]:text-white! group p-6 md:p-8 text_blue transition-all duration-300  group-[.swiper-slide-active]:border-[#002bba]">
-
-                                <div className="relative z-10 flex h-full flex-col justify-between gap-10">
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div className="flex items-center gap-3">
-                                            <div className="center h-12 w-12 shrink-0 rounded-full bg-[#002bba]  uppercase text-white border border-transparent group-[.swiper-slide-active]:border-white transition-all duration-300">
-                                                <p className='translate-y-0.5'>
-                                                {item.author.split(" ").map((name) => name[0]).join("")}
-                                                </p>
-                                            </div>
-                                            <div>
-                                                <p className=" font-semibold leading-none">{item.author}</p>
-                                                <p className="mt-1 text-xs uppercase opacity-60">{item.designation}</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="center h-11 w-11 shrink-0 rounded-full border border-[#002bba]/20 bg-white text-[#002bba]">
-                                            <RiDoubleQuotesR size={22} />
-                                        </div>
-                                    </div>
-
-                                    <h3 className='max-w-[92%] text-2xl leading-none md:text-3xl '>
-                                        {item.desc}
-                                    </h3>
-
-                                    <div className="flex items-end justify-between gap-4 border-t border-[#002bba]/15 group-[.swiper-slide-active]:border-white/30 transition-all duration-300 pt-5">
-                                        <div>
-                                            <p className=" uppercase">{item.company}</p>
-                                            <p className="mt-1 text-sm font-medium capitalize  opacity-60">{item.metricLabel}</p>
-                                        </div>
-
-                                        <div className="text-right">
-                                            <p className="primary-font text-5xl leading-none">{item.metric}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <ClientTestimonialCard item={item} />
                         </SwiperSlide>
                     ))}
                 </Swiper>
             </div>
-        </>
+        </div>
     )
 }
 

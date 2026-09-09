@@ -260,7 +260,7 @@ const Our_Services = () => {
           return (
             <div
               key={index}
-              className={`w-full h-screen flex justify-start pt-[2.5rem] border-t last:border-b border-black/50  `}
+              className={`w-full h-screen flex justify-start pt-8 md:pt-16 border-t last:border-b border-black/50  `}
             >
               <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[65%_35%]">
                 {/* Left */}
