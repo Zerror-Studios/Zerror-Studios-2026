@@ -34,7 +34,7 @@ const page = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      {/* <DetailedExpertiseHero
+      <DetailedExpertiseHero
         expertiseName="Found first. Remembered longer. "
         expertiseHeading={<>Be found. <br /> Be remembered.</>}
         btnsLabels={["Strategy", "Identity", "SEO"]}
@@ -53,8 +53,8 @@ three together, because separately they underperform."
           { label: "Content engagement", value: "+44%" },
           { label: "Search-ready page score", value: "93" },
         ]}
-      /> */}
-      {/* <BrandingWhyUs /> */}
+      />
+      <BrandingWhyUs />
       <BrandingWorkflowSection />
       <BrandingDisciplines />
       <WebDevClients />

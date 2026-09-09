@@ -88,7 +88,7 @@ const WorkDetail = () => {
 
       <MoreProjects />
 
-      {/* <TicketEffect /> */} */}
+      {/* <TicketEffect /> */} 
 
     </div>
   )
