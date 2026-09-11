@@ -1,10 +1,12 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
+import Image from 'next/image'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import SplitText from 'gsap/dist/SplitText'
 import { useGSAP } from '@gsap/react'
 import ClientsMarquee from './ClientsMarquee';
+
 const DetailedExpertiseHero = ({
     expertiseName,
     expertiseHeading,
@@ -14,8 +16,9 @@ const DetailedExpertiseHero = ({
     videoSrc,
     supportingText,
     features = [],
+    heroIcons = {},
 }) => {
-
+    const [activeHoverLabel, setActiveHoverLabel] = useState(null);
 
     useGSAP(() => {
         const heading_split = SplitText.create(".heading_split", {
@@ -68,17 +71,59 @@ const DetailedExpertiseHero = ({
 
     return (
         <div className=' content_box opacity-0 padding'>
-            <div className="w-full h-screen flex flex-col justify-between relative">
-                <div className=" flex-1 w-full   flex flex-col items-center justify-center text_blue gap-y-5 text-center ">
+            <div className="w-full h-screen flex flex-col justify-between relative overflow-hidden">
+                {/* Background Pop-up Icons on Button Hover */}
+                <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+                    {Object.entries(heroIcons).map(([label, icons]) => {
+                        const isHovered = activeHoverLabel === label;
+                        return icons.map((icon, idx) => (
+                            <div
+                                key={`${label}-${idx}`}
+                                className={`absolute transition-all duration-500 ease-out transform ${icon.size}`}
+                                style={{
+                                    top: icon.top,
+                                    bottom: icon.bottom,
+                                    left: icon.left,
+                                    right: icon.right,
+                                    opacity: isHovered ? 1 : 0,
+                                    transform: isHovered
+                                        ? `translateY(0px) scale(1) rotate(${icon.rotate})`
+                                        : `translateY(20px) scale(0.5) rotate(0deg)`,
+                                    transitionDelay: isHovered ? `${idx * 60}ms` : '0ms',
+                                }}
+                            >
+                                <Image
+                                    src={icon.src}
+                                    alt="Expertise icon"
+                                    width={128}
+                                    height={128}
+                                    className="w-20 h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,43,186,0.25)]"
+                                />
+                            </div>
+                        ));
+                    })}
+                </div>
+
+                <div className=" flex-1 w-full flex flex-col items-center justify-center text_blue gap-y-5 text-center relative z-10">
                     <p className='paragraph_split uppercase text-xs'>[ {expertiseName} ] </p>
                     <h1 className='heading_split text-5xl md:text-8xl primary-font '>{expertiseHeading}</h1>
-                    <div className="flex flex-wrap gap-x-1">
+                    <div className="flex flex-wrap gap-x-2 justify-center">
                         {btnsLabels.map((item, i) => (
-                            <button key={i} className='blink_btn text-xs uppercase px-4 py-2 bg-[#002bba20] leading-none'>{item}</button>
+                            <button
+                                key={i}
+                                onMouseEnter={() => setActiveHoverLabel(item)}
+                                onMouseLeave={() => setActiveHoverLabel(null)}
+                                className={`blink_btn text-xs uppercase px-4 py-2 leading-none transition-all duration-300 rounded-md cursor-pointer ${activeHoverLabel === item
+                                    ? 'bg-[#002bba] text-white shadow-lg scale-105'
+                                    : 'bg-[#002bba20] text_blue hover:bg-[#002bba35]'
+                                    }`}
+                            >
+                                {item}
+                            </button>
                         ))}
                     </div>
                 </div>
-                <div className="w-full absolute border-t border-[#002bba] bottom-0 left-0">
+                <div className="w-full absolute border-t border-[#002bba] bottom-0 left-0 z-10">
                     <ClientsMarquee />
                 </div>
             </div>

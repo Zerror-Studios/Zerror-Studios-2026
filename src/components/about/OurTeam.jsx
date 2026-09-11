@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import Flip from "gsap/dist/Flip";
+import PixelGridCanvas from "@/components/common/PixelGridCanvas";
 import Image from "next/image";
 import Form from "./Form";
 import useDevice from "../hooks/useDevice";
@@ -59,56 +60,9 @@ const teamMembers = [
 const OurTeam = () => {
   const { isMobile, isDesktop } = useDevice();
   const [isOpen, setIsOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const ctaRef = useRef(null);
   const placeholderRef = useRef(null);
-
-  const cardsRef = useRef([]);
-  const tlRef = useRef([]);
-
-  useEffect(() => {
-    cardsRef.current.forEach((card, i) => {
-      const blocks = card.querySelectorAll(".grid_blocks");
-      const border = card.querySelector(".card_border");
-
-      tlRef.current[i] = gsap.timeline({
-        paused: true,
-        defaults: {
-          ease: "power2.out",
-        },
-      })
-        // blocks animation
-        .to(blocks, {
-          opacity: 1,
-          duration: 0.05,
-          ease: "expo.out",
-          stagger: {
-            each: 0.003,
-            from: "random", // 🔥 much better than random
-          },
-        }, 0)
-
-        // border animation (sync with blocks)
-        .to(border, {
-          opacity: 1,
-          duration: 0.5,
-          ease: "linear",
-        }, 0);
-    });
-  }, [isDesktop]);
-
-  const handleEnter = (index) => {
-    tlRef.current.forEach((tl, i) => {
-      if (!tl) return;
-      i !== index ? tl.play() : tl.pause(0);
-    });
-  };
-
-  const handleLeave = () => {
-    tlRef.current.forEach((tl) => {
-      if (!tl) return;
-      tl.reverse();
-    });
-  };
 
   const openForm = () => {
 
@@ -296,29 +250,31 @@ const OurTeam = () => {
           {teamMembers.map((member, index) => (
             <div
               key={member.id}
-              ref={(el) => (cardsRef.current[index] = el)}
-              onMouseEnter={() => handleEnter(index)}
-              onMouseLeave={handleLeave}
-              className="   relative overflow-hidden"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="relative overflow-hidden cursor-pointer"
             >
               {/* Blocks */}
               {isDesktop && (
-                <div className="absolute inset-0 grid grid-cols-12 z-10">
-                  {[...Array(204)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="grid_blocks shrink-0  w-full aspect-square bg-white opacity-0 pointer-events-none"
-                    />
-                  ))}
-                </div>
+                <PixelGridCanvas
+                  isActive={hoveredIndex !== null && hoveredIndex !== index}
+                  color="#ffffff"
+                  boxSize={30}
+                  duration={0.5}
+                  className="absolute inset-0 w-full h-full pointer-events-none z-10"
+                />
               )}
 
               {/* Image */}
-              <div className="   w-full relative aspect-4/5">
-                {/* <div className="skeleton_box w-full h-full skeleton_animate"></div> */}
-                <div className=" card_border absolute inset-0 border border-black/10 opacity-0 pointer-events-none z-20" />
+              <div className="w-full relative aspect-4/5">
+                <div
+                  className={`card_border absolute inset-0 border border-black/10 transition-opacity duration-300 pointer-events-none z-20 ${
+                    hoveredIndex !== null && hoveredIndex !== index
+                      ? "opacity-100"
+                      : "opacity-0"
+                  }`}
+                />
                 <img
-                  // fill
                   src={member.img}
                   alt={member.name}
                   className="cover brightness-[1.4]"

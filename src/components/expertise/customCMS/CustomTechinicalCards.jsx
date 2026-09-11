@@ -1,9 +1,10 @@
 "use client";
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { RiStackLine, RiShieldKeyholeLine, RiLinkM, RiFlashlightLine } from '@remixicon/react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 gsap.registerPlugin(ScrollTrigger)
 
 const technicalCards = [
@@ -39,53 +40,22 @@ const technicalCards = [
 
 const TechCard = ({ card, className }) => {
     const Icon = card.icon;
-    const cardRef = useRef(null);
-    const tlRef = useRef(null);
-
-    useGSAP(() => {
-        if (!cardRef.current) return;
-        const blocks = cardRef.current.querySelectorAll(".grid_blocks");
-
-        tlRef.current = gsap.timeline({
-            paused: true,
-            defaults: {
-                ease: "power2.out",
-            },
-        }).to(blocks, {
-            opacity: 1,
-            duration: 0.04,
-            ease: "expo.out",
-            stagger: {
-                each: 0.003,
-                from: "random",
-            },
-        });
-    }, { scope: cardRef });
-
-    const handleMouseEnter = () => {
-        tlRef.current?.play();
-    };
-
-    const handleMouseLeave = () => {
-        tlRef.current?.reverse();
-    };
+    const [isHovered, setIsHovered] = useState(false);
 
     return (
         <div
-            ref={cardRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             className={`${className} relative group rounded-2xl overflow-hidden`}
         >
-            {/* Pixel Grid Blocks Overlay */}
-            <div className="absolute inset-0 grid grid-cols-[repeat(20,1fr)] z-10 pointer-events-none">
-                {[...Array(200)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="grid_blocks shrink-0 w-full aspect-square bg-[#002bba] opacity-0 pointer-events-none"
-                    />
-                ))}
-            </div>
+            {/* Custom Pixel Canvas Animation Overlay */}
+            <PixelGridCanvas
+                isActive={isHovered}
+                boxSize={28}
+                color="#002bba"
+                duration={1}
+                className="absolute inset-0 w-full h-full pointer-events-none rounded-2xl z-0"
+            />
 
             <div className="w-full h-full p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[400px] md:min-h-[450px] bg-[#f4f4f4] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white relative z-10">
                 <div className="flex justify-between items-start gap-4 relative z-10">

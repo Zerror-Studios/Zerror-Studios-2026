@@ -65,9 +65,9 @@ const BrandingDisciplines = () => {
     })
 
     return (
-        <div className="w-full bg-white">
+        <div data-hide-header className="w-full bg_blue  pt-8 md:pt-16 text-white">
             {/* Heading */}
-            <div className="w-full padding pb-0!  text_blue space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+            <div className="w-full padding pb-0!   space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
                     <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>
                         Everything You Need To Dominate.
@@ -86,11 +86,11 @@ const BrandingDisciplines = () => {
 
             <div className=" disc_paren w-full  h-[350vh] relative">
                 <div className="w-full sticky h-screen top-0 pt-12 flex flex-col justify-start">
-                    <div className="w-full border-b border-[#002bba]/20">
+                    <div className="w-full">
                         {disciplines.map((item, index) => (
                             <div
                                 key={index}
-                                className=" disc_chld w-full border-t border-[#002bba]/20 text_blue overflow-hidden"
+                                className=" disc_chld w-full border-t border-[#ffffff]/20  overflow-hidden"
                             >
                                 <div className="padding py-6! flex flex-col md:flex-row gap-10 md:gap-0 items-start">
                                     <div className="w-full md:w-[20%]">

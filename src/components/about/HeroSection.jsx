@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -7,94 +7,68 @@ import SplitText from "gsap/dist/SplitText";
 import useDevice from "../hooks/useDevice";
 import Image from "next/image";
 import DiceCanvas from "./DiceCanvas";
+import PixelGridCanvas from "@/components/common/PixelGridCanvas";
+
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HeroSection = () => {
-  const { isMobile, isDesktop } = useDevice();
-  const rows = 20;
-  const cols = 20;
-  const totalCells = rows * cols;
-  const gridRefl = useRef(null);
-  const gridRefR = useRef(null);
+  const { isDesktop } = useDevice();
+  const [isRevealedL, setIsRevealedL] = useState(false);
+  const [isRevealedR, setIsRevealedR] = useState(false);
 
   useGSAP(() => {
-    if (!gridRefl.current || !gridRefR.current) return;
+    ScrollTrigger.create({
+      trigger: ".ImgEffectContL",
+      start: "top 60%",
+      onEnter: () => setIsRevealedL(true),
+      onLeaveBack: () => setIsRevealedL(false),
+    });
 
-    const cells = gridRefl.current.children;
-    const cells2 = gridRefR.current.children;
+    ScrollTrigger.create({
+      trigger: ".ImgEffectContR",
+      start: "top 60%",
+      onEnter: () => setIsRevealedR(true),
+      onLeaveBack: () => setIsRevealedR(false),
+    });
+  }, []);
+
+  useGSAP(() => {
+    const heading_split = SplitText.create(".heading_split", {
+      type: "lines",
+      linesClass: "split-line",
+    });
+
+    [...heading_split.lines].forEach((line) => {
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("line-wrapper");
+      line.parentNode.insertBefore(wrapper, line);
+      wrapper.appendChild(line);
+    });
+
+    gsap.set([heading_split.lines], { yPercent: 100, x: 10 });
 
     const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".ImgEffectContL",
-        start: "top 50%",
-        toggleActions: "play none none reverse",
-      },
+      delay: 0.5,
     });
-
-    tl.to(cells, {
-      opacity: 0,
-      duration: 0.5,
-      stagger: {
-        each: 0.001,
-        from: "random",
-      },
-      ease: "expo.out",
-    }, "a1");
-
-    tl.to(cells2, {
-      opacity: 0,
-      duration: 0.5,
-      stagger: {
-        each: 0.001,
-        from: "random",
-      },
-      ease: "expo.out",
-    }, "a1");
-
-    return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
-    };
-  }, [isDesktop]);
-
-    useGSAP(() => {
-        const heading_split = SplitText.create(".heading_split", {
-            type: "lines",
-            linesClass: "split-line"
-        });
-
-        [...heading_split.lines].forEach((line) => {
-            const wrapper = document.createElement("div");
-
-            wrapper.classList.add("line-wrapper");
-
-            line.parentNode.insertBefore(wrapper, line);
-            wrapper.appendChild(line);
-        });
-
-        gsap.set([heading_split.lines], { yPercent: 100, x: 10 });
-
-        const tl = gsap.timeline({
-            delay: 0.5
-        })
-        tl.to(".content_box", {
-            opacity: 1,
-            duration: 0.01
-        })
-        tl.to(heading_split.lines, {
-            yPercent: 0,
-            x: 0,
-            duration: 0.8,
-            ease: "expo.out",
-            stagger: 0.05,
-        }, "<");
-
-
+    tl.to(".content_box", {
+      opacity: 1,
+      duration: 0.01,
     });
+    tl.to(
+      heading_split.lines,
+      {
+        yPercent: 0,
+        x: 0,
+        duration: 0.8,
+        ease: "expo.out",
+        stagger: 0.05,
+      },
+      "<"
+    );
+  });
 
   return (
     <div className=" content_box opacity-0 about_hero_paren  w-full relative  padding pt-0!">
-
       <div className="w-full sticky top-0  h-screen z-100  center">
         <DiceCanvas />
       </div>
@@ -115,25 +89,15 @@ const HeroSection = () => {
           </div>
 
           <div className="w-full ImgEffectContL relative  aspect-5/6  overflow-hidden relative">
-
-            {isDesktop && (
-              <div
-                ref={gridRefl}
-                style={{
-                  gridTemplateColumns: "repeat(20,1fr)"
-                }}
-                className=" hidden absolute pointer-events-none top-0 left-0 w-full h-full  z-40 lg:grid"
-              >
-                {Array.from({ length: totalCells }).map((_, i) => (
-                  <div key={i} className="bg-white opacity-100" />
-                ))}
-              </div>
-            )}
-
+            <PixelGridCanvas
+              isActive={!isRevealedL}
+              color="#ffffff"
+              boxSize={25}
+              duration={0.8}
+              className="absolute inset-0 w-full h-full pointer-events-none z-40"
+            />
             <Image fill src={'/images/about/gen_img_5.png'} alt="l-Img" className="cover" />
-
           </div>
-
         </div>
 
         {/* Right */}
@@ -157,20 +121,14 @@ const HeroSection = () => {
             </div>
 
             {/* Img */}
-            <div className="w-full aspect-5/6 mt-5 bg-[#002bba] overflow-hidden relative">
-              {isDesktop && (
-                <div
-                  ref={gridRefR}
-                  style={{
-                    gridTemplateColumns: "repeat(10,1fr)"
-                  }}
-                  className=" hidden absolute pointer-events-none top-0 left-0 w-full h-full  z-40 lg:grid"
-                >
-                  {Array.from({ length: totalCells }).map((_, i) => (
-                    <div key={i} className="bg-white w-full aspect-square opacity-100" />
-                  ))}
-                </div>
-              )}
+            <div className="w-full ImgEffectContR aspect-5/6 mt-5 bg-[#002bba] overflow-hidden relative">
+              <PixelGridCanvas
+                isActive={!isRevealedR}
+                color="#ffffff"
+                boxSize={25}
+                duration={0.8}
+                className="absolute inset-0 w-full h-full pointer-events-none z-40"
+              />
               <Image fill src={'/images/about/gen_img_4.png'} alt="l-Img" className="cover" />
             </div>
           </div>

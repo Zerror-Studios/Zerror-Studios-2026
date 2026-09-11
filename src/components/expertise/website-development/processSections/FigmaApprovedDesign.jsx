@@ -56,9 +56,9 @@ const FigmaApprovedDesign = () => {
     const activeColor = '#000000'; // Static color for approved design
 
     return (
-        <section className="w-full padding py-12 md:py-24 flex justify-center">
+        <section className="w-full h-full flex flex-col overflow-hidden">
             {/* Main Figma UI Container */}
-            <div className="w-[85%] rounded-md overflow-hidden border text-white aspect-video border-black/10  bg-black font-sans flex flex-col">
+            <div className="w-full h-full overflow-hidden border text-white border-black/10 bg-black font-sans flex flex-col">
                 
                 {/* Top Toolbar */}
                 <div className="h-12 bg-[#2C2C2C] border-b border-[#3E3E3E] flex items-center justify-between px-4 text-xs select-none">
@@ -109,7 +109,7 @@ const FigmaApprovedDesign = () => {
                     </div>
 
                     {/* Canvas / Editor Area */}
-                    <div className="flex-1 bg-[#1E1E1E] relative overflow-hidden flex justify-center items-start p-5">
+                    <div className="flex-1 bg-[#1E1E1E] relative overflow-hidden flex justify-center items-start ">
                         
                         {/* Scaled Wrapper to fit both artboards */}
                         <div className="flex items-start scale-40 gap-12 origin-top mt-10">

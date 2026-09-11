@@ -1,88 +1,58 @@
 "use client"
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image';
 import { clientsData } from '../expertise/ClientsMarquee';
+import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 
-gsap.registerPlugin(ScrollTrigger);
+const ClientBox = ({ item }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="group client-box w-full overflow-hidden border border-white/10 relative aspect-square center cursor-pointer"
+        >
+            <PixelGridCanvas
+                isActive={isHovered}
+                color="#ffffff"
+                boxSize={20}
+                duration={0.5}
+                className="absolute inset-0 w-full h-full pointer-events-none z-0"
+            />
+
+            <div className="w-full h-full relative z-10">
+                <Image
+                    src={item.icon}
+                    fill
+                    alt="Item icon Graphic"
+                    className={`client-icon cover transition-all duration-300 ${
+                        isHovered ? "invert" : ""
+                    }`}
+                />
+            </div>
+            <div className={`w-full uppercase absolute z-20 bottom-0 flex justify-between p-2 transition-colors duration-300 ${
+                isHovered ? "text-black" : "text-white"
+            }`}>
+                <h5 className="secondary-font leading-none">{item.title}</h5>
+            </div>
+        </div>
+    );
+};
 
 const Clients = () => {
-
-    const containerRef = useRef(null);
-    const visibleClients =
-        typeof window !== "undefined" && window.innerWidth < 768
-            ? clientsData.slice(0, clientsData.length - 2)
-            : clientsData;
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const boxes = containerRef.current.querySelectorAll(".client-box");
-
-        boxes.forEach((box) => {
-            const icon = box.querySelector(".client-icon");
-            const img = box.querySelector(".client-img");
-            const inr_boxes = box.querySelectorAll(".client_innr_box");
-
-            box.addEventListener("mouseenter", () => {
-                gsap.killTweensOf([icon, img, inr_boxes]);
-
-                gsap.to(icon, {
-                    filter: "invert(100%)",
-                    duration: 0.25,
-                    ease: "power2.out",
-                });
-
-                gsap.to(inr_boxes, {
-                    opacity: 1,
-                    duration: 0.05,
-                    ease: "expo.out",
-                    stagger: {
-                        each: 0.005,
-                        from: "random", // 🔥 much better than random
-                    },
-                });
-
-                gsap.to(img, {
-                    opacity: 1,
-                    duration: 0.35,
-                    ease: "power2.out",
-                });
-            });
-
-            box.addEventListener("mouseleave", () => {
-                gsap.killTweensOf([icon, img, inr_boxes]);
-
-                gsap.to(icon, {
-                    filter: "invert(0%)",
-                    duration: 0.25,
-                    ease: "power2.in",
-                });
-
-                gsap.to(inr_boxes, {
-                    opacity: 0,
-                    duration: 0.05,
-                    ease: "expo.in",
-                    stagger: {
-                        each: 0.005,
-                        from: "random",
-                    },
-                });
-
-                gsap.to(img, {
-                    opacity: 0,
-                    duration: 0.25,
-                    ease: "power2.in",
-                });
-            });
-        });
-
-
-        return () => {
-            boxes.forEach((box) => {
-                box.replaceWith(box.cloneNode(true)); // cleanup event listeners
-            });
-        };
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
     }, []);
+
+    const visibleClients = isMobile
+        ? clientsData.slice(0, clientsData.length - 2)
+        : clientsData;
 
     return (
         <div className=' noise-bg clients_paren relative z-10  bg_blue py-8 md:py-16 space-y-8 md:space-y-16 text-white w-full'>
@@ -104,36 +74,10 @@ const Clients = () => {
                 </div>
             </div>
 
-            <div
-                ref={containerRef}
-                className=" relative z-10 w-full grid grid-cols-3 md:grid-cols-5 ">
-                {visibleClients.map((item, i) => {
-                    return (
-                        <div key={i} className=" group client-box w-full  overflow-hidden border border-white/10 relative aspect-square center">
-                            <div className="w-full h-full absolute grid grid-cols-12 pointer-events-none">
-                                {[...Array(144)].map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className="client_innr_box w-full aspect-square bg-white opacity-0"
-                                    />
-                                ))}
-                            </div>
-
-                            <div
-                                className=" w-full h-full relative">
-                                <Image
-                                    src={item.icon}
-                                    fill
-                                    alt="Item icon Graphic"
-                                    className=" client-icon cover"
-                                />
-                            </div>
-                            <div className="w-full  uppercase  absolute z-[4] bottom-0 flex justify-between p-2">
-                                <h5 className='secondary-font leading-none'>{item.title}</h5>
-                            </div>
-                        </div>
-                    )
-                })}
+            <div className=" padding relative z-10 w-full grid grid-cols-3 md:grid-cols-5 ">
+                {visibleClients.map((item, i) => (
+                    <ClientBox key={i} item={item} />
+                ))}
             </div>
         </div>
     )

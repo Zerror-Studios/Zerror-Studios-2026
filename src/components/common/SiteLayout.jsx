@@ -11,6 +11,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { ViewTransitions } from "next-view-transitions";
 import GlobalParaReveal from "@/components/animation/GlobalParaReveal";
 import GlobalImgReveal from "@/components/animation/GlobalImgReveal";
+import GlobalHeaderHide from "@/components/animation/GlobalHeaderHide";
 import { ProjectFormProvider } from "@/context/ProjectFormContext";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -63,6 +64,7 @@ export default function SiteLayout({ children }) {
 
           <GlobalImgReveal />
           <GlobalParaReveal />
+          <GlobalHeaderHide />
 
           <header>
             <Header />

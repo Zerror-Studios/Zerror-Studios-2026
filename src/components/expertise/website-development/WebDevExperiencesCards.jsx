@@ -13,6 +13,8 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 
 
+import PixelGridCanvas from '@/components/common/PixelGridCanvas';
+
 const services = [
     {
         title: "UI/UX Design",
@@ -48,33 +50,12 @@ const services = [
 
 const ServiceCard = ({ service }) => {
     const lottieRef = useRef(null);
-    const cardRef = useRef(null);
-    const tlRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const isReversingRef = useRef(false);
 
-    useGSAP(() => {
-        if (!cardRef.current) return;
-        const blocks = cardRef.current.querySelectorAll(".grid_blocks");
-
-        tlRef.current = gsap.timeline({
-            paused: true,
-            defaults: {
-                ease: "power2.out",
-            },
-        }).to(blocks, {
-            opacity: 1,
-            duration: 0.04,
-            ease: "expo.out",
-            stagger: {
-                each: 0.003,
-                from: "random",
-            },
-        });
-    }, { scope: cardRef });
-
     const handleMouseEnter = () => {
-        tlRef.current?.play();
+        setIsHovered(true);
         if (!isPlaying) {
             setIsPlaying(true);
             isReversingRef.current = false;
@@ -84,25 +65,17 @@ const ServiceCard = ({ service }) => {
     };
 
     const handleMouseLeave = () => {
-        tlRef.current?.reverse();
+        setIsHovered(false);
     };
 
     return (
         <div
-            ref={cardRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="serv_crd relative group rounded-2xl overflow-hidden"
         >
-            {/* Pixel Grid Blocks Overlay */}
-            <div className="absolute inset-0 grid grid-cols-[repeat(15,1fr)] z-10">
-                {[...Array(120)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="grid_blocks shrink-0 w-full aspect-square bg-[#002bba] opacity-0 pointer-events-none"
-                    />
-                ))}
-            </div>
+            {/* Custom Canvas Pixel Grid Overlay */}
+            <PixelGridCanvas isActive={isHovered} boxSize={30} color="#002bba" duration={1} />
 
             <div
                 className="iner_crd w-full h-full cursor-pointer bg-[#f4f4f4] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white rounded-2xl flex flex-col justify-between p-6 md:p-8 relative z-10"

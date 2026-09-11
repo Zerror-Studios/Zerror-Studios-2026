@@ -9,28 +9,57 @@ import {
 } from '@remixicon/react';
 
 const clients = [
-    { id: 1, name: 'Alice (Client)', img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop', bgColor: 'bg-[#FFE2E9]' },
-    { id: 2, name: 'Bob (Marketing)', img: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=600&auto=format&fit=crop', bgColor: 'bg-[#E3F2FD]' },
-    { id: 4, name: 'Charlie (Design)', img: 'https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=600&auto=format&fit=crop', bgColor: 'bg-[#E8F5E9]' },
-    { id: 3, name: 'Zerror', isZerror: true, bgColor: "bg-[#002bba50]" },
+    {
+        id: 1,
+        name: 'Rahul Sharma (Client)',
+        role: 'Client',
+        img: '/images/expertisePage/website-development/process_scroller/rahul_sharma.png',
+        bgColor: 'bg-[#FFF3E0]'
+    },
+    {
+        id: 2,
+        name: 'Sunny (Developer)',
+        role: 'Developer',
+        initial: 'S',
+        initialBg: 'bg-[#1A73E8]',
+        bgColor: 'bg-[#E3F2FD]'
+    },
+    {
+        id: 3,
+        name: 'Mehak (Manager)',
+        role: 'Design Head',
+        initial: 'M',
+        initialBg: 'bg-[#D81B60]',
+        bgColor: 'bg-[#FCE4EC]'
+    },
+    {
+        id: 4,
+        name: 'Lingkan (Designer)',
+        role: 'Designer',
+        initial: 'L',
+        initialBg: 'bg-[#00897B]',
+        bgColor: 'bg-[#E0F2F1]'
+    },
+    {
+        id: 5,
+        name: 'Zerror',
+        isZerror: true,
+        bgColor: "bg-[#002bba50]"
+    },
 ];
 
 const dummyChat = [
-    { sender: 'Alice (Client)', text: 'The new VS Code simulation looks incredible!', time: '10:02 AM' },
-    { sender: 'Bob (Marketing)', text: 'Agreed! The animations are buttery smooth.', time: '10:03 AM' },
-    { sender: 'Zerror', text: 'Thanks! We wanted to show the exact process of going from Figma to code.', time: '10:04 AM' },
-    { sender: 'Charlie (Design)', text: 'The translation of the design tokens into Tailwind is spot on.', time: '10:04 AM' },
-    { sender: 'Alice (Client)', text: 'Are we pushing this to staging today?', time: '10:05 AM' },
-    { sender: 'Zerror', text: 'Yes, it is deploying now. The pipeline is running.', time: '10:06 AM' },
-    { sender: 'Bob (Marketing)', text: 'Can we get a preview link once it is up?', time: '10:06 AM' },
-    { sender: 'Zerror', text: 'Absolutely, I will drop it here in a few minutes.', time: '10:07 AM' },
-    { sender: 'Alice (Client)', text: 'Excellent. This workflow is going to save us so much time.', time: '10:08 AM' },
-    { sender: 'Charlie (Design)', text: 'By the way, did we finalize the dark mode toggle?', time: '10:10 AM' },
-    { sender: 'Zerror', text: 'Yes! It seamlessly switches using the next-themes provider.', time: '10:11 AM' },
-    { sender: 'Alice (Client)', text: 'Great, looking forward to testing it out.', time: '10:12 AM' },
-    { sender: 'Zerror', text: 'The link is live! https://www.zerrorstudios.com', time: '10:15 AM' },
-    { sender: 'Charlie (Design)', text: 'Looks perfect on mobile too.', time: '10:16 AM' },
-    { sender: 'Alice (Client)', text: 'Fantastic work team. This is approved for production.', time: '10:18 AM' },
+    { sender: 'Rahul Sharma (Client)', text: 'Hey team! The interactive process layout looks fantastic.', time: '10:02 AM' },
+    { sender: 'Sunny (Developer)', text: 'Thanks Rahul! The GSAP scroll animations are optimized and running smoothly.', time: '10:03 AM' },
+    { sender: 'Mehak (Design Head)', text: 'We aligned every pixel with our design system tokens.', time: '10:04 AM' },
+    { sender: 'Lingkan (Designer)', text: 'Updated all component variants and responsive layouts as well.', time: '10:05 AM' },
+    { sender: 'Zerror', text: 'We also boosted performance scores to 95+ on PageSpeed.', time: '10:06 AM' },
+    { sender: 'Rahul Sharma (Client)', text: 'Awesome! Can we push this build to the staging server?', time: '10:07 AM' },
+    { sender: 'Sunny (Developer)', text: 'Deploying to staging right now. Build pipeline initiated!', time: '10:08 AM' },
+    { sender: 'Lingkan (Designer)', text: 'Mobile viewport testing is complete and verified.', time: '10:09 AM' },
+    { sender: 'Zerror', text: 'Staging is live! Check it out here: https://www.zerrorstudios.com', time: '10:10 AM' },
+    { sender: 'Mehak (Design Head)', text: 'Dark mode contrast ratios are fully optimized as well.', time: '10:11 AM' },
+    { sender: 'Rahul Sharma (Client)', text: 'Tested! This exceeds all expectations. Outstanding work team! 🎉', time: '10:12 AM' },
 ];
 
 const EMOJIS = ['💖', '👍', '🎉', '👏', '😂'];
@@ -120,8 +149,8 @@ const GoogleMeet = () => {
                 animation: wave 3s ease-in-out forwards;
             }
         `}</style>
-            <div className="w-full padding py-8 md:py-16 center">
-                <div className="w-[85%] bg-white rounded-md p-6 text-black flex flex-col font-sans overflow-hidden relative border border-black/10">
+            <section className="w-full h-full flex flex-col overflow-hidden">
+                <div className="w-full h-full bg-white p-4 md:p-6 text-black flex flex-col font-sans overflow-hidden relative border border-black/10">
 
                     {/* Floating Emojis Overlay */}
                     <div className="absolute inset-0 pointer-events-none overflow-hidden z-50">
@@ -135,50 +164,57 @@ const GoogleMeet = () => {
                     </div>
 
                     {/* Main Content Area */}
-                    <div className={`h-160 flex overflow-hidden ${isChatOpen ? "gap-2" : "gap-0"} transition-all duration-300`}>
+                    <div className={`flex-1 flex overflow-hidden ${isChatOpen ? "gap-2" : "gap-0"} transition-all duration-300`}>
 
                         {/* Video Grid */}
-                        <div className="h-full w-full gap-2 grid grid-cols-2">
+                        <div className="h-full w-full gap-2.5 grid grid-cols-2 md:grid-cols-3">
                             {clients.map((client) => (
                                 <div
                                     key={client.id}
-                                    className={`relative rounded-md w-full h-[calc(20rem-0.25rem)] overflow-hidden group transition-all duration-300 ${client.bgColor}
-                            `}
+                                    className={`relative rounded-lg w-full h-full overflow-hidden group transition-all duration-300 ${client.bgColor} ${client.isZerror ? 'col-span-2 md:col-span-2' : 'col-span-1'
+                                        }`}
                                 >
                                     {client.isZerror ? (
                                         // Zerror Brand Box
                                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                            <div className="w-32 h-32 rounded-full overflow-hidden center  bg_blue">
-                                                <img className='w-[70%]' src="/logo_white.svg" alt="" />
+                                            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden center bg_blue shadow-md">
+                                                <img className='w-[70%]' src="/logo_white.svg" alt="Zerror" />
                                             </div>
 
-                                            <div className=" absolute bottom-10 flex gap-1.5">
+                                            <div className="absolute bottom-6 flex gap-1.5">
                                                 <div className="w-2 h-2 rounded-full bg_blue animate-bounce" style={{ animationDelay: '0ms' }}></div>
                                                 <div className="w-2 h-2 rounded-full bg_blue animate-bounce" style={{ animationDelay: '150ms' }}></div>
                                                 <div className="w-2 h-2 rounded-full bg_blue animate-bounce" style={{ animationDelay: '300ms' }}></div>
                                             </div>
                                         </div>
-                                    ) : (
-                                        // Client Avatar Box
+                                    ) : client.initial ? (
+                                        // Initial Letter Symbol Box
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="w-32 h-32 rounded-full overflow-hidden">
+                                            <div className={`w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center text-white font-bold text-3xl sm:text-4xl md:text-5xl shadow-md ${client.initialBg}`}>
+                                                {client.initial}
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        // Client Avatar Image Box
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-white/80 shadow-md">
                                                 <img src={client.img} alt={client.name} className="w-full h-full object-cover" />
                                             </div>
                                         </div>
                                     )}
 
                                     {/* Overlay Info */}
-                                    <div className="absolute bottom-3 left-3 flex items-center gap-1">
+                                    <div className="absolute bottom-3 left-3 flex items-center gap-1.5 z-10">
                                         {client.isZerror && !isMicMuted ? (
-                                            <div className="w-6 h-6 rounded-full bg-[#1A73E8] flex items-center justify-center">
-                                                <div className="w-3 h-3 rounded-full bg-white animate-pulse"></div>
+                                            <div className="w-5 h-5 rounded-full bg-[#1A73E8] flex items-center justify-center">
+                                                <div className="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></div>
                                             </div>
                                         ) : (
-                                            <div className="w-6 h-6 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
-                                                <RiMicOffFill size={12} className="text-white" />
+                                            <div className="w-5 h-5 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                                                <RiMicOffFill size={11} className="text-white" />
                                             </div>
                                         )}
-                                        <span className="text-xs font-medium bg-white/70 text-gray-800 backdrop-blur-sm px-2 py-1 rounded-md ">
+                                        <span className="text-[11px] sm:text-xs font-medium bg-white/80 text-gray-900 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-xs">
                                             {client.name}
                                         </span>
                                     </div>
@@ -230,7 +266,7 @@ const GoogleMeet = () => {
                     </div>
 
                     {/* Bottom Control Bar */}
-                    <div className="w-full bg-white flex items-center justify-center gap-2 border-t border-gray-100 pt-4 mt-4 relative">
+                    <div className="w-full bg-white flex items-center justify-center gap-2 border-t border-gray-100 pt-3 mt-3 relative shrink-0">
 
                         {/* Raise Hand CTA */}
                         <div className={`absolute left-0 flex items-center gap-2 bg-[#002bba] text-white px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 origin-left cursor-pointer hover:bg-[#00208a]  ${isHandRaised ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
@@ -299,7 +335,7 @@ const GoogleMeet = () => {
                     </div>
 
                 </div>
-            </div>
+            </section>
         </>
     );
 };

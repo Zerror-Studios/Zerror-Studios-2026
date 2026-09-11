@@ -120,9 +120,9 @@ const VsCode = () => {
     };
 
     return (
-        <section className="w-full padding py-12 md:py-24 flex justify-center">
+        <section className="w-full h-full flex flex-col overflow-hidden">
             {/* Main IDE Container */}
-            <div className="w-[95%] xl:w-[85%] rounded-md overflow-hidden border border-black/20  bg-[#1E1E1E] text-[#ABB2BF] font-sans flex flex-col h-[700px]">
+            <div className="w-full h-full overflow-hidden border border-black/20 bg-[#1E1E1E] text-[#ABB2BF] font-sans flex flex-col">
                 
                 {/* Window Controls (Mac style) */}
                 <div className="h-10 bg-[#21252B] flex items-center justify-between px-4 border-b border-[#181A1F]">
@@ -152,9 +152,9 @@ const VsCode = () => {
                     </div>
 
                     {/* Sidebar / Explorer */}
-                    <div className="w-56 bg-[#21252B] border-r border-[#181A1F] flex flex-col select-none hidden lg:flex">
+                    <div className="w-56 bg-[#21252B] border-r border-[#181A1F] flex flex-col select-none  overflow-hidden lg:flex">
                         <div className="px-4 py-3 text-xs font-bold tracking-widest text-[#858b98]">EXPLORER</div>
-                        <div className="flex-1 overflow-y-auto pb-4 custom-scrollbar">
+                        <div className="flex-1  pb-4 overflow-hidden">
                             <div className="flex flex-col text-[13px] text-[#858b98]">
                                 {/* Root Folders */}
                                 <div className="flex items-center gap-1.5 px-2 py-0.5 cursor-pointer hover:bg-[#2C313C] rounded">
@@ -227,9 +227,9 @@ const VsCode = () => {
                     </div>
 
                     {/* Editor Area */}
-                    <div className="flex-1 flex flex-col bg-[#282C34] relative">
+                    <div className="flex-1 flex flex-col bg-[#282C34] relative overflow-hidden">
                         {/* Editor Tabs */}
-                        <div className="flex bg-[#21252B] overflow-x-auto custom-scrollbar">
+                        <div className="flex bg-[#21252B] overflow-hidden">
                             <div className={`flex items-center gap-2 px-4 py-2 border-r border-[#181A1F] cursor-pointer min-w-max ${activeTab === 'jsx' ? 'bg-[#282C34] border-t-2 border-t-[#61AFEF]' : 'bg-[#21252B] text-[#858b98]'}`}>
                                 <RiReactjsLine size={14} className="text-[#61DAFB]"/> Hero.jsx <RiCloseLine size={14} className="ml-2 hover:bg-[#3E4451] rounded"/>
                             </div>
@@ -239,7 +239,7 @@ const VsCode = () => {
                         </div>
 
                         {/* Code Content */}
-                        <div className="flex-1 overflow-auto p-4 custom-scrollbar">
+                        <div className="flex-1 overflow-hidden p-4 ">
                             {renderSyntaxHighlighted(displayedCode)}
                         </div>
 

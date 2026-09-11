@@ -37,8 +37,8 @@ const ColorPalette = () => {
     }, []);
 
     return (
-        <section className="relative py-16 w-full padding overflow-hidden flex justify-center">
-            <div className="w-[85%] border border-black/10  bg-white rounded-md p-10 grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
+        <section className="w-full h-full flex flex-col overflow-hidden">
+            <div className="w-full h-full border border-black/10 bg-white p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative overflow-hidden">
 
                 {/* Style Block for Animations */}
                 <style>{`
@@ -57,7 +57,7 @@ const ColorPalette = () => {
         `}</style>
 
                 {/* Left Column: Colors & Typography */}
-                <div className="lg:col-span-4 flex flex-col justify-between gap-20 relative z-10">
+                <div className="lg:col-span-4 flex flex-col justify-between gap-6 relative z-10 overflow-y-auto scroller_none">
                     <div className="text-3xl">
                         <h3>Color Palette</h3>
                     </div>
@@ -76,7 +76,7 @@ const ColorPalette = () => {
                                         style={{ backgroundColor: color.hex }}
                                     />
                                     <span
-                                        className="text-[8px] font-medium tracking-wider uppercase transition-colors duration-300"
+                                        className="text-[8px]  uppercase transition-colors duration-300"
                                         style={{ color: activeColor === color.hex ? activeColor : '#9ca3af' }}
                                     >
                                         {color.hex}
@@ -91,12 +91,12 @@ const ColorPalette = () => {
                     <div>
                         <div className="space-y-5">
                             {[
-                                { label: 'Heading H1', size: 'text-4xl md:text-5xl leading-tight', weight: 'font-bold' },
-                                { label: 'Heading H2', size: 'text-3xl md:text-4xl leading-tight', weight: 'font-bold' },
-                                { label: 'Heading H3', size: 'text-2xl md:text-3xl leading-tight', weight: 'font-semibold' },
-                                { label: 'Heading H4', size: 'text-xl md:text-2xl leading-tight', weight: 'font-semibold' },
-                                { label: 'Heading H5', size: 'text-lg md:text-xl leading-tight', weight: 'font-medium' },
-                                { label: 'Heading H6', size: 'text-base md:text-lg leading-tight', weight: 'font-medium' },
+                                { label: 'Heading H1', size: 'text-4xl md:text-5xl leading-tight', },
+                                { label: 'Heading H2', size: 'text-3xl md:text-4xl leading-tight', },
+                                { label: 'Heading H3', size: 'text-2xl md:text-3xl leading-tight', },
+                                { label: 'Heading H4', size: 'text-xl md:text-2xl leading-tight', },
+                                { label: 'Heading H5', size: 'text-lg md:text-xl leading-tight', },
+                                { label: 'Heading H6', size: 'text-base md:text-lg leading-tight', },
                             ].map((typo, i) => (
                                 <div key={i} className="flex justify-between items-end border-b border-gray-100 pb-4 group hover:border-gray-300 transition-colors cursor-default">
                                     <div
@@ -120,7 +120,7 @@ const ColorPalette = () => {
                         style={{ backgroundColor: activeColor }}
                     >
                         <span
-                            className="text-sm font-semibold tracking-wider transition-colors duration-300"
+                            className="text-sm  transition-colors duration-300"
                             style={{ color: getContrastColor(activeColor) }}
                         >
                             Design Direction
@@ -147,10 +147,10 @@ const ColorPalette = () => {
                 </div>
 
                 {/* Right Column: Buttons & Icons */}
-                <div className="lg:col-span-4 flex flex-col justify-between  relative z-10 mt-12 lg:mt-0">
+                <div className="lg:col-span-4 flex flex-col justify-between relative z-10 overflow-y-auto scroller_none">
                     {/* Buttons */}
                     <div>
-                        <h3 className="text-[11px] font-bold text-gray-400 mb-10 uppercase tracking-[0.2em] flex items-center gap-4">
+                        <h3 className="text-[11px]   text-gray-400 mb-10 uppercase tracking-[0.2em] flex items-center gap-4">
                             Button Style
                             <div className="h-px bg-gray-100 flex-1"></div>
                         </h3>
@@ -160,20 +160,20 @@ const ColorPalette = () => {
                             <div className="group">
                                 <div className="flex justify-between items-center mb-5">
                                     <h4
-                                        className="text-xl font-semibold transition-colors duration-300"
+                                        className="text-xl    transition-colors duration-300"
                                         style={{ color: activeColor }}
                                     >Primary</h4>
                                     <span className="text-xs text-gray-400 tracking-wider">60 PX</span>
                                 </div>
                                 <div className="grid grid-cols-2 gap-5">
                                     <button
-                                        className="h-[60px] flex items-center justify-center border-2 bg-white transition-all text-sm font-semibold rounded-none"
+                                        className="h-[60px] flex items-center justify-center border-2 bg-white transition-all text-sm    rounded-none"
                                         style={{ borderColor: activeColor, color: activeColor }}
                                     >
                                         Square Outline
                                     </button>
                                     <button
-                                        className="h-[60px] flex items-center justify-center transition-all text-sm font-semibold shadow-lg rounded-none"
+                                        className="h-[60px] flex items-center justify-center transition-all text-sm    shadow-lg rounded-none"
                                         style={{ backgroundColor: activeColor, color: getContrastColor(activeColor), boxShadow: `0 10px 15px -3px ${activeColor}40` }}
                                     >
                                         Square Fill
@@ -185,7 +185,7 @@ const ColorPalette = () => {
                             <div className="group">
                                 <div className="flex justify-between items-center mb-5">
                                     <h4
-                                        className="text-xl font-semibold transition-colors duration-300"
+                                        className="text-xl    transition-colors duration-300"
                                         style={{ color: activeColor }}
                                     >Secondary</h4>
                                     <span className="text-xs text-gray-400 tracking-wider">40 PX</span>
@@ -210,7 +210,7 @@ const ColorPalette = () => {
                             <div className="group">
                                 <div className="flex justify-between items-center mb-5">
                                     <h4
-                                        className="text-xl font-semibold transition-colors duration-300"
+                                        className="text-xl    transition-colors duration-300"
                                         style={{ color: activeColor }}
                                     >Tab</h4>
                                     <span className="text-xs text-gray-400 tracking-wider">32 PX</span>
@@ -235,14 +235,14 @@ const ColorPalette = () => {
 
                     {/* Icons */}
                     <div>
-                        <h3 className="text-[11px] font-bold text-gray-400 mb-8 uppercase tracking-[0.2em] flex items-center gap-4">
+                        <h3 className="text-[11px]   text-gray-400 mb-8 uppercase tracking-[0.2em] flex items-center gap-4">
                             Icon Style
                             <div className="h-px bg-gray-100 flex-1"></div>
                         </h3>
                         <div className="grid grid-cols-3 gap-3 relative">
                             {/* Line */}
                             <div className="aspect-square border border-gray-100 flex flex-col items-center justify-center gap-2 relative group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                                <span className="absolute transition-all duration-300 top-3 left-3 text-[9px] uppercase tracking-wider font-semibold" style={{ color: activeColor }}>Line</span>
+                                <span className="absolute transition-all duration-300 top-3 left-3 text-[9px] uppercase tracking-wider   " style={{ color: activeColor }}>Line</span>
                                 <div
                                     className="w-8 h-8 group-hover:scale-110 transition-all duration-300"
                                     style={{
@@ -256,7 +256,7 @@ const ColorPalette = () => {
                             </div>
                             {/* Fill */}
                             <div className="aspect-square border border-gray-100 flex flex-col items-center justify-center gap-2 relative group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                                <span className="absolute transition-all duration-300 top-3 left-3 text-[9px] uppercase tracking-wider font-semibold" style={{ color: activeColor }}>Fill</span>
+                                <span className="absolute transition-all duration-300 top-3 left-3 text-[9px] uppercase tracking-wider   " style={{ color: activeColor }}>Fill</span>
                                 <div
                                     className="w-11 h-11 group-hover:scale-110 transition-all duration-300"
                                     style={{
@@ -270,7 +270,7 @@ const ColorPalette = () => {
                             </div>
                             {/* Hand drawn */}
                             <div className="aspect-square border border-gray-100 flex flex-col items-center justify-center gap-2 relative group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                                <span className="absolute transition-all duration-300 top-3 left-3 text-[9px] uppercase tracking-wider font-semibold" style={{ color: activeColor }}>Hand drawn</span>
+                                <span className="absolute transition-all duration-300 top-3 left-3 text-[9px] uppercase tracking-wider   " style={{ color: activeColor }}>Hand drawn</span>
                                 <div
                                     className="w-8 h-8 group-hover:scale-110 transition-all duration-300"
                                     style={{

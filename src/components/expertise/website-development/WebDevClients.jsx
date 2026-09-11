@@ -6,6 +6,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 gsap.registerPlugin(ScrollTrigger)
 
 export const clientsData = [
@@ -76,31 +77,17 @@ export const clientsData = [
 
 const ClientTestimonialCard = ({ item }) => {
     const cardRef = useRef(null);
-    const tlRef = useRef(null);
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         if (!cardRef.current) return;
         const slide = cardRef.current.closest(".swiper-slide");
-        const blocks = cardRef.current.querySelectorAll(".grid_blocks");
-
-        tlRef.current = gsap.timeline({
-            paused: true,
-            defaults: { ease: "power2.out" },
-        }).to(blocks, {
-            opacity: 1,
-            duration: 0.04,
-            ease: "expo.out",
-            stagger: {
-                each: 0.003,
-                from: "random",
-            },
-        });
 
         const checkActive = () => {
             if (slide && slide.classList.contains("swiper-slide-active")) {
-                tlRef.current?.play();
+                setIsActive(true);
             } else {
-                tlRef.current?.reverse();
+                setIsActive(false);
             }
         };
 
@@ -115,36 +102,18 @@ const ClientTestimonialCard = ({ item }) => {
         return () => observer.disconnect();
     }, []);
 
-    const handleMouseEnter = () => {
-        tlRef.current?.play();
-    };
-
-    const handleMouseLeave = () => {
-        const slide = cardRef.current?.closest(".swiper-slide");
-        if (!slide?.classList.contains("swiper-slide-active")) {
-            tlRef.current?.reverse();
-        }
-    };
-
     return (
         <div
             ref={cardRef}
             className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#f6f8ff] group-[.swiper-slide-active]:text-white! group p-6 md:p-8 text_blue transition-colors duration-300 group-[.swiper-slide-active]:border-[#002bba]"
         >
-            {/* Pixel Grid Blocks Overlay */}
-            <div className="absolute inset-0 grid grid-cols-12 md:grid-cols-15 z-0 pointer-events-none overflow-hidden rounded-[1rem]">
-                {[...Array(180)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="grid_blocks shrink-0 w-full aspect-square bg-[#002bba] opacity-0 pointer-events-none"
-                    />
-                ))}
-            </div>
+            {/* Canvas Grid Overlay with Configurable boxSize and color */}
+            <PixelGridCanvas isActive={isActive} boxSize={30} color="#002bba" duration={1.5} />
 
             <div className="relative z-10 flex h-full flex-col justify-between gap-10">
                 <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
-                        <div className="center h-12 w-12 shrink-0 rounded-full bg-[#002bba] group-[.swiper-slide-active]:bg-white  uppercase text-white group-[.swiper-slide-active]:text-[#002bba]  border border-transparent group-[.swiper-slide-active]:border-white transition-all duration-300">
+                        <div className="center h-12 w-12 shrink-0 rounded-full bg-[#002bba] group-[.swiper-slide-active]:bg-white uppercase text-white group-[.swiper-slide-active]:text-[#002bba] border border-transparent group-[.swiper-slide-active]:border-white transition-all duration-300">
                             <p className='translate-y-0.5'>
                                 {item.author.split(" ").map((name) => name[0]).join("")}
                             </p>
@@ -155,7 +124,7 @@ const ClientTestimonialCard = ({ item }) => {
                         </div>
                     </div>
 
-                    <div className="center h-11 w-11 shrink-0 rounded-full border border-[#002bba]/20 bg-white text-[#002bba]">
+                    <div className="center h-11 w-11 shrink-0 rounded-full border border-[#002bba]/20 group-[.swiper-slide-active]:border-white/30 bg-white text-[#002bba] transition-all duration-300">
                         <RiDoubleQuotesR size={22} />
                     </div>
                 </div>

@@ -3,7 +3,8 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import CmsDashboard from "./cmsDashboard/CmsDashboard";
+
+import CmsDashboard from "./Dashboard/CmsDashboard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,7 @@ const CustomsCmsExplore = () => {
   const sectionRef = useRef(null);
 
   useGSAP(() => {
+
     gsap.from(".cms-dashboard-wrapper", {
       y: 80,
       opacity: 0,
@@ -28,6 +30,7 @@ const CustomsCmsExplore = () => {
 
   return (
     <section
+    data-hide-header
       ref={sectionRef}
       className="relative overflow-hidden bg_blue"
     >
@@ -37,7 +40,7 @@ const CustomsCmsExplore = () => {
         <div className="w-full   padding pt-0! text-white ">
           <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
             <div className="">
-              <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Explore what your CMS can do </h2>
+              <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Explore CMS </h2>
             </div>
             <div className="text-xs max-sm:hidden pt-4">
             </div>
@@ -51,8 +54,8 @@ const CustomsCmsExplore = () => {
         </div>
 
         <div className=" padding md:p-0! cms-dashboard-wrapper">
-          <div className="w-[80%] mx-auto">
-          <CmsDashboard />
+          <div className="w-[80%] h-[90vh] mx-auto">
+            <CmsDashboard />
           </div>
         </div>
       </div>

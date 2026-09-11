@@ -174,7 +174,7 @@ const Footer = () => {
   return (
     <div className=" noise-bg w-full md:h-screen bg_blue  padding relative z-100">
 
-      <div className=" relative z-10 w-full hidden md:block  md:h-full p-3">
+      <div className=" relative z-10 w-full hidden md:block  md:h-full py-3">
         {footerRows.map((row) => (
           <div key={row.id} className="w-full h-[50vh] md:h-1/3 grid grid-cols-3 md:grid-cols-9">
             {row.items.map((item, i) => {
@@ -227,14 +227,14 @@ const Footer = () => {
         <div className=" grid grid-cols-3">
           {mobileFooterData.map((item, index) => {
             if (Object.keys(item).length === 0) {
-              return <div className={`h-[25svh]  ${item.alignment} p-3 border border-white/10 rounded-xl`} key={index} />;
+              return <div className={`h-[25svh]  ${item.alignment} p-3 border border-white/10 rounded-md`} key={index} />;
             }
 
             if (item.label) {
               return (
                 <div
                   ref={(el) => (flickerRefs.current.push(el))}
-                  key={index} className={` h-[25svh] flicker ${item.alignment} p-3 border border-white/10 rounded-xl text-xs font-thin uppercase`}>
+                  key={index} className={` h-[25svh] flicker ${item.alignment} p-3 border border-white/10 rounded-md text-xs font-thin uppercase`}>
                   <p>
                     {item.label}
                   </p>
@@ -245,7 +245,7 @@ const Footer = () => {
             if (item.links) {
               return (
                 <div
-                  key={index} className={` h-[25svh] ${item.alignment} p-3 border border-white/10 rounded-xl flex flex-col gap-2`}>
+                  key={index} className={` h-[25svh] ${item.alignment} p-3 border border-white/10 rounded-md flex flex-col gap-2`}>
                   {item.links.map((link, i) => (
                     <Link
                       ref={(el) => (flickerRefs.current.push(el))}

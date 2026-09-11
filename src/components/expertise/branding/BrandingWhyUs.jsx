@@ -44,7 +44,7 @@ const BrandingWhyUs = () => {
 
 
     return (
-        <div className="w-full padding py-10! md:py-24! text_blue bg-white">
+        <div className="w-full padding mt-8 md:mt-16 py-8! md:py-16! border-t text_blue bg-white">
             {/* Heading */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">

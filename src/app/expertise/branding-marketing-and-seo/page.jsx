@@ -16,6 +16,30 @@ export const metadata = createMetadata({
 
 const heroVideo = "https://vz-f76b55f9-7b8.b-cdn.net/eb0dedc2-f474-4c0c-8efc-57751e3e5202/playlist.m3u8"
 
+const heroIcons = {
+  "Strategy": [
+    { src: "/images/expertisepage/branding/icons/brand_target.png", top: "18%", left: "10%", size: "w-20 md:w-28", rotate: "-12deg" },
+    { src: "/images/expertisepage/branding/icons/brand_compass.png", top: "22%", right: "12%", size: "w-16 md:w-24", rotate: "15deg" },
+    { src: "/images/expertisepage/branding/icons/brand_growth.png", bottom: "25%", left: "15%", size: "w-24 md:w-32", rotate: "-8deg" },
+    { src: "/images/expertisepage/branding/icons/brand_bulb.png", bottom: "30%", right: "16%", size: "w-20 md:w-28", rotate: "10deg" },
+    { src: "/images/expertisepage/branding/icons/brand_map.png", top: "48%", left: "5%", size: "w-16 md:w-24", rotate: "-5deg" },
+  ],
+  "Identity": [
+    { src: "/images/expertisepage/branding/icons/brand_palette.png", top: "20%", left: "12%", size: "w-20 md:w-28", rotate: "15deg" },
+    { src: "/images/expertisepage/branding/icons/brand_typography.png", top: "15%", right: "14%", size: "w-24 md:w-32", rotate: "-10deg" },
+    { src: "/images/expertisepage/branding/icons/brand_logo.png", bottom: "28%", left: "18%", size: "w-24 md:w-32", rotate: "12deg" },
+    { src: "/images/expertisepage/branding/icons/brand_book.png", bottom: "24%", right: "12%", size: "w-20 md:w-28", rotate: "-15deg" },
+    { src: "/images/expertisepage/branding/icons/brand_diamond.png", top: "45%", right: "8%", size: "w-18 md:w-24", rotate: "8deg" },
+  ],
+  "SEO": [
+    { src: "/images/expertisepage/branding/icons/seo_search.png", top: "16%", left: "14%", size: "w-24 md:w-32", rotate: "-10deg" },
+    { src: "/images/expertisepage/branding/icons/seo_chart.png", top: "20%", right: "10%", size: "w-24 md:w-32", rotate: "12deg" },
+    { src: "/images/expertisepage/branding/icons/seo_ai.png", bottom: "26%", left: "12%", size: "w-20 md:w-28", rotate: "18deg" },
+    { src: "/images/expertisepage/branding/icons/seo_link.png", bottom: "28%", right: "16%", size: "w-20 md:w-28", rotate: "-12deg" },
+    { src: "/images/expertisepage/branding/icons/seo_score.png", top: "50%", left: "8%", size: "w-18 md:w-24", rotate: "6deg" },
+  ]
+};
+
 const page = () => {
   const schema = {
     "@context": "https://schema.org",
@@ -38,6 +62,7 @@ const page = () => {
         expertiseName="Found first. Remembered longer. "
         expertiseHeading={<>Be found. <br /> Be remembered.</>}
         btnsLabels={["Strategy", "Identity", "SEO"]}
+        heroIcons={heroIcons}
         introHeading={<>A brilliant website nobody finds is a well-kept secret. We make sure yours isn't.</>}
         introText="Identity, content and search built as one system — each making the others work harder."
         videoSrc={heroVideo}
@@ -55,8 +80,8 @@ three together, because separately they underperform."
         ]}
       />
       <BrandingWhyUs />
-      <BrandingWorkflowSection />
       <BrandingDisciplines />
+      <BrandingWorkflowSection />
       <WebDevClients />
       {/* <TicketEffect /> */}
     </>
