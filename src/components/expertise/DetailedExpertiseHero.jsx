@@ -92,11 +92,9 @@ const DetailedExpertiseHero = ({
                                     transitionDelay: isHovered ? `${idx * 60}ms` : '0ms',
                                 }}
                             >
-                                <Image
+                                <img
                                     src={icon.src}
                                     alt="Expertise icon"
-                                    width={128}
-                                    height={128}
                                     className="w-20 h-full object-contain filter drop-shadow-[0_15px_30px_rgba(0,43,186,0.25)]"
                                 />
                             </div>
