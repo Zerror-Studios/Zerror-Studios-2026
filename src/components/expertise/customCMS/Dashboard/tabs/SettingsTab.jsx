@@ -180,7 +180,7 @@ export default function SettingsTab() {
             className={`w-full py-2.5 rounded-xl font-bold text-xs transition-all shadow-md ${
               purged
                 ? "bg-emerald-600 text-white shadow-emerald-500/30"
-                : "bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white shadow-rose-600/20"
+                : "bg-rose-600 hover:bg-rose-500 text-white shadow-rose-600/20"
             }`}
           >
             {purging ? "Purging Edge Nodes..." : purged ? "✓ Global Edge Cache Purged!" : "Purge All Edge Caches"}

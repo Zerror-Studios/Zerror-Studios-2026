@@ -92,8 +92,8 @@ const HeroSection = () => {
             <PixelGridCanvas
               isActive={!isRevealedL}
               color="#ffffff"
-              boxSize={25}
-              duration={0.8}
+              boxSize={30}
+              duration={1.5}
               className="absolute inset-0 w-full h-full pointer-events-none z-40"
             />
             <Image fill src={'/images/about/gen_img_5.png'} alt="l-Img" className="cover" />
@@ -125,8 +125,8 @@ const HeroSection = () => {
               <PixelGridCanvas
                 isActive={!isRevealedR}
                 color="#ffffff"
-                boxSize={25}
-                duration={0.8}
+                boxSize={30}
+                duration={1.5}
                 className="absolute inset-0 w-full h-full pointer-events-none z-40"
               />
               <Image fill src={'/images/about/gen_img_4.png'} alt="l-Img" className="cover" />

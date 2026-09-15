@@ -10,12 +10,12 @@ import {
 } from "../ui/SvgAnimatedIcons";
 
 const initialAssets = [
-  { id: 1, name: "hero_banner_4k.webp", type: "image", size: "342 KB", dimensions: "3840 x 2160", alt: "Zerror Hero Banner", color: "from-blue-600 to-indigo-800", date: "Today" },
-  { id: 2, name: "product_showcase_3d.webp", type: "image", size: "180 KB", dimensions: "1920 x 1080", alt: "3D Product Render", color: "from-purple-600 to-pink-800", date: "Yesterday" },
-  { id: 3, name: "brand_logo_vector.svg", type: "vector", size: "14 KB", dimensions: "Vector SVG", alt: "Zerror Studio Logo", color: "from-emerald-600 to-teal-800", date: "3 days ago" },
-  { id: 4, name: "cms_architecture_spec.pdf", type: "document", size: "2.4 MB", dimensions: "PDF Doc", alt: "CMS Specs Whitepaper", color: "from-amber-600 to-orange-800", date: "1 week ago" },
-  { id: 5, name: "ui_design_tokens.json", type: "code", size: "8 KB", dimensions: "JSON Config", alt: "Design System Tokens", color: "from-cyan-600 to-blue-800", date: "2 weeks ago" },
-  { id: 6, name: "intro_animation_loop.mp4", type: "video", size: "8.1 MB", dimensions: "1080p 60fps", alt: "Hero Intro Video", color: "from-rose-600 to-purple-800", date: "1 month ago" },
+  { id: 1, name: "hero_banner_4k.webp", type: "image", size: "342 KB", dimensions: "3840 x 2160", alt: "Zerror Hero Banner", color: "bg-blue-950/80 border border-blue-500/20", date: "Today" },
+  { id: 2, name: "product_showcase_3d.webp", type: "image", size: "180 KB", dimensions: "1920 x 1080", alt: "3D Product Render", color: "bg-slate-900 border border-slate-700/50", date: "Yesterday" },
+  { id: 3, name: "brand_logo_vector.svg", type: "vector", size: "14 KB", dimensions: "Vector SVG", alt: "Zerror Studio Logo", color: "bg-blue-900/60 border border-blue-500/20", date: "3 days ago" },
+  { id: 4, name: "cms_architecture_spec.pdf", type: "document", size: "2.4 MB", dimensions: "PDF Doc", alt: "CMS Specs Whitepaper", color: "bg-slate-800 border border-slate-700/50", date: "1 week ago" },
+  { id: 5, name: "ui_design_tokens.json", type: "code", size: "8 KB", dimensions: "JSON Config", alt: "Design System Tokens", color: "bg-slate-900 border border-slate-700/50", date: "2 weeks ago" },
+  { id: 6, name: "intro_animation_loop.mp4", type: "video", size: "8.1 MB", dimensions: "1080p 60fps", alt: "Hero Intro Video", color: "bg-blue-950/80 border border-blue-500/20", date: "1 month ago" },
 ];
 
 export default function MediaTab({ searchTerm }) {
@@ -90,7 +90,7 @@ export default function MediaTab({ searchTerm }) {
               </div>
               <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-gradient-to-r from-blue-500 to-emerald-400 h-2 rounded-full transition-all duration-300"
+                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${uploadProgress}%` }}
                 ></div>
               </div>
@@ -98,7 +98,7 @@ export default function MediaTab({ searchTerm }) {
           ) : (
             <button
               onClick={handleSimulateUpload}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold shadow-lg shadow-blue-500/25 transition-all"
+              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition-all"
             >
               Simulate File Upload
             </button>
@@ -110,7 +110,7 @@ export default function MediaTab({ searchTerm }) {
       <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-bold text-white flex items-center gap-2">
-            <SparklesIcon className="w-4 h-4 text-purple-400" />
+            <SparklesIcon className="w-4 h-4 text-blue-400" />
             Media Asset Library ({filteredAssets.length})
           </h3>
           <span className="text-[11px] text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
@@ -126,7 +126,7 @@ export default function MediaTab({ searchTerm }) {
               className="group relative rounded-xl bg-white/5 border border-white/10 hover:border-blue-500/50 p-2 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10"
             >
               {/* Thumbnail representation */}
-              <div className={`w-full h-24 rounded-lg bg-gradient-to-tr ${asset.color} flex flex-col items-center justify-center p-2 text-white relative overflow-hidden mb-2`}>
+              <div className={`w-full h-24 rounded-lg ${asset.color} flex flex-col items-center justify-center p-2 text-white relative overflow-hidden mb-2`}>
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-black/40 px-2 py-0.5 rounded backdrop-blur-sm">
                   {asset.type}
                 </span>
@@ -163,7 +163,7 @@ export default function MediaTab({ searchTerm }) {
             </div>
 
             <div className="space-y-4 text-xs">
-              <div className={`w-full h-36 rounded-xl bg-gradient-to-tr ${selectedAsset.color} flex items-center justify-center text-white font-mono font-bold text-sm shadow-inner`}>
+              <div className={`w-full h-36 rounded-xl ${selectedAsset.color} flex items-center justify-center text-white font-mono font-bold text-sm shadow-inner`}>
                 {selectedAsset.name}
               </div>
 

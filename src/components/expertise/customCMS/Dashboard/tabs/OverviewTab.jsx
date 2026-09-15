@@ -13,17 +13,17 @@ import {
 } from "../ui/SvgAnimatedIcons";
 
 const initialProducts = [
-  { id: 1, name: "Jacquemus Largo", sub: "T-shirt", price: "$114.00", qty: 124, total: "$14,136.00", icon: "👕", bg: "bg-amber-100 text-amber-800" },
-  { id: 2, name: "Aries x Umbro Centenary", sub: "Jersey", price: "$140.90", qty: 76, total: "$10,708.40", icon: "🎽", bg: "bg-rose-100 text-rose-800" },
-  { id: 3, name: "There Was One", sub: "Pants", price: "$85.50", qty: 54, total: "$4,617.00", icon: "👖", bg: "bg-blue-100 text-blue-800" },
-  { id: 4, name: "Song For The Mute", sub: "Baseball cap", price: "$230.00", qty: 68, total: "$15,640.00", icon: "🧢", bg: "bg-indigo-100 text-indigo-800" },
+  { id: 1, name: "Jacquemus Largo", sub: "T-shirt", price: "$114.00", qty: 124, total: "$14,136.00", icon: "👕", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 2, name: "Aries x Umbro Centenary", sub: "Jersey", price: "$140.90", qty: 76, total: "$10,708.40", icon: "🎽", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 3, name: "There Was One", sub: "Pants", price: "$85.50", qty: 54, total: "$4,617.00", icon: "👖", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 4, name: "Song For The Mute", sub: "Baseball cap", price: "$230.00", qty: 68, total: "$15,640.00", icon: "🧢", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
 ];
 
 const geographyList = [
   { country: "Spain", flag: "🇪🇸", percent: 33, color: "bg-blue-600" },
-  { country: "USA", flag: "🇺🇸", percent: 25, color: "bg-indigo-600" },
-  { country: "Canada", flag: "🇨🇦", percent: 22, color: "bg-rose-500" },
-  { country: "Portugal", flag: "🇵🇹", percent: 20, color: "bg-amber-500" },
+  { country: "USA", flag: "🇺🇸", percent: 25, color: "bg-blue-400" },
+  { country: "Canada", flag: "🇨🇦", percent: 22, color: "bg-slate-400" },
+  { country: "Portugal", flag: "🇵🇹", percent: 20, color: "bg-slate-300" },
 ];
 
 export default function OverviewTab({ searchTerm, theme }) {
@@ -85,7 +85,7 @@ export default function OverviewTab({ searchTerm, theme }) {
             <div className={`text-2xl font-extrabold tracking-tight mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
               $52 994
             </div>
-            <div className="flex items-center gap-1 text-[11px] font-bold text-rose-500">
+            <div className="flex items-center gap-1 text-[11px] font-bold text-slate-400">
               <span>1.2%</span>
               <TrendDownArrow />
             </div>
@@ -121,10 +121,10 @@ export default function OverviewTab({ searchTerm, theme }) {
             </h3>
             <div className="flex items-center gap-4 text-xs">
               <span className={`flex items-center gap-1.5 font-medium text-[11px] ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-                <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Income
+                <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Income
               </span>
               <span className={`flex items-center gap-1.5 font-medium text-[11px] ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-                <span className="w-2.5 h-2.5 rounded-full bg-pink-500"></span> Profit
+                <span className="w-2.5 h-2.5 rounded-full bg-slate-400"></span> Profit
               </span>
             </div>
           </div>
@@ -245,16 +245,16 @@ export default function OverviewTab({ searchTerm, theme }) {
 
           <div className={`grid grid-cols-2 gap-2 text-xs pt-3 border-t ${isDark ? "border-white/10" : "border-gray-100"}`}>
             <span className={`flex items-center gap-2 text-[11px] ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span> T-shirts
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span> T-shirts
             </span>
             <span className={`flex items-center gap-2 text-[11px] ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-              <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span> Hoodies
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-500"></span> Hoodies
             </span>
             <span className={`flex items-center gap-2 text-[11px] ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-              <span className="w-2.5 h-2.5 rounded-full bg-pink-500"></span> Jeans
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-300"></span> Jeans
             </span>
             <span className={`flex items-center gap-2 text-[11px] ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Jackets
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span> Jackets
             </span>
           </div>
         </div>

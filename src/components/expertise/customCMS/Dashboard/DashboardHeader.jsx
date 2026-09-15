@@ -47,12 +47,12 @@ export default function DashboardHeader({ searchTerm, setSearchTerm, theme, setT
             }`}
         >
           <NotificationIcon className="w-4 h-4" />
-          <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500"></span>
+          <span className="absolute top-0 right-0 w-2 h-2 rounded-full bg-rose-500"></span>
         </button>
         {setIsDemoActive && (
           <button
             onClick={() => setIsDemoActive(false)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${isDark
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-bold transition-all duration-200 ${isDark
                 ? "bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30"
                 : "bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200"
               }`}

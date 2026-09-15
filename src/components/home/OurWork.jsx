@@ -195,14 +195,14 @@ const OurWork = () => {
                             onMouseEnter={() => handleMouseEnter(i)}
                             onMouseMove={(e) => handleMouseMove(e, i)}
                             onMouseLeave={() => handleMouseLeave(i)}
-                            className="w-full relative aspect-3/4 md:aspect-square bg_blue overflow-hidden"
+                            className="w-full relative aspect-video bg_blue overflow-hidden"
                         >
                             {isDesktop && (
                                 <div style={{
                                     clipPath: "inset(40%)",
                                     willChange: "transform, clip-path, opacity"
 
-                                }} className="hover_vid absolute z-10 top-0 opacity-0 left-0 pointer-events-none aspect-[303/389] w-[18rem] ">
+                                }} className="hover_vid absolute z-10 top-0 opacity-0 left-0 pointer-events-none aspect-video w-[25rem] ">
                                     <video loop muted autoPlay playsInline className="cover" src={item.cover_vid} alt="loading img" />
                                 </div>
                             )}

@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function SiteLayout({ children }) {
   const pathname = usePathname();
 
-  const skipFooterPaths = ["/deck", "/contact", "/work", "/pitchdeck"];
+  const skipFooterPaths = ["/deck", "/contact", "/pitchdeck"];
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";

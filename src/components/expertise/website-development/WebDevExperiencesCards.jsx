@@ -75,7 +75,7 @@ const ServiceCard = ({ service }) => {
             className="serv_crd relative group rounded-2xl overflow-hidden"
         >
             {/* Custom Canvas Pixel Grid Overlay */}
-            <PixelGridCanvas isActive={isHovered} boxSize={30} color="#002bba" duration={1} />
+            <PixelGridCanvas isActive={isHovered} boxSize={30} color="#002bba" duration={1.5} />
 
             <div
                 className="iner_crd w-full h-full cursor-pointer bg-[#f4f4f4] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white rounded-2xl flex flex-col justify-between p-6 md:p-8 relative z-10"

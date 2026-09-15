@@ -61,18 +61,22 @@ export default function CmsDashboard() {
           : "bg-[#F4F6F9] text-gray-900 border-gray-200/90"
         }`}
     >
-      {/* Try Demo Blue Overlay (Disappears when clicked, reappears when scrolled out of view) */}
-      {!isDemoActive && (
-        <div className="absolute inset-0 z-50 backdrop-blur-xs flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-300">
-          <div className="pt-3">
-            <Button
-              title="Try Demo"
-              variant=""
-              onClick={() => setIsDemoActive(true)}
-            />
-          </div>
+      {/* Try Demo Blue Overlay (Disappears smoothly when clicked, reappears smoothly when scrolled out of view) */}
+      <div
+        className={`absolute inset-0 z-50 backdrop-blur-xs flex flex-col items-center justify-center p-6 text-center transition-all duration-300 ease-in-out ${
+          isDemoActive
+            ? "opacity-0 pointer-events-none scale-95"
+            : "opacity-100 pointer-events-auto scale-100"
+        }`}
+      >
+        <div className="pt-3">
+          <Button
+            title="Try Demo"
+            variant="fill"
+            onClick={() => setIsDemoActive(true)}
+          />
         </div>
-      )}
+      </div>
 
       {/* Sidebar Component */}
       <DashboardSidebar

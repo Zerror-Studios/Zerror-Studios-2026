@@ -131,7 +131,7 @@ export default function SeoTab({ searchTerm }) {
           {/* OpenGraph Social Card Preview */}
           <div className="p-4 rounded-xl bg-white/5 border border-white/10 space-y-2">
             <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Social Share Card (Twitter / LinkedIn)</span>
-            <div className="rounded-lg bg-gradient-to-tr from-blue-900 to-indigo-900 h-28 flex flex-col justify-end p-3 border border-white/10">
+            <div className="rounded-lg bg-blue-950 border border-blue-500/20 h-28 flex flex-col justify-end p-3">
               <span className="text-[10px] font-bold text-blue-300 uppercase">zerrorstudios.com</span>
               <h5 className="text-xs font-bold text-white truncate">{metaTitle}</h5>
             </div>

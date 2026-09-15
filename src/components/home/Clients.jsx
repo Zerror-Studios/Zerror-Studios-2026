@@ -16,8 +16,8 @@ const ClientBox = ({ item }) => {
             <PixelGridCanvas
                 isActive={isHovered}
                 color="#ffffff"
-                boxSize={20}
-                duration={0.5}
+                boxSize={30}
+                duration={1.5}
                 className="absolute inset-0 w-full h-full pointer-events-none z-0"
             />
 

@@ -51,9 +51,9 @@ const TechCard = ({ card, className }) => {
             {/* Custom Pixel Canvas Animation Overlay */}
             <PixelGridCanvas
                 isActive={isHovered}
-                boxSize={28}
+                boxSize={30}
                 color="#002bba"
-                duration={1}
+                duration={1.5}
                 className="absolute inset-0 w-full h-full pointer-events-none rounded-2xl z-0"
             />
 

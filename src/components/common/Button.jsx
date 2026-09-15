@@ -69,7 +69,7 @@ const Button = ({
     }
 
     const buttonClasses = `
-    button_paren px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm flex items-center 
+    button_paren px-3 secondary-font  md:px-4 py-1.5 md:py-2 text-xs md:text-sm flex items-center 
      uppercase rounded-md text_blue
     ${variant === "fill"
             ? "bg-white"

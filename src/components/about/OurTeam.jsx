@@ -260,7 +260,7 @@ const OurTeam = () => {
                   isActive={hoveredIndex !== null && hoveredIndex !== index}
                   color="#ffffff"
                   boxSize={30}
-                  duration={0.5}
+                  duration={1.5}
                   className="absolute inset-0 w-full h-full pointer-events-none z-10"
                 />
               )}

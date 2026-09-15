@@ -32,7 +32,7 @@ export default function DashboardSidebar({ activeTab, setActiveTab, theme }) {
         {/* User Profile / Header */}
         <div className="flex items-center gap-2.5 px-3 py-3 mb-6">
           <div className={`flex items-center gap-2.5 ${isDark ? "border-white/10" : "border-gray-200"}`}>
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 text-white font-bold text-xs flex items-center justify-center shadow-sm">
+            <div className="w-8 h-8 rounded-full bg-[#002bba] text-white font-bold text-xs flex items-center justify-center shadow-sm">
               KM
             </div>
             <div className="hidden sm:block text-left leading-tight">
@@ -70,15 +70,17 @@ export default function DashboardSidebar({ activeTab, setActiveTab, theme }) {
       </div>
 
       {/* Premium Plan Card */}
-      <div className="mt-6 p-4 rounded-2xl bg-gradient-to-br from-rose-500 via-purple-600 to-blue-600 text-white shadow-lg relative overflow-hidden">
-        <div className="w-7 h-7 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-3">
+      <div className={`mt-6 p-4 rounded-2xl border text-white relative overflow-hidden transition-all ${
+        isDark ? "bg-white/5 border-white/10" : "bg-[#0A101D] border-gray-800"
+      }`}>
+        <div className="w-7 h-7 rounded-xl bg-white/10 flex items-center justify-center mb-3">
           <span className="text-xs font-bold">👑</span>
         </div>
         <h4 className="text-xs font-bold mb-1">Premium plan</h4>
-        <p className="text-[11px] text-white/80 leading-snug mb-3">
+        <p className="text-[11px] text-gray-300 leading-snug mb-3">
           Get access to advanced SalesRadar features
         </p>
-        <button className="w-full py-1.5 rounded-xl bg-white text-blue-600 text-xs font-bold hover:bg-gray-50 transition-colors shadow-md">
+        <button className="w-full py-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-500 transition-colors shadow-sm">
           Upgrade now!
         </button>
       </div>

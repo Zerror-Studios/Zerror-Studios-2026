@@ -202,14 +202,14 @@ export const SalesAnalyticsBarChart = () => {
         {months.map((month, idx) => (
           <div key={idx} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group cursor-pointer">
             <div className="w-full flex items-end justify-center gap-1.5 h-44 border-b border-gray-100 dark:border-white/10 pb-1">
-              {/* Income Bar (Blue) */}
+              {/* Income Bar (Solid Soft Blue) */}
               <div
-                className="analytics-bar w-3 md:w-3.5 bg-gradient-to-t from-blue-500 to-cyan-400 rounded-t-sm transition-opacity group-hover:opacity-85"
+                className="analytics-bar w-3 md:w-3.5 bg-blue-600 dark:bg-blue-500 rounded-t-sm transition-opacity group-hover:opacity-85"
                 style={{ height: `${incomeData[idx]}%` }}
               ></div>
-              {/* Profit Bar (Pink/Magenta) */}
+              {/* Profit Bar (Soft Muted Slate) */}
               <div
-                className="analytics-bar w-3 md:w-3.5 bg-gradient-to-t from-pink-500 to-purple-500 rounded-t-sm transition-opacity group-hover:opacity-85"
+                className="analytics-bar w-3 md:w-3.5 bg-slate-300 dark:bg-slate-600 rounded-t-sm transition-opacity group-hover:opacity-85"
                 style={{ height: `${profitData[idx]}%` }}
               ></div>
             </div>
@@ -231,30 +231,30 @@ export const EcommDonutChart = ({ timeFilter = "Monthly" }) => {
       displayPct: "40%",
       label: "T-shirts",
       segments: [
-        { stroke: "#3B82F6", array: "77.4 201", offset: 0 },
-        { stroke: "#F97316", array: "53.3 201", offset: -80.4 },
-        { stroke: "#EC4899", array: "33.2 201", offset: -136.7 },
-        { stroke: "#10B981", array: "25.1 201", offset: -172.9 },
+        { stroke: "#2563EB", array: "77.4 201", offset: 0 },
+        { stroke: "#64748B", array: "53.3 201", offset: -80.4 },
+        { stroke: "#93C5FD", array: "33.2 201", offset: -136.7 },
+        { stroke: "#CBD5E1", array: "25.1 201", offset: -172.9 },
       ]
     },
     "Weekly": {
       displayPct: "30%",
       label: "T-shirts",
       segments: [
-        { stroke: "#3B82F6", array: "57.3 201", offset: 0 },
-        { stroke: "#F97316", array: "53.3 201", offset: -60.3 },
-        { stroke: "#EC4899", array: "45.3 201", offset: -116.6 },
-        { stroke: "#10B981", array: "33.2 201", offset: -164.9 },
+        { stroke: "#2563EB", array: "57.3 201", offset: 0 },
+        { stroke: "#64748B", array: "53.3 201", offset: -60.3 },
+        { stroke: "#93C5FD", array: "45.3 201", offset: -116.6 },
+        { stroke: "#CBD5E1", array: "33.2 201", offset: -164.9 },
       ]
     },
     "Monthly": {
       displayPct: "18%",
       label: "T-shirts",
       segments: [
-        { stroke: "#3B82F6", array: "41.2 201", offset: 0 },
-        { stroke: "#F97316", array: "67.4 201", offset: -44.2 },
-        { stroke: "#EC4899", array: "47.3 201", offset: -114.6 },
-        { stroke: "#10B981", array: "33.2 201", offset: -164.9 },
+        { stroke: "#2563EB", array: "41.2 201", offset: 0 },
+        { stroke: "#64748B", array: "67.4 201", offset: -44.2 },
+        { stroke: "#93C5FD", array: "47.3 201", offset: -114.6 },
+        { stroke: "#CBD5E1", array: "33.2 201", offset: -164.9 },
       ]
     }
   };
