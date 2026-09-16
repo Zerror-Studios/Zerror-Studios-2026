@@ -323,7 +323,7 @@ const FinalView = () => {
                                                     const el = document.getElementById('products-section');
                                                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                                                 }}
-                                                className={`${isMobileMode ? 'px-3 py-1.5 text-[9px]' : 'px-6 sm:px-8 py-3 sm:py-4 text-xs'} bg-white text-black font-semibold uppercase tracking-widest hover:bg_blue hover:text-white transition-colors duration-300 shadow-xl flex items-center gap-1.5 group rounded-sm`}
+                                                className={`${isMobileMode ? 'px-3 py-1.5 text-[9px]' : 'px-6 sm:px-8 py-3 sm:py-4 text-xs'} bg-white text-black font-semibold uppercase tracking-widest hover:bg_blue hover:text-white hover:bg-transparent hover:border-white border border-transparent transition-colors duration-300  flex items-center gap-1.5 group rounded-sm`}
                                             >
                                                 Shop Collection <RiArrowRightLine size={12} className="group-hover:translate-x-1 transition-transform" />
                                             </button>

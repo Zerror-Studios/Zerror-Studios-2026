@@ -58,7 +58,7 @@ const ColorPalette = () => {
 
                 {/* Left Column: Colors & Typography */}
                 <div className="lg:col-span-4 flex flex-col justify-between gap-6 relative z-10 overflow-y-auto scroller_none">
-                    <div className="text-3xl">
+                    <div  style={{ color: activeColor }} className="text-3xl">
                         <h3>Color Palette</h3>
                     </div>
 
@@ -72,7 +72,7 @@ const ColorPalette = () => {
                                     onClick={() => setActiveColor(color.hex)}
                                 >
                                     <div
-                                        className={`w-18 h-18 rounded-full transition-all duration-300 relative z-10 ${color.border ? 'border border-gray-200' : ''} ${activeColor === color.hex ? '-translate-y-2 shadow-lg scale-110' : ' group-hover:-translate-y-1 group-hover: '}`}
+                                        className={`w-16 h-16 rounded-full transition-all duration-300 relative z-10 ${color.border ? 'border border-gray-200' : ''} ${activeColor === color.hex ? '-translate-y-2 shadow-lg scale-110' : ' group-hover:-translate-y-1 group-hover: '}`}
                                         style={{ backgroundColor: color.hex }}
                                     />
                                     <span
@@ -150,9 +150,9 @@ const ColorPalette = () => {
                 <div className="lg:col-span-4 flex flex-col justify-between relative z-10 overflow-y-auto scroller_none">
                     {/* Buttons */}
                     <div>
-                        <h3 className="text-[11px]   text-gray-400 mb-10 uppercase tracking-[0.2em] flex items-center gap-4">
+                        <h3 className="text-[11px]   text-gray-400 mb-2  uppercase flex items-center gap-4">
                             Button Style
-                            <div className="h-px bg-gray-100 flex-1"></div>
+                            <div className="h-px bg-gray-100"></div>
                         </h3>
 
                         <div className="space-y-12">
@@ -235,9 +235,9 @@ const ColorPalette = () => {
 
                     {/* Icons */}
                     <div>
-                        <h3 className="text-[11px]   text-gray-400 mb-8 uppercase tracking-[0.2em] flex items-center gap-4">
+                        <h3 className="text-[11px]   text-gray-400 mb-2 uppercase  flex items-center gap-4">
                             Icon Style
-                            <div className="h-px bg-gray-100 flex-1"></div>
+                            <div className="h-px bg-gray-100"></div>
                         </h3>
                         <div className="grid grid-cols-3 gap-3 relative">
                             {/* Line */}

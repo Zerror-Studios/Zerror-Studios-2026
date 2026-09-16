@@ -46,7 +46,7 @@ export const caseStudies = [
         slug: "i-white-korea",
         liveLink: "https://www.esquireindia.co.in/",
         category: "Korean Beauty Essentials",
-        cover_img: "/images/projects/iWhiteKorea/iWhiteKorea_cover.webp",
+        cover_img: "/images/projects/iWhiteKorea/iWhiteKorea_cover_landscape.jpg",
         cover_vid: "/images/projects/iWhiteKorea/iwhitekorea_hover.mp4",
     },
     {
@@ -84,7 +84,7 @@ export const caseStudies = [
         slug: "esquire-india",
         liveLink: "https://www.esquireindia.co.in/",
         category: "Man at his best",
-        cover_img: "/images/projects/Esquire India/esquire_india_cover.webp",
+        cover_img: "/images/projects/Esquire India/esquire_india_cover_landscape.jpg",
     },
     {
         id: 11,
@@ -93,7 +93,7 @@ export const caseStudies = [
         slug: "deveshe-dreams",
         liveLink: "https://www.deveshedreams.com",
         category: "Artistic Fashion Label",
-        cover_img: "/images/projects/deveshe/cover_img.webp",
+        cover_img: "/images/projects/deveshe/cover_img_landscape.jpg",
     },
     {
         id: 7,

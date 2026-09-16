@@ -70,12 +70,12 @@ const ImageEffect = () => {
                     loop
                     playsInline
                     src="/videos/about_video.mp4"
-                    className="cover"></video>
+                    className="cover brightness-75"></video>
                     </div>
             </div>
           </div>
 
-          <div ref={txtScrollBgRef} className="txt_scroll_bg padding py-0! w-full h-[300vh] relative z-[80] ">
+          <div ref={txtScrollBgRef} className="txt_scroll_bg  padding py-0! w-full h-[300vh] relative z-[80] ">
             <div className="sticky top-0 h-screen flex justify-center gap-y-5 flex-col w-full pointer-events-none">
               {[
                 "5+ years of hands-on product and digital execution",

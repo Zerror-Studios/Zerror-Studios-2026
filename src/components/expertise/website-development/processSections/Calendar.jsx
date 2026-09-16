@@ -39,6 +39,7 @@ export const CALENDAR_EVENTS = [
         vAlign: "top",
         stage: "kickoff",
         component: <GoogleMeet />,
+        content: `### 🤝 Client Kickoff Meet\n**Phase:** Week 1 • Day 1\n\n- Align on project goals, timeline & core deliverables.\n- Identify target audience & brand positioning strategies.\n- Establish communication channels & workspace access.\n\n*Kickoff alignment completed — setting strong project foundations.*`
     },
     {
         day: "WED",
@@ -49,6 +50,7 @@ export const CALENDAR_EVENTS = [
         vAlign: "top",
         stage: "sitemap",
         component: <ColorPalette />,
+        content: `### 🗺️ Sitemap & IA Structure\n**Phase:** Week 1 • Day 3\n\n- Map out user journeys & complete website page hierarchy.\n- Plan conversion pathways & main CTA placements.\n- Define brand color tokens & foundational visual guidelines.\n\n*Information architecture approved — ready for wireframing.*`
     },
     {
         day: "FRI",
@@ -59,6 +61,7 @@ export const CALENDAR_EVENTS = [
         vAlign: "bottom",
         stage: "wireframe",
         component: <FigmaWireframe />,
+        content: `### 📐 Share Figma Low-Fi Wireframe\n**Phase:** Week 1 • Day 5\n\n- Deliver interactive structural wireframes in Figma.\n- Validate section layouts, page flow & content hierarchy.\n- Collect preliminary client feedback on content structure.\n\n*Low-fidelity wireframe approved for visual UI design stage.*`
     },
 
     // --- Week 2 ---
@@ -71,6 +74,7 @@ export const CALENDAR_EVENTS = [
         vAlign: "top",
         stage: "design",
         component: <FigmaApprovedDesign />,
+        content: `### 🎨 High-Fidelity UI Design\n**Phase:** Week 2 • Day 8\n\n- Craft custom visual aesthetics, typography & UI elements.\n- Design responsive layouts for desktop, tablet & mobile views.\n- Build interactive hover states, micro-interactions & visual assets.\n\n*Transforming structural wireframes into high-fidelity designs.*`
     },
     {
         day: "FRI",
@@ -101,6 +105,7 @@ export const CALENDAR_EVENTS = [
         vAlign: "top",
         stage: "dev",
         component: <VsCode />,
+        content: `### 💻 Development Process Kickoff\n**Phase:** Week 3 • Day 13\n\n- Initialize Next.js codebase & setup Tailwind CSS environment.\n- Establish component architecture & reusable UI design tokens.\n- Configure repository version control & automated CI/CD pipeline.\n\n*Codebase initialized — full-stack development underway.*`
     },
     {
         day: "WED",
@@ -178,6 +183,7 @@ export const CALENDAR_EVENTS = [
         vAlign: "bottom",
         stage: "handoff",
         component: <FinalView />,
+        content: `### 🎁 Final Project Handoff & Training\n**Phase:** Week 5 • Day 30\n\n- Transfer source code repositories & domain administrative access.\n- Deliver documentation, CMS video tutorials & operating guidelines.\n- Conduct wrap-up meeting & establish long-term maintenance support.\n\n*Project successfully delivered & handed off! 🚀*`
     },
 ];
 
@@ -246,15 +252,16 @@ const EventCard = ({
     return (
         <div
             ref={cardRef}
-            className={`${bgColor} ${textColor} rounded-md p-2 md:p-2.5  cursor-pointer h-full w-full flex flex-col justify-between relative group hover:shadow-lg ${isTarget
-                ? 'target_blue_card  pointer-events-auto overflow-hidden'
-                : 'transition-transform hover:scale-[1.02] '
-                } ${isHovered ? 'z-30' : 'z-10'}`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            className={` rounded-md text-[#002bba] bg-[#DFE4F6] p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative transition-colors duration-300 z-10 hover:z-5000!  ${isTarget
+                ? 'target_blue_card hover:text-white hover:bg-[#002bba]  pointer-events-auto'
+                : ' hover:text-white hover:bg-[#002bba] '
+                }`}
         >
             {/* Card Header / Title */}
-            <div ref={labelRef} className="card_label w-full h-full flex flex-col justify-between relative">
+            <div
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                ref={labelRef} className="card_label w-full cursor-pointer h-full flex flex-col justify-between relative">
                 <div>
                     <h4 className="font-thin">{title}</h4>
                 </div>
@@ -262,9 +269,9 @@ const EventCard = ({
                 {/* Popup Details Card */}
                 {content && (
                     <div
-                        className={`card-popup absolute ${popupX} ${popupY} w-[18rem] sm:w-[21rem] md:w-[23rem] rounded-lg shadow-[0_25px_60px_-15px_rgba(0,43,186,0.3)] p-4 md:p-5 transition-all duration-300 overflow-y-auto scroller_none border border-black/10 bg-white text_blue z-[9999] pointer-events-none ${isHovered
-                            ? 'opacity-100 scale-100 translate-x-0  visible'
-                            : 'opacity-0 scale-95  invisible ' + (align === 'left' ? 'translate-x-2' : '-translate-x-2')
+                        className={`card-popup absolute ${popupX} ${popupY} w-[18rem] sm:w-[21rem] md:w-[23rem] rounded-lg shadow-[0_25px_60px_-15px_rgba(0,43,186,0.3)] p-4 md:p-5 transition-all duration-300 overflow-y-auto scroller_none border border-black/10 bg-white text_blue pointer-events-none ${isHovered
+                            ? 'opacity-100  translate-x-0  visible'
+                            : 'opacity-0 invisible ' + (align === 'left' ? 'translate-x-2' : '-translate-x-2')
                             }`}
                         onClick={(e) => e.stopPropagation()}
                     >
@@ -273,15 +280,14 @@ const EventCard = ({
                 )}
             </div>
 
-            {/* Enlarged component: fades in when enlarged */}
-            {isTarget && enlargedContent && (
-                <div
-                    ref={contentRef}
-                    className="meet_container absolute inset-0 w-full h-full opacity-0 pointer-events-none overflow-hidden rounded-xl bg-white"
-                >
-                    {enlargedContent}
-                </div>
-            )}
+
+            <div
+                ref={contentRef}
+                className="meet_container absolute inset-0 w-full h-full opacity-0 pointer-events-none overflow-hidden rounded-xl bg-white"
+            >
+                {enlargedContent}
+            </div>
+
         </div>
     );
 };
@@ -327,6 +333,7 @@ const Calendar = () => {
         const flipTweens = validStages.map((s, idx) => {
             const tween = Flip.from(states[idx], {
                 ease: "none",
+
                 duration: 1,
                 absolute: true,
                 paused: true,
@@ -348,18 +355,16 @@ const Calendar = () => {
             },
         });
 
-        // Initialize all fullCard destination containers with default z-index
-        validStages.forEach(s => {
-            tl.set(s.fullCard, { zIndex: 30 }, 0);
-        });
+
 
         // Build sequential timeline dynamically for all valid stages
         validStages.forEach((s, idx) => {
             const tween = flipTweens[idx];
             const prog = progressValues[idx];
 
-            // Elevate active stage container so it sits on top of all cards and popups
-            tl.set(s.fullCard, { zIndex: 500 });
+            // Elevate active card above all others during animation
+            tl.set(s.fullCard, { zIndex: 999 });
+            tl.set(s.card, { zIndex: 999 });
 
             // Step A: Enlarge card from grid slot to full card
             tl.to(prog, {
@@ -432,8 +437,10 @@ const Calendar = () => {
                 },
             }, "<");
 
-            // Reset z-index
-            tl.set(s.fullCard, { zIndex: 30 });
+            // Reset z-index after animation completes
+            tl.set(s.card, { zIndex: "auto" });
+            tl.set(s.fullCard, { zIndex: "auto" });
+
 
             // Short transition pause between stages (if not last stage)
             if (idx < validStages.length - 1) {
@@ -473,7 +480,7 @@ const Calendar = () => {
                     </div>
 
                     {/* Calendar Grid Container */}
-                    <div className="p-3 sm:p-6 flex-1 overflow-x-auto scroller_none relative z-10 flex flex-col justify-center">
+                    <div className="p-3 sm:p-6 flex-1 overflow-x-auto scroller_none relative flex flex-col justify-center">
                         <div className="relative">
                             <div className="relative grid grid-cols-[5rem_repeat(5,1fr)] gap-2">
 
@@ -482,7 +489,7 @@ const Calendar = () => {
 
                                 {WEEKS.map((week, idx) => (
                                     <div key={idx} className="pb-1">
-                                        <div className="bg_blue/10 border border_blue/20 py-1 flex flex-col items-center justify-center rounded-md text_blue">
+                                        <div className=" border border-[#002bba40] py-1 flex flex-col items-center justify-center rounded-md text-[#002bba]">
                                             <span className="text-sm">{week.label}</span>
                                             <span className="text-xs uppercase">{week.subtitle}</span>
                                         </div>
@@ -493,7 +500,7 @@ const Calendar = () => {
                                 {DAYS.map((day) => (
                                     <React.Fragment key={day}>
                                         {/* Day row label */}
-                                        <div className="text-xs text-center flex items-center justify-center bg_blue/10 border border_blue/20 rounded-md text_blue h-[10vh]">
+                                        <div className="text-xs text-center flex items-center justify-center bg_blue/10 border border-[#002bba40] rounded-md text_blue h-[10vh]">
                                             {day}
                                         </div>
 
@@ -548,7 +555,7 @@ const Calendar = () => {
                         <div
                             key={stage.stage}
                             ref={(el) => (fullCardsRef.current[i] = el)}
-                            className="full_card absolute w-full h-full z-50 inset-0 pointer-events-none rounded-xl overflow-hidden"
+                            className="full_card absolute w-full h-full inset-0 pointer-events-none rounded-xl"
                         />
                     ))}
                 </div>

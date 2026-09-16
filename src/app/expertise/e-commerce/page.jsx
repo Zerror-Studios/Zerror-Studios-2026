@@ -1,5 +1,5 @@
 import DetailedExpertiseHero from '@/components/expertise/DetailedExpertiseHero'
-import EcommCategorySlider from '@/components/expertise/e-comm/EcommCategorySlider'
+import EcommPlatformCompare from '@/components/expertise/e-comm/platformCompare/EcommPlatformCompare'
 import EcommCmsCards from '@/components/expertise/e-comm/EcommCmsCards'
 import EcommStoreSection from '@/components/expertise/e-comm/EcommStoreSection'
 import EcommPriceSection from '@/components/expertise/e-comm/EcommPriceSection'
@@ -76,7 +76,7 @@ drop-offs, smoother paths to purchase, and buyers who return."
           { label: " Repeat purchases", value: "↑" },
         ]}
       />
-      <EcommCategorySlider />
+      <EcommPlatformCompare />
       <EcommCmsCards />
       {/* <EcommStoreSection/> */}
       <EcommPriceSection />
