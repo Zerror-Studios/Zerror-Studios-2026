@@ -29,6 +29,15 @@ const ImageEffect = () => {
       height: "100vh",
     });
 
+     gsap.to(".abt_vid",{
+      filter:"brightness(0.5)",
+      scrollTrigger: {
+        trigger: txtScrollBgRef.current,
+        start: "top top",
+        end: "15% top",
+        scrub: true,
+      },
+    });
     const textTl = gsap.timeline({
       scrollTrigger: {
         trigger: txtScrollBgRef.current,
@@ -61,36 +70,56 @@ const ImageEffect = () => {
         <div ref={flipCardBgRef} className="flip_card_bg relative">
           <div className="  w-full h-screen sticky top-0 center ">
             <div ref={cardVIRef} className=" w-75 h-100   cardVI center overflow-hidden relative  ">
-          <div className="absolute w-screen h-screen center">
+              <div className="absolute w-screen h-screen center">
 
                 {/* Video */}
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    src="/videos/about_video.mp4"
-                    className="cover brightness-75"></video>
-                    </div>
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  src="/videos/about_video.mp4"
+                  className="cover abt_vid brightness-100"></video>
+              </div>
             </div>
           </div>
 
           <div ref={txtScrollBgRef} className="txt_scroll_bg  padding py-0! w-full h-[300vh] relative z-[80] ">
-            <div className="sticky top-0 h-screen flex justify-center gap-y-5 flex-col w-full pointer-events-none">
+            <div className="sticky top-0 h-screen flex justify-center gap-y-12 flex-col w-full pointer-events-none">
               {[
-                "5+ years of hands-on product and digital execution",
-                "Trusted by 50+ clients across industries",
-                "200+ websites and digital products shipped",
-                "15M+ lines of production-grade code written",
-                "Design × Technology under one roof",
-              ].map((text, i) => (
-                <h2
+                {
+                  heading: "5+ Years",
+                  desc: "Hands-on product and digital execution",
+                },
+                {
+                  heading: "100+ Clients",
+                  desc: "Trusted by businesses across industries",
+                },
+                {
+                  heading: "500+ Products",
+                  desc: "Websites and digital products shipped",
+                },
+                {
+                  heading: "30M+ Lines",
+                  desc: "Production-grade code written",
+                },
+                {
+                  heading: "Design × Tech",
+                  desc: "Everything integrated under one roof",
+                },
+              ].map((item, i) => (
+                <div
                   key={i}
                   ref={(el) => (textRefs.current[i] = el)}
-                  className="animate-text translate-y-5 text-3xl md:text-5xl max-w-2xl text-white  primary-font font-medium opacity-0"
+                  className="animate-text translate-y-5 max-w-2xl mx-auto text-center opacity-0"
                 >
-                  {text}
-                </h2>
+                  <h3 className="text-3xl md:text-5xl primary-font  text-white ">
+                    {item.heading}
+                  </h3>
+                  <p className="text-base md:text-xl text-white">
+                    {item.desc}
+                  </p>
+                </div>
               ))}
             </div>
           </div>

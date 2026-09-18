@@ -287,7 +287,7 @@ const DashboardPanel = ({ platform, data, accentColor, accentGradient, icon: Pla
             <div className="px-5 pt-5 pb-4 border-b border-white/10" style={{ background: accentGradient }}>
                 <div className="flex items-center justify-between">
                     <div>
-                        <h4 className="text-lg  text-white">{platform}</h4>
+                        <h4 className="text-4xl  text-white">{platform}</h4>
                         <p className="text-xs text-white/60 mt-0.5">{data.tagline}</p>
                     </div>
                     <div className="flex py-5 items-center gap-3">
@@ -496,7 +496,7 @@ const EcommPlatformCompare = () => {
             <div ref={panelsRef} className="dashboards-wrap padding py-0! my-8 md:my-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     <DashboardPanel
-                        platform="Z-comm"
+                        platform="Z-com"
                         data={currentData.zcom}
                         accentColor="#4f8cff"
                         accentGradient="linear-gradient(135deg, rgba(0,43,186,0.4) 0%, rgba(79,140,255,0.15) 100%)"

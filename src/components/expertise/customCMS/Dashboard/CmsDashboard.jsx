@@ -12,7 +12,7 @@ import CustomersTab from "./tabs/CustomersTab";
 export default function CmsDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const [searchTerm, setSearchTerm] = useState("");
-  const [theme, setTheme] = useState("light"); // "light" | "dark"
+  const [theme, setTheme] = useState("dark"); // "light" | "dark"
   const [isDemoActive, setIsDemoActive] = useState(false);
 
   const containerRef = useRef(null);
@@ -26,6 +26,7 @@ export default function CmsDashboard() {
       ([entry]) => {
         if (!entry.isIntersecting) {
           setIsDemoActive(false);
+          setTheme("dark")
         }
       },
       { threshold: 0.15 }

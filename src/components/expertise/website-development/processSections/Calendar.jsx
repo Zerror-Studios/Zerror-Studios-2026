@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
@@ -9,7 +9,9 @@ import ColorPalette from './ColorPalette';
 import FigmaWireframe from './FigmaWireframe';
 import FigmaApprovedDesign from './FigmaApprovedDesign';
 import VsCode from './VsCode';
+import SeoLighthouse from './SeoLighthouse';
 import FinalView from './FinalView';
+import { RiAddLine } from '@remixicon/react';
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger, Flip);
@@ -163,6 +165,8 @@ export const CALENDAR_EVENTS = [
         tag: "Day 26",
         align: "left",
         vAlign: "top",
+        stage: "seo",
+        component: <SeoLighthouse />,
         content: `### ⚡ SEO & Lighthouse 90+ Tuning\n**Phase:** Week 5 • Day 26\n\n- Optimize Core Web Vitals (LCP < 1.5s, INP, CLS scores).\n- Compress images, set WebP formats & lazy loading.\n- Inject Meta tags, OpenGraph previews & Schema markup.\n\n*Guarantees top search visibility & 90+ Lighthouse score.*`
     },
     {
@@ -227,19 +231,45 @@ const EventCard = ({
     contentRef = null,
     enlargedContent = null
 }) => {
-    const [isHovered, setIsHovered] = useState(false);
-    const timeoutRef = useRef(null);
+    const [isOpen, setIsOpen] = useState(false);
+    const localCardRef = useRef(null);
 
-    const handleMouseEnter = () => {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        setIsHovered(true);
-    };
+    useEffect(() => {
+        if (!isOpen) return;
 
-    const handleMouseLeave = () => {
-        timeoutRef.current = setTimeout(() => {
-            setIsHovered(false);
-        }, 100);
-    };
+        let totalDelta = 0;
+        let lastWindowY = window.scrollY;
+
+        const handleScroll = (e) => {
+            const currentWindowY = window.scrollY;
+            const windowDelta = Math.abs(currentWindowY - lastWindowY);
+            lastWindowY = currentWindowY;
+
+            if (windowDelta > 0) {
+                totalDelta += windowDelta;
+            } else {
+                totalDelta += 10;
+            }
+
+            if (totalDelta >= 10) {
+                setIsOpen(false);
+            }
+        };
+
+        const handleClickOutside = (e) => {
+            if (localCardRef.current && !localCardRef.current.contains(e.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { capture: true, passive: true });
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll, { capture: true });
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isOpen]);
 
     const popupX = align === "left"
         ? "right-[calc(100%+0.5rem)] md:right-[calc(100%+0.75rem)]"
@@ -249,29 +279,47 @@ const EventCard = ({
     if (vAlign === "top") popupY = "top-0";
     if (vAlign === "bottom") popupY = "bottom-0";
 
+    const setCombinedCardRef = (node) => {
+        localCardRef.current = node;
+        if (typeof cardRef === 'function') {
+            cardRef(node);
+        } else if (cardRef && 'current' in cardRef) {
+            cardRef.current = node;
+        }
+    };
+
+    const togglePopup = (e) => {
+        e.stopPropagation();
+        if (content) {
+            setIsOpen(prev => !prev);
+        }
+    };
+
     return (
         <div
-            ref={cardRef}
-            className={` rounded-md text-[#002bba] bg-[#DFE4F6] p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative transition-colors duration-300 z-10 hover:z-5000!  ${isTarget
-                ? 'target_blue_card hover:text-white hover:bg-[#002bba]  pointer-events-auto'
-                : ' hover:text-white hover:bg-[#002bba] '
+            ref={setCombinedCardRef}
+            className={` rounded-md text-[#002bba] bg-[#DFE4F6] p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative  hover:bg-[#002bba]! hover:text-white! ${isOpen ? 'z-[5000]! bg-[#002bba]! text-white!' : 'z-10'} ! ${isTarget
+                ? `target_blue_card  pointer-events-auto`
+                : '  '
                 }`}
         >
             {/* Card Header / Title */}
             <div
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onClick={togglePopup}
                 ref={labelRef} className="card_label w-full cursor-pointer h-full flex flex-col justify-between relative">
-                <div>
+                <div className='w-full h-full flex flex-col justify-between'>
                     <h4 className="font-thin">{title}</h4>
+                    <div className="justify-end flex items-end w-full">
+                        <RiAddLine className={`size-4 bg-white rounded-sm text_blue transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`} />
+                    </div>
                 </div>
 
                 {/* Popup Details Card */}
                 {content && (
                     <div
-                        className={`card-popup absolute ${popupX} ${popupY} w-[18rem] sm:w-[21rem] md:w-[23rem] rounded-lg shadow-[0_25px_60px_-15px_rgba(0,43,186,0.3)] p-4 md:p-5 transition-all duration-300 overflow-y-auto scroller_none border border-black/10 bg-white text_blue pointer-events-none ${isHovered
-                            ? 'opacity-100  translate-x-0  visible'
-                            : 'opacity-0 invisible ' + (align === 'left' ? 'translate-x-2' : '-translate-x-2')
+                        className={`card-popup absolute ${popupX} ${popupY} w-[18rem] sm:w-[21rem] md:w-[23rem] rounded-lg shadow-[0_25px_60px_-15px_rgba(0,43,186,0.3)] p-4 md:p-5 transition-all duration-300 overflow-y-auto scroller_none border border-black/10 bg-white text_blue ${isOpen
+                            ? 'opacity-100 translate-x-0 visible pointer-events-auto'
+                            : 'opacity-0 invisible pointer-events-none ' + (align === 'left' ? 'translate-x-2' : '-translate-x-2')
                             }`}
                         onClick={(e) => e.stopPropagation()}
                     >
@@ -279,7 +327,6 @@ const EventCard = ({
                     </div>
                 )}
             </div>
-
 
             <div
                 ref={contentRef}

@@ -18,27 +18,7 @@ const useDarkMode = () => {
   return isDark;
 };
 
-const GlassSurface = ({
-  children,
-  width = '100%',
-  height = 'auto',
-  borderRadius = 0,
-  borderWidth = 0,
-  brightness = 50,
-  opacity = 0.93,
-  blur = 5,
-  displace = 0,
-  backgroundOpacity = 0.15,
-  saturation = 1.4,
-  distortionScale = -180,
-  redOffset = 0,
-  greenOffset = 10,
-  blueOffset = 20,
-  xChannel = 'R',
-  yChannel = 'G',
-  mixBlendMode = 'difference',
-  className = '',
-  style = {}
+const GlassSurface = ({ children, width = '100%', height = 'auto', borderRadius = 0, borderWidth = 0, brightness = 50, opacity = 0.93, blur = 5, displace = 0, backgroundOpacity = 0.15, saturation = 1.4, distortionScale = -180, redOffset = 0, greenOffset = 10, blueOffset = 20, xChannel = 'R', yChannel = 'G', mixBlendMode = 'difference', className = '', style = {}
 }) => {
   const rawId = useId();
   const uniqueId = rawId ? rawId.replace(/:/g, '-') : Math.random().toString(36).substring(2, 9);
@@ -104,22 +84,7 @@ const GlassSurface = ({
     });
 
     gaussianBlurRef.current?.setAttribute('stdDeviation', displace.toString());
-  }, [
-    width,
-    height,
-    borderRadius,
-    borderWidth,
-    brightness,
-    opacity,
-    blur,
-    displace,
-    distortionScale,
-    redOffset,
-    greenOffset,
-    blueOffset,
-    xChannel,
-    yChannel,
-    mixBlendMode
+  }, [width, height, borderRadius, borderWidth, brightness, opacity, blur, displace, distortionScale, redOffset, greenOffset, blueOffset, xChannel, yChannel, mixBlendMode
   ]);
 
   useEffect(() => {

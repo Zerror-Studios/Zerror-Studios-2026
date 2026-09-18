@@ -78,7 +78,6 @@ drop-offs, smoother paths to purchase, and buyers who return."
       />
       <EcommPlatformCompare />
       <EcommCmsCards />
-      {/* <EcommStoreSection/> */}
       <EcommPriceSection />
       <WebDevClients />
       <TicketEffect/>
