@@ -10,6 +10,7 @@ import FigmaWireframe from './FigmaWireframe';
 import FigmaApprovedDesign from './FigmaApprovedDesign';
 import VsCode from './VsCode';
 import SeoLighthouse from './SeoLighthouse';
+import AwsDeploy from './AwsDeploy';
 import FinalView from './FinalView';
 import { RiAddLine } from '@remixicon/react';
 
@@ -176,6 +177,8 @@ export const CALENDAR_EVENTS = [
         tag: "Day 28",
         align: "left",
         vAlign: "center",
+        stage: "deploy",
+        component: <AwsDeploy />,
         content: `### 🌐 Domain Pointing & Live Launch\n**Phase:** Week 5 • Day 28\n\n- Point custom domain DNS records (A-records / CNAME) to production.\n- Verify SSL certificate generation & HTTPS redirection.\n- Push website LIVE to production domain!\n\n*Milestone: Website is officially LIVE! 🎉*`
     },
     {
@@ -288,6 +291,54 @@ const EventCard = ({
         }
     };
 
+    const handleMouseEnter = () => {
+        if (localCardRef.current) {
+            gsap.to(localCardRef.current, {
+                backgroundColor: "#002bba",
+                color: "#ffffff",
+                duration: 0.3,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
+        }
+    };
+
+    const handleMouseLeave = (e) => {
+        if (e && e.currentTarget && e.relatedTarget && e.currentTarget.contains(e.relatedTarget)) {
+            return;
+        }
+        if (localCardRef.current && !isOpen) {
+            gsap.to(localCardRef.current, {
+                backgroundColor: "#DFE4F6",
+                color: "#002bba",
+                duration: 0.3,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
+        }
+    };
+
+    useEffect(() => {
+        if (!localCardRef.current) return;
+        if (isOpen) {
+            gsap.to(localCardRef.current, {
+                backgroundColor: "#002bba",
+                color: "#ffffff",
+                duration: 0.3,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
+        } else {
+            gsap.to(localCardRef.current, {
+                backgroundColor: "#DFE4F6",
+                color: "#002bba",
+                duration: 0.3,
+                ease: "power2.out",
+                overwrite: "auto"
+            });
+        }
+    }, [isOpen]);
+
     const togglePopup = (e) => {
         e.stopPropagation();
         if (content) {
@@ -298,9 +349,12 @@ const EventCard = ({
     return (
         <div
             ref={setCombinedCardRef}
-            className={` rounded-md text-[#002bba] bg-[#DFE4F6] p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative  hover:bg-[#002bba]! hover:text-white! ${isOpen ? 'z-[5000]! bg-[#002bba]! text-white!' : 'z-10'} ! ${isTarget
-                ? `target_blue_card  pointer-events-auto`
-                : '  '
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onMouseOut={handleMouseLeave}
+            className={`rounded-md text-[#002bba] bg-[#DFE4F6] p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative ${isOpen ? 'z-[5000]!' : 'z-10'} ${isTarget
+                ? `target_blue_card pointer-events-auto`
+                : ''
                 }`}
         >
             {/* Card Header / Title */}

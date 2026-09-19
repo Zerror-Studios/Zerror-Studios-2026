@@ -292,7 +292,7 @@ const DetailedExpertiseHero = ({
 
             <div className="w-full pb-8 md:pb-16 flex max-sm:flex-col-reverse max-sm:gap-y-5">
                 <div className="md:w-1/2 md:pr-32 space-y-5 md:space-y-10 text_blue">
-                    <h3 className=' paragraph_split text-3xl md:text-5xl'>{introHeading}</h3>
+                    <h3 data-para-effect className='  text-3xl md:text-5xl'>{introHeading}</h3>
 
                     <p className='text-xl leading-tight'>{introText}</p>
                 </div>

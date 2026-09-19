@@ -23,311 +23,471 @@ import {
     RiSearchLine,
     RiGlobalLine,
     RiTerminalBoxLine,
+    RiServerLine,
+    RiDatabase2Line,
+    RiCloudLine,
+    RiPriceTag3Line,
 } from "@remixicon/react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-/* ══════════════════════════ SHOPIFY ICON ══════════════════════════ */
-const ShopifyIcon = ({ size = 16, className = "" }) => (
-    <svg
-        width={size}
-        height={size}
-        viewBox="0 0 34 39"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={className}
-    >
-        <path
-            d="M15.481 1.36025C15.755 1.36025 15.892 1.49725 16.166 1.63425C14.522 2.31925 12.878 4.10025 12.056 7.93625L9.042 8.75825C10.001 6.01825 11.919 1.36025 15.481 1.36025ZM16.988 2.73025C17.262 3.55225 17.536 4.51125 17.536 6.01825C17.536 6.15525 17.536 6.15525 17.536 6.29225L13.563 7.38825C14.385 4.51125 15.755 3.27825 16.988 2.73025ZM20.55 5.19625L18.769 5.74425C18.769 5.60725 18.769 5.47025 18.769 5.33325C18.769 4.10025 18.632 3.14125 18.358 2.31925C19.317 2.59325 20.139 3.82625 20.55 5.19625ZM29.455 7.38825C29.455 7.25125 29.318 7.11425 29.181 7.11425C28.907 7.11425 26.03 6.84025 26.03 6.84025C26.03 6.84025 23.975 4.78525 23.701 4.64825C23.427 4.37425 23.016 4.51125 22.879 4.51125C22.879 4.51125 22.468 4.64825 21.783 4.92225C21.098 3.00425 19.865 1.22325 17.81 1.22325H17.673C17.125 0.401246 16.303 0.127246 15.618 0.127246C10.686 -0.0097542 8.357 6.15525 7.535 9.30625C6.439 9.58025 5.343 9.99125 4.11 10.4022C3.014 10.6762 3.014 10.8132 2.877 11.7722C2.74 12.4572 0 34.1032 0 34.1032L21.783 38.2132L33.565 35.6102C33.565 35.6102 29.455 7.66225 29.455 7.38825Z"
-            fill="#96bf48"
-        />
-        <path
-            d="M29.0442 7.11862C28.9072 7.11862 26.0302 6.84462 26.0302 6.84462C26.0302 6.84462 23.9752 4.78963 23.7012 4.65263C23.5642 4.51563 23.5642 4.51562 23.4272 4.51562L21.7832 38.2176L33.5652 35.6146C33.5652 35.6146 29.4552 7.66663 29.4552 7.39263C29.4552 7.25563 29.1812 7.11862 29.0442 7.11862Z"
-            fill="#5A863E"
-        />
-        <path
-            d="M17.8101 13.6911L16.3031 18.0751C16.3031 18.0751 15.0701 17.3901 13.4261 17.3901C11.0971 17.3901 10.9601 18.7601 10.9601 19.1711C10.9601 21.0891 16.1661 21.9111 16.1661 26.5691C16.1661 30.2681 13.8371 32.5971 10.6861 32.5971C6.98709 32.5971 5.06909 30.2681 5.06909 30.2681L6.02809 26.9801C6.02809 26.9801 7.94609 28.6241 9.59009 28.6241C10.6861 28.6241 11.0971 27.8021 11.0971 27.1171C11.0971 24.5141 6.85009 24.3771 6.85009 20.1301C6.85009 16.5681 9.45309 13.1431 14.5221 13.1431C16.8511 13.0061 17.8101 13.6911 17.8101 13.6911Z"
-            fill="#FFFFFF"
-        />
-    </svg>
-);
-
 /* ══════════════════════════ DATA ══════════════════════════ */
 
 const tabs = [
-    { key: "ease", label: "Ease of Use", icon: RiSpeedLine },
-    { key: "scale", label: "Scalability", icon: RiExpandUpDownLine },
-    { key: "custom", label: "Customization", icon: RiPaintBrushLine },
+    { key: "customization", label: "Customization", icon: RiPaintBrushLine },
+    { key: "technology", label: "Technology", icon: RiCodeLine },
+    { key: "performance", label: "Performance", icon: RiSpeedLine },
+    { key: "dashboard", label: "Dashboard", icon: RiDashboardLine },
+    { key: "ownership", label: "Ownership", icon: RiLockLine },
+    { key: "seo", label: "SEO", icon: RiSearchLine },
     { key: "pricing", label: "Pricing", icon: RiMoneyDollarCircleLine },
 ];
 
 const dashboardData = {
-    ease: {
-        zcom: {
-            score: 92,
+    customization: {
+        custom: {
+            score: 98,
             grade: "A+",
-            tagline: "Built for founders, not developers",
-            metrics: [
-                { label: "Setup Time", value: "~2 days", icon: RiSpeedLine },
-                { label: "Learning Curve", value: "Minimal", icon: RiBarChartBoxLine },
-                { label: "Admin Panel", value: "Visual Builder", icon: RiLayoutGridLine },
-            ],
-            features: [
-                { name: "Drag & drop page builder", available: true },
-                { name: "One-click product management", available: true },
-                { name: "No coding required for edits", available: true },
-                { name: "Intuitive order dashboard", available: true },
-                { name: "Built-in analytics dashboard", available: true },
-            ],
-            highlight: "Everything a non-tech founder needs — no Liquid, no code, no friction.",
-        },
-        shopify: {
-            score: 78,
-            grade: "B+",
-            tagline: "Powerful but takes time to learn",
-            metrics: [
-                { label: "Setup Time", value: "~5 days", icon: RiSpeedLine },
-                { label: "Learning Curve", value: "Moderate", icon: RiBarChartBoxLine },
-                { label: "Admin Panel", value: "Feature-Rich", icon: RiLayoutGridLine },
-            ],
-            features: [
-                { name: "Drag & drop page builder", available: true },
-                { name: "One-click product management", available: true },
-                { name: "No coding required for edits", available: false },
-                { name: "Intuitive order dashboard", available: true },
-                { name: "Built-in analytics dashboard", available: true },
-            ],
-            highlight: "Extensive documentation & community, but Liquid templating adds complexity.",
-        },
-    },
-    scale: {
-        zcom: {
-            score: 80,
-            grade: "B+",
-            tagline: "Perfect for growing brands",
-            metrics: [
-                { label: "Monthly Volume", value: "Up to ₹5L", icon: RiBarChartBoxLine },
-                { label: "CDN", value: "Included", icon: RiGlobalLine },
-                { label: "Uptime", value: "99.9%", icon: RiShieldCheckLine },
-            ],
-            features: [
-                { name: "Auto-scaling architecture", available: true },
-                { name: "Custom feature additions", available: true },
-                { name: "Enterprise-grade traffic", available: false },
-                { name: "Multi-region deployment", available: false },
-                { name: "Zero third-party bloat", available: true },
-            ],
-            highlight: "Designed for emerging & mid-size brands — scales without plugin overload.",
-        },
-        shopify: {
-            score: 95,
-            grade: "A+",
-            tagline: "Enterprise-grade infrastructure",
-            metrics: [
-                { label: "Monthly Volume", value: "Unlimited", icon: RiBarChartBoxLine },
-                { label: "CDN", value: "Global", icon: RiGlobalLine },
-                { label: "Uptime", value: "99.99%", icon: RiShieldCheckLine },
-            ],
-            features: [
-                { name: "Auto-scaling architecture", available: true },
-                { name: "Custom feature additions", available: true },
-                { name: "Enterprise-grade traffic", available: true },
-                { name: "Multi-region deployment", available: true },
-                { name: "Zero third-party bloat", available: false },
-            ],
-            highlight: "Handles flash sales & millions of visitors. Shopify Plus for enterprise.",
-        },
-    },
-    custom: {
-        zcom: {
-            score: 97,
-            grade: "A+",
-            tagline: "Your store, your rules",
+            tagline: "Built around your business, not a template",
             metrics: [
                 { label: "Design Freedom", value: "100%", icon: RiPaletteLine },
-                { label: "Code Access", value: "Full Source", icon: RiCodeLine },
-                { label: "Plugin Deps", value: "Zero", icon: RiPlugLine },
+                { label: "Frontend", value: "Fully Custom", icon: RiCodeLine },
+                { label: "Backend", value: "Fully Custom", icon: RiServerLine },
             ],
             features: [
-                { name: "Fully bespoke UI design", available: true },
-                { name: "Custom checkout flows", available: true },
-                { name: "Full source code ownership", available: true },
-                { name: "No template restrictions", available: true },
-                { name: "Custom feature development", available: true },
+                { name: "Fully custom frontend UI", available: true },
+                { name: "Custom backend architecture", available: true },
+                { name: "Custom admin dashboard", available: true },
+                { name: "Custom checkout & business flows", available: true },
+                { name: "3D / GSAP / advanced interactions", available: true },
             ],
-            highlight: "Unmatched flexibility — every pixel, every interaction, fully yours.",
+            highlight:
+                "Your business gets its own digital experience — designed, developed and engineered around your exact requirements.",
         },
-        shopify: {
-            score: 68,
-            grade: "C+",
-            tagline: "Themes are nice — until they aren't",
+
+        template: {
+            score: 75,
+            grade: "B",
+            tagline: "Fast to launch with themes and apps",
             metrics: [
-                { label: "Design Freedom", value: "Limited", icon: RiPaletteLine },
-                { label: "Code Access", value: "Theme Only", icon: RiCodeLine },
-                { label: "Plugin Deps", value: "Heavy", icon: RiPlugLine },
+                { label: "Design Freedom", value: "Theme-Based", icon: RiPaletteLine },
+                { label: "Frontend", value: "Theme + Liquid", icon: RiCodeLine },
+                { label: "Backend", value: "Platform Managed", icon: RiServerLine },
             ],
             features: [
-                { name: "Fully bespoke UI design", available: false },
-                { name: "Custom checkout flows", available: false },
-                { name: "Full source code ownership", available: false },
-                { name: "No template restrictions", available: false },
-                { name: "Custom feature development", available: true },
+                { name: "Fully custom frontend UI", available: false },
+                { name: "Custom backend architecture", available: false },
+                { name: "Custom admin dashboard", available: false },
+                { name: "Custom checkout & business flows", available: false },
+                { name: "3D / GSAP / advanced interactions", available: true },
             ],
-            highlight: "1000+ themes available, but deep structural changes hit Liquid walls.",
+            highlight:
+                "Excellent for getting a standard store online quickly, but deeper customization depends on the platform's theme ecosystem and available extensions.",
         },
     },
-    pricing: {
-        zcom: {
-            score: 85,
-            grade: "A",
-            tagline: "Pay once, own forever",
+
+    technology: {
+        custom: {
+            score: 96,
+            grade: "A+",
+            tagline: "Modern technology, engineered for your product",
             metrics: [
-                { label: "Monthly Cost", value: "₹0 plugins", icon: RiMoneyDollarCircleLine },
-                { label: "Ownership", value: "Full IP", icon: RiLockLine },
-                { label: "2-Year TCO", value: "Lower", icon: RiBarChartBoxLine },
+                { label: "Framework", value: "Next.js + MERN", icon: RiCodeLine },
+                { label: "Database", value: "MongoDB", icon: RiDatabase2Line },
+                { label: "Infrastructure", value: "AWS", icon: RiCloudLine },
             ],
             features: [
-                { name: "No recurring plugin fees", available: true },
-                { name: "Transparent one-time build cost", available: true },
-                { name: "IP ownership on full payment", available: true },
-                { name: "Low monthly maintenance", available: true },
-                { name: "Affordable starter plans", available: false },
+                { name: "Next.js application architecture", available: true },
+                { name: "Node.js + Express backend", available: true },
+                { name: "MongoDB database", available: true },
+                { name: "AWS deployment", available: true },
+                { name: "GSAP / Three.js / 3D experiences", available: true },
             ],
-            highlight: "Higher upfront, but zero plugin subscriptions = lower long-term cost.",
+            highlight:
+                "A complete custom MERN + Next.js commerce system — from frontend experience to backend infrastructure.",
         },
-        shopify: {
-            score: 72,
-            grade: "B",
-            tagline: "Affordable entry, costly at scale",
+
+        template: {
+            score: 86,
+            grade: "A",
+            tagline: "Reliable commerce infrastructure",
             metrics: [
-                { label: "Monthly Cost", value: "₹200-500/mo plugins", icon: RiMoneyDollarCircleLine },
-                { label: "Ownership", value: "Licensed", icon: RiLockLine },
-                { label: "2-Year TCO", value: "Higher", icon: RiBarChartBoxLine },
+                { label: "Framework", value: "SaaS Engine", icon: RiCodeLine },
+                { label: "Database", value: "Platform Managed", icon: RiDatabase2Line },
+                { label: "Infrastructure", value: "Shared Cloud", icon: RiCloudLine },
             ],
             features: [
-                { name: "No recurring plugin fees", available: false },
-                { name: "Transparent one-time build cost", available: true },
-                { name: "IP ownership on full payment", available: false },
-                { name: "Low monthly maintenance", available: false },
-                { name: "Affordable starter plans", available: true },
+                { name: "Next.js application architecture", available: false },
+                { name: "Custom Node.js + Express backend", available: false },
+                { name: "Own MongoDB database", available: false },
+                { name: "Custom AWS architecture", available: false },
+                { name: "Advanced custom interactions", available: true },
             ],
-            highlight: "Plans start at $39/mo but paid apps stack up — avg $200-500/month extra.",
+            highlight:
+                "Template platforms manage the infrastructure for you, reducing technical complexity but limiting control over the underlying platform.",
+        },
+    },
+
+    performance: {
+        custom: {
+            score: 94,
+            grade: "A",
+            tagline: "Built for speed from the ground up",
+            metrics: [
+                { label: "Frontend", value: "Next.js", icon: RiSpeedLine },
+                { label: "Optimization", value: "Custom", icon: RiBarChartBoxLine },
+                { label: "Scaling", value: "~10K Users", icon: RiGlobalLine },
+            ],
+            features: [
+                { name: "Server-side rendering", available: true },
+                { name: "Optimized assets & loading", available: true },
+                { name: "Custom performance architecture", available: true },
+                { name: "AWS scalable deployment", available: true },
+                { name: "Performance-focused development", available: true },
+            ],
+            highlight:
+                "Every part of the application can be optimized for your specific traffic, content and customer experience.",
+        },
+
+        template: {
+            score: 91,
+            grade: "A",
+            tagline: "Reliable managed performance",
+            metrics: [
+                { label: "Infrastructure", value: "Managed", icon: RiCloudLine },
+                { label: "Optimization", value: "Platform", icon: RiBarChartBoxLine },
+                { label: "Scaling", value: "Managed", icon: RiGlobalLine },
+            ],
+            features: [
+                { name: "Server-side rendering", available: true },
+                { name: "Optimized infrastructure", available: true },
+                { name: "Custom performance architecture", available: false },
+                { name: "Custom AWS deployment", available: false },
+                { name: "Platform-managed scaling", available: true },
+            ],
+            highlight:
+                "Managed platforms take care of infrastructure, simplifying store maintenance while keeping optimizations within platform bounds.",
+        },
+    },
+
+    dashboard: {
+        custom: {
+            score: 99,
+            grade: "A+",
+            tagline: "Your business gets its own dashboard",
+            metrics: [
+                { label: "Admin UI", value: "100% Custom", icon: RiLayoutGridLine },
+                { label: "Workflows", value: "Business Specific", icon: RiSettings3Line },
+                { label: "Control", value: "Full", icon: RiDashboardLine },
+            ],
+            features: [
+                { name: "Custom admin dashboard", available: true },
+                { name: "Custom business workflows", available: true },
+                { name: "Custom analytics views", available: true },
+                { name: "Role-based dashboard features", available: true },
+                { name: "Features designed around your team", available: true },
+            ],
+            highlight:
+                "Instead of adapting your business to a generic dashboard, we build the dashboard around how your business actually works.",
+        },
+
+        template: {
+            score: 82,
+            grade: "A-",
+            tagline: "Standardized platform admin dashboard",
+            metrics: [
+                { label: "Admin UI", value: "Platform-Based", icon: RiLayoutGridLine },
+                { label: "Workflows", value: "Standard", icon: RiSettings3Line },
+                { label: "Control", value: "Limited", icon: RiDashboardLine },
+            ],
+            features: [
+                { name: "Custom admin dashboard", available: false },
+                { name: "Custom business workflows", available: false },
+                { name: "Custom analytics views", available: true },
+                { name: "Role-based dashboard features", available: true },
+                { name: "Features designed around your team", available: false },
+            ],
+            highlight:
+                "A mature and feature-rich admin experience, but businesses must work within the platform's rigid predefined management structure.",
+        },
+    },
+
+    ownership: {
+        custom: {
+            score: 97,
+            grade: "A+",
+            tagline: "Built once. Built for you.",
+            metrics: [
+                { label: "Development", value: "One-Time", icon: RiMoneyDollarCircleLine },
+                { label: "Codebase", value: "Custom", icon: RiCodeLine },
+                { label: "Control", value: "Full", icon: RiLockLine },
+            ],
+            features: [
+                { name: "Custom codebase", available: true },
+                { name: "Custom frontend & backend", available: true },
+                { name: "No theme dependency", available: true },
+                { name: "No mandatory app ecosystem", available: true },
+                { name: "Long-term customization possible", available: true },
+            ],
+            highlight:
+                "Higher upfront investment, but your platform is engineered specifically for your business instead of being assembled from a standard theme.",
+        },
+
+        template: {
+            score: 79,
+            grade: "B+",
+            tagline: "Lower entry cost, recurring platform model",
+            metrics: [
+                { label: "Development", value: "Subscription + Build", icon: RiMoneyDollarCircleLine },
+                { label: "Codebase", value: "Platform-Based", icon: RiCodeLine },
+                { label: "Control", value: "Platform-Limited", icon: RiLockLine },
+            ],
+            features: [
+                { name: "Custom codebase", available: false },
+                { name: "Custom frontend & backend", available: false },
+                { name: "No theme dependency", available: false },
+                { name: "No mandatory app ecosystem", available: false },
+                { name: "Long-term customization possible", available: true },
+            ],
+            highlight:
+                "Lower initial barrier makes template platforms accessible, while advanced custom workflows require extra paid plugins and external workarounds.",
+        },
+    },
+
+    seo: {
+        custom: {
+            score: 96,
+            grade: "A+",
+            tagline: "SEO architecture built into the application",
+            metrics: [
+                { label: "SEO Control", value: "Full", icon: RiSearchLine },
+                { label: "Rendering", value: "Next.js", icon: RiCodeLine },
+                { label: "Optimization", value: "Custom", icon: RiSpeedLine },
+            ],
+            features: [
+                { name: "Custom metadata architecture", available: true },
+                { name: "Next.js SSR / SSG capabilities", available: true },
+                { name: "Custom structured data", available: true },
+                { name: "Custom URL architecture", available: true },
+                { name: "Technical SEO optimization", available: true },
+            ],
+            highlight:
+                "SEO is engineered into the application architecture instead of being restricted to predefined platform patterns.",
+        },
+
+        template: {
+            score: 88,
+            grade: "A",
+            tagline: "Strong SEO for standard stores",
+            metrics: [
+                { label: "SEO Control", value: "Good", icon: RiSearchLine },
+                { label: "Rendering", value: "Platform SSR", icon: RiCodeLine },
+                { label: "Optimization", value: "Platform", icon: RiSpeedLine },
+            ],
+            features: [
+                { name: "Custom metadata architecture", available: true },
+                { name: "Next.js SSR / SSG capabilities", available: false },
+                { name: "Custom structured data", available: true },
+                { name: "Custom URL architecture", available: false },
+                { name: "Technical SEO optimization", available: true },
+            ],
+            highlight:
+                "Template platforms provide solid built-in SEO capabilities, with deeper technical customization constrained by the platform.",
+        },
+    },
+
+    pricing: {
+        custom: {
+            score: 84,
+            grade: "A",
+            tagline: "Higher upfront. Lower dependency on subscriptions.",
+            metrics: [
+                { label: "Initial Cost", value: "Higher", icon: RiMoneyDollarCircleLine },
+                { label: "Billing Model", value: "One-Time Build", icon: RiLockLine },
+                { label: "Discount", value: "10–15%*", icon: RiPriceTag3Line },
+            ],
+            features: [
+                { name: "One-time development investment", available: true },
+                { name: "Frontend development included", available: true },
+                { name: "Backend development included", available: true },
+                { name: "Custom dashboard included", available: true },
+                { name: "10–15% annual/monthly package discount", available: true },
+            ],
+            highlight:
+                "A custom platform costs more upfront because you're investing in a complete dedicated system rather than adapting a ready-made template.",
+        },
+
+        template: {
+            score: 88,
+            grade: "A",
+            tagline: "Lower entry cost with recurring expenses",
+            metrics: [
+                { label: "Initial Cost", value: "Lower", icon: RiMoneyDollarCircleLine },
+                { label: "Billing Model", value: "Recurring", icon: RiLockLine },
+                { label: "Customization", value: "Extra Dev Cost", icon: RiPriceTag3Line },
+            ],
+            features: [
+                { name: "Low initial platform cost", available: true },
+                { name: "Frontend development included", available: false },
+                { name: "Backend development included", available: false },
+                { name: "Custom dashboard included", available: false },
+                { name: "Additional developer cost", available: true },
+            ],
+            highlight:
+                "Template platforms can be cheaper to start, but advanced customization may require specialized developers, themes and additional apps.",
         },
     },
 };
 
+/* ═══════════════ COLOR & GRADIENT HELPERS ═══════════════ */
+
+// Calculates a color along the red -> amber -> green spectrum based on score (0 to 100)
+const getScoreColor = (score) => {
+    const clamped = Math.max(0, Math.min(100, score));
+    let hue;
+    if (clamped <= 50) {
+        // 0 to 50: red (0deg) to amber (48deg)
+        hue = (clamped / 50) * 48;
+    } else {
+        // 50 to 100: amber (48deg) to emerald green (142deg)
+        hue = 48 + ((clamped - 50) / 50) * 94;
+    }
+    return `hsl(${Math.round(hue)}, 84%, 42%)`;
+};
+
+// Returns a smooth gradient starting from solid red to the score's color (smoothly towards green)
+const getScoreGradient = (score) => {
+    const clamped = Math.max(0, Math.min(100, score));
+    const endColor = getScoreColor(clamped);
+    if (clamped <= 45) {
+        return `linear-gradient(90deg, #dc2626 0%, ${endColor} 100%)`;
+    } else if (clamped <= 75) {
+        return `linear-gradient(90deg, #dc2626 0%, #f59e0b 45%, ${endColor} 100%)`;
+    } else {
+        return `linear-gradient(90deg, #dc2626 0%, #f59e0b 30%, #84cc16 60%, ${endColor} 100%)`;
+    }
+};
+
 /* ═══════════════ SCORE RING COMPONENT ═══════════════ */
 
-const ScoreRing = ({ score, color, size = 56 }) => {
+const ScoreRing = ({ score, size = 56 }) => {
     const strokeWidth = 5;
     const radius = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * radius;
     const offset = circumference - (score / 100) * circumference;
+    const scoreColor = getScoreColor(score);
 
     return (
         <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
             <svg width={size} height={size} className="-rotate-90">
-                <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="currentColor" className="text-white/10" strokeWidth={strokeWidth} />
+                <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#f1f5f9" strokeWidth={strokeWidth} />
                 <circle
                     cx={size / 2} cy={size / 2} r={radius}
-                    fill="none" stroke={color} strokeWidth={strokeWidth}
+                    fill="none" stroke={scoreColor} strokeWidth={strokeWidth}
                     strokeDasharray={circumference} strokeDashoffset={offset}
                     strokeLinecap="round"
-                    style={{ transition: "stroke-dashoffset 0.8s ease-out" }}
+                    style={{ transition: "stroke-dashoffset 0.8s ease-out, stroke 0.5s ease-out" }}
                 />
             </svg>
-            <span className="absolute text-sm font-bold text-white">{score}</span>
+            <span className="absolute text-sm font-bold text-gray-900">{score}</span>
         </div>
     );
 };
 
 /* ═══════════════ PROGRESS BAR ═══════════════ */
 
-const ProgressBar = ({ value, max = 100, color }) => (
-    <div className="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
-        <div
-            className="h-full rounded-full transition-[width] duration-700 ease-out"
-            style={{ width: `${(value / max) * 100}%`, backgroundColor: color }}
-        />
-    </div>
-);
+const ProgressBar = ({ value, max = 100 }) => {
+    const gradient = getScoreGradient(value);
+    return (
+        <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
+            <div
+                className="h-full rounded-full transition-all duration-700 ease-out"
+                style={{
+                    width: `${Math.min(100, Math.max(0, (value / max) * 100))}%`,
+                    background: gradient,
+                }}
+            />
+        </div>
+    );
+};
 
 /* ═══════════════ DASHBOARD PANEL ═══════════════ */
 
-const DashboardPanel = ({ platform, data, accentColor, accentGradient, icon: PlatformIcon, activeTab, isWinner }) => {
+const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinner }) => {
+    const scoreColor = getScoreColor(data.score);
 
     return (
-        <div className={`dashboard-panel rounded-2xl overflow-hidden border transition-[border-color,box-shadow] duration-500 flex flex-col ${isWinner ? "border-white/50" : "border-white/10"}`}
-            style={{ background: "linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)" }}
-        >
+        <div className={`dashboard-panel rounded-2xl overflow-hidden border bg-white shadow-xl transition-[border-color,box-shadow] duration-500 flex flex-col ${isWinner ? "border-[#002bba]/50 shadow-2xl ring-2 ring-[#002bba]/20" : "border-black/10"}`}>
             {/* ─── Dashboard Title Bar ─── */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/5">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-gray-50/70">
                 <div className="flex items-center gap-2.5">
                     {/* Window dots */}
                     <div className="flex gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/70"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></div>
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/70"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
                     </div>
                     <div className="flex items-center gap-2 ml-2">
-                        <PlatformIcon size={16} className="text-white/60" />
-                        <span className="text-xs text-white/50 font-mono">{platform.toLowerCase()}</span>
+                        <PlatformIcon size={16} className={platform.toLowerCase().includes("custom") ? "text-[#002bba]" : "text-gray-500"} />
+                        <span className="text-xs text-gray-600 font-mono font-medium">{platform.toLowerCase()}</span>
                     </div>
                 </div>
-                <div className="flex items-center gap-2">
-                    <RiSearchLine size={14} className="text-white/30" />
-                    <RiNotification3Line size={14} className="text-white/30" />
-                    <RiSettings3Line size={14} className="text-white/30" />
+                <div className="flex items-center gap-2.5">
+                    <RiSearchLine size={14} className="text-gray-400" />
+                    <RiNotification3Line size={14} className="text-gray-400" />
+                    <RiSettings3Line size={14} className="text-gray-400" />
                 </div>
             </div>
 
             {/* ─── Platform Header ─── */}
-            <div className="px-5 pt-5 pb-4 border-b border-white/10" style={{ background: accentGradient }}>
+            <div className="px-6 pt-6 pb-5 border-b border-gray-100 bg-white">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h4 className="text-4xl  text-white">{platform}</h4>
-                        <p className="text-xs text-white/60 mt-0.5">{data.tagline}</p>
+                        <h4 className="text-3xl md:text-4xl font-normal text-gray-900">{platform}</h4>
+                        <p className="text-xs text-gray-500 mt-1 font-medium">{data.tagline}</p>
                     </div>
-                    <div className="flex py-5 items-center gap-3">
-                        <ScoreRing score={data.score} color={accentColor} />
+                    <div className="flex py-2 items-center gap-3">
+                        <ScoreRing score={data.score} />
                         <div className="text-center">
-                            <div className="text-2xl font-bold text-white">{data.grade}</div>
-                            <div className="text-xs text-white/40 uppercase tracking-wider">Grade</div>
+                            <div className="text-2xl font-bold" style={{ color: scoreColor }}>{data.grade}</div>
+                            <div className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Grade</div>
                         </div>
                     </div>
                 </div>
-                <ProgressBar value={data.score} color={accentColor} />
+                <div className="mt-4">
+                    <ProgressBar value={data.score} />
+                </div>
             </div>
 
             {/* ─── Metrics Row ─── */}
-            <div className="grid grid-cols-3 border-b border-white/10">
+            <div className="grid grid-cols-3 border-b border-gray-100 bg-gray-50/40">
                 {data.metrics.map((m, i) => {
                     const MIcon = m.icon;
                     return (
-                        <div key={i} className={`metric-item px-4 py-4 flex flex-col items-center text-center gap-1.5 ${i < 2 ? "border-r border-white/10" : ""}`}>
-                            <MIcon size={16} className="text-white/40" />
-                            <span className="text-xs text-white/40 uppercase tracking-wider">{m.label}</span>
-                            <span className="text-sm  text-white">{m.value}</span>
+                        <div key={i} className={`metric-item px-4 py-4 flex flex-col items-center text-center gap-1.5 ${i < 2 ? "border-r border-gray-100" : ""}`}>
+                            <MIcon size={16} className="text-gray-400" />
+                            <span className="text-[11px] text-gray-500 uppercase tracking-wider font-medium">{m.label}</span>
+                            <span className="text-sm font-semibold text-gray-900">{m.value}</span>
                         </div>
                     );
                 })}
             </div>
 
             {/* ─── Features Checklist ─── */}
-            <div className="px-5 py-4 flex-1">
-                <p className="text-xs text-white/30 uppercase tracking-widest mb-3">Feature Checklist</p>
-                <div className="space-y-2.5">
+            <div className="px-6 py-5 flex-1 bg-white">
+                <p className="text-[11px] text-gray-400 uppercase tracking-widest font-semibold mb-3">Feature Checklist</p>
+                <div className="space-y-3">
                     {data.features.map((f, i) => (
-                        <div key={i} className="feature-row flex items-center gap-2.5">
-                            <div className={`w-6 h-6 rounded-md flex items-center justify-center shrink-0 ${f.available ? "bg-green-500/20" : "bg-red-500/10"}`}>
+                        <div key={i} className="feature-row flex items-center gap-3">
+                            <div className={`w-5 h-5 rounded flex items-center justify-center shrink-0 ${f.available ? "bg-emerald-50 text-emerald-600 border border-emerald-200/70" : "bg-rose-50 text-rose-400 border border-rose-200/70"}`}>
                                 {f.available
-                                    ? <RiCheckLine size={12} className="text-green-400" />
-                                    : <RiCloseLine size={12} className="text-red-400/60" />
+                                    ? <RiCheckLine size={13} className="text-emerald-600" />
+                                    : <RiCloseLine size={13} className="text-rose-400" />
                                 }
                             </div>
-                            <span className={`text-sm ${f.available ? "text-white/70" : "text-white/30 line-through"}`}>
+                            <span className={`text-sm ${f.available ? "text-gray-800 font-medium" : "text-gray-400 line-through"}`}>
                                 {f.name}
                             </span>
                         </div>
@@ -335,20 +495,6 @@ const DashboardPanel = ({ platform, data, accentColor, accentGradient, icon: Pla
                 </div>
             </div>
 
-            {/* ─── Bottom Highlight ─── */}
-            <div className="px-5 py-3.5 border-t border-white/10 bg-white/[0.03]">
-                <p className="text-[11px] text-white/50 italic leading-relaxed">
-                    &quot;{data.highlight}&quot;
-                </p>
-            </div>
-
-            {/* ─── Winner Badge ─── */}
-            {isWinner && (
-                <div className="px-5 py-2.5 flex items-center justify-center gap-2 border-t border-white/20">
-                    <RiStarLine size={14} className="text-yellow-300" />
-                    <span className="text-xs  text-white uppercase ">Leads in {tabs.find(t => t.key === activeTab)?.label}</span>
-                </div>
-            )}
         </div>
     );
 };
@@ -356,13 +502,13 @@ const DashboardPanel = ({ platform, data, accentColor, accentGradient, icon: Pla
 /* ══════════════════ MAIN COMPONENT ══════════════════ */
 
 const EcommPlatformCompare = () => {
-    const [activeTab, setActiveTab] = useState("ease");
+    const [activeTab, setActiveTab] = useState("customization");
     const containerRef = useRef(null);
     const panelsRef = useRef(null);
     const isFirstRender = useRef(true);
 
-    const currentData = dashboardData[activeTab];
-    const zcomWins = currentData.zcom.score >= currentData.shopify.score;
+    const currentData = dashboardData[activeTab] || dashboardData.customization;
+    const customWins = (currentData?.custom?.score ?? 0) >= (currentData?.template?.score ?? 0);
 
     /* ── Scroll entry animation ── */
     useGSAP(() => {
@@ -456,7 +602,7 @@ const EcommPlatformCompare = () => {
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b md:grid grid-cols-[28%_30%_42%]">
                     <div>
                         <h2 data-para-effect className="capitalize primary-font text-5xl leading-none">
-                            Shopify or a <br /> custom platform?
+                            Template or Custom Platform
                         </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4"></div>
@@ -465,8 +611,7 @@ const EcommPlatformCompare = () => {
                             <span className="opacity-0 secondary-font max-sm:hidden pointer-events-none">
                                 ...............
                             </span>
-                            We&apos;re not platform loyalists. Shopify is right for most stores, and we build it well. But
-                            some businesses don&apos;t fit a template — and forcing them never ends well.
+                            Every e-commerce journey is unique. Template platforms offer rapid setup for standard stores, while custom platforms deliver complete ownership, bespoke workflows, and ultimate scale. Compare both architectures below to find your perfect fit.
                         </h3>
                     </div>
                 </div>
@@ -496,22 +641,18 @@ const EcommPlatformCompare = () => {
             <div ref={panelsRef} className="dashboards-wrap padding py-0! my-8 md:my-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     <DashboardPanel
-                        platform="Z-com"
-                        data={currentData.zcom}
-                        accentColor="#4f8cff"
-                        accentGradient="linear-gradient(135deg, rgba(0,43,186,0.4) 0%, rgba(79,140,255,0.15) 100%)"
+                        platform="Custom Platform"
+                        data={currentData.custom}
                         icon={RiTerminalBoxLine}
                         activeTab={activeTab}
-                        isWinner={zcomWins}
+                        isWinner={customWins}
                     />
                     <DashboardPanel
-                        platform="Shopify"
-                        data={currentData.shopify}
-                        accentColor="#96bf48"
-                        accentGradient="linear-gradient(135deg, rgba(94,142,62,0.4) 0%, rgba(150,191,72,0.15) 100%)"
-                        icon={ShopifyIcon}
+                        platform="Template-Based Platform"
+                        data={currentData.template}
+                        icon={RiLayoutGridLine}
                         activeTab={activeTab}
-                        isWinner={!zcomWins}
+                        isWinner={!customWins}
                     />
                 </div>
 

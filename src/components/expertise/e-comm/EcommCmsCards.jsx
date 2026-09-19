@@ -50,7 +50,7 @@ const EcommCmsCards = () => {
                 <div className="w-full   padding py-0!  text_blue ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                         <div className="">
-                            <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Meet Zcom.</h2>
+                            <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Explore Zcom.</h2>
                         </div>
                         <div className="text-xs max-sm:hidden pt-4">
                             <p className='font-thin'>Total control,  </p>
@@ -66,69 +66,69 @@ const EcommCmsCards = () => {
                 </div>
                 <div ref={sliderRef} className=" padding py-0! w-full flex gap-x-5">
                     <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img1.webp" alt="Card 1 Graphic" fill className="object-cover absolute z-0" />
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img1.webp" alt="Smart Inventory & Orders" fill className="object-cover absolute z-0" />
                         <div className="p-10 pb-0 space-y-2 relative z-10">
-                            <h4 className='text-3xl primary-font'>Smart Inventory Management</h4>
-                            <p className='leading-tight'>Monitor sales, Conversion rates .</p>
+                            <h4 className='text-3xl primary-font'>Smart Inventory & Orders</h4>
+                            <p className='leading-tight'>Real-time stock tracking and order management engineered for seamless daily store operations.</p>
                         </div>
                     </div>
 
                     <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img2.webp" alt="Card 2 Graphic" fill className="object-cover absolute z-0" />
-                        <div className="p-10 space-y-2 w-[80%] relative z-10">
-                            <h4 className='text-3xl primary-font'>Made for your model</h4>
-                            <p className='leading-tight'>Pre-orders, drops, made-to-order: workflows templates refuse, built in from day one.</p>
-                        </div>
-                    </div>
-
-                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img3.webp" alt="Card 3 Graphic" fill className="object-cover absolute z-0" />
-                        <div className="p-10 pb-0 space-y-2 relative z-10">
-                            <h4 className='text-3xl primary-font'>Live inventory</h4>
-                            <p className='leading-tight'>Stock tied to real production, updated in real time, visible at a glance.</p>
-                        </div>
-                    </div>
-
-                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img4.webp" alt="Card 4 Graphic" fill className="object-cover absolute z-0" />
-                        <div className="p-10 space-y-2 w-[80%] relative z-10">
-                            <h4 className='text-3xl primary-font'>Analytics that answer</h4>
-                            <p className='leading-tight'>Sales, conversion and customer behaviour in reports built around your questions.</p>
-                        </div>
-                    </div>
-
-                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img5.webp" alt="Card 5 Graphic" fill className="object-cover absolute z-0" />
-                        <div className="p-10 pb-0 space-y-2 relative z-10">
-                            <h4 className='text-3xl primary-font'>Built-in loyalty & referrals</h4>
-                            <p className='leading-tight'> Repeat business by design, without a plugin bill attached.</p>
-                        </div>
-                    </div>
-
-                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img6.webp" alt="Card 6 Graphic" fill className="object-cover absolute z-0" />
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img2.webp" alt="Made For Your Model" fill className="object-cover absolute z-0" />
                         <div className="p-10 space-y-2 relative z-10">
-                            <h4 className='text-3xl primary-font'>Campaigns from the dashboard</h4>
-                            <p className='leading-tight'> Email, SMS and WhatsApp, sent from where you already work.</p>
+                            <h4 className='text-3xl primary-font'>Made For Your Model</h4>
+                            <p className='leading-tight'>Pre-orders, drops, and custom workflows built in from day one without template limits.</p>
                         </div>
                     </div>
 
                     <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img7.webp" alt="Card 7 Graphic" fill className="object-cover absolute z-0" />
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img3.webp" alt="Live Production Sync" fill className="object-cover absolute z-0" />
                         <div className="p-10 pb-0 space-y-2 relative z-10">
-                            <h4 className='text-3xl primary-font'>Search-ready structure</h4>
-                            <p className='leading-tight'> Clean architecture that search engines, and AI engines, can actually read.</p>
+                            <h4 className='text-3xl primary-font'>Live Production Sync</h4>
+                            <p className='leading-tight'>Stock levels tied directly to production, updated instantly and visible at a single glance.</p>
+                        </div>
+                    </div>
+
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img4.webp" alt="Analytics That Answer" fill className="object-cover absolute z-0" />
+                        <div className="p-10 space-y-2 relative z-10">
+                            <h4 className='text-3xl primary-font'>Analytics That Answer</h4>
+                            <p className='leading-tight'>Sales trends, conversion rates, and customer behavior reports tailored to your key metrics.</p>
+                        </div>
+                    </div>
+
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img5.webp" alt="Built-In Loyalty System" fill className="object-cover absolute z-0" />
+                        <div className="p-10 pb-0 space-y-2 relative z-10">
+                            <h4 className='text-3xl primary-font'>Built-In Loyalty System</h4>
+                            <p className='leading-tight'>Drive repeat purchases with automated rewards and referrals without costly third-party apps.</p>
+                        </div>
+                    </div>
+
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-end text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img6.webp" alt="Unified Admin Campaigns" fill className="object-cover absolute z-0" />
+                        <div className="p-10 space-y-2 relative z-10">
+                            <h4 className='text-3xl primary-font'>Unified Admin Campaigns</h4>
+                            <p className='leading-tight'>Launch targeted Email, SMS, and WhatsApp campaigns directly inside your store dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                        <Image src="/images/expertisePage/e-comm/cmsCards/img7.webp" alt="Search & AI Architecture" fill className="object-cover absolute z-0" />
+                        <div className="p-10 pb-0 space-y-2 relative z-10">
+                            <h4 className='text-3xl primary-font'>Search & AI Architecture</h4>
+                            <p className='leading-tight'>Clean semantic structure designed so modern search engines and AI discovery tools index you fast.</p>
                         </div>
                     </div>
 
                     <div className="pr-4 md:pr-10">
-                    <div className="w-[30vw]  cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
-                        <Image src="/images/expertisePage/e-comm/cmsCards/img8.webp" alt="Card 8 Graphic" fill className="object-cover absolute z-0" />
-                        <div className="p-10 pb-0 space-y-2 relative z-10">
-                            <h4 className='text-3xl primary-font'>Yours, fully</h4>
-                            <p className='leading-tight'>Complete IP ownership on full payment. Your store, your system, your asset.</p>
+                        <div className="w-[30vw] cms_crd relative overflow-hidden aspect-square shrink-0 flex flex-col justify-start text-white rounded-xl bg_blue">
+                            <Image src="/images/expertisePage/e-comm/cmsCards/img8.webp" alt="Complete IP Ownership" fill className="object-cover absolute z-0" />
+                            <div className="p-10 pb-0 space-y-2 relative z-10">
+                                <h4 className='text-3xl primary-font'>Complete IP Ownership</h4>
+                                <p className='leading-tight'>Full code and data ownership with zero recurring platform fees or proprietary lock-in.</p>
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                 </div>

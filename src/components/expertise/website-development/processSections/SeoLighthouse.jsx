@@ -12,6 +12,7 @@ import {
     RiSmartphoneLine,
     RiRefreshLine
 } from '@remixicon/react';
+import Image from 'next/image';
 
 const TARGET_URL = "zerrorstudios.com";
 
@@ -170,7 +171,7 @@ const SeoLighthouse = () => {
             <div className="w-full h-full bg-[#FAFCFF] text-gray-900 flex flex-col font-sans overflow-hidden relative border border-black/10">
 
                 {/* Top Browser / Audit Tool Header */}
-                <div className="w-full bg-white border-b border-black/10 px-4 py-2.5 flex items-center justify-between shrink-0 select-none">
+                <div className="w-full bg-white border-b border-black/10 px-4 py-2.5 grid grid-cols-3 shrink-0 select-none">
                     {/* Traffic Lights */}
                     <div className="flex items-center gap-2">
                         <div className="flex items-center gap-1.5">
@@ -181,29 +182,25 @@ const SeoLighthouse = () => {
 
                         {/* Breadcrumb / Title */}
                         <div className="hidden sm:flex items-center gap-2 ml-3 pl-3 border-l border-gray-200 text-xs text-gray-500">
-                            <span className="flex items-center gap-1 font-medium text-gray-700">
-                                <span className="text-[#4285F4] font-bold">G</span>
-                                <span className="text-[#EA4335] font-bold">o</span>
-                                <span className="text-[#FBBC05] font-bold">o</span>
-                                <span className="text-[#4285F4] font-bold">g</span>
-                                <span className="text-[#34A853] font-bold">l</span>
-                                <span className="text-[#EA4335] font-bold">e</span>
-                                <span className="ml-1 text-gray-600 font-semibold">PageSpeed & Search Console</span>
-                            </span>
+                            <div className="w-16">
+                                <Image width={100} height={100} src="/icons/google.webp" alt="google icon" />
+                            </div>
                         </div>
                     </div>
 
                     {/* URL Status Bar */}
-                    <div className="flex items-center gap-2 bg-gray-100/90 border border-gray-200/80 rounded-full px-3 py-1 text-xs text-gray-600 max-w-[16rem] sm:max-w-xs truncate">
+                    <div className=" center">
+                    <div className=" flex items-center justify-center gap-2 bg-gray-100/90 border border-gray-200/80 rounded-full px-3 py-1 text-xs text-gray-600 max-w-[16rem] sm:max-w-xs truncate">
                         <RiLockLine size={13} className="text-[#0cce6b] shrink-0" />
                         <span className="text-gray-400">https://</span>
                         <span className="font-semibold text-gray-800 truncate">
                             {typedText || "zerrorstudios.com"}
                         </span>
                     </div>
+                    </div>
 
                     {/* Device Toggle & Live Status */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-end gap-2">
                         <div className="hidden sm:flex items-center bg-gray-100 p-0.5 rounded-lg text-xs">
                             <button
                                 type="button"
@@ -213,26 +210,13 @@ const SeoLighthouse = () => {
                                 <RiComputerLine size={12} />
                                 <span>Desktop</span>
                             </button>
-                            <button
-                                type="button"
-                                onClick={() => setDeviceTab('mobile')}
-                                className={`flex items-center gap-1 px-2 py-0.5 rounded-md transition-all ${deviceTab === 'mobile' ? 'bg-white shadow-xs text_blue font-medium' : 'text-gray-500 hover:text-gray-900'}`}
-                            >
-                                <RiSmartphoneLine size={12} />
-                                <span>Mobile</span>
-                            </button>
-                        </div>
-
-                        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="hidden xs:inline">Core Web Vitals</span>
-                            <span>Passed</span>
+                            
                         </div>
                     </div>
                 </div>
 
                 {/* Main Body View */}
-                <div className="flex-1 w-full overflow-y-auto scroller_none relative flex flex-col">
+                <div className="flex-1 w-full overflow-y-auto  relative flex flex-col">
 
                     {/* --- VIEW A: TYPING & SEARCH BAR CENTER STATE --- */}
                     {phase === 'typing' && (
