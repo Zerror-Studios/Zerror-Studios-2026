@@ -27,6 +27,7 @@ import {
     RiDatabase2Line,
     RiCloudLine,
     RiPriceTag3Line,
+    RiLightbulbLine,
 } from "@remixicon/react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -37,17 +38,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const tabs = [
     { key: "customization", label: "Customization", icon: RiPaintBrushLine },
-    { key: "technology", label: "Technology", icon: RiCodeLine },
     { key: "performance", label: "Performance", icon: RiSpeedLine },
-    { key: "dashboard", label: "Dashboard", icon: RiDashboardLine },
-    { key: "ownership", label: "Ownership", icon: RiLockLine },
-    { key: "seo", label: "SEO", icon: RiSearchLine },
     { key: "pricing", label: "Pricing", icon: RiMoneyDollarCircleLine },
+    { key: "seo", label: "SEO", icon: RiSearchLine },
+    { key: "ownership", label: "Ownership", icon: RiLockLine },
+    { key: "dashboard", label: "Dashboard", icon: RiDashboardLine },
+    { key: "technology", label: "Technology", icon: RiCodeLine },
 ];
 
 const dashboardData = {
     customization: {
-        custom: {
+        zcom: {
             score: 98,
             grade: "A+",
             tagline: "Built around your business, not a template",
@@ -57,286 +58,267 @@ const dashboardData = {
                 { label: "Backend", value: "Fully Custom", icon: RiServerLine },
             ],
             features: [
-                { name: "Fully custom frontend UI", available: true },
-                { name: "Custom backend architecture", available: true },
-                { name: "Custom admin dashboard", available: true },
-                { name: "Custom checkout & business flows", available: true },
-                { name: "3D / GSAP / advanced interactions", available: true },
+                { name: "Design every part of your website", available: true },
+                { name: "Build features specifically for your business", available: true },
+                { name: "Create custom shopping & checkout experiences", available: true },
+                { name: "Add advanced 3D, animations & interactions", available: true },
             ],
             highlight:
-                "Your business gets its own digital experience — designed, developed and engineered around your exact requirements.",
+                "Z-Com is built around your business. From the way your website looks to how customers shop and how your team manages orders, everything can be tailored to your exact needs.",
         },
 
-        template: {
+        shopify: {
             score: 75,
             grade: "B",
-            tagline: "Fast to launch with themes and apps",
+            tagline: "Quick to launch with ready-made themes",
             metrics: [
                 { label: "Design Freedom", value: "Theme-Based", icon: RiPaletteLine },
-                { label: "Frontend", value: "Theme + Liquid", icon: RiCodeLine },
-                { label: "Backend", value: "Platform Managed", icon: RiServerLine },
+                { label: "Setup", value: "Ready-Made", icon: RiCodeLine },
+                { label: "Customization", value: "Platform-Based", icon: RiSettings3Line },
             ],
             features: [
-                { name: "Fully custom frontend UI", available: false },
-                { name: "Custom backend architecture", available: false },
-                { name: "Custom admin dashboard", available: false },
-                { name: "Custom checkout & business flows", available: false },
-                { name: "3D / GSAP / advanced interactions", available: true },
+                { name: "Ready-made themes", available: true },
+                { name: "Theme customization", available: true },
+                { name: "Large app ecosystem", available: true },
+                { name: "Custom animations & interactions", available: true },
             ],
             highlight:
-                "Excellent for getting a standard store online quickly, but deeper customization depends on the platform's theme ecosystem and available extensions.",
+                "Shopify makes it easy to launch a store using themes and apps. It works well for standard stores, while highly specific experiences may require working within Shopify's platform and theme structure.",
         },
     },
 
     technology: {
-        custom: {
+        zcom: {
             score: 96,
             grade: "A+",
-            tagline: "Modern technology, engineered for your product",
+            tagline: "Your technology, your rules",
             metrics: [
-                { label: "Framework", value: "Next.js + MERN", icon: RiCodeLine },
-                { label: "Database", value: "MongoDB", icon: RiDatabase2Line },
-                { label: "Infrastructure", value: "AWS", icon: RiCloudLine },
+                { label: "Technology", value: "Custom Built", icon: RiCodeLine },
+                { label: "Database", value: "Your Own", icon: RiDatabase2Line },
+                { label: "Infrastructure", value: "Your Control", icon: RiCloudLine },
             ],
             features: [
-                { name: "Next.js application architecture", available: true },
-                { name: "Node.js + Express backend", available: true },
-                { name: "MongoDB database", available: true },
-                { name: "AWS deployment", available: true },
-                { name: "GSAP / Three.js / 3D experiences", available: true },
+                { name: "Modern Next.js + MERN architecture", available: true },
+                { name: "Your own database & backend", available: true },
+                { name: "Custom cloud infrastructure", available: true },
+                { name: "Built for your specific business requirements", available: true },
             ],
             highlight:
-                "A complete custom MERN + Next.js commerce system — from frontend experience to backend infrastructure.",
+                "Z-Com gives you a complete custom technology foundation. The system can be changed, extended and improved as your business grows instead of being restricted to a fixed platform structure.",
         },
 
-        template: {
+        shopify: {
             score: 86,
             grade: "A",
-            tagline: "Reliable commerce infrastructure",
+            tagline: "Reliable commerce infrastructure, managed for you",
             metrics: [
-                { label: "Framework", value: "SaaS Engine", icon: RiCodeLine },
-                { label: "Database", value: "Platform Managed", icon: RiDatabase2Line },
-                { label: "Infrastructure", value: "Shared Cloud", icon: RiCloudLine },
+                { label: "Technology", value: "Platform Managed", icon: RiCodeLine },
+                { label: "Database", value: "Shopify Managed", icon: RiDatabase2Line },
+                { label: "Infrastructure", value: "Shopify Managed", icon: RiCloudLine },
             ],
             features: [
-                { name: "Next.js application architecture", available: false },
-                { name: "Custom Node.js + Express backend", available: false },
-                { name: "Own MongoDB database", available: false },
-                { name: "Custom AWS architecture", available: false },
-                { name: "Advanced custom interactions", available: true },
+                { name: "Managed hosting & infrastructure", available: true },
+                { name: "Built-in commerce technology", available: true },
+                { name: "Large ecosystem of apps & integrations", available: true },
             ],
             highlight:
-                "Template platforms manage the infrastructure for you, reducing technical complexity but limiting control over the underlying platform.",
+                "Shopify takes care of the technical infrastructure, hosting and core commerce system, making it easier to manage but giving you less control over the underlying technology.",
         },
     },
 
     performance: {
-        custom: {
+        zcom: {
             score: 94,
             grade: "A",
-            tagline: "Built for speed from the ground up",
+            tagline: "Performance designed around your customers",
             metrics: [
                 { label: "Frontend", value: "Next.js", icon: RiSpeedLine },
                 { label: "Optimization", value: "Custom", icon: RiBarChartBoxLine },
-                { label: "Scaling", value: "~10K Users", icon: RiGlobalLine },
+                { label: "Scaling", value: "Built to Scale", icon: RiGlobalLine },
             ],
             features: [
-                { name: "Server-side rendering", available: true },
-                { name: "Optimized assets & loading", available: true },
-                { name: "Custom performance architecture", available: true },
-                { name: "AWS scalable deployment", available: true },
-                { name: "Performance-focused development", available: true },
+                { name: "Fast, optimized website experience", available: true },
+                { name: "Custom image & asset optimization", available: true },
+                { name: "Performance tuned for your website", available: true },
+                { name: "Infrastructure that can grow with your traffic", available: true },
             ],
             highlight:
-                "Every part of the application can be optimized for your specific traffic, content and customer experience.",
+                "With Z-Com, performance decisions are made around your website and customers. We can optimize the experience based on your actual content, features and traffic instead of relying only on platform-wide defaults.",
         },
 
-        template: {
+        shopify: {
             score: 91,
             grade: "A",
-            tagline: "Reliable managed performance",
+            tagline: "Reliable performance with managed infrastructure",
             metrics: [
                 { label: "Infrastructure", value: "Managed", icon: RiCloudLine },
                 { label: "Optimization", value: "Platform", icon: RiBarChartBoxLine },
                 { label: "Scaling", value: "Managed", icon: RiGlobalLine },
             ],
             features: [
-                { name: "Server-side rendering", available: true },
-                { name: "Optimized infrastructure", available: true },
-                { name: "Custom performance architecture", available: false },
-                { name: "Custom AWS deployment", available: false },
-                { name: "Platform-managed scaling", available: true },
+                { name: "Managed hosting & infrastructure", available: true },
+                { name: "Automatic platform scaling", available: true },
+                { name: "Optimized commerce infrastructure", available: true },
             ],
             highlight:
-                "Managed platforms take care of infrastructure, simplifying store maintenance while keeping optimizations within platform bounds.",
+                "Shopify handles the infrastructure and scaling for you, making performance management simpler. Your store's performance is still influenced by the themes, apps and features you add.",
         },
     },
 
     dashboard: {
-        custom: {
+        zcom: {
             score: 99,
             grade: "A+",
-            tagline: "Your business gets its own dashboard",
+            tagline: "A dashboard built around your team",
             metrics: [
-                { label: "Admin UI", value: "100% Custom", icon: RiLayoutGridLine },
-                { label: "Workflows", value: "Business Specific", icon: RiSettings3Line },
+                { label: "Admin Dashboard", value: "100% Custom", icon: RiLayoutGridLine },
+                { label: "Workflows", value: "Your Business", icon: RiSettings3Line },
                 { label: "Control", value: "Full", icon: RiDashboardLine },
             ],
             features: [
-                { name: "Custom admin dashboard", available: true },
-                { name: "Custom business workflows", available: true },
-                { name: "Custom analytics views", available: true },
-                { name: "Role-based dashboard features", available: true },
-                { name: "Features designed around your team", available: true },
+                { name: "Dashboard designed around your business", available: true },
+                { name: "Custom order & product workflows", available: true },
+                { name: "Business-specific analytics & reports", available: true },
+                { name: "Team roles & permissions", available: true },
             ],
             highlight:
-                "Instead of adapting your business to a generic dashboard, we build the dashboard around how your business actually works.",
+                "Instead of changing your business process to fit a standard dashboard, Z-Com lets us build the dashboard around the way your team actually works.",
         },
 
-        template: {
+        shopify: {
             score: 82,
             grade: "A-",
-            tagline: "Standardized platform admin dashboard",
+            tagline: "A mature dashboard for standard store management",
             metrics: [
-                { label: "Admin UI", value: "Platform-Based", icon: RiLayoutGridLine },
+                { label: "Admin Dashboard", value: "Shopify Admin", icon: RiLayoutGridLine },
                 { label: "Workflows", value: "Standard", icon: RiSettings3Line },
-                { label: "Control", value: "Limited", icon: RiDashboardLine },
+                { label: "Management", value: "Platform-Based", icon: RiDashboardLine },
             ],
             features: [
-                { name: "Custom admin dashboard", available: false },
-                { name: "Custom business workflows", available: false },
-                { name: "Custom analytics views", available: true },
-                { name: "Role-based dashboard features", available: true },
-                { name: "Features designed around your team", available: false },
+                { name: "Product & order management", available: true },
+                { name: "Built-in store analytics", available: true },
+                { name: "Staff accounts & permissions", available: true },
             ],
             highlight:
-                "A mature and feature-rich admin experience, but businesses must work within the platform's rigid predefined management structure.",
+                "Shopify provides a powerful ready-made admin system for managing products, orders, customers and analytics. Businesses generally work within the workflows provided by the platform.",
         },
     },
 
     ownership: {
-        custom: {
+        zcom: {
             score: 97,
             grade: "A+",
-            tagline: "Built once. Built for you.",
+            tagline: "Your platform. Your code. Your control.",
             metrics: [
-                { label: "Development", value: "One-Time", icon: RiMoneyDollarCircleLine },
-                { label: "Codebase", value: "Custom", icon: RiCodeLine },
+                { label: "Codebase", value: "Custom Owned", icon: RiCodeLine },
                 { label: "Control", value: "Full", icon: RiLockLine },
+                { label: "Dependency", value: "Low", icon: RiSettings3Line },
             ],
             features: [
-                { name: "Custom codebase", available: true },
-                { name: "Custom frontend & backend", available: true },
-                { name: "No theme dependency", available: true },
-                { name: "No mandatory app ecosystem", available: true },
-                { name: "Long-term customization possible", available: true },
+                { name: "Custom codebase built for your business", available: true },
+                { name: "Full control over frontend & backend", available: true },
+                { name: "No dependency on a theme system", available: true },
+                { name: "Long-term customization & development", available: true },
             ],
             highlight:
-                "Higher upfront investment, but your platform is engineered specifically for your business instead of being assembled from a standard theme.",
+                "Z-Com gives your business its own platform rather than making your business fit into someone else's platform. You have greater control over how the system evolves over time.",
         },
 
-        template: {
+        shopify: {
             score: 79,
             grade: "B+",
-            tagline: "Lower entry cost, recurring platform model",
+            tagline: "Convenient platform with ongoing subscription",
             metrics: [
-                { label: "Development", value: "Subscription + Build", icon: RiMoneyDollarCircleLine },
                 { label: "Codebase", value: "Platform-Based", icon: RiCodeLine },
-                { label: "Control", value: "Platform-Limited", icon: RiLockLine },
+                { label: "Control", value: "Platform Rules", icon: RiLockLine },
+                { label: "Model", value: "Subscription", icon: RiMoneyDollarCircleLine },
             ],
             features: [
-                { name: "Custom codebase", available: false },
-                { name: "Custom frontend & backend", available: false },
-                { name: "No theme dependency", available: false },
-                { name: "No mandatory app ecosystem", available: false },
-                { name: "Long-term customization possible", available: true },
+                { name: "Access to your store content & configuration", available: true },
+                { name: "Large ecosystem of themes & apps", available: true },
+                { name: "Ongoing platform updates & maintenance", available: true },
             ],
             highlight:
-                "Lower initial barrier makes template platforms accessible, while advanced custom workflows require extra paid plugins and external workarounds.",
+                "Shopify reduces the technical work required to run a store, but the core platform remains Shopify's. Your store operates within its subscription model, rules and ecosystem.",
         },
     },
 
     seo: {
-        custom: {
+        zcom: {
             score: 96,
             grade: "A+",
-            tagline: "SEO architecture built into the application",
+            tagline: "SEO built into your website from the start",
             metrics: [
                 { label: "SEO Control", value: "Full", icon: RiSearchLine },
                 { label: "Rendering", value: "Next.js", icon: RiCodeLine },
                 { label: "Optimization", value: "Custom", icon: RiSpeedLine },
             ],
             features: [
-                { name: "Custom metadata architecture", available: true },
-                { name: "Next.js SSR / SSG capabilities", available: true },
-                { name: "Custom structured data", available: true },
-                { name: "Custom URL architecture", available: true },
-                { name: "Technical SEO optimization", available: true },
+                { name: "Custom SEO structure for every page", available: true },
+                { name: "Fast server-rendered pages", available: true },
+                { name: "Custom structured data & metadata", available: true },
+                { name: "Custom URL & content architecture", available: true },
             ],
             highlight:
-                "SEO is engineered into the application architecture instead of being restricted to predefined platform patterns.",
+                "Z-Com gives us control over the technical foundation of your SEO. This means the website can be structured specifically around your products, content and search strategy.",
         },
 
-        template: {
+        shopify: {
             score: 88,
             grade: "A",
-            tagline: "Strong SEO for standard stores",
+            tagline: "Strong SEO tools for standard stores",
             metrics: [
                 { label: "SEO Control", value: "Good", icon: RiSearchLine },
-                { label: "Rendering", value: "Platform SSR", icon: RiCodeLine },
+                { label: "SEO Tools", value: "Built-In", icon: RiCodeLine },
                 { label: "Optimization", value: "Platform", icon: RiSpeedLine },
             ],
             features: [
-                { name: "Custom metadata architecture", available: true },
-                { name: "Next.js SSR / SSG capabilities", available: false },
-                { name: "Custom structured data", available: true },
-                { name: "Custom URL architecture", available: false },
-                { name: "Technical SEO optimization", available: true },
+                { name: "Page titles & meta descriptions", available: true },
+                { name: "Sitemap & SEO basics", available: true },
+                { name: "Structured data through themes/apps", available: true },
             ],
             highlight:
-                "Template platforms provide solid built-in SEO capabilities, with deeper technical customization constrained by the platform.",
+                "Shopify provides the essential SEO tools most online stores need, making it straightforward to manage SEO without handling the underlying technical architecture.",
         },
     },
 
     pricing: {
-        custom: {
+        zcom: {
             score: 84,
             grade: "A",
-            tagline: "Higher upfront. Lower dependency on subscriptions.",
+            tagline: "Invest in a platform built specifically for you",
             metrics: [
                 { label: "Initial Cost", value: "Higher", icon: RiMoneyDollarCircleLine },
-                { label: "Billing Model", value: "One-Time Build", icon: RiLockLine },
-                { label: "Discount", value: "10–15%*", icon: RiPriceTag3Line },
+                { label: "Build Model", value: "Custom Development", icon: RiCodeLine },
+                { label: "Long-Term", value: "More Control", icon: RiLockLine },
             ],
             features: [
-                { name: "One-time development investment", available: true },
-                { name: "Frontend development included", available: true },
-                { name: "Backend development included", available: true },
-                { name: "Custom dashboard included", available: true },
-                { name: "10–15% annual/monthly package discount", available: true },
+                { name: "Complete custom platform development", available: true },
+                { name: "Custom frontend & backend included", available: true },
+                { name: "Custom dashboard & business workflows", available: true },
+                { name: "Future customization without changing platforms", available: true },
             ],
             highlight:
-                "A custom platform costs more upfront because you're investing in a complete dedicated system rather than adapting a ready-made template.",
+                "Z-Com requires a larger initial investment because you are building a platform specifically for your business. In return, the system is designed to grow and change with your requirements.",
         },
 
-        template: {
+        shopify: {
             score: 88,
             grade: "A",
-            tagline: "Lower entry cost with recurring expenses",
+            tagline: "Lower starting cost with ongoing platform expenses",
             metrics: [
                 { label: "Initial Cost", value: "Lower", icon: RiMoneyDollarCircleLine },
-                { label: "Billing Model", value: "Recurring", icon: RiLockLine },
-                { label: "Customization", value: "Extra Dev Cost", icon: RiPriceTag3Line },
+                { label: "Billing", value: "Recurring", icon: RiPriceTag3Line },
+                { label: "Customization", value: "Additional Cost", icon: RiCodeLine },
             ],
             features: [
-                { name: "Low initial platform cost", available: true },
-                { name: "Frontend development included", available: false },
-                { name: "Backend development included", available: false },
-                { name: "Custom dashboard included", available: false },
-                { name: "Additional developer cost", available: true },
+                { name: "Lower platform entry cost", available: true },
+                { name: "Monthly platform subscription", available: true },
+                { name: "Large selection of paid & free apps", available: true },
+                { name: "Additional development for advanced customization", available: true },
             ],
             highlight:
-                "Template platforms can be cheaper to start, but advanced customization may require specialized developers, themes and additional apps.",
+                "Shopify is generally easier to start with because the platform is already built. However, ongoing subscriptions, apps, themes and development can add to the total cost as your requirements grow.",
         },
     },
 };
@@ -372,41 +354,103 @@ const getScoreGradient = (score) => {
 
 /* ═══════════════ SCORE RING COMPONENT ═══════════════ */
 
-const ScoreRing = ({ score, size = 56 }) => {
+const ScoreRing = ({ score = 0, size = 56, activeTab }) => {
     const strokeWidth = 5;
     const radius = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (score / 100) * circumference;
     const scoreColor = getScoreColor(score);
+
+    const circleRef = useRef(null);
+    const textRef = useRef(null);
+
+    useEffect(() => {
+        if (circleRef.current) {
+            circleRef.current.style.strokeDashoffset = `${circumference}`;
+        }
+        if (textRef.current) {
+            textRef.current.textContent = "0";
+        }
+
+        const obj = { val: 0 };
+        const tween = gsap.to(obj, {
+            val: score,
+            duration: 1,
+            delay: 0.25,
+            ease: "power2.out",
+            onUpdate: () => {
+                if (circleRef.current) {
+                    const offset = circumference - (obj.val / 100) * circumference;
+                    circleRef.current.style.strokeDashoffset = `${offset}`;
+                }
+                if (textRef.current) {
+                    textRef.current.textContent = Math.round(obj.val);
+                }
+            },
+        });
+
+        return () => {
+            tween.kill();
+        };
+    }, [activeTab, score, circumference]);
 
     return (
         <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
             <svg width={size} height={size} className="-rotate-90">
                 <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#f1f5f9" strokeWidth={strokeWidth} />
                 <circle
+                    ref={circleRef}
                     cx={size / 2} cy={size / 2} r={radius}
                     fill="none" stroke={scoreColor} strokeWidth={strokeWidth}
-                    strokeDasharray={circumference} strokeDashoffset={offset}
+                    strokeDasharray={circumference}
+                    strokeDashoffset={circumference}
                     strokeLinecap="round"
-                    style={{ transition: "stroke-dashoffset 0.8s ease-out, stroke 0.5s ease-out" }}
+                    style={{ transition: "stroke 0.4s ease-out" }}
                 />
             </svg>
-            <span className="absolute text-sm font-bold text-gray-900">{score}</span>
+            <span ref={textRef} className="absolute text-sm font-bold text-black">0</span>
         </div>
     );
 };
 
 /* ═══════════════ PROGRESS BAR ═══════════════ */
 
-const ProgressBar = ({ value, max = 100 }) => {
+const ProgressBar = ({ value = 0, max = 100, activeTab }) => {
+    const barRef = useRef(null);
     const gradient = getScoreGradient(value);
+
+    useEffect(() => {
+        if (barRef.current) {
+            barRef.current.style.width = "0%";
+        }
+
+        const obj = { val: 0 };
+        const tween = gsap.to(obj, {
+            val: value,
+            duration: 1,
+            delay: 0.25,
+            ease: "power2.out",
+            onUpdate: () => {
+                if (barRef.current) {
+                    const pct = Math.min(100, Math.max(0, (obj.val / max) * 100));
+                    barRef.current.style.width = `${pct}%`;
+                }
+            },
+        });
+
+        return () => {
+            tween.kill();
+        };
+    }, [activeTab, value, max]);
+
     return (
-        <div className="w-full h-2 rounded-full bg-gray-100 overflow-hidden">
+        <div className="w-full h-2 rounded-full bg-black/5 overflow-hidden">
             <div
-                className="h-full rounded-full transition-all duration-700 ease-out"
+                ref={barRef}
+                className="h-full rounded-full"
                 style={{
-                    width: `${Math.min(100, Math.max(0, (value / max) * 100))}%`,
+                    width: "0%",
                     background: gradient,
+                    transition: "background 0.4s ease-out",
                 }}
             />
         </div>
@@ -416,12 +460,14 @@ const ProgressBar = ({ value, max = 100 }) => {
 /* ═══════════════ DASHBOARD PANEL ═══════════════ */
 
 const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinner }) => {
-    const scoreColor = getScoreColor(data.score);
+    if (!data) return null;
+    const score = data.score ?? 0;
+    const scoreColor = getScoreColor(score);
 
     return (
         <div className={`dashboard-panel rounded-2xl overflow-hidden border bg-white shadow-xl transition-[border-color,box-shadow] duration-500 flex flex-col ${isWinner ? "border-[#002bba]/50 shadow-2xl ring-2 ring-[#002bba]/20" : "border-black/10"}`}>
             {/* ─── Dashboard Title Bar ─── */}
-            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 bg-gray-50/70">
+            <div className="flex items-center justify-between px-5 py-3 border-b border-black/10 bg-black/[0.02]">
                 <div className="flex items-center gap-2.5">
                     {/* Window dots */}
                     <div className="flex gap-1.5">
@@ -430,46 +476,45 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
                         <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
                     </div>
                     <div className="flex items-center gap-2 ml-2">
-                        <PlatformIcon size={16} className={platform.toLowerCase().includes("custom") ? "text-[#002bba]" : "text-gray-500"} />
-                        <span className="text-xs text-gray-600 font-mono font-medium">{platform.toLowerCase()}</span>
+                        <span className="text-xs text-black opacity-70 font-mono font-medium">{platform.toLowerCase()}</span>
                     </div>
                 </div>
                 <div className="flex items-center gap-2.5">
-                    <RiSearchLine size={14} className="text-gray-400" />
-                    <RiNotification3Line size={14} className="text-gray-400" />
-                    <RiSettings3Line size={14} className="text-gray-400" />
+                    <RiSearchLine size={14} className="text-black opacity-40" />
+                    <RiNotification3Line size={14} className="text-black opacity-40" />
+                    <RiSettings3Line size={14} className="text-black opacity-40" />
                 </div>
             </div>
 
             {/* ─── Platform Header ─── */}
-            <div className="px-6 pt-6 pb-5 border-b border-gray-100 bg-white">
+            <div className="px-6 pt-6 pb-5 border-b border-black/10 bg-white">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h4 className="text-3xl md:text-4xl font-normal text-gray-900">{platform}</h4>
-                        <p className="text-xs text-gray-500 mt-1 font-medium">{data.tagline}</p>
+                        <h4 className="text-3xl md:text-4xl text-black font-semibold">{platform}</h4>
+                        <p className="text-xs text-black opacity-70 mt-1">{data.tagline}</p>
                     </div>
                     <div className="flex py-2 items-center gap-3">
-                        <ScoreRing score={data.score} />
+                        <ScoreRing score={score} activeTab={activeTab} />
                         <div className="text-center">
                             <div className="text-2xl font-bold" style={{ color: scoreColor }}>{data.grade}</div>
-                            <div className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Grade</div>
+                            <div className="text-xs text-black opacity-60 uppercase font-semibold">Grade</div>
                         </div>
                     </div>
                 </div>
                 <div className="mt-4">
-                    <ProgressBar value={data.score} />
+                    <ProgressBar value={score} activeTab={activeTab} />
                 </div>
             </div>
 
             {/* ─── Metrics Row ─── */}
-            <div className="grid grid-cols-3 border-b border-gray-100 bg-gray-50/40">
-                {data.metrics.map((m, i) => {
+            <div className="grid grid-cols-3 border-b border-black/10 bg-black/[0.02]">
+                {data.metrics?.map((m, i) => {
                     const MIcon = m.icon;
                     return (
-                        <div key={i} className={`metric-item px-4 py-4 flex flex-col items-center text-center gap-1.5 ${i < 2 ? "border-r border-gray-100" : ""}`}>
-                            <MIcon size={16} className="text-gray-400" />
-                            <span className="text-[11px] text-gray-500 uppercase tracking-wider font-medium">{m.label}</span>
-                            <span className="text-sm font-semibold text-gray-900">{m.value}</span>
+                        <div key={i} className={`metric-item px-4 py-4 flex flex-col items-center text-center gap-1.5 ${i < 2 ? "border-r border-black/10" : ""}`}>
+                            <MIcon size={16} className="text-black opacity-40" />
+                            <span className="text-xs text-black opacity-60 uppercase font-medium">{m.label}</span>
+                            <span className="text-sm font-semibold text-black">{m.value}</span>
                         </div>
                     );
                 })}
@@ -477,23 +522,57 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
 
             {/* ─── Features Checklist ─── */}
             <div className="px-6 py-5 flex-1 bg-white">
-                <p className="text-[11px] text-gray-400 uppercase tracking-widest font-semibold mb-3">Feature Checklist</p>
-                <div className="space-y-3">
-                    {data.features.map((f, i) => (
-                        <div key={i} className="feature-row flex items-center gap-3">
+                <p className="text-xs uppercase opacity-60 text-black mb-3">Feature Checklist</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {data.features?.map((f, i) => (
+                        <div key={i} className="feature-row flex items-center gap-2.5">
                             <div className={`w-5 h-5 rounded flex items-center justify-center shrink-0 ${f.available ? "bg-emerald-50 text-emerald-600 border border-emerald-200/70" : "bg-rose-50 text-rose-400 border border-rose-200/70"}`}>
                                 {f.available
                                     ? <RiCheckLine size={13} className="text-emerald-600" />
                                     : <RiCloseLine size={13} className="text-rose-400" />
                                 }
                             </div>
-                            <span className={`text-sm ${f.available ? "text-gray-800 font-medium" : "text-gray-400 line-through"}`}>
+                            <span className={`text-sm ${f.available ? "text-black font-medium" : "text-black opacity-40 line-through"}`}>
                                 {f.name}
                             </span>
                         </div>
                     ))}
                 </div>
             </div>
+            {/* ─── Bottom Highlight ─── */}
+            {data.highlight && (
+                <div className="panel-highlight px-6 pb-6 pt-3 bg-white mt-auto border-t border-black/10">
+                    <div
+                        className={`p-4 rounded-xl border transition-all duration-300 ${
+                            isWinner
+                                ? "bg-gradient-to-br from-[#002bba]/[0.04] to-transparent border-[#002bba]/20 ring-1 ring-[#002bba]/10"
+                                : "bg-black/[0.02] border-black/10"
+                        }`}
+                    >
+                        <div className="flex items-center gap-2 mb-2">
+                            <div
+                                className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 ${
+                                    isWinner
+                                        ? "bg-[#002bba]/10 text-[#002bba]"
+                                        : "bg-black/5 text-black opacity-60"
+                                }`}
+                            >
+                                <RiLightbulbLine size={13} />
+                            </div>
+                            <span
+                                className={`text-xs uppercase font-bold ${
+                                    isWinner ? "text-[#002bba]" : "text-black opacity-60"
+                                }`}
+                            >
+                                Key Takeaway
+                            </span>
+                        </div>
+                        <p className="text-xs md:text-sm text-black opacity-80 font-normal">
+                            {data.highlight}
+                        </p>
+                    </div>
+                </div>
+            )}
 
         </div>
     );
@@ -508,7 +587,9 @@ const EcommPlatformCompare = () => {
     const isFirstRender = useRef(true);
 
     const currentData = dashboardData[activeTab] || dashboardData.customization;
-    const customWins = (currentData?.custom?.score ?? 0) >= (currentData?.template?.score ?? 0);
+    const customData = currentData?.zcom || currentData?.custom;
+    const templateData = currentData?.shopify || currentData?.template;
+    const customWins = (customData?.score ?? 0) >= (templateData?.score ?? 0);
 
     /* ── Scroll entry animation ── */
     useGSAP(() => {
@@ -557,6 +638,7 @@ const EcommPlatformCompare = () => {
         const panels = panelsRef.current.querySelectorAll(".dashboard-panel");
         const metrics = panelsRef.current.querySelectorAll(".metric-item");
         const features = panelsRef.current.querySelectorAll(".feature-row");
+        const highlights = panelsRef.current.querySelectorAll(".panel-highlight");
 
         const tl = gsap.timeline();
 
@@ -591,6 +673,15 @@ const EcommPlatformCompare = () => {
             "<0.1"
         );
 
+        // Stagger highlights
+        if (highlights.length) {
+            tl.fromTo(highlights,
+                { opacity: 0, y: 8 },
+                { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+                "<0.1"
+            );
+        }
+
         return () => tl.kill();
     }, [activeTab]);
 
@@ -601,15 +692,15 @@ const EcommPlatformCompare = () => {
             <div className="w-full padding py-0! text-white">
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b md:grid grid-cols-[28%_30%_42%]">
                     <div>
-                        <h2 data-para-effect className="capitalize primary-font text-5xl leading-none">
-                            Template or Custom Platform
+                        <h2 data-para-effect className="capitalize primary-font text-5xl">
+                         Which Platform <br /> to Choose
                         </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4"></div>
                     <div className="text-3xl md:pl-2">
                         <h3 data-para-effect>
                             <span className="opacity-0 secondary-font max-sm:hidden pointer-events-none">
-                                ...............
+                                ..................
                             </span>
                             Every e-commerce journey is unique. Template platforms offer rapid setup for standard stores, while custom platforms deliver complete ownership, bespoke workflows, and ultimate scale. Compare both architectures below to find your perfect fit.
                         </h3>
@@ -641,15 +732,15 @@ const EcommPlatformCompare = () => {
             <div ref={panelsRef} className="dashboards-wrap padding py-0! my-8 md:my-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                     <DashboardPanel
-                        platform="Custom Platform"
-                        data={currentData.custom}
+                        platform="Z-Com"
+                        data={customData}
                         icon={RiTerminalBoxLine}
                         activeTab={activeTab}
                         isWinner={customWins}
                     />
                     <DashboardPanel
-                        platform="Template-Based Platform"
-                        data={currentData.template}
+                        platform="Shopify"
+                        data={templateData}
                         icon={RiLayoutGridLine}
                         activeTab={activeTab}
                         isWinner={!customWins}

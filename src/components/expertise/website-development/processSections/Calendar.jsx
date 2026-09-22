@@ -565,11 +565,8 @@ const Calendar = () => {
         };
     }, { scope: containerRef });
 
-    // Calculate dynamic scroll height based on number of animated stages
-    const dynamicTrackHeight = `${Math.max(600, STAGES.length * 135 + 100)}vh`;
-
     return (
-        <div ref={containerRef} className="w-full relative" style={{ height: dynamicTrackHeight }}>
+        <div ref={containerRef} className="w-full relative h-[1000vh]">
             <div className="w-full h-screen sticky top-0 center">
                 <div className="w-full  md:w-[95%] lg:w-[90%] xl:w-[80%] bg-white rounded-xl border-black/10 flex flex-col primary-font relative border overflow-hidden">
 
@@ -590,7 +587,7 @@ const Calendar = () => {
 
                                 {WEEKS.map((week, idx) => (
                                     <div key={idx} className="pb-1">
-                                        <div className=" border border-[#002bba40] py-1 flex flex-col items-center justify-center rounded-md text-[#002bba]">
+                                        <div className="bg_blue text-white  py-1 flex flex-col items-center justify-center rounded-md">
                                             <span className="text-sm">{week.label}</span>
                                             <span className="text-xs uppercase">{week.subtitle}</span>
                                         </div>
@@ -601,7 +598,7 @@ const Calendar = () => {
                                 {DAYS.map((day) => (
                                     <React.Fragment key={day}>
                                         {/* Day row label */}
-                                        <div className="text-xs text-center flex items-center justify-center bg_blue/10 border border-[#002bba40] rounded-md text_blue h-[10vh]">
+                                        <div className="text-sm bg_blue text-white text-center flex items-center justify-center  rounded-md  h-[10vh]">
                                             {day}
                                         </div>
 
@@ -614,7 +611,7 @@ const Calendar = () => {
                                                 return (
                                                     <div
                                                         key={`${day}-${weekNum}`}
-                                                        className="h-[10vh] rounded-md border border-dashed bg_blue/10 text_blue border-[#002bba50]"
+                                                        className="h-[10vh] rounded-md border border-dashed  text_blue border-[#002bba50]"
                                                     />
                                                 );
                                             }

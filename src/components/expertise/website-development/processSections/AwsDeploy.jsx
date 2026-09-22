@@ -168,19 +168,19 @@ const AwsDeploy = () => {
     };
 
     return (
-        <section className="w-full h-full flex flex-col font-sans overflow-hidden bg-[#0D1117] text-gray-100 select-none border border-black/10">
+        <section className="w-full h-full flex flex-col font-sans overflow-hidden bg-[#0D1117] text-gray-100 select-none border border-gray-800/80 rounded-2xl">
             {/* --- AWS CONSOLE GLOBAL HEADER --- */}
             <header className="w-full bg-[#131921] border-b border-[#232F3E] px-3 sm:px-4 py-2 flex items-center justify-between shrink-0">
                 {/* Left: AWS Logo & Service Navigation */}
                 <div className="flex items-center gap-3">
                     {/* AWS Brand Badge */}
                     <div className="flex items-center gap-2">
-                        <div className="bg-[#FF9900] text-black font-black text-xs px-2 py-0.5 rounded font-mono tracking-wider flex items-center gap-1 shadow-sm">
+                        <div className="bg-[#FF9900] text-black text-xs px-2 py-0.5 rounded font-mono tracking-wider flex items-center gap-1 shadow-2xs">
                             <RiAmazonFill size={15} />
                             <span>aws</span>
                         </div>
                         <div className="hidden sm:flex items-center gap-1.5 pl-2 border-l border-gray-700">
-                            <span className="text-white font-bold text-sm tracking-tight">Amplify</span>
+                            <span className="text-white text-sm tracking-tight">Amplify</span>
                             <span className="text-[10px] text-gray-400 bg-[#232F3E] px-1.5 py-0.5 rounded border border-gray-700">
                                 Gen 2 Hosting
                             </span>
@@ -207,7 +207,7 @@ const AwsDeploy = () => {
                     {/* Account */}
                     <div className="flex items-center gap-1.5 text-gray-200 bg-[#232F3E] px-2.5 py-1 rounded border border-gray-700">
                         <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span className="font-semibold text-[11px] truncate max-w-[90px] sm:max-w-none">
+                        <span className="text-[11px] truncate max-w-[90px] sm:max-w-none">
                             Zerror Studios
                         </span>
                         <span className="text-gray-500 text-[10px] hidden md:inline font-mono">
@@ -235,7 +235,7 @@ const AwsDeploy = () => {
                     <span>›</span>
                     <span className="hover:text-gray-200 cursor-pointer">Amplify Hosting</span>
                     <span>›</span>
-                    <span className="text-[#00A4E4] font-semibold flex items-center gap-1">
+                    <span className="text-[#00A4E4] flex items-center gap-1">
                         <RiGithubFill size={13} />
                         zerror-studios-2026
                     </span>
@@ -260,9 +260,9 @@ const AwsDeploy = () => {
                                     setPhase(step.p);
                                     setCurrentStepIndex(idx);
                                 }}
-                                className={`px-2 py-0.5 rounded text-[11px] font-medium transition-all flex items-center gap-1 cursor-pointer ${
+                                className={`px-2 py-0.5 rounded text-[11px] transition-all flex items-center gap-1 cursor-pointer ${
                                     isActive
-                                        ? 'bg-[#FF9900] text-black font-bold shadow-xs'
+                                        ? 'bg-[#FF9900] text-black shadow-2xs'
                                         : isPast
                                         ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-800/60'
                                         : 'bg-[#232F3E] text-gray-400 hover:text-gray-200'
@@ -277,7 +277,7 @@ const AwsDeploy = () => {
             </div>
 
             {/* --- MAIN WORKSPACE AREA --- */}
-            <div className="flex-1 w-full overflow-y-auto  p-3 sm:p-5 relative flex flex-col bg-[#0F141C]">
+            <div className="flex-1 w-full overflow-y-auto p-3 sm:p-5 relative flex flex-col bg-[#0F141C]">
 
                 {/* ========================================================= */}
                 {/* PHASE 1: CONNECT GITHUB REPO, AUTO-DETECT NEXT.JS & ENV */}
@@ -288,12 +288,12 @@ const AwsDeploy = () => {
                         <div className="bg-[#161F2E] border border-[#2B384A] rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                             <div>
                                 <div className="flex items-center gap-2 mb-1">
-                                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#FF9900] bg-[#FF9900]/10 px-2 py-0.5 rounded border border-[#FF9900]/20">
+                                    <span className="text-[10px] uppercase tracking-wider text-[#FF9900] bg-[#FF9900]/10 px-2 py-0.5 rounded border border-[#FF9900]/20">
                                         Step 1 of 3
                                     </span>
                                     <span className="text-xs text-gray-400">Continuous CI/CD Pipeline</span>
                                 </div>
-                                <h1 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+                                <h1 className="text-lg sm:text-xl text-white flex items-center gap-2">
                                     <span>Deploy Next.js Application to AWS Cloud</span>
                                     <RiRocketLine size={18} className="text-[#FF9900]" />
                                 </h1>
@@ -304,7 +304,7 @@ const AwsDeploy = () => {
 
                             <button
                                 onClick={handleTriggerDeploy}
-                                className="bg-gradient-to-r from-[#FF9900] to-[#FFAC33] hover:from-[#E68A00] hover:to-[#FF9900] text-black font-bold text-xs sm:text-sm px-5 py-2.5 rounded-lg transition-all shadow-lg shadow-orange-500/20 flex items-center gap-2 shrink-0 cursor-pointer group"
+                                className="bg-[#FF9900] hover:bg-[#E68A00] text-black text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-lg transition-all flex items-center gap-2 shrink-0 cursor-pointer group"
                             >
                                 <RiPlayFill size={16} className="text-black group-hover:scale-110 transition-transform" />
                                 <span>Deploy Website to AWS</span>
@@ -317,7 +317,7 @@ const AwsDeploy = () => {
                             {/* Left Card: Git Connection & Framework Auto-Detect */}
                             <div className="bg-[#161F2E] border border-[#2B384A] rounded-xl p-4 sm:p-5 flex flex-col justify-between space-y-4">
                                 <div>
-                                    <h3 className="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <h3 className="text-xs text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
                                         <RiGithubFill size={16} className="text-white" />
                                         <span>Source Repository & Branch</span>
                                     </h3>
@@ -330,7 +330,7 @@ const AwsDeploy = () => {
                                                     <RiGithubFill size={20} />
                                                 </div>
                                                 <div>
-                                                    <p className="text-xs font-bold text-white font-mono">
+                                                    <p className="text-xs text-white font-mono">
                                                         sunny-zerror/Zerror-Studios-2026
                                                     </p>
                                                     <p className="text-[10px] text-emerald-400 flex items-center gap-1">
@@ -348,7 +348,7 @@ const AwsDeploy = () => {
                                             <div className="flex items-center gap-1 font-mono text-[11px] text-gray-300">
                                                 <RiGitBranchLine size={13} className="text-[#00A4E4]" />
                                                 <span>branch:</span>
-                                                <span className="text-white font-semibold">main</span>
+                                                <span className="text-white">main</span>
                                             </div>
                                             <div className="flex items-center gap-1 font-mono text-[11px] text-gray-400">
                                                 <RiGitCommitLine size={13} />
@@ -365,9 +365,9 @@ const AwsDeploy = () => {
                                             <div className="w-6 h-6 rounded bg-black center text-white border border-gray-700">
                                                 <RiNextjsFill size={16} />
                                             </div>
-                                            <span className="text-xs font-bold text-white">Next.js Framework Auto-Detected</span>
+                                            <span className="text-xs text-white">Next.js Framework Auto-Detected</span>
                                         </div>
-                                        <span className="text-[10px] text-[#00A4E4] bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded font-semibold">
+                                        <span className="text-[10px] text-[#00A4E4] bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded">
                                             v16.0 App Router
                                         </span>
                                     </div>
@@ -389,7 +389,7 @@ const AwsDeploy = () => {
                             <div className="bg-[#161F2E] border border-[#2B384A] rounded-xl p-4 sm:p-5 flex flex-col justify-between space-y-4">
                                 <div>
                                     <div className="flex items-center justify-between mb-3">
-                                        <h3 className="text-xs font-bold text-gray-300 uppercase tracking-wider flex items-center gap-2">
+                                        <h3 className="text-xs text-gray-300 uppercase tracking-wider flex items-center gap-2">
                                             <RiLockLine size={16} className="text-[#FF9900]" />
                                             <span>Environment Credentials (AWS KMS)</span>
                                         </h3>
@@ -409,7 +409,7 @@ const AwsDeploy = () => {
                                                 key={env.key}
                                                 className="bg-[#0D131C] border border-[#28364A] rounded-lg p-2.5 flex items-center justify-between text-xs"
                                             >
-                                                <div className="font-mono text-gray-300 font-semibold truncate pr-2">
+                                                <div className="font-mono text-gray-300 truncate pr-2">
                                                     {env.key}
                                                 </div>
                                                 <div className="font-mono text-[11px] text-gray-400 bg-[#151D2A] px-2 py-0.5 rounded border border-gray-800 truncate max-w-[150px] sm:max-w-[180px]">
@@ -433,11 +433,11 @@ const AwsDeploy = () => {
                         <div className="bg-[#121A26] border border-[#28364A] rounded-xl p-3 sm:p-4 flex items-center justify-between">
                             <div className="flex items-center gap-2 text-xs text-gray-400">
                                 <RiCloudLine size={16} className="text-[#00A4E4]" />
-                                <span>Target Infrastructure: <strong>Amazon CloudFront + S3 Origin + Route 53 Edge</strong></span>
+                                <span>Target Infrastructure: <span className="text-gray-200">Amazon CloudFront + S3 Origin + Route 53 Edge</span></span>
                             </div>
                             <button
                                 onClick={handleTriggerDeploy}
-                                className="bg-[#FF9900] hover:bg-[#E68A00] text-black font-bold text-xs px-4 py-2 rounded-md transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
+                                className="bg-[#FF9900] hover:bg-[#E68A00] text-black text-xs px-4 py-2 rounded-md transition-all flex items-center gap-1.5 cursor-pointer"
                             >
                                 <span>Save & Deploy</span>
                                 <RiArrowRightLine size={14} />
@@ -458,7 +458,7 @@ const AwsDeploy = () => {
                                     <RiTerminalBoxFill size={18} />
                                 </div>
                                 <div>
-                                    <h2 className="text-sm font-bold text-white flex items-center gap-2">
+                                    <h2 className="text-sm text-white flex items-center gap-2">
                                         <span>AWS CodeBuild & Amplify Build Terminal</span>
                                         <span className="w-2 h-2 rounded-full bg-[#FF9900] animate-ping" />
                                     </h2>
@@ -470,7 +470,7 @@ const AwsDeploy = () => {
 
                             <div className="flex items-center gap-2 text-xs">
                                 <span className="text-gray-400">Runtime:</span>
-                                <span className="font-mono text-[#00A4E4] bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded font-semibold">
+                                <span className="font-mono text-[#00A4E4] bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded">
                                     Next.js 16 (Node.js 20.x)
                                 </span>
                                 <button
@@ -486,13 +486,13 @@ const AwsDeploy = () => {
                         </div>
 
                         {/* Interactive Terminal Window */}
-                        <div className="flex-1 min-h-[360px] bg-[#0A0D13] border border-[#253245] rounded-xl overflow-hidden flex flex-col shadow-2xl">
+                        <div className="flex-1 min-h-[360px] bg-[#0A0D13] border border-[#253245] rounded-xl overflow-hidden flex flex-col shadow-lg">
                             {/* Terminal Top Bar (macOS style lights) */}
                             <div className="bg-[#161C26] px-4 py-2.5 border-b border-[#253245] flex items-center justify-between shrink-0 select-none">
                                 <div className="flex items-center gap-2">
-                                    <span className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/40 inline-block" />
-                                    <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/40 inline-block" />
-                                    <span className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/40 inline-block" />
+                                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80 inline-block" />
+                                    <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80 inline-block" />
+                                    <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80 inline-block" />
                                     <span className="text-xs text-gray-400 font-mono ml-2">
                                         aws-build-agent@amplify-us-east-1:~ $ npm run build
                                     </span>
@@ -513,16 +513,16 @@ const AwsDeploy = () => {
                                     let prefix = "•";
 
                                     if (log.type === "command") {
-                                        textColor = "text-[#00A4E4] font-semibold";
+                                        textColor = "text-[#00A4E4]";
                                         prefix = "$";
                                     } else if (log.type === "success") {
                                         textColor = "text-emerald-400";
                                         prefix = "✔";
                                     } else if (log.type === "nextjs") {
-                                        textColor = "text-white font-bold";
+                                        textColor = "text-white";
                                         prefix = "▲";
                                     } else if (log.type === "finish") {
-                                        textColor = "text-[#FF9900] font-black bg-[#FF9900]/10 p-2 rounded border border-[#FF9900]/30 mt-2 block";
+                                        textColor = "text-[#FF9900] bg-[#FF9900]/10 p-2 rounded border border-[#FF9900]/30 mt-2 block";
                                         prefix = "🚀";
                                     }
 
@@ -560,14 +560,11 @@ const AwsDeploy = () => {
                 {phase === 'dashboard' && (
                     <div className="max-w-5xl mx-auto w-full space-y-4 animate-fadeIn">
                         {/* Live Status Card */}
-                        <div className="bg-gradient-to-r from-[#162030] via-[#1B273A] to-[#162030] border border-emerald-500/40 rounded-2xl p-4 sm:p-5 shadow-xl relative overflow-hidden">
-                            {/* Background Glow */}
-                            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
-
+                        <div className="bg-[#162030] border border-emerald-500/30 rounded-2xl p-4 sm:p-5 relative overflow-hidden">
                             <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-2 flex-wrap">
-                                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1.5">
+                                        <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-xs flex items-center gap-1.5">
                                             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                                             DEPLOYED & LIVE
                                         </span>
@@ -576,7 +573,7 @@ const AwsDeploy = () => {
                                         </span>
                                     </div>
 
-                                    <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                                    <h2 className="text-xl sm:text-2xl text-white flex items-center gap-2">
                                         <span>Zerror Studios Production</span>
                                         <RiShieldCheckLine size={20} className="text-emerald-400 shrink-0" />
                                     </h2>
@@ -590,7 +587,7 @@ const AwsDeploy = () => {
                                                 href="https://zerrorstudios.com"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="font-bold text-white hover:text-[#00A4E4] font-mono transition-colors"
+                                                className="text-white hover:text-[#00A4E4] font-mono transition-colors"
                                             >
                                                 zerrorstudios.com
                                             </a>
@@ -602,7 +599,7 @@ const AwsDeploy = () => {
                                             title="Copy Domain URL"
                                         >
                                             {copied ? <RiCheckLine size={14} className="text-emerald-400" /> : <RiFileCopyLine size={14} />}
-                                            <span className="text-[11px] font-medium hidden sm:inline">
+                                            <span className="text-[11px] hidden sm:inline">
                                                 {copied ? "Copied!" : "Copy"}
                                             </span>
                                         </button>
@@ -611,7 +608,7 @@ const AwsDeploy = () => {
                                             href="https://zerrorstudios.com"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="bg-[#FF9900] hover:bg-[#E68A00] text-black font-bold text-xs px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 shadow-md cursor-pointer"
+                                            className="bg-[#FF9900] hover:bg-[#E68A00] text-black text-xs px-3 py-1.5 rounded-lg transition-all flex items-center gap-1 cursor-pointer"
                                         >
                                             <span>Visit Website</span>
                                             <RiExternalLinkLine size={13} />
@@ -639,9 +636,9 @@ const AwsDeploy = () => {
                         <div className="flex items-center gap-2 border-b border-gray-800 pb-1 text-xs">
                             <button
                                 onClick={() => setDashboardTab('overview')}
-                                className={`px-3 py-1.5 rounded-md font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+                                className={`px-3 py-1.5 rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
                                     dashboardTab === 'overview'
-                                        ? 'bg-[#232F3E] text-white border-b-2 border-[#FF9900] font-bold'
+                                        ? 'bg-[#232F3E] text-white border-b-2 border-[#FF9900]'
                                         : 'text-gray-400 hover:text-gray-200'
                                 }`}
                             >
@@ -650,9 +647,9 @@ const AwsDeploy = () => {
                             </button>
                             <button
                                 onClick={() => setDashboardTab('domain')}
-                                className={`px-3 py-1.5 rounded-md font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+                                className={`px-3 py-1.5 rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
                                     dashboardTab === 'domain'
-                                        ? 'bg-[#232F3E] text-white border-b-2 border-[#FF9900] font-bold'
+                                        ? 'bg-[#232F3E] text-white border-b-2 border-[#FF9900]'
                                         : 'text-gray-400 hover:text-gray-200'
                                 }`}
                             >
@@ -661,9 +658,9 @@ const AwsDeploy = () => {
                             </button>
                             <button
                                 onClick={() => setDashboardTab('monitoring')}
-                                className={`px-3 py-1.5 rounded-md font-medium transition-all flex items-center gap-1.5 cursor-pointer ${
+                                className={`px-3 py-1.5 rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
                                     dashboardTab === 'monitoring'
-                                        ? 'bg-[#232F3E] text-white border-b-2 border-[#FF9900] font-bold'
+                                        ? 'bg-[#232F3E] text-white border-b-2 border-[#FF9900]'
                                         : 'text-gray-400 hover:text-gray-200'
                                 }`}
                             >
@@ -682,7 +679,7 @@ const AwsDeploy = () => {
                                             <span>Build Duration</span>
                                             <RiTimeLine size={14} className="text-[#FF9900]" />
                                         </div>
-                                        <div className="text-lg font-black text-white font-mono">2.8 s</div>
+                                        <div className="text-lg text-white font-mono">2.8 s</div>
                                         <div className="text-[10px] text-emerald-400">Turbopack Optimized</div>
                                     </div>
 
@@ -691,7 +688,7 @@ const AwsDeploy = () => {
                                             <span>Edge Cache Hit</span>
                                             <RiPulseLine size={14} className="text-emerald-400" />
                                         </div>
-                                        <div className="text-lg font-black text-emerald-400 font-mono">99.4%</div>
+                                        <div className="text-lg text-emerald-400 font-mono">99.4%</div>
                                         <div className="text-[10px] text-gray-400">CloudFront Global</div>
                                     </div>
 
@@ -700,7 +697,7 @@ const AwsDeploy = () => {
                                             <span>SSL / TLS Status</span>
                                             <RiShieldCheckLine size={14} className="text-emerald-400" />
                                         </div>
-                                        <div className="text-sm font-bold text-white truncate">Amazon Trust</div>
+                                        <div className="text-sm text-white truncate">Amazon Trust</div>
                                         <div className="text-[10px] text-emerald-400">Auto-Renew Active</div>
                                     </div>
 
@@ -709,20 +706,20 @@ const AwsDeploy = () => {
                                             <span>Active Edge PoPs</span>
                                             <RiCloudLine size={14} className="text-[#00A4E4]" />
                                         </div>
-                                        <div className="text-lg font-black text-white font-mono">450+</div>
+                                        <div className="text-lg text-white font-mono">450+</div>
                                         <div className="text-[10px] text-[#00A4E4]">Global Distribution</div>
                                     </div>
                                 </div>
 
                                 {/* Live Website Simulated Mockup Frame */}
-                                <div className="bg-[#151D2A] border border-[#273549] rounded-xl overflow-hidden shadow-lg">
+                                <div className="bg-[#151D2A] border border-[#273549] rounded-xl overflow-hidden shadow-xs">
                                     {/* Browser bar */}
                                     <div className="bg-[#1F2A3D] px-4 py-2 flex items-center justify-between border-b border-[#2B3B52] text-xs">
                                         <div className="flex items-center gap-2">
-                                            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] inline-block" />
-                                            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] inline-block" />
-                                            <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] inline-block" />
-                                            <span className="text-gray-300 font-medium ml-2 font-mono text-[11px]">
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]/80 inline-block" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]/80 inline-block" />
+                                            <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]/80 inline-block" />
+                                            <span className="text-gray-300 ml-2 font-mono text-[11px]">
                                                 https://zerrorstudios.com
                                             </span>
                                         </div>
@@ -730,7 +727,7 @@ const AwsDeploy = () => {
                                             href="https://zerrorstudios.com"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[#00A4E4] hover:underline flex items-center gap-1 font-medium"
+                                            className="text-[#00A4E4] hover:underline flex items-center gap-1"
                                         >
                                             <span>Live Web App</span>
                                             <RiExternalLinkLine size={12} />
@@ -738,13 +735,13 @@ const AwsDeploy = () => {
                                     </div>
 
                                     {/* Website Preview Content */}
-                                    <div className="p-4 sm:p-6 bg-gradient-to-br from-[#0A0E17] via-[#101726] to-[#0A0E17] text-white space-y-4">
+                                    <div className="p-4 sm:p-6 bg-[#0A0E17] text-white space-y-4">
                                         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-4 border-b border-gray-800">
                                             <div>
                                                 <span className="text-[10px] font-mono text-[#00A4E4] bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded">
                                                     PRODUCTION PREVIEW
                                                 </span>
-                                                <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white mt-1">
+                                                <h3 className="text-xl sm:text-2xl tracking-tight text-white mt-1">
                                                     Zerror Studios — Digital Experience Platform
                                                 </h3>
                                                 <p className="text-xs text-gray-400 mt-0.5">
@@ -752,7 +749,7 @@ const AwsDeploy = () => {
                                                 </p>
                                             </div>
                                             <div className="flex items-center gap-2">
-                                                <span className="text-xs text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-3 py-1 rounded-full font-bold">
+                                                <span className="text-xs text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-3 py-1 rounded-full">
                                                     HTTP/3 Ready
                                                 </span>
                                             </div>
@@ -761,15 +758,15 @@ const AwsDeploy = () => {
                                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                                             <div className="bg-[#162030] p-3 rounded-lg border border-gray-800">
                                                 <p className="text-gray-400 text-[11px]">Hosting Provider</p>
-                                                <p className="font-bold text-white text-sm">AWS Amplify Hosting</p>
+                                                <p className="text-white text-sm">AWS Amplify Hosting</p>
                                             </div>
                                             <div className="bg-[#162030] p-3 rounded-lg border border-gray-800">
                                                 <p className="text-gray-400 text-[11px]">Primary Domain</p>
-                                                <p className="font-bold text-emerald-400 font-mono text-sm">zerrorstudios.com</p>
+                                                <p className="text-emerald-400 font-mono text-sm">zerrorstudios.com</p>
                                             </div>
                                             <div className="bg-[#162030] p-3 rounded-lg border border-gray-800">
                                                 <p className="text-gray-400 text-[11px]">Edge Invalidation</p>
-                                                <p className="font-bold text-white text-sm">Instant (0s cache flush)</p>
+                                                <p className="text-white text-sm">Instant (0s cache flush)</p>
                                             </div>
                                         </div>
                                     </div>
@@ -782,7 +779,7 @@ const AwsDeploy = () => {
                             <div className="bg-[#151D2A] border border-[#273549] rounded-xl p-4 sm:p-5 space-y-4 animate-fadeIn">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                                        <h3 className="text-sm text-white flex items-center gap-2">
                                             <span>Amazon Route 53 DNS Configuration</span>
                                             <RiShieldCheckLine size={16} className="text-emerald-400" />
                                         </h3>
@@ -790,7 +787,7 @@ const AwsDeploy = () => {
                                             Configured DNS records for apex domain and www subdomain with AWS Certificate Manager (ACM).
                                         </p>
                                     </div>
-                                    <span className="text-xs font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-1 rounded-full">
+                                    <span className="text-xs text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-1 rounded-full">
                                         All DNS Verified
                                     </span>
                                 </div>
@@ -807,19 +804,19 @@ const AwsDeploy = () => {
                                         </thead>
                                         <tbody className="divide-y divide-gray-800/70 text-gray-300">
                                             <tr>
-                                                <td className="py-2.5 text-[#00A4E4] font-bold">A (Alias)</td>
+                                                <td className="py-2.5 text-[#00A4E4]">A (Alias)</td>
                                                 <td>@ (zerrorstudios.com)</td>
                                                 <td>d3k8x9.cloudfront.net</td>
                                                 <td className="text-emerald-400 font-sans">Active (Resolved)</td>
                                             </tr>
                                             <tr>
-                                                <td className="py-2.5 text-[#00A4E4] font-bold">CNAME</td>
+                                                <td className="py-2.5 text-[#00A4E4]">CNAME</td>
                                                 <td>www.zerrorstudios.com</td>
                                                 <td>zerrorstudios.com</td>
                                                 <td className="text-emerald-400 font-sans">Active (Resolved)</td>
                                             </tr>
                                             <tr>
-                                                <td className="py-2.5 text-[#FF9900] font-bold">CNAME (ACM)</td>
+                                                <td className="py-2.5 text-[#FF9900]">CNAME (ACM)</td>
                                                 <td>_a4f81c9b.zerrorstudios.com</td>
                                                 <td>_ca38102d.acm-validations.aws</td>
                                                 <td className="text-emerald-400 font-sans">Issued & Valid</td>
@@ -835,7 +832,7 @@ const AwsDeploy = () => {
                             <div className="bg-[#151D2A] border border-[#273549] rounded-xl p-4 sm:p-5 space-y-4 animate-fadeIn">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                                        <h3 className="text-sm text-white flex items-center gap-2">
                                             <span>CloudFront Global Edge Performance</span>
                                             <RiPulseLine size={16} className="text-[#00A4E4]" />
                                         </h3>
@@ -843,7 +840,7 @@ const AwsDeploy = () => {
                                             Real-time traffic telemetry and low-latency delivery metrics across North America, Europe & Asia.
                                         </p>
                                     </div>
-                                    <span className="text-xs font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-1 rounded-full">
+                                    <span className="text-xs text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-1 rounded-full">
                                         100% Uptime
                                     </span>
                                 </div>
@@ -851,17 +848,17 @@ const AwsDeploy = () => {
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                                     <div className="bg-[#0E1420] p-3 rounded-lg border border-gray-800">
                                         <span className="text-gray-400 block text-[11px]">Global TTFB</span>
-                                        <span className="text-lg font-black text-emerald-400 font-mono">24 ms</span>
+                                        <span className="text-lg text-emerald-400 font-mono">24 ms</span>
                                         <span className="text-[10px] text-gray-500 block">Edge Cached Worldwide</span>
                                     </div>
                                     <div className="bg-[#0E1420] p-3 rounded-lg border border-gray-800">
                                         <span className="text-gray-400 block text-[11px]">DDoS Protection</span>
-                                        <span className="text-lg font-black text-white">AWS Shield</span>
+                                        <span className="text-lg text-white">AWS Shield</span>
                                         <span className="text-[10px] text-emerald-400 block">Active Layer 3/4/7</span>
                                     </div>
                                     <div className="bg-[#0E1420] p-3 rounded-lg border border-gray-800">
                                         <span className="text-gray-400 block text-[11px]">Compression</span>
-                                        <span className="text-lg font-black text-[#FF9900]">Brotli + Gzip</span>
+                                        <span className="text-lg text-[#FF9900]">Brotli + Gzip</span>
                                         <span className="text-[10px] text-gray-400 block">Dynamic Edge Minification</span>
                                     </div>
                                 </div>
