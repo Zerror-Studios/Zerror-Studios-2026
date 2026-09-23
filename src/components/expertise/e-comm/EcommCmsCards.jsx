@@ -18,8 +18,8 @@ gsap.registerPlugin(ScrollTrigger);
 const CMS_CARDS = [
     {
         id: "smart-inventory",
-        title: "Smart Inventory & Orders",
-        desc: "Real-time stock tracking, multi-channel feeds, and instant order sync engineered for seamless daily store operations.",
+        title: "Smart Catalog & Inventory Sync",
+        desc: "Real-time product variation control, live inventory feeds, and intuitive catalog search engineered for seamless store operations.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg1.webp",
         component: SmartInventoryAnim,
         textPosition: "top",
@@ -27,56 +27,56 @@ const CMS_CARDS = [
     },
     {
         id: "workflow-model",
-        title: "Automated Shipping & Tracking",
-        desc: "Native Shiprocket integration with real-time AWB tracking, live dispatch status, and automated Kanban order workflows.",
+        title: "Automated Logistics & Tracking",
+        desc: "Native Shiprocket logistics with real-time AWB tracking, live dispatch status, and visual Kanban order progression.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg2.webp",
         component: WorkflowModelAnim,
         textPosition: "bottom"
     },
     {
         id: "production-sync",
-        title: "Live Production & Sales Sync",
-        desc: "Real-time revenue, order growth, and visit velocity tied directly to production sync rates at a single glance.",
+        title: "Live Revenue & Traffic Analytics",
+        desc: "Monitor live site visits, order counts, and revenue velocity at a single glance with real-time heartbeat sales tracking.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg3.webp",
         component: ProductionSyncAnim,
         textPosition: "top"
     },
     {
         id: "analytics-answer",
-        title: "SEO & Search Engine Indexing",
-        desc: "Guaranteed search engine indexing and organic ranking analytics tailored for top-tier Google and DuckDuckGo visibility.",
+        title: "Search Engine & SEO Visibility",
+        desc: "Built-in search engine indexing controls and optimization tailored for top-tier Google, DuckDuckGo, and Yahoo! organic discovery.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg4.webp",
         component: AnalyticsAnswerAnim,
         textPosition: "bottom"
     },
     {
         id: "loyalty-system",
-        title: "Built-In Loyalty & VIP Tiers",
-        desc: "Drive repeat purchases with automated VIP reward tiers, point milestones, and exclusive perks without monthly app fees.",
+        title: "Memberships & Digital Masterclasses",
+        desc: "Sell digital products, private masterclasses, and recurring subscriptions with proven 85% open and 26% engagement rates.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg5.webp",
         component: LoyaltySystemAnim,
         textPosition: "top"
     },
     {
         id: "admin-campaigns",
-        title: "Unified Omnichannel Campaigns",
-        desc: "Launch targeted WhatsApp broadcasts, cart recovery emails, and instant SMS alerts with real-time delivery tracking.",
+        title: "Omnichannel Outreach & Messaging",
+        desc: "Engage high-intent customers directly across WhatsApp, email, and live chat with automated campaign tracking and checklist readiness.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg6.webp",
         component: AdminCampaignsAnim,
         textPosition: "bottom"
     },
     {
         id: "search-ai-arch",
-        title: "Multi-Domain & Brand Architecture",
-        desc: "Unified domain routing and search infrastructure engineered to scale global brand assets across every top-level extension.",
+        title: "Multi-Domain Brand Architecture",
+        desc: "Unified multi-TLD domain routing engineered to scale global brand assets seamlessly across .com, .net, and custom extensions.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg7.webp",
         component: SearchAiArchAnim,
         textPosition: "top"
     },
     {
         id: "ip-ownership",
-        title: "Direct Gateways & Zero SaaS Fees",
-        desc: "Zero third-party transaction fees and direct multi-gateway payouts with full source code ownership and no platform lock-in.",
+        title: "Global Gateways & Zero SaaS Fees",
+        desc: "Direct checkout payouts with Stripe, Apple Pay, Klarna, and top global gateways with zero transaction cuts or platform lock-in.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg8.webp",
         component: IpOwnershipAnim,
         textPosition: "top"
