@@ -36,9 +36,9 @@ function SearchAiArchAnim() {
     const SLOTS = [-2, -1, 0, 1, 2, 3, 4];
 
     return (
-        <div className="absolute inset-x-0 bottom-4 top-[40%] px-5 flex items-center justify-center pointer-events-none select-none">
+        <div className="absolute p-8 md:p-10 inset-x-0 bottom-0 top-[40%]  flex items-center justify-center pointer-events-none select-none">
             {/* Center Anchor & Search Bar Container */}
-            <div className="relative flex items-center w-full max-w-[310px] sm:max-w-[345px] h-[50px]">
+            <div className="relative flex items-center w-full  h-[50px]">
                 <style>{`
                     @keyframes blinkCursor {
                         0%, 49% { opacity: 1; }

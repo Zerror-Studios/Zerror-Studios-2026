@@ -447,3 +447,15 @@ button {
   margin-block: 0.25rem;
   opacity: 1;
 }
+
+/* E-commerce Platform Compare Dashboard Subgrid Alignment */
+@media (min-width: 1024px) {
+  .dashboards-compare-grid {
+    grid-template-rows: auto auto auto 1fr auto;
+  }
+  .dashboards-compare-grid > .dashboard-panel {
+    display: grid !important;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+  }
+}

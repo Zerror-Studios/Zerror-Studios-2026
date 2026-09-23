@@ -16,7 +16,7 @@ const PRESETS = [
         ordersGrowth: "10%",
         revenue: 8850,
         revenueGrowth: "+10%",
-        peak: "Peak: 98% Sync",
+        peak: "98%",
         peakPoint: { x: 190, y: 20 },
         splinePath: "M 0,80 C 40,70 70,85 130,75 C 160,50 180,20 190,20 C 215,20 240,65 300,60",
         fillPath: "M 0,80 C 40,70 70,85 130,75 C 160,50 180,20 190,20 C 215,20 240,65 300,60 L 300,100 L 0,100 Z"
@@ -28,7 +28,7 @@ const PRESETS = [
         ordersGrowth: "14%",
         revenue: 11240,
         revenueGrowth: "+15%",
-        peak: "Peak: 99.2% Sync",
+        peak: "99.2%",
         peakPoint: { x: 225, y: 15 },
         splinePath: "M 0,72 C 45,75 85,60 125,55 C 165,50 200,32 225,15 C 248,32 270,48 300,42",
         fillPath: "M 0,72 C 45,75 85,60 125,55 C 165,50 200,32 225,15 C 248,32 270,48 300,42 L 300,100 L 0,100 Z"
@@ -40,7 +40,7 @@ const PRESETS = [
         ordersGrowth: "18%",
         revenue: 14680,
         revenueGrowth: "+22%",
-        peak: "Peak: 99.8% Sync",
+        peak: "99.8%",
         peakPoint: { x: 140, y: 18 },
         splinePath: "M 0,65 C 40,55 90,35 140,18 C 175,25 200,60 230,55 C 255,50 275,40 300,30",
         fillPath: "M 0,65 C 40,55 90,35 140,18 C 175,25 200,60 230,55 C 255,50 275,40 300,30 L 300,100 L 0,100 Z"
@@ -52,7 +52,7 @@ const PRESETS = [
         ordersGrowth: "24%",
         revenue: 17950,
         revenueGrowth: "+28%",
-        peak: "Peak: 100% Sync",
+        peak: "100%",
         peakPoint: { x: 250, y: 12 },
         splinePath: "M 0,75 C 60,70 110,65 160,50 C 190,40 220,25 250,12 C 270,22 285,35 300,38",
         fillPath: "M 0,75 C 60,70 110,65 160,50 C 190,40 220,25 250,12 C 270,22 285,35 300,38 L 300,100 L 0,100 Z"
@@ -64,7 +64,7 @@ const PRESETS = [
         ordersGrowth: "31%",
         revenue: 21400,
         revenueGrowth: "+35%",
-        peak: "Peak: 99.9% Sync",
+        peak: "99.9%",
         peakPoint: { x: 175, y: 14 },
         splinePath: "M 0,60 C 45,50 95,45 135,30 C 155,20 165,14 175,14 C 205,30 240,45 300,25",
         fillPath: "M 0,60 C 45,50 95,45 135,30 C 155,20 165,14 175,14 C 205,30 240,45 300,25 L 300,100 L 0,100 Z"
@@ -122,34 +122,19 @@ function ProductionSyncAnim() {
     const animatedRevenue = useAnimatedNumber(data.revenue, 800);
 
     return (
-        <div className="absolute inset-x-0 bottom-0 top-[36%] px-5 pb-5 flex flex-col justify-end pointer-events-none select-none">
+        <div className="absolute inset-x-0 bottom-0 top-[30%] p-8 md:p-10 flex flex-col justify-end pointer-events-none select-none ">
             {/* Main Glass Analytics & Production Sync Card */}
-            <div className="w-full bg-black/50 border border-white/20 rounded-2xl p-4 shadow-xl relative overflow-hidden flex flex-col gap-3">
+            <div className="w-full bg-black/50 border border-white/20 rounded-2xl p-4 shadow-xl relative overflow-hidden flex backdrop-blur-xs flex-col gap-3">
                 {/* Header info */}
-                <div className="flex items-center justify-between">
-                    <div>
-                        <div className="flex items-center gap-2">
-                            <span className="text-[11px] text-white/80 font-medium">Site Visits & Orders</span>
-                            <span className="bg-emerald-400/20 text-emerald-300 border border-emerald-400/40 text-[9px] px-1.5 py-0.5 rounded font-mono flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                                LIVE SYNC
-                            </span>
-                        </div>
-                        <div className="flex items-baseline gap-2 mt-0.5">
-                            <span className="text-xl sm:text-2xl font-extrabold text-white font-mono tracking-tight tabular-nums">
-                                {animatedVisits.toLocaleString()}+
-                            </span>
-                            <span className="text-[10px] text-emerald-300 flex items-center font-medium transition-all duration-500">
-                                <RiArrowUpLine size={12} />
-                                {data.growth}
-                            </span>
-                        </div>
+                    <div className="  flex items-baseline gap-2 ">
+                        <span className="text-xl sm:text-2xl font-extrabold text-white font-mono tracking-tight tabular-nums">
+                            {animatedVisits.toLocaleString()}+
+                        </span>
+                        <span className="text-[10px] text-emerald-300 flex items-center font-medium transition-all duration-500">
+                            <RiArrowUpLine size={12} />
+                            {data.growth}
+                        </span>
                     </div>
-
-                    <div className="bg-white/10 text-white text-[10px] font-medium px-2.5 py-1 rounded-lg border border-white/20 shadow-xs">
-                        View Details
-                    </div>
-                </div>
 
                 {/* Animated SVG Spline Chart */}
                 <div className="w-full h-20 sm:h-22 relative">

@@ -73,7 +73,7 @@ function AnalyticsAnswerAnim() {
     const state = SEARCH_STATES[currentIdx];
 
     return (
-        <div className="absolute inset-x-0 top-0 bottom-[36%] px-5 pt-5 flex flex-col justify-start pointer-events-none select-none">
+        <div className="absolute inset-x-0 top-0 bottom-[36%] p-8 md:p-10 flex flex-col justify-start pointer-events-none select-none">
             {/* Embedded Keyframes for Smooth Transitions */}
             <style>{`
                 @keyframes querySlideFade {
@@ -85,37 +85,8 @@ function AnalyticsAnswerAnim() {
                 }
             `}</style>
 
-            {/* Top Row: Mini Visibility Pill & Rank Trophy Pill */}
-            <div className="flex items-center justify-between gap-2 mb-2.5">
-                {/* Search Engine Visibility Pill Card (matching img4.webp) */}
-                <div className="bg-black/50 border border-white/20 rounded-xl p-2 px-3 shadow-md flex items-center justify-between gap-3 text-white">
-                    <div className="flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        <span className="text-[10px] font-semibold tracking-tight">Search Engine Visibility</span>
-                        <span className="text-[8px] bg-emerald-400/20 text-emerald-300 px-1.5 py-0.2 rounded font-mono border border-emerald-400/30">
-                            Indexed
-                        </span>
-                    </div>
-
-                    {/* Animated Toggle Switch */}
-                    <div
-                        className={`w-7 h-4 rounded-full p-0.5 transition-colors duration-400 flex items-center ${
-                            isToggleOn ? 'bg-[#002bba] justify-end' : 'bg-slate-500 justify-start'
-                        }`}
-                    >
-                        <div className="w-3 h-3 rounded-full bg-white shadow-xs transition-transform duration-300" />
-                    </div>
-                </div>
-
-                {/* Floating #1 Rank Trophy Badge */}
-                <div className="bg-amber-400 text-black text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-amber-300 shadow-md flex items-center gap-1">
-                    <RiTrophyLine size={12} className="text-black" />
-                    <span className="font-mono">{state.rank} Active</span>
-                </div>
-            </div>
-
             {/* Main Modal: SEO Settings & Analytics (matching img4.webp) */}
-            <div className="w-full bg-white/95 border border-white/80 rounded-2xl p-3 sm:p-3.5 shadow-xl flex flex-col gap-2 text-slate-800 relative">
+            <div className="w-full bg-white  rounded-2xl p-3 sm:p-3.5 shadow-xl flex flex-col gap-2 text-slate-800 relative">
                 {/* Modal Title Bar */}
                 <div className="flex items-center justify-between border-b border-slate-200/80 pb-1.5">
                     <div className="flex items-center gap-1.5">
@@ -167,7 +138,7 @@ function AnalyticsAnswerAnim() {
                                 key={engine.name}
                                 className={`flex-1 py-1.5 px-2 rounded-lg text-[10px] font-bold border flex items-center justify-center gap-1.5 transition-all duration-500 select-none ${
                                     isActive
-                                        ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white border-amber-400 shadow-md scale-[1.03]'
+                                        ? 'bg-[#002bba] text-white   scale-[1.03]'
                                         : 'bg-slate-100/90 text-slate-600 border-slate-200'
                                 }`}
                             >

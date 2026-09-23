@@ -395,7 +395,7 @@ const GoogleMeet = () => {
                             )}
 
                             {/* Floating Emojis Overlay */}
-                            <div className="absolute inset-0 pointer-events-none overflow-hidden z-40">
+                            <div className="absolute inset-0 pointer-events-none overflow-hidden z-90">
                                 {floatingEmojis.map(item => (
                                     <div key={item.id} className="absolute bottom-24 left-1/2 -translate-x-1/2 animate-floatUp">
                                         <div className="animate-wave text-5xl drop-shadow-md">
@@ -406,7 +406,7 @@ const GoogleMeet = () => {
                             </div>
 
                             {/* Main Content Area */}
-                            <div className={`flex-1 flex overflow-hidden ${isChatOpen ? "gap-2" : "gap-0"} transition-all duration-300`}>
+                            <div className={`flex-1 flex overflow-hidden ${isChatOpen ? "gap-2" : "gap-0"} transition-all duration-300 pointer-events-none`}>
 
                                 {/* Video Grid */}
                                 <div className="h-full w-full gap-2.5 grid grid-cols-2 md:grid-cols-3">

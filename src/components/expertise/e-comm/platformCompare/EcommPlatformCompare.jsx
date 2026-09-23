@@ -49,7 +49,7 @@ const tabs = [
 const dashboardData = {
     customization: {
         zcom: {
-            score: 98,
+            score: 100,
             grade: "A+",
             tagline: "Built around your business, not a template",
             metrics: [
@@ -68,7 +68,7 @@ const dashboardData = {
         },
 
         shopify: {
-            score: 75,
+            score: 60,
             grade: "B",
             tagline: "Quick to launch with ready-made themes",
             metrics: [
@@ -89,7 +89,7 @@ const dashboardData = {
 
     technology: {
         zcom: {
-            score: 96,
+            score: 95,
             grade: "A+",
             tagline: "Your technology, your rules",
             metrics: [
@@ -108,7 +108,7 @@ const dashboardData = {
         },
 
         shopify: {
-            score: 86,
+            score: 80,
             grade: "A",
             tagline: "Reliable commerce infrastructure, managed for you",
             metrics: [
@@ -128,7 +128,7 @@ const dashboardData = {
 
     performance: {
         zcom: {
-            score: 94,
+            score: 98,
             grade: "A",
             tagline: "Performance designed around your customers",
             metrics: [
@@ -147,7 +147,7 @@ const dashboardData = {
         },
 
         shopify: {
-            score: 91,
+            score: 92,
             grade: "A",
             tagline: "Reliable performance with managed infrastructure",
             metrics: [
@@ -167,46 +167,47 @@ const dashboardData = {
 
     dashboard: {
         zcom: {
-            score: 99,
+            score: 80,
             grade: "A+",
-            tagline: "A dashboard built around your team",
+            tagline: "A dashboard built around your business",
             metrics: [
-                { label: "Admin Dashboard", value: "100% Custom", icon: RiLayoutGridLine },
-                { label: "Workflows", value: "Your Business", icon: RiSettings3Line },
+                { label: "Admin Dashboard", value: "Fully Custom", icon: RiLayoutGridLine },
+                { label: "Features", value: "Your Requirements", icon: RiSettings3Line },
                 { label: "Control", value: "Full", icon: RiDashboardLine },
             ],
             features: [
-                { name: "Dashboard designed around your business", available: true },
-                { name: "Custom order & product workflows", available: true },
-                { name: "Business-specific analytics & reports", available: true },
-                { name: "Team roles & permissions", available: true },
+                { name: "Dashboard designed for your business needs", available: true },
+                { name: "Features customized to your requirements", available: true },
+                { name: "Custom reports and business insights", available: true },
+                { name: "Flexible changes as your business grows", available: true },
             ],
+
             highlight:
-                "Instead of changing your business process to fit a standard dashboard, Z-Com lets us build the dashboard around the way your team actually works.",
+                "Z-Com is built around your specific business requirements. You get a fully customized dashboard with the features, reports and controls your team actually needs.",
         },
 
         shopify: {
-            score: 82,
+            score: 95,
             grade: "A-",
-            tagline: "A mature dashboard for standard store management",
+            tagline: "A powerful and scalable dashboard for growing businesses",
             metrics: [
                 { label: "Admin Dashboard", value: "Shopify Admin", icon: RiLayoutGridLine },
-                { label: "Workflows", value: "Standard", icon: RiSettings3Line },
-                { label: "Management", value: "Platform-Based", icon: RiDashboardLine },
+                { label: "Scalability", value: "Highly Scalable", icon: RiSettings3Line },
+                { label: "Features", value: "Built-in + Plugins", icon: RiDashboardLine },
             ],
             features: [
-                { name: "Product & order management", available: true },
-                { name: "Built-in store analytics", available: true },
-                { name: "Staff accounts & permissions", available: true },
+                { name: "Easy product and order management", available: true },
+                { name: "Built-in features and ready-made plugins", available: true },
+                { name: "Highly scalable for growing businesses", available: true },
             ],
             highlight:
-                "Shopify provides a powerful ready-made admin system for managing products, orders, customers and analytics. Businesses generally work within the workflows provided by the platform.",
+                "Shopify is a highly scalable platform with many built-in features and ready-made plugins. It is a strong choice for businesses that want to start quickly and add more features as they grow.",
         },
     },
 
     ownership: {
         zcom: {
-            score: 97,
+            score: 100,
             grade: "A+",
             tagline: "Your platform. Your code. Your control.",
             metrics: [
@@ -225,7 +226,7 @@ const dashboardData = {
         },
 
         shopify: {
-            score: 79,
+            score: 50,
             grade: "B+",
             tagline: "Convenient platform with ongoing subscription",
             metrics: [
@@ -264,7 +265,7 @@ const dashboardData = {
         },
 
         shopify: {
-            score: 88,
+            score: 84,
             grade: "A",
             tagline: "Strong SEO tools for standard stores",
             metrics: [
@@ -284,7 +285,7 @@ const dashboardData = {
 
     pricing: {
         zcom: {
-            score: 84,
+            score: 100,
             grade: "A",
             tagline: "Invest in a platform built specifically for you",
             metrics: [
@@ -303,7 +304,7 @@ const dashboardData = {
         },
 
         shopify: {
-            score: 88,
+            score: 70,
             grade: "A",
             tagline: "Lower starting cost with ongoing platform expenses",
             metrics: [
@@ -487,18 +488,14 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
             </div>
 
             {/* ─── Platform Header ─── */}
-            <div className="px-6 pt-6 pb-5 border-b border-black/10 bg-white">
+            <div className="px-6 py-4 border-b border-black/10 bg-white">
                 <div className="flex items-center justify-between">
                     <div>
                         <h4 className="text-3xl md:text-4xl text-black font-semibold">{platform}</h4>
-                        <p className="text-xs text-black opacity-70 mt-1">{data.tagline}</p>
+                        <p className="text-sm text-black opacity-70 mt-1">{data.tagline}</p>
                     </div>
                     <div className="flex py-2 items-center gap-3">
                         <ScoreRing score={score} activeTab={activeTab} />
-                        <div className="text-center">
-                            <div className="text-2xl font-bold" style={{ color: scoreColor }}>{data.grade}</div>
-                            <div className="text-xs text-black opacity-60 uppercase font-semibold">Grade</div>
-                        </div>
                     </div>
                 </div>
                 <div className="mt-4">
@@ -541,28 +538,18 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
             </div>
             {/* ─── Bottom Highlight ─── */}
             {data.highlight && (
-                <div className="panel-highlight px-6 pb-6 pt-3 bg-white mt-auto border-t border-black/10">
+                <div className="panel-highlight p-6 bg-white mt-auto lg:mt-0 h-full flex flex-col border-t border-black/10">
                     <div
-                        className={`p-4 rounded-xl border transition-all duration-300 ${
-                            isWinner
-                                ? "bg-gradient-to-br from-[#002bba]/[0.04] to-transparent border-[#002bba]/20 ring-1 ring-[#002bba]/10"
-                                : "bg-black/[0.02] border-black/10"
-                        }`}
+                        className={`p-4 rounded-xl border transition-all duration-300 h-full flex flex-col justify-start bg-[#002bba10] border-[#002bba]/10 `}
                     >
                         <div className="flex items-center gap-2 mb-2">
                             <div
-                                className={`w-5 h-5 rounded-md flex items-center justify-center shrink-0 ${
-                                    isWinner
-                                        ? "bg-[#002bba]/10 text-[#002bba]"
-                                        : "bg-black/5 text-black opacity-60"
-                                }`}
+                                className={`w-5 h-5 rounded-sm flex items-center justify-center shrink-0 bg-[#002bba]/10 text-[#002bba]`}
                             >
-                                <RiLightbulbLine size={13} />
+                                <RiLightbulbLine className="size-3" />
                             </div>
                             <span
-                                className={`text-xs uppercase font-bold ${
-                                    isWinner ? "text-[#002bba]" : "text-black opacity-60"
-                                }`}
+                                className={`text-xs uppercase font-bold text-[#002bba] `}
                             >
                                 Key Takeaway
                             </span>
@@ -693,7 +680,7 @@ const EcommPlatformCompare = () => {
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b md:grid grid-cols-[28%_30%_42%]">
                     <div>
                         <h2 data-para-effect className="capitalize primary-font text-5xl">
-                         Which Platform <br /> to Choose
+                            How to choose <br /> the right platform?
                         </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4"></div>
@@ -730,7 +717,7 @@ const EcommPlatformCompare = () => {
 
             {/* ── Dashboard Panels ── */}
             <div ref={panelsRef} className="dashboards-wrap padding py-0! my-8 md:my-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+                <div className="dashboards-compare-grid grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-y-0 lg:gap-x-6">
                     <DashboardPanel
                         platform="Z-Com"
                         data={customData}

@@ -110,7 +110,7 @@ function AdminCampaignsAnim() {
     const animatedEmail = useAnimatedNumber(state.email, 800);
 
     return (
-        <div className="absolute inset-x-0 top-0 bottom-[36%] px-5 pt-5 flex flex-col justify-start pointer-events-none select-none">
+        <div className="absolute inset-x-0 top-0 bottom-[36%] p-8 md:p-10 flex flex-col justify-start pointer-events-none select-none">
             {/* Embedded Smooth Animation Keyframes */}
             <style>{`
                 @keyframes hubTextFade {
@@ -157,16 +157,14 @@ function AdminCampaignsAnim() {
                 </svg>
 
                 {/* Central Hub Disc (Matching img6.webp) */}
-                <div className="relative z-10 w-24 h-24 sm:w-26 sm:h-26 rounded-full bg-black/75 border border-white/25 center flex-col text-center shadow-xl p-2 transition-all duration-500">
+                <div className="relative z-10 w-24 h-24 sm:w-26 sm:h-26 rounded-full bg-white/10 backdrop-blur-xs border border-white/25 center flex-col text-center shadow-xl p-2 transition-all duration-500">
                     <span
                         key={`sub-${currentIdx}`}
                         className={`text-[8px] font-mono tracking-widest uppercase font-bold anim-hub-fade ${state.subtitleColor}`}
                     >
                         {state.subtitle}
                     </span>
-                    <h6 className="text-white text-xs sm:text-sm font-extrabold tracking-tight leading-tight mt-0.5">
-                        LET'S DISCUSS
-                    </h6>
+                  
                     <span
                         key={`stat-${currentIdx}`}
                         className="text-[8px] text-slate-300 mt-0.5 font-medium anim-hub-fade leading-tight"
@@ -178,7 +176,7 @@ function AdminCampaignsAnim() {
                 {/* Badges on the Orbit (Matching img6.webp) */}
                 {/* 1. Top: WhatsApp */}
                 <div
-                    className={`absolute top-0.5 z-20 transition-all duration-500 ${
+                    className={`absolute -top-5 z-20 transition-all duration-500 ${
                         state.activeChannel === 'whatsapp' || state.activeChannel === 'all'
                             ? 'scale-[1.08]'
                             : 'opacity-85'
@@ -207,7 +205,7 @@ function AdminCampaignsAnim() {
                     }`}
                 >
                     <div
-                        className={`bg-black/95 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full border shadow-md flex items-center gap-1.5 transition-all duration-500 ${
+                        className={`bg-black/95 text-white text-[10px] font-bold px-2.5 pl-0.5 py-0.5 rounded-full border shadow-md flex items-center gap-1.5 transition-all duration-500 ${
                             state.activeChannel === 'email' || state.activeChannel === 'all'
                                 ? 'border-amber-400 shadow-[0_0_12px_rgba(245,158,11,0.5)]'
                                 : 'border-white/20'
@@ -241,25 +239,23 @@ function AdminCampaignsAnim() {
             </div>
 
             {/* Bottom Status Checklist Badges (Matching img6.webp) */}
-            <div className="flex items-center justify-between gap-2 mt-1">
-                <div className="bg-white/95 text-slate-800 text-[9px] font-medium px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 border border-slate-200 flex-1 justify-between">
-                    <div className="flex items-center gap-1 truncate">
-                        <span key={`c1-${currentIdx}`} className="font-bold text-[#002bba] font-mono anim-hub-fade">
+            <div className="flex items-center justify-center w-fit gap-2 mt-4 mx-auto">
+                <div className="bg-white/95 text-slate-800 text-xs font-medium px-2.5 py-1 rounded-md shadow-sm flex items-center gap-1.5 border border-slate-200 flex-1 justify-between">
+                    <div className="flex flex-col items-center gap-1 truncate">
+                        <span key={`c1-${currentIdx}`} className="font-bold t text-[#002bba] font-mono anim-hub-fade">
                             {state.check1}
                         </span>
-                        <span className="truncate">Images with alt text</span>
+                        <span className="truncate">Images with alt </span>
                     </div>
-                    <RiCheckDoubleLine size={11} className="text-emerald-600 shrink-0" />
                 </div>
 
-                <div className="bg-white/95 text-slate-800 text-[9px] font-medium px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 border border-slate-200 flex-1 justify-between">
-                    <div className="flex items-center gap-1 truncate">
-                        <span key={`c2-${currentIdx}`} className="font-bold text-[#002bba] font-mono anim-hub-fade">
+                <div className="bg-white/95 text-slate-800 text-xs font-medium px-2.5 py-1 rounded-md shadow-sm flex items-center gap-1.5 border border-slate-200 flex-1 justify-between">
+                    <div className="flex flex-col items-center gap-1 truncate">
+                        <span key={`c2-${currentIdx}`} className="font-bold t text-[#002bba] font-mono anim-hub-fade">
                             {state.check2}
                         </span>
                         <span className="truncate">Page metadata</span>
                     </div>
-                    <RiCheckDoubleLine size={11} className="text-emerald-600 shrink-0" />
                 </div>
             </div>
         </div>

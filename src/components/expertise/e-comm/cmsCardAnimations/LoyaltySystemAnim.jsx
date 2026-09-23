@@ -119,7 +119,7 @@ function LoyaltySystemAnim() {
     const PillIcon = data.pillIcon;
 
     return (
-        <div className="absolute inset-x-0 bottom-0 top-[36%] px-5 pb-5 flex flex-col justify-end pointer-events-none select-none">
+        <div className="absolute inset-x-0 bottom-0 top-[36%] p-8 md:p-10 flex flex-col justify-end pointer-events-none select-none">
             {/* Embedded Smooth Transition Keyframes */}
             <style>{`
                 @keyframes loyaltySlideFade {
@@ -151,53 +151,22 @@ function LoyaltySystemAnim() {
                         {data.pillBadge}
                     </span>
                 </div>
-
-                {/* Floating Metric Badges (OPENED & CLICKED from img5.webp) */}
-                <div className="flex  gap-1.5">
-                    {/* Opened Rate */}
-                    <div className="bg-black/60 border border-white/20 px-3 py-1 rounded-xl shadow-md ">
-                        <span className="text-[8px] tracking-wider text-white/70 block uppercase font-mono">OPENED</span>
-                        <span className="text-sm font-extrabold text-emerald-400 font-mono leading-none tabular-nums">
-                            {animatedOpened}%
-                        </span>
-                    </div>
-
-                    {/* Clicked Rate */}
-                    <div className="bg-white/95 border border-white/70 px-3 py-1 rounded-xl shadow-md ">
-                        <span className="text-[8px] tracking-wider text-slate-500 block uppercase font-mono">CLICKED</span>
-                        <span className="text-sm font-extrabold text-slate-900 font-mono leading-none tabular-nums">
-                            {animatedClicked}%
-                        </span>
-                    </div>
-                </div>
             </div>
 
             {/* Main Masterclass / Loyalty Program Card */}
-            <div className="w-full bg-[#f8f6f0]/95 border border-white/80 rounded-2xl p-3.5 sm:p-4 shadow-xl flex flex-col gap-2 text-slate-900">
-                {/* Top Live Banner */}
-                <div className="flex items-center justify-between">
-                    <div className="bg-[#002bba] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-xs">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        <span>Live Loyalty Engine</span>
-                    </div>
-
-                    <div className="flex items-center gap-1 text-[10px] text-slate-500 font-mono">
-                        <RiTimeLine size={12} />
-                        <span>Automated Triggers</span>
-                    </div>
-                </div>
+            <div className="w-full bg-[#f8f6f0]/95 border justify-between h-38 border-white/80 rounded-2xl p-3.5 sm:p-4 shadow-xl flex flex-col gap-2 text-slate-900">
 
                 {/* Reward Banner Title & Desc with smooth text transition */}
-                <div className="min-h-[38px] flex flex-col justify-center">
+                <div className=" flex flex-col justify-center ">
                     <h5
                         key={`title-${currentIdx}`}
-                        className="text-xs sm:text-sm font-bold tracking-tight text-slate-900 leading-tight block anim-loyalty-fade"
+                        className=" font-bold text-lg  tracking-tight text-slate-900 leading-tight block anim-loyalty-fade"
                     >
                         {data.headline}
                     </h5>
                     <p
                         key={`desc-${currentIdx}`}
-                        className="text-[10px] text-slate-500 mt-0.5 leading-tight anim-loyalty-fade"
+                        className="text-sm text-slate-500 mt-0.5 leading-tight anim-loyalty-fade"
                     >
                         {data.desc}
                     </p>
@@ -205,7 +174,7 @@ function LoyaltySystemAnim() {
 
                 {/* Dynamic Tier Progress Bar */}
                 <div className="pt-1">
-                    <div className="flex items-center justify-between text-[9px] font-mono text-slate-600 mb-1">
+                    <div className="flex items-center justify-between text-xs font-mono text-slate-600 mb-1">
                         <span
                             key={`tier-${currentIdx}`}
                             className="font-semibold text-slate-700 anim-loyalty-fade"

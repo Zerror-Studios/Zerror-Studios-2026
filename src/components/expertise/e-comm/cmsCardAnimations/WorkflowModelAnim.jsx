@@ -52,7 +52,7 @@ function WorkflowModelAnim() {
     const activeTab = TRACKING_TABS[taskStage];
 
     return (
-        <div className="absolute inset-x-0 top-0 bottom-[36%] px-5 pt-6 flex flex-col justify-start pointer-events-none select-none">
+        <div className="absolute inset-x-0 p-8 md:p-10 top-0 bottom-[36%] px-5 pt-6 flex flex-col justify-start pointer-events-none select-none">
             {/* Embedded Keyframe for Smooth Slide-Fade Transition */}
             <style>{`
                 @keyframes smoothTabFade {
@@ -67,26 +67,19 @@ function WorkflowModelAnim() {
             {/* Top Bar: Shiprocket Badge & Drop Calendar Tag */}
             <div className="flex items-center justify-between mb-2.5">
                 {/* Shiprocket Brand Pill */}
-                <div className="bg-white/95 px-3 py-1 rounded-full border border-white/60 shadow-md flex items-center gap-2">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 center text-white shadow-xs">
-                        <RiPlayCircleFill size={13} />
-                    </div>
+                <div className="bg-white/95 px-3 py-1 rounded-full border border-white/60  flex items-center gap-2">
+                    <img className='w-3' src="/icons/shiprocket_logo.svg" alt="" />
                     <span className="text-xs font-bold text-slate-800 tracking-tight font-sans">Shiprocket</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] text-purple-700 font-mono font-medium hidden sm:inline">Connected</span>
                 </div>
 
-                {/* Calendar Drop Badge */}
-                <div className="bg-purple-900/90 text-purple-200 border border-purple-500/30 px-2.5 py-1 rounded-lg text-[10px] flex items-center gap-1.5 shadow-sm">
-                    <RiCalendarLine size={12} className="text-purple-300" />
-                    <span className="font-medium">VIP Drop: Live</span>
-                </div>
+          
             </div>
 
             {/* Kanban Board Container */}
-            <div className="w-full bg-black/40 border border-white/15 rounded-2xl p-3 sm:p-3.5 shadow-xl flex flex-col gap-2.5">
+            <div className="w-full bg-black/40 border border-white/15 rounded-2xl p-3 sm:p-3.5 backdrop-blur-xs flex flex-col gap-2.5">
                 {/* Kanban Column Headers */}
-                <div className="grid grid-cols-3 gap-2 text-[10px] font-semibold tracking-wider uppercase text-white/70 border-b border-white/10 pb-1.5">
+                <div className="grid grid-cols-3 gap-2 text-[10px] uppercase text-white border-b border-white/10 pb-1.5">
                     <div className="flex items-center gap-1">
                         <span className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${taskStage === 0 ? 'bg-blue-400' : 'bg-slate-500'}`} />
                         <span>To Do</span>
@@ -102,60 +95,54 @@ function WorkflowModelAnim() {
                 </div>
 
                 {/* Kanban Columns Grid */}
-                <div className="grid grid-cols-3 gap-2 min-h-[75px]">
+                <div className="grid grid-cols-3 gap-2">
                     {/* Column 1: To Do */}
-                    <div className="bg-black/30 rounded-xl p-1.5 flex flex-col gap-1.5 border border-white/5 transition-all duration-500">
+                    <div className="h-full">
                         {taskStage === 0 ? (
-                            <div className="bg-white/95 text-slate-900 rounded-lg p-2 shadow-md border border-blue-300 transition-all duration-500 scale-[1.02]">
-                                <span className="text-[9px] font-bold uppercase text-purple-600 bg-purple-50 px-1 rounded block mb-0.5">
+                            <div className="h-[50px] bg-white/95 text-black rounded-lg p-2 flex flex-col justify-between transition-all duration-500">
+                                <span className="text-[9px] font-bold uppercase text-purple-600 bg-purple-50 px-1 rounded w-fit leading-normal">
                                     Drop #12
                                 </span>
-                                <p className="text-[10px] font-semibold text-slate-800 leading-tight">Pre-Order Queue</p>
+                                <p className="text-[10px] font-semibold text-slate-800 leading-tight truncate">Pre-Order Queue</p>
                             </div>
                         ) : (
-                            <div className="bg-white/5 text-white/40 rounded-lg p-2 transition-all duration-500">
-                                <span className="text-[9px] block">Batch #13</span>
-                                <span className="text-[9px] text-white/30">12 items</span>
+                            <div className="h-[50px] bg-white/20 text-white rounded-lg p-2 flex flex-col justify-between transition-all duration-500">
+                                <span className="text-[9px] block leading-normal">Batch #13</span>
+                                <span className="text-[9px] text-white leading-tight">12 items</span>
                             </div>
                         )}
                     </div>
 
                     {/* Column 2: In Progress */}
-                    <div className="bg-black/30 rounded-xl p-1.5 flex flex-col gap-1.5 border border-white/5 transition-all duration-500">
+                    <div className="h-full">
                         {taskStage === 1 ? (
-                            <div className="bg-white/95 text-slate-900 rounded-lg p-2 shadow-md border border-amber-300 transition-all duration-500 scale-[1.02]">
-                                <span className="text-[9px] font-bold uppercase text-amber-600 bg-amber-50 px-1 rounded block mb-0.5">
+                            <div className="h-[50px] bg-white/95 text-black rounded-lg p-2 flex flex-col justify-between transition-all duration-500">
+                                <span className="text-[9px] font-bold uppercase text-amber-600 bg-amber-50 px-1 rounded w-fit leading-normal">
                                     Packing
                                 </span>
-                                <p className="text-[10px] font-semibold text-slate-800 leading-tight">Drop #12 Orders</p>
-                                <div className="mt-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                                    <div className="h-full bg-amber-500 w-3/4 transition-all duration-700" />
-                                </div>
+                                <p className="text-[10px] font-semibold text-slate-800 leading-tight truncate">Drop #12 Orders</p>
                             </div>
                         ) : (
-                            <div className="bg-white/5 text-white/40 rounded-lg p-2 transition-all duration-500">
-                                <span className="text-[9px] block">Packaging</span>
-                                <span className="text-[9px] text-white/30">24 active</span>
+                            <div className="h-[50px] bg-white/20 text-white rounded-lg p-2 flex flex-col justify-between transition-all duration-500">
+                                <span className="text-[9px] block leading-normal">Packaging</span>
+                                <span className="text-[9px] text-white leading-tight">24 active</span>
                             </div>
                         )}
                     </div>
 
                     {/* Column 3: Done */}
-                    <div className="bg-black/30 rounded-xl p-1.5 flex flex-col gap-1.5 border border-white/5 transition-all duration-500">
+                    <div className="h-full">
                         {taskStage === 2 ? (
-                            <div className="bg-white/95 text-slate-900 rounded-lg p-2 shadow-md border border-emerald-300 transition-all duration-500 scale-[1.02]">
-                                <span className="text-[9px] font-bold uppercase text-emerald-700 bg-emerald-50 px-1 rounded block mb-0.5">
+                            <div className="h-[50px] bg-white/95 text-black rounded-lg p-2 flex flex-col justify-between transition-all duration-500">
+                                <span className="text-[9px] font-bold uppercase text-emerald-700 bg-emerald-50 px-1 rounded w-fit leading-normal">
                                     Dispatched
                                 </span>
-                                <p className="text-[10px] font-semibold text-slate-800 leading-tight">Drop #12 Shipped</p>
-                                <div className="mt-1 h-1.5 bg-slate-200 rounded-full overflow-hidden">
-                                    <div className="h-full bg-emerald-500 w-full transition-all duration-700" />
-                                </div>
+                                <p className="text-[10px] font-semibold text-slate-800 leading-tight truncate">Drop #12 Shipped</p>
                             </div>
                         ) : (
-                            <div className="bg-white/5 text-white/40 rounded-lg p-2 transition-all duration-500">
-                                <span className="text-[9px] block">Complete</span>
-                                <span className="text-[9px] text-white/30">142 shipped</span>
+                            <div className="h-[50px] bg-white/20 text-white rounded-lg p-2 flex flex-col justify-between transition-all duration-500">
+                                <span className="text-[9px] block leading-normal">Complete</span>
+                                <span className="text-[9px] text-white leading-tight">142 shipped</span>
                             </div>
                         )}
                     </div>

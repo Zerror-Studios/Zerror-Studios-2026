@@ -1,428 +1,315 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import {
     RiSearchLine,
-    RiCheckboxCircleFill,
-    RiCheckboxBlankCircleLine,
-    RiShoppingBag3Line,
+    RiHome4Line,
     RiStore2Line,
     RiArrowUpSLine,
-    RiRefreshLine,
-    RiFlashlightLine,
+    RiArrowDownSLine,
+    RiBarChart2Line,
+    RiContactsBook2Line,
+    RiInboxLine,
+    RiBookOpenLine,
+    RiMegaphoneLine,
+    RiSettings4Line,
+    RiLogoutBoxRLine,
     RiCheckLine
 } from '@remixicon/react';
 
-// Product list modeled directly after img1.webp
-const PRODUCTS = [
+// Product catalog matching reference image (img1.webp) - 9 products with optimized WebP images (<50KB)
+const PRODUCT_CATALOG = [
     {
-        id: 'pearl',
         name: "The Coastal Pearl Ring",
-        category: "Rings",
-        variations: 22,
-        initialStock: 42,
-        sku: "CPR-22-GLD",
-        searchTag: "Coastal Pearl Ring"
+        variations: "22 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_pearl.webp",
+        isChecked: false
     },
     {
-        id: 'aurora',
         name: "The Aurora Gold Ring",
-        category: "Rings",
-        variations: 18,
-        initialStock: 19,
-        sku: "AGR-18-18K",
-        searchTag: "Aurora Gold Ring"
+        variations: "18 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_aurora.webp",
+        isChecked: true
     },
     {
-        id: 'oval',
         name: "The Classic Oval Ring",
-        category: "Rings",
-        variations: 25,
-        initialStock: 35,
-        sku: "COR-25-DIA",
-        searchTag: "Classic Oval Ring"
+        variations: "25 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_oval.webp",
+        isChecked: false
     },
     {
-        id: 'bloom',
         name: "The Bloom Signature Ring",
-        category: "Rings",
-        variations: 16,
-        initialStock: 65,
-        sku: "BSR-16-RGD",
-        searchTag: "Bloom Signature Ring"
+        variations: "16 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_bloom.webp",
+        isChecked: false
+    },
+    {
+        name: "The Solitaire Diamond Ring",
+        variations: "12 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_solitaire.webp",
+        isChecked: false
+    },
+    {
+        name: "The Royal Emerald Ring",
+        variations: "9 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_emerald.webp",
+        isChecked: false
+    },
+    {
+        name: "The Celestia Sapphire Ring",
+        variations: "14 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_sapphire.webp",
+        isChecked: false
+    },
+    {
+        name: "The Eterno Baguette Band",
+        variations: "20 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_baguette.webp",
+        isChecked: false
+    },
+    {
+        name: "The Vintage Cushion Ring",
+        variations: "11 Variations | Rings",
+        img: "/images/expertisePage/e-comm/cmsCards/products/ring_cushion.webp",
+        isChecked: false
     }
 ];
-
-const SEARCH_QUERIES = [
-    "Search anything here...",
-    "Search: Coastal Pearl...",
-    "Search: Aurora Gold...",
-    "Search: Classic Oval...",
-    "Search: Bloom Signature..."
-];
-
-// High-end jewelry vector thumbnails matching img1.webp luxury aesthetics
-function RingThumbnail({ type, isActive }) {
-    if (type === 'pearl') {
-        return (
-            <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden shrink-0 transition-all duration-300 border ${
-                isActive ? 'border-blue-400 shadow-sm ring-2 ring-blue-400/30' : 'border-slate-200'
-            }`}>
-                <svg viewBox="0 0 36 36" className="w-full h-full" fill="none">
-                    <rect width="36" height="36" rx="6" fill="url(#pearl-bg)" />
-                    <ellipse cx="18" cy="23" rx="9" ry="5" stroke="url(#gold-band)" strokeWidth="2.2" fill="none" />
-                    <path d="M15 18 L18 20 L21 18" stroke="#ca8a04" strokeWidth="1.2" strokeLinecap="round" />
-                    <circle cx="18" cy="14" r="5" fill="url(#pearl-sphere)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.18))" />
-                    <circle cx="16.5" cy="12.5" r="1.3" fill="#ffffff" opacity="0.9" />
-                    <defs>
-                        <linearGradient id="pearl-bg" x1="0" y1="0" x2="36" y2="36">
-                            <stop offset="0%" stopColor="#fdfbf7" />
-                            <stop offset="100%" stopColor="#e2e8f0" />
-                        </linearGradient>
-                        <linearGradient id="gold-band" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#fef08a" />
-                            <stop offset="50%" stopColor="#eab308" />
-                            <stop offset="100%" stopColor="#ca8a04" />
-                        </linearGradient>
-                        <radialGradient id="pearl-sphere" cx="35%" cy="35%" r="65%">
-                            <stop offset="0%" stopColor="#ffffff" />
-                            <stop offset="60%" stopColor="#f1f5f9" />
-                            <stop offset="85%" stopColor="#cbd5e1" />
-                            <stop offset="100%" stopColor="#94a3b8" />
-                        </radialGradient>
-                    </defs>
-                </svg>
-            </div>
-        );
-    }
-
-    if (type === 'aurora') {
-        return (
-            <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden shrink-0 transition-all duration-300 border ${
-                isActive ? 'border-blue-400 shadow-sm ring-2 ring-blue-400/30' : 'border-slate-200'
-            }`}>
-                <svg viewBox="0 0 36 36" className="w-full h-full" fill="none">
-                    <rect width="36" height="36" rx="6" fill="url(#aurora-bg)" />
-                    <ellipse cx="18" cy="18" rx="10" ry="7.5" stroke="url(#aurora-gold)" strokeWidth="3" fill="none" />
-                    <ellipse cx="18" cy="18" rx="7.2" ry="5.2" stroke="#fef9c3" strokeWidth="1" fill="none" opacity="0.85" />
-                    <path d="M12 14.5 Q18 11.5 24 14.5" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" opacity="0.9" />
-                    <defs>
-                        <linearGradient id="aurora-bg" x1="0" y1="0" x2="36" y2="36">
-                            <stop offset="0%" stopColor="#fffbeb" />
-                            <stop offset="100%" stopColor="#fef3c7" />
-                        </linearGradient>
-                        <linearGradient id="aurora-gold" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#fde047" />
-                            <stop offset="40%" stopColor="#eab308" />
-                            <stop offset="75%" stopColor="#ca8a04" />
-                            <stop offset="100%" stopColor="#854d0e" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-        );
-    }
-
-    if (type === 'oval') {
-        return (
-            <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden shrink-0 transition-all duration-300 border ${
-                isActive ? 'border-blue-400 shadow-sm ring-2 ring-blue-400/30' : 'border-slate-200'
-            }`}>
-                <svg viewBox="0 0 36 36" className="w-full h-full" fill="none">
-                    <rect width="36" height="36" rx="6" fill="url(#oval-bg)" />
-                    <ellipse cx="18" cy="23" rx="9" ry="5.5" stroke="url(#plat-band)" strokeWidth="2" fill="none" />
-                    <ellipse cx="18" cy="14" rx="6" ry="4.5" fill="url(#diamond-facet)" stroke="#93c5fd" strokeWidth="0.8" />
-                    <polygon points="18,10.5 22,14 18,17.5 14,14" fill="#ffffff" opacity="0.6" />
-                    <path d="M22 11 L23 13 L25 14 L23 15 L22 17 L21 15 L19 14 L21 13 Z" fill="#ffffff" opacity="0.95" />
-                    <defs>
-                        <linearGradient id="oval-bg" x1="0" y1="0" x2="36" y2="36">
-                            <stop offset="0%" stopColor="#0f172a" />
-                            <stop offset="100%" stopColor="#1e293b" />
-                        </linearGradient>
-                        <linearGradient id="plat-band" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#e2e8f0" />
-                            <stop offset="50%" stopColor="#94a3b8" />
-                            <stop offset="100%" stopColor="#64748b" />
-                        </linearGradient>
-                        <linearGradient id="diamond-facet" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stopColor="#ffffff" />
-                            <stop offset="50%" stopColor="#dbeafe" />
-                            <stop offset="100%" stopColor="#93c5fd" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-        );
-    }
-
-    return (
-        <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg overflow-hidden shrink-0 transition-all duration-300 border ${
-            isActive ? 'border-blue-400 shadow-sm ring-2 ring-blue-400/30' : 'border-slate-200'
-        }`}>
-            <svg viewBox="0 0 36 36" className="w-full h-full" fill="none">
-                <rect width="36" height="36" rx="6" fill="url(#bloom-bg)" />
-                <ellipse cx="18" cy="23" rx="9" ry="5.5" stroke="url(#rose-gold)" strokeWidth="2" fill="none" />
-                <circle cx="18" cy="11.5" r="3" fill="#fecdd3" opacity="0.95" />
-                <circle cx="14.5" cy="14" r="3" fill="#fecdd3" opacity="0.95" />
-                <circle cx="21.5" cy="14" r="3" fill="#fecdd3" opacity="0.95" />
-                <circle cx="18" cy="16.5" r="3" fill="#fecdd3" opacity="0.95" />
-                <circle cx="18" cy="14" r="2.2" fill="#ffffff" stroke="#fb7185" strokeWidth="0.8" />
-                <circle cx="17.3" cy="13.3" r="0.7" fill="#ffffff" />
-                <defs>
-                    <linearGradient id="bloom-bg" x1="0" y1="0" x2="36" y2="36">
-                        <stop offset="0%" stopColor="#fff1f2" />
-                        <stop offset="100%" stopColor="#ffe4e6" />
-                    </linearGradient>
-                    <linearGradient id="rose-gold" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#fecdd3" />
-                        <stop offset="50%" stopColor="#fb7185" />
-                        <stop offset="100%" stopColor="#e11d48" />
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-    );
-}
 
 function SmartInventoryAnim() {
-    const [activeRow, setActiveRow] = useState(0);
-    const [cycleCount, setCycleCount] = useState(0);
-    const [stockDeltas, setStockDeltas] = useState([0, 0, 0, 0]);
-    const [lastAction, setLastAction] = useState({ type: 'order', label: 'Order #1084 synced' });
-    const [latency, setLatency] = useState('0.18s');
+    // Start with the initial 4 products
+    const [items, setItems] = useState(() =>
+        PRODUCT_CATALOG.slice(0, 5).map((prod, idx) => ({
+            ...prod,
+            instanceId: `initial-${idx}`
+        }))
+    );
+    const counterRef = React.useRef(0);
 
+    // Infinite simple loop: prepends a new dummy product at the top every 2.6s
     useEffect(() => {
         const interval = setInterval(() => {
-            setActiveRow((prev) => {
-                const nextRow = (prev + 1) % PRODUCTS.length;
-                setCycleCount((c) => c + 1);
+            counterRef.current += 1;
+            const currentCounter = counterRef.current;
+            const template = PRODUCT_CATALOG[currentCounter % PRODUCT_CATALOG.length];
 
-                // Simulate realistic order sync decrement or periodic restock
-                setStockDeltas((deltas) => {
-                    const next = [...deltas];
-                    // Decrement stock for current active item
-                    if (next[nextRow] > -3) {
-                        next[nextRow] -= 1;
-                        setLastAction({
-                            type: 'order',
-                            label: `Order #${1080 + Math.floor(Math.random() * 80)} synced`
-                        });
-                    } else {
-                        // Trigger automated restock
-                        next[nextRow] = 0;
-                        setLastAction({
-                            type: 'restock',
-                            label: `Auto-restocked +12 units`
-                        });
-                    }
-                    return next;
-                });
+            const newItem = {
+                ...template,
+                instanceId: `prod-item-${currentCounter}`
+            };
 
-                // Subtle dynamic latency fluctuation
-                const latencies = ['0.16s', '0.18s', '0.14s', '0.21s', '0.19s'];
-                setLatency(latencies[Math.floor(Math.random() * latencies.length)]);
-
-                return nextRow;
-            });
+            // Prepend to top and retain up to 5 items so the bottom item exits smoothly
+            setItems((current) => [newItem, ...current.slice(0, 5)]);
         }, 2600);
 
         return () => clearInterval(interval);
     }, []);
 
-    const currentSearch = SEARCH_QUERIES[(activeRow + 1) % SEARCH_QUERIES.length];
-
     return (
-        <div className="absolute inset-x-0 bottom-0 top-[35%] px-3 sm:px-5 pb-3 sm:pb-5 flex flex-col justify-end pointer-events-none select-none">
-            {/* Main Glass/Solid Dashboard Container */}
-            <div className="w-full bg-white/95 backdrop-blur-md border border-white/80 rounded-2xl shadow-2xl p-3 sm:p-4 flex flex-col gap-2.5 text-slate-800">
-                {/* Dashboard Top Header Bar */}
-                <div className="flex items-center justify-between border-b border-slate-200/80 pb-2">
-                    <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-lg bg-[#2563eb] text-white flex items-center justify-center shadow-xs">
-                            <RiShoppingBag3Line size={13} />
-                        </div>
-                        <span className="text-xs font-black tracking-tight text-slate-900 font-mono">
-                            Z-COM
-                        </span>
-                        <span className="text-[10px] bg-blue-50 text-[#2563eb] font-semibold px-2 py-0.5 rounded-full border border-blue-200/80 flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#2563eb] animate-pulse" />
-                            Products (81)
-                        </span>
-                    </div>
+        <div className="absolute p-8 md:p-10 inset-x-0 bottom-0 top-[32%] sm:top-[34%] flex flex-col justify-end pointer-events-none select-none z-10">
+            {/* Custom Embedded Keyframes for Scale Animation and Smooth Downward Shift */}
+            <style>{`
+                @keyframes productPopScaleIn {
+                    0% {
+                        opacity: 0;
+                        transform: scale(0.65) translateY(-8px);
+                        max-height: 0px;
+                        padding-top: 0px;
+                        padding-bottom: 0px;
+                        margin-bottom: 0px;
+                    }
+                    45% {
+                        opacity: 0.9;
+                        max-height: 52px;
+                        transform: scale(1.03) translateY(0px);
+                    }
+                    100% {
+                        opacity: 1;
+                        transform: scale(1) translateY(0px);
+                        max-height: 52px;
+                        padding-top: 4px;
+                        padding-bottom: 4px;
+                        margin-bottom: 4px;
+                    }
+                }
+                .anim-product-scale-enter {
+                    animation: productPopScaleIn 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                    overflow: hidden;
+                }
+                .product-row-shift {
+                    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+                }
+                @keyframes cursorBlink {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0; }
+                }
+                .anim-blink-cursor {
+                    animation: cursorBlink 0.9s step-start infinite;
+                }
+            `}</style>
 
-                    {/* Animated Search Box */}
-                    <div className="flex items-center gap-1.5 bg-slate-100/90 px-2.5 py-1 rounded-md text-[10px] text-slate-600 border border-slate-200/80 font-mono">
-                        <RiSearchLine size={11} className="text-slate-400 shrink-0" />
-                        <span className="truncate max-w-[90px] xs:max-w-[130px] sm:max-w-[160px] text-slate-700">
-                            {currentSearch}
-                        </span>
-                        <span className="w-0.5 h-3 bg-[#2563eb] animate-pulse" />
+            {/* Main SaaS Dashboard Container */}
+            <div className="w-full h-full bg-white rounded-lg shadow-2xl border border-white/80 border-b-0 overflow-hidden flex flex-col text-slate-800">
+                {/* Top Header Bar */}
+                <div className="flex items-center justify-between gap-x-6 px-2.5 xs:px-3 sm:px-4 py-1.5 sm:py-2 border-b border-slate-100 shrink-0 bg-white/60">
+                    <span className="text-[10px] xs:text-[11px] sm:text-xs font-black tracking-wider whitespace-nowrap text-slate-900 font-sans">
+                        Z-COMMERCE
+                    </span>
+
+                    {/* Header Search Bar */}
+                    <div className="flex items-center relative gap-1.5 bg-slate-100/90 px-2.5 py-0.5 sm:py-1 rounded-full text-[8px] xs:text-[9px] sm:text-[10px] text-slate-400 border border-slate-200/50 w-full">
+                        <RiSearchLine size={10} className="text-slate-400 shrink-0 relative" />
+                        <span className="w-[1px] h-2.5 sm:h-3 bg-[#3b82f6] anim-blink-cursor left-6 absolute shrink-0" />
+                        <span className="  leading-none">Search here...</span>
                     </div>
                 </div>
 
-                {/* Dashboard Body: Left Store Sidebar (from img1.webp) + Right Table */}
-                <div className="flex gap-2.5 items-stretch">
-                    {/* Left Store Navigation Sidebar (Matching img1.webp Store overlay) */}
-                    <div className="hidden sm:flex flex-col justify-between w-24 shrink-0 border-r border-slate-100 pr-2">
-                        <div className="space-y-1.5">
-                            {/* Store Header */}
-                            <div className="flex items-center justify-between text-[10px] font-bold text-slate-700 px-1">
-                                <span className="flex items-center gap-1">
-                                    <RiStore2Line size={12} className="text-[#2563eb]" />
-                                    Store
-                                </span>
-                                <RiArrowUpSLine size={12} className="text-slate-400" />
+                {/* Dashboard Body: Left Sidebar + Right Product List */}
+                <div className="flex-1 flex min-h-0 overflow-hidden">
+                    {/* Left Sidebar */}
+                    <div className="w-[78px] xs:w-24 sm:w-28 md:w-32 bg-[#f8fafc]/90 border-r border-slate-100 p-1.5 xs:p-2 sm:p-2.5 flex flex-col justify-between shrink-0 overflow-hidden">
+                        <div className="space-y-1">
+                            {/* Home */}
+                            <div className="flex items-center gap-1 sm:gap-1.5 text-[8px] sm:text-[9px]  text-slate-600 px-1 py-0.5">
+                                <RiHome4Line size={11} className="text-slate-400 shrink-0" />
+                                <span className="truncate">Home</span>
                             </div>
 
-                            {/* Products Active Button */}
-                            <div className="bg-[#2563eb] text-white text-[10px] font-semibold px-2 py-1 rounded-lg flex items-center justify-between shadow-xs transition-transform duration-300">
-                                <span className="flex items-center gap-1">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
-                                    Products
-                                </span>
-                                <span className="text-[8px] bg-white/20 px-1 rounded font-mono">
-                                    81
-                                </span>
+                            {/* Elevated Floating Store Card */}
+                            <div className="bg-white rounded-lg sm:rounded-xl p-1 sm:p-1.5 shadow-sm border border-slate-100 space-y-1">
+                                <div className="flex items-center justify-between text-[8px] sm:text-[9px] font-bold text-slate-800 px-0.5">
+                                    <span className="flex items-center gap-1 truncate">
+                                        <RiStore2Line size={10} className="text-[#3b82f6] shrink-0" />
+                                        Store
+                                    </span>
+                                    <RiArrowUpSLine size={10} className="text-slate-400 shrink-0" />
+                                </div>
+
+                                {/* Active Products Pill */}
+                                <div className="bg-[#3b82f6] text-white text-[8px] sm:text-[9px]  px-1.5 py-0.5 sm:py-1 rounded-md flex items-center gap-1 shadow-2xs">
+                                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-white shrink-0" />
+                                    <span className="">Products</span>
+                                </div>
+
+                                {/* Sub-items */}
+                                <div className="space-y-0.5 px-1 text-[7px] sm:text-[8px] text-slate-500 font-medium">
+                                    <div className="flex items-center gap-1 py-0.5">
+                                        <span className="w-1 h-1 rounded-full border border-slate-300 shrink-0" />
+                                        <span className="truncate">Inventory</span>
+                                    </div>
+                                    <div className="flex items-center gap-1 py-0.5">
+                                        <span className="w-1 h-1 rounded-full border border-slate-300 shrink-0" />
+                                        <span className="truncate">Collections</span>
+                                    </div>
+                                    <div className="flex items-center gap-1 py-0.5">
+                                        <span className="w-1 h-1 rounded-full border border-slate-300 shrink-0" />
+                                        <span className="truncate">LookBooks</span>
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* Inventory */}
-                            <div className="text-slate-500 text-[10px] px-2 py-0.5 rounded-lg flex items-center justify-between">
-                                <span className="flex items-center gap-1">
-                                    <span className="w-1.5 h-1.5 rounded-full border border-slate-300" />
-                                    Inventory
-                                </span>
-                                <span className="text-[8px] font-mono text-emerald-600 font-bold">
-                                    162
-                                </span>
-                            </div>
+                            {/* Secondary Menu Links */}
+                            <div className="space-y-0.5 text-[7px] sm:text-[8px] text-slate-600 px-0.5">
+                                <div className="flex items-center justify-between py-0.5">
+                                    <span className="flex items-center gap-1 truncate">
+                                        <RiBarChart2Line size={9} className="text-slate-400 shrink-0" />
+                                        Payments
+                                    </span>
+                                    <span className="text-[6px] sm:text-[7px] bg-slate-200/80 text-slate-600 px-0.5 sm:px-1 rounded  shrink-0">
+                                        +New
+                                    </span>
+                                </div>
+                                <div className="flex items-center justify-between py-0.5">
+                                    <span className="flex items-center gap-1 truncate">
+                                        <RiContactsBook2Line size={9} className="text-slate-400 shrink-0" />
+                                        Contact Book
+                                    </span>
+                                    <RiArrowDownSLine size={8} className="text-slate-400 shrink-0" />
+                                </div>
 
-                            {/* Collections */}
-                            <div className="text-slate-400 text-[10px] px-2 py-0.5 rounded-lg flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full border border-slate-300" />
-                                Collections
-                            </div>
-
-                            {/* LookBooks */}
-                            <div className="text-slate-400 text-[10px] px-2 py-0.5 rounded-lg flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full border border-slate-300" />
-                                LookBooks
+                                <div className="flex items-center justify-between py-0.5">
+                                    <span className="flex items-center gap-1 truncate">
+                                        <RiBookOpenLine size={9} className="text-slate-400 shrink-0" />
+                                        Blogs
+                                    </span>
+                                    <span className="text-[6px] sm:text-[7px] bg-amber-100 text-amber-700 px-0.5 sm:px-1 rounded  shrink-0">
+                                        +Update
+                                    </span>
+                                </div>
+                                <div className="flex items-center justify-between py-0.5">
+                                    <span className="flex items-center gap-1 truncate">
+                                        <RiMegaphoneLine size={9} className="text-slate-400 shrink-0" />
+                                        Marketing
+                                    </span>
+                                    <RiArrowDownSLine size={8} className="text-slate-400 shrink-0" />
+                                </div>
                             </div>
                         </div>
 
-                        {/* Live Sync Status Mini Badge */}
-                        <div className="pt-1.5 border-t border-slate-100 text-[8px] text-slate-400 leading-tight">
-                            <span className="text-emerald-600 font-bold block flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-                                Multi-store
-                            </span>
-                            <span>Shopify · Zcom</span>
+                        {/* Settings & Log Out at Bottom */}
+                        <div className="pt-1 border-t border-slate-200/60 text-[7px] sm:text-[8px] text-slate-500 space-y-0.5 px-0.5">
+                            <div className="flex items-center gap-1 py-0.5">
+                                <RiSettings4Line size={9} className="text-slate-400 shrink-0" />
+                                <span className="truncate">Settings</span>
+                            </div>
+                            <div className="flex items-center gap-1 py-0.5">
+                                <RiLogoutBoxRLine size={9} className="text-slate-400 shrink-0" />
+                                <span className="truncate">Log Out</span>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Right Table Section */}
-                    <div className="flex-1 min-w-0 flex flex-col gap-1.5">
-                        {/* Table Header Row (Soft Blue Tinted Banner like img1.webp) */}
-                        <div className="grid grid-cols-[20px_1fr_45px_55px] items-center bg-[#edf3ff] text-[#2563eb] px-2 py-1 rounded-lg text-[9px] sm:text-[10px] font-bold tracking-wide">
-                            <div className="flex items-center justify-center">
-                                <div className="w-3 h-3 rounded-sm border border-[#2563eb]/60 bg-[#2563eb]/10 flex items-center justify-center">
-                                    <RiCheckLine size={8} className="text-[#2563eb]" />
-                                </div>
+                    {/* Right Main Content Area */}
+                    <div className="flex-1 flex flex-col p-2 sm:p-2.5 overflow-hidden min-w-0">
+                        {/* Title & Description */}
+                        <div className="mb-1.5 shrink-0">
+                            <div className="flex items-center justify-between">
+                            <h2 className="text-[11px] sm:text-xs md:text-sm font-bold text-[#170b3b] leading-tight truncate">
+                                Products (50)
+                            </h2>
+                            <button className='bg-[#3b82f6] text-white text-[8px] px-1 py-1 rounded-sm leading-none'>+ Add</button>
                             </div>
-                            <span>Product Details</span>
-                            <span className="text-center">Variations</span>
-                            <span className="text-right">Live Stock</span>
+                            <p className="text-[7px] sm:text-[8px] text-slate-400 leading-tight truncate">
+                                Create, manage, and organize your product listing
+                            </p>
                         </div>
 
-                        {/* 4 Product Rows */}
-                        <div className="space-y-1">
-                            {PRODUCTS.map((prod, idx) => {
-                                const isActive = activeRow === idx;
-                                const currentStock = prod.initialStock + stockDeltas[idx];
+                        {/* Product Rows List with Animated New Item Scaling In and Shifting Down */}
+                        <div className="flex-1 overflow-hidden relative">
+                            {items.map((prod, index) => {
+                                const isTop = index === 0;
 
                                 return (
                                     <div
-                                        key={prod.id}
-                                        className={`grid grid-cols-[20px_1fr_45px_55px] items-center px-2 py-1 sm:py-1.5 rounded-xl text-xs transition-all duration-300 border ${
-                                            isActive
-                                                ? 'bg-blue-50/95 border-blue-200 shadow-xs translate-x-0.5'
-                                                : 'bg-white/80 border-slate-100 hover:bg-slate-50'
+                                        key={prod.instanceId}
+                                        className={`flex items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg border border-slate-100/90 bg-white/95 shadow-2xs ${
+                                            isTop ? 'anim-product-scale-enter' : 'product-row-shift mb-1'
                                         }`}
                                     >
-                                        {/* Checkbox (Animated blue on active) */}
-                                        <div className="flex items-center">
-                                            {isActive ? (
-                                                <RiCheckboxCircleFill
-                                                    size={15}
-                                                    className="text-[#2563eb] transition-transform duration-300 scale-110"
-                                                />
-                                            ) : (
-                                                <RiCheckboxBlankCircleLine
-                                                    size={15}
-                                                    className="text-slate-300 transition-colors duration-200"
-                                                />
-                                            )}
+
+                                        {/* Ring Thumbnail Image */}
+                                        <div className="w-6 h-6 sm:w-7 sm:h-7 rounded sm:rounded-md overflow-hidden shrink-0 border border-slate-100 bg-slate-50 relative">
+                                            <Image
+                                                src={prod.img}
+                                                alt={prod.name}
+                                                width={28}
+                                                height={28}
+                                                className="w-full h-full object-cover"
+                                            />
                                         </div>
 
-                                        {/* Product Thumbnail + Title + Specs */}
-                                        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 pr-1">
-                                            <RingThumbnail type={prod.id} isActive={isActive} />
-                                            <div className="truncate min-w-0">
-                                                <p className={`font-semibold truncate text-[11px] sm:text-xs leading-tight transition-colors ${
-                                                    isActive ? 'text-blue-950 font-bold' : 'text-slate-800'
-                                                }`}>
-                                                    {prod.name}
-                                                </p>
-                                                <p className="text-[8px] sm:text-[9px] text-slate-400 leading-none truncate">
-                                                    {prod.variations} Variations · {prod.category}
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        {/* Variations Count */}
-                                        <div className="text-center text-[10px] text-slate-500 font-mono font-medium">
-                                            {prod.variations}
-                                        </div>
-
-                                        {/* Live Stock Badge with Pulse */}
-                                        <div className="text-right flex items-center justify-end gap-1">
-                                            <span
-                                                className={`font-mono font-bold text-[10px] sm:text-[11px] px-1.5 py-0.5 rounded-md transition-all duration-300 tabular-nums flex items-center gap-0.5 ${
-                                                    isActive
-                                                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-xs scale-105'
-                                                        : 'text-slate-700 bg-slate-100/80 border border-slate-200/50'
-                                                }`}
-                                            >
-                                                {isActive && (
-                                                    <span className="w-1 h-1 rounded-full bg-emerald-500 animate-ping" />
-                                                )}
-                                                {currentStock}
-                                            </span>
+                                        {/* Product Title and Category/Variations */}
+                                        <div className="min-w-0 flex-1">
+                                            <p className="text-[9px] sm:text-[10px]  text-slate-800 truncate leading-tight">
+                                                {prod.name}
+                                            </p>
+                                            <p className="text-[7px] sm:text-[8px] text-slate-400 truncate leading-tight">
+                                                {prod.variations}
+                                            </p>
                                         </div>
                                     </div>
                                 );
                             })}
                         </div>
-                    </div>
-                </div>
-
-                {/* Bottom Live Feed & Latency Bar */}
-                <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-500 pt-1.5 border-t border-slate-100">
-                    <div className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                        <span className="font-semibold text-emerald-700">
-                            ⚡ {lastAction.label}
-                        </span>
-                        <span className="text-slate-400 hidden xs:inline">
-                            • {PRODUCTS[activeRow].name}
-                        </span>
-                    </div>
-
-                    <div className="flex items-center gap-1 font-mono text-slate-400 text-[9px] shrink-0">
-                        <RiRefreshLine
-                            size={10}
-                            className="text-slate-400 animate-spin"
-                            style={{ animationDuration: '4s' }}
-                        />
-                        <span>Sync: {latency}</span>
                     </div>
                 </div>
             </div>
