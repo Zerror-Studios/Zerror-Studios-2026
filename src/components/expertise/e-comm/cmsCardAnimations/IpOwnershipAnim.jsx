@@ -122,7 +122,7 @@ function IpOwnershipAnim() {
             `}</style>
 
             {/* 3x3 Payment Gateway Matrix Container */}
-            <div className="w-[70%] mx-auto ">
+            <div className="w-[80%] mx-auto ">
 
 
                 {/* 3x3 Grid with Smooth Cycling Gateway Highlight */}
@@ -133,10 +133,10 @@ function IpOwnershipAnim() {
                         return (
                             <div
                                 key={gw.name}
-                                className={`relative rounded-xl flex items-center justify-center transition-all duration-500 overflow-hidden ${
+                                className={`relative  flex items-center justify-center transition-all duration-500 overflow-hidden ${
                                     isActive
-                                        ? 'scale-[1.04] z-20'
-                                        : 'scale-95 opacity-70'
+                                        ? 'scale-[1.08] z-20'
+                                        : 'scale-95 opacity-50'
                                 }`}
                             >
                                 <img

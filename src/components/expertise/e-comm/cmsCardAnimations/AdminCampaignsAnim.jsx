@@ -7,254 +7,222 @@ import {
     RiCheckDoubleLine
 } from '@remixicon/react';
 
-const CAMPAIGN_STATES = [
-    {
-        name: "WhatsApp Broadcast",
-        subtitle: "VIP DROP",
-        subtitleColor: "text-emerald-400",
-        status: "99.4% Delivered",
-        whatsapp: 840,
-        email: 1589,
-        sms: 380,
-        arcAngle: 0, // Points toward top (WhatsApp)
-        activeChannel: "whatsapp",
-        check1: "9/12",
-        check2: "4/5"
-    },
-    {
-        name: "Cart Recovery Email",
-        subtitle: "RECOVERY",
-        subtitleColor: "text-amber-400",
-        status: "42% Click Rate",
-        whatsapp: 840,
-        email: 1740,
-        sms: 380,
-        arcAngle: 120, // Points toward bottom-right (Email)
-        activeChannel: "email",
-        check1: "11/12",
-        check2: "5/5"
-    },
-    {
-        name: "SMS Flash Notification",
-        subtitle: "INSTANT SMS",
-        subtitleColor: "text-purple-400",
-        status: "1-Tap Checkout",
-        whatsapp: 840,
-        email: 1740,
-        sms: 495,
-        arcAngle: 240, // Points toward left (SMS)
-        activeChannel: "sms",
-        check1: "12/12",
-        check2: "5/5"
-    },
-    {
-        name: "Omnichannel Sync",
-        subtitle: "UNIFIED",
-        subtitleColor: "text-rose-400",
-        status: "3 Channels Active",
-        whatsapp: 1020,
-        email: 1980,
-        sms: 610,
-        arcAngle: 360, // Full sweep
-        activeChannel: "all",
-        check1: "12/12",
-        check2: "5/5"
-    }
+// Live simulated campaign increments
+const CAMPAIGN_METRICS = [
+    { whatsapp: 823, email: 1589, check1: "8/12", check2: "4/5" },
+    { whatsapp: 847, email: 1640, check1: "9/12", check2: "4/5" },
+    { whatsapp: 885, email: 1720, check1: "11/12", check2: "5/5" },
+    { whatsapp: 920, email: 1810, check1: "12/12", check2: "5/5" }
 ];
 
-function useAnimatedNumber(targetValue, duration = 800) {
-    const [displayValue, setDisplayValue] = useState(targetValue);
-    const startValueRef = useRef(targetValue);
+// Hook for smooth numerical interpolation
+function useSmoothNumber(targetValue, duration = 800) {
+    const [current, setCurrent] = useState(targetValue);
+    const startRef = useRef(targetValue);
     const targetRef = useRef(targetValue);
     const startTimeRef = useRef(null);
 
     useEffect(() => {
-        startValueRef.current = displayValue;
+        startRef.current = current;
         targetRef.current = targetValue;
         startTimeRef.current = performance.now();
 
         let animId;
-        const update = (now) => {
+        const step = (now) => {
             const elapsed = now - startTimeRef.current;
             const progress = Math.min(elapsed / duration, 1);
             const ease = 1 - Math.pow(1 - progress, 3);
-            const current = Math.round(startValueRef.current + (targetRef.current - startValueRef.current) * ease);
-            setDisplayValue(current);
+            const val = Math.round(startRef.current + (targetRef.current - startRef.current) * ease);
+            setCurrent(val);
 
             if (progress < 1) {
-                animId = requestAnimationFrame(update);
+                animId = requestAnimationFrame(step);
             }
         };
 
-        animId = requestAnimationFrame(update);
+        animId = requestAnimationFrame(step);
         return () => cancelAnimationFrame(animId);
     }, [targetValue, duration]);
 
-    return displayValue;
+    return current;
 }
 
 function AdminCampaignsAnim() {
     const [currentIdx, setCurrentIdx] = useState(0);
+    const [isHovered, setIsHovered] = useState(false);
 
+    // Auto-advance metrics every 3.2 seconds
     useEffect(() => {
+        if (isHovered) return;
         const interval = setInterval(() => {
-            setCurrentIdx((prev) => (prev + 1) % CAMPAIGN_STATES.length);
-        }, 2600);
+            setCurrentIdx((prev) => (prev + 1) % CAMPAIGN_METRICS.length);
+        }, 3200);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [isHovered]);
 
-    const state = CAMPAIGN_STATES[currentIdx];
-
-    const animatedWhatsapp = useAnimatedNumber(state.whatsapp, 800);
-    const animatedEmail = useAnimatedNumber(state.email, 800);
+    const metrics = CAMPAIGN_METRICS[currentIdx];
+    const animatedWhatsapp = useSmoothNumber(metrics.whatsapp, 750);
+    const animatedEmail = useSmoothNumber(metrics.email, 750);
 
     return (
-        <div className="absolute inset-x-0 top-0 bottom-[36%] p-8 md:p-10 flex flex-col justify-start pointer-events-none select-none">
-            {/* Embedded Smooth Animation Keyframes */}
+        <div
+            className="absolute inset-x-0 top-0 bottom-[33%] sm:bottom-[35%] px-3 sm:px-6 flex flex-col justify-center pointer-events-none select-none z-10"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {/* Embedded Micro-Animation Keyframes */}
             <style>{`
-                @keyframes hubTextFade {
-                    0% { opacity: 0; transform: translateY(3px); }
+                @keyframes floatWhatsappPill {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-3px); }
+                }
+                @keyframes floatEmailPill {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-3px); }
+                }
+                @keyframes pulseChatHalo {
+                    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.4)); }
+                    50% { transform: scale(1.06); filter: drop-shadow(0 0 14px rgba(34, 197, 94, 0.8)); }
+                }
+                @keyframes spinRedOrbitArc {
+                    0% {
+                        transform: rotate(0deg);
+                        filter: drop-shadow(0 0 3px rgba(239, 68, 68, 0.5));
+                    }
+                    50% {
+                        filter: drop-shadow(0 0 9px rgba(239, 68, 68, 0.9));
+                    }
+                    100% {
+                        transform: rotate(360deg);
+                        filter: drop-shadow(0 0 3px rgba(239, 68, 68, 0.5));
+                    }
+                }
+                @keyframes floatChecklist {
+                    0%, 100% { transform: translateY(0px); }
+                    50% { transform: translateY(-3px); }
+                }
+                @keyframes textPopFade {
+                    0% { opacity: 0; transform: translateY(2px); }
                     100% { opacity: 1; transform: translateY(0); }
                 }
-                .anim-hub-fade {
-                    animation: hubTextFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                .anim-float-wa {
+                    animation: floatWhatsappPill 3.6s ease-in-out infinite;
+                }
+                .anim-float-mail {
+                    animation: floatEmailPill 4s ease-in-out infinite;
+                }
+                .anim-pulse-chat {
+                    animation: pulseChatHalo 2.8s ease-in-out infinite;
+                }
+                .anim-spin-red-arc {
+                    animation: spinRedOrbitArc 6s linear infinite;
+                    transform-origin: center center;
+                }
+                .anim-float-checks {
+                    animation: floatChecklist 4.4s ease-in-out infinite;
+                }
+                .anim-pop-text {
+                    animation: textPopFade 0.35s ease-out forwards;
                 }
             `}</style>
 
-
-            {/* Orbit & Central Hub Container */}
-            <div className="relative w-full h-[142px] sm:h-[155px] center">
-                {/* Orbital Track SVG Ring */}
-                <svg className="absolute w-[150px] h-[150px] sm:w-[165px] sm:h-[165px] overflow-visible" viewBox="0 0 160 160">
-                    {/* Background Track */}
-                    <circle
-                        cx="80"
-                        cy="80"
-                        r="66"
-                        fill="none"
-                        stroke="rgba(255, 255, 255, 0.15)"
-                        strokeWidth="1.5"
-                        strokeDasharray="4 4"
-                    />
-
-                    {/* Smooth Guided Crimson Laser Arc */}
-                    <circle
-                        cx="80"
-                        cy="80"
-                        r="66"
-                        fill="none"
-                        stroke="#ef4444"
-                        strokeWidth="2.5"
-                        strokeDasharray="75 340"
-                        strokeLinecap="round"
-                        style={{
-                            transformOrigin: '80px 80px',
-                            transform: `rotate(${state.arcAngle}deg)`,
-                            transition: 'transform 800ms cubic-bezier(0.34, 1.56, 0.64, 1)'
-                        }}
-                    />
-                </svg>
-
-                {/* Central Hub Disc (Matching img6.webp) */}
-                <div className="relative z-10 w-24 h-24 sm:w-26 sm:h-26 rounded-full bg-white/10 backdrop-blur-xs border border-white/25 center flex-col text-center shadow-xl p-2 transition-all duration-500">
-                    <span
-                        key={`sub-${currentIdx}`}
-                        className={`text-[8px] font-mono tracking-widest uppercase font-bold anim-hub-fade ${state.subtitleColor}`}
+            {/* Central Orbit & Badges Composition */}
+            <div className="relative w-full max-w-[85%] scale-90 -translate-y-5 mx-auto flex items-center justify-center">
+                {/* Orbit Circle Container */}
+                <div className="relative w-[65%] aspect-square flex items-center justify-center">
+                    {/* 1. Static SVG Orbit Track */}
+                    <svg 
+                        className="absolute inset-0 w-full h-full overflow-visible" 
+                        viewBox="0 0 200 200"
                     >
-                        {state.subtitle}
-                    </span>
-                  
-                    <span
-                        key={`stat-${currentIdx}`}
-                        className="text-[8px] text-slate-300 mt-0.5 font-medium anim-hub-fade leading-tight"
-                    >
-                        {state.status}
-                    </span>
-                </div>
+                        <circle
+                            cx="100"
+                            cy="100"
+                            r="80"
+                            fill="none"
+                            stroke="rgba(255, 255, 255, 0.22)"
+                            strokeWidth="1.5"
+                        />
+                    </svg>
 
-                {/* Badges on the Orbit (Matching img6.webp) */}
-                {/* 1. Top: WhatsApp */}
-                <div
-                    className={`absolute -top-5 z-20 transition-all duration-500 ${
-                        state.activeChannel === 'whatsapp' || state.activeChannel === 'all'
-                            ? 'scale-[1.08]'
-                            : 'opacity-85'
-                    }`}
-                >
-                    <div
-                        className={`bg-black/95 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full border shadow-md flex items-center gap-1.5 transition-all duration-500 ${
-                            state.activeChannel === 'whatsapp' || state.activeChannel === 'all'
-                                ? 'border-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.5)]'
-                                : 'border-white/20'
-                        }`}
+                    {/* 2. Rotating SVG Orbit Arc - 360 Degree Continuous Rotation */}
+                    <svg 
+                        className="absolute inset-0 w-full h-full overflow-visible anim-spin-red-arc pointer-events-none" 
+                        viewBox="0 0 200 200"
                     >
-                        <div className="w-3.5 h-3.5 rounded-full bg-emerald-500 center text-white">
-                            <RiWhatsappLine size={9} />
-                        </div>
-                        <span className="font-mono tabular-nums">{animatedWhatsapp.toLocaleString()}+</span>
-                    </div>
-                </div>
+                        <path
+                            d="M 100,20 A 80 80 0 0 0 60,169"
+                            fill="none"
+                            stroke="#ef4444"
+                            strokeWidth="3.8"
+                            strokeLinecap="round"
+                        />
+                    </svg>
 
-                {/* 2. Bottom Right: Email */}
-                <div
-                    className={`absolute bottom-2 right-4 z-20 transition-all duration-500 ${
-                        state.activeChannel === 'email' || state.activeChannel === 'all'
-                            ? 'scale-[1.08]'
-                            : 'opacity-85'
-                    }`}
-                >
-                    <div
-                        className={`bg-black/95 text-white text-[10px] font-bold px-2.5 pl-0.5 py-0.5 rounded-full border shadow-md flex items-center gap-1.5 transition-all duration-500 ${
-                            state.activeChannel === 'email' || state.activeChannel === 'all'
-                                ? 'border-amber-400 shadow-[0_0_12px_rgba(245,158,11,0.5)]'
-                                : 'border-white/20'
-                        }`}
-                    >
-                        <div className="w-3.5 h-3.5 rounded-full bg-amber-500 center text-white">
-                            <RiMailLine size={9} />
-                        </div>
-                        <span className="font-mono tabular-nums">{animatedEmail.toLocaleString()}+</span>
-                    </div>
-                </div>
-
-                {/* 3. Left: Message Bubble */}
-                <div
-                    className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 transition-all duration-500 ${
-                        state.activeChannel === 'sms' || state.activeChannel === 'all'
-                            ? 'scale-[1.12]'
-                            : 'opacity-85'
-                    }`}
-                >
-                    <div
-                        className={`w-6 h-6 rounded-full center shadow-md border transition-all duration-500 ${
-                            state.activeChannel === 'sms' || state.activeChannel === 'all'
-                                ? 'bg-emerald-500 text-white border-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.6)]'
-                                : 'bg-emerald-600 text-white border-white/40'
-                        }`}
-                    >
-                        <RiMessage3Line size={12} />
-                    </div>
-                </div>
-            </div>
-
-            {/* Bottom Status Checklist Badges (Matching img6.webp) */}
-            <div className="flex items-center justify-center w-fit gap-2 mt-4 mx-auto">
-                <div className="bg-white/95 text-slate-800 text-xs font-medium px-2.5 py-1 rounded-md shadow-sm flex items-center gap-1.5 border border-slate-200 flex-1 justify-between">
-                    <div className="flex flex-col items-center gap-1 truncate">
-                        <span key={`c1-${currentIdx}`} className="font-bold t text-[#002bba] font-mono anim-hub-fade">
-                            {state.check1}
+                    {/* Central Headline: "LET'S DISCUSS" */}
+                    <div className="relative z-10 flex flex-col items-center justify-center text-center select-none">
+                        <span className="text-white leading-none text-xl sm:text-2xl font-sans drop-shadow-md">
+                            LET&apos;S
                         </span>
-                        <span className="truncate">Images with alt </span>
+                        <span className="text-white leading-none text-xl sm:text-2xl font-sans mt-1.5 drop-shadow-md">
+                            DISCUSS
+                        </span>
+                    </div>
+
+                    {/* Node 1: Top WhatsApp Badge (Black Pill) */}
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20  pointer-events-auto cursor-pointer">
+                        <div className="bg-black/95 text-white text-[10px] sm:text-[11px] font-bold px-2.5 sm:px-3 pl-1! py-1 rounded-full  shadow-2xl flex items-center gap-1.5">
+                            <div className="w-5 h-5 rounded-full bg-[#22c55e] flex items-center justify-center text-white shrink-0 shadow-sm">
+                                <RiWhatsappLine size={13} />
+                            </div>
+                            <span className="font-sans tabular-nums">{animatedWhatsapp.toLocaleString()}+</span>
+                        </div>
+                    </div>
+
+                    {/* Node 2: Left iOS Message Bubble (Overlapping Red Arc) */}
+                    <div className="absolute top-[48%] left-0 -translate-y-1/2 z-20  pointer-events-auto cursor-pointer">
+                        <div className="w-12 h-12  rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl">
+                            {/* Inner Green App Icon */}
+                            <div className="w-7 h-7 rounded-xl bg-gradient-to-b from-[#22c55e] to-[#16a34a] flex items-center justify-center shadow-md">
+                                <RiMessage3Line size={12} className="text-white" />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Node 3: Bottom-Right Email Badge (Frosted Smokey Glass Pill) */}
+                    <div className="absolute bottom-4 sm:bottom-10 right-0 z-20  pointer-events-auto cursor-pointer">
+                        <div className="bg-white/15 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-bold px-2.5 pl-1! sm:px-3 py-1 rounded-full border border-white/25 shadow-2xl flex items-center gap-1.5">
+                            <div className="w-5 h-5 rounded-full bg-[#ea580c] flex items-center justify-center text-white shrink-0 shadow-sm">
+                                <RiMailLine size={12} />
+                            </div>
+                            <span className="font-sans tabular-nums">{animatedEmail.toLocaleString()}+</span>
+                        </div>
                     </div>
                 </div>
 
-                <div className="bg-white/95 text-slate-800 text-xs font-medium px-2.5 py-1 rounded-md shadow-sm flex items-center gap-1.5 border border-slate-200 flex-1 justify-between">
-                    <div className="flex flex-col items-center gap-1 truncate">
-                        <span key={`c2-${currentIdx}`} className="font-bold t text-[#002bba] font-mono anim-hub-fade">
-                            {state.check2}
+                {/* Bottom-Left Floating Checklist Pills */}
+                <div className="absolute -bottom-6 sm:-bottom-5 -left-5 flex flex-col gap-1.5 z-30 anim-float-checks pointer-events-auto">
+                    {/* Pill 1: Images with all text */}
+                    <div className="bg-white w-fit text-slate-800 px-3.5 sm:px-4 py-1.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.35)] flex items-center gap-2.5 sm:gap-3 border border-slate-100">
+                        <span key={`chk1-${currentIdx}`} className="font-bold text-slate-900 text-[11px] sm:text-xs font-sans tabular-nums anim-pop-text">
+                            {metrics.check1}
                         </span>
-                        <span className="truncate">Page metadata</span>
+                        <span className="text-slate-500 font-medium text-[9.5px] sm:text-[10.5px] whitespace-nowrap">
+                            Images with all text
+                        </span>
+                        <RiCheckDoubleLine size={13} className="text-slate-400 shrink-0 ml-auto" />
+                    </div>
+
+                    {/* Pill 2: Page metadata */}
+                    <div className="bg-white w-fit text-slate-800 px-3.5 sm:px-4 py-1.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.35)] flex items-center gap-2.5 sm:gap-3 border border-slate-100">
+                        <span key={`chk2-${currentIdx}`} className="font-bold text-slate-900 text-[11px] sm:text-xs font-sans tabular-nums anim-pop-text">
+                            {metrics.check2}
+                        </span>
+                        <span className="text-slate-500 font-medium text-[9.5px] sm:text-[10.5px] whitespace-nowrap">
+                            Page metadata
+                        </span>
+                        <RiCheckDoubleLine size={13} className="text-slate-400 shrink-0 ml-auto" />
                     </div>
                 </div>
             </div>

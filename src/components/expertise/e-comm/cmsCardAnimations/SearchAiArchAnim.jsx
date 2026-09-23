@@ -4,7 +4,7 @@ import { RiSearchLine } from '@remixicon/react';
 
 // The TLDs in continuous upward loop order
 const TLDS = [".com", ".net", ".info", ".site", ".biz"];
-const STEP_HEIGHT = 46; // 36px pill height + 10px vertical step gap
+const STEP_HEIGHT = 3.5; // 2.25rem (36px) pill height + 0.625rem (10px) vertical step gap
 
 function SearchAiArchAnim() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,9 +36,9 @@ function SearchAiArchAnim() {
     const SLOTS = [-2, -1, 0, 1, 2, 3, 4];
 
     return (
-        <div className="absolute p-8 md:p-10 inset-x-0 bottom-0 top-[40%]  flex items-center justify-center pointer-events-none select-none">
+        <div className="absolute p-8 md:p-10 inset-x-0 bottom-0 top-[40%] flex items-center justify-center pointer-events-none select-none">
             {/* Center Anchor & Search Bar Container */}
-            <div className="relative flex items-center w-full  h-[50px]">
+            <div className="relative flex items-center w-full h-16">
                 <style>{`
                     @keyframes blinkCursor {
                         0%, 49% { opacity: 1; }
@@ -49,26 +49,26 @@ function SearchAiArchAnim() {
                     }
                 `}</style>
                 {/* 1. White Search Bar Capsule (matching reference UI) */}
-                <div className="w-full h-full bg-white rounded-full shadow-2xl shadow-black/40 flex items-center justify-between pl-4 sm:pl-5 pr-1.5 z-10 border border-white/80">
+                <div className="w-full h-full bg-white rounded-full shadow-2xl shadow-black/40 flex items-center justify-between pl-4 sm:pl-3 pr-1.5 z-10 border border-white/80">
                     <div className="flex items-center gap-2 min-w-0">
-                        <RiSearchLine size={18} className="text-slate-800 shrink-0 stroke-[2.5]" />
+                        <RiSearchLine className=" size-8 text-slate-800 shrink-0" />
                         <div className="flex items-center min-w-0">
-                            <span className="font-sans font-medium text-sm sm:text-base text-slate-900 tracking-tight select-none">
-                                zerrorstudios
+                            <span className="font-sans font-medium text-xl text-slate-900 leading-none -translate-y-0.5 select-none">
+                                www.zerrorstudios
                             </span>
-                            <span className="w-[1.5px] sm:w-[2px] h-4 bg-slate-900 ml-0.5 anim-blinking-cursor rounded-full shrink-0" />
+                            <span className="w-[0.1rem] sm:w-[0.125rem] h-6 bg-slate-900 ml-0.5 anim-blinking-cursor rounded-full shrink-0" />
                         </div>
                     </div>
                     {/* Invisible spacer to reserve exact space for the active TLD badge */}
-                    <div className="w-[74px] sm:w-[78px] h-[36px] shrink-0" />
+                    <div className="w-[4.625rem] sm:w-[4.875rem] h-[2.25rem] shrink-0" />
                 </div>
 
                 {/* 2. Vertical Column of TLD Pills (Aligned with the search bar right end) */}
-                <div className="absolute right-1.5 top-1/2 -translate-y-1/2 w-[74px] sm:w-[78px] h-[36px] z-20 pointer-events-none">
+                <div className="absolute right-2.75 top-1/2 -translate-y-1/2 w-[4.625rem] sm:w-[4.875rem] h-[2.75rem] z-20 pointer-events-none">
                     <div
                         className="relative w-full h-full"
                         style={{
-                            transform: isShifting ? `translateY(-${STEP_HEIGHT}px)` : 'translateY(0px)',
+                            transform: isShifting ? `translateY(-${STEP_HEIGHT}rem)` : 'translateY(0rem)',
                             transition: isShifting ? 'transform 600ms cubic-bezier(0.22, 1, 0.36, 1)' : 'none'
                         }}
                     >
@@ -92,13 +92,13 @@ function SearchAiArchAnim() {
                             return (
                                 <div
                                     key={`${r}-${tldIndex}`}
-                                    className={`absolute inset-x-0 h-[36px] rounded-full center font-sans text-xs sm:text-sm tracking-tight select-none transition-colors duration-500 ${
+                                    className={`absolute inset-x-0 h-[2.75rem] rounded-full center font-sans  select-none transition-colors duration-500 ${
                                         isActive
-                                            ? 'bg-[#e2e8f0] text-slate-900 font-bold shadow-xs'
+                                            ? 'bg-[#E6E6E6] text-slate-900 font-bold shadow-xs'
                                             : 'bg-white/20 text-white/95 font-medium border border-white/10 backdrop-blur-xs'
                                     }`}
                                     style={{
-                                        top: `${r * STEP_HEIGHT}px`,
+                                        top: `${r * STEP_HEIGHT}rem`,
                                         opacity: opacity,
                                         transition: 'background-color 500ms, color 500ms, border-color 500ms, opacity 500ms'
                                     }}

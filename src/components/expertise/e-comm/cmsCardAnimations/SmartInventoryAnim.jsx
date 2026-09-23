@@ -151,7 +151,7 @@ function SmartInventoryAnim() {
             <div className="w-full h-full bg-white rounded-lg shadow-2xl border border-white/80 border-b-0 overflow-hidden flex flex-col text-slate-800">
                 {/* Top Header Bar */}
                 <div className="flex items-center justify-between gap-x-6 px-2.5 xs:px-3 sm:px-4 py-1.5 sm:py-2 border-b border-slate-100 shrink-0 bg-white/60">
-                    <span className="text-[10px] xs:text-[11px] sm:text-xs font-black tracking-wider whitespace-nowrap text-slate-900 font-sans">
+                    <span className="text-[10px] xs:text-[11px] sm:text-xs font-bold whitespace-nowrap text-slate-900 font-sans">
                         Z-COMMERCE
                     </span>
 
