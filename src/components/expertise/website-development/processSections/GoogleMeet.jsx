@@ -312,11 +312,11 @@ const GoogleMeet = () => {
             }
         `}</style>
             <section className="w-full h-full flex flex-col overflow-hidden">
-                <div className="w-full h-full bg-white p-4 md:p-6 text-black flex flex-col font-sans overflow-hidden relative border border-black/10">
+                <div className="w-full h-full p-4 md:p-6 text-black flex flex-col font-sans overflow-hidden relative border border-black/10">
 
                     {isCallEnded ? (
                         /* Meeting Has Ended View */
-                        <div className="w-full h-full bg-[#F8F9FA] rounded-xl flex flex-col items-center justify-center p-6 text-center text-black relative overflow-hidden animate-fadeIn">
+                        <div className="w-full h-full bg-[#F8F9FA] flex flex-col items-center justify-center p-6 text-center text-black relative overflow-hidden animate-fadeIn">
                             <div className="w-20 h-20 rounded-full bg-[#002bba]/10 flex items-center justify-center mb-5 shadow-sm">
                                 <img className="w-10 h-10 object-contain" src="/logo_white.svg" alt="Zerror" style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(3780%) hue-rotate(227deg) brightness(88%) contrast(106%)' }} />
                             </div>

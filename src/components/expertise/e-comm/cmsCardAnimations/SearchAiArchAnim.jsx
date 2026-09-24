@@ -25,20 +25,12 @@ function SearchAiArchAnim() {
         return () => clearInterval(interval);
     }, []);
 
-    // Visible relative slot positions around the active search bar (slot 0):
-    // -2: exiting above (fading out)
-    // -1: above the search bar (.biz initially)
-    //  0: inside the search bar (.com initially)
-    //  1: below the search bar (.net initially)
-    //  2: below (.info initially)
-    //  3: below (.site initially)
-    //  4: entering from below (fading in)
     const SLOTS = [-2, -1, 0, 1, 2, 3, 4];
 
     return (
         <div className="absolute p-8 md:p-10 inset-x-0 bottom-0 top-[40%] flex items-center justify-center pointer-events-none select-none">
             {/* Center Anchor & Search Bar Container */}
-            <div className="relative flex items-center w-full h-16">
+            <div className="relative flex items-center w-full h-14">
                 <style>{`
                     @keyframes blinkCursor {
                         0%, 49% { opacity: 1; }
@@ -49,22 +41,20 @@ function SearchAiArchAnim() {
                     }
                 `}</style>
                 {/* 1. White Search Bar Capsule (matching reference UI) */}
-                <div className="w-full h-full bg-white rounded-full shadow-2xl shadow-black/40 flex items-center justify-between pl-4 sm:pl-3 pr-1.5 z-10 border border-white/80">
+                <div className="w-full h-full bg-white rounded-full shadow-2xl shadow-black/40 flex items-center justify-between pl-4  pr-1.5 z-10 border border-white/80">
                     <div className="flex items-center gap-2 min-w-0">
-                        <RiSearchLine className=" size-8 text-slate-800 shrink-0" />
+                        <RiSearchLine className=" size-5 text-slate-800 shrink-0" />
                         <div className="flex items-center min-w-0">
-                            <span className="font-sans font-medium text-xl text-slate-900 leading-none -translate-y-0.5 select-none">
+                            <span className="font-sans font-medium text-lg text-slate-900 leading-none -translate-y-0.5 select-none">
                                 www.zerrorstudios
                             </span>
                             <span className="w-[0.1rem] sm:w-[0.125rem] h-6 bg-slate-900 ml-0.5 anim-blinking-cursor rounded-full shrink-0" />
                         </div>
                     </div>
-                    {/* Invisible spacer to reserve exact space for the active TLD badge */}
-                    <div className="w-[4.625rem] sm:w-[4.875rem] h-[2.25rem] shrink-0" />
                 </div>
 
                 {/* 2. Vertical Column of TLD Pills (Aligned with the search bar right end) */}
-                <div className="absolute right-2.75 top-1/2 -translate-y-1/2 w-[4.625rem] sm:w-[4.875rem] h-[2.75rem] z-20 pointer-events-none">
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 w-[4.625rem] sm:w-[4.875rem] h-[2.75rem] z-20 pointer-events-none">
                     <div
                         className="relative w-full h-full"
                         style={{

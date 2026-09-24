@@ -168,7 +168,7 @@ const AwsDeploy = () => {
     };
 
     return (
-        <section className="w-full h-full flex flex-col font-sans overflow-hidden bg-[#0D1117] text-gray-100 select-none border border-gray-800/80 rounded-2xl">
+        <section className="w-full h-full flex flex-col font-sans overflow-hidden bg-[#0D1117] text-gray-100 select-none border border-gray-800/80">
             {/* --- AWS CONSOLE GLOBAL HEADER --- */}
             <header className="w-full bg-[#131921] border-b border-[#232F3E] px-3 sm:px-4 py-2 flex items-center justify-between shrink-0">
                 {/* Left: AWS Logo & Service Navigation */}

@@ -5,7 +5,8 @@ import gsap from 'gsap'
 import SplitText from 'gsap/dist/SplitText'
 import { useGSAP } from '@gsap/react'
 import Matter from 'matter-js';
-import ClientsMarquee from './ClientsMarquee';
+import { clientsData } from './ClientsMarquee';
+import Marquee from 'react-fast-marquee';
 
 const DetailedExpertiseHero = ({
     expertiseName,
@@ -84,15 +85,8 @@ const DetailedExpertiseHero = ({
         });
         engineRef.current = engine;
 
-        // Calculate exact top border Y of ClientsMarquee relative to hero container
-        let marqueeTopY = height - 70;
-        if (marqueeContainerRef.current) {
-            const mRect = marqueeContainerRef.current.getBoundingClientRect();
-            marqueeTopY = mRect.top - containerRect.top;
-        }
-
-        // Create static floor centered at (marqueeTopY + 25) so its top surface sits precisely at marqueeTopY
-        let floor = Matter.Bodies.rectangle(width / 2, marqueeTopY + 25, width * 3, 50, {
+        // Create static floor centered at (height + 25) so its top surface sits precisely at heroContainerRef bottom edge
+        let floor = Matter.Bodies.rectangle(width / 2, height + 25, width * 3, 50, {
             isStatic: true,
             friction: 0.7,
             restitution: 0.55
@@ -155,14 +149,9 @@ const DetailedExpertiseHero = ({
             width = containerRect.width;
             height = containerRect.height;
 
-            let mTopY = height - 70;
-            if (marqueeContainerRef.current) {
-                const mRect = marqueeContainerRef.current.getBoundingClientRect();
-                mTopY = mRect.top - containerRect.top;
-            }
-
-            Matter.Body.setPosition(floor, { x: width / 2, y: mTopY + 25 });
+            Matter.Body.setPosition(floor, { x: width / 2, y: height + 25 });
             Matter.Body.setPosition(rightWall, { x: width + 25, y: height / 2 });
+            Matter.Body.setPosition(leftWall, { x: -25, y: height / 2 });
         };
 
         window.addEventListener('resize', handleResize);
@@ -234,9 +223,22 @@ const DetailedExpertiseHero = ({
         });
     };
 
+    useGSAP(()=>{
+        gsap.to(".det_vid",{
+            width:"50%",
+            scrollTrigger:{
+                trigger:heroContainerRef.current,
+                start:"top top",
+                end:"bottom center",
+                endTrigger:".cont_pren_s",
+                scrub:true
+            }
+        })
+    })
+
     return (
         <div className=' content_box opacity-0 padding'>
-            <div ref={heroContainerRef} className="w-full h-screen flex flex-col justify-between relative overflow-hidden">
+            <div ref={heroContainerRef} className="w-full h-[80vh] flex flex-col justify-between relative overflow-hidden">
                 {/* Background Pop-up Icons on Button Hover */}
                 <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
                     {Object.entries(heroIcons).map(([label, icons]) => {
@@ -265,7 +267,7 @@ const DetailedExpertiseHero = ({
                     })}
                 </div>
 
-                <div className=" flex-1 w-full flex flex-col items-center justify-center text_blue gap-y-5 text-center relative z-10">
+                <div className=" w-full h-full flex flex-col items-center justify-center text_blue gap-y-5 text-center relative z-10">
                     <p className='paragraph_split uppercase text-xs'>[ {expertiseName} ] </p>
                     <h1 className='heading_split text-5xl md:text-8xl primary-font '>{expertiseHeading}</h1>
                     <div className="flex flex-wrap gap-x-2 justify-center">
@@ -285,20 +287,20 @@ const DetailedExpertiseHero = ({
                         ))}
                     </div>
                 </div>
-                <div ref={marqueeContainerRef} className="w-full absolute border-t border-[#002bba] bottom-0 left-0 z-10">
-                    <ClientsMarquee />
-                </div>
             </div>
 
-            <div className="w-full pb-8 md:pb-16 flex max-sm:flex-col-reverse max-sm:gap-y-5">
-                <div className="md:w-1/2 md:pr-32 space-y-5 md:space-y-10 text_blue">
+            <div className="w-full cont_pren_s relative border-t border-[#002bba] pb-8 md:pb-16 flex max-sm:flex-col-reverse max-sm:gap-y-5">
+                <div className="md:w-1/2 md:pr-32 space-y-5 md:space-y-10 pt-6 md:pt-12 text_blue">
                     <h3 data-para-effect className='  text-3xl md:text-5xl'>{introHeading}</h3>
-
                     <p className='text-xl leading-tight'>{introText}</p>
                 </div>
-                <div className="md:w-1/2 flex flex-col gap-10">
+                <div className="det_vid absolute w-full top-0 right-0 flex flex-col gap-10">
                     <div className="w-full aspect-video overflow-hidden">
                         <video className=' blink_btn cover' loop autoPlay muted playsInline src={videoSrc}></video>
+                    </div>
+                </div>
+                <div className=" opacity-0 w-1/2 flex flex-col gap-10">
+                    <div className="w-full aspect-video overflow-hidden">
                     </div>
                 </div>
             </div>
@@ -319,6 +321,27 @@ const DetailedExpertiseHero = ({
                             </div>
                         ))}
                     </div>
+                </div>
+            </div>
+
+            <div ref={marqueeContainerRef} className="w-full py-8 mt-6 md:mt-12  border-t border-[#002bba] z-10">
+                <div className="  flex items-center justify-between h-24">
+                    {/* <Marquee gradientWidth={40}> */}
+                        {clientsData.slice(0, Math.ceil(clientsData.length / 2)).map((item, i) => (
+                            <div key={i} className=" w-40 md:w-52">
+                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
+                            </div>
+                        ))}
+                    {/* </Marquee> */}
+                </div>
+                <div className="  flex items-center justify-between h-24">
+                    {/* <Marquee gradientWidth={40}> */}
+                        {clientsData.slice(Math.ceil(clientsData.length / 2)).map((item, i) => (
+                            <div key={i} className=" w-40 md:w-52">
+                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
+                            </div>
+                        ))}
+                    {/* </Marquee> */}
                 </div>
             </div>
         </div>

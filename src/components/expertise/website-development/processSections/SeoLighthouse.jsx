@@ -168,7 +168,7 @@ const SeoLighthouse = () => {
                 }
             `}</style>
 
-            <div className="w-full h-full bg-white text-gray-800 flex flex-col font-sans overflow-hidden relative border border-gray-200/80 rounded-2xl">
+            <div className="w-full h-full bg-white text-gray-800 flex flex-col font-sans overflow-hidden relative border border-gray-200/80">
 
                 {/* Top Browser / Audit Tool Header */}
                 <div className="w-full bg-gray-50/60 border-b border-gray-100 px-4 py-2 grid grid-cols-3 shrink-0 select-none items-center">

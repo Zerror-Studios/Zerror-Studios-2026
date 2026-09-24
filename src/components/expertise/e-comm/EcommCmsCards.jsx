@@ -122,7 +122,7 @@ const EcommCmsCards = () => {
     })
 
     return (
-        <div ref={containerRef} className="w-full h-[200vw] relative">
+        <div ref={containerRef} className="w-full h-[500vh] md:h-[200vw] relative">
             <div className='w-full sticky top-0 overflow-hidden mt-10! md:mt-24! h-screen flex gap-y-[5vh] flex-col justify-center'>
                 <div className="w-full   padding py-0!  text_blue ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">

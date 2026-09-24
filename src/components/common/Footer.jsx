@@ -3,7 +3,22 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 import { Link } from "next-view-transitions";
-import GlassSurface from "../animation/GlassSurface";
+
+const hoverIn = (selector) => {
+  gsap.to(selector, {
+    backgroundColor: "#2147c4",
+    ease: "power3.out",
+    duration: 0.4,
+  });
+};
+
+const hoverOut = (selector) => {
+  gsap.to(selector, {
+    backgroundColor: "#2147c400",
+    ease: "power3.in",
+    duration: 0.4,
+  });
+};
 
 const footerRows = [
   {
@@ -92,7 +107,7 @@ const footerRows = [
       {
         text: `©${new Date().getFullYear()} Zerror Studios. All rights reserved.`,
         align: "absolute bottom-[5%] left-[5%]",
-        hover: "group-hover:bottom-[80%]",
+        hover: "group-hover:bottom-[67%]",
       },
     ],
   },
@@ -145,9 +160,6 @@ const mobileFooterData = [
 const Footer = () => {
 
   const flickerRefs = useRef([]);
-  const containerRef = useRef(null);
-  const hoverBlockRef = useRef(null);
-  const isVisibleRef = useRef(false);
 
   useEffect(() => {
     flickerRefs.current.forEach((el) => {
@@ -158,104 +170,45 @@ const Footer = () => {
     });
   }, []);
 
-  const handleBlockMouseEnter = (e) => {
-    const block = e.currentTarget;
-    const container = containerRef.current;
-    if (!block || !container || !hoverBlockRef.current) return;
-
-    const blockRect = block.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-
-    const left = blockRect.left - containerRect.left;
-    const top = blockRect.top - containerRect.top;
-    const width = blockRect.width;
-    const height = blockRect.height;
-
-    if (!isVisibleRef.current) {
-      gsap.set(hoverBlockRef.current, {
-        x: left,
-        y: top,
-        width: width,
-        height: height,
-      });
-      gsap.to(hoverBlockRef.current, {
-        opacity: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      });
-      isVisibleRef.current = true;
-    } else {
-      gsap.to(hoverBlockRef.current, {
-        x: left,
-        y: top,
-        width: width,
-        height: height,
-        duration: 0.35,
-        ease: "power2.out",
-        overwrite: "auto",
-      });
-    }
-  };
-
-  const handleMouseLeaveContainer = () => {
-    if (!hoverBlockRef.current) return;
-    gsap.to(hoverBlockRef.current, {
-      opacity: 0,
-      duration: 0.3,
-      ease: "power2.in",
-    });
-    isVisibleRef.current = false;
-  };
 
   return (
-    <div className=" noise-bg w-full md:h-screen bg_blue padding relative z-100">
+    <div className=" noise-bg w-full md:h-screen bg_blue  padding relative z-100">
 
-      <div
-        ref={containerRef}
-        onMouseLeave={handleMouseLeaveContainer}
-        className=" relative z-10 w-full hidden md:block md:h-full py-3"
-      >
-        {/* Moving Block inside GlassSurface */}
-        <div
-          ref={hoverBlockRef}
-          className="absolute top-0 left-0  z-999 pointer-events-none rounded-md overflow-hidden opacity-0 "
-        >
-          <GlassSurface
-          >
-            <div className="w-full h-[35vh] rounded-md  overflow-hidden " />
-          </GlassSurface>
-        </div>
-
+      <div className=" relative z-10 w-full hidden md:block  md:h-full py-3">
         {footerRows.map((row) => (
           <div key={row.id} className="w-full h-[50vh] md:h-1/3 grid grid-cols-3 md:grid-cols-9">
             {row.items.map((item, i) => {
+              const selector = `.hoverBg${row.id}${i}`;
               const isImage = !!item.img;
 
               return (
                 <div
                   key={i}
-                  onMouseEnter={handleBlockMouseEnter}
-                  className={`w-full border relative group border-white/10 rounded-md flex text-white leading-tight ${isImage ? "px-0 py-0 justify-center items-center" : "p-5"
-                    }`}
+                  onMouseEnter={() => hoverIn(selector)}
+                  onMouseLeave={() => hoverOut(selector)}
+                  className={`w-full hoverBg${row.id
+                    }${i}  border relative  group border-white/10 rounded-md flex text-white  leading-tight
+                   
+                    ${isImage ? "px-0 py-0 justify-center  items-center" : "p-5"
+                    }
+                  `}
                 >
                   {item.img && (
                     <img
                       ref={(el) => (flickerRefs.current.push(el))}
-                      src={item.img}
-                      alt="icon"
-                      className="flicker h-[6vw] relative z-10"
-                    />
+                      src={item.img} alt="icon" className="flicker h-[6vw]" />
                   )}
 
                   {item.text && (
                     <span
                       ref={(el) => (flickerRefs.current.push(el))}
-                      className={` flicker text-xs font-thin leading-tight tracking-wider uppercase text-[#f6f8ff] transition-all duration-300 z-10 ${item.align
-                        } ${item.hover}`}
+                      className={` flicker text-xs font-thin leading-tight tracking-wider  uppercase text-[#f6f8ff]  transition-all duration-300  ${item.align}
+                        ${item.hover}
+                     `}
                       style={{
                         willChange: "opacity",
                         transition: "top 0.3s ease-in, bottom 0.3s ease-inOut",
-                      }}
+                      }} // Only transition position, not opacity  }}
                     >
                       {item.text}
                     </span>

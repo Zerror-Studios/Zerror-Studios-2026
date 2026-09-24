@@ -229,50 +229,15 @@ const EventCard = ({
     align = "right",
     vAlign = "center",
     isTarget = false,
+    isOpen = false,
+    isFaded = false,
+    onToggle = null,
     cardRef = null,
     labelRef = null,
     contentRef = null,
     enlargedContent = null
 }) => {
-    const [isOpen, setIsOpen] = useState(false);
     const localCardRef = useRef(null);
-
-    useEffect(() => {
-        if (!isOpen) return;
-
-        let totalDelta = 0;
-        let lastWindowY = window.scrollY;
-
-        const handleScroll = (e) => {
-            const currentWindowY = window.scrollY;
-            const windowDelta = Math.abs(currentWindowY - lastWindowY);
-            lastWindowY = currentWindowY;
-
-            if (windowDelta > 0) {
-                totalDelta += windowDelta;
-            } else {
-                totalDelta += 10;
-            }
-
-            if (totalDelta >= 10) {
-                setIsOpen(false);
-            }
-        };
-
-        const handleClickOutside = (e) => {
-            if (localCardRef.current && !localCardRef.current.contains(e.target)) {
-                setIsOpen(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll, { capture: true, passive: true });
-        document.addEventListener('click', handleClickOutside);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll, { capture: true });
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, [isOpen]);
 
     const popupX = align === "left"
         ? "right-[calc(100%+0.5rem)] md:right-[calc(100%+0.75rem)]"
@@ -341,8 +306,8 @@ const EventCard = ({
 
     const togglePopup = (e) => {
         e.stopPropagation();
-        if (content) {
-            setIsOpen(prev => !prev);
+        if (content && onToggle) {
+            onToggle();
         }
     };
 
@@ -352,9 +317,14 @@ const EventCard = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onMouseOut={handleMouseLeave}
-            className={`rounded-md text-[#002bba] bg-[#DFE4F6] p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative ${isOpen ? 'z-[5000]!' : 'z-10'} ${isTarget
-                ? `target_blue_card pointer-events-auto`
-                : ''
+            className={` text-[#002bba] bg-[#DFE4F6] rounded-md p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative transition-opacity duration-300 ${isOpen
+                ? 'z-[5000]! active-card-container opacity-100 shadow-md'
+                : isFaded
+                    ? 'opacity-50 hover:opacity-60 z-10 cursor-pointer'
+                    : 'opacity-100 z-10'
+                } ${isTarget
+                    ? `target_blue_card pointer-events-auto`
+                    : ''
                 }`}
         >
             {/* Card Header / Title */}
@@ -363,8 +333,13 @@ const EventCard = ({
                 ref={labelRef} className="card_label w-full cursor-pointer h-full flex flex-col justify-between relative">
                 <div className='w-full h-full flex flex-col justify-between'>
                     <h4 className="font-thin">{title}</h4>
-                    <div className="justify-end flex items-end w-full">
-                        <RiAddLine className={`size-4 bg-white rounded-sm text_blue transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`} />
+                    <div className="justify-end p-1 flex items-end w-full">
+                        <div
+                            className={`size-5 bg-white center  rounded-sm text_blue transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
+                        >
+                            <RiAddLine className='size-4'
+                            />
+                        </div>
                     </div>
                 </div>
 
@@ -372,7 +347,7 @@ const EventCard = ({
                 {content && (
                     <div
                         className={`card-popup absolute ${popupX} ${popupY} w-[18rem] sm:w-[21rem] md:w-[23rem] rounded-lg shadow-[0_25px_60px_-15px_rgba(0,43,186,0.3)] p-4 md:p-5 transition-all duration-300 overflow-y-auto scroller_none border border-black/10 bg-white text_blue ${isOpen
-                            ? 'opacity-100 translate-x-0 visible pointer-events-auto'
+                            ? 'opacity-100 translate-x-0 visible pointer-events-auto z-[9999]'
                             : 'opacity-0 invisible pointer-events-none ' + (align === 'left' ? 'translate-x-2' : '-translate-x-2')
                             }`}
                         onClick={(e) => e.stopPropagation()}
@@ -400,8 +375,70 @@ const Calendar = () => {
     const cardsRef = useRef({});
     const labelsRef = useRef({});
     const contentsRef = useRef({});
+    const [activeCardKey, setActiveCardKey] = useState(null);
+    const [activeScrollStage, setActiveScrollStage] = useState(null);
+    const activeScrollStageRef = useRef(null);
+
+    const currentActiveKey = activeCardKey || activeScrollStage;
+    let activeDay = null;
+    let activeWeek = null;
+    if (currentActiveKey) {
+        const parts = currentActiveKey.split('-');
+        activeDay = parts[0];
+        activeWeek = parseInt(parts[1], 10);
+    }
+
+    useEffect(() => {
+        if (!activeCardKey) return;
+
+        let startY = window.scrollY;
+        let accumulatedScroll = 0;
+
+        const handleWindowScroll = (e) => {
+            // Ignore scroll events originating inside elements like the popup itself
+            if (e.target && e.target !== window && e.target !== document) {
+                return;
+            }
+
+            const currentY = window.scrollY;
+            const delta = Math.abs(currentY - startY);
+            startY = currentY;
+            accumulatedScroll += delta;
+
+            // Only close if window scrolled significantly (> 80px)
+            if (accumulatedScroll > 80) {
+                setActiveCardKey(null);
+            }
+        };
+
+        const handleDocumentClick = (e) => {
+            if (e.target && e.target.closest && (e.target.closest('.card-popup') || e.target.closest('.active-card-container'))) {
+                return;
+            }
+            setActiveCardKey(null);
+        };
+
+        const timer = setTimeout(() => {
+            document.addEventListener('click', handleDocumentClick);
+        }, 50);
+
+        window.addEventListener('scroll', handleWindowScroll, { passive: true });
+
+        return () => {
+            clearTimeout(timer);
+            document.removeEventListener('click', handleDocumentClick);
+            window.removeEventListener('scroll', handleWindowScroll);
+        };
+    }, [activeCardKey]);
 
     useGSAP(() => {
+        const updateActiveScrollStage = (stageKey) => {
+            if (activeScrollStageRef.current !== stageKey) {
+                activeScrollStageRef.current = stageKey;
+                setActiveScrollStage(stageKey);
+            }
+        };
+
         const stageData = STAGES.map((stage, i) => {
             const card = cardsRef.current[stage.stage];
             const fullCard = fullCardsRef.current[i];
@@ -434,7 +471,6 @@ const Calendar = () => {
         const flipTweens = validStages.map((s, idx) => {
             const tween = Flip.from(states[idx], {
                 ease: "none",
-
                 duration: 1,
                 absolute: true,
                 paused: true,
@@ -453,6 +489,8 @@ const Calendar = () => {
                 end: "bottom bottom",
                 scrub: 1,
                 invalidateOnRefresh: true,
+                onLeave: () => updateActiveScrollStage(null),
+                onLeaveBack: () => updateActiveScrollStage(null),
             },
         });
 
@@ -462,6 +500,7 @@ const Calendar = () => {
         validStages.forEach((s, idx) => {
             const tween = flipTweens[idx];
             const prog = progressValues[idx];
+            const stageKey = `${s.stage.day}-${s.stage.week}`;
 
             // Elevate active card above all others during animation
             tl.set(s.fullCard, { zIndex: 999 });
@@ -474,6 +513,11 @@ const Calendar = () => {
                 ease: "power2.inOut",
                 onUpdate: () => {
                     tween.progress(prog.val);
+                    if (prog.val > 0.05) {
+                        updateActiveScrollStage(stageKey);
+                    } else if (activeScrollStageRef.current === stageKey) {
+                        updateActiveScrollStage(null);
+                    }
                 },
             });
 
@@ -535,6 +579,11 @@ const Calendar = () => {
                 ease: "power2.inOut",
                 onUpdate: () => {
                     tween.progress(prog.val);
+                    if (prog.val < 0.05 && activeScrollStageRef.current === stageKey) {
+                        updateActiveScrollStage(null);
+                    } else if (prog.val >= 0.05) {
+                        updateActiveScrollStage(stageKey);
+                    }
                 },
             }, "<");
 
@@ -545,6 +594,7 @@ const Calendar = () => {
 
             // Short transition pause between stages (if not last stage)
             if (idx < validStages.length - 1) {
+                tl.call(() => updateActiveScrollStage(null));
                 tl.to({}, { duration: 0.2 });
             }
         });
@@ -552,6 +602,7 @@ const Calendar = () => {
         ScrollTrigger.refresh();
 
         return () => {
+            updateActiveScrollStage(null);
             if (tl.scrollTrigger) {
                 tl.scrollTrigger.kill();
             }
@@ -567,95 +618,107 @@ const Calendar = () => {
 
     return (
         <div ref={containerRef} className="w-full relative h-[1000vh]">
-            <div className="w-full h-screen sticky top-0 center">
-                <div className="w-full  md:w-[95%] lg:w-[90%] xl:w-[80%] bg-white rounded-xl border-black/10 flex flex-col primary-font relative border overflow-hidden">
+            <div className="w-full h-screen padding py-8 md:py-12 sticky top-0 center">
+                <div className="w-full h-full primary-font relative  overflow-hidden">
+                    <div className="relative w-full h-full grid grid-cols-[8rem_repeat(5,1fr)] grid-rows-[auto_repeat(6,minmax(0,1fr))] gap-2">
 
-                    {/* Header Graphic */}
-                    <div className="bg_blue w-full py-3 flex flex-col justify-center items-center text-center px-4 rounded-t-xl shrink-0">
-                        <p className="primary-font text-white text-3xl uppercase">
-                            PROCESS CALENDAR
-                        </p>
-                    </div>
+                        {/* HEADER ROW - WEEKS */}
+                        <div className={`flex text-xl items-center justify-center text_blue text-center leading-none uppercase transition-opacity duration-300 border-2 rounded-md`}>Task <br /> Calender</div>
 
-                    {/* Calendar Grid Container */}
-                    <div className="p-3 sm:p-6 flex-1 overflow-x-auto scroller_none relative flex flex-col justify-center">
-                        <div className="relative">
-                            <div className="relative grid grid-cols-[5rem_repeat(5,1fr)] gap-2">
+                        {WEEKS.map((week, idx) => {
+                            const weekNum = idx + 1;
+                            const isWeekActive = currentActiveKey ? activeWeek === weekNum : true;
+                            return (
+                                <div
+                                    key={idx}
+                                    className={` rounded-md flex flex-col items-center justify-center py-4  transition-colors duration-300 ${isWeekActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
+                                >
+                                    <span className="text-sm">{week.label}</span>
+                                    <span className="text-sm uppercase">{week.subtitle}</span>
+                                </div>
+                            );
+                        })}
 
-                                {/* HEADER ROW - WEEKS */}
-                                <div className="pb-1 flex items-center justify-center text-xs text-gray-400"></div>
-
-                                {WEEKS.map((week, idx) => (
-                                    <div key={idx} className="pb-1">
-                                        <div className="bg_blue text-white  py-1 flex flex-col items-center justify-center rounded-md">
-                                            <span className="text-sm">{week.label}</span>
-                                            <span className="text-xs uppercase">{week.subtitle}</span>
-                                        </div>
+                        {/* DAYS & EVENT CELLS */}
+                        {DAYS.map((day) => {
+                            const isDayActive = currentActiveKey ? activeDay === day : true;
+                            return (
+                                <React.Fragment key={day}>
+                                    {/* Day row label */}
+                                    <div
+                                        className={`text-sm  rounded-md text-center flex items-center justify-center transition-colors duration-300 ${isDayActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
+                                    >
+                                        {day}
                                     </div>
-                                ))}
 
-                                {/* DAYS & EVENT CELLS */}
-                                {DAYS.map((day) => (
-                                    <React.Fragment key={day}>
-                                        {/* Day row label */}
-                                        <div className="text-sm bg_blue text-white text-center flex items-center justify-center  rounded-md  h-[10vh]">
-                                            {day}
-                                        </div>
+                                    {/* 5 Week Slots */}
+                                    {WEEKS.map((_, weekIdx) => {
+                                        const weekNum = weekIdx + 1;
+                                        const event = CALENDAR_EVENTS.find(e => e.day === day && e.week === weekNum);
 
-                                        {/* 5 Week Slots */}
-                                        {WEEKS.map((_, weekIdx) => {
-                                            const weekNum = weekIdx + 1;
-                                            const event = CALENDAR_EVENTS.find(e => e.day === day && e.week === weekNum);
-
-                                            if (!event) {
-                                                return (
-                                                    <div
-                                                        key={`${day}-${weekNum}`}
-                                                        className="h-[10vh] rounded-md border border-dashed  text_blue border-[#002bba50]"
-                                                    />
-                                                );
-                                            }
-
-                                            const isTarget = Boolean(event.stage && event.component);
-
+                                        if (!event) {
                                             return (
                                                 <div
                                                     key={`${day}-${weekNum}`}
-                                                    ref={isTarget ? (el) => (gridSlotsRef.current[event.stage] = el) : undefined}
-                                                    className="h-[10vh] relative"
-                                                >
-                                                    <EventCard
-                                                        title={event.title}
-                                                        tag={event.tag}
-                                                        content={event.content}
-                                                        bgColor={event.bgColor || "bg_blue"}
-                                                        textColor={event.textColor || "text-white"}
-                                                        align={event.align || "right"}
-                                                        vAlign={event.vAlign || "center"}
-                                                        isTarget={isTarget}
-                                                        cardRef={isTarget ? (el) => (cardsRef.current[event.stage] = el) : undefined}
-                                                        labelRef={isTarget ? (el) => (labelsRef.current[event.stage] = el) : undefined}
-                                                        contentRef={isTarget ? (el) => (contentsRef.current[event.stage] = el) : undefined}
-                                                        enlargedContent={event.component}
-                                                    />
-                                                </div>
+                                                    className={`h-full border border-dashed rounded-md text_blue border-[#002bba50] transition-opacity duration-300 ${currentActiveKey ? 'opacity-50' : 'opacity-100'}`}
+                                                />
                                             );
-                                        })}
-                                    </React.Fragment>
-                                ))}
+                                        }
 
-                            </div>
-                        </div>
+                                        const isTarget = Boolean(event.stage && event.component);
+                                        const eventKey = `${day}-${weekNum}`;
+                                        const isCardOpen = activeCardKey === eventKey;
+                                        const isCardActive = currentActiveKey === eventKey;
+                                        const isFaded = Boolean(currentActiveKey && !isCardActive);
+
+                                        return (
+                                            <div
+                                                key={eventKey}
+                                                ref={isTarget ? (el) => (gridSlotsRef.current[event.stage] = el) : undefined}
+                                                className={`relative rounded-md border h-full transition-all duration-300 ${isCardOpen
+                                                    ? 'z-50 border-[#002bba]'
+                                                    : isFaded
+                                                        ? 'border-[#DFE4F6]/40 z-auto'
+                                                        : 'border-[#DFE4F6] z-auto'
+                                                    }`}
+                                            >
+                                                <EventCard
+                                                    title={event.title}
+                                                    tag={event.tag}
+                                                    content={event.content}
+                                                    bgColor={event.bgColor || "bg_blue"}
+                                                    textColor={event.textColor || "text-white"}
+                                                    align={event.align || "right"}
+                                                    vAlign={event.vAlign || "center"}
+                                                    isTarget={isTarget}
+                                                    isOpen={isCardOpen}
+                                                    isFaded={isFaded}
+                                                    onToggle={() => setActiveCardKey(prev => prev === eventKey ? null : eventKey)}
+                                                    cardRef={isTarget ? (el) => (cardsRef.current[event.stage] = el) : undefined}
+                                                    labelRef={isTarget ? (el) => (labelsRef.current[event.stage] = el) : undefined}
+                                                    contentRef={isTarget ? (el) => (contentsRef.current[event.stage] = el) : undefined}
+                                                    enlargedContent={event.component}
+                                                />
+                                            </div>
+                                        );
+                                    })}
+                                </React.Fragment>
+                            );
+                        })}
+
                     </div>
 
                     {/* Destination containers for GSAP Flip (one for each animated stage) */}
-                    {STAGES.map((stage, i) => (
-                        <div
-                            key={stage.stage}
-                            ref={(el) => (fullCardsRef.current[i] = el)}
-                            className="full_card absolute w-full h-full inset-0 pointer-events-none rounded-xl"
-                        />
-                    ))}
+                    {STAGES.map((stage, i) => {
+                        const isStageOpen = activeCardKey === `${stage.day}-${stage.week}`;
+                        return (
+                            <div
+                                key={stage.stage}
+                                ref={(el) => (fullCardsRef.current[i] = el)}
+                                className={`full_card  absolute w-[calc(100%-8.5rem)] h-[calc(100%-5rem)] bottom-0 right-0 pointer-events-none ${isStageOpen ? 'z-[5000]' : ''}`}
+                            />
+                        );
+                    })}
                 </div>
             </div>
         </div>

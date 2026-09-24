@@ -4,13 +4,11 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import ViewTransitionLink from '../hooks/ViewTransitionLink';
-import { Link } from 'next-view-transitions';
 import { useGSAP } from '@gsap/react';
 import AnimatedPixelIcon from '../animation/AnimatedPixelIcon';
 import { useProjectForm } from "@/context/ProjectFormContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import GlassSurface from "../animation/GlassSurface";
 
 const menuLinks = [
   {
@@ -250,9 +248,7 @@ const Header = () => {
           <div className="w-full relative z-99999 flex justify-center gap-x-1 md:gap-x-3 ">
             <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-xs z-9 top-0 left-0 transition-all duration-500 ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>
 
-            <GlassSurface
-              className={`menu_paren pointer-events-auto relative z-100 w-full md:w-[30vw]! rounded-xl! transition-all duration-300 ease-out `}
-            >
+            <div className={`menu_paren pointer-events-auto relative z-100 w-full md:w-[30vw]  rounded-xl backdrop-blur-sm transition-all duration-300 ease-out ${openMenu ? "bg-black/25  shadow-xl shadow-black/10" : "bg-black/20  shadow-lg shadow-black/5"} `}>
 
               <div onClick={() => setOpenMenu(!openMenu)} className={`menu_header cursor-pointer group px-6 w-full flex items-center justify-between h-14 `}>
                 <div className="relative flex items-center w-25">
@@ -494,7 +490,7 @@ const Header = () => {
                 </div>
 
               </div>
-            </GlassSurface>
+            </div>
           </div>
         </div>
       </div>

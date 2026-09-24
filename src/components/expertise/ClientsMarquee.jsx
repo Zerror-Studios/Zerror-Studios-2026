@@ -89,7 +89,7 @@ export const clientsData = [
 const ClientsMarquee = () => {
     return (
         <>
-            <div className=" h-32 md:h-44  flex items-center">
+            <div className="  flex items-center">
                 <Marquee gradientWidth={40}>
                     {clientsData.map((item, i) => (
                         <div key={i} className=" w-40 md:w-52 md:mx-8">

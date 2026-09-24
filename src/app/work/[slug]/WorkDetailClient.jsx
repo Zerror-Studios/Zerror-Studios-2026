@@ -14,7 +14,6 @@ import MoreProjects from '@/components/work/workDetail/MoreProjects';
 import { useParams } from 'next/navigation';
 import { caseStudies } from '@/data/ProjectsData';
 import Button from '@/components/common/Button';
-import GlassSurface from '@/components/animation/GlassSurface';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -71,12 +70,10 @@ const WorkDetail = () => {
           <img src={project.cover_img} className='cover blur-[2px]' alt="Project cover img Graphic" />
         )}
         <div className="absolute bottom-14 rounded-xl overflow-hidden">
-        <GlassSurface>
-          <div className="p-10 space-y-5  text-center flex flex-col justify-center items-center bg-white/10">
-          <h1 className='  text-3xl md:text-5xl leading-none uppercase primary-font text_blue'>This Page is under development</h1>
+          <div className="p-10 space-y-5  text-center flex flex-col justify-center items-center bg-white/30 backdrop-blur-xs">
+          <h1 className='  text-3xl md:text-5xl leading-none uppercase primary-font text_blue'>This Page is <br /> under development</h1>
           <Button title="View Live Site" link={project.liveLink} />
           </div>
-        </GlassSurface>
         </div>
 
       </div>

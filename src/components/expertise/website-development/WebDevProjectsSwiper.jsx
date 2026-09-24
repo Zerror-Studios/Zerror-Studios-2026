@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import GlassSurface from '@/components/animation/GlassSurface';
 
 const defaultImages = [
     { img: "/images/expertisePage/website-development/webdev_swiper/img1.svg" },
@@ -202,19 +201,19 @@ const WebDevProjectsSwiper = ({
         };
     }, [imageList.length]);
 
-      const handleMouseLeaveContainer = () => {
-    if (!dragBtnRef.current) return;
-    gsap.to(dragBtnRef.current, {
-      opacity: 0,
-      duration: 0.3,
-      ease: "power2.in",
-    });
-  };
+    const handleMouseLeaveContainer = () => {
+        if (!dragBtnRef.current) return;
+        gsap.to(dragBtnRef.current, {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in",
+        });
+    };
 
     return (
-        <div 
-        onMouseLeave={handleMouseLeaveContainer}
-         ref={containerRef} className="w-full mt-8 md:mt-16 py-8 md:py-16 space-y-16 relative overflow-hidden select-none">
+        <div
+            onMouseLeave={handleMouseLeaveContainer}
+            ref={containerRef} className="w-full  py-8 md:py-16 space-y-16 relative overflow-hidden select-none">
             {/* Background Graphic */}
             <div className="absolute w-full h-full inset-0 pointer-events-none">
                 <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="Swiper bg Graphic" fill className="cover" />
@@ -231,13 +230,11 @@ const WebDevProjectsSwiper = ({
             <div className="py-0 relative">
                 <div
                     ref={dragBtnRef}
-                    className="drag_btn fixed top-0 left-0 pointer-events-none text-sm rounded-lg z-50  opacity-0 text-white overflow-hidden"
+                    className="drag_btn fixed top-0 left-0 pointer-events-none text-sm rounded-lg z-50  opacity-0 text-white overflow-hidden bg-white-20 backdrop-blur-xs"
                 >
-                    <GlassSurface>
-                        <div className="px-3.5 py-1.5 ">
-                            DRAG
-                        </div>
-                    </GlassSurface>
+                    <div className="px-3.5 py-1.5 ">
+                        DRAG
+                    </div>
                 </div>
 
                 {/* Infinite Draggable Marquee Track */}
