@@ -18,7 +18,7 @@ const ClientBox = ({ item }) => {
                 color="#ffffff"
                 boxSize={30}
                 duration={1.5}
-                className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                className="absolute max-sm:hidden inset-0 w-full h-full pointer-events-none z-0"
             />
 
             <div className="w-full h-full relative z-10">
@@ -27,11 +27,11 @@ const ClientBox = ({ item }) => {
                     fill
                     alt="Item icon Graphic"
                     className={`client-icon cover transition-all duration-300 ${
-                        isHovered ? "invert" : ""
+                        isHovered ? "md:invert" : ""
                     }`}
                 />
             </div>
-            <div className={`w-full uppercase absolute z-20 bottom-0 flex justify-between p-2 transition-colors duration-300 ${
+            <div className={`w-full max-sm:hidden uppercase absolute z-20 bottom-0 flex justify-between p-2 transition-colors duration-300 ${
                 isHovered ? "text-black" : "text-white"
             }`}>
                 <h5 className="secondary-font leading-none">{item.title}</h5>
@@ -49,10 +49,6 @@ const Clients = () => {
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
-
-    const visibleClients = isMobile
-        ? clientsData.slice(0, clientsData.length - 2)
-        : clientsData;
 
     return (
         <div className=' noise-bg clients_paren relative z-10  bg_blue py-8 md:py-16 space-y-8 md:space-y-16 text-white w-full'>
@@ -75,7 +71,7 @@ const Clients = () => {
             </div>
 
             <div className=" padding relative z-10 w-full grid grid-cols-3 md:grid-cols-5 ">
-                {visibleClients.map((item, i) => (
+                {clientsData.map((item, i) => (
                     <ClientBox key={i} item={item} />
                 ))}
             </div>

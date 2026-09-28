@@ -109,7 +109,7 @@ function IpOwnershipAnim() {
     const animatedPayout = useAnimatedNumber(currentGateway.payout, 700);
 
     return (
-        <div className="absolute inset-x-0 bottom-0 top-[36%] p-8 md:p-10 flex flex-col justify-end pointer-events-none select-none">
+        <div className="absolute inset-x-0 bottom-0 top-[36%] p-6 md:p-10 flex flex-col justify-end pointer-events-none select-none">
             {/* Embedded Keyframes */}
             <style>{`
                 @keyframes payoutTextFade {
@@ -122,7 +122,7 @@ function IpOwnershipAnim() {
             `}</style>
 
             {/* 3x3 Payment Gateway Matrix Container */}
-            <div className="w-[80%] mx-auto ">
+            <div className="md:w-[80%] mx-auto ">
 
 
                 {/* 3x3 Grid with Smooth Cycling Gateway Highlight */}
@@ -133,11 +133,10 @@ function IpOwnershipAnim() {
                         return (
                             <div
                                 key={gw.name}
-                                className={`relative  flex items-center justify-center transition-all duration-500 overflow-hidden ${
-                                    isActive
+                                className={`relative  flex items-center justify-center transition-all duration-500 overflow-hidden ${isActive
                                         ? 'scale-[1.08] z-20'
-                                        : 'scale-95 opacity-50'
-                                }`}
+                                        : 'md:scale-95 opacity-50'
+                                    }`}
                             >
                                 <img
                                     src={gw.src}

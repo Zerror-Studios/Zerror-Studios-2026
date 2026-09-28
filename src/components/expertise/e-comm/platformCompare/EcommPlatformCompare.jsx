@@ -673,7 +673,7 @@ const EcommPlatformCompare = () => {
     }, [activeTab]);
 
     return (
-        <div ref={containerRef} className="w-full bg_blue relative overflow-hidden pt-10! md:pt-24! mt-10! md:mt-24!">
+        <div ref={containerRef} className="w-full bg_blue relative overflow-hidden pt-10! md:pt-24!">
 
             {/* ── Heading ── */}
             <div className="w-full padding py-0! text-white">
@@ -717,7 +717,7 @@ const EcommPlatformCompare = () => {
 
             {/* ── Dashboard Panels ── */}
             <div ref={panelsRef} className="dashboards-wrap padding py-0! my-8 md:my-12">
-                <div className="dashboards-compare-grid grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-y-0 lg:gap-x-6">
+                <div className="dashboards-compare-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-y-0 lg:gap-x-6">
                     <DashboardPanel
                         platform="Z-Com"
                         data={customData}

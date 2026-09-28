@@ -78,11 +78,6 @@ export const clientsData = [
         title: "SDAF",
         icon: "/images/homePage/clients/sdaf.svg"
     },
-    // {
-    //     id: 16,
-    //     title: "Reside in Being",
-    //     icon: "/images/homePage/clients/resideinbeing.svg"
-    // },
 
 ]
 

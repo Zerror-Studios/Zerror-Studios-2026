@@ -13,17 +13,17 @@ import {
 } from "../ui/SvgAnimatedIcons";
 
 const initialProducts = [
-  { id: 1, name: "Jacquemus Largo", sub: "T-shirt", price: "$114.00", qty: 124, total: "$14,136.00", icon: "👕", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
-  { id: 2, name: "Aries x Umbro Centenary", sub: "Jersey", price: "$140.90", qty: 76, total: "$10,708.40", icon: "🎽", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
-  { id: 3, name: "There Was One", sub: "Pants", price: "$85.50", qty: 54, total: "$4,617.00", icon: "👖", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
-  { id: 4, name: "Song For The Mute", sub: "Baseball cap", price: "$230.00", qty: 68, total: "$15,640.00", icon: "🧢", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 1, name: "FabIndia Kurta", sub: "T-shirt", price: "₹2,499.00", qty: 124, total: "₹3,09,876.00", icon: "👕", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 2, name: "Manyavar Sherwani", sub: "Jersey", price: "₹4,999.00", qty: 76, total: "₹3,79,924.00", icon: "🎽", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 3, name: "Biba Salwar Suit", sub: "Pants", price: "₹1,999.00", qty: 54, total: "₹15,992.00", icon: "👖", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 4, name: "Puma Cricket Cap", sub: "Baseball cap", price: "₹999.00", qty: 68, total: "₹67,932.00", icon: "🧢", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
 ];
 
 const geographyList = [
-  { country: "Spain", flag: "🇪🇸", percent: 33, color: "bg-blue-600" },
-  { country: "USA", flag: "🇺🇸", percent: 25, color: "bg-blue-400" },
-  { country: "Canada", flag: "🇨🇦", percent: 22, color: "bg-slate-400" },
-  { country: "Portugal", flag: "🇵🇹", percent: 20, color: "bg-slate-300" },
+  { country: "India", flag: "🇮🇳", percent: 33, color: "bg-blue-600" },
+  { country: "UAE", flag: "🇦🇪", percent: 25, color: "bg-blue-400" },
+  { country: "UK", flag: "🇬🇧", percent: 22, color: "bg-slate-400" },
+  { country: "Singapore", flag: "🇸🇬", percent: 20, color: "bg-slate-300" },
 ];
 
 export default function OverviewTab({ searchTerm, theme }) {
@@ -66,7 +66,7 @@ export default function OverviewTab({ searchTerm, theme }) {
               Total income
             </span>
             <div className={`text-2xl font-extrabold tracking-tight mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
-              $89 648
+              ₹74,40,784
             </div>
             <div className="flex items-center gap-1 text-[11px] font-bold text-emerald-500">
               <span>2.3%</span>
@@ -83,7 +83,7 @@ export default function OverviewTab({ searchTerm, theme }) {
               Total profit
             </span>
             <div className={`text-2xl font-extrabold tracking-tight mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
-              $52 994
+              ₹43,98,502
             </div>
             <div className="flex items-center gap-1 text-[11px] font-bold text-slate-400">
               <span>1.2%</span>

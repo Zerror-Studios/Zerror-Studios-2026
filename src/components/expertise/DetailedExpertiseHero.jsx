@@ -223,22 +223,23 @@ const DetailedExpertiseHero = ({
         });
     };
 
-    useGSAP(()=>{
-        gsap.to(".det_vid",{
-            width:"50%",
-            scrollTrigger:{
-                trigger:heroContainerRef.current,
-                start:"top top",
-                end:"bottom center",
-                endTrigger:".cont_pren_s",
-                scrub:true
+    useGSAP(() => {
+        if (window.innerWidth < 750) return;
+        gsap.to(".det_vid", {
+            width: "50%",
+            scrollTrigger: {
+                trigger: heroContainerRef.current,
+                start: "top top",
+                end: "bottom center",
+                endTrigger: ".cont_pren_s",
+                scrub: true
             }
         })
     })
 
     return (
         <div className=' content_box opacity-0 padding'>
-            <div ref={heroContainerRef} className="w-full h-[80vh] flex flex-col justify-between relative overflow-hidden">
+            <div ref={heroContainerRef} className="w-full h-[65vh] md:h-[80vh] flex flex-col justify-between relative overflow-hidden">
                 {/* Background Pop-up Icons on Button Hover */}
                 <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
                     {Object.entries(heroIcons).map(([label, icons]) => {
@@ -248,7 +249,7 @@ const DetailedExpertiseHero = ({
                                 <div
                                     key={iconKey}
                                     ref={(el) => (iconRefs.current[iconKey] = el)}
-                                    className={`absolute opacity-0 pointer-events-none ${icon.size}`}
+                                    className={`absolute opacity-0 pointer-events-none w-12 md:w-20`}
                                     style={{
                                         top: icon.top,
                                         bottom: icon.bottom,
@@ -259,7 +260,7 @@ const DetailedExpertiseHero = ({
                                     <img
                                         src={icon.src}
                                         alt="Expertise icon"
-                                        className="w-20"
+                                        className=""
                                     />
                                 </div>
                             );
@@ -270,7 +271,7 @@ const DetailedExpertiseHero = ({
                 <div className=" w-full h-full flex flex-col items-center justify-center text_blue gap-y-5 text-center relative z-10">
                     <p className='paragraph_split uppercase text-xs'>[ {expertiseName} ] </p>
                     <h1 className='heading_split text-5xl md:text-8xl primary-font '>{expertiseHeading}</h1>
-                    <div className="flex flex-wrap gap-x-2 justify-center">
+                    <div className="flex flex-wrap gap-2 justify-center">
                         {btnsLabels.map((item, i) => (
                             <button
                                 key={i}
@@ -289,18 +290,19 @@ const DetailedExpertiseHero = ({
                 </div>
             </div>
 
-            <div className="w-full cont_pren_s relative border-t border-[#002bba] pb-8 md:pb-16 flex max-sm:flex-col-reverse max-sm:gap-y-5">
-                <div className="md:w-1/2 md:pr-32 space-y-5 md:space-y-10 pt-6 md:pt-12 text_blue">
+            <div className="w-full cont_pren_s blink_btn opacity-0 relative pb-8 md:pb-16 flex max-sm:flex-col-reverse max-sm:gap-y-5">
+                <div className="md:w-1/2 md:border-t md:pr-32 space-y-5 md:space-y-10 pt-6 md:pt-12 text_blue">
                     <h3 data-para-effect className='  text-3xl md:text-5xl'>{introHeading}</h3>
                     <p className='text-xl leading-tight'>{introText}</p>
                 </div>
-                <div className="det_vid absolute w-full top-0 right-0 flex flex-col gap-10">
+                <div className="hidden md:flex det_vid absolute bg_blue w-full top-0 right-0 flex-col gap-10">
                     <div className="w-full aspect-video overflow-hidden">
-                        <video className=' blink_btn cover' loop autoPlay muted playsInline src={videoSrc}></video>
+                        <video className='cover' loop autoPlay muted playsInline src={videoSrc}></video>
                     </div>
                 </div>
-                <div className=" opacity-0 w-1/2 flex flex-col gap-10">
+                <div className=" md:opacity-0 w-full md:w-1/2 flex flex-col gap-10">
                     <div className="w-full aspect-video overflow-hidden">
+                        <video className='cover md:hidden' loop autoPlay muted playsInline src={videoSrc}></video>
                     </div>
                 </div>
             </div>
@@ -324,24 +326,34 @@ const DetailedExpertiseHero = ({
                 </div>
             </div>
 
-            <div ref={marqueeContainerRef} className="w-full py-8 mt-6 md:mt-12  border-t border-[#002bba] z-10">
-                <div className="  flex items-center justify-between h-24">
-                    {/* <Marquee gradientWidth={40}> */}
+            <div ref={marqueeContainerRef} className="w-full md:py-8 mt-6 md:mt-12  border-t border-[#002bba] z-10">
+                {/* Desktop View (2 Rows) */}
+                <div className="hidden md:block">
+                    <div className="flex items-center justify-between h-24">
                         {clientsData.slice(0, Math.ceil(clientsData.length / 2)).map((item, i) => (
                             <div key={i} className=" w-40 md:w-52">
                                 <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
                             </div>
                         ))}
-                    {/* </Marquee> */}
-                </div>
-                <div className="  flex items-center justify-between h-24">
-                    {/* <Marquee gradientWidth={40}> */}
+                    </div>
+                    <div className="flex items-center justify-between h-24">
                         {clientsData.slice(Math.ceil(clientsData.length / 2)).map((item, i) => (
                             <div key={i} className=" w-40 md:w-52">
                                 <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
                             </div>
                         ))}
-                    {/* </Marquee> */}
+                    </div>
+                </div>
+
+                {/* Mobile View (3 Rows) */}
+                <div className="md:hidden ">
+                        <Marquee gradient gradientWidth={30}>
+                               {clientsData.map((item, i) => (
+                            <div key={i} className=" w-32">
+                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
+                            </div>
+                        ))}
+                        </Marquee>
                 </div>
             </div>
         </div>

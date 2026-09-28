@@ -297,7 +297,7 @@ const About = () => {
                     </div>
 
                     <div className=" works_paren_header center fixed overflow-hidden z-10  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 rounded-xs  md:rounded-lg bg-white">
-                        <div className=" works_paren_header_in w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+                        <div className=" works_paren_header_in w-full  padding text_blue space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                             <div className="">
                                 <h2 className=' wrk_split_wrd  primary-font   text-5xl  leading-none'>Our<br />Expertise</h2>
                             </div>

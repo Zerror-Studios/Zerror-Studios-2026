@@ -51,7 +51,7 @@ const EcommPriceSection = () => {
         })
     })
     return (
-        <div className="w-full padding py-10! md:py-24! text_blue">
+        <div className="w-full padding py-8! md:py-16! text_blue">
 
             {/* ── Heading — matches InfoSection.jsx ──────────── */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
@@ -74,7 +74,7 @@ const EcommPriceSection = () => {
             <div className="price_section_table w-full mt-12 md:mt-20 border border-[#002bba]/20 rounded-xl overflow-hidden">
 
                 {/* Table header */}
-                <div className="w-full grid grid-cols-[1fr_1fr_1fr] md:grid-cols-[2fr_1fr_1fr] bg_blue text-white">
+                <div className="w-full grid grid-cols-[3fr_1fr_1fr] md:grid-cols-[2fr_1fr_1fr] bg_blue text-white">
                     <div className="px-4 md:px-10 py-4 md:py-6 flex items-center">
                         <p className="text-base md:text-xl  primary-font">Features</p>
                     </div>
@@ -90,11 +90,11 @@ const EcommPriceSection = () => {
                 {features.map((feature, i) => (
                     <div
                         key={i}
-                        className={`w-full grid grid-cols-[1fr_1fr_1fr] md:grid-cols-[2fr_1fr_1fr] border-t border-[#002bba]/10 ${i % 2 === 1 ? 'bg-[#f8f9ff]' : 'bg-white'
+                        className={`w-full grid grid-cols-[3fr_1fr_1fr] md:grid-cols-[2fr_1fr_1fr] border-t border-[#002bba]/10 ${i % 2 === 1 ? 'bg-[#f8f9ff]' : 'bg-white'
                             } transition-colors duration-200 hover:bg-[#eef1ff]`}
                     >
                         <div className="px-4 md:px-10 py-5 md:py-7 flex items-center">
-                            <p className="text-sm md:text-xl text-[#002bba]">{feature.name}</p>
+                            <p className="text-base md:text-xl text-[#002bba]">{feature.name}</p>
                         </div>
                         <div className=" sclw_1 px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
                             {feature.zcom ? <CheckIcon /> : <CrossIcon />}

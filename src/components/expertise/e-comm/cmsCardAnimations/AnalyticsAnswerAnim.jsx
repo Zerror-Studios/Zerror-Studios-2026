@@ -77,7 +77,7 @@ function AnalyticsAnswerAnim() {
             <div className="relative w-full max-w-[85%] scale-90 mx-auto">
                 {/* 1. Top-Left Floating Glassmorphism Toggle Card */}
                 <div 
-                    className="absolute -top-3.5 sm:-top-10 -left-2 sm:-left-10 z-10 w-44 sm:w-52 bg-white/15 backdrop-blur-xs border border-white/10 rounded-2xl p-2.5 sm:p-3 shadow-[0_12px_24px_rgba(0,0,0,0.25)] anim-float-card pointer-events-auto cursor-pointer"
+                    className="absolute -top-10 -left-10 z-10 w-52 bg-white/15 backdrop-blur-xs border border-white/10 rounded-2xl p-2.5 sm:p-3 shadow-[0_12px_24px_rgba(0,0,0,0.25)] anim-float-card pointer-events-auto cursor-pointer"
                     onClick={() => setIsToggleOn(!isToggleOn)}
                     title="Toggle Search Engine Indexing"
                 >
@@ -113,7 +113,7 @@ function AnalyticsAnswerAnim() {
                 </div>
 
                 {/* 2. Main SEO Settings Modal (Foreground, Centered / Right-Shifted) */}
-                <div className="relative z-20 w-[84%] sm:w-[86%] ml-auto bg-white rounded-xl translate-y-5 p-3.5 sm:p-4 shadow-[0_16px_36px_rgba(0,0,0,0.35)] border border-slate-100 text-slate-800">
+                <div className="relative z-20 w-[80%] sm:w-[86%] ml-auto bg-white rounded-xl translate-y-5 p-3.5 sm:p-4 shadow-[0_16px_36px_rgba(0,0,0,0.35)] border border-slate-100 text-slate-800">
                     {/* Modal Title */}
                     <h4 className="text-center font-bold text-slate-900 text-xs sm:text-sm tracking-tight mb-2.5 font-sans">
                         SEO Settings
@@ -158,7 +158,7 @@ function AnalyticsAnswerAnim() {
                 </div>
 
                 {/* 3. Floating Search Engine Pills (Staggered Bottom-Right Overlapping) */}
-                <div className="absolute -bottom-4 sm:-bottom-10 -right-2 sm:-right-10 z-30 flex flex-col gap-1 items-end pointer-events-auto">
+                <div className="absolute max-sm:scale-75 -bottom-10 -right-10 z-30 flex flex-col gap-1 items-end pointer-events-auto">
                     {/* Yahoo! Pill */}
                     <button
                         type="button"

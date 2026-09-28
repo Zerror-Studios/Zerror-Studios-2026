@@ -312,7 +312,7 @@ function ProductionSyncAnim() {
 
                 {/* 2. Floating Coral / Pink Orders Card (Middle Layer, Lower-Left) */}
                 <div 
-                    className="absolute -bottom-3 sm:-bottom-14 left-1 sm:-left-20 z-20 w-28 sm:w-34 aspect-square bg-[#F6ACAE] rounded-2xl p-2.5 sm:p-3 shadow-[0_12px_28px_rgba(0,0,0,0.3)] border border-white/40 flex flex-col justify-between "
+                    className="absolute max-sm:scale-75 -bottom-10 sm:-bottom-14 -left-14 sm:-left-20 z-20 w-28 sm:w-34 aspect-square bg-[#F6ACAE] rounded-2xl p-2.5 sm:p-3 shadow-[0_12px_28px_rgba(0,0,0,0.3)] border border-white/40 flex flex-col justify-between "
                 >
                     <div className="space-y-0.5">
                         <span className="text-white text-[11px] sm:text-xs font-semibold leading-tight block">
@@ -339,7 +339,7 @@ function ProductionSyncAnim() {
 
                 {/* 3. Floating White Revenue Card (Foreground Layer, Bottom-Left Overlapping) */}
                 <div 
-                    className="absolute -bottom-5 sm:-bottom-22 left-14 sm:left-5 z-30 w-36 sm:w-44 bg-white rounded-2xl p-3 sm:p-4 shadow-[0_20px_45px_rgba(0,0,0,0.4)] border border-slate-100 text-slate-800"
+                    className="absolute -bottom-20 max-sm:scale-75 sm:-bottom-22 left-7 sm:left-5 z-30 w-36 sm:w-44 bg-white rounded-2xl p-3 sm:p-4 shadow-[0_20px_45px_rgba(0,0,0,0.4)] border border-slate-100 text-slate-800"
                 >
                     <div className="space-y-0.5">
                         <span className="text-[#1e1333] text-[11.5px] sm:text-[13px] font-bold block leading-tight">

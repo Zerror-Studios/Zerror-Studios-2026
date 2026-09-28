@@ -64,18 +64,20 @@ const TicketEffect = () => {
 
         timelineRef.current = tl;
 
+        const getShapeSize = () => window.innerWidth < 768 ? 128 : 256;
+
         // Spawn trail clone
         const spawnTrail = (checkpointIdx) => {
             const cp = CHECKPOINTS[checkpointIdx];
             if (!cp || !trackRef.current) return;
 
             const trackWidth = trackRef.current.getBoundingClientRect().width;
-            const shapeSize = 240;
+            const shapeSize = getShapeSize();
             const posX = cp.progress * (trackWidth - shapeSize);
 
             const cloneSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            cloneSvg.setAttribute("width", "240");
-            cloneSvg.setAttribute("height", "240");
+            cloneSvg.setAttribute("width", shapeSize.toString());
+            cloneSvg.setAttribute("height", shapeSize.toString());
             cloneSvg.setAttribute("viewBox", "0 0 220 220");
             cloneSvg.setAttribute("class", "pointer-events-none absolute top-0 z-0");
             cloneSvg.style.left = `${posX}px`;
@@ -120,7 +122,7 @@ const TicketEffect = () => {
         const updatePosition = (progress, immediate = false) => {
             if (!trackRef.current || !svgRef.current || !labelRef.current) return;
             const trackWidth = trackRef.current.getBoundingClientRect().width;
-            const shapeSize = 240;
+            const shapeSize = getShapeSize();
             const targetLeftX = progress * (trackWidth - shapeSize);
 
             if (immediate) {
@@ -150,6 +152,7 @@ const TicketEffect = () => {
                     gsap.set(svgRef.current, { x: curX });
 
                     const labelWidth = labelRef.current ? (labelRef.current.getBoundingClientRect().width || 120) : 120;
+                    const shapeSize = getShapeSize();
                     const labelX = curX + (shapeSize / 2) - (labelWidth / 2);
                     gsap.set(labelRef.current, { x: labelX });
 
@@ -162,7 +165,7 @@ const TicketEffect = () => {
         const handlePointerMove = (e) => {
             if (!trackRef.current) return;
             const rect = trackRef.current.getBoundingClientRect();
-            const shapeSize = 240;
+            const shapeSize = getShapeSize();
             const halfShape = shapeSize / 2;
 
             let clientX = e.clientX;
@@ -183,10 +186,17 @@ const TicketEffect = () => {
         // Initial setup position at progress = 0 (far left)
         updatePosition(0, true);
 
+        const handleResize = () => {
+            if (animStateRef.current) {
+                updatePosition(animStateRef.current.progress, true);
+            }
+        };
+
         const containerEl = containerRef.current;
         if (containerEl) {
             containerEl.addEventListener("mousemove", handlePointerMove);
             containerEl.addEventListener("touchmove", handlePointerMove, { passive: true });
+            window.addEventListener("resize", handleResize);
         }
 
         return () => {
@@ -194,13 +204,14 @@ const TicketEffect = () => {
                 containerEl.removeEventListener("mousemove", handlePointerMove);
                 containerEl.removeEventListener("touchmove", handlePointerMove);
             }
+            window.removeEventListener("resize", handleResize);
             tweenRef.current?.kill();
             timelineRef.current?.kill();
         };
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full relative overflow-hidden bg-white py-20 md:py-28 select-none">
+        <div ref={containerRef} className="w-full relative overflow-hidden bg-white py-20 md:py-28 select-none z-10">
             {/* Hidden Target Paths for MorphSVG */}
             <svg style={{ display: 'none', position: 'absolute', width: 0, height: 0 }}>
                 <defs>
@@ -215,27 +226,27 @@ const TicketEffect = () => {
 
             {/* Text Header */}
             <div className="w-full center text_blue text-center space-y-6 pointer-events-none relative z-10 flex-col px-4">
-                <p data-para-effect className='text-4xl md:text-8xl primary-font leading-none'>
+                <p data-para-effect className='text-5xl md:text-8xl primary-font leading-none'>
                     Ready to build <br />
                     something with<br /> <span className='primary-font_italic'> zero errors? </span>
                 </p>
 
-                <p className='leading-tight max-w-md text-sm md:text-base'>
+                <p className='leading-tight max-w-md text-base'>
                     Treat it like a first date. We’ll get to know each other better, with no obligations. No worries, the check is on us
                 </p>
             </div>
 
             {/* Track & Morph SVG Interactive Section */}
-            <div className="w-full relative mt-16 h-64 padding">
+            <div className="w-full relative mt-8 md:mt-16 h-37 md:h-64 padding">
                 {/* Horizontal Dashed Line */}
                 <div className="absolute w-screen inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 border-t-2  border-dashed border-[#002bba70]">
                 </div>
-                <div ref={trackRef} className="track relative h-64 w-full flex items-center cursor-pointer" onClick={openProjectForm}>
+                <div ref={trackRef} className="track relative h-37 md:h-64 w-full flex items-center cursor-pointer" onClick={openProjectForm}>
 
                     {/* Active Morphing SVG */}
                     <svg
                         ref={svgRef}
-                        className="absolute top-0 left-0 w-64 h-64 pointer-events-none z-10"
+                        className="absolute top-0 left-0 w-37 h-37 md:w-64 md:h-64 pointer-events-none z-10"
                         viewBox="0 0 220 220"
                     >
                         <path
@@ -251,7 +262,7 @@ const TicketEffect = () => {
                     {/* Floating Tracking Label */}
                     <div
                         ref={labelRef}
-                        className="absolute top-1/2 -translate-y-1/2 z-20 pointer-events-auto cursor-pointer flex items-center justify-center text-white  whitespace-nowrap"
+                        className="absolute top-1/2 max-sm:text-xs text-center -translate-y-1/2 z-20 pointer-events-auto cursor-pointer flex items-center justify-center text-white  whitespace-nowrap"
                         onClick={openProjectForm}
                     >
                         [ Start a project]

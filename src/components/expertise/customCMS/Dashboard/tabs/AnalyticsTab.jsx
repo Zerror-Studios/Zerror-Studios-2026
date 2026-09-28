@@ -32,7 +32,7 @@ export default function AnalyticsTab({ searchTerm, theme }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { title: "Conversion Rate", val: "3.42%", sub: "+0.4% from last week", color: "text-emerald-500" },
-          { title: "Average Order Value (AOV)", val: "$124.50", sub: "+$12.20 increase", color: "text-blue-500" },
+          { title: "Average Order Value (AOV)", val: "₹10,350", sub: "+₹1,015 increase", color: "text-blue-500" },
           { title: "Cart Abandonment", val: "22.8%", sub: "-3.1% improved", color: "text-emerald-500" },
           { title: "Customer Return Rate", val: "44.2%", sub: "High loyalty score", color: "text-purple-400" },
         ].map((item, idx) => (

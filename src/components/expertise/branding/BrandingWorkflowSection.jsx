@@ -139,7 +139,7 @@ export default function BrandingWorkflowSection() {
             <div className="w-full grid grid-cols-1 md:grid-cols-2 items-center">
 
               {/* Navigation Steps Column */}
-              <div className="flex flex-col gap-2.5 sm:gap-3 pr-20">
+              <div className="flex flex-col gap-2.5 sm:gap-3 md:pr-20">
                 {STEPS.map((step, idx) => {
                   const isActive = activeStep === idx;
                   const Icon = step.icon;

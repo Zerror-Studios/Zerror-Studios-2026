@@ -226,6 +226,7 @@ const Our_Services = () => {
   }, [])
 
   useGSAP(() => {
+    if (window.innerWidth < 1020) return;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".serv_page_paren",

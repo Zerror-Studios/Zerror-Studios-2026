@@ -186,7 +186,7 @@ const WebDevClients = () => {
                     </div>
                 </div>
             </div>
-            <div className=" padding  flex justify-end gap-x-1 md:gap-x-4 ">
+            <div className=" padding  flex md:justify-end gap-x-1 md:gap-x-4 ">
                 <button
                     aria-label="Previous slide"
                     disabled={isBeginning}
@@ -246,7 +246,7 @@ const WebDevClients = () => {
                     {clientsData.map((item) => (
                         <SwiperSlide
                             key={item.id}
-                            className="clien_crds group w-[90vw]! md:w-[35vw]! "
+                            className="clien_crds group w-[100%]! md:w-[35vw]! "
                         >
                             <ClientTestimonialCard item={item} />
                         </SwiperSlide>

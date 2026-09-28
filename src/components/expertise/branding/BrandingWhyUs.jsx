@@ -44,7 +44,7 @@ const BrandingWhyUs = () => {
 
 
     return (
-        <div className="w-full padding mt-8 md:mt-16 py-8! md:py-16! border-t text_blue bg-white">
+        <div className="w-full padding  py-8! md:py-16! border-t text_blue bg-white">
             {/* Heading */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
@@ -67,20 +67,25 @@ const BrandingWhyUs = () => {
                 {cards.map((card, i) => (
                     <div
                         key={i}
-                        className={`flex flex-col justify-between py-10 md:p-10 border-[#002bba]/10 ${i !== cards.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''
+                        className={`flex max-sm:gap-5 flex-row-reverse md:flex-col justify-between py-5 md:py-8 md:p-8 border-[#002bba]/10 ${i !== cards.length - 1 ? 'border-b md:border-b-0 md:border-r' : ''
                             }`}
                     >
-                        <div className="space-y-12">
+                        <div className=" space-y-4 md:space-y-8">
                             <div className="why_us_img w-32 h-32 md:w-44 md:h-44 relative">
                                 <img src={card.image} alt={card.title} className="w-full h-full object-contain" />
                             </div>
-                            <p className=" font-medium text-black/60 leading-tight">
+                            <p className=" hidden md:block font-medium text-black/60 leading-tight">
                                 {card.desc}
                             </p>
                         </div>
-                        <h4 data-para-effect className="text-3xl  primary-font mt-12 leading-none text_blue">
-                            {card.title}
-                        </h4>
+                        <div className="">
+                            <h4 data-para-effect className=" w-full md:w-[90%] text-3xl  primary-font mt-0 md:mt-4 leading-none text_blue">
+                                {card.title}
+                            </h4>
+                            <p className=" mt-2 md:hidden font-medium text-black/60 leading-tight">
+                                {card.desc}
+                            </p>
+                        </div>
                     </div>
                 ))}
             </div>

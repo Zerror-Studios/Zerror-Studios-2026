@@ -92,15 +92,16 @@ const BrandingDisciplines = () => {
                                 key={index}
                                 className=" disc_chld w-full border-t border-[#ffffff]/20  overflow-hidden"
                             >
-                                <div className="padding py-6! flex flex-col md:flex-row gap-10 md:gap-0 items-start">
-                                    <div className="w-full md:w-[20%]">
+                                <div className="padding py-6! flex flex-col md:flex-row gap-8 md:gap-0 items-start">
+                                    <div className="w-full flex gap-x-5 md:w-[20%]">
                                         <h3 data-para-effect className="text-3xl md:text-5xl font-bold leading-none primary-font">{item.num}</h3>
+                                        <h3 data-para-effect className=" md:hidden text-3xl md:text-5xl font-bold w- primary-font uppercase leading-none">{item.title}</h3>
                                     </div>
 
                                     <div className="w-full md:w-[50%] flex flex-col">
-                                        <h3 data-para-effect className="text-3xl md:text-5xl font-bold w-1/2 primary-font uppercase leading-none">{item.title}</h3>
+                                        <h3 data-para-effect className=" hidden md:block text-3xl md:text-5xl font-bold w-1/2 primary-font uppercase leading-none">{item.title}</h3>
 
-                                        <div className="mt-12 md:mt-24 flex flex-col gap-4">
+                                        <div className="mt-0 md:mt-24 flex flex-col gap-4">
                                             <p className="text-xs uppercase ">
                                                 {item.subtitle}
                                             </p>

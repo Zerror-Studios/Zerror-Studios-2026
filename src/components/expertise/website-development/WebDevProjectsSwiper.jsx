@@ -230,7 +230,7 @@ const WebDevProjectsSwiper = ({
             <div className="py-0 relative">
                 <div
                     ref={dragBtnRef}
-                    className="drag_btn fixed top-0 left-0 pointer-events-none text-sm rounded-lg z-50  opacity-0 text-white overflow-hidden bg-white-20 backdrop-blur-xs"
+                    className="drag_btn max-sm:hidden fixed top-0 left-0 pointer-events-none text-sm rounded-lg z-50  opacity-0 text-white overflow-hidden bg-white-20 backdrop-blur-xs"
                 >
                     <div className="px-3.5 py-1.5 ">
                         DRAG

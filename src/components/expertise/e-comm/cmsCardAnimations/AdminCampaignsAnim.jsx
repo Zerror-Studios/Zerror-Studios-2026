@@ -128,9 +128,9 @@ function AdminCampaignsAnim() {
             `}</style>
 
             {/* Central Orbit & Badges Composition */}
-            <div className="relative w-full max-w-[85%] scale-90 -translate-y-5 mx-auto flex items-center justify-center">
+            <div className="relative w-full max-w-[85%] md:scale-90 -translate-y-5 mx-auto flex items-center justify-center">
                 {/* Orbit Circle Container */}
-                <div className="relative w-[65%] aspect-square flex items-center justify-center">
+                <div className="relative w-[80%] md:w-[65%] aspect-square flex items-center justify-center">
                     {/* 1. Static SVG Orbit Track */}
                     <svg 
                         className="absolute inset-0 w-full h-full overflow-visible" 
@@ -202,7 +202,7 @@ function AdminCampaignsAnim() {
                 </div>
 
                 {/* Bottom-Left Floating Checklist Pills */}
-                <div className="absolute -bottom-6 sm:-bottom-5 -left-5 flex flex-col gap-1.5 z-30 anim-float-checks pointer-events-auto">
+                <div className="absolute max-sm:scale-60 -bottom-5 -left-5 flex flex-col gap-1.5 z-30 anim-float-checks pointer-events-auto">
                     {/* Pill 1: Images with all text */}
                     <div className="bg-white w-fit text-slate-800 px-3.5 sm:px-4 py-1.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.35)] flex items-center gap-2.5 sm:gap-3 border border-slate-100">
                         <span key={`chk1-${currentIdx}`} className="font-bold text-slate-900 text-[11px] sm:text-xs font-sans tabular-nums anim-pop-text">

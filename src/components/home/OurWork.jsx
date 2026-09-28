@@ -165,7 +165,7 @@ const OurWork = () => {
     return (
         <div className="work_paren w-full py-8 md:py-16 space-y-8 md:space-y-16 relative z-10 bg-white">
 
-            <div className="w-full  padding text_blue space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+            <div className="w-full  padding text_blue space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
                     <h2 data-para-effect className='   primary-font   text-5xl  leading-none'>Selected  <br />Works</h2>
                 </div>
@@ -183,7 +183,7 @@ const OurWork = () => {
                     </h3>
                 </div>
             </div>
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-10">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-5">
                 {caseStudies.slice(0, 4).map((item, i) => (
                     <Link
                         href={`/work/${item.slug}`}

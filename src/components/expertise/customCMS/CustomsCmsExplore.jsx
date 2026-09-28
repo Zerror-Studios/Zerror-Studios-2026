@@ -54,7 +54,7 @@ const CustomsCmsExplore = () => {
         </div>
 
         <div className=" padding md:p-0! cms-dashboard-wrapper">
-          <div className="w-[80%] h-[90vh] mx-auto">
+          <div className="md:w-[80%] h-[90vh] mx-auto">
             <CmsDashboard />
           </div>
         </div>

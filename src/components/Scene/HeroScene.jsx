@@ -7,12 +7,17 @@ export default function SunBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const gl = canvas.getContext("webgl", { preserveDrawingBuffer: true });
+    // preserveDrawingBuffer removed for better performance
+    const gl = canvas.getContext("webgl");
     if (!gl) return;
 
+    let dpr = 1;
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // Reduce internal resolution on mobile for smoother performance
+      dpr = window.innerWidth < 768 ? 0.5 : 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
     resize();
@@ -53,8 +58,8 @@ export default function SunBackground() {
       targetMouse.y = e.clientY;
     });
 
-
     let start = performance.now();
+    let animationFrameId;
 
     const animate = (now) => {
       const t = (now - start) * 0.0003;
@@ -74,7 +79,10 @@ export default function SunBackground() {
 
       gl.uniform1f(u("time"), t);
       gl.uniform2f(u("resolution"), canvas.width, canvas.height);
-      gl.uniform2f(u("mouse"), mouse.x * 1.3, (canvas.height - mouse.y) * 1.3);
+      
+      // Scale mouse coordinates to match the canvas's physical pixel resolution
+      gl.uniform2f(u("mouse"), mouse.x * dpr * 1.3, (canvas.height - (mouse.y * dpr)) * 1.3);
+      
       gl.uniform1f(u("inRadius"), radius * 0.45);
       gl.uniform1f(u("outRadius"), radius * 0.75);
       gl.uniform1f(u("gradLength"), 1.2);
@@ -82,15 +90,17 @@ export default function SunBackground() {
       gl.uniform2f(u("center"), canvas.width / 2, centerY);
       gl.uniform1f(u("sceneMix"), 1.0);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
-      requestAnimationFrame(animate);
+      
+      animationFrameId = requestAnimationFrame(animate);
     };
 
+    animationFrameId = requestAnimationFrame(animate);
 
-    requestAnimationFrame(animate);
-
-    return () => window.removeEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return <canvas ref={canvasRef} className="w-full h-full" />;
 }
-

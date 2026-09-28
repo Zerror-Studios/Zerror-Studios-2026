@@ -49,7 +49,7 @@ button {
 
 .noise-bg:after {
   background:
-    url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
+    url(../../public/images/homePage/noise.webp) 50% / 25rem 25rem,
     var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
@@ -57,7 +57,7 @@ button {
 }
 .noise-bg:before {
   background:
-    url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
+    url(../../public/images/homePage/noise.webp) 50% / 25rem 25rem,
     var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
@@ -65,7 +65,7 @@ button {
 }
 
 .site-background:after {
-  background: url(../../public/images/homePage/noise.webp) 50% / 512px 512px;
+  background: url(../../public/images/homePage/noise.webp) 50% / 25rem 25rem;
   mix-blend-mode: overlay;
   opacity: 0.5;
   transform: rotateY(180deg) rotateX(180deg);
@@ -73,7 +73,7 @@ button {
 
 .site-background:before {
   background:
-    url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
+    url(../../public/images/homePage/noise.webp) 50% / 25rem 25rem,
     var(--primary_bg);
   background-blend-mode: color;
   mix-blend-mode: hard-light;
@@ -97,7 +97,7 @@ button {
     overflow: hidden;
   }
   .mob_cir:after {
-    background: url(../../public/images/homePage/noise.webp) 50% / 512px 512px;
+    background: url(../../public/images/homePage/noise.webp) 50% / 25rem 25rem;
     mix-blend-mode: overlay;
     opacity: 0.5;
     transform: rotateY(180deg) rotateX(180deg);
@@ -105,7 +105,7 @@ button {
 
   .mob_cir:before {
     background:
-      url(../../public/images/homePage/noise.webp) 50% / 512px 512px,
+      url(../../public/images/homePage/noise.webp) 50% / 25rem 25rem,
       var(--primary_bg);
     background-blend-mode: color;
     mix-blend-mode: hard-light;
@@ -410,6 +410,12 @@ button {
   will-change: transform;
 }
 
+@media (max-width: 750px) {
+  .arc_item {
+    --radius: 100vw;
+  left: 48%;
+  }
+}
 .arc_text {
   opacity: max(0, 1 - (var(--rel-index) * var(--rel-index)));
   pointer-events: none;

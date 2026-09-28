@@ -176,15 +176,15 @@ const Hero = () => {
 
 
       <div className=" abt_paren opacity-0 relative z-10  w-full   padding py-0! text-white ">
-        <div className="w-full  space-y-16 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+        <div className="w-full  space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
           <div className="">
             <h2 data-para-effect className='capitalize primary-font  text-5xl  leading-none'>about us</h2>
           </div>
- 
-            <div className=" max-sm:hidden text-xs pt-4">
-              <p className='font-thin'>Systems. Structure.</p>
-              <p className='font-thin'>Precision. Intent.</p>
-            </div>
+
+          <div className=" max-sm:hidden text-xs pt-4">
+            <p className='font-thin'>Systems. Structure.</p>
+            <p className='font-thin'>Precision. Intent.</p>
+          </div>
           <div className=" text-3xl  md:pl-2">
             <h3 data-para-effect className="secondary-font">
               <span className='opacity-0  max-sm:hidden pointer-events-none'>...............</span>

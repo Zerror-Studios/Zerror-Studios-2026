@@ -103,14 +103,15 @@ const CustomWhyCms = () => {
 
     return (
         <div
+        data-hide-header
             ref={containerRef}
-            className="mt-8 md:mt-16  py-0!  h-[200vh]! bg_blue text-white relative"
+            className="  py-0!  h-[200vh]! bg_blue text-white relative"
         >
             <div className="arc flex flex-col  justify-center">
 
                 <div className="w-full z-2 h-screen absolute inset-0 bg-linear-to-r from-[#002bba] to-transparent"></div>
 
-                <div className="absolute z-1 top-1/2 left-[-5%] -translate-y-1/2 w-[50vw]">
+                <div className="absolute z-1 top-1/2 left-[-5%] -translate-y-1/2 w-screen max-sm:left-[-80%] md:w-[50vw]">
                     <img
                         className="stroke_circle block w-full h-auto"
                         src="/images/expertisePage/custom-cms/stroke_circle.png"
@@ -118,12 +119,17 @@ const CustomWhyCms = () => {
                     />
                 </div>
 
-                <div className=" padding  z-10 py-0!  w-[25%] top-24 right-0  absolute text-3xl  md:pl-2">
+
+                <div className=" padding z-10 py-0!  md:w-[25%] max-sm:bottom-8 md:top-24 max-sm:left-0 md:right-0  absolute text-3xl  pl-0 md:pl-2">
                     <h3 data-para-effect className="">
                         A custom CMS gives you the freedom to build exactly what you need.
                     </h3>
                 </div>
-                <div className=" z-10 padding py-0! space-y-2">
+                <div className=" top-8 absolute  md:hidden z-10 padding py-0! space-y-2">
+                    <p data-para-effect className='capitalize w-[60%] text-xs'>what we build</p>
+                    <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'> Why  <br /> Go Custom?</h2>
+                </div>
+                <div className=" max-sm:hidden z-10 padding py-0! space-y-2">
                     <p data-para-effect className='capitalize w-[60%] text-xs'>what we build</p>
                     <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'> Why  <br /> Go Custom?</h2>
                 </div>
@@ -143,7 +149,7 @@ const CustomWhyCms = () => {
                             }}
                         >
                             <span className=" primary-font text-5xl md:text-8xl translate-y-2.5 arc_num">{item.num}</span>
-                            <div className="arc_text flex flex-col max-w-[200px] space-y-2 md:max-w-sm whitespace-normal">
+                            <div className="arc_text flex flex-col max-w-[18rem] w-[18rem] space-y-2 md:max-w-sm whitespace-normal">
                                 <h4 className="font-bold text-3xl">{item.title}</h4>
                                 <p className=" leading-tight">{item.desc}</p>
                             </div>

@@ -28,7 +28,7 @@ function SearchAiArchAnim() {
     const SLOTS = [-2, -1, 0, 1, 2, 3, 4];
 
     return (
-        <div className="absolute p-8 md:p-10 inset-x-0 bottom-0 top-[40%] flex items-center justify-center pointer-events-none select-none">
+        <div className="absolute p-6 md:p-10 inset-x-0 bottom-0 top-[40%] flex items-center justify-center pointer-events-none select-none">
             {/* Center Anchor & Search Bar Container */}
             <div className="relative flex items-center w-full h-14">
                 <style>{`
@@ -43,12 +43,12 @@ function SearchAiArchAnim() {
                 {/* 1. White Search Bar Capsule (matching reference UI) */}
                 <div className="w-full h-full bg-white rounded-full shadow-2xl shadow-black/40 flex items-center justify-between pl-4  pr-1.5 z-10 border border-white/80">
                     <div className="flex items-center gap-2 min-w-0">
-                        <RiSearchLine className=" size-5 text-slate-800 shrink-0" />
+                        <RiSearchLine className=" size-4 md:size-5 text-slate-800 shrink-0" />
                         <div className="flex items-center min-w-0">
-                            <span className="font-sans font-medium text-lg text-slate-900 leading-none -translate-y-0.5 select-none">
+                            <span className="font-sans font-medium text-sm md:text-lg text-slate-900 leading-none md:-translate-y-0.5 select-none">
                                 www.zerrorstudios
                             </span>
-                            <span className="w-[0.1rem] sm:w-[0.125rem] h-6 bg-slate-900 ml-0.5 anim-blinking-cursor rounded-full shrink-0" />
+                            <span className="w-[0.1rem] sm:w-[0.125rem] h-4 md:h-5 bg-slate-900 ml-0.5 anim-blinking-cursor rounded-full shrink-0" />
                         </div>
                     </div>
                 </div>
@@ -82,11 +82,10 @@ function SearchAiArchAnim() {
                             return (
                                 <div
                                     key={`${r}-${tldIndex}`}
-                                    className={`absolute inset-x-0 h-[2.75rem] rounded-full center font-sans  select-none transition-colors duration-500 ${
-                                        isActive
+                                    className={`absolute inset-x-0 h-[2.75rem] rounded-full center font-sans max-sm:text-sm  select-none transition-colors duration-500 ${isActive
                                             ? 'bg-[#E6E6E6] text-slate-900 font-bold shadow-xs'
                                             : 'bg-white/20 text-white/95 font-medium border border-white/10 backdrop-blur-xs'
-                                    }`}
+                                        }`}
                                     style={{
                                         top: `${r * STEP_HEIGHT}rem`,
                                         opacity: opacity,

@@ -105,7 +105,7 @@ function SmartInventoryAnim() {
     }, []);
 
     return (
-        <div className="absolute p-8 md:p-10 inset-x-0 bottom-0 top-[32%] sm:top-[34%] flex flex-col justify-end pointer-events-none select-none z-10">
+        <div className="absolute p-6 md:p-10 inset-x-0 bottom-0 max-sm:aspect-4/3 top-[43%] sm:top-[34%] flex flex-col justify-end pointer-events-none select-none z-10">
             {/* Custom Embedded Keyframes for Scale Animation and Smooth Downward Shift */}
             <style>{`
                 @keyframes productPopScaleIn {
@@ -263,10 +263,10 @@ function SmartInventoryAnim() {
                         {/* Title & Description */}
                         <div className="mb-1.5 shrink-0">
                             <div className="flex items-center justify-between">
-                            <h2 className="text-[11px] sm:text-xs md:text-sm font-bold text-[#170b3b] leading-tight truncate">
-                                Products (50)
-                            </h2>
-                            <button className='bg-[#3b82f6] text-white text-[8px] px-1 py-1 rounded-sm leading-none'>+ Add</button>
+                                <h2 className="text-[11px] sm:text-xs md:text-sm font-bold text-[#170b3b] leading-tight truncate">
+                                    Products (50)
+                                </h2>
+                                <button className='bg-[#3b82f6] text-white text-[8px] px-1 py-1 rounded-sm leading-none'>+ Add</button>
                             </div>
                             <p className="text-[7px] sm:text-[8px] text-slate-400 leading-tight truncate">
                                 Create, manage, and organize your product listing
@@ -281,9 +281,8 @@ function SmartInventoryAnim() {
                                 return (
                                     <div
                                         key={prod.instanceId}
-                                        className={`flex items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg border border-slate-100/90 bg-white/95 shadow-2xs ${
-                                            isTop ? 'anim-product-scale-enter' : 'product-row-shift mb-1'
-                                        }`}
+                                        className={`flex items-center gap-1.5 sm:gap-2 px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg border border-slate-100/90 bg-white/95 shadow-2xs ${isTop ? 'anim-product-scale-enter' : 'product-row-shift mb-1'
+                                            }`}
                                     >
 
                                         {/* Ring Thumbnail Image */}

@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { RiMenuLine, RiCloseLine } from "@remixicon/react";
 import {
   DashboardIcon,
   ProductsIcon,
@@ -19,70 +20,89 @@ const navTabs = [
 
 export default function DashboardSidebar({ activeTab, setActiveTab, theme }) {
   const isDark = theme === "dark";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <aside
-      className={`w-full lg:w-60 flex flex-col justify-between p-4 shrink-0 transition-colors duration-300 font-sans ${
+      className={`w-full lg:w-60 flex flex-col p-4 shrink-0 transition-colors duration-300 font-sans ${
         isDark
           ? "bg-[#0D121F] border-b lg:border-b-0 lg:border-r border-white/10 text-white"
           : "bg-white border-b lg:border-b-0 lg:border-r border-gray-200/80 text-gray-800"
       }`}
     >
-      <div>
+      <div className="flex flex-col h-full">
         {/* User Profile / Header */}
-        <div className="flex items-center gap-2.5 px-3 py-3 mb-6">
+        <div className="flex items-center justify-between gap-2.5 px-3 py-3 lg:mb-6">
           <div className={`flex items-center gap-2.5 ${isDark ? "border-white/10" : "border-gray-200"}`}>
-            <div className="w-8 h-8 rounded-full bg-[#002bba] text-white font-bold text-xs flex items-center justify-center shadow-sm">
-              KM
+            <div className="w-8 h-8 rounded-full bg-[#002bba] text-white font-bold text-xs flex items-center justify-center shadow-sm shrink-0">
+              RS
             </div>
-            <div className="hidden sm:block text-left leading-tight">
-              <h4 className={`text-xs font-bold ${isDark ? "text-white" : "text-gray-900"}`}>Kenneth Mendoza</h4>
+            <div className="text-left leading-tight">
+              <h4 className={`text-xs font-bold ${isDark ? "text-white" : "text-gray-900"}`}>Rahul Sharma</h4>
               <span className="text-[10px] text-gray-400 font-medium">Sales manager</span>
             </div>
           </div>
+
+          <button
+            className={`lg:hidden p-1.5 rounded-lg border transition-colors ${
+              isDark 
+                ? "border-white/10 hover:bg-white/5 text-white" 
+                : "border-gray-200 hover:bg-gray-50 text-gray-800"
+            }`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <RiCloseLine size={18} /> : <RiMenuLine size={18} />}
+          </button>
         </div>
 
-        {/* Sidebar Nav Items */}
-        <nav className="space-y-1">
-          {navTabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-xs transition-all duration-200 ${
-                  isActive
-                    ? isDark
-                      ? "bg-blue-600/20 text-blue-400 font-bold border border-blue-500/30"
-                      : "bg-blue-50 text-blue-600 font-bold shadow-sm"
-                    : isDark
-                    ? "text-gray-400 hover:text-white hover:bg-white/5"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                }`}
-              >
-                <Icon className={`w-4 h-4 ${isActive ? (isDark ? "text-blue-400" : "text-blue-600") : "text-gray-400"}`} />
-                <span>{tab.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
+        {/* Expandable Content for Mobile */}
+        <div className={`${isMobileMenuOpen ? "flex mt-4" : "hidden"} lg:flex flex-col justify-between flex-1`}>
+          {/* Sidebar Nav Items */}
+          <nav className="space-y-1">
+            {navTabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    setIsMobileMenuOpen(false); // Close menu on tab selection in mobile
+                  }}
+                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-xs transition-all duration-200 ${
+                    isActive
+                      ? isDark
+                        ? "bg-blue-600/20 text-blue-400 font-bold border border-blue-500/30"
+                        : "bg-blue-50 text-blue-600 font-bold shadow-sm"
+                      : isDark
+                      ? "text-gray-400 hover:text-white hover:bg-white/5"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 ${isActive ? (isDark ? "text-blue-400" : "text-blue-600") : "text-gray-400"}`} />
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </nav>
 
-      {/* Premium Plan Card */}
-      <div className={`mt-6 p-4 rounded-2xl border text-white relative overflow-hidden transition-all ${
-        isDark ? "bg-white/5 border-white/10" : "bg-[#0A101D] border-gray-800"
-      }`}>
-        <div className="w-7 h-7 rounded-xl bg-white/10 flex items-center justify-center mb-3">
-          <span className="text-xs font-bold">👑</span>
+          {/* Premium Plan Card */}
+          <div className={`mt-6 p-4 rounded-2xl border text-white relative overflow-hidden transition-all ${
+            isDark ? "bg-white/5 border-white/10" : "bg-[#0A101D] border-gray-800"
+          }`}>
+            <div className="w-7 h-7 rounded-xl bg-white/10 flex items-center justify-center mb-3">
+              <span className="text-xs font-bold">dY``</span>
+            </div>
+            <h4 className="text-xs font-bold mb-1">Premium plan</h4>
+            <p className="text-[11px] text-gray-300 leading-snug mb-3">
+              Get access to advanced SalesRadar features
+            </p>
+            <button className="w-full py-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-500 transition-colors shadow-sm">
+              Upgrade now!
+            </button>
+          </div>
         </div>
-        <h4 className="text-xs font-bold mb-1">Premium plan</h4>
-        <p className="text-[11px] text-gray-300 leading-snug mb-3">
-          Get access to advanced SalesRadar features
-        </p>
-        <button className="w-full py-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-500 transition-colors shadow-sm">
-          Upgrade now!
-        </button>
       </div>
     </aside>
   );
