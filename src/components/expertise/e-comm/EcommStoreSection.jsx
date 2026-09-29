@@ -3,7 +3,7 @@ import React from 'react'
 const EcommStoreSection = () => {
     return (
         <>
-            <div className="w-full  padding pr-0! mt-10 md:mt-24 py-10! md:py-24!  bg_blue relative text-white flex">
+            <div className="w-full  padding pr-0! mt-10 md:mt-24 py-8! md:py-16!  bg_blue relative text-white flex">
                 <div className="w-[30%] flex flex-col   justify-between">
                     <div className="space-y-2">
                         <p>Store</p>

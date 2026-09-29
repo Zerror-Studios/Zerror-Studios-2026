@@ -237,16 +237,16 @@ const TicketEffect = () => {
             </div>
 
             {/* Track & Morph SVG Interactive Section */}
-            <div className="w-full relative mt-8 md:mt-16 h-37 md:h-64 padding">
+            <div className="w-full relative mt-8 md:mt-16 h-37 md:h-68 padding">
                 {/* Horizontal Dashed Line */}
                 <div className="absolute w-screen inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none z-0 border-t-2  border-dashed border-[#002bba70]">
                 </div>
-                <div ref={trackRef} className="track relative h-37 md:h-64 w-full flex items-center cursor-pointer" onClick={openProjectForm}>
+                <div ref={trackRef} className="track relative h-37 md:h-68 w-full flex items-center cursor-pointer" onClick={openProjectForm}>
 
                     {/* Active Morphing SVG */}
                     <svg
                         ref={svgRef}
-                        className="absolute top-0 left-0 w-37 h-37 md:w-64 md:h-64 pointer-events-none z-10"
+                        className="absolute top-0 left-0 w-37 h-37 md:w-68 md:h-68 pointer-events-none z-10"
                         viewBox="0 0 220 220"
                     >
                         <path

@@ -100,7 +100,7 @@ const CustomTechinicalCards = () => {
 
     return (
         <div className="w-full border-t border-[#002bba] ">
-            <div className="padding py-12! md:py-24! text_blue">
+            <div className="padding py-8! md:py-16! text_blue">
                 {/* Heading section styled like InfoSection */}
                 <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                     <div className="">

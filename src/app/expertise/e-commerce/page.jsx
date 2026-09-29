@@ -14,7 +14,7 @@ export const metadata = createMetadata({
   path: "/expertise/e-commerce",
 });
 
-const heroVideo = "https://vz-f76b55f9-7b8.b-cdn.net/a14fb47e-f79b-40cc-9dae-3fe784bcf05b/playlist.m3u8"
+const heroVideo = "/videos/expertise/e_comm.mp4"
 
 const heroIcons = {
   "Storefront UX": [

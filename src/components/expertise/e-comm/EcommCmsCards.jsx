@@ -126,7 +126,7 @@ const EcommCmsCards = () => {
     })
 
     return (
-        <div ref={containerRef} className="w-full h-auto md:h-[200vw] relative">
+        <div data-hide-header ref={containerRef} className="w-full h-auto md:h-[200vw] relative">
             <div className='w-full md:sticky md:top-0 overflow-hidden mt-8! md:mt-16! max-sm:pb-8 h-auto md:h-screen flex gap-y-10 md:gap-y-[5vh] flex-col justify-center'>
                 <div className="w-full   padding py-0!  text_blue ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
@@ -155,7 +155,7 @@ const EcommCmsCards = () => {
                         const cardElement = (
                             <div
                                 key={card.id}
-                                className={`w-[80vw] md:w-[60vh] cms_crd snap-center md:snap-align-none relative overflow-hidden aspect-3/4 sm:aspect-square shrink-0 flex flex-col ${
+                                className={`w-[80vw] md:w-[65vh] cms_crd snap-center md:snap-align-none relative overflow-hidden aspect-3/4 sm:aspect-square shrink-0 flex flex-col ${
                                     isTop ? "justify-start" : "justify-end"
                                 } text-white rounded-2xl transform-gpu will-change-transform`}
                             >

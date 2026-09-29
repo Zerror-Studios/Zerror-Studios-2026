@@ -673,7 +673,7 @@ const EcommPlatformCompare = () => {
     }, [activeTab]);
 
     return (
-        <div ref={containerRef} className="w-full bg_blue relative overflow-hidden pt-10! md:pt-24!">
+        <div ref={containerRef} className="w-full bg_blue relative overflow-hidden pt-8! md:pt-16!">
 
             {/* ── Heading ── */}
             <div className="w-full padding py-0! text-white">

@@ -3,10 +3,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image'
 import gsap from 'gsap'
 import SplitText from 'gsap/dist/SplitText'
+import Flip from 'gsap/dist/Flip'
 import { useGSAP } from '@gsap/react'
 import Matter from 'matter-js';
 import { clientsData } from './ClientsMarquee';
-import Marquee from 'react-fast-marquee';
+import VelocityMarquee from '../common/VelocityMarquee';
 
 const DetailedExpertiseHero = ({
     expertiseName,
@@ -225,21 +226,26 @@ const DetailedExpertiseHero = ({
 
     useGSAP(() => {
         if (window.innerWidth < 750) return;
-        gsap.to(".det_vid", {
-            width: "50%",
+
+        gsap.registerPlugin(Flip);
+
+        Flip.fit(".det_vid", ".det_vid_target", {
+            scale: false,
+            ease: "none",
+            duration: 1,
             scrollTrigger: {
-                trigger: heroContainerRef.current,
+                trigger: ".cont_pren_s",
                 start: "top top",
-                end: "bottom center",
-                endTrigger: ".cont_pren_s",
-                scrub: true
+                end: () => `bottom ${document.querySelector('.det_vid_sticky')?.offsetHeight || 0}px`,
+                scrub: true,
+                invalidateOnRefresh: true
             }
-        })
+        });
     })
 
     return (
-        <div className=' content_box opacity-0 padding'>
-            <div ref={heroContainerRef} className="w-full h-[65vh] md:h-[80vh] flex flex-col justify-between relative overflow-hidden">
+        <div className=' content_box opacity-0 '>
+            <div ref={heroContainerRef} className=" padding w-full h-[65vh] md:h-[80vh] flex flex-col justify-between relative overflow-hidden">
                 {/* Background Pop-up Icons on Button Hover */}
                 <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
                     {Object.entries(heroIcons).map(([label, icons]) => {
@@ -290,72 +296,56 @@ const DetailedExpertiseHero = ({
                 </div>
             </div>
 
-            <div className="w-full cont_pren_s blink_btn opacity-0 relative pb-8 md:pb-16 flex max-sm:flex-col-reverse max-sm:gap-y-5">
-                <div className="md:w-1/2 md:border-t md:pr-32 space-y-5 md:space-y-10 pt-6 md:pt-12 text_blue">
-                    <h3 data-para-effect className='  text-3xl md:text-5xl'>{introHeading}</h3>
-                    <p className='text-xl leading-tight'>{introText}</p>
-                </div>
-                <div className="hidden md:flex det_vid absolute bg_blue w-full top-0 right-0 flex-col gap-10">
-                    <div className="w-full aspect-video overflow-hidden">
-                        <video className='cover' loop autoPlay muted playsInline src={videoSrc}></video>
+            <div data-hide-header className="w-full cont_pren_s  md:h-[200vh] blink_btn opacity-0 relative mb-8   flex items-start max-sm:flex-col-reverse max-sm:gap-y-5">
+                <div className="det_vid_sticky w-full padding  h-fit flex flex-col-reverse md:flex-row md:sticky top-0">
+                    <div className="md:w-1/2 md:pr-32 space-y-5 md:space-y-10 pt-6 md:pt-12 text_blue">
+                        <h3 data-para-effect className='  text-3xl md:text-5xl'>{introHeading}</h3>
+                        <p className='text-xl leading-tight'>{introText}</p>
                     </div>
-                </div>
-                <div className=" md:opacity-0 w-full md:w-1/2 flex flex-col gap-10">
-                    <div className="w-full aspect-video overflow-hidden">
-                        <video className='cover md:hidden' loop autoPlay muted playsInline src={videoSrc}></video>
+                    <div className="det_vid md:absolute bg_blue w-full max-sm:aspect-video md:h-screen top-0 right-0">
+                        <div className="w-full h-full overflow-hidden">
+                            <video className='cover' loop autoPlay muted playsInline src={videoSrc}></video>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div className="w-full  flex flex-col-reverse max-sm:gap-y-5 md:flex-row">
-                <div className="w-full md:w-1/2 flex items-end">
-                    <p className='md:w-[50%] leading-tight text-xl text_blue'>
-                        {supportingText}
-                    </p>
-                </div>
-
-                <div className="w-full md:w-1/2 text_blue">
-                    <div className="flex flex-col w-full">
-                        {features.map((stat, i) => (
-                            <div key={i} className="flex justify-between items-center py-4 border-b border-[#002bba20] last:border-b-0">
-                                <span data-para-effect className="text-xl font-medium">{stat.label}</span>
-                                <span className=" font-semibold ">{stat.value}</span>
-                            </div>
-                        ))}
+                    <div className=" hidden md:block w-full md:w-1/2 pt-6 md:pt-12">
+                        <div className="det_vid_target w-full aspect-video overflow-hidden">
+                        </div>
                     </div>
                 </div>
             </div>
+            <div className="padding">
 
-            <div ref={marqueeContainerRef} className="w-full md:py-8 mt-6 md:mt-12  border-t border-[#002bba] z-10">
-                {/* Desktop View (2 Rows) */}
-                <div className="hidden md:block">
-                    <div className="flex items-center justify-between h-24">
-                        {clientsData.slice(0, Math.ceil(clientsData.length / 2)).map((item, i) => (
-                            <div key={i} className=" w-40 md:w-52">
-                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
-                            </div>
-                        ))}
+                <div className="w-full  flex flex-col-reverse max-sm:gap-y-5 md:flex-row">
+                    <div className="w-full md:w-1/2 flex items-end">
+                        <p className='md:w-[50%] leading-tight text-xl text_blue'>
+                            {supportingText}
+                        </p>
                     </div>
-                    <div className="flex items-center justify-between h-24">
-                        {clientsData.slice(Math.ceil(clientsData.length / 2)).map((item, i) => (
-                            <div key={i} className=" w-40 md:w-52">
-                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
-                            </div>
-                        ))}
+
+                    <div className="w-full md:w-1/2 text_blue">
+                        <div className="flex flex-col w-full">
+                            {features.map((stat, i) => (
+                                <div key={i} className="flex justify-between items-center py-4 border-b border-[#002bba20] last:border-b-0">
+                                    <span data-para-effect className="text-xl font-medium">{stat.label}</span>
+                                    <span className=" font-semibold ">{stat.value}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
-                {/* Mobile View (3 Rows) */}
-                <div className="md:hidden ">
-                        <Marquee gradient gradientWidth={30}>
-                               {clientsData.map((item, i) => (
-                            <div key={i} className=" w-32">
-                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
-                            </div>
-                        ))}
-                        </Marquee>
-                </div>
             </div>
+                <div ref={marqueeContainerRef} className="w-full md:py-8 mt-6 md:mt-12 border-t border-[#002bba] z-10 overflow-hidden">
+                    <VelocityMarquee baseSpeed={25}>
+                        <div className="flex items-center gap-10 md:gap-20 px-5 md:px-10 h-24 md:h-32">
+                            {clientsData.map((item, i) => (
+                                <div key={i} className="w-32 md:w-70 shrink-0">
+                                    <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
+                                </div>
+                            ))}
+                        </div>
+                    </VelocityMarquee>
+                </div>
         </div>
     )
 }

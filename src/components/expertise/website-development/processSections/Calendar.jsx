@@ -317,7 +317,7 @@ const EventCard = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onMouseOut={handleMouseLeave}
-            className={` text-[#002bba] bg-[#DFE4F6] rounded-md p-2 md:p-2.5 h-full w-full flex flex-col justify-between relative transition-opacity duration-300 ${isOpen
+            className={` text-[#002bba] bg-[#DFE4F6] rounded-md p-1 md:p-2.5 h-full w-full flex flex-col justify-between relative transition-opacity duration-300 ${isOpen
                 ? 'z-[5000]! active-card-container opacity-100 shadow-md'
                 : isFaded
                     ? 'opacity-50 hover:opacity-60 z-10 cursor-pointer'
@@ -332,13 +332,12 @@ const EventCard = ({
                 onClick={togglePopup}
                 ref={labelRef} className="card_label w-full cursor-pointer h-full flex flex-col justify-between relative">
                 <div className='w-full h-full flex flex-col justify-between'>
-                    <h4 className="font-thin">{title}</h4>
-                    <div className="justify-end p-1 flex items-end w-full">
+                    <h4 className="font-thin text-[8px] sm:text-xs md:text-base leading-[1.1] md:leading-normal max-sm:line-clamp-2 overflow-hidden">{title}</h4>
+                    <div className="justify-end p-0.5 md:p-1 flex items-end w-full">
                         <div
-                            className={`size-5 bg-white center  rounded-sm text_blue transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
+                            className={`size-3.5 md:size-5 bg-white center rounded-sm text_blue transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
                         >
-                            <RiAddLine className='size-4'
-                            />
+                            <RiAddLine className='size-2.5 md:size-4' />
                         </div>
                     </div>
                 </div>
@@ -346,9 +345,9 @@ const EventCard = ({
                 {/* Popup Details Card */}
                 {content && (
                     <div
-                        className={`card-popup absolute ${popupX} ${popupY} w-[18rem] sm:w-[21rem] md:w-[23rem] rounded-lg shadow-[0_25px_60px_-15px_rgba(0,43,186,0.3)] p-4 md:p-5 transition-all duration-300 overflow-y-auto scroller_none border border-black/10 bg-white text_blue ${isOpen
-                            ? 'opacity-100 translate-x-0 visible pointer-events-auto z-[9999]'
-                            : 'opacity-0 invisible pointer-events-none ' + (align === 'left' ? 'translate-x-2' : '-translate-x-2')
+                        className={`card-popup max-sm:fixed md:absolute max-sm:left-1/2 max-sm:top-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2 md:${popupX} md:${popupY} w-[90vw] sm:w-[21rem] md:w-[23rem] rounded-lg shadow-[0_25px_60px_-15px_rgba(0,43,186,0.3)] p-4 md:p-5 transition-all duration-300 overflow-y-auto scroller_none border border-black/10 bg-white text_blue ${isOpen
+                            ? 'opacity-100 max-sm:scale-100 md:translate-x-0 visible pointer-events-auto z-[9999]'
+                            : 'opacity-0 max-sm:scale-95 invisible pointer-events-none ' + (align === 'left' ? 'md:translate-x-2' : 'md:-translate-x-2')
                             }`}
                         onClick={(e) => e.stopPropagation()}
                     >
@@ -619,11 +618,11 @@ const Calendar = () => {
     return (
         <div ref={containerRef} className="w-full relative h-[1000vh]">
             <div className="w-full h-screen padding py-8 md:py-12 sticky top-0 center">
-                <div className="w-full h-full primary-font relative  overflow-hidden">
-                    <div className="relative w-full h-full grid grid-cols-[8rem_repeat(5,1fr)] grid-rows-[auto_repeat(6,minmax(0,1fr))] gap-2">
+                <div className="w-full h-full primary-font relative overflow-hidden">
+                    <div className="relative w-full h-full grid grid-cols-[2.5rem_repeat(5,1fr)] md:grid-cols-[8rem_repeat(5,1fr)] grid-rows-[auto_repeat(6,minmax(0,1fr))] gap-1 md:gap-2">
 
                         {/* HEADER ROW - WEEKS */}
-                        <div className={`flex text-xl items-center justify-center text_blue text-center leading-none uppercase transition-opacity duration-300 border-2 rounded-md`}>Task <br /> Calender</div>
+                        <div className=""></div>
 
                         {WEEKS.map((week, idx) => {
                             const weekNum = idx + 1;
@@ -631,10 +630,11 @@ const Calendar = () => {
                             return (
                                 <div
                                     key={idx}
-                                    className={` rounded-md flex flex-col items-center justify-center py-4  transition-colors duration-300 ${isWeekActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
+                                    className={`rounded-md flex flex-col items-center justify-center py-2 md:py-4 transition-colors duration-300 ${isWeekActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
                                 >
-                                    <span className="text-sm">{week.label}</span>
-                                    <span className="text-sm uppercase">{week.subtitle}</span>
+                                    <span className="text-[10px] md:text-sm max-sm:hidden">{week.label}</span>
+                                    <span className="text-[10px] md:text-sm sm:hidden font-bold">W{weekNum}</span>
+                                    <span className="text-[8px] md:text-sm uppercase text-center max-sm:leading-[1] max-sm:px-0.5">{week.subtitle}</span>
                                 </div>
                             );
                         })}
@@ -646,9 +646,9 @@ const Calendar = () => {
                                 <React.Fragment key={day}>
                                     {/* Day row label */}
                                     <div
-                                        className={`text-sm  rounded-md text-center flex items-center justify-center transition-colors duration-300 ${isDayActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
+                                        className={`text-[9px] md:text-sm font-semibold rounded-md text-center flex items-center justify-center transition-colors duration-300 ${isDayActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
                                     >
-                                        {day}
+                                        <span className="max-sm:-rotate-90">{day}</span>
                                     </div>
 
                                     {/* 5 Week Slots */}
@@ -715,7 +715,7 @@ const Calendar = () => {
                             <div
                                 key={stage.stage}
                                 ref={(el) => (fullCardsRef.current[i] = el)}
-                                className={`full_card  absolute w-[calc(100%-8.5rem)] h-[calc(100%-5rem)] bottom-0 right-0 pointer-events-none ${isStageOpen ? 'z-[5000]' : ''}`}
+                                className={`full_card absolute w-[calc(100%-3rem)] md:w-[calc(100%-8.5rem)] h-[calc(100%-3rem)] md:h-[calc(100%-5rem)] bottom-0 right-0 pointer-events-none ${isStageOpen ? 'z-[5000]' : ''}`}
                             />
                         );
                     })}

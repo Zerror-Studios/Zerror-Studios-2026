@@ -1,9 +1,18 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from './processSections/Calendar';
+import MobileCalendar from './processSections/MobileCalendar';
 import { useGSAP } from '@gsap/react';
 
 const WebDevProcess = () => {
+    const [isMobile, setIsMobile] = useState(null);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 1020);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div data-hide-header className="w-full relative">
@@ -30,7 +39,8 @@ const WebDevProcess = () => {
             </div>
 
             {/* Process Calendar */}
-            <Calendar />
+            {isMobile === true && <MobileCalendar />}
+            {isMobile === false && <Calendar />}
         </div>
     );
 };

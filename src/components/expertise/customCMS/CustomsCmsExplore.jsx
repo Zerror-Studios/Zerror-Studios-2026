@@ -35,7 +35,7 @@ const CustomsCmsExplore = () => {
       className="relative overflow-hidden bg_blue"
     >
 
-      <div className="py-10! md:py-24! space-y-12 " style={{ position: "relative", zIndex: 10 }}>
+      <div className="py-8! md:py-16! space-y-12 " style={{ position: "relative", zIndex: 10 }}>
 
         <div className="w-full   padding pt-0! text-white ">
           <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">

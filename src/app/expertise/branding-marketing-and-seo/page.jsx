@@ -14,7 +14,7 @@ export const metadata = createMetadata({
   path: "/expertise/branding-marketing-and-seo",
 });
 
-const heroVideo = "https://vz-f76b55f9-7b8.b-cdn.net/eb0dedc2-f474-4c0c-8efc-57751e3e5202/playlist.m3u8"
+const heroVideo = "/videos/expertise/branding.mp4"
 
 const heroIcons = {
   "Strategy": [

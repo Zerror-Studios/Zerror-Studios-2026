@@ -91,7 +91,7 @@ const EcommCategorySlider = () => {
     return (
         <div
             ref={containerRef}
-            className="w-full bg_blue relative overflow-hidden py-10! md:py-24! mt-10! md:mt-24!"
+            className="w-full bg_blue relative overflow-hidden py-8! md:py-16! mt-8! md:mt-16!"
         >
             <div className="w-full   padding py-0!  text-white ">
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b  md:grid grid-cols-[28%_30%_42%]">
