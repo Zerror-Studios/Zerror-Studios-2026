@@ -172,14 +172,14 @@ const WebDevProjectsSwiper = ({
 
                 const normDist = Math.min(1, distFromCenter / maxDist);
                 const scale = 1 - normDist * 0.18; // 1.0 down to 0.82
-                const brightness = 100 - normDist * 52; // 100% down to 48%
+                const brightness = 100 - normDist * 102; // 100% down to 48%
                 const translateY = normDist * 5; // 0% down to 5%
                 const zIndex = Math.round((1 - normDist) * 10);
 
                 gsap.set(slideEl, {
                     scale: scale,
                     yPercent: translateY,
-                    filter: `brightness(${brightness}%)`,
+                    // filter: `brightness(${brightness}%)`,
                     zIndex: zIndex,
                     transformOrigin: "center center",
                 });

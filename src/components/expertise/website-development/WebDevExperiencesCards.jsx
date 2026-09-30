@@ -78,7 +78,7 @@ const ServiceCard = ({ service }) => {
             <PixelGridCanvas isActive={isHovered} boxSize={30} color="#002bba" duration={1.5} />
 
             <div
-                className="iner_crd w-full h-full cursor-pointer bg-[#f4f4f4] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white rounded-2xl flex flex-col justify-between p-6 md:p-8 relative z-10"
+                className="iner_crd w-full h-full cursor-pointer bg-[#002bba10] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white rounded-2xl flex flex-col justify-between p-6 md:p-8 relative z-10"
             >
                 <div className="w-18 h-18 flex justify-start text-[#002bba] group-hover:text-white [&_path]:!stroke-current [&_path]:!fill-current transition-colors duration-300 relative z-10">
                     <Lottie

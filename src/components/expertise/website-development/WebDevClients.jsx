@@ -105,7 +105,7 @@ const ClientTestimonialCard = ({ item }) => {
     return (
         <div
             ref={cardRef}
-            className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#f6f8ff] group-[.swiper-slide-active]:text-white! group p-6 md:p-8 text_blue transition-colors duration-300 group-[.swiper-slide-active]:border-[#002bba]"
+            className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#002bba10] group-[.swiper-slide-active]:text-white! group p-6 md:p-8 text_blue transition-colors duration-300 group-[.swiper-slide-active]:border-[#002bba]"
         >
             {/* Canvas Grid Overlay with Configurable boxSize and color */}
             <PixelGridCanvas isActive={isActive} boxSize={30} color="#002bba" duration={1.5} />

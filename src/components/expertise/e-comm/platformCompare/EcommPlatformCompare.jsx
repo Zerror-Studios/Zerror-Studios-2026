@@ -703,13 +703,15 @@ const EcommPlatformCompare = () => {
                         <button
                             key={t.key}
                             onClick={() => setActiveTab(t.key)}
-                            className={`compare-tab-btn flex items-center gap-2 px-5 py-2.5 rounded-full text-sm uppercase border transition-colors duration-300 cursor-pointer ${activeTab === t.key
+                            className={`compare-tab-btn flex items-center gap-2 px-4 leading-none py-2.5 rounded-md pl-3 text-sm uppercase border transition-colors duration-300 cursor-pointer ${activeTab === t.key
                                 ? "bg-white  text-[#002bba] border-white"
                                 : "bg-transparent text-white border-white/40 hover:border-white hover:bg-white/10"
                                 }`}
                         >
-                            <Icon size={16} />
+                            <Icon className="size-4" />
+                            <span className="translate-y-0.25">
                             {t.label}
+                            </span>
                         </button>
                     );
                 })}

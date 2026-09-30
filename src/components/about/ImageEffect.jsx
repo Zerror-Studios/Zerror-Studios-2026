@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import BackgroundSnake from "../animation/BackgroundSnake";
 gsap.registerPlugin(ScrollTrigger);
 
 const ImageEffect = () => {
@@ -56,6 +57,7 @@ const ImageEffect = () => {
     <>
       <div className="w-full relative ">
         <div className="sticky top-0 h-screen center text-center text_blue">
+        <BackgroundSnake/>
           <div className="">
             <p data-para-effect className="uppercase font-medium">WHY US?</p>
             <h2 data-para-effect className="text-5xl primary-font leading-none font-medium">

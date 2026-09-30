@@ -2,11 +2,12 @@
 import gsap from "gsap";
 import CustomEase from "gsap/dist/CustomEase";
 import { Link } from "next-view-transitions";
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Button from "../common/Button";
 import { caseStudies } from "@/data/ProjectsData";
 import useDevice from "../hooks/useDevice";
 import Image from "next/image";
+import PixelGridCanvas from "../common/PixelGridCanvas";
 
 const INNER_PADDING = 60;
 gsap.registerPlugin(CustomEase);
@@ -21,6 +22,7 @@ const OurWork = () => {
     const activeIndex = useRef(null);
     const cardRefs = useRef([]);
     const posRefs = useRef([]);
+    const [hoveredCard, setHoveredCard] = useState(null);
 
     useEffect(() => {
         if (!isMobile) return;
@@ -71,6 +73,7 @@ const OurWork = () => {
     const handleMouseEnter = (index) => {
         if (isMobile) return;
         activeIndex.current = index;
+        setHoveredCard(index);
 
         const card = cardRefs.current[index];
         const hoverVid = card.querySelector(".hover_vid");
@@ -150,6 +153,7 @@ const OurWork = () => {
     const handleMouseLeave = (index) => {
         if (isMobile) return;
         activeIndex.current = null;
+        setHoveredCard(null);
 
         const hoverVid =
             cardRefs.current[index].querySelector(".hover_vid");
@@ -163,7 +167,7 @@ const OurWork = () => {
     };
 
     return (
-        <div className="work_paren w-full py-8 md:py-16 space-y-8 md:space-y-16 relative z-10 bg-white">
+        <div className="work_paren w-full pt-8 md:pt-16 space-y-8 md:space-y-16 relative z-10 bg-white">
 
             <div className="w-full  padding text_blue space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
@@ -202,7 +206,7 @@ const OurWork = () => {
                                     clipPath: "inset(40%)",
                                     willChange: "transform, clip-path, opacity"
 
-                                }} className="hover_vid absolute z-10 top-0 opacity-0 left-0 pointer-events-none aspect-video w-[25rem] ">
+                                }} className="hover_vid absolute z-30 top-0 opacity-0 left-0 pointer-events-none aspect-video w-[25rem] ">
                                     <video loop muted autoPlay playsInline className="cover" src={item.cover_vid} alt="loading img" />
                                 </div>
                             )}
@@ -210,6 +214,14 @@ const OurWork = () => {
                             <div className="cover group-hover:brightness-[.3] transition-all duration-300 brightness-100  ease-[cubic-bezier(0.4, 0, 0.2, 1]  ">
                                 <Image src={item.cover_img} alt="Item cover img Graphic" className="cover" fill />
                             </div>
+
+                            <PixelGridCanvas
+                                isActive={hoveredCard === i}
+                                boxSize={30}
+                                color="rgba(255,255,255,0.1)"
+                                duration={1}
+                                className={`absolute inset-0 w-full h-full pointer-events-none z-20 transition-all duration-700 ${hoveredCard === i ? 'backdrop-blur-sm' : ''}`}
+                            />
                         </div>
 
                         <div className="w-full text_blue">

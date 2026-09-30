@@ -57,7 +57,7 @@ const TechCard = ({ card, className }) => {
                 className="absolute max-sm:hidden inset-0 w-full h-full pointer-events-none rounded-2xl z-0"
             />
 
-            <div className="w-full h-full p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[20rem] md:min-h-[450px] bg-[#f4f4f4] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white relative z-10">
+            <div className="w-full h-full p-8 md:p-12 flex flex-col justify-between rounded-2xl min-h-[20rem] md:min-h-[450px] bg-[#002bba10] group-hover:bg-transparent transition-colors duration-300 text-[#002bba] group-hover:text-white relative z-10">
                 <div className="flex justify-between items-start gap-4 relative z-10">
                     <h4 data-para-effect className="text-3xl font-bold max-w-[80%] uppercase leading-tight tracking-tight text-[#002bba] group-hover:text-white transition-colors duration-300">
                         {card.title}

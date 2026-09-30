@@ -8,6 +8,8 @@ import { useGSAP } from '@gsap/react'
 import Matter from 'matter-js';
 import { clientsData } from './ClientsMarquee';
 import VelocityMarquee from '../common/VelocityMarquee';
+import BackgroundSnake from '../animation/BackgroundSnake';
+import PixelGridCanvas from '../common/PixelGridCanvas';
 
 const DetailedExpertiseHero = ({
     expertiseName,
@@ -244,8 +246,10 @@ const DetailedExpertiseHero = ({
     })
 
     return (
-        <div className=' content_box opacity-0 '>
+        <div className=' content_box opacity-0 relative '>
+
             <div ref={heroContainerRef} className=" padding w-full h-[65vh] md:h-[80vh] flex flex-col justify-between relative overflow-hidden">
+                <BackgroundSnake />
                 {/* Background Pop-up Icons on Button Hover */}
                 <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
                     {Object.entries(heroIcons).map(([label, icons]) => {
@@ -284,12 +288,16 @@ const DetailedExpertiseHero = ({
                                 ref={(el) => (buttonRefs.current[item] = el)}
                                 onMouseEnter={() => handleButtonHover(item)}
                                 onMouseLeave={() => setActiveHoverLabel(null)}
-                                className={`blink_btn text-xs uppercase px-4 py-2 leading-none transition-all duration-300 rounded-md cursor-pointer ${activeHoverLabel === item
-                                    ? 'bg-[#002bba] text-white shadow-lg scale-105'
-                                    : 'bg-[#002bba20] text_blue hover:bg-[#002bba35]'
-                                    }`}
+                                className="blink_btn group relative overflow-hidden text-xs uppercase px-4 py-2 border-[#002bba15] border bg-[#002bba10] leading-none transition-colors duration-300 rounded-sm cursor-pointer text-[#002bba] hover:text-white"
                             >
-                                {item}
+                                <PixelGridCanvas
+                                    isActive={activeHoverLabel === item}
+                                    boxSize={12}
+                                    color="#002bba"
+                                    duration={0.6}
+                                    className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                                />
+                                <span className="relative z-10 transition-colors duration-300">{item}</span>
                             </button>
                         ))}
                     </div>
@@ -335,17 +343,17 @@ const DetailedExpertiseHero = ({
                 </div>
 
             </div>
-                <div ref={marqueeContainerRef} className="w-full md:py-8 mt-6 md:mt-12 border-t border-[#002bba] z-10 overflow-hidden">
-                    <VelocityMarquee baseSpeed={25}>
-                        <div className="flex items-center gap-10 md:gap-20 px-5 md:px-10 h-24 md:h-32">
-                            {clientsData.map((item, i) => (
-                                <div key={i} className="w-32 md:w-70 shrink-0">
-                                    <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
-                                </div>
-                            ))}
-                        </div>
-                    </VelocityMarquee>
-                </div>
+            <div ref={marqueeContainerRef} className="w-full md:py-8 mt-6 md:mt-12 border-t border-[#002bba] z-10 overflow-hidden">
+                <VelocityMarquee baseSpeed={25}>
+                    <div className="flex items-center gap-10 md:gap-20 px-5 md:px-10 h-24 md:h-32">
+                        {clientsData.map((item, i) => (
+                            <div key={i} className="w-32 md:w-70 shrink-0">
+                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
+                            </div>
+                        ))}
+                    </div>
+                </VelocityMarquee>
+            </div>
         </div>
     )
 }

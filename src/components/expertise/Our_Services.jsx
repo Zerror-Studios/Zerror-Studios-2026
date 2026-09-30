@@ -265,19 +265,17 @@ const Our_Services = () => {
             >
               <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[65%_35%]">
                 {/* Left */}
-                <div className="  md:w-1/2">
+                <div className="  md:w-1/2 space-y-5">
                   <h2 data-para-effect className=" md:w-[85%] capitalize text-5xl text_blue primary-font">
                     {item.title}
                   </h2>
+                  <Button link={item.href} title="View More" />
                 </div>
                 {/* Right */}
                 <div className=" space-y-5 md:space-y-10 ">
                   <h3 data-para-effect className=" text-3xl secondary-font  text_blue">
                     {item.description}
                   </h3>
-
-                  <Button link={item.href} title="View More" />
-
                 </div>
               </div>
             </div>

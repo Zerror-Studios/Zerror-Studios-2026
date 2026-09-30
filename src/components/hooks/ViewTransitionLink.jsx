@@ -8,6 +8,7 @@ export default function ViewTransitionLink({
   onClick,
   className,
   children,
+  ...props
 }) {
   const router = useTransitionRouter();
 
@@ -21,7 +22,7 @@ export default function ViewTransitionLink({
 
 
   return (
-    <a href={href} onClick={handleClick} className={className}>
+    <a href={href} onClick={handleClick} className={className} {...props}>
       {children}
     </a>
   );
