@@ -8,28 +8,28 @@ import {
 
 const COURSES = [
     {
-        title: "Glassmorphism 3D Art",
-        subtitle: "Master Class.",
-        duration: "12 hours",
+        title: "Pottery basics,",
+        subtitle: "a 4-week class",
+        duration: "4 weeks",
         level: "Beginner",
-        opened: 85,
-        clicked: 26,
+        opened: 78,
+        clicked: 31,
     },
     {
-        title: "Advanced 3D Web Motion",
-        subtitle: "Master Class.",
-        duration: "16 hours",
+        title: "Wheel throwing,",
+        subtitle: "a 6-week class",
+        duration: "6 weeks",
         level: "Intermediate",
-        opened: 91,
-        clicked: 34,
+        opened: 82,
+        clicked: 36,
     },
     {
-        title: "Interactive WebGL Shaders",
-        subtitle: "Master Class.",
-        duration: "18 hours",
-        level: "Mastery",
-        opened: 95,
-        clicked: 42,
+        title: "Studio membership,",
+        subtitle: "billed monthly",
+        duration: "Monthly",
+        level: "All levels",
+        opened: 88,
+        clicked: 40,
     }
 ];
 
@@ -143,7 +143,7 @@ function LoyaltySystemAnim() {
                     <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden shadow-inner bg-slate-900">
                         <Image 
                             src="/images/expertisePage/e-comm/cmsCards/masterclass_art.jpg" 
-                            alt="Glassmorphism 3D Art" 
+                            alt="Class cover art" 
                             fill 
                             className="object-cover"
                             sizes="(max-width: 768px) 60vw, 30vw"
@@ -200,7 +200,7 @@ function LoyaltySystemAnim() {
                     className={`absolute top-[40%] sm:top-[38%] -left-3 sm:-left-6 z-30 bg-white rounded-full px-3 sm:px-3.5 py-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.25)] border border-slate-100 flex items-center gap-1.5 pointer-events-auto cursor-pointer anim-float-pill transition-all duration-300 hover:scale-105 active:scale-95 ${
                         isSubscribed ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'text-slate-800'
                     }`}
-                    title="Subscribe to Masterclass"
+                    title="Subscribe to the class"
                 >
                     {isSubscribed ? (
                         <>
@@ -208,7 +208,7 @@ function LoyaltySystemAnim() {
                                 <RiCheckLine size={10} />
                             </div>
                             <span className="font-bold text-[9px] sm:text-[10px] text-emerald-700 tracking-tight">
-                                Subscribed!
+                                Subscribed
                             </span>
                         </>
                     ) : (
@@ -220,30 +220,30 @@ function LoyaltySystemAnim() {
                                 <circle cx="5" cy="19" r="2" fill="#f97316"/>
                             </svg>
                             <span className="font-bold text-[9px] sm:text-[10px] text-slate-800 tracking-tight">
-                                Subscribe Now
+                                Subscribe now
                             </span>
                         </>
                     )}
                 </div>
 
-                {/* 3. Floating Stat Card 1 ("OPENED 85%") (Top-Right Overlapping) */}
+                {/* 3. Floating Stat Card 1 ("Opened") (Top-Right Overlapping) */}
                 <div 
                     className="absolute -top-3 sm:-top-5 -right-3 sm:-right-6 z-20 w-24 sm:w-28 bg-slate-900/40 backdrop-blur-xs border border-white/20 rounded-lg p-2 sm:p-2.5 shadow-2xl text-center anim-float-stat1"
                 >
                     <span className="uppercase text-[7.5px] sm:text-[8.5px] tracking-wider text-white/70 font-semibold block">
-                        OPENED
+                        Opened
                     </span>
                     <span className="text-lg sm:text-xl  text-[#55FF8D] tracking-tight font-sans block leading-none mt-1 drop-shadow-sm tabular-nums">
                         {animatedOpened}%
                     </span>
                 </div>
 
-                {/* 4. Floating Stat Card 2 ("CLICKED 26%") (Middle-Right Overlapping) */}
+                {/* 4. Floating Stat Card 2 ("Clicked") (Middle-Right Overlapping) */}
                 <div 
                     className="absolute top-[28%] sm:top-[26%] -right-4 sm:-right-8 z-20 w-24 sm:w-28 bg-white z-[-1] rounded-lg text-center p-2 sm:p-2.5 shadow-[0_12px_28px_rgba(0,0,0,0.3)] border border-slate-100  pl-2.5 sm:pl-3 anim-float-stat2"
                 >
                     <span className="uppercase text-[7.5px] sm:text-[8.5px] tracking-wider text-slate-400 font-semibold block">
-                        CLICKED
+                        Clicked
                     </span>
                     <span className="text-lg sm:text-xl font-medium text-slate-900 tracking-tight font-sans block leading-none mt-1 tabular-nums">
                         {animatedClicked}%

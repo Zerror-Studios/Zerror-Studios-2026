@@ -17,34 +17,34 @@ import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 
 const services = [
     {
-        title: "UI/UX Design",
+        title: "Design",
         animationData: iconUiUx,
-        description: "Creating intuitive interfaces that enhance usability and user satisfaction."
+        description: "Shaped around what you sell."
     },
     {
-        title: "Full Stack Development",
+        title: "Development",
         animationData: icon2,
-        description: "Building scalable frontend and backend solutions for modern applications."
+        description: "Next.js, and a CMS your team can use."
     },
     {
-        title: "GSAP Animations",
+        title: "Scroll and motion",
         animationData: icon1,
-        description: "Crafting smooth interactive animations that elevate digital experiences."
+        description: "GSAP, with Three.js where it earns its place."
     },
     {
-        title: "SEO Optimization",
+        title: "SEO and AI search",
         animationData: icon3,
-        description: "Improving search visibility to drive organic traffic and growth."
+        description: "Found on Google, and in AI answers."
     },
     {
-        title: "Testing & Security",
+        title: "Testing",
         animationData: icon5,
-        description: "Ensuring reliable performance through rigorous testing and protection."
+        description: "Checked on real devices, then 30 days of free fixes."
     },
     {
-        title: "AWS Cloud Hosting",
+        title: "Hosting and care",
         animationData: iconCloud,
-        description: "Deploying secure cloud infrastructure with scalable hosting solutions."
+        description: "Fast, secure, looked after every month."
     }
 ];
 
@@ -142,16 +142,16 @@ const WebDevExperiencesCards = () => {
                 <div className="w-full relative z-10   padding  shrink-0 ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                         <div className="">
-                            <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Built for better <br /> experiences </h2>
+                            <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>In every <br /> site</h2>
                         </div>
                         <div className="text-xs max-sm:hidden pt-4">
-                            <p className='font-thin'>How We</p>
-                            <p className='font-thin'>Build</p>
+                            <p data-para-effect className="font-thin">Not add-ons.</p>
+                            <p data-para-effect className="font-thin">Part of the build.</p>
                         </div>
-                        <div className=" text-3xl  md:pl-2">
-                            <h3 data-para-effect className="">
-                                <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                                Everything you need to build a modern, smooth, and high-performing <br /> website.
+                        <div className="text-3xl md:pl-2">
+                            <h3 data-para-effect className="secondary-font">
+                                <span className="opacity-0 max-sm:hidden pointer-events-none" aria-hidden="true">...............</span>
+                                Six things every site gets, whatever its size. Design, build, motion, search, testing and care, all from the same team.
                             </h3>
                         </div>
                     </div>

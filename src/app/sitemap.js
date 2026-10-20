@@ -7,16 +7,23 @@ export default function sitemap() {
     '/about',
     '/contact',
     '/work',
-    '/expertise/website-development',
-    '/expertise/e-commerce',
-    '/expertise/custom-software-development',
-    '/expertise/branding-marketing-and-seo',
+    '/expertise/websites',
+    '/expertise/ecommerce',
+    '/expertise/software-and-tools',
+    '/expertise/branding-and-marketing',
     '/pitchdeck',
   ].map((route) => ({
     url: absoluteUrl(route),
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : 0.8,
+  }));
+
+  const legalRoutes = ['/privacy', '/terms'].map((route) => ({
+    url: absoluteUrl(route),
+    lastModified: new Date(),
+    changeFrequency: "yearly",
+    priority: 0.3,
   }));
 
   const projectRoutes = caseStudies
@@ -28,5 +35,5 @@ export default function sitemap() {
       priority: 0.7,
     }));
 
-  return [...routes, ...projectRoutes];
+  return [...routes, ...legalRoutes, ...projectRoutes];
 }

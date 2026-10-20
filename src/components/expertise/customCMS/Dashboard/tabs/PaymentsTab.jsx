@@ -4,12 +4,12 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const initialPayments = [
-  { id: "TXN-90214", customer: "Priya Patel", date: "Sep 11, 2026", method: "Razorpay / UPI", card: "•••• 4242", amount: "₹23,646", status: "Completed", icon: "💳" },
-  { id: "TXN-90213", customer: "Amit Kumar", date: "Sep 11, 2026", method: "PhonePe", card: "PhonePe", amount: "₹11,620", status: "Completed", icon: "🍎" },
-  { id: "TXN-90212", customer: "Neha Gupta", date: "Sep 10, 2026", method: "Paytm", card: "9876543210@paytm", amount: "₹35,731", status: "Completed", icon: "🅿️" },
-  { id: "TXN-90211", customer: "Vikram Singh", date: "Sep 10, 2026", method: "RuPay Card", card: "•••• 8812", amount: "₹1,999.00", status: "Pending", icon: "💳" },
-  { id: "TXN-90210", customer: "Anjali Desai", date: "Sep 09, 2026", method: "Razorpay / UPI", card: "•••• 1920", amount: "₹1,02,920", status: "Refunded", icon: "💳" },
-  { id: "TXN-90209", customer: "Rajesh Verma", date: "Sep 08, 2026", method: "CRED Pay", card: "Pay in 4", amount: "₹999.00", status: "Completed", icon: "🛍️" },
+  { id: "TXN-90214", customer: "Priya Patel", date: "Sep 11, 2026", method: "Razorpay / UPI", card: "•••• 4242", amount: "₹23,646", status: "Completed" },
+  { id: "TXN-90213", customer: "Amit Kumar", date: "Sep 11, 2026", method: "PhonePe", card: "PhonePe", amount: "₹11,620", status: "Completed" },
+  { id: "TXN-90212", customer: "Neha Gupta", date: "Sep 10, 2026", method: "Paytm", card: "9876543210@paytm", amount: "₹35,731", status: "Completed" },
+  { id: "TXN-90211", customer: "Vikram Singh", date: "Sep 10, 2026", method: "RuPay Card", card: "•••• 8812", amount: "₹1,999.00", status: "Pending" },
+  { id: "TXN-90210", customer: "Anjali Desai", date: "Sep 09, 2026", method: "Razorpay / UPI", card: "•••• 1920", amount: "₹1,02,920", status: "Refunded" },
+  { id: "TXN-90209", customer: "Rajesh Verma", date: "Sep 08, 2026", method: "CRED Pay", card: "Pay in 4", amount: "₹999.00", status: "Completed" },
 ];
 
 export default function PaymentsTab({ searchTerm, theme }) {
@@ -103,7 +103,6 @@ export default function PaymentsTab({ searchTerm, theme }) {
                   <td className="py-2 sm:py-3 px-0 sm:px-2 flex sm:table-cell items-center justify-between border-b sm:border-0 border-white/5">
                     <span className="sm:hidden font-semibold text-[10px] uppercase text-gray-400">Payment Gateway</span>
                     <span className={`flex items-center gap-1.5 font-medium ${isDark ? "text-gray-200" : "text-gray-800"}`}>
-                      <span>{p.icon}</span>
                       <span>{p.method}</span>
                       <span className="text-[10px] text-gray-400 font-mono">({p.card})</span>
                     </span>

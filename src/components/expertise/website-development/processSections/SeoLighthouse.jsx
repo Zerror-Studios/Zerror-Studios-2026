@@ -462,7 +462,7 @@ const SeoLighthouse = () => {
 
                                             {/* Blue Clickable Title Tag */}
                                             <h4 className="text-sm text-[#1a0dab] hover:underline cursor-pointer leading-tight mb-1.5">
-                                                Custom Website Design & Development — Zerror Studios
+                                                Website design and development in Mumbai | Zerror Studios
                                             </h4>
 
                                             {/* Meta Description */}

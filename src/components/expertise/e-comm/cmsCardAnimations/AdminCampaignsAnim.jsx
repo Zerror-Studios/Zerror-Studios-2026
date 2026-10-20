@@ -160,13 +160,13 @@ function AdminCampaignsAnim() {
                         />
                     </svg>
 
-                    {/* Central Headline: "LET'S DISCUSS" */}
+                    {/* Central Headline: "Let's discuss" */}
                     <div className="relative z-10 flex flex-col items-center justify-center text-center select-none">
-                        <span className="text-white leading-none text-xl sm:text-2xl font-sans drop-shadow-md">
-                            LET&apos;S
+                        <span className="text-white leading-none text-xl sm:text-2xl font-sans drop-shadow-md uppercase">
+                            Let&apos;s
                         </span>
-                        <span className="text-white leading-none text-xl sm:text-2xl font-sans mt-1.5 drop-shadow-md">
-                            DISCUSS
+                        <span className="text-white leading-none text-xl sm:text-2xl font-sans mt-1.5 drop-shadow-md uppercase">
+                            discuss
                         </span>
                     </div>
 

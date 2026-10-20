@@ -8,8 +8,8 @@ import TicketEffect from "@/components/home/TicketEffect";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "Zerror Studios — Where Design and Technology Move as One",
-  description: "Zerror is a Mumbai design-led studio building custom websites, software and eCommerce for brands that refuse to look average. Zero errors between the idea and the internet.",
+  title: "Zerror Studios | Design studio in Mumbai",
+  description: "Zerror Studios is a design studio in Mumbai. We build brands, websites and online stores for publishers, film houses, fashion labels and founders.",
   path: "/",
 });
 

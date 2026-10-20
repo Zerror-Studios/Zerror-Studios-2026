@@ -1,201 +1,66 @@
 "use client";
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Flip from 'gsap/dist/Flip';
-import GoogleMeet from './GoogleMeet';
-import ColorPalette from './ColorPalette';
-import FigmaWireframe from './FigmaWireframe';
-import FigmaApprovedDesign from './FigmaApprovedDesign';
-import VsCode from './VsCode';
-import SeoLighthouse from './SeoLighthouse';
-import AwsDeploy from './AwsDeploy';
-import FinalView from './FinalView';
 import { RiAddLine } from '@remixicon/react';
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger, Flip);
 }
 
-// 1. Column configuration: 5 Weeks
-export const WEEKS = [
-    { label: "WEEK 1", subtitle: "Discovery & Wireframes" },
-    { label: "WEEK 2", subtitle: "Figma UI Design" },
-    { label: "WEEK 3", subtitle: "Dev Kickoff & WIP" },
-    { label: "WEEK 4", subtitle: "Full Build & Iteration" },
-    { label: "WEEK 5", subtitle: "Launch & Handoff" },
-];
-
-// 2. Row configuration: 6 Days
 export const DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-// 3. Central Event Data Array (Single Source of Truth)
-export const CALENDAR_EVENTS = [
-    // --- Week 1 ---
-    {
-        day: "MON",
-        week: 1,
-        title: "Client Kickoff Meet",
-        tag: "Day 1",
-        align: "right",
-        vAlign: "top",
-        stage: "kickoff",
-        component: <GoogleMeet />,
-        content: `### 🤝 Client Kickoff Meet\n**Phase:** Week 1 • Day 1\n\n- Align on project goals, timeline & core deliverables.\n- Identify target audience & brand positioning strategies.\n- Establish communication channels & workspace access.\n\n*Kickoff alignment completed — setting strong project foundations.*`
-    },
-    {
-        day: "WED",
-        week: 1,
-        title: "Sitemap & IA Structure",
-        tag: "Day 2",
-        align: "right",
-        vAlign: "top",
-        stage: "sitemap",
-        component: <ColorPalette />,
-        content: `### 🗺️ Sitemap & IA Structure\n**Phase:** Week 1 • Day 3\n\n- Map out user journeys & complete website page hierarchy.\n- Plan conversion pathways & main CTA placements.\n- Define brand color tokens & foundational visual guidelines.\n\n*Information architecture approved — ready for wireframing.*`
-    },
-    {
-        day: "FRI",
-        week: 1,
-        title: "Share Figma Wireframe",
-        tag: "Day 5",
-        align: "right",
-        vAlign: "bottom",
-        stage: "wireframe",
-        component: <FigmaWireframe />,
-        content: `### 📐 Share Figma Low-Fi Wireframe\n**Phase:** Week 1 • Day 5\n\n- Deliver interactive structural wireframes in Figma.\n- Validate section layouts, page flow & content hierarchy.\n- Collect preliminary client feedback on content structure.\n\n*Low-fidelity wireframe approved for visual UI design stage.*`
-    },
+// Builds the calendar columns and events from a list of process steps.
+// steps: [{ when?, title, line, events?: [{ title, day?, row?, line?, stage?, component? }] }]
+// Each step becomes one column. Events with a day sit on that weekday row (MON to SAT),
+// and the calendar shows the days down the left side.
+// A step without events gets one card holding its line, placed on a diagonal.
+export const buildCalendar = (steps = []) => {
+    const total = steps.length;
+    const useDays = steps.some((step) => step.events?.some((ev) => ev.day));
 
-    // --- Week 2 ---
-    {
-        day: "TUE",
-        week: 2,
-        title: "Hi-Fi UI Design",
-        tag: "Day 8",
-        align: "right",
-        vAlign: "top",
-        stage: "design",
-        component: <FigmaApprovedDesign />,
-        content: `### 🎨 High-Fidelity UI Design\n**Phase:** Week 2 • Day 8\n\n- Craft custom visual aesthetics, typography & UI elements.\n- Design responsive layouts for desktop, tablet & mobile views.\n- Build interactive hover states, micro-interactions & visual assets.\n\n*Transforming structural wireframes into high-fidelity designs.*`
-    },
-    {
-        day: "FRI",
-        week: 2,
-        title: "Share Figma Design",
-        tag: "Day 11",
-        align: "right",
-        vAlign: "bottom",
-        content: `### 🚀 Share Overall Figma Website Design\n**Phase:** Week 2 • Day 11\n\n- Present full high-fidelity Figma UI design to client.\n- Walk through desktop & mobile interactive prototypes.\n- Open Figma comment mode for client team review.\n\n*Milestone: Complete website design shared for review.*`
-    },
-    {
-        day: "SAT",
-        week: 2,
-        title: "Design Confirmation",
-        tag: "Day 12",
-        align: "right",
-        vAlign: "bottom",
-        content: `### ✅ Design Confirmation & Approval\n**Phase:** Week 2 • Day 12\n\n- Review final Figma design comments with client.\n- Apply minor visual adjustments based on feedback.\n- Secure formal client sign-off on full website design.\n\n*Design freeze achieved — green light for development!*`
-    },
+    const columns = steps.map((step, i) => ({
+        label: step.when || `Step ${i + 1}`,
+        subtitle: step.title,
+        short: String(i + 1).padStart(2, '0'),
+        line: step.line,
+    }));
 
-    // --- Week 3 ---
-    {
-        day: "MON",
-        week: 3,
-        title: "Dev Process Started",
-        tag: "Day 13",
-        align: "right",
-        vAlign: "top",
-        stage: "dev",
-        component: <VsCode />,
-        content: `### 💻 Development Process Kickoff\n**Phase:** Week 3 • Day 13\n\n- Initialize Next.js codebase & setup Tailwind CSS environment.\n- Establish component architecture & reusable UI design tokens.\n- Configure repository version control & automated CI/CD pipeline.\n\n*Codebase initialized — full-stack development underway.*`
-    },
-    {
-        day: "WED",
-        week: 3,
-        title: "Hero & Motion Setup",
-        tag: "Day 15",
-        align: "right",
-        vAlign: "center",
-        content: `### 🌊 Hero Section & Motion Setup\n**Phase:** Week 3 • Day 15\n\n- Build high-impact Hero section with GSAP scroll triggers.\n- Implement smooth micro-animations & smooth parallax.\n- Optimize rendering performance to maintain 60fps.\n\n*Motion-led design implementation in production code.*`
-    },
-    {
-        day: "FRI",
-        week: 3,
-        title: "Share WIP Link",
-        tag: "Day 17",
-        align: "right",
-        vAlign: "bottom",
-        content: `### 🔗 Share Initial WIP Link\n**Phase:** Week 3 • Day 17\n\n- Deploy early build to Vercel live staging URL.\n\n- Share Work-In-Progress (WIP) link with the client.\n- Enable live browser preview for client tracking.\n\n*Milestone: Live WIP link shared for real-time progress preview.*`
-    },
+    const rawEvents = steps.flatMap((step, col) => {
+        const list = step.events && step.events.length > 0
+            ? step.events
+            : [{ title: step.line, row: col, auto: true }];
 
-    // --- Week 4 ---
-    {
-        day: "TUE",
-        week: 4,
-        title: "API & Form Integration",
-        tag: "Day 20",
-        align: "left",
-        vAlign: "top",
-        content: `### ⚡ API & Form Integration\n**Phase:** Week 4 • Day 20\n\n- Connect dynamic API endpoints & backend services.\n- Wire contact forms with validation & success handlers.\n- Implement secure client data transmission.\n\n*Ensures seamless functional interactivity on staging.*`
-    },
-    {
-        day: "WED",
-        week: 4,
-        title: "Client Demo Walkthrough",
-        tag: "Day 21",
-        align: "left",
-        vAlign: "center",
-        content: `### 🖥️ Client Demo Walkthrough\n**Phase:** Week 4 • Day 21\n\n- Live walkthrough of fully built staging website.\n- Test interactive forms, animations & mobile navigation.\n- Collect consolidated client feedback list.\n\n*Interactive demonstration of production-ready website.*`
-    },
-    {
-        day: "FRI",
-        week: 4,
-        title: "Feedback Changes",
-        tag: "Day 23",
-        align: "left",
-        vAlign: "bottom",
-        content: `### 🛠️ Implementing Feedback Changes\n**Phase:** Week 4 • Day 23\n\n- Apply requested copy updates, image swaps & layout tweaks.\n- Fine-tune animation timings & hover micro-interactions.\n- Adjust color contrasts & spacing based on feedback.\n\n*Iterative refinement to match client expectations.*`
-    },
+        return list.map((ev) => {
+            const dayName = ev.day ? ev.day.charAt(0) + ev.day.slice(1).toLowerCase() : null;
+            const when = [step.when || `Step ${col + 1} of ${total}`, dayName].filter(Boolean).join(' · ');
+            const content = `### ${ev.auto ? step.title : ev.title}\n**When:** ${when}\n\n- ${ev.line || step.line}`;
 
-    // --- Week 5 ---
-    {
-        day: "TUE",
-        week: 5,
-        title: "SEO & Lighthouse 90+",
-        tag: "Day 26",
-        align: "left",
-        vAlign: "top",
-        stage: "seo",
-        component: <SeoLighthouse />,
-        content: `### ⚡ SEO & Lighthouse 90+ Tuning\n**Phase:** Week 5 • Day 26\n\n- Optimize Core Web Vitals (LCP < 1.5s, INP, CLS scores).\n- Compress images, set WebP formats & lazy loading.\n- Inject Meta tags, OpenGraph previews & Schema markup.\n\n*Guarantees top search visibility & 90+ Lighthouse score.*`
-    },
-    {
-        day: "THU",
-        week: 5,
-        title: "Domain & Live Launch",
-        tag: "Day 28",
-        align: "left",
-        vAlign: "center",
-        stage: "deploy",
-        component: <AwsDeploy />,
-        content: `### 🌐 Domain Pointing & Live Launch\n**Phase:** Week 5 • Day 28\n\n- Point custom domain DNS records (A-records / CNAME) to production.\n- Verify SSL certificate generation & HTTPS redirection.\n- Push website LIVE to production domain!\n\n*Milestone: Website is officially LIVE! 🎉*`
-    },
-    {
-        day: "SAT",
-        week: 5,
-        title: "Final Project Handoff",
-        tag: "Day 30",
-        align: "left",
-        vAlign: "bottom",
-        stage: "handoff",
-        component: <FinalView />,
-        content: `### 🎁 Final Project Handoff & Training\n**Phase:** Week 5 • Day 30\n\n- Transfer source code repositories & domain administrative access.\n- Deliver documentation, CMS video tutorials & operating guidelines.\n- Conduct wrap-up meeting & establish long-term maintenance support.\n\n*Project successfully delivered & handed off! 🚀*`
-    },
-];
+            return {
+                col,
+                row: useDays && ev.day ? DAYS.indexOf(ev.day) : ev.row ?? col,
+                title: ev.title,
+                tag: dayName ? `${columns[col].label} · ${dayName}` : columns[col].label,
+                content,
+                stage: ev.stage,
+                component: ev.component,
+                auto: Boolean(ev.auto),
+            };
+        });
+    });
 
-// Dynamically derived animated stages
-export const STAGES = CALENDAR_EVENTS.filter(e => e.stage && e.component);
+    const rowCount = useDays ? DAYS.length : Math.max(total, 1, ...rawEvents.map((e) => e.row + 1));
+
+    const events = rawEvents.map((e) => ({
+        ...e,
+        align: e.col >= Math.ceil(total / 2) ? 'left' : 'right',
+        vAlign: e.row < rowCount / 3 ? 'top' : e.row >= (rowCount * 2) / 3 ? 'bottom' : 'center',
+    }));
+
+    return { columns, events, rowCount, days: useDays ? DAYS : null };
+};
 
 const renderContent = (text) => {
     if (!text) return null;
@@ -222,10 +87,7 @@ const renderContent = (text) => {
 
 const EventCard = ({
     title,
-    tag,
     content,
-    bgColor = "bg_blue",
-    textColor = "text-white",
     align = "right",
     vAlign = "center",
     isTarget = false,
@@ -367,7 +229,7 @@ const EventCard = ({
     );
 };
 
-const Calendar = () => {
+const Calendar = ({ columns = [], events = [], rowCount = 6, days = null }) => {
     const containerRef = useRef(null);
     const fullCardsRef = useRef([]);
     const gridSlotsRef = useRef({});
@@ -378,13 +240,18 @@ const Calendar = () => {
     const [activeScrollStage, setActiveScrollStage] = useState(null);
     const activeScrollStageRef = useRef(null);
 
+    // Animated stages: events that carry an enlarged mockup component
+    const stages = useMemo(() => events.filter(e => e.stage && e.component), [events]);
+    const hasStages = stages.length > 0;
+    const rows = useMemo(() => Array.from({ length: rowCount }, (_, i) => i), [rowCount]);
+
     const currentActiveKey = activeCardKey || activeScrollStage;
-    let activeDay = null;
-    let activeWeek = null;
+    let activeCol = null;
+    let activeRow = null;
     if (currentActiveKey) {
         const parts = currentActiveKey.split('-');
-        activeDay = parts[0];
-        activeWeek = parseInt(parts[1], 10);
+        activeRow = parseInt(parts[0], 10);
+        activeCol = parseInt(parts[1], 10);
     }
 
     useEffect(() => {
@@ -431,6 +298,8 @@ const Calendar = () => {
     }, [activeCardKey]);
 
     useGSAP(() => {
+        if (!hasStages) return;
+
         const updateActiveScrollStage = (stageKey) => {
             if (activeScrollStageRef.current !== stageKey) {
                 activeScrollStageRef.current = stageKey;
@@ -438,7 +307,7 @@ const Calendar = () => {
             }
         };
 
-        const stageData = STAGES.map((stage, i) => {
+        const stageData = stages.map((stage, i) => {
             const card = cardsRef.current[stage.stage];
             const fullCard = fullCardsRef.current[i];
             const gridSlot = gridSlotsRef.current[stage.stage];
@@ -449,7 +318,7 @@ const Calendar = () => {
 
         // Ensure all stages are present in DOM
         const validStages = stageData.filter(s => s.card && s.fullCard && s.gridSlot);
-        if (validStages.length !== STAGES.length) return;
+        if (validStages.length !== stages.length) return;
 
         // 1. Ensure each card is in its grid slot before capturing state
         validStages.forEach(s => {
@@ -493,13 +362,11 @@ const Calendar = () => {
             },
         });
 
-
-
         // Build sequential timeline dynamically for all valid stages
         validStages.forEach((s, idx) => {
             const tween = flipTweens[idx];
             const prog = progressValues[idx];
-            const stageKey = `${s.stage.day}-${s.stage.week}`;
+            const stageKey = `${s.stage.row}-${s.stage.col}`;
 
             // Elevate active card above all others during animation
             tl.set(s.fullCard, { zIndex: 999 });
@@ -616,106 +483,106 @@ const Calendar = () => {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="w-full relative h-[1000vh]">
+        <div ref={containerRef} className={`w-full relative ${hasStages ? 'h-[1000vh]' : ''}`}>
             <div className="w-full h-screen padding py-8 md:py-12 sticky top-0 center">
                 <div className="w-full h-full primary-font relative overflow-hidden">
-                    <div className="relative w-full h-full grid grid-cols-[2.5rem_repeat(5,1fr)] md:grid-cols-[8rem_repeat(5,1fr)] grid-rows-[auto_repeat(6,minmax(0,1fr))] gap-1 md:gap-2">
+                    <div
+                        className="relative w-full h-full grid gap-1 md:gap-2"
+                        style={{
+                            gridTemplateColumns: `${days ? '8rem ' : ''}repeat(${columns.length}, minmax(0, 1fr))`,
+                            gridTemplateRows: `auto repeat(${rowCount}, minmax(0, 1fr))`,
+                        }}
+                    >
 
-                        {/* HEADER ROW - WEEKS */}
-                        <div className=""></div>
+                        {/* Empty corner above the day labels */}
+                        {days && <div />}
 
-                        {WEEKS.map((week, idx) => {
-                            const weekNum = idx + 1;
-                            const isWeekActive = currentActiveKey ? activeWeek === weekNum : true;
+                        {/* HEADER ROW - ONE COLUMN PER STEP */}
+                        {columns.map((column, idx) => {
+                            const isColActive = currentActiveKey ? activeCol === idx : true;
                             return (
                                 <div
                                     key={idx}
-                                    className={`rounded-md flex flex-col items-center justify-center py-2 md:py-4 transition-colors duration-300 ${isWeekActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
+                                    className={`rounded-md flex flex-col items-center justify-center py-2 md:py-4 transition-colors duration-300 ${isColActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
                                 >
-                                    <span className="text-[10px] md:text-sm max-sm:hidden">{week.label}</span>
-                                    <span className="text-[10px] md:text-sm sm:hidden font-bold">W{weekNum}</span>
-                                    <span className="text-[8px] md:text-sm uppercase text-center max-sm:leading-[1] max-sm:px-0.5">{week.subtitle}</span>
+                                    <span className="text-[10px] md:text-sm uppercase max-sm:hidden">{column.label}</span>
+                                    <span className="text-[10px] md:text-sm sm:hidden font-bold">{column.short}</span>
+                                    <span className="text-[8px] md:text-sm uppercase text-center max-sm:leading-[1] max-sm:px-0.5">{column.subtitle}</span>
                                 </div>
                             );
                         })}
 
-                        {/* DAYS & EVENT CELLS */}
-                        {DAYS.map((day) => {
-                            const isDayActive = currentActiveKey ? activeDay === day : true;
-                            return (
-                                <React.Fragment key={day}>
-                                    {/* Day row label */}
+                        {/* EVENT CELLS */}
+                        {rows.map((row) => (
+                            <React.Fragment key={row}>
+                                {/* Day row label */}
+                                {days && (
                                     <div
-                                        className={`text-[9px] md:text-sm font-semibold rounded-md text-center flex items-center justify-center transition-colors duration-300 ${isDayActive ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
+                                        className={`text-sm font-semibold rounded-md text-center flex items-center justify-center transition-colors duration-300 ${!currentActiveKey || activeRow === row ? 'opacity-100 text-white bg_blue' : 'opacity-50 text_blue bg-[#DFE4F6]'}`}
                                     >
-                                        <span className="max-sm:-rotate-90">{day}</span>
+                                        {days[row]}
                                     </div>
+                                )}
 
-                                    {/* 5 Week Slots */}
-                                    {WEEKS.map((_, weekIdx) => {
-                                        const weekNum = weekIdx + 1;
-                                        const event = CALENDAR_EVENTS.find(e => e.day === day && e.week === weekNum);
+                                {columns.map((_, col) => {
+                                    const event = events.find(e => e.row === row && e.col === col);
+                                    const eventKey = `${row}-${col}`;
 
-                                        if (!event) {
-                                            return (
-                                                <div
-                                                    key={`${day}-${weekNum}`}
-                                                    className={`h-full border border-dashed rounded-md text_blue border-[#002bba50] transition-opacity duration-300 ${currentActiveKey ? 'opacity-50' : 'opacity-100'}`}
-                                                />
-                                            );
-                                        }
-
-                                        const isTarget = Boolean(event.stage && event.component);
-                                        const eventKey = `${day}-${weekNum}`;
-                                        const isCardOpen = activeCardKey === eventKey;
-                                        const isCardActive = currentActiveKey === eventKey;
-                                        const isFaded = Boolean(currentActiveKey && !isCardActive);
-
+                                    if (!event) {
                                         return (
                                             <div
                                                 key={eventKey}
-                                                ref={isTarget ? (el) => (gridSlotsRef.current[event.stage] = el) : undefined}
-                                                className={`relative rounded-md border h-full transition-all duration-300 ${isCardOpen
-                                                    ? 'z-50 border-[#002bba]'
-                                                    : isFaded
-                                                        ? 'border-[#DFE4F6]/40 z-auto'
-                                                        : 'border-[#DFE4F6] z-auto'
-                                                    }`}
-                                            >
-                                                <EventCard
-                                                    title={event.title}
-                                                    tag={event.tag}
-                                                    content={event.content}
-                                                    bgColor={event.bgColor || "bg_blue"}
-                                                    textColor={event.textColor || "text-white"}
-                                                    align={event.align || "right"}
-                                                    vAlign={event.vAlign || "center"}
-                                                    isTarget={isTarget}
-                                                    isOpen={isCardOpen}
-                                                    isFaded={isFaded}
-                                                    onToggle={() => setActiveCardKey(prev => prev === eventKey ? null : eventKey)}
-                                                    cardRef={isTarget ? (el) => (cardsRef.current[event.stage] = el) : undefined}
-                                                    labelRef={isTarget ? (el) => (labelsRef.current[event.stage] = el) : undefined}
-                                                    contentRef={isTarget ? (el) => (contentsRef.current[event.stage] = el) : undefined}
-                                                    enlargedContent={event.component}
-                                                />
-                                            </div>
+                                                className={`h-full border border-dashed rounded-md text_blue border-[#002bba50] transition-opacity duration-300 ${currentActiveKey ? 'opacity-50' : 'opacity-100'}`}
+                                            />
                                         );
-                                    })}
-                                </React.Fragment>
-                            );
-                        })}
+                                    }
+
+                                    const isTarget = Boolean(event.stage && event.component);
+                                    const isCardOpen = activeCardKey === eventKey;
+                                    const isCardActive = currentActiveKey === eventKey;
+                                    const isFaded = Boolean(currentActiveKey && !isCardActive);
+
+                                    return (
+                                        <div
+                                            key={eventKey}
+                                            ref={isTarget ? (el) => (gridSlotsRef.current[event.stage] = el) : undefined}
+                                            className={`relative rounded-md border h-full transition-all duration-300 ${isCardOpen
+                                                ? 'z-50 border-[#002bba]'
+                                                : isFaded
+                                                    ? 'border-[#DFE4F6]/40 z-auto'
+                                                    : 'border-[#DFE4F6] z-auto'
+                                                }`}
+                                        >
+                                            <EventCard
+                                                title={event.title}
+                                                content={event.content}
+                                                align={event.align || "right"}
+                                                vAlign={event.vAlign || "center"}
+                                                isTarget={isTarget}
+                                                isOpen={isCardOpen}
+                                                isFaded={isFaded}
+                                                onToggle={() => setActiveCardKey(prev => prev === eventKey ? null : eventKey)}
+                                                cardRef={isTarget ? (el) => (cardsRef.current[event.stage] = el) : undefined}
+                                                labelRef={isTarget ? (el) => (labelsRef.current[event.stage] = el) : undefined}
+                                                contentRef={isTarget ? (el) => (contentsRef.current[event.stage] = el) : undefined}
+                                                enlargedContent={event.component}
+                                            />
+                                        </div>
+                                    );
+                                })}
+                            </React.Fragment>
+                        ))}
 
                     </div>
 
                     {/* Destination containers for GSAP Flip (one for each animated stage) */}
-                    {STAGES.map((stage, i) => {
-                        const isStageOpen = activeCardKey === `${stage.day}-${stage.week}`;
+                    {stages.map((stage, i) => {
+                        const isStageOpen = activeCardKey === `${stage.row}-${stage.col}`;
                         return (
                             <div
                                 key={stage.stage}
                                 ref={(el) => (fullCardsRef.current[i] = el)}
-                                className={`full_card absolute w-[calc(100%-3rem)] md:w-[calc(100%-8.5rem)] h-[calc(100%-3rem)] md:h-[calc(100%-5rem)] bottom-0 right-0 pointer-events-none ${isStageOpen ? 'z-[5000]' : ''}`}
+                                className={`full_card absolute ${days ? 'w-[calc(100%-8.5rem)]' : 'w-full'} h-[calc(100%-3rem)] md:h-[calc(100%-5rem)] bottom-0 right-0 pointer-events-none ${isStageOpen ? 'z-[5000]' : ''}`}
                             />
                         );
                     })}

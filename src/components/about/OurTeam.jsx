@@ -12,6 +12,7 @@ gsap.registerPlugin(Flip);
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Order and titles from zerror-website-handoff/03-about.md.
 const teamMembers = [
   {
     id: 1,
@@ -21,41 +22,73 @@ const teamMembers = [
   },
   {
     id: 2,
+    name: "Shreevar Jhunjhunwala",
+    role: "Head of Business Development",
+    img: "/images/outTeam/shreevar.png",
+  },
+  {
+    id: 3,
     name: "Anand Vishwakarma",
-    role: "CTO / Sr. Full Stack Developer",
+    role: "CTO",
     img: "/images/outTeam/anand.png",
   },
   {
     id: 4,
-    name: "Ayush Ahirwar",
-    role: "Jr. Full Stack Developer",
-    img: "/images/outTeam/ayush.png",
-  },
-  {
-    id: 3,
-    name: "Sunny Kurmi",
-    role: " Sr. Frontend Developer",
-    img: "/images/outTeam/sunny.png",
+    name: "Mehak Nayak",
+    role: "Operations Manager",
+    img: "/images/outTeam/mehak.png",
   },
   {
     id: 5,
-    name: "Inderjit Singh",
-    role: "Jr. Frontend Developer",
-    img: "/images/outTeam/inderjeet.png",
+    name: "Sunny Kurmi Patel",
+    role: "Senior Frontend Developer",
+    img: "/images/outTeam/sunny.png",
   },
   {
     id: 6,
-    name: "Mridulla Devi",
-    role: "UI/UX Designer",
-    img: "/images/outTeam/mridulla.png",
+    name: "Ayush Kumar Ahirwar",
+    role: "Frontend Developer",
+    img: "/images/outTeam/ayush.png",
   },
   {
     id: 7,
+    name: "Inderjit Singh",
+    role: "Three.js Developer",
+    img: "/images/outTeam/inderjeet.png",
+  },
+  {
+    id: 8,
+    name: "Dravya Bansal",
+    role: "Shopify Developer",
+    img: "/images/outTeam/dravya.png",
+  },
+  {
+    id: 9,
+    name: "Shovon Mallick",
+    role: "UI/UX Designer",
+    img: "/images/outTeam/shovon.png",
+  },
+  {
+    id: 10,
+    name: "Sukhveer Kaur",
+    role: "UI/UX Designer",
+    img: "/images/outTeam/sukhveer.png",
+  },
+  {
+    id: 11,
     name: "Lingkan Mondal",
     role: "UI/UX Designer",
     img: "/images/outTeam/lingkan.png",
   },
 ];
+
+const initials = (name) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("");
 
 const OurTeam = () => {
   const { isMobile, isDesktop } = useDevice();
@@ -274,11 +307,22 @@ const OurTeam = () => {
                       : "opacity-0"
                   }`}
                 />
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="cover brightness-[1.4]"
-                />
+                {member.img ? (
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="cover brightness-[1.4]"
+                  />
+                ) : (
+                  // TODO: placeholder until the photo arrives
+                  <div
+                    role="img"
+                    aria-label={member.name}
+                    className="absolute inset-0 center bg-[#002bba]/5 text_blue primary-font text-5xl md:text-7xl leading-none select-none"
+                  >
+                    {initials(member.name)}
+                  </div>
+                )}
               </div>
 
               {/* Text */}
@@ -305,10 +349,10 @@ const OurTeam = () => {
 
               <div className="dummy_txt absolute pointer-events-none bottom-4 md:bottom-8 left-4 md:left-8 space-y-5 w-[80%]">
                 <h2 className="primary-font leading-none text-3xl md:text-5xl">
-                  Become A <br /> Zerrorian
+                  Become a <br /> Zerrorian
                 </h2>
                 <p className="leading-tight font-thin">
-                  Join us in creating great work share your resume.
+                  Good designers, developers and marketers: send us your work.
                 </p>
               </div>
             </div>

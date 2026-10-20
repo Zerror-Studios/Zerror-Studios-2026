@@ -20,7 +20,7 @@ import {
 
 const KPI_DATA = [
   {
-    label: "Organic Traffic",
+    label: "Organic traffic",
     value: "14.2K",
     change: "+34%",
     up: true,
@@ -30,7 +30,7 @@ const KPI_DATA = [
     border: "border-emerald-500/20",
   },
   {
-    label: "Avg. Position",
+    label: "Avg. position",
     value: "4.7",
     change: "-2.1",
     up: true,
@@ -40,7 +40,7 @@ const KPI_DATA = [
     border: "border-blue-500/20",
   },
   {
-    label: "Click Rate",
+    label: "Click rate",
     value: "8.3%",
     change: "+1.2%",
     up: true,
@@ -50,7 +50,7 @@ const KPI_DATA = [
     border: "border-amber-500/20",
   },
   {
-    label: "Bounce Rate",
+    label: "Bounce rate",
     value: "32%",
     change: "+3%",
     up: false,
@@ -104,7 +104,7 @@ export default function SeoStepUi() {
             <RiLineChartLine size={14} className="text-white" />
           </div>
           <div>
-            <h4 className="font-bold text-xs leading-tight">SEO Analytics</h4>
+            <h4 className="font-bold text-xs leading-tight">SEO analytics</h4>
             <span className="text-[8px] text-white/50 font-mono">zerrorstudios.com</span>
           </div>
         </div>
@@ -252,7 +252,7 @@ export default function SeoStepUi() {
           <div className="flex items-center justify-between">
             <span className="text-[9px] text-white/50 uppercase font-mono tracking-wider flex items-center gap-1.5">
               <RiSearchLine size={10} className="text-blue-400" />
-              Keyword Rankings
+              Keyword rankings
             </span>
             <span className="text-[8px] text-white/40 font-mono">Top 5</span>
           </div>
@@ -286,7 +286,7 @@ export default function SeoStepUi() {
                 <span className={`text-[8px] font-mono flex items-center justify-center gap-0.5 ${
                   kw.change > 0 ? "text-emerald-400" : kw.change < 0 ? "text-rose-400" : "text-white/30"
                 }`}>
-                  {kw.change > 0 ? <RiArrowUpLine size={7} /> : kw.change < 0 ? <RiArrowDownLine size={7} /> : "—"}
+                  {kw.change > 0 ? <RiArrowUpLine size={7} /> : kw.change < 0 ? <RiArrowDownLine size={7} /> : "-"}
                   {kw.change !== 0 ? Math.abs(kw.change) : ""}
                 </span>
               </div>

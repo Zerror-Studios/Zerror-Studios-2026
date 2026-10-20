@@ -4,8 +4,8 @@ import WorksGrid from '@/components/work/WorksGrid';
 import TicketEffect from '@/components/home/TicketEffect';
 
 export const metadata = createMetadata({
-  title: "Selected Work — Zerror Studios",
-  description: "Cases with teeth. Real clients, real stakes, real results — from global magazine launches to a commerce platform built from scratch.",
+  title: "Work | Zerror Studios",
+  description: "Brands we've built, from RPSG Lifestyle Media and Salman Khan Films to founders on day one.",
   path: "/work",
 });
 

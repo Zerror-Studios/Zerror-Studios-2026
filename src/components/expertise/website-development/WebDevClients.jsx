@@ -148,7 +148,7 @@ const ClientTestimonialCard = ({ item }) => {
     );
 };
 
-const WebDevClients = () => {
+const WebDevClients = ({ line = null }) => {
 
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
@@ -173,45 +173,39 @@ const WebDevClients = () => {
             <div className="w-full   padding   text_blue ">
                 <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
-                        <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>what our clients  <br /> say about us </h2>
+                        <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>What clients <br /> say</h2>
                     </div>
-                    <div className="text-xs max-sm:hidden capitalize pt-4">
-                        <p className='font-thin'>testimonial</p>
+                    <div className="text-xs max-sm:hidden pt-4">
+                        <p className='font-thin'>In their words.</p>
                     </div>
-                    <div className=" text-3xl  md:pl-2">
-                        <h3 data-para-effect className="">
-                            <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                            Your business is unique your CMS should be too.
-                        </h3>
+                    <div className="   flex items-end md:justify-end gap-x-1 md:gap-x-4 ">
+                        <button
+                            aria-label="Previous slide"
+                            disabled={isBeginning}
+                            onClick={() => swiperRef.current?.slidePrev()}
+                            className={`prev_button shrink-0 px-8 py-3 border-[#002bba] text-[#002bba]  center rounded-full border transition-all duration-300
+                            ${isBeginning
+                                    ? "opacity-40 cursor-not-allowed!"
+                                    : "group hover:bg-[#002bba] hover:text-white! hover:border-[#002bba]"
+                                }`}
+                        >
+                            <RiArrowLeftLine size={20} />
+                        </button>
+
+                        <button
+                            aria-label="Next slide"
+                            disabled={isEnd}
+                            onClick={() => swiperRef.current?.slideNext()}
+                            className={`next_button shrink-0 px-8 py-3 border-[#002bba] text-[#002bba]  center rounded-full border transition-all duration-300
+                                ${isEnd
+                                    ? "opacity-40 cursor-not-allowed!"
+                                    : "group hover:bg-[#002bba] hover:text-white! hover:border-[#002bba]"
+                                }`}
+                        >
+                            <RiArrowRightLine size={20} />
+                        </button>
                     </div>
                 </div>
-            </div>
-            <div className=" padding  flex md:justify-end gap-x-1 md:gap-x-4 ">
-                <button
-                    aria-label="Previous slide"
-                    disabled={isBeginning}
-                    onClick={() => swiperRef.current?.slidePrev()}
-                    className={`prev_button shrink-0 px-8 py-3 border-[#002bba] text-[#002bba]  center rounded-full border transition-all duration-300
-                            ${isBeginning
-                            ? "opacity-40 cursor-not-allowed!"
-                            : "group hover:bg-[#002bba] hover:text-white! hover:border-[#002bba]"
-                        }`}
-                >
-                    <RiArrowLeftLine size={20} />
-                </button>
-
-                <button
-                    aria-label="Next slide"
-                    disabled={isEnd}
-                    onClick={() => swiperRef.current?.slideNext()}
-                    className={`next_button shrink-0 px-8 py-3 border-[#002bba] text-[#002bba]  center rounded-full border transition-all duration-300
-                                ${isEnd
-                            ? "opacity-40 cursor-not-allowed!"
-                            : "group hover:bg-[#002bba] hover:text-white! hover:border-[#002bba]"
-                        }`}
-                >
-                    <RiArrowRightLine size={20} />
-                </button>
             </div>
             <div ref={containerRef} className="padding ">
                 <Swiper

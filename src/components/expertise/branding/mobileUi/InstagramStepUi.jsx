@@ -51,7 +51,7 @@ export default function InstagramStepUi({ liked, likeCount, toggleLike }) {
               +
             </div>
           </div>
-          <span className="text-[8px] text-white/70 truncate w-12 text-center">Your Story</span>
+          <span className="text-[8px] text-white/70 truncate w-12 text-center">Your story</span>
         </div>
 
         {/* Story 1 */}
@@ -118,7 +118,7 @@ export default function InstagramStepUi({ liked, likeCount, toggleLike }) {
       <div className="w-full aspect-square bg-gradient-to-br from-[#002bba] via-[#0b31a5] to-[#00105c] relative center p-4 text-center flex-col justify-between overflow-hidden">
         <div className="w-full flex justify-between items-center text-[8px] uppercase font-mono tracking-widest text-white/70 z-10">
           <span>Zerror Studios</span>
-          <span className="px-2 py-0.5 rounded-full bg-white/10 backdrop-blur-xs">Brand Engine</span>
+          <span className="px-2 py-0.5 rounded-full bg-white/10 backdrop-blur-xs">Brand system</span>
         </div>
 
         <div className="my-auto z-10 py-1">
@@ -126,7 +126,7 @@ export default function InstagramStepUi({ liked, likeCount, toggleLike }) {
             "Design That Speaks. <br /> Search That Wins."
           </h4>
           <p className="text-[9px] text-white/80 mt-1 font-light max-w-[180px] mx-auto leading-tight">
-            Transforming visual recall into market authority.
+            A look people recognise, used the same way everywhere.
           </p>
         </div>
 
@@ -177,7 +177,7 @@ export default function InstagramStepUi({ liked, likeCount, toggleLike }) {
         </div>
         <p className="text-white/90 text-[10px] leading-tight">
           <strong className="text-white   mr-1">zerrorstudios</strong>
-          Building brand positioning that commands category ownership. 🚀 #Branding #SEO
+          A new identity, rolled out across the feed this month. #Branding #SEO
         </p>
         <p className="text-[8px] text-white/40 font-mono">2 MINUTES AGO</p>
       </div>

@@ -349,7 +349,7 @@ const FinalView = () => {
                                     <p className="text-[9px] sm:text-xs font-semibold tracking-widest uppercase mb-1 text_blue">Curated Selection</p>
                                     <h2 className={`${isMobileMode ? 'text-lg font-serif' : 'text-2xl sm:text-3xl font-serif'} mb-1 sm:mb-3`}>Featured Collections</h2>
                                     <p className="text-[10px] sm:text-sm text-gray-500 max-w-lg leading-relaxed">
-                                        Every piece begins with a single tension — precision against ease, structure against movement.
+                                        Every piece begins with a single tension, precision against ease, structure against movement.
                                     </p>
                                 </div>
 

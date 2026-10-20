@@ -72,7 +72,7 @@ export default function CmsDashboard() {
       >
         <div className="pt-3">
           <Button
-            title="Try Demo"
+            title="Try the demo"
             variant="fill"
             onClick={() => setIsDemoActive(true)}
           />

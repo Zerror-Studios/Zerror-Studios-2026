@@ -8,38 +8,38 @@ gsap.registerPlugin(ScrollTrigger)
 const disciplines = [
     {
         num: "01",
-        title: "STRATEGY",
-        subtitle: "[ WHAT DRIVES OUR GROWTH ]",
-        list: ["Marketing strategy", "Campaign Planning", "Channel Mix"],
-        desc: "Growth without direction is just noise. We dig deep into your goals, your users, your numbers and your niche. Search trends. Competitors. Funnels. Gaps. Then we map where the real leverage lives. What follows? A clear, focused strategy that fits your ambition (and budget).",
+        title: "Identity",
+        subtitle: "[ How you look and sound ]",
+        list: ["Logo and identity", "Visual system", "Brand voice"],
+        desc: "A look and a voice people recognise, written down so everyone uses them the same way.",
     },
     {
         num: "02",
-        title: "DATA",
-        subtitle: "[ WHAT brings the click ]",
-        list: ["Copywriting for Ads", "Landing Pages", "Email Marketing"],
-        desc: "Can’t measure it? Can’t grow it. We build solid setups with real insight, from event tracking to server-side logic. Because growth isn’t about chasing clicks. It’s about impact. POAS. Lifetime value. Patterns that matter.",
+        title: "Social and content",
+        subtitle: "[ What people see every week ]",
+        list: ["Content calendar", "Reels and carousels", "LinkedIn"],
+        desc: "A month of posts, planned ahead, designed in-house, in your voice.",
     },
     {
         num: "03",
-        title: "Channels",
-        subtitle: "[ WHAT sharpens the edge ]",
-        list: ["CRO", "Paid Media", "A/B Testing"],
-        desc: "Not every channel is for every brand. We don’t spray and pray, we design the right mix for your funnel. For e-commerce, it’s performance, retention and smart personalization. For B2B, it’s lead engines that connect content, targeting and nurturing in one smart flow.",
+        title: "Campaigns",
+        subtitle: "[ What brings the click ]",
+        list: ["Paid social", "Landing pages", "Email"],
+        desc: "Launches, sales and always-on ads, with pages made to match.",
     },
     {
         num: "04",
-        title: "SEO & AI",
-        subtitle: "[ WHAT makes us smile ]",
-        list: ["SEO strategy", "AI Content Systems", "Search & AI Insights"],
-        desc: "Visibility is shifting. We don’t fight it, we move with it. We use AI to strengthen SEO, sharpen insights and scale content. Not gimmicks. Just smart systems that help brands show up where it counts. In search. In LLMs. In decisions.",
+        title: "SEO and AI search",
+        subtitle: "[ Where people find you ]",
+        list: ["Monthly SEO", "Articles", "AI visibility"],
+        desc: "Show up on Google, and when someone asks an AI about your category.",
     },
     {
         num: "05",
-        title: "Growth that doesn’t quit",
-        subtitle: "[ WHAT growth compounds ]",
-        list: ["CRO & Experimentation", "Funnel & UX Optimization", "Email & Lifecycle Flows"],
-        desc: "Launch ≠ finish line. We analyse, tweak and test, continuously. CRO. Funnel hacks. UX fixes. Email flows. Whatever moves the needle.",
+        title: "Growth",
+        subtitle: "[ What turns visits into sales ]",
+        list: ["CRO audits", "A/B tests", "Email flows"],
+        desc: "Launch is not the finish line. We test, fix and keep what works.",
     },
 ];
 
@@ -69,17 +69,16 @@ const BrandingDisciplines = () => {
             {/* Heading */}
             <div className="w-full padding pb-0!   space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
-                    <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>
-                        Everything You Need To Dominate.
+                    <h2 data-para-effect className='primary-font text-5xl leading-none'>
+                        What we do
                     </h2>
                 </div>
                 <div className="text-xs max-sm:hidden pt-4">
-                    <p className='font-thin'>Services</p>
                 </div>
                 <div className=" text-3xl md:pl-2">
                     <h3 data-para-effect className="leading-tight">
                         <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                        Six core disciplines. One integrated team. Designed to work together for maximum impact.
+                        Five disciplines. One team.
                     </h3>
                 </div>
             </div>

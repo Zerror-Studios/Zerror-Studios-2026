@@ -1,5 +1,15 @@
 import nodemailer from "nodemailer";
 
+const RECIPIENT = process.env.NEXT_PUBLIC_CLIENT_EMAIL || "admin@zerrorstudios.com";
+
+const escapeHtml = (value) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 export async function POST(req) {
   try {
     const formData = await req.formData();
@@ -33,15 +43,15 @@ export async function POST(req) {
 
     await transporter.sendMail({
       from: process.env.NEXT_PUBLIC_EMAIL_USER,
-      to: process.env.NEXT_PUBLIC_CLIENT_EMAIL,
+      to: RECIPIENT,
       subject: "New Zerrorian Form Submission",
       html: `
         <h2>New Zerrorian Form Submission</h2>
-        <p><b>Name:</b> ${firstName} ${lastName}</p>
-        <p><b>Role:</b> ${role}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Phone:</b> ${phone}</p>
-        <p><b>About:</b> ${about}</p>
+        <p><b>Name:</b> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
+        <p><b>Role:</b> ${escapeHtml(role)}</p>
+        <p><b>Email:</b> ${escapeHtml(email)}</p>
+        <p><b>Phone:</b> ${escapeHtml(phone)}</p>
+        <p><b>About:</b> ${escapeHtml(about)}</p>
       `,
       attachments,
     });

@@ -3,27 +3,22 @@ import BrandingWhyUs from '@/components/expertise/branding/BrandingWhyUs'
 import BrandingWorkflowSection from '@/components/expertise/branding/BrandingWorkflowSection'
 import DetailedExpertiseHero from '@/components/expertise/DetailedExpertiseHero'
 import WebDevClients from '@/components/expertise/website-development/WebDevClients'
+import WebDevProcess from '@/components/expertise/website-development/WebDevProcess'
+import { BRANDING_PROCESS } from '@/components/expertise/website-development/processSections/serviceProcesses'
 import TicketEffect from '@/components/home/TicketEffect'
 import React from 'react'
 
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "Branding, Marketing & SEO — Zerror Studios",
-  description: "Identity, content and search — including AI search — built as one system, so being found and being remembered work together.",
-  path: "/expertise/branding-marketing-and-seo",
+  title: "Branding, social media and SEO | Zerror Studios",
+  description: "Brand identity, social media, campaigns, and SEO and AI search, run month to month by the studio that builds your website.",
+  path: "/expertise/branding-and-marketing",
 });
 
 const heroVideo = "/videos/expertise/branding.mp4"
 
 const heroIcons = {
-  "Strategy": [
-    { src: "/images/expertisePage/branding/icons/brand_target.png", top: "18%", left: "10%", size: "w-20 md:w-28", rotate: "-12deg" },
-    { src: "/images/expertisePage/branding/icons/brand_compass.png", top: "22%", right: "12%", size: "w-16 md:w-24", rotate: "15deg" },
-    { src: "/images/expertisePage/branding/icons/brand_growth.png", bottom: "25%", left: "15%", size: "w-24 md:w-32", rotate: "-8deg" },
-    { src: "/images/expertisePage/branding/icons/brand_bulb.png", bottom: "30%", right: "16%", size: "w-20 md:w-28", rotate: "10deg" },
-    { src: "/images/expertisePage/branding/icons/brand_map.png", top: "48%", left: "5%", size: "w-16 md:w-24", rotate: "-5deg" },
-  ],
   "Identity": [
     { src: "/images/expertisePage/branding/icons/brand_palette.png", top: "20%", left: "12%", size: "w-20 md:w-28", rotate: "15deg" },
     { src: "/images/expertisePage/branding/icons/brand_typography.png", top: "15%", right: "14%", size: "w-24 md:w-32", rotate: "-10deg" },
@@ -31,7 +26,21 @@ const heroIcons = {
     { src: "/images/expertisePage/branding/icons/brand_book.png", bottom: "24%", right: "12%", size: "w-20 md:w-28", rotate: "-15deg" },
     { src: "/images/expertisePage/branding/icons/brand_diamond.png", top: "45%", right: "8%", size: "w-18 md:w-24", rotate: "8deg" },
   ],
-  "SEO": [
+  "Social": [
+    { src: "/images/expertisePage/branding/icons/brand_bulb.png", top: "18%", left: "10%", size: "w-20 md:w-28", rotate: "-12deg" },
+    { src: "/images/expertisePage/branding/icons/seo_link.png", top: "22%", right: "12%", size: "w-16 md:w-24", rotate: "15deg" },
+    { src: "/images/expertisePage/branding/icons/brand_palette.png", bottom: "25%", left: "15%", size: "w-24 md:w-32", rotate: "-8deg" },
+    { src: "/images/expertisePage/branding/icons/brand_book.png", bottom: "30%", right: "16%", size: "w-20 md:w-28", rotate: "10deg" },
+    { src: "/images/expertisePage/branding/icons/brand_diamond.png", top: "48%", left: "5%", size: "w-16 md:w-24", rotate: "-5deg" },
+  ],
+  "Campaigns": [
+    { src: "/images/expertisePage/branding/icons/brand_target.png", top: "18%", left: "10%", size: "w-20 md:w-28", rotate: "-12deg" },
+    { src: "/images/expertisePage/branding/icons/brand_compass.png", top: "22%", right: "12%", size: "w-16 md:w-24", rotate: "15deg" },
+    { src: "/images/expertisePage/branding/icons/brand_growth.png", bottom: "25%", left: "15%", size: "w-24 md:w-32", rotate: "-8deg" },
+    { src: "/images/expertisePage/branding/icons/brand_bulb.png", bottom: "30%", right: "16%", size: "w-20 md:w-28", rotate: "10deg" },
+    { src: "/images/expertisePage/branding/icons/brand_map.png", top: "48%", left: "5%", size: "w-16 md:w-24", rotate: "-5deg" },
+  ],
+  "Search": [
     { src: "/images/expertisePage/branding/icons/seo_search.png", top: "16%", left: "14%", size: "w-24 md:w-32", rotate: "-10deg" },
     { src: "/images/expertisePage/branding/icons/seo_chart.png", top: "20%", right: "10%", size: "w-24 md:w-32", rotate: "12deg" },
     { src: "/images/expertisePage/branding/icons/seo_ai.png", bottom: "26%", left: "12%", size: "w-20 md:w-28", rotate: "18deg" },
@@ -61,13 +70,12 @@ const page = () => {
       <DetailedExpertiseHero
         expertiseName="Found first. Remembered longer. "
         expertiseHeading={<>Be found. <br /> Be remembered.</>}
-        btnsLabels={["Strategy", "Identity", "SEO"]}
+        btnsLabels={["Identity", "Social", "Campaigns", "Search"]}
         heroIcons={heroIcons}
         introHeading={<>A brilliant website nobody finds is a well-kept secret. We make sure yours isn't.</>}
-        introText="Identity, content and search built as one system — each making the others work harder."
+        introText="Identity, content and search, made by one team."
         videoSrc={heroVideo}
-        supportingText="A strong brand makes every message easier to trust, easier to find, easier to recall. We shape all
-three together, because separately they underperform."
+        supportingText=""
         features={[
           { label: "Brand recall lift", value: "+58%" },
           { label: "Organic visibility", value: "+72%" },
@@ -82,6 +90,7 @@ three together, because separately they underperform."
       <BrandingWhyUs />
       <BrandingDisciplines />
       <BrandingWorkflowSection />
+      <WebDevProcess {...BRANDING_PROCESS} />
       <WebDevClients />
       <TicketEffect />
     </>

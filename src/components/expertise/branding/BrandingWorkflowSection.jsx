@@ -24,33 +24,33 @@ const STEPS = [
   {
     id: "calendar",
     num: "01",
-    tabTitle: "Strategy Calendar",
-    heading: "Content Strategy & Scheduling",
-    desc: "We map out key branding milestones, social posts, articles, and SEO audits on a clear monthly execution calendar.",
+    tabTitle: "Plan",
+    heading: "Plan",
+    desc: "One calendar, approved before the month starts.",
     icon: RiCalendarEventLine,
   },
   {
     id: "instagram",
     num: "02",
-    tabTitle: "Instagram Campaign",
-    heading: "Visual Brand Story & Reels",
-    desc: "Publishing visual branding carousels and high-impact Reels designed to build strong audience recall and engagement.",
+    tabTitle: "Instagram",
+    heading: "Instagram",
+    desc: "Carousels and Reels, on schedule.",
     icon: RiInstagramLine,
   },
   {
     id: "linkedin",
     num: "03",
-    tabTitle: "LinkedIn Authority",
-    heading: "Thought Leadership & Articles",
-    desc: "Deploying B2B positioning articles and case studies to establish domain authority and industry leadership.",
+    tabTitle: "LinkedIn",
+    heading: "LinkedIn",
+    desc: "Posts for the founder and the business.",
     icon: RiLinkedinBoxLine,
   },
   {
     id: "seo",
     num: "04",
-    tabTitle: "SEO Traffic Growth",
-    heading: "Search Visibility & Rank #1",
-    desc: "Converting brand awareness into organic search dominance with continuous SEO optimization and traffic growth tracking.",
+    tabTitle: "Search and report",
+    heading: "Search and report",
+    desc: "SEO work, and a short report on what moved.",
     icon: RiLineChartLine,
   },
 ];
@@ -119,24 +119,22 @@ export default function BrandingWorkflowSection() {
   };
 
   return (
-    <div data-hide-header className="w-full py-8 md:py-16 text_blue relative border-b">
+    <div data-hide-header className="w-full pt-8 md:pt-16 text_blue relative ">
       <div className="padding w-full space-y-12 md:space-y-16">
 
         {/* ── Heading Section (Matches BrandingWhyUs layout) ── */}
         <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%] items-start">
           <div>
-            <h2 data-para-effect className="capitalize primary-font text-5xl leading-none">
-              Workflow
+            <h2 data-para-effect className="primary-font text-5xl leading-none">
+              How a month runs
             </h2>
           </div>
           <div className="text-xs max-sm:hidden pt-4">
-            <p className="">How We</p>
-            <p className="">Execute & Grow</p>
           </div>
           <div className="text-3xl md:pl-2">
             <h3 data-para-effect className="leading-tight font-medium">
               <span className="opacity-0 secondary-font max-sm:hidden pointer-events-none">...............</span>
-              From strategy calendar planning to multi-channel campaign deployment — watch how we transform brand identity into organic growth.
+              Plan, post, measure, repeat.
             </h3>
           </div>
         </div>

@@ -8,23 +8,23 @@ gsap.registerPlugin(ScrollTrigger)
 const cards = [
     {
         image: "/images/expertisePage/bit-reloj.svg",
-        desc: "We don't just design — we build brands that connect and stand out from the competition.",
-        title: "Strategic Brand\nThinking",
+        desc: "What you stand for, then what to post.",
+        title: "Brand first",
     },
     {
         image: "/images/expertisePage/bit-mano.svg",
-        desc: "Every campaign is optimized for reach, engagement, and measurable conversions.",
-        title: "Performance-\nDriven Marketing",
+        desc: "Every campaign tracked to results.",
+        title: "Measured",
     },
     {
         image: "/images/expertisePage/bit-pocima.svg",
-        desc: "Proven SEO strategies that improve visibility and drive real organic traffic to your site.",
-        title: "SEO That Actually\nRanks",
+        desc: "Monthly SEO on the site we built.",
+        title: "Search that keeps working",
     },
     {
         image: "/images/expertisePage/bit-trofeo.svg",
-        desc: "From brand identity to marketing campaigns everything done in one place, seamlessly.",
-        title: "End-To-End\nExecution",
+        desc: "Identity, content, ads and search.",
+        title: "One place",
     }
 ]
 
@@ -48,16 +48,14 @@ const BrandingWhyUs = () => {
             {/* Heading */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
-                    <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Why Us</h2>
+                    <h2 data-para-effect className='primary-font text-5xl leading-none'>Why us</h2>
                 </div>
                 <div className="text-xs max-sm:hidden pt-4">
-                    <p className='font-thin'>What We</p>
-                    <p className='font-thin'>Build</p>
                 </div>
                 <div className=" text-3xl  md:pl-2">
                     <h3 data-para-effect className="">
                         <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                        We combine sharp strategic thinking with hands-on execution. Every brand we build, every campaign we run — it's designed to perform, not just look good.
+                        The team that built it runs it.
                     </h3>
                 </div>
             </div>

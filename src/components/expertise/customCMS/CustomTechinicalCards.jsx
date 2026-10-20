@@ -10,29 +10,33 @@ gsap.registerPlugin(ScrollTrigger)
 const technicalCards = [
     {
         num: "01",
-        title: "MODULAR ARCHITECTURE",
-        desc: "Built on headless principles, decoupling the frontend from the backend. This gives your content the freedom to live anywhere and your developers the tools to build without boundaries.",
+        mobileOrder: "max-md:order-1",
+        title: "Headless",
+        desc: "One source of content, for every screen.",
         textColor: "text-white",
         icon: RiStackLine
     },
     {
         num: "02",
-        title: "ENTERPRISE SECURITY",
-        desc: "We implement robust role-based access control, secure API endpoints, and end-to-end encryption. Your data stays protected while maintaining high accessibility for your team.",
+        mobileOrder: "max-md:order-2",
+        title: "Access by role",
+        desc: "Everyone sees only what they should.",
         textColor: "text-black",
         icon: RiShieldKeyholeLine
     },
     {
         num: "03",
-        title: "API-FIRST DESIGN",
-        desc: "Seamlessly integrate with CRMs, payment gateways, and third-party tools. Our custom CMS solutions are designed to be the central hub of your digital ecosystem.",
+        mobileOrder: "max-md:order-3",
+        title: "Connected",
+        desc: "Your CRM, payments, email and more.",
         textColor: "text-black",
         icon: RiLinkM
     },
     {
         num: "04",
-        title: "LIGHTNING PERFORMANCE",
-        desc: "Optimized for speed through edge caching, static generation, and efficient asset delivery. We build systems that perform exceptionally under high traffic.",
+        mobileOrder: "max-md:order-4",
+        title: "Built for traffic",
+        desc: "Fast on your busiest day.",
         textColor: "text-black",
         icon: RiFlashlightLine
     }
@@ -104,35 +108,35 @@ const CustomTechinicalCards = () => {
                 {/* Heading section styled like InfoSection */}
                 <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                     <div className="">
-                        <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>
-                            Technical <br /> Core.
+                        <h2 data-para-effect className='primary-font text-5xl leading-none'>
+                            How it is built
                         </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4">
-                        <p className='font-thin'>What We</p>
-                        <p className='font-thin'>Build</p>
+                        <p data-para-effect className="font-thin">Chosen to last.</p>
+                        <p data-para-effect className="font-thin">Not to impress.</p>
                     </div>
                     <div className=" text-3xl md:pl-2">
-                        <h3 data-para-effect className="leading-tight">
-                            <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                            We select technologies not by trend, but by structural integrity. Our stack is a cohesive ecosystem of high-performance components.
+                        <h3 data-para-effect className="secondary-font">
+                            <span className='opacity-0 max-sm:hidden pointer-events-none' aria-hidden="true">...............</span>
+                            Your content lives in one place and reaches every screen. Your team logs in to what they need, and it keeps up on your busiest day.
                         </h3>
                     </div>
                 </div>
 
                 {/* Cards Grid */}
                 <div className=" tech_crd_paren w-full mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                    {/* Left Column */}
-                    <div className="flex flex-col gap-4 md:gap-6">
+                    {/* Left Column (display: contents below md, so cards stack 01, 02, 03, 04 on mobile via order) */}
+                    <div className="max-md:contents flex flex-col gap-4 md:gap-6">
                         {[technicalCards[0], technicalCards[2]].map((card, index) => (
-                            <TechCard key={`left-${index}`} card={card} className="tech_card_1" />
+                            <TechCard key={`left-${index}`} card={card} className={`tech_card_1 ${card.mobileOrder}`} />
                         ))}
                     </div>
 
                     {/* Right Column */}
-                    <div className="flex flex-col gap-4  md:pt-44 md:gap-6">
+                    <div className="max-md:contents flex flex-col gap-4  md:pt-44 md:gap-6">
                         {[technicalCards[1], technicalCards[3]].map((card, index) => (
-                            <TechCard key={`right-${index}`} card={card} className="tech_card_2" />
+                            <TechCard key={`right-${index}`} card={card} className={`tech_card_2 ${card.mobileOrder}`} />
                         ))}
                     </div>
                 </div>

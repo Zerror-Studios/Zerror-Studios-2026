@@ -61,10 +61,7 @@ const ImageEffect = () => {
           <div className="">
             <p data-para-effect className="uppercase font-medium">WHY US?</p>
             <h2 data-para-effect className="text-5xl primary-font leading-none font-medium">
-              5 Reasons
-            </h2>
-            <h2 data-para-effect className="text-5xl primary-font leading-none font-medium">
-              To Be With Zerror
+              In Numbers
             </h2>
           </div>
         </div>
@@ -90,24 +87,24 @@ const ImageEffect = () => {
             <div className="sticky top-0 h-screen flex justify-center gap-y-12 flex-col w-full pointer-events-none">
               {[
                 {
-                  heading: "5+ Years",
-                  desc: "Hands-on product and digital execution",
+                  heading: "Since 2022",
+                  desc: "Founded in Mumbai",
                 },
                 {
-                  heading: "100+ Clients",
-                  desc: "Trusted by businesses across industries",
+                  heading: "100+",
+                  desc: "Clients",
                 },
                 {
-                  heading: "500+ Products",
-                  desc: "Websites and digital products shipped",
+                  heading: "200+",
+                  desc: "Websites and products",
                 },
                 {
-                  heading: "30M+ Lines",
-                  desc: "Production-grade code written",
+                  heading: "80+",
+                  desc: "Online stores",
                 },
                 {
-                  heading: "Design × Tech",
-                  desc: "Everything integrated under one roof",
+                  heading: "One team",
+                  desc: "Design, build, marketing",
                 },
               ].map((item, i) => (
                 <div

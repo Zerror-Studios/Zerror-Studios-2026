@@ -12,7 +12,7 @@ const Slide14 = () => {
           <div data-para-effect className="">
             <p className=' max-sm:mb-4 leading-tight text-2xl italic'>Your Next Version Starts Here.</p>
             <p className=" text-lg">
-              [<a href="mailto:hello@zerrorstudios.com" className="underline decoration-1 underline-offset-8 hover:text-white/50 transition-colors">hello@zerrorstudios.com</a> / <a href="https://www.zerrorstudios.com" target="_blank" rel="noreferrer" className="underline decoration-1 underline-offset-8 hover:text-white/50 transition-colors">www.zerrorstudios.com</a>]
+              [<a href="mailto:admin@zerrorstudios.com" className="underline decoration-1 underline-offset-8 hover:text-white/50 transition-colors">admin@zerrorstudios.com</a> / <a href="https://www.zerrorstudios.com" target="_blank" rel="noreferrer" className="underline decoration-1 underline-offset-8 hover:text-white/50 transition-colors">www.zerrorstudios.com</a>]
             </p>
           </div>
         </div>

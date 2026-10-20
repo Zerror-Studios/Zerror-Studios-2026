@@ -12,8 +12,8 @@ import { createMetadata } from "@/lib/seo";
 gsap.registerPlugin(ScrollTrigger);
 
 export const metadata = createMetadata({
-  title: "About Zerror Studios — Named After a Standard",
-  description: "Zerror means zero error. A Mumbai studio where designers and developers build side by side, so nothing gets lost between idea and launch.",
+  title: "About | Zerror Studios",
+  description: "Zerror Studios is a design studio in Mumbai, started in 2022. Meet the team behind the brands.",
   path: "/about",
 });
 

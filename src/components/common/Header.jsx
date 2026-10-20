@@ -7,9 +7,10 @@ import ViewTransitionLink from '../hooks/ViewTransitionLink';
 import { useGSAP } from '@gsap/react';
 import AnimatedPixelIcon from '../animation/AnimatedPixelIcon';
 import { useProjectForm } from "@/context/ProjectFormContext";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import PixelGridCanvas from './PixelGridCanvas';
+import { FORM_MESSAGES, SERVICE_OPTIONS, isValidEmail, failureKind } from "@/lib/formMessages";
+import { notifySuccess, showFailure, showFieldErrors } from "@/lib/notify";
+import { trackLead } from "@/lib/analytics";
 
 const menuLinks = [
   {
@@ -19,23 +20,23 @@ const menuLinks = [
   },
   {
     id: 2,
-    title: "About us",
-    href: "/about",
-  },
-  {
-    id: 3,
-    title: "Our Works",
+    title: "Work",
     href: "/work",
   },
   {
+    id: 3,
+    title: "About",
+    href: "/about",
+  },
+  {
     id: 4,
-    title: "Expertise",
+    title: "What we do",
     href: "/expertise",
     sublinks: [
-      { title: "Website Development", href: "/expertise/website-development" },
-      { title: "E-commerce Development", href: "/expertise/e-commerce" },
-      { title: "Custom Software Development", href: "/expertise/custom-software-development" },
-      { title: "Branding, Marketing & SEO", href: "/expertise/branding-marketing-and-seo" },
+      { title: "Websites", href: "/expertise/websites" },
+      { title: "eCommerce", href: "/expertise/ecommerce" },
+      { title: "Software and tools", href: "/expertise/software-and-tools" },
+      { title: "Branding and marketing", href: "/expertise/branding-and-marketing" },
     ]
   },
   {
@@ -61,6 +62,9 @@ const Header = () => {
     details: "",
   });
   const [projectLoading, setProjectLoading] = useState(false);
+  // "idle" | "sent" | "error" | "offline"
+  const [projectStatus, setProjectStatus] = useState("idle");
+  const [projectErrors, setProjectErrors] = useState({});
 
   useEffect(() => {
     if (isOpen) {
@@ -76,6 +80,8 @@ const Header = () => {
       const timer = setTimeout(() => {
         setShowProjectForm(false);
         closeProjectForm();
+        setProjectStatus("idle");
+        setProjectErrors({});
       }, 500);
       return () => clearTimeout(timer);
     }
@@ -107,6 +113,7 @@ const Header = () => {
       setProjectKinds(projectKinds.filter((k) => k !== kind));
     } else {
       setProjectKinds([...projectKinds, kind]);
+      setProjectErrors((prev) => ({ ...prev, services: undefined }));
     }
   };
 
@@ -116,37 +123,31 @@ const Header = () => {
       ...prev,
       [name]: value,
     }));
+    if (projectErrors[name]) {
+      setProjectErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleProjectSubmit = async (e) => {
     e.preventDefault();
+    if (projectLoading) return;
 
-    if (projectKinds.length === 0) {
-      toast.error("Please select what kind of project");
+    const errors = {};
+    if (projectKinds.length === 0) errors.services = FORM_MESSAGES.fields.services;
+    if (!projectFormData.name.trim()) errors.name = FORM_MESSAGES.fields.name;
+    if (!isValidEmail(projectFormData.email)) errors.email = FORM_MESSAGES.fields.email;
+
+    setProjectErrors(errors);
+    showFieldErrors(errors);
+    if (Object.keys(errors).length > 0) return;
+
+    if (typeof navigator !== "undefined" && navigator.onLine === false) {
+      setProjectStatus("offline");
+      showFailure("offline");
       return;
     }
 
-    if (!projectFormData.name.trim()) {
-      toast.error("Name is required");
-      return;
-    }
-
-    if (!projectFormData.email.trim()) {
-      toast.error("Email is required");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(projectFormData.email)) {
-      toast.error("Enter a valid email");
-      return;
-    }
-
-    if (!projectFormData.details.trim()) {
-      toast.error("Please tell us details about your project");
-      return;
-    }
-
+    setProjectStatus("idle");
     setProjectLoading(true);
     try {
       const res = await fetch("/api/project", {
@@ -160,10 +161,12 @@ const Header = () => {
         }),
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
 
-      if (data.success) {
-        toast.success("Project proposal sent successfully! 🚀");
+      if (res.ok && data.success) {
+        trackLead("start_project");
+        notifySuccess(FORM_MESSAGES.sentTitle, "We read every message ourselves and will be in touch soon.");
+        setProjectStatus("sent");
         setProjectFormData({
           name: "",
           email: "",
@@ -171,14 +174,15 @@ const Header = () => {
           details: "",
         });
         setProjectKinds([]);
-        setOpenMenu(false);
-        closeProjectForm();
       } else {
-        toast.error(data.message || "Failed to submit project inquiry");
+        setProjectStatus("error");
+        showFailure("error");
       }
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong");
+      const kind = failureKind();
+      setProjectStatus(kind);
+      showFailure(kind);
     } finally {
       setProjectLoading(false);
     }
@@ -244,7 +248,6 @@ const Header = () => {
 
   return (
     <>
-      <ToastContainer position="top-right" autoClose={3000} />
       <div className="header_wrapper fixed w-full flex justify-center z-9999 top-0">
         <div className="header_paren -translate-y-24 w-full py-5! pointer-events-none fixed padding  center">
           <div className="w-full relative z-99999 flex justify-center gap-x-1 md:gap-x-3 ">
@@ -260,8 +263,6 @@ const Header = () => {
                 </div>
                 <div className="flex-1 flex justify-center relative h-3 items-center text-center whitespace-nowrap overflow-hidden">
                   <p className={`absolute text-sm  text-white font-medium uppercase  ${openMenu ? "-translate-y-full" : ""} transition-all duration-300 ease-out `}>Menu</p>
-                  <p className={`absolute text-sm text-white font-medium uppercase transition-all duration-300 ease-out ${openMenu && !showProjectForm ? "translate-y-0!" : "translate-y-full"} `}>Cases With Teeth</p>
-                  <p className={`absolute text-sm text-white font-medium uppercase transition-all duration-300 ease-out ${openMenu && showProjectForm ? "translate-y-0!" : "translate-y-full"} `}>YOU MADE IT</p>
                 </div>
 
                 <div onClick={(e) => setOpenMenu(!openMenu)} className={`ros_paren flex flex-col justify-center items-end w-25 transition-all duration-150 ease-out ${openMenu ? "gap-y-0" : " gap-y-1.5 group-hover:gap-y-2"} `}>
@@ -369,7 +370,7 @@ const Header = () => {
                         duration={0.6}
                         className="absolute inset-0 w-full h-full pointer-events-none z-0"
                       />
-                      <span className="relative z-10 transition-colors duration-300">Our Pitchdeck</span>
+                      <span className="relative z-10 transition-colors duration-300">Pitch deck</span>
                     </ViewTransitionLink>
                   </div>
 
@@ -413,13 +414,37 @@ const Header = () => {
 
                 {/* Project Form Panel */}
                 <div className={`project-panel transition-all duration-300 p-6 flex flex-col gap-4 ${showProjectForm ? "opacity-100 pointer-events-auto " : "opacity-0 pointer-events-none absolute  inset-x-0 top-0  overflow-hidden"}`}>
-                  <form onSubmit={handleProjectSubmit} className="flex flex-col gap-4 text-white">
+
+                  {projectStatus === "sent" ? (
+                    <div className="flex flex-col gap-4 text-white text-left">
+                      <p className="text-xl leading-tight">{FORM_MESSAGES.sentTitle}</p>
+                      <p className="text-white/80 leading-tight">{FORM_MESSAGES.sentText}</p>
+                      <ViewTransitionLink
+                        href="/work"
+                        delay={500}
+                        onMouseEnter={() => setHoveredMenuBtn('sent')}
+                        onMouseLeave={() => setHoveredMenuBtn(null)}
+                        onClick={() => setOpenMenu(false)}
+                        className="group relative overflow-hidden w-full rounded-sm py-4 mt-2 text-xs center border border-[#ffffff50] bg-transparent text-[#ffffff] hover:text-black transition-colors duration-300 uppercase flex"
+                      >
+                        <PixelGridCanvas
+                          isActive={hoveredMenuBtn === 'sent'}
+                          boxSize={12}
+                          color="#ffffff"
+                          duration={0.6}
+                          className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                        />
+                        <span className="relative z-10 transition-colors duration-300">{FORM_MESSAGES.sentButton}</span>
+                      </ViewTransitionLink>
+                    </div>
+                  ) : (
+                  <form onSubmit={handleProjectSubmit} noValidate className="flex flex-col gap-4 text-white">
 
                     {/* Project Kinds */}
                     <div className="flex flex-col gap-2">
                       <label className="  text-white/80 text-left">What kind of project?</label>
                       <div className="flex flex-wrap gap-1">
-                        {["Website", "Branding", "E-commerce", "Marketing"].map((kind) => {
+                        {SERVICE_OPTIONS.map((kind) => {
                           const isActive = projectKinds.includes(kind);
                           return (
                             <button
@@ -447,6 +472,7 @@ const Header = () => {
                         value={projectFormData.name}
                         onChange={handleInputChange}
                         placeholder="Jane Doe"
+                        aria-invalid={!!projectErrors.name}
                         className="w-full bg-transparent border-b border-white/20 focus:border-white py-1.5  text-white placeholder-white/30 focus:outline-none transition-colors"
                       />
                     </div>
@@ -460,10 +486,10 @@ const Header = () => {
                         value={projectFormData.email}
                         onChange={handleInputChange}
                         placeholder="you@company.com"
+                        aria-invalid={!!projectErrors.email}
                         className="w-full bg-transparent border-b border-white/20 focus:border-white py-1.5  text-white placeholder-white/30 focus:outline-none transition-colors"
                       />
                     </div>
-
                     {/* Company Name */}
                     <div className="flex flex-col  text-left">
                       <label className="  text-white/80">
@@ -505,6 +531,8 @@ const Header = () => {
                         onClick={() => {
                           setShowProjectForm(false);
                           closeProjectForm();
+                          setProjectStatus("idle");
+                          setProjectErrors({});
                         }}
                         className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm text-xs uppercase py-4 center cursor-pointer"
                       >
@@ -515,14 +543,15 @@ const Header = () => {
                           duration={0.6}
                           className="absolute inset-0 w-full h-full pointer-events-none z-0"
                         />
-                        <span className="relative z-10 transition-colors duration-300">CANCEL</span>
+                        <span className="relative z-10 transition-colors duration-300">Cancel</span>
                       </button>
                       <button
                         type="submit"
                         disabled={projectLoading}
+                        aria-busy={projectLoading}
                         onMouseEnter={() => setHoveredMenuBtn('submit')}
                         onMouseLeave={() => setHoveredMenuBtn(null)}
-                        className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm text-xs uppercase py-4 center cursor-pointer"
+                        className={`group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm text-xs uppercase py-4 center ${projectLoading ? "cursor-wait" : "cursor-pointer"}`}
                       >
                         <PixelGridCanvas
                           isActive={hoveredMenuBtn !== 'submit'}
@@ -532,11 +561,25 @@ const Header = () => {
                           className="absolute inset-0 w-full h-full pointer-events-none z-0"
                         />
                         <span className="relative z-10 transition-colors duration-300">
-                          {projectLoading ? "SENDING..." : "SUBMIT"}
+                          {projectLoading ? FORM_MESSAGES.sending : FORM_MESSAGES.send}
                         </span>
                       </button>
                     </div>
+
+                    <p className="text-xs text-white/50 text-left">
+                      By sending this, you agree to our{" "}
+                      <ViewTransitionLink
+                        href="/privacy"
+                        delay={500}
+                        onClick={() => setOpenMenu(false)}
+                        className="underline underline-offset-2 hover:text-white transition-colors duration-300"
+                      >
+                        Privacy policy
+                      </ViewTransitionLink>
+                      .
+                    </p>
                   </form>
+                  )}
                 </div>
 
               </div>

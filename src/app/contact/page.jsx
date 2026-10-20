@@ -2,8 +2,8 @@ import ContactHome from "@/components/contact/ContactHome";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "Start a Project — Zerror Studios",
-  description: "Tell us what you're building. Zerror Studios, Mumbai. We reply the way we build: fast, and with intent.",
+  title: "Start a project | Zerror Studios",
+  description: "Tell us about your brand and what you need. Write to admin@zerrorstudios.com or use the form.",
   path: "/contact",
 });
 

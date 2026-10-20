@@ -1,15 +1,16 @@
 "use client";
 import React, { useState, useRef } from "react";
+import { notifySuccess, showFieldErrors } from "@/lib/notify";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const initialCatalog = [
-  { id: 1, name: "FabIndia Kurta", category: "Apparel", sku: "SKU-9921-TS", price: "₹2,499.00", stock: "In Stock", qty: 124, icon: "👕", bg: "bg-amber-100 text-amber-800" },
-  { id: 2, name: "Manyavar Sherwani", category: "Apparel", sku: "SKU-4412-JR", price: "₹4,999.00", stock: "In Stock", qty: 76, icon: "🎽", bg: "bg-rose-100 text-rose-800" },
-  { id: 3, name: "Biba Salwar Suit", category: "Apparel", sku: "SKU-3120-PT", price: "₹1,999.00", stock: "Low Stock", qty: 8, icon: "👖", bg: "bg-blue-100 text-blue-800" },
-  { id: 4, name: "Puma Cricket Cap", category: "Accessories", sku: "SKU-8841-CP", price: "₹999.00", stock: "In Stock", qty: 68, icon: "🧢", bg: "bg-indigo-100 text-indigo-800" },
-  { id: 5, name: "Raymond Woolen Suit", category: "Outerwear", sku: "SKU-1092-JK", price: "₹9,999.00", stock: "Out of Stock", qty: 0, icon: "🧥", bg: "bg-emerald-100 text-emerald-800" },
-  { id: 6, name: "Acne Studios Canvas Sneakers", category: "Footwear", sku: "SKU-6623-SN", price: "$310.00", stock: "In Stock", qty: 45, icon: "👟", bg: "bg-purple-100 text-purple-800" },
+  { id: 1, name: "FabIndia Kurta", category: "Apparel", sku: "SKU-9921-TS", price: "₹2,499.00", stock: "In Stock", qty: 124, icon: "K", bg: "bg-amber-100 text-amber-800" },
+  { id: 2, name: "Manyavar Sherwani", category: "Apparel", sku: "SKU-4412-JR", price: "₹4,999.00", stock: "In Stock", qty: 76, icon: "S", bg: "bg-rose-100 text-rose-800" },
+  { id: 3, name: "Biba Salwar Suit", category: "Apparel", sku: "SKU-3120-PT", price: "₹1,999.00", stock: "Low Stock", qty: 8, icon: "B", bg: "bg-blue-100 text-blue-800" },
+  { id: 4, name: "Puma Cricket Cap", category: "Accessories", sku: "SKU-8841-CP", price: "₹999.00", stock: "In Stock", qty: 68, icon: "C", bg: "bg-indigo-100 text-indigo-800" },
+  { id: 5, name: "Raymond Woolen Suit", category: "Outerwear", sku: "SKU-1092-JK", price: "₹9,999.00", stock: "Out of Stock", qty: 0, icon: "R", bg: "bg-emerald-100 text-emerald-800" },
+  { id: 6, name: "Acne Studios Canvas Sneakers", category: "Footwear", sku: "SKU-6623-SN", price: "₹25,999.00", stock: "In Stock", qty: 45, icon: "A", bg: "bg-purple-100 text-purple-800" },
 ];
 
 export default function ProductsTab({ searchTerm, theme }) {
@@ -39,21 +40,28 @@ export default function ProductsTab({ searchTerm, theme }) {
 
   const handleAddProduct = (e) => {
     e.preventDefault();
-    if (!newTitle.trim() || !newPrice.trim()) return;
+    const errors = {};
+    if (!newTitle.trim()) errors.title = "Give the product a name.";
+    if (!newPrice.trim() || isNaN(parseFloat(newPrice))) errors.price = "Add a price.";
+    if (Object.keys(errors).length) {
+      showFieldErrors(errors);
+      return;
+    }
 
     const newProd = {
       id: Date.now(),
       name: newTitle,
       category: newCat,
       sku: `SKU-${Math.floor(1000 + Math.random() * 9000)}-EX`,
-      price: `$${parseFloat(newPrice).toFixed(2)}`,
+      price: `₹${parseFloat(newPrice).toFixed(2)}`,
       stock: "In Stock",
       qty: 25,
-      icon: "🛍️",
+      icon: newTitle.trim().charAt(0).toUpperCase(),
       bg: "bg-blue-100 text-blue-800"
     };
 
     setProducts([newProd, ...products]);
+    notifySuccess("Product added.", newTitle.trim());
     setNewTitle("");
     setNewPrice("");
     setIsModalOpen(false);
@@ -170,7 +178,7 @@ export default function ProductsTab({ searchTerm, theme }) {
               <h3 className="text-sm font-bold">Add Product to Store</h3>
               <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-white">✕</button>
             </div>
-            <form onSubmit={handleAddProduct} className="space-y-4 text-xs">
+            <form onSubmit={handleAddProduct} noValidate className="space-y-4 text-xs">
               <div>
                 <label className="block font-semibold mb-1">Product Title</label>
                 <input

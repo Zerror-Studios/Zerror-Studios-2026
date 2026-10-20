@@ -35,11 +35,11 @@ export default function DashboardSidebar({ activeTab, setActiveTab, theme }) {
         <div className="flex items-center justify-between gap-2.5 px-3 py-3 lg:mb-6">
           <div className={`flex items-center gap-2.5 ${isDark ? "border-white/10" : "border-gray-200"}`}>
             <div className="w-8 h-8 rounded-full bg-[#002bba] text-white font-bold text-xs flex items-center justify-center shadow-sm shrink-0">
-              RS
+              YS
             </div>
             <div className="text-left leading-tight">
-              <h4 className={`text-xs font-bold ${isDark ? "text-white" : "text-gray-900"}`}>Rahul Sharma</h4>
-              <span className="text-[10px] text-gray-400 font-medium">Sales manager</span>
+              <h4 className={`text-xs font-bold ${isDark ? "text-white" : "text-gray-900"}`}>Your store</h4>
+              <span className="text-[10px] text-gray-400 font-medium">Admin</span>
             </div>
           </div>
 
@@ -86,22 +86,6 @@ export default function DashboardSidebar({ activeTab, setActiveTab, theme }) {
               );
             })}
           </nav>
-
-          {/* Premium Plan Card */}
-          <div className={`mt-6 p-4 rounded-2xl border text-white relative overflow-hidden transition-all ${
-            isDark ? "bg-white/5 border-white/10" : "bg-[#0A101D] border-gray-800"
-          }`}>
-            <div className="w-7 h-7 rounded-xl bg-white/10 flex items-center justify-center mb-3">
-              <span className="text-xs font-bold">dY``</span>
-            </div>
-            <h4 className="text-xs font-bold mb-1">Premium plan</h4>
-            <p className="text-[11px] text-gray-300 leading-snug mb-3">
-              Get access to advanced SalesRadar features
-            </p>
-            <button className="w-full py-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-500 transition-colors shadow-sm">
-              Upgrade now!
-            </button>
-          </div>
         </div>
       </div>
     </aside>

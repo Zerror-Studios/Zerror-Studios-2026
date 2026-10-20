@@ -742,7 +742,7 @@ const AwsDeploy = () => {
                                                     PRODUCTION PREVIEW
                                                 </span>
                                                 <h3 className="text-xl sm:text-2xl tracking-tight text-white mt-1">
-                                                    Zerror Studios — Digital Experience Platform
+                                                    Zerror Studios | Digital experience platform
                                                 </h3>
                                                 <p className="text-xs text-gray-400 mt-0.5">
                                                     Award-winning digital studio crafting hyper-fast Next.js websites & 3D interactive applications.

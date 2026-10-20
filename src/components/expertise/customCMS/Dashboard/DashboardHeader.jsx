@@ -34,7 +34,7 @@ export default function DashboardHeader({ searchTerm, setSearchTerm, theme, setT
               ? "bg-white/10 hover:bg-white/20 text-amber-400 border border-white/15"
               : "bg-gray-100 hover:bg-gray-200/80 text-indigo-600 border border-gray-200/60"
             }`}
-          title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          title={isDark ? "Switch to light mode" : "Switch to dark mode"}
         >
           {isDark ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
         </button>
@@ -56,10 +56,10 @@ export default function DashboardHeader({ searchTerm, setSearchTerm, theme, setT
                 ? "bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30"
                 : "bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200"
               }`}
-            title="Close Demo"
+            title="Close demo"
           >
             <span className="text-[11px] font-black">✕</span>
-            <span className="hidden sm:inline">Close Demo</span>
+            <span className="hidden sm:inline">Close demo</span>
           </button>
         )}
       </div>

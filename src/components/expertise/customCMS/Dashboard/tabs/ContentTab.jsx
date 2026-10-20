@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { notifySuccess, showFieldErrors } from "@/lib/notify";
 import {
   PlusIcon,
   EyeIcon,
@@ -12,7 +13,7 @@ import {
 const initialArticles = [
   { id: 1, title: "Enterprise Custom CMS Architecture 2026", slug: "/blog/custom-cms-2026", category: "Blog", status: "Published", author: "Alex Vance", updated: "10 mins ago", views: "14.2k" },
   { id: 2, title: "Next-Gen Headless Commerce Solutions", slug: "/solutions/headless-commerce", category: "Pages", status: "Published", author: "Elena R.", updated: "2 hours ago", views: "8.9k" },
-  { id: 3, title: "AI-Powered Content Personalization Pipeline", slug: "/blog/ai-personalization", category: "Blog", status: "Draft", author: "Marcus C.", updated: "1 day ago", views: "—" },
+  { id: 3, title: "AI-Powered Content Personalization Pipeline", slug: "/blog/ai-personalization", category: "Blog", status: "Draft", author: "Marcus C.", updated: "1 day ago", views: "0" },
   { id: 4, title: "Developer API Documentation v3.0", slug: "/docs/api-v3", category: "Pages", status: "Published", author: "Dev Team", updated: "3 days ago", views: "32.1k" },
   { id: 5, title: "Cyber Cyberpunk SaaS Design Kit", slug: "/products/saas-design-kit", category: "Products", status: "Scheduled", author: "Elena R.", updated: "5 days ago", views: "1.4k" },
   { id: 6, title: "Global CDN Edge Caching Whitepaper", slug: "/resources/cdn-whitepaper", category: "Resources", status: "Published", author: "Alex Vance", updated: "1 week ago", views: "5.8k" },
@@ -46,7 +47,10 @@ export default function ContentTab({ searchTerm }) {
   // Add new article
   const handleAddArticle = (e) => {
     e.preventDefault();
-    if (!newTitle.trim()) return;
+    if (!newTitle.trim()) {
+      showFieldErrors({ title: "Give the article a title." });
+      return;
+    }
 
     const slug = "/" + newTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-");
     const newEntry = {
@@ -61,6 +65,7 @@ export default function ContentTab({ searchTerm }) {
     };
 
     setArticles([newEntry, ...articles]);
+    notifySuccess("Article saved as draft.", newTitle.trim());
     setNewTitle("");
     setIsModalOpen(false);
   };
@@ -197,7 +202,7 @@ export default function ContentTab({ searchTerm }) {
               <h3 className="text-sm font-bold text-white">Create New CMS Entry</h3>
               <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-white">✕</button>
             </div>
-            <form onSubmit={handleAddArticle} className="space-y-4 text-xs">
+            <form onSubmit={handleAddArticle} noValidate className="space-y-4 text-xs">
               <div>
                 <label className="block text-gray-300 font-semibold mb-1">Content Title</label>
                 <input

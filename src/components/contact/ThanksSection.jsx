@@ -1,14 +1,23 @@
 import React from 'react'
+import Link from 'next/link'
+import { FORM_MESSAGES } from '@/lib/formMessages'
 
 const ThanksSection = () => {
   return (
    <div className="w-full h-full flex flex-col ">
-      <div className="w-full h-fit  text-white gap-8 flex flex-col">
+      <div className="w-full h-fit  text-white gap-8 flex flex-col items-start">
         <h3 className=" secondary-font text-3xl">
-          Thank you
+          {FORM_MESSAGES.sentTitle}
         </h3>
 
-        <p className=' text-lg md:text-xl'>Your message is with us.  <br />We’ll get back to you soon.</p>
+        <p className=' text-lg md:text-xl'>{FORM_MESSAGES.sentText}</p>
+
+        <Link
+          href="/work"
+          className="bg-white text_blue px-8 py-3 rounded-lg font-medium hover:bg-[#002bba] hover:text-white! hover:border-white border transition-colors "
+        >
+          <p className="translate-y-0.5 uppercase">{FORM_MESSAGES.sentButton}</p>
+        </Link>
       </div>
     </div>
   )

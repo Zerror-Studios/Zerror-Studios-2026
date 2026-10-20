@@ -8,17 +8,20 @@ import React from 'react'
 
 import { createMetadata } from "@/lib/seo";
 import WebDevProcess from '@/components/expertise/website-development/WebDevProcess'
+import WebDevOneTeam from '@/components/expertise/website-development/WebDevOneTeam'
+import WebDevSearch from '@/components/expertise/website-development/WebDevSearch'
+import { WEBSITE_PROCESS } from '@/components/expertise/website-development/processSections/websiteProcess'
 
 export const metadata = createMetadata({
-  title: "Custom Website Design & Development — Zerror Studios",
-  description: "Websites designed to be felt and engineered to last. Custom-built, motion-led and fast — for brands that want people to stop, stay and remember.",
-  path: "/expertise/website-development",
+  title: "Website design and development in Mumbai | Zerror Studios",
+  description: "Custom websites designed and built by one team. GSAP and scroll-led motion, Next.js, and SEO and AI search built in.",
+  path: "/expertise/websites",
 });
 
 const heroVideo = "/videos/expertise/website.mp4"
 
 const heroIcons = {
-  "UI/UX": [
+  "Design": [
     { src: "/images/expertisePage/website-development/icons/ui_figma.png", top: "18%", left: "10%", size: "w-20 md:w-28", rotate: "-12deg" },
     { src: "/images/expertisePage/website-development/icons/ui_cursor.png", top: "22%", right: "12%", size: "w-16 md:w-24", rotate: "15deg" },
     { src: "/images/expertisePage/website-development/icons/ui_wireframe.png", bottom: "25%", left: "15%", size: "w-24 md:w-32", rotate: "-8deg" },
@@ -32,12 +35,19 @@ const heroIcons = {
     { src: "/images/expertisePage/website-development/icons/motion_play.png", bottom: "24%", right: "12%", size: "w-20 md:w-28", rotate: "-15deg" },
     { src: "/images/expertisePage/website-development/icons/motion_3dcube.png", top: "45%", right: "8%", size: "w-18 md:w-24", rotate: "8deg" },
   ],
-  "Development": [
+  "Build": [
     { src: "/images/expertisePage/website-development/icons/dev_code.png", top: "16%", left: "14%", size: "w-24 md:w-32", rotate: "-10deg" },
     { src: "/images/expertisePage/website-development/icons/dev_terminal.png", top: "20%", right: "10%", size: "w-24 md:w-32", rotate: "12deg" },
     { src: "/images/expertisePage/website-development/icons/dev_react.png", bottom: "26%", left: "12%", size: "w-20 md:w-28", rotate: "18deg" },
     { src: "/images/expertisePage/website-development/icons/dev_git.png", bottom: "28%", right: "16%", size: "w-20 md:w-28", rotate: "-12deg" },
     { src: "/images/expertisePage/website-development/icons/dev_api.png", top: "50%", left: "8%", size: "w-18 md:w-24", rotate: "6deg" },
+  ],
+  "Search": [
+    { src: "/images/expertisePage/branding/icons/seo_search.png", top: "18%", left: "12%", size: "w-20 md:w-28", rotate: "-10deg" },
+    { src: "/images/expertisePage/branding/icons/seo_ai.png", top: "20%", right: "12%", size: "w-20 md:w-28", rotate: "12deg" },
+    { src: "/images/expertisePage/branding/icons/seo_chart.png", bottom: "26%", left: "16%", size: "w-24 md:w-32", rotate: "8deg" },
+    { src: "/images/expertisePage/branding/icons/seo_score.png", bottom: "28%", right: "14%", size: "w-20 md:w-28", rotate: "-12deg" },
+    { src: "/images/expertisePage/branding/icons/seo_link.png", top: "48%", right: "6%", size: "w-18 md:w-24", rotate: "6deg" },
   ]
 };
 
@@ -62,12 +72,12 @@ const page = () => {
       <DetailedExpertiseHero
         expertiseName="Websites worth stopping for"
         expertiseHeading={<>Designed to be felt.<br /> Built to last.</>}
-        btnsLabels={["UI/UX", "Motion", "Development"]}
+        btnsLabels={["Design", "Motion", "Build", "Search"]}
         heroIcons={heroIcons}
         introHeading={<>You get about three seconds before someone decides you're worth their time. We make them count.</>}
         introText="Motion with meaning, detail that rewards attention, and speed that never asks anyone to wait."
         videoSrc={heroVideo}
-        supportingText="Every site is custom — designed and built by one team, so what you approve is exactly what ships. No templates. Nothing lost in translation."
+        supportingText="Every site is custom, designed and built by one team. What you approve is what goes live."
         features={[
           { label: "Bounce rate", value: "-41%" },
           { label: "Load time", value: "< 1.6s" },
@@ -79,9 +89,11 @@ const page = () => {
           { label: "PageSpeed Insights", value: "94" },
         ]}
       />
-      <WebDevProjectsSwiper />
+      <WebDevProjectsSwiper heading={<>See it move.</>} />
+      <WebDevOneTeam />
       <WebDevExperiencesCards />
-      <WebDevProcess />
+      <WebDevSearch />
+      <WebDevProcess {...WEBSITE_PROCESS} />
       <WebDevClients />
       <TicketEffect />
     </>

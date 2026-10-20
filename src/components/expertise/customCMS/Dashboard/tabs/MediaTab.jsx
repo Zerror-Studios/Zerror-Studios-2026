@@ -213,7 +213,7 @@ export default function MediaTab({ searchTerm }) {
                     className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold flex items-center gap-1.5"
                   >
                     {copiedId === selectedAsset.id ? <CheckIcon className="w-3.5 h-3.5 text-emerald-400" /> : <CopyIcon className="w-3.5 h-3.5" />}
-                    <span>{copiedId === selectedAsset.id ? "Copied!" : "Copy CDN Link"}</span>
+                    <span>{copiedId === selectedAsset.id ? "Copied" : "Copy CDN Link"}</span>
                   </button>
                   <button
                     onClick={() => setSelectedAsset(null)}

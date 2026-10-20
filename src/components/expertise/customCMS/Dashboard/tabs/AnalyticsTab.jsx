@@ -51,10 +51,10 @@ export default function AnalyticsTab({ searchTerm, theme }) {
 
           <div className="space-y-3">
             {[
-              { source: "Instagram & Meta Ads", pct: 45, rev: "$40,341.00", color: "bg-blue-600" },
-              { source: "Google Organic Search", pct: 30, rev: "$26,894.40", color: "bg-blue-400" },
-              { source: "Direct Store Traffic", pct: 15, rev: "$13,447.20", color: "bg-slate-400" },
-              { source: "Email Newsletter & Affiliates", pct: 10, rev: "$8,964.80", color: "bg-slate-300" },
+              { source: "Instagram & Meta Ads", pct: 45, rev: "₹40,341.00", color: "bg-blue-600" },
+              { source: "Google Organic Search", pct: 30, rev: "₹26,894.40", color: "bg-blue-400" },
+              { source: "Direct Store Traffic", pct: 15, rev: "₹13,447.20", color: "bg-slate-400" },
+              { source: "Email Newsletter & Affiliates", pct: 10, rev: "₹8,964.80", color: "bg-slate-300" },
             ].map((channel, i) => (
               <div key={i} className="space-y-1 text-xs">
                 <div className="flex justify-between font-semibold">

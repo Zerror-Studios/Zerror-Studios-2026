@@ -4,58 +4,58 @@ import { RiShieldCheckLine } from '@remixicon/react';
 
 const GATEWAYS = [
     {
-        name: "Apple Pay",
-        src: "/icons/apple_pay.svg",
-        status: "Apple Pay • 1-Click Checkout",
-        payout: 3420
+        name: "Razorpay",
+        color: "#072654",
+        status: "Razorpay • Cards, UPI and wallets",
+        payout: 34200
     },
     {
-        name: "American Express",
-        src: "/icons/american_express.svg",
-        status: "American Express • Direct Settlement",
-        payout: 4180
+        name: "UPI",
+        color: "#097939",
+        status: "UPI • Instant payments",
+        payout: 41800
     },
     {
         name: "VISA",
         src: "/icons/visa.svg",
-        status: "VISA Direct • Instant Payout",
-        payout: 4950
+        status: "VISA • Card payments",
+        payout: 49500
     },
     {
-        name: "DISCOVER",
-        src: "/icons/discover.svg",
-        status: "Discover • Zero Rev Share",
-        payout: 5620
+        name: "Cashfree",
+        color: "#6933D3",
+        status: "Cashfree • Fast settlements",
+        payout: 56200
+    },
+    {
+        name: "₹ GST ready",
+        color: "#002bba",
+        status: "GST • Invoices handled",
+        payout: 63500
     },
     {
         name: "Mastercard",
         src: "/icons/mastercard.svg",
-        status: "Mastercard • 100% Owned Gateway",
-        payout: 6350
+        status: "Mastercard • Card payments",
+        payout: 71200
     },
     {
-        name: "Klarna",
-        src: "/icons/klarna.svg",
-        status: "Klarna BNPL • Direct Bank Deposit",
-        payout: 7120
-    },
-    {
-        name: "UnionPay",
-        src: "/icons/union_pay.svg",
-        status: "UnionPay • Global Multi-Currency",
-        payout: 7890
+        name: "PhonePe",
+        color: "#5F259F",
+        status: "PhonePe • UPI payments",
+        payout: 78900
     },
     {
         name: "Google Pay",
         src: "/icons/gpay.svg",
-        status: "Google Pay • Zero Third-Party Cut",
-        payout: 8640
+        status: "Google Pay • UPI payments",
+        payout: 86400
     },
     {
-        name: "Stripe",
-        src: "/icons/stripe.svg",
-        status: "Stripe Connect • Complete IP Control",
-        payout: 9480
+        name: "Net banking",
+        color: "#1e293b",
+        status: "Net banking • All major banks",
+        payout: 94800
     }
 ];
 
@@ -138,11 +138,20 @@ function IpOwnershipAnim() {
                                         : 'md:scale-95 opacity-50'
                                     }`}
                             >
-                                <img
-                                    src={gw.src}
-                                    alt={gw.name}
-                                    className="w-full h-full object-contain pointer-events-none select-none"
-                                />
+                                {gw.src ? (
+                                    <img
+                                        src={gw.src}
+                                        alt={gw.name}
+                                        className="w-full h-full object-contain pointer-events-none select-none"
+                                    />
+                                ) : (
+                                    <div
+                                        className="w-full aspect-[72/50] bg-white rounded-[5%] border border-[#F3F3F3] flex items-center justify-center font-sans font-bold tracking-tight text-[10px] sm:text-sm leading-none text-center px-1 pointer-events-none select-none"
+                                        style={{ color: gw.color }}
+                                    >
+                                        {gw.name}
+                                    </div>
+                                )}
                             </div>
                         );
                     })}

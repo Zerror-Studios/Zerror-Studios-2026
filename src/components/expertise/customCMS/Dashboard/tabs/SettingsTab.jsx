@@ -85,7 +85,7 @@ export default function SettingsTab() {
               className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center gap-1.5 shadow-md shadow-blue-600/20 transition-all shrink-0 text-xs"
             >
               {copiedKey ? <CheckIcon className="w-3.5 h-3.5 text-emerald-300" /> : <CopyIcon className="w-3.5 h-3.5" />}
-              <span>{copiedKey ? "Copied!" : "Copy Key"}</span>
+              <span>{copiedKey ? "Copied" : "Copy Key"}</span>
             </button>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function SettingsTab() {
                 : "bg-rose-600 hover:bg-rose-500 text-white shadow-rose-600/20"
             }`}
           >
-            {purging ? "Purging Edge Nodes..." : purged ? "✓ Global Edge Cache Purged!" : "Purge All Edge Caches"}
+            {purging ? "Purging Edge Nodes..." : purged ? "✓ Global edge cache purged" : "Purge All Edge Caches"}
           </button>
         </div>
       </div>

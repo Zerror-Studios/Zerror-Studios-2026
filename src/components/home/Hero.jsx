@@ -83,7 +83,8 @@ const Hero = () => {
       }
     );
 
-    const firstChars = split_hero_title.chars.slice(0, 11);
+    // first three words ("We build brands") reveal on load, the rest on scroll
+    const firstChars = split_hero_title.chars.slice(0, 13);
     gsap.fromTo(
       firstChars,
       { yPercent: 50, opacity: 0 },
@@ -103,12 +104,16 @@ const Hero = () => {
         start: 'top top',
         end: "bottom bottom",
         scrub: true,
+        invalidateOnRefresh: true,
         // markers: true,
       }
     })
     if (window.innerWidth > 750) {
+      const heroScrollTxt = document.querySelector(".hero_scroll_txt .split_hero_title");
       sliderTween.to(".hero_scroll_txt", {
-        transform: "translateX(-320vw) translateY(-50%)",
+        // travel until the end of the sentence sits inside the viewport
+        transform: () =>
+          `translateX(${window.innerWidth * 0.9 - (heroScrollTxt?.scrollWidth || window.innerWidth * 3.5)}px) translateY(-50%)`,
         top: "50%",
         ease: "linear",
       })
@@ -119,7 +124,7 @@ const Hero = () => {
       //   ease: "linear",
       // })
     }
-    const text_chars = split_hero_title.chars.slice(11);
+    const text_chars = split_hero_title.chars.slice(13);
     text_chars.forEach((char) => {
       gsap.fromTo(
         char,
@@ -154,6 +159,9 @@ const Hero = () => {
   return (
     <div className=" hero_paren bg-[#002bba] w-full relative min-h-screen">
 
+      {/* Server-rendered H1 for search engines and screen readers; the visible lines below are the animated copy */}
+      <h1 className="sr-only">We build brands that people stop for, remember, and come back to.</h1>
+
       <div className="site-background opacity-0 site-background-desktop  fixed bg_blue top-0 left-0   w-full h-screen z-[1]">
         <HeroScene />
       </div>
@@ -162,7 +170,7 @@ const Hero = () => {
         <div className=" max-sm:hidden txt_slider_paren relative z-10 w-full h-[400vh]  ">
           <div className="w-full h-screen top-0 sticky overflow-hidden">
             <div className=" z-[2] hero_scroll_txt w-full translate-x-[30vw] absolute top-[80%] -translate-y-1/2 text-white  md:whitespace-nowrap left-0  ">
-              <p className=" split_hero_title opacity-0 text-8xl md:text-[12vw] font-bold origin-bottom-left tracking-tight">We design and build thoughtful digital experiences that go beyond visuals.</p>
+              <p aria-hidden="true" className=" split_hero_title opacity-0 text-8xl md:text-[14vw] font-bold origin-bottom-left tracking-tight">We build brands that people stop for, remember, and come back to.</p>
             </div>
           </div>
         </div>
@@ -170,7 +178,7 @@ const Hero = () => {
 
       {isMobile && (
         <div className=" hero_mob_txt  w-full relative z-10 overflow-hidden  md:hidden! pt-[calc(50svh)]! padding pb-[33vh]! text-white  ">
-          <p className=" mob_split_hero_title opacity-0  text-[15.5vw] leading-[15vw]   md:text-[12vw] font-bold origin-bottom-left ">We design and build thoughtful digital experiences that go beyond visuals.</p>
+          <p aria-hidden="true" className=" mob_split_hero_title opacity-0  text-[15.5vw] leading-[15vw]   md:text-[12vw] font-bold origin-bottom-left ">We build brands that people stop for, remember, and come back to.</p>
         </div>
       )}
 
@@ -178,19 +186,18 @@ const Hero = () => {
       <div className=" abt_paren opacity-0 relative z-10  w-full   padding py-0! text-white ">
         <div className="w-full  space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
           <div className="">
-            <h2 data-para-effect className='capitalize primary-font  text-5xl  leading-none'>about us</h2>
+            <h2 data-para-effect className='primary-font  text-5xl  leading-none'>The studio</h2>
           </div>
 
           <div className=" max-sm:hidden text-xs pt-4">
-            <p className='font-thin'>Systems. Structure.</p>
-            <p className='font-thin'>Precision. Intent.</p>
+            <p className='font-thin'>Brands,</p>
+            <p className='font-thin'>built whole.</p>
           </div>
           <div className=" text-3xl  md:pl-2">
             <h3 data-para-effect className="secondary-font">
               <span className='opacity-0  max-sm:hidden pointer-events-none'>...............</span>
-              Zerror is a design-led studio operating where design, technology and scalability meet. Great ideas
-              often get lost between the two disciplines — few teams can do both, fewer still do it fast. We built
-              Zerror to erase that gap, so ideas don't just survive. They shine.
+              A design studio in Mumbai. Since 2022, we have built brands for publishers, film houses, fashion labels
+              and founders on day one.
             </h3>
           </div>
         </div>

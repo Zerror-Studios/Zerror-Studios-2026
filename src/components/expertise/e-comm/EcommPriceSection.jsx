@@ -7,13 +7,13 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 
 const features = [
-    { name: "Fully custom design freedom", zcom: true, shopify: true },
-    { name: "No third-party plugin costs", zcom: true, shopify: false },
-    { name: "Built-in loyalty & referral system", zcom: true, shopify: true },
-    { name: "Lookbook & Look Creation Tool", zcom: true, shopify: false },
-    { name: "Integrated WhatsApp campaigns", zcom: true, shopify: true },
-    { name: "IP ownership on full payment", zcom: true, shopify: false },
-    { name: "Competitive long-term running costs", zcom: true, shopify: false },
+    { name: "A design made for your brand", zcom: true, shopify: true },
+    { name: "No app bills stacking up", zcom: true, shopify: false },
+    { name: "Loyalty and referrals built in", zcom: true, shopify: true },
+    { name: "Lookbooks and shop the look", zcom: true, shopify: false },
+    { name: "WhatsApp campaigns built in", zcom: true, shopify: true },
+    { name: "An AI coach and chat control", zcom: true, shopify: false },
+    { name: "One team for every change", zcom: true, shopify: false },
 ];
 
 const CheckIcon = () => (
@@ -53,19 +53,17 @@ const EcommPriceSection = () => {
     return (
         <div className="w-full padding py-8! md:py-16! text_blue">
 
-            {/* ── Heading — matches InfoSection.jsx ──────────── */}
+            {/* ── Heading, matches InfoSection.jsx ──────────── */}
             <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
-                    <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Why Businesses <br /> Choose Zcom</h2>
+                    <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Why Zcom</h2>
                 </div>
                 <div className="text-xs max-sm:hidden pt-4">
-                    <p className='font-thin'>Why</p>
-                    <p className='font-thin'>Choose Us</p>
                 </div>
                 <div className=" text-3xl md:pl-2">
                     <h3 data-para-effect className="">
                         <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                        Ready-made platforms are built for everyone. Zcom is built for you
+                        Ready-made platforms are built for everyone. Zcom is built for you.
                     </h3>
                 </div>
             </div>

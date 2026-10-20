@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AnimatedRadialGauge, SparklesIcon, CheckIcon, PulseDot } from "../ui/SvgAnimatedIcons";
 
 export default function SeoTab({ searchTerm }) {
-  const [metaTitle, setMetaTitle] = useState("Custom CMS Development & Scalable Headless Solutions | Zerror Studios");
+  const [metaTitle, setMetaTitle] = useState("Custom CMS, dashboards and tools | Zerror Studios");
   const [metaDesc, setMetaDesc] = useState("Build, manage, and scale high-performance digital platforms with our enterprise custom CMS. 100% SEO optimized, edge cached, and developer friendly.");
   const [canonicalUrl, setCanonicalUrl] = useState("https://zerrorstudios.com/expertise/custom-cms");
   const [autoSchema, setAutoSchema] = useState(true);

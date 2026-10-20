@@ -7,6 +7,9 @@ import {
   RiMoreFill,
   RiGlobeLine,
   RiThumbUpLine,
+  RiThumbUpFill,
+  RiHeartFill,
+  RiLightbulbFill,
   RiRepeatLine,
   RiSendPlaneLine,
   RiHome4Fill,
@@ -60,7 +63,7 @@ export default function LinkedInStepUi() {
               <span className="text-[9px] text-white/50">• 1st</span>
             </div>
             <p className="text-[9px] text-white/60 leading-tight mt-0.5 line-clamp-1">
-              Brand Identity & Organic Search Engine
+              Brand identity, social and search
             </p>
             <div className="flex items-center gap-1 text-[8px] text-white/40 mt-0.5 font-mono">
               <span>2h</span>
@@ -78,7 +81,7 @@ export default function LinkedInStepUi() {
       {/* 4. Article Post Caption */}
       <div className="px-3 text-xs space-y-1">
         <p className="text-[10px] sm:text-[11px] leading-relaxed text-white/90">
-          Why building identity, content, and search as ONE integrated system outperforms isolated marketing campaigns by +300%. <span className="text-white/50 cursor-pointer hover:underline  ">... see more</span>
+          Why we plan identity, content and search together, with one team doing all three. <span className="text-white/50 cursor-pointer hover:underline  ">... see more</span>
         </p>
       </div>
 
@@ -91,16 +94,16 @@ export default function LinkedInStepUi() {
 
         <div className="z-10 py-1">
           <h4 className="  text-xs sm:text-sm text-white leading-snug">
-            The Search & Brand Recall Engine Architecture
+            How one team runs your brand, social and search
           </h4>
           <p className="text-[9px] text-white/80 mt-0.5 font-light">
-            Scale brand authority through integrated SEO & design.
+            Identity, content and SEO, planned as one.
           </p>
         </div>
 
         <div className="flex items-center justify-between text-[8px] text-white/80 z-10 font-mono">
           <span>ARTICLE • 4 MIN READ</span>
-          <span className="underline   text-white">Read Article →</span>
+          <span className="underline   text-white">Read article →</span>
         </div>
       </div>
 
@@ -108,9 +111,9 @@ export default function LinkedInStepUi() {
       <div className="px-3 py-1.5 flex items-center justify-between text-[9px] text-white/60 border-b border-white/10">
         <div className="flex items-center gap-1">
           <div className="flex -space-x-1">
-            <span className="w-3.5 h-3.5 rounded-full bg-blue-600 center text-[7px] text-white">👍</span>
-            <span className="w-3.5 h-3.5 rounded-full bg-emerald-600 center text-[7px] text-white">👏</span>
-            <span className="w-3.5 h-3.5 rounded-full bg-amber-500 center text-[7px] text-white">💡</span>
+            <span className="w-3.5 h-3.5 rounded-full bg-blue-600 center text-[7px] text-white"><RiThumbUpFill size={7} /></span>
+            <span className="w-3.5 h-3.5 rounded-full bg-emerald-600 center text-[7px] text-white"><RiHeartFill size={7} /></span>
+            <span className="w-3.5 h-3.5 rounded-full bg-amber-500 center text-[7px] text-white"><RiLightbulbFill size={7} /></span>
           </div>
           <span className="text-white/70   pl-1">482</span>
         </div>
@@ -147,7 +150,7 @@ export default function LinkedInStepUi() {
       <div className="p-2.5 bg-white/5 space-y-1 opacity-60">
         <div className="flex items-center justify-between text-[8px] text-white/60">
           <span>Alfonso Baptista • Following</span>
-          <span>16h • 🌐</span>
+          <span className="flex items-center gap-1">16h • <RiGlobeLine size={8} /></span>
         </div>
         <p className="text-[9px] text-white/80">
           This is something I have been saying for months: LLMs are extremely insensitive...

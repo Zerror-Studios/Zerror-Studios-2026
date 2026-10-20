@@ -1,10 +1,29 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import Calendar from './processSections/Calendar';
+import React, { useState, useEffect, useMemo } from 'react';
+import Calendar, { buildCalendar } from './processSections/Calendar';
 import MobileCalendar from './processSections/MobileCalendar';
-import { useGSAP } from '@gsap/react';
 
-const WebDevProcess = () => {
+/**
+ * Process section shared by the four service pages.
+ *
+ * @param {string|React.ReactNode} label     Big heading (left column)
+ * @param {string[]}               lines     Small subheading lines (middle column)
+ * @param {string}                 paragraph Large line (right column), optional
+ * @param {Array}                  steps     [{ when?, title, line, events? }]
+ *                                           when is optional (no weeks shows "Step 1..n").
+ *                                           events (optional) splits a step into cards on the
+ *                                           desktop calendar: [{ title, row?, stage?, component? }].
+ *                                           An event with stage + component gets the scroll-led
+ *                                           enlarge animation.
+ * @param {string}                 footnote  Small line under the calendar, optional
+ */
+const WebDevProcess = ({
+    label = "How it usually runs",
+    lines = [],
+    paragraph = null,
+    steps = [],
+    footnote = null,
+}) => {
     const [isMobile, setIsMobile] = useState(null);
 
     useEffect(() => {
@@ -14,33 +33,44 @@ const WebDevProcess = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const { columns, events, rowCount, days } = useMemo(() => buildCalendar(steps), [steps]);
+
     return (
         <div data-hide-header className="w-full relative">
 
             {/* Section Header */}
-            <div className="w-full border-t mt-8 md:mt-16 padding pt-8! md:pt-16! text_blue">
+            <div className="w-full padding pt-8! md:pt-16! text_blue">
                 <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
                     <div>
-                        <h2 data-para-effect className="capitalize primary-font text-5xl leading-none">
-                            our <br /> Process
+                        <h2 data-para-effect className="primary-font text-5xl leading-none">
+                        How it usually <br /> runs
                         </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4">
-                        <p className="font-thin">From wireframes to</p>
-                        <p className="font-thin">high-performance code.</p>
+                        {lines.map((line, i) => (
+                            <p key={i} className="font-thin">{line}</p>
+                        ))}
                     </div>
                     <div className="text-3xl md:pl-2">
-                        <h3 data-para-effect className="secondary-font">
-                            <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
-                            Our process blends strategic design with robust engineering. We don't just write code — we build scalable, high-performing digital experiences that drive your business forward.
-                        </h3>
+                        {paragraph && (
+                            <h3 data-para-effect className="secondary-font">
+                                <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
+                                {paragraph}
+                            </h3>
+                        )}
                     </div>
                 </div>
             </div>
 
             {/* Process Calendar */}
-            {isMobile === true && <MobileCalendar />}
-            {isMobile === false && <Calendar />}
+            {isMobile === true && <MobileCalendar columns={columns} events={events} />}
+            {isMobile === false && <Calendar columns={columns} events={events} rowCount={rowCount} days={days} />}
+
+            {footnote && (
+                <div className="w-full padding pb-8 md:pb-12 text_blue">
+                    <p className="">{footnote}</p>
+                </div>
+            )}
         </div>
     );
 };

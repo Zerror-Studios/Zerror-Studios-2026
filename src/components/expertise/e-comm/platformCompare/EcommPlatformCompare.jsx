@@ -6,7 +6,9 @@ import {
     RiSpeedLine,
     RiExpandUpDownLine,
     RiPaintBrushLine,
-    RiMoneyDollarCircleLine,
+    RiMoneyRupeeCircleLine,
+    RiTeamLine,
+    RiSparkling2Line,
     RiStarLine,
     RiArrowRightLine,
     RiLayoutGridLine,
@@ -37,131 +39,210 @@ gsap.registerPlugin(ScrollTrigger);
 /* ══════════════════════════ DATA ══════════════════════════ */
 
 const tabs = [
-    { key: "customization", label: "Customization", icon: RiPaintBrushLine },
-    { key: "performance", label: "Performance", icon: RiSpeedLine },
-    { key: "pricing", label: "Pricing", icon: RiMoneyDollarCircleLine },
-    { key: "seo", label: "SEO", icon: RiSearchLine },
-    { key: "ownership", label: "Ownership", icon: RiLockLine },
+    { key: "design", label: "Design", icon: RiPaintBrushLine },
+    { key: "speed", label: "Speed", icon: RiSpeedLine },
+    { key: "costs", label: "Running costs", icon: RiMoneyRupeeCircleLine },
+    { key: "search", label: "Search", icon: RiSearchLine },
+    { key: "changes", label: "Who makes changes", icon: RiTeamLine },
     { key: "dashboard", label: "Dashboard", icon: RiDashboardLine },
-    { key: "technology", label: "Technology", icon: RiCodeLine },
+    { key: "ai", label: "AI", icon: RiSparkling2Line },
 ];
 
 const dashboardData = {
-    customization: {
+    design: {
         zcom: {
             score: 100,
             grade: "A+",
-            tagline: "Built around your business, not a template",
+            tagline: "Built around your business.",
             metrics: [
-                { label: "Design Freedom", value: "100%", icon: RiPaletteLine },
-                { label: "Frontend", value: "Fully Custom", icon: RiCodeLine },
-                { label: "Backend", value: "Fully Custom", icon: RiServerLine },
+                { label: "Design", value: "Made for you", icon: RiPaletteLine },
+                { label: "Checkout", value: "Custom", icon: RiCodeLine },
+                { label: "Motion", value: "GSAP", icon: RiSettings3Line },
             ],
             features: [
-                { name: "Design every part of your website", available: true },
-                { name: "Build features specifically for your business", available: true },
-                { name: "Create custom shopping & checkout experiences", available: true },
-                { name: "Add advanced 3D, animations & interactions", available: true },
+                { name: "A design made for your brand", available: true },
+                { name: "A checkout shaped around how you sell", available: true },
+                { name: "Lookbooks and shop the look", available: true },
+                { name: "Animation that feels like you", available: true },
             ],
             highlight:
-                "Z-Com is built around your business. From the way your website looks to how customers shop and how your team manages orders, everything can be tailored to your exact needs.",
+                "Our own platform. Your design, your checkout, and our team for every change.",
         },
 
         shopify: {
-            score: 60,
-            grade: "B",
-            tagline: "Quick to launch with ready-made themes",
-            metrics: [
-                { label: "Design Freedom", value: "Theme-Based", icon: RiPaletteLine },
-                { label: "Setup", value: "Ready-Made", icon: RiCodeLine },
-                { label: "Customization", value: "Platform-Based", icon: RiSettings3Line },
-            ],
-            features: [
-                { name: "Ready-made themes", available: true },
-                { name: "Theme customization", available: true },
-                { name: "Large app ecosystem", available: true },
-                { name: "Custom animations & interactions", available: true },
-            ],
-            highlight:
-                "Shopify makes it easy to launch a store using themes and apps. It works well for standard stores, while highly specific experiences may require working within Shopify's platform and theme structure.",
-        },
-    },
-
-    technology: {
-        zcom: {
-            score: 95,
-            grade: "A+",
-            tagline: "Your technology, your rules",
-            metrics: [
-                { label: "Technology", value: "Custom Built", icon: RiCodeLine },
-                { label: "Database", value: "Your Own", icon: RiDatabase2Line },
-                { label: "Infrastructure", value: "Your Control", icon: RiCloudLine },
-            ],
-            features: [
-                { name: "Modern Next.js + MERN architecture", available: true },
-                { name: "Your own database & backend", available: true },
-                { name: "Custom cloud infrastructure", available: true },
-                { name: "Built for your specific business requirements", available: true },
-            ],
-            highlight:
-                "Z-Com gives you a complete custom technology foundation. The system can be changed, extended and improved as your business grows instead of being restricted to a fixed platform structure.",
-        },
-
-        shopify: {
-            score: 80,
+            score: 90,
             grade: "A",
-            tagline: "Reliable commerce infrastructure, managed for you",
+            tagline: "The world's favourite store platform, made to look like yours.",
             metrics: [
-                { label: "Technology", value: "Platform Managed", icon: RiCodeLine },
-                { label: "Database", value: "Shopify Managed", icon: RiDatabase2Line },
-                { label: "Infrastructure", value: "Shopify Managed", icon: RiCloudLine },
+                { label: "Design", value: "Custom theme", icon: RiPaletteLine },
+                { label: "Platform", value: "Shopify", icon: RiCodeLine },
+                { label: "Apps", value: "The right ones", icon: RiApps2Line },
             ],
             features: [
-                { name: "Managed hosting & infrastructure", available: true },
-                { name: "Built-in commerce technology", available: true },
-                { name: "Large ecosystem of apps & integrations", available: true },
+                { name: "A custom theme, designed by us", available: true },
+                { name: "The right apps, nothing extra", available: true },
+                { name: "Audits for stores already live", available: true },
+                { name: "Animation where it helps", available: true },
             ],
             highlight:
-                "Shopify takes care of the technical infrastructure, hosting and core commerce system, making it easier to manage but giving you less control over the underlying technology.",
+                "Custom themes, the right apps, and audits for stores that are already live.",
         },
     },
 
-    performance: {
+    speed: {
         zcom: {
             score: 98,
             grade: "A",
-            tagline: "Performance designed around your customers",
+            tagline: "Fast, because we tune it for you.",
             metrics: [
                 { label: "Frontend", value: "Next.js", icon: RiSpeedLine },
-                { label: "Optimization", value: "Custom", icon: RiBarChartBoxLine },
-                { label: "Scaling", value: "Built to Scale", icon: RiGlobalLine },
+                { label: "Tuning", value: "Per store", icon: RiBarChartBoxLine },
+                { label: "Traffic", value: "Ready for sale days", icon: RiGlobalLine },
             ],
             features: [
-                { name: "Fast, optimized website experience", available: true },
-                { name: "Custom image & asset optimization", available: true },
-                { name: "Performance tuned for your website", available: true },
-                { name: "Infrastructure that can grow with your traffic", available: true },
+                { name: "Pages that load fast on mobile", available: true },
+                { name: "Images sized for every screen", available: true },
+                { name: "Tuned to your products and traffic", available: true },
+                { name: "Ready for sale-day spikes", available: true },
             ],
             highlight:
-                "With Z-Com, performance decisions are made around your website and customers. We can optimize the experience based on your actual content, features and traffic instead of relying only on platform-wide defaults.",
+                "We tune speed around your store, your products and your customers. Not around a default.",
         },
 
         shopify: {
             score: 92,
             grade: "A",
-            tagline: "Reliable performance with managed infrastructure",
+            tagline: "Reliable speed, hosted by Shopify.",
             metrics: [
-                { label: "Infrastructure", value: "Managed", icon: RiCloudLine },
-                { label: "Optimization", value: "Platform", icon: RiBarChartBoxLine },
-                { label: "Scaling", value: "Managed", icon: RiGlobalLine },
+                { label: "Hosting", value: "Shopify", icon: RiCloudLine },
+                { label: "Theme", value: "Kept lean", icon: RiBarChartBoxLine },
+                { label: "Scaling", value: "Automatic", icon: RiGlobalLine },
             ],
             features: [
-                { name: "Managed hosting & infrastructure", available: true },
-                { name: "Automatic platform scaling", available: true },
-                { name: "Optimized commerce infrastructure", available: true },
+                { name: "Hosting and scaling handled", available: true },
+                { name: "A lean theme, built by us", available: true },
+                { name: "Only the apps you need", available: true },
             ],
             highlight:
-                "Shopify handles the infrastructure and scaling for you, making performance management simpler. Your store's performance is still influenced by the themes, apps and features you add.",
+                "Shopify handles the hosting. We keep the theme lean and the apps few, so the store stays quick.",
+        },
+    },
+
+    costs: {
+        zcom: {
+            score: 100,
+            grade: "A",
+            tagline: "No app bills stacking up.",
+            metrics: [
+                { label: "Loyalty", value: "Built in", icon: RiStarLine },
+                { label: "WhatsApp", value: "Built in", icon: RiNotification3Line },
+                { label: "Lookbooks", value: "Built in", icon: RiLayoutGridLine },
+            ],
+            features: [
+                { name: "Loyalty and referrals built in", available: true },
+                { name: "WhatsApp and email built in", available: true },
+                { name: "Lookbooks built in", available: true },
+                { name: "Costs explained on a call", available: true },
+            ],
+            highlight:
+                "The features most stores pay apps for are already part of Zcom. We take you through the costs on a call.",
+        },
+
+        shopify: {
+            score: 70,
+            grade: "A",
+            tagline: "A monthly plan, plus the apps you choose.",
+            metrics: [
+                { label: "Plan", value: "Monthly", icon: RiPriceTag3Line },
+                { label: "Apps", value: "As needed", icon: RiApps2Line },
+                { label: "Theme", value: "Custom", icon: RiPaletteLine },
+            ],
+            features: [
+                { name: "A Shopify plan, billed by Shopify", available: true },
+                { name: "Apps picked with care", available: true },
+                { name: "No apps you don't need", available: true },
+            ],
+            highlight:
+                "Shopify charges a monthly plan, and apps can add up. We pick only the ones that earn their place.",
+        },
+    },
+
+    search: {
+        zcom: {
+            score: 96,
+            grade: "A+",
+            tagline: "Search set up from day one.",
+            metrics: [
+                { label: "Page settings", value: "Every page", icon: RiSearchLine },
+                { label: "Rendering", value: "Server-side", icon: RiCodeLine },
+                { label: "Schema", value: "Built in", icon: RiSpeedLine },
+            ],
+            features: [
+                { name: "Titles and descriptions for every page", available: true },
+                { name: "Clean links for every product", available: true },
+                { name: "Structured data built in", available: true },
+                { name: "Ready for AI search", available: true },
+            ],
+            highlight:
+                "Control how every page shows on Google. We set it all up before launch.",
+        },
+
+        shopify: {
+            score: 84,
+            grade: "A",
+            tagline: "Solid search tools, set up properly.",
+            metrics: [
+                { label: "Page settings", value: "Built in", icon: RiSearchLine },
+                { label: "Sitemap", value: "Automatic", icon: RiCodeLine },
+                { label: "Schema", value: "In the theme", icon: RiSpeedLine },
+            ],
+            features: [
+                { name: "Titles and descriptions", available: true },
+                { name: "Sitemaps handled by Shopify", available: true },
+                { name: "Structured data in the theme", available: true },
+                { name: "Search checked in every audit", available: true },
+            ],
+            highlight:
+                "Shopify covers the basics. We set them up right and check them in every audit.",
+        },
+    },
+
+    changes: {
+        zcom: {
+            score: 100,
+            grade: "A+",
+            tagline: "Our team, for every change.",
+            metrics: [
+                { label: "Changes", value: "Our team", icon: RiTeamLine },
+                { label: "Platform", value: "Run by us", icon: RiServerLine },
+                { label: "New features", value: "When you need them", icon: RiSettings3Line },
+            ],
+            features: [
+                { name: "One team for every change", available: true },
+                { name: "New features built when you need them", available: true },
+                { name: "The platform kept up to date", available: true },
+                { name: "No hunting for developers", available: true },
+            ],
+            highlight:
+                "Ask for a change and the team that built your store makes it.",
+        },
+
+        shopify: {
+            score: 50,
+            grade: "A",
+            tagline: "Your team, with us when you need us.",
+            metrics: [
+                { label: "Daily edits", value: "Your team", icon: RiTeamLine },
+                { label: "Platform", value: "Run by Shopify", icon: RiServerLine },
+                { label: "Bigger work", value: "Our team", icon: RiSettings3Line },
+            ],
+            features: [
+                { name: "Edit products and pages yourself", available: true },
+                { name: "Shopify keeps the platform updated", available: true },
+                { name: "We step in for bigger changes", available: true },
+            ],
+            highlight:
+                "Shopify runs the platform. Your team handles day-to-day edits, and we take on the bigger work.",
         },
     },
 
@@ -169,157 +250,77 @@ const dashboardData = {
         zcom: {
             score: 80,
             grade: "A+",
-            tagline: "A dashboard built around your business",
+            tagline: "The whole store on one screen.",
             metrics: [
-                { label: "Admin Dashboard", value: "Fully Custom", icon: RiLayoutGridLine },
-                { label: "Features", value: "Your Requirements", icon: RiSettings3Line },
-                { label: "Control", value: "Full", icon: RiDashboardLine },
+                { label: "Sales", value: "Live", icon: RiBarChartBoxLine },
+                { label: "Shipping", value: "Shiprocket", icon: RiGlobalLine },
+                { label: "Brands", value: "One login", icon: RiLayoutGridLine },
             ],
             features: [
-                { name: "Dashboard designed for your business needs", available: true },
-                { name: "Features customized to your requirements", available: true },
-                { name: "Custom reports and business insights", available: true },
-                { name: "Flexible changes as your business grows", available: true },
+                { name: "Visits, orders and revenue at a glance", available: true },
+                { name: "Shipping and live tracking", available: true },
+                { name: "Several brands, one dashboard", available: true },
+                { name: "Classes and memberships", available: true },
             ],
-
             highlight:
-                "Z-Com is built around your specific business requirements. You get a fully customized dashboard with the features, reports and controls your team actually needs.",
+                "Products, orders, shipping and sales sit together, so your team spends less time switching screens.",
         },
 
         shopify: {
             score: 95,
-            grade: "A-",
-            tagline: "A powerful and scalable dashboard for growing businesses",
+            grade: "A",
+            tagline: "Shopify admin, set up for how you work.",
             metrics: [
-                { label: "Admin Dashboard", value: "Shopify Admin", icon: RiLayoutGridLine },
-                { label: "Scalability", value: "Highly Scalable", icon: RiSettings3Line },
-                { label: "Features", value: "Built-in + Plugins", icon: RiDashboardLine },
+                { label: "Admin", value: "Shopify", icon: RiLayoutGridLine },
+                { label: "Reports", value: "Built in", icon: RiBarChartBoxLine },
+                { label: "Extras", value: "Through apps", icon: RiApps2Line },
             ],
             features: [
-                { name: "Easy product and order management", available: true },
-                { name: "Built-in features and ready-made plugins", available: true },
-                { name: "Highly scalable for growing businesses", available: true },
+                { name: "Products and orders in one place", available: true },
+                { name: "Reports built in", available: true },
+                { name: "Apps for anything extra", available: true },
             ],
             highlight:
-                "Shopify is a highly scalable platform with many built-in features and ready-made plugins. It is a strong choice for businesses that want to start quickly and add more features as they grow.",
+                "Shopify admin is familiar and easy to learn. We set it up around your products and your team.",
         },
     },
 
-    ownership: {
+    ai: {
         zcom: {
-            score: 100,
+            score: 95,
             grade: "A+",
-            tagline: "Your platform. Your code. Your control.",
+            tagline: "Built-in AI that helps it sell.",
             metrics: [
-                { label: "Codebase", value: "Custom Owned", icon: RiCodeLine },
-                { label: "Control", value: "Full", icon: RiLockLine },
-                { label: "Dependency", value: "Low", icon: RiSettings3Line },
+                { label: "AI coach", value: "Built in", icon: RiSparkling2Line },
+                { label: "Chat control", value: "Claude, ChatGPT", icon: RiTerminalBoxLine },
+                { label: "Answers", value: "From your data", icon: RiDatabase2Line },
             ],
             features: [
-                { name: "Custom codebase built for your business", available: true },
-                { name: "Full control over frontend & backend", available: true },
-                { name: "No dependency on a theme system", available: true },
-                { name: "Long-term customization & development", available: true },
+                { name: "Ask why sales dipped", available: true },
+                { name: "Get the next step", available: true },
+                { name: "Add products by chat", available: true },
+                { name: "Launch a sale from Claude or ChatGPT", available: true },
             ],
             highlight:
-                "Z-Com gives your business its own platform rather than making your business fit into someone else's platform. You have greater control over how the system evolves over time.",
+                "An AI coach answers questions about your store. And you can run the store by chat.",
         },
 
         shopify: {
-            score: 50,
-            grade: "B+",
-            tagline: "Convenient platform with ongoing subscription",
-            metrics: [
-                { label: "Codebase", value: "Platform-Based", icon: RiCodeLine },
-                { label: "Control", value: "Platform Rules", icon: RiLockLine },
-                { label: "Model", value: "Subscription", icon: RiMoneyDollarCircleLine },
-            ],
-            features: [
-                { name: "Access to your store content & configuration", available: true },
-                { name: "Large ecosystem of themes & apps", available: true },
-                { name: "Ongoing platform updates & maintenance", available: true },
-            ],
-            highlight:
-                "Shopify reduces the technical work required to run a store, but the core platform remains Shopify's. Your store operates within its subscription model, rules and ecosystem.",
-        },
-    },
-
-    seo: {
-        zcom: {
-            score: 96,
-            grade: "A+",
-            tagline: "SEO built into your website from the start",
-            metrics: [
-                { label: "SEO Control", value: "Full", icon: RiSearchLine },
-                { label: "Rendering", value: "Next.js", icon: RiCodeLine },
-                { label: "Optimization", value: "Custom", icon: RiSpeedLine },
-            ],
-            features: [
-                { name: "Custom SEO structure for every page", available: true },
-                { name: "Fast server-rendered pages", available: true },
-                { name: "Custom structured data & metadata", available: true },
-                { name: "Custom URL & content architecture", available: true },
-            ],
-            highlight:
-                "Z-Com gives us control over the technical foundation of your SEO. This means the website can be structured specifically around your products, content and search strategy.",
-        },
-
-        shopify: {
-            score: 84,
+            score: 80,
             grade: "A",
-            tagline: "Strong SEO tools for standard stores",
+            tagline: "Shopify's own AI tools, plus apps.",
             metrics: [
-                { label: "SEO Control", value: "Good", icon: RiSearchLine },
-                { label: "SEO Tools", value: "Built-In", icon: RiCodeLine },
-                { label: "Optimization", value: "Platform", icon: RiSpeedLine },
+                { label: "AI tools", value: "Shopify's own", icon: RiSparkling2Line },
+                { label: "Extras", value: "Through apps", icon: RiApps2Line },
+                { label: "Setup", value: "By us", icon: RiSettings3Line },
             ],
             features: [
-                { name: "Page titles & meta descriptions", available: true },
-                { name: "Sitemap & SEO basics", available: true },
-                { name: "Structured data through themes/apps", available: true },
+                { name: "Shopify's built-in AI tools", available: true },
+                { name: "AI apps where they help", available: true },
+                { name: "Set up and tested by us", available: true },
             ],
             highlight:
-                "Shopify provides the essential SEO tools most online stores need, making it straightforward to manage SEO without handling the underlying technical architecture.",
-        },
-    },
-
-    pricing: {
-        zcom: {
-            score: 100,
-            grade: "A",
-            tagline: "Invest in a platform built specifically for you",
-            metrics: [
-                { label: "Initial Cost", value: "Higher", icon: RiMoneyDollarCircleLine },
-                { label: "Build Model", value: "Custom Development", icon: RiCodeLine },
-                { label: "Long-Term", value: "More Control", icon: RiLockLine },
-            ],
-            features: [
-                { name: "Complete custom platform development", available: true },
-                { name: "Custom frontend & backend included", available: true },
-                { name: "Custom dashboard & business workflows", available: true },
-                { name: "Future customization without changing platforms", available: true },
-            ],
-            highlight:
-                "Z-Com requires a larger initial investment because you are building a platform specifically for your business. In return, the system is designed to grow and change with your requirements.",
-        },
-
-        shopify: {
-            score: 70,
-            grade: "A",
-            tagline: "Lower starting cost with ongoing platform expenses",
-            metrics: [
-                { label: "Initial Cost", value: "Lower", icon: RiMoneyDollarCircleLine },
-                { label: "Billing", value: "Recurring", icon: RiPriceTag3Line },
-                { label: "Customization", value: "Additional Cost", icon: RiCodeLine },
-            ],
-            features: [
-                { name: "Lower platform entry cost", available: true },
-                { name: "Monthly platform subscription", available: true },
-                { name: "Large selection of paid & free apps", available: true },
-                { name: "Additional development for advanced customization", available: true },
-            ],
-            highlight:
-                "Shopify is generally easier to start with because the platform is already built. However, ongoing subscriptions, apps, themes and development can add to the total cost as your requirements grow.",
+                "Shopify has its own AI features. We switch on the ones that help and leave the rest.",
         },
     },
 };
@@ -519,7 +520,7 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
 
             {/* ─── Features Checklist ─── */}
             <div className="px-6 py-5 flex-1 bg-white">
-                <p className="text-xs uppercase opacity-60 text-black mb-3">Feature Checklist</p>
+                <p className="text-xs uppercase opacity-60 text-black mb-3">Feature checklist</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {data.features?.map((f, i) => (
                         <div key={i} className="feature-row flex items-center gap-2.5">
@@ -551,7 +552,7 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
                             <span
                                 className={`text-xs uppercase font-bold text-[#002bba] `}
                             >
-                                Key Takeaway
+                                Key takeaway
                             </span>
                         </div>
                         <p className="text-xs md:text-sm text-black opacity-80 font-normal">
@@ -568,12 +569,12 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
 /* ══════════════════ MAIN COMPONENT ══════════════════ */
 
 const EcommPlatformCompare = () => {
-    const [activeTab, setActiveTab] = useState("customization");
+    const [activeTab, setActiveTab] = useState("design");
     const containerRef = useRef(null);
     const panelsRef = useRef(null);
     const isFirstRender = useRef(true);
 
-    const currentData = dashboardData[activeTab] || dashboardData.customization;
+    const currentData = dashboardData[activeTab] || dashboardData.design;
     const customData = currentData?.zcom || currentData?.custom;
     const templateData = currentData?.shopify || currentData?.template;
     const customWins = (customData?.score ?? 0) >= (templateData?.score ?? 0);
@@ -679,8 +680,8 @@ const EcommPlatformCompare = () => {
             <div className="w-full padding py-0! text-white">
                 <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b md:grid grid-cols-[28%_30%_42%]">
                     <div>
-                        <h2 data-para-effect className="capitalize primary-font text-5xl">
-                            How to choose <br /> the right platform?
+                        <h2 data-para-effect className="primary-font text-5xl">
+                            Shopify <br /> or Zcom?
                         </h2>
                     </div>
                     <div className="text-xs max-sm:hidden pt-4"></div>
@@ -689,7 +690,7 @@ const EcommPlatformCompare = () => {
                             <span className="opacity-0 secondary-font max-sm:hidden pointer-events-none">
                                 ..................
                             </span>
-                            Every e-commerce journey is unique. Template platforms offer rapid setup for standard stores, while custom platforms deliver complete ownership, bespoke workflows, and ultimate scale. Compare both architectures below to find your perfect fit.
+                            Both are custom-designed by us. The difference is who runs the platform underneath.
                         </h3>
                     </div>
                 </div>
@@ -721,7 +722,7 @@ const EcommPlatformCompare = () => {
             <div ref={panelsRef} className="dashboards-wrap padding py-0! my-8 md:my-12">
                 <div className="dashboards-compare-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-y-0 lg:gap-x-6">
                     <DashboardPanel
-                        platform="Z-Com"
+                        platform="Zcom"
                         data={customData}
                         icon={RiTerminalBoxLine}
                         activeTab={activeTab}

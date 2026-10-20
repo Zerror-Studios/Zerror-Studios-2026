@@ -12,16 +12,16 @@ const TRACKING_TABS = [
     },
     {
         label: "Order ID",
-        placeholder: "Enter Order ID (#ORD-10842)",
+        placeholder: "Enter order ID (#ORD-10842)",
         sampleCode: "#ORD-10842-VIP",
-        status: "In Transit",
+        status: "In transit",
         statusColor: "text-amber-700 bg-amber-50 border-amber-200"
     },
     {
-        label: "Mobile Number",
-        placeholder: "Enter Mobile (+91 98721...)",
+        label: "Mobile number",
+        placeholder: "Enter mobile (+91 98721...)",
         sampleCode: "+91 98721 04918",
-        status: "Out for Delivery",
+        status: "Out for delivery",
         statusColor: "text-indigo-700 bg-indigo-50 border-indigo-200"
     }
 ];
@@ -129,7 +129,7 @@ function WorkflowModelAnim() {
                 <div className="relative z-10 anim-float-shiprocket bg-white/95 backdrop-blur-xs px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-md shadow-[0_8px_20px_rgba(0,0,0,0.35)] border border-white/80 flex items-center gap-2">
                     <img 
                         src="/icons/shiprocket_logo.svg" 
-                        alt="Shiprocket Logo" 
+                        alt="Shiprocket logo" 
                         className="w-3.5 sm:w-4 h-auto shrink-0" 
                     />
                     <span className="text-[11px] sm:text-xs font-bold text-slate-900 tracking-tight font-sans">
@@ -162,8 +162,8 @@ function WorkflowModelAnim() {
             <div className="relative w-full bg-slate-900/40 backdrop-blur-xs border border-white/10 rounded-2xl  p-2.5 sm:p-3.5 shadow-[0_16px_40px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.2)]">
                 {/* Column Headers */}
                 <div className="grid grid-cols-3 gap-2 text-[11px] sm:text-xs font-semibold text-white tracking-wide pb-2 border-b border-white/10 px-0.5">
-                    <div>To Do</div>
-                    <div>In Progress</div>
+                    <div>To do</div>
+                    <div>In progress</div>
                     <div>Done</div>
                 </div>
 
@@ -310,7 +310,7 @@ function WorkflowModelAnim() {
                 {/* Lavender Question Mark Calendar Tile (Bottom Left) */}
                 <div 
                     className="absolute -top-6 sm:-top-7 -left-1 sm:left-1 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#a27e9e] border border-white/30 flex items-center justify-center shadow-[0_12px_24px_rgba(0,0,0,0.45)] anim-sway-calendar cursor-pointer hover:scale-105 transition-transform"
-                    title="Help & Order Inquiries"
+                    title="Help and order questions"
                 >
                     {/* Top Binder Loops */}
                     <div className="absolute -top-1 left-2.5 w-1.5 h-2.5 bg-white rounded-full shadow-xs" />
@@ -376,7 +376,7 @@ function WorkflowModelAnim() {
                                 </>
                             ) : (
                                 <>
-                                    <span>Track Now</span>
+                                    <span>Track now</span>
                                     <RiArrowRightLine size={9} className="shrink-0" />
                                 </>
                             )}

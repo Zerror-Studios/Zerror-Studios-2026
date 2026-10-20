@@ -13,17 +13,17 @@ import {
 } from "../ui/SvgAnimatedIcons";
 
 const initialProducts = [
-  { id: 1, name: "FabIndia Kurta", sub: "T-shirt", price: "₹2,499.00", qty: 124, total: "₹3,09,876.00", icon: "👕", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
-  { id: 2, name: "Manyavar Sherwani", sub: "Jersey", price: "₹4,999.00", qty: 76, total: "₹3,79,924.00", icon: "🎽", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
-  { id: 3, name: "Biba Salwar Suit", sub: "Pants", price: "₹1,999.00", qty: 54, total: "₹15,992.00", icon: "👖", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
-  { id: 4, name: "Puma Cricket Cap", sub: "Baseball cap", price: "₹999.00", qty: 68, total: "₹67,932.00", icon: "🧢", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 1, name: "FabIndia Kurta", sub: "T-shirt", price: "₹2,499.00", qty: 124, total: "₹3,09,876.00", icon: "K", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 2, name: "Manyavar Sherwani", sub: "Jersey", price: "₹4,999.00", qty: 76, total: "₹3,79,924.00", icon: "S", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 3, name: "Biba Salwar Suit", sub: "Pants", price: "₹1,999.00", qty: 54, total: "₹15,992.00", icon: "B", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
+  { id: 4, name: "Puma Cricket Cap", sub: "Baseball cap", price: "₹999.00", qty: 68, total: "₹67,932.00", icon: "C", bg: "bg-gray-100 text-gray-700 dark:bg-white/10 dark:text-gray-300" },
 ];
 
 const geographyList = [
-  { country: "India", flag: "🇮🇳", percent: 33, color: "bg-blue-600" },
-  { country: "UAE", flag: "🇦🇪", percent: 25, color: "bg-blue-400" },
-  { country: "UK", flag: "🇬🇧", percent: 22, color: "bg-slate-400" },
-  { country: "Singapore", flag: "🇸🇬", percent: 20, color: "bg-slate-300" },
+  { country: "India", percent: 33, color: "bg-blue-600" },
+  { country: "UAE", percent: 25, color: "bg-blue-400" },
+  { country: "UK", percent: 22, color: "bg-slate-400" },
+  { country: "Singapore", percent: 20, color: "bg-slate-300" },
 ];
 
 export default function OverviewTab({ searchTerm, theme }) {
@@ -146,7 +146,6 @@ export default function OverviewTab({ searchTerm, theme }) {
               <div key={idx} className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
                   <span className={`flex items-center gap-2 font-semibold ${isDark ? "text-gray-200" : "text-gray-800"}`}>
-                    <span>{geo.flag}</span>
                     <span>{geo.country}</span>
                   </span>
                   <span className={`font-extrabold ${isDark ? "text-white" : "text-gray-900"}`}>{geo.percent}%</span>

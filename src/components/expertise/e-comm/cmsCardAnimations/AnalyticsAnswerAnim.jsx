@@ -10,9 +10,7 @@ import {
 } from '@remixicon/react';
 
 const ENGINES = [
-    { name: "Yahoo!", id: "yahoo" },
-    { name: "Google", id: "google" },
-    { name: "DuckDuckGo", id: "duckduckgo" }
+    { name: "Google", id: "google" }
 ];
 
 function AnalyticsAnswerAnim() {
@@ -24,11 +22,7 @@ function AnalyticsAnswerAnim() {
     useEffect(() => {
         if (isHovered) return;
         const interval = setInterval(() => {
-            setActiveEngine((prev) => {
-                if (prev === "google") return "duckduckgo";
-                if (prev === "duckduckgo") return "yahoo";
-                return "google";
-            });
+            setActiveEngine("google");
         }, 3200);
 
         return () => clearInterval(interval);
@@ -79,12 +73,12 @@ function AnalyticsAnswerAnim() {
                 <div 
                     className="absolute -top-10 -left-10 z-10 w-52 bg-white/15 backdrop-blur-xs border border-white/10 rounded-2xl p-2.5 sm:p-3 shadow-[0_12px_24px_rgba(0,0,0,0.25)] anim-float-card pointer-events-auto cursor-pointer"
                     onClick={() => setIsToggleOn(!isToggleOn)}
-                    title="Toggle Search Engine Indexing"
+                    title="Toggle search engine indexing"
                 >
                     {/* Header Row: Title & Indexed Pill */}
                     <div className="flex items-center justify-between gap-1">
                         <span className="text-white  text-[9.5px] sm:text-[10.5px] leading-tight">
-                            Search Engine Visibility
+                            Search engine visibility
                         </span>
                         <span className="bg-white text-[#1d4ed8] text-[7.5px] sm:text-[8.5px] font-bold px-1.5 py-0.5 rounded-full shadow-xs shrink-0">
                             Indexed
@@ -116,7 +110,7 @@ function AnalyticsAnswerAnim() {
                 <div className="relative z-20 w-[80%] sm:w-[86%] ml-auto bg-white rounded-xl translate-y-5 p-3.5 sm:p-4 shadow-[0_16px_36px_rgba(0,0,0,0.35)] border border-slate-100 text-slate-800">
                     {/* Modal Title */}
                     <h4 className="text-center font-bold text-slate-900 text-xs sm:text-sm tracking-tight mb-2.5 font-sans">
-                        SEO Settings
+                        Search settings
                     </h4>
 
                     {/* Search Setting Input Bar */}
@@ -159,23 +153,6 @@ function AnalyticsAnswerAnim() {
 
                 {/* 3. Floating Search Engine Pills (Staggered Bottom-Right Overlapping) */}
                 <div className="absolute max-sm:scale-75 -bottom-10 -right-10 z-30 flex flex-col gap-1 items-end pointer-events-auto">
-                    {/* Yahoo! Pill */}
-                    <button
-                        type="button"
-                        onClick={() => setActiveEngine("yahoo")}
-                        className={`transition-all duration-300 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg cursor-pointer ${
-                            activeEngine === "yahoo"
-                                ? 'bg-[#ff6900] text-white z-30 anim-pill-pop'
-                                : 'bg-white/95 text-slate-800  hover:bg-white'
-                        }`}
-                    >
-                        <RiGlobalLine 
-                            size={11} 
-                            className={activeEngine === "yahoo" ? "text-white" : "text-slate-500"} 
-                        />
-                        <span className="font-bold text-[9px] sm:text-[10px] tracking-tight">Yahoo!</span>
-                    </button>
-
                     {/* Google Pill (Highlighted in Orange matching reference) */}
                     <button
                         type="button"
@@ -193,22 +170,6 @@ function AnalyticsAnswerAnim() {
                         <span className="font-bold text-[10px] sm:text-[11px] tracking-tight">Google</span>
                     </button>
 
-                    {/* DuckDuckGo Pill */}
-                    <button
-                        type="button"
-                        onClick={() => setActiveEngine("duckduckgo")}
-                        className={`transition-all duration-300 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg cursor-pointer ${
-                            activeEngine === "duckduckgo"
-                                ? 'bg-[#ff6900] text-white z-30 anim-pill-pop'
-                                : 'bg-white/95 text-slate-800  hover:bg-white '
-                        }`}
-                    >
-                        <RiGlobalLine 
-                            size={11} 
-                            className={activeEngine === "duckduckgo" ? "text-white" : "text-slate-500"} 
-                        />
-                        <span className="font-bold text-[9px] sm:text-[10px] tracking-tight">DuckDuckGo</span>
-                    </button>
                 </div>
             </div>
         </div>

@@ -3,6 +3,66 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 import { Link } from "next-view-transitions";
+import { siteConfig } from "@/config/site";
+
+const year = new Date().getFullYear();
+
+const mainLinks = [
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Pitch deck", href: "/pitchdeck" },
+];
+
+const serviceLinks = [
+  { label: "Websites", href: "/expertise/websites" },
+  { label: "eCommerce", href: "/expertise/ecommerce" },
+  { label: "Software and tools", href: "/expertise/software-and-tools" },
+  { label: "Branding and marketing", href: "/expertise/branding-and-marketing" },
+];
+
+const contactLinks = [
+  { label: siteConfig.address.full },
+];
+const mailLink = [
+  { label: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}`, external: true, className: "normal-case text-[0.65rem]!" },
+];
+
+// Placeholder URLs from site config until the final profiles arrive.
+const socialLinks = [
+  { label: "Instagram", href: siteConfig.socials.instagram, external: true },
+  { label: "LinkedIn", href: siteConfig.socials.linkedin, external: true },
+];
+
+const smallPrintLinks = [
+  { label: `© ${year} Zerror Studios` },
+  { label: "Privacy policy", href: "/privacy" },
+  { label: "Terms of use", href: "/terms" },
+];
+
+const FooterLink = ({ link, className = "", ...rest }) => {
+  if (!link.href) {
+    return <span className={`${className} ${link.className || ""}`} {...rest}>{link.label}</span>;
+  }
+  if (link.external) {
+    const isMail = link.href.startsWith("mailto:");
+    return (
+      <a
+        href={link.href}
+        {...(isMail ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+        className={`${className} ${link.className || ""} hover:underline`}
+        {...rest}
+      >
+        {link.label}
+      </a>
+    );
+  }
+  return (
+    <Link href={link.href} className={`${className} ${link.className || ""} hover:underline`} {...rest}>
+      {link.label}
+    </Link>
+  );
+};
 
 const hoverIn = (selector) => {
   gsap.to(selector, {
@@ -44,7 +104,10 @@ const footerRows = [
         hover: "group-hover:top-[88%]",
       },
       { img: "/svg/o.svg", hover: "hover:pb-10" },
-      {},
+      {
+          links: mailLink,
+        align: "absolute bottom-[5%] left-[5%] right-[5%]",
+      },
     ],
   },
   {
@@ -65,9 +128,8 @@ const footerRows = [
       {},
       { img: "/svg/r.svg", hover: "hover:pb-10" },
       {
-        text: "Mumbai, India",
-        align: "absolute top-[5%] left-[5%]",
-        hover: "group-hover:top-[85%]",
+        links: contactLinks,
+        align: "absolute top-[5%] left-[5%] right-[5%]",
       },
       {
         text: "Design. Development. Marketing.",
@@ -87,11 +149,13 @@ const footerRows = [
       },
       {},
       {
-        text: "Crafted with intent.",
-        align: "absolute top-[5%] left-[5%]",
-        hover: "group-hover:top-[85%]",
+        links: mainLinks,
+        align: "absolute top-[5%] left-[5%] right-[5%]",
       },
-      {},
+      {
+        links: serviceLinks,
+        align: "absolute top-[5%] left-[5%] right-[5%]",
+      },
       { img: "/svg/r.svg", hover: "hover:pb-10" },
       {
         text: "Refine through feedback.",
@@ -103,11 +167,13 @@ const footerRows = [
         align: "absolute bottom-[5%] left-[5%]",
         hover: "group-hover:bottom-[88%]",
       },
-      {},
       {
-        text: `©${new Date().getFullYear()} Zerror Studios. All rights reserved.`,
-        align: "absolute bottom-[5%] left-[5%]",
-        hover: "group-hover:bottom-[67%]",
+        links: socialLinks,
+        align: "absolute bottom-[5%] left-[5%] right-[5%]",
+      },
+      {
+        links: smallPrintLinks,
+        align: "absolute bottom-[5%] left-[5%] right-[5%]",
       },
     ],
   },
@@ -121,39 +187,22 @@ const mobileFooterData = [
   , {
     label: "I", alignment: "flex items-end"
   }, {
-    label: "I", alignment: "flex items-end"
-
+    links: serviceLinks, alignment: ""
   }, {}, {
-    links: [
-      {
-        label: "Home",
-        href: "/"
-      }, {
-        label: "About",
-        href: "/about"
-      },
-      {
-        label: "Work",
-        href: "/work"
-      },
-      {
-        label: "Contact",
-        href: "/contact"
-      }
-    ]
+    links: mainLinks, alignment: ""
   }, {
-    label: "Mumbai, India", alignment: " flex items-end text-start"
+    links: contactLinks, alignment: " justify-end text-start"
   }, {}, {
-    label: "crafted with intent", alignment: "flex items-end"
+    links: socialLinks, alignment: " justify-end"
   }
   , {
-    label: `©${new Date().getFullYear()} Zerror Studios.`, alignment: ""
+    label: `© ${year} Zerror Studios`, alignment: ""
   }
   , {
     label: "I", alignment: "flex items-start"
   }
   , {
-    label: " All rights reserved.", alignment: "flex items-end"
+    links: smallPrintLinks.slice(1), alignment: " justify-end"
   }
 ]
 
@@ -197,6 +246,19 @@ const Footer = () => {
                     <img
                       ref={(el) => (flickerRefs.current.push(el))}
                       src={item.img} alt="icon" className="flicker h-[6vw]" />
+                  )}
+
+                  {item.links && (
+                    <div className={`flex flex-col gap-1 text-xs font-thin leading-tight tracking-wider uppercase text-[#f6f8ff] ${item.align}`}>
+                      {item.links.map((link, li) => (
+                        <FooterLink
+                          key={li}
+                          link={link}
+                          ref={(el) => (flickerRefs.current.push(el))}
+                          className="flicker w-fit"
+                        />
+                      ))}
+                    </div>
                   )}
 
                   {item.text && (
@@ -247,14 +309,12 @@ const Footer = () => {
                 <div
                   key={index} className={` h-[25svh] ${item.alignment} p-3 border border-white/10 rounded-md flex flex-col gap-2`}>
                   {item.links.map((link, i) => (
-                    <Link
+                    <FooterLink
                       ref={(el) => (flickerRefs.current.push(el))}
                       key={i}
-                      href={link.href}
-                      className="flicker text-xs  hover:underline"
-                    >
-                      {link.label}
-                    </Link>
+                      link={link}
+                      className="flicker text-xs w-fit"
+                    />
                   ))}
                 </div>
               );

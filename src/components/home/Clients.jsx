@@ -4,6 +4,13 @@ import Image from 'next/image';
 import { clientsData } from '../expertise/ClientsMarquee';
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 
+const studioNumbers = [
+    { prefix: "Since", value: "2022" },
+    { value: "100+", label: "clients" },
+    { value: "200+", label: "websites and products" },
+    { value: "80+", label: "online stores" },
+];
+
 const ClientBox = ({ item }) => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -51,21 +58,21 @@ const Clients = () => {
     }, []);
 
     return (
+        <>
         <div className=' noise-bg clients_paren relative z-10  bg_blue py-8 md:py-16 space-y-8 md:space-y-16 text-white w-full'>
 
             <div className=" padding w-full z-20 relative text-white space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
-                    <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Our <br /> Clients</h2>
+                    <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Our <br /> clients</h2>
                 </div>
                 <div className="text-xs max-sm:hidden pt-4">
                     <p data-para-effect className=' font-thin'>The company </p>
                     <p data-para-effect className=' font-thin'>we keep.</p>
                 </div>
-                <div className=" text-3xl  md:pl-2">
-                    <h3 data-para-effect className=" secondary-font">
-                        <span className='opacity-0  max-sm:hidden pointer-events-none' aria-hidden="true">...........................</span>
-                        From global publishing houses to founders on their first launch, we work with teams that value clarity,
-                        structure and scale.
+                <div className="text-3xl md:pl-2">
+                    <h3 data-para-effect className="secondary-font">
+                        <span className="opacity-0 max-sm:hidden pointer-events-none" aria-hidden="true">...............</span>
+                        Publishers, film houses, fashion labels and founders on their first launch. More than 100 brands since 2022.
                     </h3>
                 </div>
             </div>
@@ -75,7 +82,11 @@ const Clients = () => {
                     <ClientBox key={i} item={item} />
                 ))}
             </div>
+
+         
         </div>
+        </>
+
     )
 }
 

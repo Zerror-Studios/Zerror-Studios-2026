@@ -152,7 +152,7 @@ function SmartInventoryAnim() {
                 {/* Top Header Bar */}
                 <div className="flex items-center justify-between gap-x-6 px-2.5 xs:px-3 sm:px-4 py-1.5 sm:py-2 border-b border-slate-100 shrink-0 bg-white/60">
                     <span className="text-[10px] xs:text-[11px] sm:text-xs font-bold whitespace-nowrap text-slate-900 font-sans">
-                        Z-COMMERCE
+                        Zcom
                     </span>
 
                     {/* Header Search Bar */}
@@ -202,7 +202,7 @@ function SmartInventoryAnim() {
                                     </div>
                                     <div className="flex items-center gap-1 py-0.5">
                                         <span className="w-1 h-1 rounded-full border border-slate-300 shrink-0" />
-                                        <span className="truncate">LookBooks</span>
+                                        <span className="truncate">Lookbooks</span>
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +221,7 @@ function SmartInventoryAnim() {
                                 <div className="flex items-center justify-between py-0.5">
                                     <span className="flex items-center gap-1 truncate">
                                         <RiContactsBook2Line size={9} className="text-slate-400 shrink-0" />
-                                        Contact Book
+                                        Contact book
                                     </span>
                                     <RiArrowDownSLine size={8} className="text-slate-400 shrink-0" />
                                 </div>
@@ -253,7 +253,7 @@ function SmartInventoryAnim() {
                             </div>
                             <div className="flex items-center gap-1 py-0.5">
                                 <RiLogoutBoxRLine size={9} className="text-slate-400 shrink-0" />
-                                <span className="truncate">Log Out</span>
+                                <span className="truncate">Log out</span>
                             </div>
                         </div>
                     </div>

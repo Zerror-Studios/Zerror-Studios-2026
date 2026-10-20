@@ -4,11 +4,11 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const initialCustomers = [
-  { id: 1, name: "Rahul Sharma", email: "rahul.s@salesradar.io", country: "🇮🇳 India", orders: 18, spent: "₹3,56,070", status: "VIP Customer" },
-  { id: 2, name: "Priya Patel", email: "priya.p@domain.com", country: "🇦🇪 UAE", orders: 12, spent: "₹2,33,271", status: "Active" },
-  { id: 3, name: "Amit Kumar", email: "amit.k@mumbai.in", country: "🇴🇲 Oman", orders: 9, spent: "₹1,17,860", status: "Active" },
-  { id: 4, name: "Neha Gupta", email: "neha.g@delhi.in", country: "🇶🇦 Qatar", orders: 6, spent: "₹81,340", status: "Active" },
-  { id: 5, name: "Vikram Singh", email: "vikram.s@pune.in", country: "🇳🇵 Nepal", orders: 14, spent: "₹2,61,450", status: "VIP Customer" },
+  { id: 1, name: "Rohan Mehta", email: "rohan.m@domain.com", country: "India", orders: 18, spent: "₹3,56,070", status: "VIP Customer" },
+  { id: 2, name: "Priya Patel", email: "priya.p@domain.com", country: "UAE", orders: 12, spent: "₹2,33,271", status: "Active" },
+  { id: 3, name: "Amit Kumar", email: "amit.k@mumbai.in", country: "Oman", orders: 9, spent: "₹1,17,860", status: "Active" },
+  { id: 4, name: "Neha Gupta", email: "neha.g@delhi.in", country: "Qatar", orders: 6, spent: "₹81,340", status: "Active" },
+  { id: 5, name: "Vikram Singh", email: "vikram.s@pune.in", country: "Nepal", orders: 14, spent: "₹2,61,450", status: "VIP Customer" },
 ];
 
 export default function CustomersTab({ searchTerm, theme }) {
@@ -123,10 +123,10 @@ export default function CustomersTab({ searchTerm, theme }) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
           {[
-            { key: "stripe", title: "Razorpay Payment Gateway", desc: "Visa, RuPay Card, Amex, Discover", icon: "💳" },
-            { key: "paypal", title: "Paytm Express Checkout", desc: "One-touch global Paytm payments", icon: "🅿️" },
-            { key: "applepay", title: "PhonePe & Google Pay", desc: "Scan & Pay instantly", icon: "🍎" },
-            { key: "klarna", title: "CRED Pay Buy Now Pay Later", desc: "Buy Now Pay Later in India", icon: "🛍️" },
+            { key: "stripe", title: "Razorpay Payment Gateway", desc: "Visa, RuPay Card, Amex, Discover", icon: "R" },
+            { key: "paypal", title: "Paytm Express Checkout", desc: "One-touch global Paytm payments", icon: "P" },
+            { key: "applepay", title: "PhonePe & Google Pay", desc: "Scan & Pay instantly", icon: "G" },
+            { key: "klarna", title: "CRED Pay Buy Now Pay Later", desc: "Buy Now Pay Later in India", icon: "C" },
           ].map(gw => (
             <div key={gw.key} className={`p-3.5 rounded-xl border flex items-center justify-between ${isDark ? "bg-white/5 border-white/10" : "bg-gray-50 border-gray-200/60"}`}>
               <div className="flex items-center gap-3">

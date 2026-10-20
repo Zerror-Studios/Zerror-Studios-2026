@@ -75,8 +75,7 @@ const HeroSection = () => {
 
       <div className="w-full aboutTitle flex -mt-[100vh] py-44 max-sm:pb-20  ">
         <h1 className=" heading_split text-5xl md:text-8xl  leading-none  primary-font text_blue w-[80%]">
-          We believe a great user experience is not just intuitive it’s
-          entertaining.
+          A studio for brands that refuse to look average.
         </h1>
       </div>
 
@@ -84,7 +83,7 @@ const HeroSection = () => {
         <div className=" w-full md:w-1/2  space-y-5">
           <div className="md:w-[80%] ">
             <h2 className=" heading_split primary-font text_blue text-3xl">
-              For founders who dream in beta. For brands that refuse to look average. Your next version starts here.
+              For founders who dream in beta.
             </h2>
           </div>
 
@@ -110,13 +109,12 @@ const HeroSection = () => {
             </h3>
             <div className="w-full flex flex-col gap-3">
               <p className=" heading_split leading-tight">
-                Zerror. Zero error. Naming a studio after perfection is a risk — it means every launch has to keep the
-                promise. Good. That's the point. When your name is a standard, you hold it, or everyone knows you didn't.
+                Zerror. Zero error. Naming a studio after perfection is a risk. Every launch has to keep the promise.
+                That is the point.
               </p>
               <p className=" heading_split leading-tight">
-                Great ideas usually break in the space between design and development — the handoff, where fonts shift,
-                spacing slips and intent gets diluted. We removed the handoff. Designers and developers, one room, one
-                system. What gets imagined is what gets shipped.
+                We started in 2022 to close the gap between the people who design and the people who build. Today one
+                team designs, builds, launches and markets the brand. What gets imagined is what goes live.
               </p>
             </div>
 

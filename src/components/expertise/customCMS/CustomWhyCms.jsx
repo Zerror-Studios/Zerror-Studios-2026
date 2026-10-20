@@ -9,28 +9,28 @@ gsap.registerPlugin(ScrollTrigger);
 const cmsPoints = [
     {
         num: "01",
-        title: "No Limitations",
-        desc: "You're not restricted by templates or pre-built structures. Everything is designed specifically for your needs."
+        title: "Made for your work",
+        desc: "Every screen exists for a reason."
     },
     {
         num: "02",
-        title: "Tailored Workflow",
-        desc: "Streamline your content management with an intuitive interface that matches your team's exact processes."
+        title: "Your workflow",
+        desc: "Approvals and roles that match how you run."
     },
     {
         num: "03",
-        title: "Scalable Architecture",
-        desc: "Built to grow with your business. Add new features, integrations, and content types without breaking the system."
+        title: "Room to grow",
+        desc: "Add features without starting again."
     },
     {
         num: "04",
-        title: "Enhanced Security",
-        desc: "Custom solutions eliminate the vulnerabilities of popular open-source plugins, keeping your data protected."
+        title: "Fewer weak spots",
+        desc: "No pile of plugins to patch."
     },
     {
         num: "05",
-        title: "Blazing Performance",
-        desc: "Optimized code and databases ensure faster load times, better SEO rankings, and an exceptional user experience."
+        title: "Fast",
+        desc: "For your team, and for your readers."
     }
 ];
 
@@ -118,20 +118,11 @@ const CustomWhyCms = () => {
                         alt="Stroke circle Graphic"
                     />
                 </div>
-
-
-                <div className=" padding z-10 py-0!  md:w-[25%] max-sm:bottom-8 md:top-24 max-sm:left-0 md:right-0  absolute text-3xl  pl-0 md:pl-2">
-                    <h3 data-para-effect className="">
-                        A custom CMS gives you the freedom to build exactly what you need.
-                    </h3>
-                </div>
                 <div className=" top-8 absolute  md:hidden z-10 padding py-0! space-y-2">
-                    <p data-para-effect className='capitalize w-[60%] text-xs'>what we build</p>
-                    <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'> Why  <br /> Go Custom?</h2>
+                    <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Why custom</h2>
                 </div>
                 <div className=" max-sm:hidden z-10 padding py-0! space-y-2">
-                    <p data-para-effect className='capitalize w-[60%] text-xs'>what we build</p>
-                    <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'> Why  <br /> Go Custom?</h2>
+                    <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Why custom</h2>
                 </div>
                 <div
                     className="arc_container"

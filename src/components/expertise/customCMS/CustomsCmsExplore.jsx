@@ -40,14 +40,16 @@ const CustomsCmsExplore = () => {
         <div className="w-full   padding pt-0! text-white ">
           <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
             <div className="">
-              <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Explore CMS </h2>
+              <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>See one in action</h2>
             </div>
             <div className="text-xs max-sm:hidden pt-4">
+              <p data-para-effect className="font-thin">A sample dashboard.</p>
+              <p data-para-effect className="font-thin">Click around.</p>
             </div>
             <div className=" text-3xl  md:pl-2">
-              <h3 data-para-effect className="">
-                <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                From content to commerce, our CMS gives you complete control to create, manage, and scale—without limitations.
+              <h3 data-para-effect className="secondary-font">
+                <span className='opacity-0 max-sm:hidden pointer-events-none' aria-hidden="true">...............</span>
+                Add a product, check a payment, see who your customers are. Yours is built around the screens your team uses every day.
               </h3>
             </div>
           </div>

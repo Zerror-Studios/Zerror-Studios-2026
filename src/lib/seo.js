@@ -6,7 +6,7 @@ export function getPageSeo(path = "/") {
   return (
     siteRoutes.find((route) => route.path === normalizedPath) || {
       path: normalizedPath,
-      title: siteConfig.name,
+      title: siteConfig.defaultTitle,
       description: siteConfig.description,
       priority: 0.5,
     }
@@ -24,11 +24,13 @@ export function createMetadata({
 } = {}) {
   const url = absoluteUrl(path);
   const imageUrl = absoluteUrl(image);
-  const pageTitle = title || siteConfig.name;
+  // Titles come in full (they already end in "| Zerror Studios"), so they are
+  // used as they are, never run through a template.
+  const pageTitle = title || siteConfig.defaultTitle;
 
   return {
     metadataBase: new URL(siteConfig.url),
-    title: pageTitle,
+    title: { absolute: pageTitle },
     description,
     keywords,
     authors: [],
@@ -85,11 +87,14 @@ export function createMetadata({
 }
 
 export function createRootMetadata() {
+  // No canonical at the root: each page sets its own, so a page without
+  // metadata never points its canonical at the home page.
+  // eslint-disable-next-line no-unused-vars
+  const { alternates, ...rest } = createMetadata();
   return {
-    ...createMetadata(),
+    ...rest,
     title: {
-      default: siteConfig.name,
-      template: "%s | Zerror Studios",
+      default: siteConfig.defaultTitle,
     },
   };
 }
@@ -99,7 +104,7 @@ export function createPageMetadata(path) {
 
   return createMetadata({
     title: page.title,
-    description: page.description,
+    description: page.description || siteConfig.description,
     path: page.path,
   });
 }

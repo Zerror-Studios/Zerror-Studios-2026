@@ -13,7 +13,7 @@ const OPTIONS = [
         visitsGrowth: "16% mo/mo",
         orders: 206,
         ordersGrowth: "10% mo/mo",
-        revenue: 8850,
+        revenue: 72500,
         revenueGrowth: "10% mo/mo",
         peak: { x: 178, y: 16 },
         // Exact reference ECG baseline (peak at x:178, y:16)
@@ -25,7 +25,7 @@ const OPTIONS = [
         visitsGrowth: "24% mo/mo",
         orders: 312,
         ordersGrowth: "18% mo/mo",
-        revenue: 13420,
+        revenue: 96400,
         revenueGrowth: "15% mo/mo",
         peak: { x: 215, y: 12 },
         // Mid-peak surge shifted right (peak at x:215, y:12)
@@ -37,7 +37,7 @@ const OPTIONS = [
         visitsGrowth: "19% mo/mo",
         orders: 254,
         ordersGrowth: "14% mo/mo",
-        revenue: 10890,
+        revenue: 84900,
         revenueGrowth: "12% mo/mo",
         peak: { x: 135, y: 22 },
         // Early cycle spike (peak at x:135, y:22)
@@ -49,7 +49,7 @@ const OPTIONS = [
         visitsGrowth: "32% mo/mo",
         orders: 418,
         ordersGrowth: "26% mo/mo",
-        revenue: 18250,
+        revenue: 99800,
         revenueGrowth: "22% mo/mo",
         peak: { x: 245, y: 14 },
         // High volume record surge (peak at x:245, y:14)
@@ -202,7 +202,7 @@ function ProductionSyncAnim() {
                     <div className="flex items-start justify-between">
                         <div className="space-y-0.5">
                             <span className="text-[11px] sm:text-xs text-white/70 font-medium block">
-                                Site Visits
+                                Site visits
                             </span>
                             <div className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-sans leading-none pt-0.5 tabular-nums">
                                 {animatedVisits.toLocaleString()}+
@@ -222,7 +222,7 @@ function ProductionSyncAnim() {
                         <div className="flex items-center gap-1.5 pointer-events-auto">
                             
                             <div className="border border-white/30 text-white/90 text-[8.5px] sm:text-[9.5px] font-medium px-2.5 py-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer shadow-xs whitespace-nowrap">
-                                View All Details
+                                View all details
                             </div>
                         </div>
                     </div>
@@ -351,7 +351,7 @@ function ProductionSyncAnim() {
                     </div>
 
                     <div className="text-[#1e1333] text-2xl sm:text-3xl font-bold tracking-tight font-sans my-1 sm:my-1.5 tabular-nums">
-                        ${animatedRevenue.toLocaleString()}
+                        ₹{animatedRevenue.toLocaleString("en-IN")}
                     </div>
 
                     <div className="flex items-center gap-1.5 text-[#ea580c] font-bold text-[9.5px] sm:text-[10.5px]">

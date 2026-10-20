@@ -465,3 +465,104 @@ button {
     grid-template-rows: subgrid;
   }
 }
+
+/* Form toasts (react-toastify), see src/lib/notify.jsx */
+.Toastify__toast.zerror-toast {
+  font-family: inherit;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  min-height: 0;
+  width: 100%;
+  box-shadow: 0 25px 60px -15px rgba(0, 43, 186, 0.35);
+}
+.zerror-toast--success {
+  background: #002bba;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.zerror-toast--error {
+  background: #fff;
+  color: #002bba;
+  border: 1px solid rgba(0, 43, 186, 0.15);
+}
+.zerror-toast .Toastify__progress-bar {
+  height: 3px;
+}
+.zerror-toast--success .Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.6);
+}
+.zerror-toast--error .Toastify__progress-bar {
+  background: #002bba;
+}
+.zerror-toast .Toastify__progress-bar--bg {
+  opacity: 0.1;
+}
+@media (min-width: 481px) {
+  .Toastify__toast-container--top-right {
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 24rem;
+  }
+}
+@keyframes zerrorToastIn {
+  from { opacity: 0; transform: translate3d(110%, 0, 0) scale(0.96); filter: blur(6px); }
+  60% { opacity: 1; filter: blur(0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+}
+@keyframes zerrorToastOut {
+  from { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  to { opacity: 0; transform: translate3d(110%, 0, 0) scale(0.96); filter: blur(4px); }
+}
+.zerror-toast-enter {
+  animation: zerrorToastIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.zerror-toast-exit {
+  animation: zerrorToastOut 0.35s cubic-bezier(0.7, 0, 0.84, 0) both;
+}
+
+
+
+/* Toastify css */
+:root {
+    --toastify-color-light: #fff;
+    --toastify-color-dark: #121212;
+    --toastify-color-info: #3498db;
+    --toastify-color-success: #07bc0c;
+    --toastify-color-warning: #f1c40f;
+    --toastify-color-error: hsl(6, 78%, 57%);
+    --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+    --toastify-icon-color-info: var(--toastify-color-info);
+    --toastify-icon-color-success: var(--toastify-color-success);
+    --toastify-icon-color-warning: var(--toastify-color-warning);
+    --toastify-icon-color-error: var(--toastify-color-error);
+    --toastify-container-width: fit-content;
+    --toastify-toast-width: 320px;
+    --toastify-toast-offset: 16px;
+    --toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));
+    --toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));
+    --toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));
+    --toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));
+    --toastify-toast-background: #fff;
+    --toastify-toast-padding: 14px;
+    --toastify-toast-min-height: 64px;
+    --toastify-toast-max-height: 800px;
+    --toastify-toast-bd-radius: 6px;
+    --toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    --toastify-font-family: sans-serif;
+    --toastify-z-index: 9999;
+    --toastify-text-color-light: #757575;
+    --toastify-text-color-dark: #fff;
+    --toastify-text-color-info: #fff;
+    --toastify-text-color-success: #fff;
+    --toastify-text-color-warning: #fff;
+    --toastify-text-color-error: #fff;
+    --toastify-spinner-color: #616161;
+    --toastify-spinner-color-empty-area: #e0e0e0;
+    --toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+    --toastify-color-progress-dark: #bb86fc;
+    --toastify-color-progress-info: var(--toastify-color-info);
+    --toastify-color-progress-success: var(--toastify-color-success);
+    --toastify-color-progress-warning: var(--toastify-color-warning);
+    --toastify-color-progress-error: var(--toastify-color-error);
+    --toastify-color-progress-bgo: 0.2;
+}

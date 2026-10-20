@@ -10,31 +10,27 @@ gsap.registerPlugin(ScrollTrigger)
 const servicesContent = [
   {
     id: 1,
-    title: "Website Design & Development",
-    href: "/expertise/website-development",
-    description:
-      "Designing and building web platforms as structured systems where UX, performance, and engineering work in sync. Every layer is intentional — ensuring clarity, scalability, and long-term reliability.",
+    title: "Websites",
+    href: "/expertise/websites",
+    description: "Designed and built as one, by the same team. Scroll-led motion in GSAP and Next.js, planned with the page from the start, and every site set up for Google and AI search before go-live.",
   },
   {
     id: 2,
-    title: "Ecommerce Development",
-    href: "/expertise/e-commerce",
-    description:
-      "Building commerce systems that balance experience, performance, and growth. Designed to scale with users and products while maintaining clarity, speed, and conversion efficiency.",
+    title: "eCommerce",
+    href: "/expertise/ecommerce",
+    description: "Stores that sell like the brand, not like a theme. Custom Shopify builds or Zcom, our own commerce platform, with every template designed, payments connected and test orders placed before go-live.",
   },
   {
     id: 3,
-    title: "Custom Software Development",
-    href: "/expertise/custom-cms-development",
-    description:
-      "Creating tailored digital systems built around specific workflows and operational needs. Modular, scalable, and engineered for efficiency — enabling flexibility as products and teams evolve.",
+    title: "Software and tools",
+    href: "/expertise/software-and-tools",
+    description: "Built around how your team already works. A custom CMS, dashboard or internal tool, mapped screen by screen with you, then built in stages you can try as we go.",
   },
   {
     id: 4,
-    title: "Branding, Marketing & SEO",
-    href: "/expertise/branding-marketing-and-seo",
-    description:
-      "Developing brand and growth systems that ensure consistency across every touchpoint. From identity to visibility, each element is structured to perform, adapt, and scale over time.",
+    title: "Branding and marketing",
+    href: "/expertise/branding-and-marketing",
+    description: "Seen, found, remembered. A full identity with logo, colour, type and voice, then social, campaigns and SEO, run every month by the team that made it.",
   },
 ];
 
@@ -266,10 +262,10 @@ const Our_Services = () => {
               <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[65%_35%]">
                 {/* Left */}
                 <div className="  md:w-1/2 space-y-5">
-                  <h2 data-para-effect className=" md:w-[85%] capitalize text-5xl text_blue primary-font">
+                  <h2 data-para-effect className=" md:w-[85%] text-5xl text_blue primary-font">
                     {item.title}
                   </h2>
-                  <Button link={item.href} title="View More" />
+                  <Button link={item.href} title="Explore" />
                 </div>
                 {/* Right */}
                 <div className=" space-y-5 md:space-y-10 ">

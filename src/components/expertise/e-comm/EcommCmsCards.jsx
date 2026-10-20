@@ -12,14 +12,16 @@ import LoyaltySystemAnim from './cmsCardAnimations/LoyaltySystemAnim';
 import AdminCampaignsAnim from './cmsCardAnimations/AdminCampaignsAnim';
 import SearchAiArchAnim from './cmsCardAnimations/SearchAiArchAnim';
 import IpOwnershipAnim from './cmsCardAnimations/IpOwnershipAnim';
+import AiCoachAnim from './cmsCardAnimations/AiCoachAnim';
+import ChatControlAnim from './cmsCardAnimations/ChatControlAnim';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CMS_CARDS = [
     {
         id: "smart-inventory",
-        title: "Smart Catalog & Inventory Sync",
-        desc: "Real-time product variation control, live inventory feeds, and intuitive catalog search engineered for seamless store operations.",
+        title: "Products and stock",
+        desc: "Every variant, updated live.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg1.webp",
         component: SmartInventoryAnim,
         textPosition: "top",
@@ -27,58 +29,74 @@ const CMS_CARDS = [
     },
     {
         id: "workflow-model",
-        title: "Automated Logistics & Tracking",
-        desc: "Native Shiprocket logistics with real-time AWB tracking, live dispatch status, and visual Kanban order progression.",
+        title: "Shipping",
+        desc: "Shiprocket built in, with live tracking.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg2.webp",
         component: WorkflowModelAnim,
         textPosition: "bottom"
     },
     {
         id: "production-sync",
-        title: "Live Revenue & Traffic Analytics",
-        desc: "Monitor live site visits, order counts, and revenue velocity at a single glance with real-time heartbeat sales tracking.",
+        title: "Sales at a glance",
+        desc: "Visits, orders and revenue on one screen.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg3.webp",
         component: ProductionSyncAnim,
         textPosition: "top"
     },
     {
         id: "analytics-answer",
-        title: "Search Engine & SEO Visibility",
-        desc: "Built-in search engine indexing controls and optimization tailored for top-tier Google, DuckDuckGo, and Yahoo! organic discovery.",
+        title: "Search settings",
+        desc: "Control how every page shows on Google.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg4.webp",
         component: AnalyticsAnswerAnim,
         textPosition: "bottom"
     },
     {
         id: "loyalty-system",
-        title: "Memberships & Digital Masterclasses",
-        desc: "Sell digital products, private masterclasses, and recurring subscriptions with proven 85% open and 26% engagement rates.",
+        title: "Classes and memberships",
+        desc: "Sell courses and subscriptions from the same store.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg5.webp",
         component: LoyaltySystemAnim,
         textPosition: "top"
     },
     {
         id: "admin-campaigns",
-        title: "Omnichannel Outreach & Messaging",
-        desc: "Engage high-intent customers directly across WhatsApp, email, and live chat with automated campaign tracking and checklist readiness.",
+        title: "WhatsApp and email",
+        desc: "Reach customers where they already are.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg6.webp",
         component: AdminCampaignsAnim,
         textPosition: "bottom"
     },
     {
         id: "search-ai-arch",
-        title: "Multi-Domain Brand Architecture",
-        desc: "Unified multi-TLD domain routing engineered to scale global brand assets seamlessly across .com, .net, and custom extensions.",
+        title: "More than one brand",
+        desc: "Several brands, one dashboard.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg7.webp",
         component: SearchAiArchAnim,
         textPosition: "top"
     },
     {
-        id: "ip-ownership",
-        title: "Global Gateways & Zero SaaS Fees",
-        desc: "Direct checkout payouts with Stripe, Apple Pay, Klarna, and top global gateways with zero transaction cuts or platform lock-in.",
+        id: "indian-payments",
+        title: "Indian payments",
+        desc: "Razorpay, Cashfree, PhonePe and UPI, with GST handled.",
         bgImage: "/images/expertisePage/e-comm/cmsCards/bg8.webp",
         component: IpOwnershipAnim,
+        textPosition: "top"
+    },
+    {
+        id: "ai-coach",
+        title: "An AI coach",
+        desc: "Ask why sales dipped. Get the answer and the next step.",
+        bgImage: "/images/expertisePage/e-comm/cmsCards/bg3.webp",
+        component: AiCoachAnim,
+        textPosition: "bottom"
+    },
+    {
+        id: "chat-control",
+        title: "Run it by chat",
+        desc: "Add products and launch a sale from Claude or ChatGPT.",
+        bgImage: "/images/expertisePage/e-comm/cmsCards/bg6.webp",
+        component: ChatControlAnim,
         textPosition: "top"
     }
 ];
@@ -131,16 +149,16 @@ const EcommCmsCards = () => {
                 <div className="w-full   padding py-0!  text_blue ">
                     <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                         <div className="">
-                            <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Explore Zcom.</h2>
+                            <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Meet Zcom.</h2>
                         </div>
                         <div className="text-xs max-sm:hidden pt-4">
-                            <p className='font-thin'>Total control,</p>
-                            <p className='font-thin'>zero restrictions.</p>
+                            <p className='font-thin'>Your store.</p>
+                            <p className='font-thin'>Our team. Built-in AI.</p>
                         </div>
                         <div className="text-3xl md:pl-2">
                             <h3 data-para-effect className="">
                                 <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                                Our own commerce platform. Not a theme, not a template — a system that bends to your business.
+                                One store, designed for your brand, run by one team, with AI that helps it sell.
                             </h3>
                         </div>
                     </div>

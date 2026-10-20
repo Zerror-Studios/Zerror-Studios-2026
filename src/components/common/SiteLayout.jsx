@@ -13,6 +13,7 @@ import GlobalParaReveal from "@/components/animation/GlobalParaReveal";
 import GlobalImgReveal from "@/components/animation/GlobalImgReveal";
 import GlobalHeaderHide from "@/components/animation/GlobalHeaderHide";
 import { ProjectFormProvider } from "@/context/ProjectFormContext";
+import FormToaster from "@/components/common/FormToaster";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,6 +66,7 @@ export default function SiteLayout({ children }) {
           <GlobalImgReveal />
           <GlobalParaReveal />
           <GlobalHeaderHide />
+          <FormToaster />
 
           <header>
             <Header />

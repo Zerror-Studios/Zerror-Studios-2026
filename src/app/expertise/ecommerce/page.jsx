@@ -4,20 +4,22 @@ import EcommCmsCards from '@/components/expertise/e-comm/EcommCmsCards'
 import EcommStoreSection from '@/components/expertise/e-comm/EcommStoreSection'
 import EcommPriceSection from '@/components/expertise/e-comm/EcommPriceSection'
 import WebDevClients from '@/components/expertise/website-development/WebDevClients'
+import WebDevProcess from '@/components/expertise/website-development/WebDevProcess'
+import { ECOMMERCE_PROCESS } from '@/components/expertise/website-development/processSections/serviceProcesses'
 import TicketEffect from '@/components/home/TicketEffect'
 
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "eCommerce Development & the Zcom Platform — Zerror Studios",
-  description: "Commerce built to sell and scale. Shopify when it fits — Zcom, our own platform, when your business has outgrown templates.",
-  path: "/expertise/e-commerce",
+  title: "Custom Shopify stores and Zcom | Zerror Studios",
+  description: "Online stores designed and built in Mumbai, on Shopify or on Zcom, our own platform with AI built in. Indian payments and GST ready.",
+  path: "/expertise/ecommerce",
 });
 
 const heroVideo = "/videos/expertise/e_comm.mp4"
 
 const heroIcons = {
-  "Storefront UX": [
+  "Shopify": [
     { src: "/images/expertisePage/e-comm/icons/ecomm_storefront.png", top: "18%", left: "10%", size: "w-20 md:w-28", rotate: "-12deg" },
     { src: "/images/expertisePage/e-comm/icons/ecomm_grid.png", top: "22%", right: "12%", size: "w-16 md:w-24", rotate: "15deg" },
     { src: "/images/expertisePage/e-comm/icons/ecomm_bag.png", bottom: "25%", left: "15%", size: "w-24 md:w-32", rotate: "-8deg" },
@@ -60,14 +62,12 @@ const page = () => {
       />
       <DetailedExpertiseHero
         expertiseName="Commerce that earns the cart"
-        expertiseHeading={<>Commerce built to sell. <br /> And scale.</>}
-        btnsLabels={["Storefront UX", "Checkout", "Zcom"]}
+        expertiseHeading={<>Stores built to sell. <br /> And to look like you.</>}
+        btnsLabels={["Shopify", "Zcom", "Checkout"]}
         heroIcons={heroIcons}
-        introHeading={<>A store should make buying feel effortless — natural, fast, and true to the brand people came for.</>}
-        introText="We build commerce that balances storytelling, discovery, and a checkout that never fumbles the sale."
+        introHeading={<>A store should make buying feel easy, and true to the brand.</>}
+        introText="We design and build the whole store, down to a checkout that doesn't lose the sale."
         videoSrc={heroVideo}
-        supportingText="From product cards to cart behaviour, every detail is shaped around shopper confidence — fewer
-drop-offs, smoother paths to purchase, and buyers who return."
         features={[
           { label: "Revenue growth", value: "" },
           { label: "YoY", value: "+350%" },
@@ -79,6 +79,7 @@ drop-offs, smoother paths to purchase, and buyers who return."
       <EcommPlatformCompare />
       <EcommCmsCards />
       <EcommPriceSection />
+      <WebDevProcess {...ECOMMERCE_PROCESS} />
       <WebDevClients />
       <TicketEffect/>
     </>
