@@ -74,6 +74,7 @@ export const ECOMMERCE_PROCESS = {
 export const SOFTWARE_PROCESS = {
     label: "How it usually runs",
     lines: ["From first call", "to your team using it."],
+    paragraph: "Most tools are in your team's hands within twelve weeks, built in parts you can try along the way.",
     footnote: "A guide, not a contract. Bigger builds take longer.",
     steps: [
         {

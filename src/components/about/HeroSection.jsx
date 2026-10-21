@@ -18,13 +18,6 @@ const HeroSection = () => {
 
   useGSAP(() => {
     ScrollTrigger.create({
-      trigger: ".ImgEffectContL",
-      start: "top 60%",
-      onEnter: () => setIsRevealedL(true),
-      onLeaveBack: () => setIsRevealedL(false),
-    });
-
-    ScrollTrigger.create({
       trigger: ".ImgEffectContR",
       start: "top 60%",
       onEnter: () => setIsRevealedR(true),
@@ -65,6 +58,8 @@ const HeroSection = () => {
       },
       "<"
     );
+    // Left image reveals once the heading intro finishes, not on scroll
+    tl.call(() => setIsRevealedL(true));
   });
 
   return (

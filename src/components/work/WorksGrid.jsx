@@ -146,7 +146,7 @@ const WorksGrid = () => {
     );
 
     return (
-        <section className="w-full pt-[40vh] padding select-none">
+        <section className="w-full pt-[40vh] padding select-none pb-8 md:pb-16">
             <div>
                 {/* Header Filter Section with Y-Axis Intro Translate */}
                 <div className="mb-8 md:mb-14 overflow-hidden" ref={filterContainerRef}>

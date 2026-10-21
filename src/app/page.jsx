@@ -19,9 +19,8 @@ export default function HomePage() {
       <Hero />
       <About />
       <Our_Services />
-      <Clients />
       <OurWork />
-      <TicketEffect />
+      <Clients />
     </>
   );
 }

@@ -21,13 +21,6 @@ const serviceLinks = [
   { label: "Branding and marketing", href: "/expertise/branding-and-marketing" },
 ];
 
-const contactLinks = [
-  { label: siteConfig.address.full },
-];
-const mailLink = [
-  { label: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}`, external: true, className: "normal-case text-[0.65rem]!" },
-];
-
 // Placeholder URLs from site config until the final profiles arrive.
 const socialLinks = [
   { label: "Instagram", href: siteConfig.socials.instagram, external: true },
@@ -104,10 +97,7 @@ const footerRows = [
         hover: "group-hover:top-[88%]",
       },
       { img: "/svg/o.svg", hover: "hover:pb-10" },
-      {
-          links: mailLink,
-        align: "absolute bottom-[5%] left-[5%] right-[5%]",
-      },
+      {},
     ],
   },
   {
@@ -127,10 +117,7 @@ const footerRows = [
       },
       {},
       { img: "/svg/r.svg", hover: "hover:pb-10" },
-      {
-        links: contactLinks,
-        align: "absolute top-[5%] left-[5%] right-[5%]",
-      },
+      {},
       {
         text: "Design. Development. Marketing.",
         align: "absolute bottom-[5%] left-[5%]",
@@ -190,9 +177,7 @@ const mobileFooterData = [
     links: serviceLinks, alignment: ""
   }, {}, {
     links: mainLinks, alignment: ""
-  }, {
-    links: contactLinks, alignment: " justify-end text-start"
-  }, {}, {
+  }, {}, {}, {
     links: socialLinks, alignment: " justify-end"
   }
   , {

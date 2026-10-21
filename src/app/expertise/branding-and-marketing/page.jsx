@@ -92,7 +92,6 @@ const page = () => {
       <BrandingWorkflowSection />
       <WebDevProcess {...BRANDING_PROCESS} />
       <WebDevClients />
-      <TicketEffect />
     </>
   )
 }

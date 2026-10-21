@@ -103,7 +103,7 @@ const Hero = () => {
         trigger: '.txt_slider_paren',
         start: 'top top',
         end: "bottom bottom",
-        scrub: true,
+        scrub: .5,
         invalidateOnRefresh: true,
         // markers: true,
       }

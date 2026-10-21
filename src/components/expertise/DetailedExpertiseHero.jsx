@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image'
 import gsap from 'gsap'
 import SplitText from 'gsap/dist/SplitText'
-import Flip from 'gsap/dist/Flip'
 import { useGSAP } from '@gsap/react'
 import Matter from 'matter-js';
 import { clientsData } from './ClientsMarquee';
@@ -226,25 +225,6 @@ const DetailedExpertiseHero = ({
         });
     };
 
-    useGSAP(() => {
-        if (window.innerWidth < 750) return;
-
-        gsap.registerPlugin(Flip);
-
-        Flip.fit(".det_vid", ".det_vid_target", {
-            scale: false,
-            ease: "none",
-            duration: 1,
-            scrollTrigger: {
-                trigger: ".cont_pren_s",
-                start: "top top",
-                end: () => `bottom ${document.querySelector('.det_vid_sticky')?.offsetHeight || 0}px`,
-                scrub: true,
-                invalidateOnRefresh: true
-            }
-        });
-    })
-
     return (
         <div className=' content_box opacity-0 relative '>
 
@@ -304,46 +284,37 @@ const DetailedExpertiseHero = ({
                 </div>
             </div>
 
-            <div data-hide-header className="w-full cont_pren_s  md:h-[200vh] blink_btn opacity-0 relative mb-8   flex items-start max-sm:flex-col-reverse max-sm:gap-y-5">
-                <div className="det_vid_sticky w-full padding  h-fit flex flex-col-reverse md:flex-row md:sticky top-0">
-                    <div className="md:w-1/2 md:pr-32 space-y-5 md:space-y-10 pt-6 md:pt-12 text_blue">
-                        <h3 data-para-effect className='  text-3xl md:text-5xl'>{introHeading}</h3>
-                        <p className='text-xl leading-tight'>{introText}</p>
-                    </div>
-                    <div className="det_vid md:absolute bg_blue w-full max-sm:aspect-video md:h-screen top-0 right-0">
-                        <div className="w-full h-full overflow-hidden">
-                            <video className='cover' loop autoPlay muted playsInline src={videoSrc}></video>
-                        </div>
-                    </div>
-                    <div className=" hidden md:block w-full md:w-1/2 pt-6 md:pt-12">
-                        <div className="det_vid_target w-full aspect-video overflow-hidden">
-                        </div>
-                    </div>
-                </div>
+            {/* Full-width video */}
+            <div data-hide-header className="blink_btn opacity-0 w-full aspect-video bg_blue overflow-hidden">
+                <video className='cover' loop autoPlay muted playsInline src={videoSrc}></video>
             </div>
-            <div className="padding">
 
-                <div className="w-full  flex flex-col-reverse max-sm:gap-y-5 md:flex-row">
-                    <div className="w-full md:w-1/2 flex items-end">
-                        <p className='md:w-[50%] leading-tight text-xl text_blue'>
-                            {supportingText}
-                        </p>
+            <div className="padding text_blue py-12 md:py-24 space-y-12 md:space-y-24">
+                {/* Heading in col 1, features in col 2 */}
+                <div className="w-full grid grid-cols-1 md:grid-cols-2 items-start gap-5 md:gap-10">
+                    <div className="flex flex-col justify-between h-full">
+                        <h3 data-para-effect className='text-3xl md:text-5xl md:pr-32 leading-none'>{introHeading}</h3>
+                        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 ">
+
+                            <p className='text-xl leading-tight '>{introText}</p>
+                            <p className=' leading-tight text-xl'>
+                                {supportingText}
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="w-full md:w-1/2 text_blue">
-                        <div className="flex flex-col w-full">
-                            {features.map((stat, i) => (
-                                <div key={i} className="flex justify-between items-center py-4 border-b border-[#002bba20] last:border-b-0">
-                                    <span data-para-effect className="text-xl font-medium">{stat.label}</span>
-                                    <span className=" font-semibold ">{stat.value}</span>
-                                </div>
-                            ))}
-                        </div>
+                    <div className="flex flex-col w-full">
+                        {features.map((stat, i) => (
+                            <div key={i} className="flex justify-between items-center first:pt-0 py-4 border-b border-[#002bba20] last:border-b-0">
+                                <span data-para-effect className="text-xl font-medium">{stat.label}</span>
+                                <span className=" font-semibold ">{stat.value}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
             </div>
-            <div ref={marqueeContainerRef} className="w-full md:py-8 mt-6 md:mt-12 border-t border-[#002bba] z-10 overflow-hidden">
+            <div ref={marqueeContainerRef} className="w-full md:py-8  border-t border-[#002bba] z-10 overflow-hidden">
                 <VelocityMarquee baseSpeed={25}>
                     <div className="flex items-center gap-10 md:gap-20 px-5 md:px-10 h-24 md:h-32">
                         {clientsData.map((item, i) => (

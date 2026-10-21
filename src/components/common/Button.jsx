@@ -15,6 +15,12 @@ const Button = ({
 
     const [isHovered, setIsHovered] = useState(false)
 
+    // "white": white fill at rest, pixels clear on hover to reveal a white outline
+    const isWhite = variant === "white"
+    // "black": black outline and text, black pixel fill on hover
+    const isBlack = variant === "black"
+    const restColor = isBlack ? "#000000" : "#002bba"
+
     const ButtonHover = (e) => {
         setIsHovered(true)
         const tl = gsap.timeline()
@@ -47,16 +53,20 @@ const Button = ({
         tl.to(arrowParen, { width: "0rem", ease: "expo.out", duration: .3 })
         tl.to(target, { gap: "0", ease: "expo.out", duration: .3 }, "<")
 
-        gsap.to(textEl, { color: "#002bba", duration: 0.3 })
-        gsap.to(iconEl, { color: "#002bba", duration: 0.3 })
+        gsap.to(textEl, { color: restColor, duration: 0.3 })
+        gsap.to(iconEl, { color: restColor, duration: 0.3 })
     }
 
     const buttonClasses = `
     button_paren px-3 secondary-font  md:px-4 py-1.5 md:py-2 text-xs md:text-sm flex items-center 
-     uppercase rounded-md text_blue relative overflow-hidden
+     uppercase rounded-md ${isBlack ? "text-black" : "text_blue"} relative overflow-hidden
     ${variant === "fill"
             ? "bg-white"
-            : "border-[#002bba] border-[2px]"}
+            : isWhite
+                ? "border-white border-[2px]"
+                : isBlack
+                    ? "border-black border-[2px]"
+                    : "border-[#002bba] border-[2px]"}
   `
 
     const ButtonContent = (
@@ -69,9 +79,9 @@ const Button = ({
             {...props}
         >
             <PixelGridCanvas
-                isActive={isHovered}
+                isActive={isWhite ? !isHovered : isHovered}
                 boxSize={12}
-                color="#002bba"
+                color={isWhite ? "#ffffff" : restColor}
                 duration={0.6}
                 className="absolute inset-0 w-full h-full pointer-events-none z-0 "
             />

@@ -247,7 +247,7 @@ const WebDevProjectsSwiper = ({
                         <div
                             key={i}
                             ref={(el) => (slidesRef.current[i] = el)}
-                            className="shrink-0 w-[90vw] md:w-[50vw] aspect-video"
+                            className="shrink-0 w-[90vw] md:w-[65vw] aspect-video"
                         >
                             <div className="w-full h-full relative rounded-xl overflow-hidden ">
                                 <Image

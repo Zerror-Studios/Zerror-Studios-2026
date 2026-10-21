@@ -49,11 +49,6 @@ export const clientsData = [
         icon: "/images/homePage/clients/rpsg.svg"
     },
     {
-        id: 10,
-        title: "Mad Earth",
-        icon: "/images/homePage/clients/madearth.svg"
-    },
-    {
         id: 11,
         title: "RPSG Media",
         icon: "/images/homePage/clients/rpsgmedia.svg"

@@ -1,8 +1,9 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image';
 import { clientsData } from '../expertise/ClientsMarquee';
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
+import { useProjectForm } from '@/context/ProjectFormContext';
+import Button from '../common/Button';
 
 const studioNumbers = [
     { prefix: "Since", value: "2022" },
@@ -18,31 +19,50 @@ const ClientBox = ({ item }) => {
         <div
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="group client-box w-full overflow-hidden border border-white/10 relative aspect-square center cursor-pointer"
+            className="group client-box w-full overflow-hidden border border-[#002bba]/10 relative aspect-square center relative cursor-pointer"
         >
             <PixelGridCanvas
                 isActive={isHovered}
-                color="#ffffff"
+                color="#002bba"
                 boxSize={30}
                 duration={1.5}
                 className="absolute max-sm:hidden inset-0 w-full h-full pointer-events-none z-0"
             />
 
-            <div className="w-full h-full relative z-10">
-                <Image
-                    src={item.icon}
-                    fill
-                    alt="Item icon Graphic"
-                    className={`client-icon cover transition-all duration-300 ${
-                        isHovered ? "md:invert" : ""
-                    }`}
-                />
-            </div>
+            {/* Logos are white silhouettes — use them as a mask so they take the brand color */}
+            <div
+                role="img"
+                aria-label={item.title}
+                className={`client-icon w-full h-full relative z-10 bg-[#002bba] transition-colors duration-300 ${
+                    isHovered ? "md:bg-white" : ""
+                }`}
+                style={{
+                    WebkitMaskImage: `url(${item.icon})`,
+                    maskImage: `url(${item.icon})`,
+                    WebkitMaskSize: "100% 100%",
+                    maskSize: "100% 100%",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskRepeat: "no-repeat",
+                }}
+            />
             <div className={`w-full max-sm:hidden uppercase absolute z-20 bottom-0 flex justify-between p-2 transition-colors duration-300 ${
-                isHovered ? "text-black" : "text-white"
+                isHovered ? "text-white" : "text_blue"
             }`}>
                 <h5 className="secondary-font leading-none">{item.title}</h5>
             </div>
+        </div>
+    );
+};
+
+const ClientCtaBox = () => {
+    const { openProjectForm } = useProjectForm();
+
+    return (
+        <div className="w-full aspect-square bg_blue text-white border border-[#002bba]/10 p-2 md:p-4 flex flex-col justify-between items-start">
+            <h3 className="secondary-font text-xl md:text-3xl leading-tight">
+                Your brand <br /> could be next.
+            </h3>
+            <Button variant="white" title="Start a project" onClick={openProjectForm} />
         </div>
     );
 };
@@ -59,9 +79,9 @@ const Clients = () => {
 
     return (
         <>
-        <div className=' noise-bg clients_paren relative z-10  bg_blue py-8 md:py-16 space-y-8 md:space-y-16 text-white w-full'>
+        <div className='clients_paren relative z-10   py-8 md:py-16 space-y-8 md:space-y-16 text_blue w-full'>
 
-            <div className=" padding w-full z-20 relative text-white space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
+            <div className=" padding w-full z-20 relative text_blue space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                 <div className="">
                     <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Our <br /> clients</h2>
                 </div>
@@ -81,6 +101,7 @@ const Clients = () => {
                 {clientsData.map((item, i) => (
                     <ClientBox key={i} item={item} />
                 ))}
+                <ClientCtaBox />
             </div>
 
          

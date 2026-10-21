@@ -18,6 +18,7 @@ import Slide11 from '@/components/pitchdeck/Slide11';
 import Slide12 from '@/components/pitchdeck/Slide12';
 import Slide13 from '@/components/pitchdeck/Slide13';
 import Slide14 from '@/components/pitchdeck/Slide14';
+import BackButton from '@/components/pitchdeck/BackButton';
 
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -174,6 +175,7 @@ export default function PitchDeck() {
 
   return (
     <main className="relative padding py-0! md:p-0!">
+      <BackButton />
 
       <div className="fixed max-sm:hidden right-6 top-1/2 -translate-y-1/2 z-[999] flex justify-center w-14">
         <div className="flex flex-col items-center gap-1">
@@ -244,79 +246,79 @@ export default function PitchDeck() {
 
       <div className="hidden md:block">
         <div ref={el => slideRefs.current[0] = el} id="slide-01" className="w-full h-screen sticky top-0 center">
-          <div className="slide_1 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_1 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide01 />
           </div>
         </div>
         <div ref={el => slideRefs.current[1] = el} id="slide-02" className="w-full h-screen sticky top-0 center">
-          <div className="slide_2 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_2 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide02 />
           </div>
         </div>
         <div ref={el => slideRefs.current[2] = el} id="slide-03" className="w-full h-screen sticky top-0 center">
-          <div className="slide_3 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_3 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide03 />
           </div>
         </div>
         <div ref={el => slideRefs.current[3] = el} id="slide-04" className="w-full h-screen sticky top-0 center">
-          <div className="slide_4 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_4 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide04 />
           </div>
         </div>
         <div ref={el => slideRefs.current[4] = el} id="slide-05" className="w-full h-screen sticky top-0 center">
-          <div className="slide_5 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_5 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide05 />
           </div>
         </div>
         <div ref={el => slideRefs.current[5] = el} id="slide-06" className="w-full h-screen sticky top-0 center">
-          <div className="slide_6 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_6 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide06 />
           </div>
         </div>
         <div ref={el => slideRefs.current[6] = el} id="slide-07" className="w-full h-screen sticky top-0 center">
-          <div className="slide_7 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_7 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide07 />
           </div>
         </div>
         <div ref={el => slideRefs.current[7] = el} id="slide-08" className="w-full h-screen sticky top-0 center">
-          <div className="slide_8 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_8 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide08 />
           </div>
         </div>
         <div ref={el => slideRefs.current[8] = el} id="slide-09" className="w-full h-screen sticky top-0 center">
-          <div className="slide_9 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_9 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide09 />
           </div>
         </div>
         <div id="slide-09-spacer" className="w-full h-[150vh]"></div>
 
         <div ref={el => slideRefs.current[9] = el} id="slide-10" className="w-full h-screen sticky top-0 center">
-          <div className="slide_10 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_10 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide10 />
           </div>
         </div>
         <div id="slide-10-spacer" className="w-full h-[150vh]"></div>
 
         <div ref={el => slideRefs.current[10] = el} id="slide-11" className="w-full h-screen sticky top-0 center">
-          <div className="slide_11 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_11 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide11 />
           </div>
         </div>
         <div id="slide-11-spacer" className="w-full h-[150vh]"></div>
 
         <div ref={el => slideRefs.current[11] = el} id="slide-12" className="w-full h-screen sticky top-0 center">
-          <div className="slide_12 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_12 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide12 />
           </div>
         </div>
         <div id="slide-12-spacer" className="w-full h-[150vh]"></div>
         <div ref={el => slideRefs.current[12] = el} id="slide-13" className="w-full h-screen sticky top-0 center">
-          <div className="slide_13 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_13 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide13 />
           </div>
         </div>
         <div ref={el => slideRefs.current[13] = el} id="slide-14" className="w-full h-screen sticky top-0 center">
-          <div className="slide_14 border border-white/20 md:aspect-video w-full md:w-[70%] brightness-100 rounded-xl overflow-hidden">
+          <div className="slide_14 border border-white/20 md:aspect-video max-sm:w-full md:h-[90%] brightness-100 rounded-xl overflow-hidden">
             <Slide14 />
           </div>
         </div>

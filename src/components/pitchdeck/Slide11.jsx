@@ -6,22 +6,22 @@ import 'swiper/css';
 
 const slideImages = [
   {
-    src: '/images/projects/salmaankhan/cover_img.webp',
+    src: '/images/pitchdeck/case_studies/skf/img1.jpg',
     alt: 'Salman Khan Films Showcase 1',
     label: 'Salman Khan Films'
   },
   {
-    src: '/images/projects/salmaankhan/gen_cover_img.png',
+    src: '/images/pitchdeck/case_studies/skf/img3.jpg',
     alt: 'Salman Khan Films Showcase 2',
     label: 'Salman Khan Films'
   },
   {
-    src: '/images/projects/salmaankhan/cover_img.webp',
     alt: 'Salman Khan Films Showcase 3',
+    src: '/images/pitchdeck/case_studies/skf/img4.jpg',
     label: 'Salman Khan Films'
   },
   {
-    src: '/images/projects/salmaankhan/gen_cover_img.png',
+    src: '/images/pitchdeck/case_studies/skf/img2.jpg',
     alt: 'Salman Khan Films Showcase 4',
     label: 'Salman Khan Films'
   }

@@ -81,7 +81,6 @@ const page = () => {
       <EcommPriceSection />
       <WebDevProcess {...ECOMMERCE_PROCESS} />
       <WebDevClients />
-      <TicketEffect/>
     </>
   )
 }

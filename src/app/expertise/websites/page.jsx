@@ -1,6 +1,5 @@
 import DetailedExpertiseHero from '@/components/expertise/DetailedExpertiseHero'
 import WebDevClients from '@/components/expertise/website-development/WebDevClients'
-import WebDevExperiencesCards from '@/components/expertise/website-development/WebDevExperiencesCards'
 import WebDevHero from '@/components/expertise/website-development/WebDevHero'
 import WebDevProjectsSwiper from '@/components/expertise/website-development/WebDevProjectsSwiper'
 import TicketEffect from '@/components/home/TicketEffect'
@@ -8,8 +7,7 @@ import React from 'react'
 
 import { createMetadata } from "@/lib/seo";
 import WebDevProcess from '@/components/expertise/website-development/WebDevProcess'
-import WebDevOneTeam from '@/components/expertise/website-development/WebDevOneTeam'
-import WebDevSearch from '@/components/expertise/website-development/WebDevSearch'
+import WebDevInEveryBuild from '@/components/expertise/website-development/WebDevInEveryBuild'
 import { WEBSITE_PROCESS } from '@/components/expertise/website-development/processSections/websiteProcess'
 
 export const metadata = createMetadata({
@@ -71,7 +69,7 @@ const page = () => {
       />
       <DetailedExpertiseHero
         expertiseName="Websites worth stopping for"
-        expertiseHeading={<>Designed to be felt.<br /> Built to last.</>}
+        expertiseHeading={<>Designed and built<br /> by the same people.</>}
         btnsLabels={["Design", "Motion", "Build", "Search"]}
         heroIcons={heroIcons}
         introHeading={<>You get about three seconds before someone decides you're worth their time. We make them count.</>}
@@ -90,12 +88,9 @@ const page = () => {
         ]}
       />
       <WebDevProjectsSwiper heading={<>See it move.</>} />
-      <WebDevOneTeam />
-      <WebDevExperiencesCards />
-      <WebDevSearch />
+      <WebDevInEveryBuild />
       <WebDevProcess {...WEBSITE_PROCESS} />
       <WebDevClients />
-      <TicketEffect />
     </>
   )
 }

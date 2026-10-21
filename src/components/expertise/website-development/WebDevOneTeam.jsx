@@ -7,7 +7,7 @@ import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 gsap.registerPlugin(ScrollTrigger)
 
 // Looping line icons, animated with SVG so they keep moving without JS
-const MotionIcon = () => (
+export const MotionIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
         <path id="one_team_curve" d="M4 36 C 16 36, 18 12, 30 12 S 44 12, 44 12" strokeDasharray="60" strokeDashoffset="60">
             <animate attributeName="stroke-dashoffset" values="60;0;0;60" keyTimes="0;0.45;0.8;1" dur="3s" repeatCount="indefinite" />
@@ -21,7 +21,7 @@ const MotionIcon = () => (
     </svg>
 );
 
-const CodeIcon = () => (
+export const CodeIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
         <rect x="4" y="8" width="40" height="32" rx="2" />
         <path d="M4 16 H44" />
@@ -39,7 +39,7 @@ const CodeIcon = () => (
     </svg>
 );
 
-const TeamIcon = () => (
+export const TeamIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
         <circle cx="14" cy="24" r="12">
             <animate attributeName="cx" values="14;20;20;14" keyTimes="0;0.4;0.7;1" dur="3s" repeatCount="indefinite" />
@@ -53,7 +53,7 @@ const TeamIcon = () => (
     </svg>
 );
 
-const columns = [
+export const columns = [
     { title: "Motion, designed in.", line: "Planned with the page, never added later.", Icon: MotionIcon },
     { title: "Built from the design.", line: "The developer saw it being designed.", Icon: CodeIcon },
     { title: "One team to talk to.", line: "One group, one folder, one answer.", Icon: TeamIcon },

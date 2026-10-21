@@ -14,7 +14,6 @@ const page = () => {
     <>
       <h1 className='opacity-0 fixed pointer-events-none'>Explore Latest Work</h1>
       <WorksGrid />
-      <TicketEffect/>
     </>
   );
 };

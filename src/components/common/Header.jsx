@@ -246,9 +246,12 @@ const Header = () => {
     })();
   }, []);
 
+  // On the pitch deck the bar stays hidden, but the project form can still open from it
+  const hideBar = pathname === "/pitchdeck" && !openMenu;
+
   return (
     <>
-      <div className="header_wrapper fixed w-full flex justify-center z-9999 top-0">
+      <div className={`header_wrapper fixed w-full flex justify-center z-9999 top-0 transition-[opacity,visibility] duration-500 ${hideBar ? "opacity-0 invisible" : "opacity-100 visible"}`}>
         <div className="header_paren -translate-y-24 w-full py-5! pointer-events-none fixed padding  center">
           <div className="w-full relative z-99999 flex justify-center gap-x-1 md:gap-x-3 ">
             <div onClick={() => setOpenMenu(false)} className={`w-full h-screen fixed bg-black/20 backdrop-blur-xs z-9 top-0 left-0 transition-all duration-500 ${openMenu ? " pointer-events-auto opacity-100" : " opacity-0 pointer-events-none"} `}></div>

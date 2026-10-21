@@ -6,22 +6,22 @@ import 'swiper/css';
 
 const slideImages = [
   {
-    src: '/images/projects/Manifest/manifest_cover.webp',
+    src: '/images/pitchdeck/case_studies/manifest/img3.jpg',
     alt: 'Manifest Showcase 1',
     label: 'Manifest'
   },
   {
-    src: '/images/projects/Manifest/manifest_cover.webp',
+    src: '/images/pitchdeck/case_studies/manifest/img1.jpg',
     alt: 'Manifest Showcase 2',
     label: 'Manifest'
   },
   {
-    src: '/images/projects/Manifest/manifest_cover.webp',
     alt: 'Manifest Showcase 3',
+    src: '/images/pitchdeck/case_studies/manifest/img4.jpg',
     label: 'Manifest'
   },
   {
-    src: '/images/projects/Manifest/manifest_cover.webp',
+    src: '/images/pitchdeck/case_studies/manifest/img2.jpg',
     alt: 'Manifest Showcase 4',
     label: 'Manifest'
   }

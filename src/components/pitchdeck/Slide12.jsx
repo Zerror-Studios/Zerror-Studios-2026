@@ -6,22 +6,22 @@ import 'swiper/css';
 
 const slideImages = [
   {
-    src: '/images/projects/deveshe/cover_img.webp',
+    src: '/images/pitchdeck/case_studies/deveshe/img1.jpg',
     alt: 'Deveshe Dreams Showcase 1',
     label: 'Deveshe Dreams'
   },
   {
-    src: '/images/projects/deveshe/cover_img.webp',
+    src: '/images/pitchdeck/case_studies/deveshe/img2.jpg',
     alt: 'Deveshe Dreams Showcase 2',
     label: 'Deveshe Dreams'
   },
   {
-    src: '/images/projects/deveshe/cover_img.webp',
+    src: '/images/pitchdeck/case_studies/deveshe/img3.jpg',
     alt: 'Deveshe Dreams Showcase 3',
     label: 'Deveshe Dreams'
   },
   {
-    src: '/images/projects/deveshe/cover_img.webp',
+    src: '/images/pitchdeck/case_studies/deveshe/img4.jpg',
     alt: 'Deveshe Dreams Showcase 4',
     label: 'Deveshe Dreams'
   }

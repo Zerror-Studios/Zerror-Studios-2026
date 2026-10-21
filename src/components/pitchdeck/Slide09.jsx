@@ -6,30 +6,20 @@ import 'swiper/css';
 
 const slideImages = [
   {
-    src: '/images/projects/robb_report/cover_img.jpg',
+    src: '/images/pitchdeck/case_studies/rpsg/img1.jpg',
     alt: 'Esquire India Desktop Showcase',
     label: 'Esquire India'
   },
   {
-    src: '/images/projects/robb_report/cover_img.jpg',
+    src: '/images/pitchdeck/case_studies/rpsg/img2.jpg',
     alt: 'Robb Report Showcase',
     label: 'Robb Report'
   },
   {
-    src: '/images/projects/robb_report/cover_img.jpg',
+    src: '/images/pitchdeck/case_studies/rpsg/img3.jpg',
     alt: 'The Hollywood Reporter India Showcase',
     label: 'THR India'
   },
-  {
-    src: '/images/projects/robb_report/cover_img.jpg',
-    alt: 'Robb Report Showcase',
-    label: 'Robb Report'
-  },
-  {
-    src: '/images/projects/robb_report/cover_img.jpg',
-    alt: 'The Hollywood Reporter India Showcase',
-    label: 'THR India'
-  }
 ];
 
 const Slide09 = () => {

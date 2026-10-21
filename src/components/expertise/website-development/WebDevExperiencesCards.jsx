@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 
-const services = [
+export const services = [
     {
         title: "Design",
         animationData: iconUiUx,

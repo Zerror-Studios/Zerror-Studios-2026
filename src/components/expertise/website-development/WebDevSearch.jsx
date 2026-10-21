@@ -8,7 +8,7 @@ import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 gsap.registerPlugin(ScrollTrigger)
 
 // Looping line icons, animated with SVG so they keep moving without JS
-const BasicsIcon = () => (
+export const BasicsIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="w-full h-full">
         <rect x="18" y="4" width="12" height="8" rx="1" />
         <path d="M24 12 V18 M10 18 H38 M10 18 V24 M24 18 V24 M38 18 V24" />
@@ -23,7 +23,7 @@ const BasicsIcon = () => (
     </svg>
 );
 
-const SpeedIcon = () => (
+export const SpeedIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="w-full h-full">
         <path d="M6 34 A18 18 0 0 1 42 34" />
         <path d="M10 26 L12.5 27.5 M24 16 V19 M38 26 L35.5 27.5" />
@@ -35,7 +35,7 @@ const SpeedIcon = () => (
     </svg>
 );
 
-const SchemaIcon = () => (
+export const SchemaIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="w-full h-full">
         <path d="M14 8 C 8 8, 10 18, 5 24 C 10 30, 8 40, 14 40" />
         <path d="M34 8 C 40 8, 38 18, 43 24 C 38 30, 40 40, 34 40" />
@@ -48,7 +48,7 @@ const SchemaIcon = () => (
     </svg>
 );
 
-const AiIcon = () => (
+export const AiIcon = () => (
     <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" className="w-full h-full">
         <path d="M20 8 C 21 18, 24 21, 34 22 C 24 23, 21 26, 20 36 C 19 26, 16 23, 6 22 C 16 21, 19 18, 20 8 Z" style={{ transformOrigin: "20px 22px" }}>
             <animateTransform attributeName="transform" type="scale" values="1;0.85;1" dur="2s" repeatCount="indefinite" />
@@ -62,7 +62,7 @@ const AiIcon = () => (
     </svg>
 );
 
-const items = [
+export const items = [
     { title: "The basics.", line: "Clean headings, titles, sitemap and URLs.", Icon: BasicsIcon },
     { title: "Speed.", line: "Checked with Google Lighthouse before go-live.", Icon: SpeedIcon },
     { title: "Schema.", line: "So search engines know who you are.", Icon: SchemaIcon },
