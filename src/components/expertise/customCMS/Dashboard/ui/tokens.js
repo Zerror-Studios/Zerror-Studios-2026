@@ -1,0 +1,83 @@
+// Shared design tokens for the sample dashboard, so every tab reads as one product.
+// Light is the default; brand blue (#002bba) is the single accent colour.
+
+export const BRAND = "#002bba";
+
+export const getTokens = (isDark) => isDark
+    ? {
+        shell: "bg-[#0B0E14] text-slate-100 border-white/10",
+        sidebar: "bg-[#0F131B] border-white/10",
+        main: "bg-[#0B0E14]",
+        header: "bg-[#0F131B]/90 border-white/10",
+        card: "bg-[#121722] border-white/[0.07]",
+        border: "border-white/10",
+        divide: "divide-white/[0.06]",
+        strong: "text-white",
+        body: "text-slate-300",
+        muted: "text-slate-400",
+        subtle: "text-slate-500",
+        hover: "hover:bg-white/[0.04]",
+        soft: "bg-white/[0.04]",
+        track: "bg-white/[0.08]",
+        input: "bg-white/[0.04] border-white/10 text-slate-100 placeholder-slate-500 focus:border-[#4d6fff] focus:bg-white/[0.06]",
+        navIdle: "text-slate-400 hover:text-white hover:bg-white/[0.05]",
+        navActive: "bg-[#4d6fff]/15 text-white",
+        navIcon: "text-[#8aa2ff]",
+        chip: "bg-white/[0.06] text-slate-300",
+        chipActive: "bg-[#4d6fff] text-white",
+        btnSecondary: "bg-white/[0.06] text-slate-200 hover:bg-white/10 border border-white/10",
+        iconBtn: "bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 border border-white/10",
+        link: "text-[#8aa2ff] hover:text-white",
+        accentText: "text-[#8aa2ff]",
+        bar: "#4d6fff",
+        barAlt: "#334155",
+        toggleOff: "bg-slate-700",
+        overlay: "bg-[#0B0E14]/40",
+        badge: {
+            success: "bg-emerald-500/10 text-emerald-300 ring-emerald-500/20",
+            warning: "bg-amber-500/10 text-amber-300 ring-amber-500/20",
+            danger: "bg-rose-500/10 text-rose-300 ring-rose-500/20",
+            brand: "bg-[#4d6fff]/15 text-[#a9baff] ring-[#4d6fff]/25",
+            neutral: "bg-white/[0.06] text-slate-300 ring-white/10",
+        },
+    }
+    : {
+        shell: "bg-[#F6F7F9] text-slate-900 border-slate-200",
+        sidebar: "bg-white border-slate-200",
+        main: "bg-[#F6F7F9]",
+        header: "bg-white/90 border-slate-200",
+        card: "bg-white border-slate-200/80 shadow-[0_1px_2px_rgba(16,24,40,0.04)]",
+        border: "border-slate-200",
+        divide: "divide-slate-100",
+        strong: "text-slate-900",
+        body: "text-slate-700",
+        muted: "text-slate-500",
+        subtle: "text-slate-400",
+        hover: "hover:bg-slate-50",
+        soft: "bg-slate-50",
+        track: "bg-slate-100",
+        input: "bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:border-[#002bba] focus:bg-white",
+        navIdle: "text-slate-600 hover:text-slate-900 hover:bg-slate-50",
+        navActive: "bg-[#002bba]/[0.07] text-[#002bba]",
+        navIcon: "text-[#002bba]",
+        chip: "bg-slate-100 text-slate-600 hover:bg-slate-200/70",
+        chipActive: "bg-[#002bba] text-white",
+        btnSecondary: "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200",
+        iconBtn: "bg-white hover:bg-slate-50 text-slate-600 border border-slate-200",
+        link: "text-[#002bba] hover:text-[#001f8a]",
+        accentText: "text-[#002bba]",
+        bar: BRAND,
+        barAlt: "#CBD5E1",
+        toggleOff: "bg-slate-300",
+        overlay: "bg-white/30",
+        badge: {
+            success: "bg-emerald-50 text-emerald-700 ring-emerald-600/15",
+            warning: "bg-amber-50 text-amber-700 ring-amber-600/20",
+            danger: "bg-rose-50 text-rose-700 ring-rose-600/15",
+            brand: "bg-[#002bba]/[0.07] text-[#002bba] ring-[#002bba]/15",
+            neutral: "bg-slate-100 text-slate-600 ring-slate-500/10",
+        },
+    };
+
+// Primary action, same in both themes
+export const BTN_PRIMARY = "bg-[#002bba] hover:bg-[#0023a0] text-white shadow-sm shadow-[#002bba]/20";

@@ -79,7 +79,7 @@ const Clients = () => {
 
     return (
         <>
-        <div className='clients_paren relative z-10   py-8 md:py-16 space-y-8 md:space-y-16 text_blue w-full'>
+        <div className='clients_paren relative z-10   py-8 md:py-16 space-y-8 md:space-y-16 text_blue w-full bg-white '>
 
             <div className=" padding w-full z-20 relative text_blue space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
                 <div className="">

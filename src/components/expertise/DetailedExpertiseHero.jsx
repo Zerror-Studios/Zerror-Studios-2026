@@ -294,13 +294,7 @@ const DetailedExpertiseHero = ({
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 items-start gap-5 md:gap-10">
                     <div className="flex flex-col justify-between h-full">
                         <h3 data-para-effect className='text-3xl md:text-5xl md:pr-32 leading-none'>{introHeading}</h3>
-                        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 ">
-
-                            <p className='text-xl leading-tight '>{introText}</p>
-                            <p className=' leading-tight text-xl'>
-                                {supportingText}
-                            </p>
-                        </div>
+                            <p className='text-xl max-sm:mt-2 max-w-lg leading-tight '>{introText}</p>
                     </div>
 
                     <div className="flex flex-col w-full">
@@ -314,7 +308,7 @@ const DetailedExpertiseHero = ({
                 </div>
 
             </div>
-            <div ref={marqueeContainerRef} className="w-full md:py-8  border-t border-[#002bba] z-10 overflow-hidden">
+            <div ref={marqueeContainerRef} className="w-full md:pb-8  border-[#002bba] z-10 overflow-hidden">
                 <VelocityMarquee baseSpeed={25}>
                     <div className="flex items-center gap-10 md:gap-20 px-5 md:px-10 h-24 md:h-32">
                         {clientsData.map((item, i) => (

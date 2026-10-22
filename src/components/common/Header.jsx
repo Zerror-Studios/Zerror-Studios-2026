@@ -36,7 +36,7 @@ const menuLinks = [
       { title: "Websites", href: "/expertise/websites" },
       { title: "eCommerce", href: "/expertise/ecommerce" },
       { title: "Software and tools", href: "/expertise/software-and-tools" },
-      { title: "Branding and marketing", href: "/expertise/branding-and-marketing" },
+      { title: "Branding, marketing and SEO", href: "/expertise/branding-marketing-and-seo" },
     ]
   },
   {

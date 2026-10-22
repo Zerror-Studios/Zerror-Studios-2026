@@ -20,7 +20,7 @@ export const FORM_MESSAGES = {
   },
 };
 
-export const SERVICE_OPTIONS = ["Website", "eCommerce", "Software", "Branding and marketing", "Not sure yet"];
+export const SERVICE_OPTIONS = ["Website", "eCommerce", "Software", "Branding, marketing and SEO", "Not sure yet"];
 
 export const isValidEmail = (value = "") => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 export const isValidPhone = (value = "") => /^\+?[\d\s()-]{7,16}$/.test(value.trim());

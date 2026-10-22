@@ -28,7 +28,7 @@ const Slide07 = () => {
 
         {/* Last tile: opens the header's Start a project form */}
         <div className="bg-white text-black border-2 rounded-br-xl border-black p-3 md:p-5 flex flex-col justify-between items-start">
-          <h3 className="secondary-font text-xl md:text-3xl leading-tight">
+          <h3 className="secondary-font text-base md:text-3xl leading-tight">
             Your brand <br /> could be next.
           </h3>
           <Button variant="black" title="Start a project" onClick={openProjectForm} />

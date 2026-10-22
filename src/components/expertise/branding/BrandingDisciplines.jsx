@@ -1,9 +1,4 @@
-"use client";
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React from 'react';
-gsap.registerPlugin(ScrollTrigger)
 
 const disciplines = [
     {
@@ -43,84 +38,69 @@ const disciplines = [
     },
 ];
 
+// Height of each card's title strip; cards stick this far apart so earlier titles stay visible
+const STACK_STEP = 6; // rem
+
 const BrandingDisciplines = () => {
-
-    useGSAP(()=>{
-        const tl = gsap.timeline({
-            scrollTrigger:{
-                trigger:".disc_paren",
-                start:"top top",
-                end:"bottom bottom",
-                scrub:true,
-            }
-        })
-        gsap.utils.toArray(".disc_chld").forEach((item, index, array)=>{
-            if (index !== array.length - 1) {
-                tl.to(item,{
-                    height:"5rem",
-                    ease: "none"
-                })
-            }
-        })
-    })
-
     return (
-        <div data-hide-header className="w-full bg_blue  pt-8 md:pt-16 text-white">
-            {/* Heading */}
-            <div className="w-full padding pb-0!   space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                <div className="">
-                    <h2 data-para-effect className='primary-font text-5xl leading-none'>
-                        What we do
-                    </h2>
+        <div data-hide-header className="w-full bg_blue py-8 md:py-16 text-white">
+            <div className="padding sticky w-full space-y-12 md:space-y-16">
+
+                {/* ── Heading (matches about/InfoSection layout) ── */}
+                <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+                    <div className="">
+                        <h2 data-para-effect className="primary-font text-5xl leading-none">What <br /> we do</h2>
+                    </div>
+                    <div className="text-xs max-sm:hidden pt-4">
+                        <p className="font-thin">Five disciplines,</p>
+                        <p className="font-thin">one team.</p>
+                    </div>
+                    <div className="text-3xl md:pl-2">
+                        <h3 data-para-effect className="secondary-font">
+                            <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
+                            Identity, content, campaigns, search and growth, run by the same people.
+                        </h3>
+                    </div>
                 </div>
-                <div className="text-xs max-sm:hidden pt-4">
-                </div>
-                <div className=" text-3xl md:pl-2">
-                    <h3 data-para-effect className="leading-tight">
-                        <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                        Five disciplines. One team.
-                    </h3>
-                </div>
-            </div>
 
-            <div className=" disc_paren w-full  h-[350vh] relative">
-                <div className="w-full sticky h-screen top-0 pt-12 flex flex-col justify-start">
-                    <div className="w-full">
-                        {disciplines.map((item, index) => (
-                            <div
-                                key={index}
-                                className=" disc_chld w-full border-t border-[#ffffff]/20  overflow-hidden"
-                            >
-                                <div className="padding py-6! flex flex-col md:flex-row gap-8 md:gap-0 items-start">
-                                    <div className="w-full flex gap-x-5 md:w-[20%]">
-                                        <h3 data-para-effect className="text-3xl md:text-5xl font-bold leading-none primary-font">{item.num}</h3>
-                                        <h3 data-para-effect className=" md:hidden text-3xl md:text-5xl font-bold w- primary-font uppercase leading-none">{item.title}</h3>
-                                    </div>
+                {/* ── Stacking discipline cards (sticky on desktop) ── */}
+                <div className="w-full relative">
+                    {disciplines.map((item, index) => (
+                        <div
+                            key={index}
+                            className="w-full bg_blue border-t border-white/20 md:sticky md:min-h-[22rem]"
+                            style={{ top: `${index * STACK_STEP}rem`, zIndex: index + 1 }}
+                        >
+                            <div className="py-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
+                                {/* Left: number + title */}
+                                <div className="flex items-start gap-x-5">
+                                    <h3 className="text-3xl md:text-5xl font-bold leading-none primary-font shrink-0">
+                                        {item.num}
+                                    </h3>
+                                    <h3 className="text-3xl md:text-5xl font-bold primary-font uppercase leading-none">
+                                        {item.title}
+                                    </h3>
+                                </div>
 
-                                    <div className="w-full md:w-[50%] flex flex-col">
-                                        <h3 data-para-effect className=" hidden md:block text-3xl md:text-5xl font-bold w-1/2 primary-font uppercase leading-none">{item.title}</h3>
-
-                                        <div className="mt-0 md:mt-24 flex flex-col gap-4">
-                                            <p className="text-xs uppercase ">
-                                                {item.subtitle}
-                                            </p>
-                                            <ul className=" md:text-xl mt-2 leading-tight">
-                                                {item.list.map((listItem, i) => (
-                                                    <li key={i}>{listItem}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className="w-full md:w-[30%] flex flex-col">
-                                        <p data-para-effect className=" md:text-xl leading-tight">
-                                            {item.desc}
-                                        </p>
-                                    </div>
+                                {/* Right: what's included + description */}
+                                <div className="flex flex-col gap-6 md:gap-8 md:pt-24">
+                                    <p className="text-3xl">
+                                        {item.desc}
+                                    </p>
+                                    <ul className="border-b border-white/15">
+                                        {item.list.map((listItem, i) => (
+                                            <li
+                                                key={i}
+                                                className="flex items-center justify-between gap-4 border-t border-white/15 py-3 text-xl"
+                                            >
+                                                <span>{listItem}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

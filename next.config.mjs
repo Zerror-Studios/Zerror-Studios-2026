@@ -34,8 +34,8 @@
           permanent: true,
         },
         {
-          source: '/expertise/branding-marketing-and-seo',
-          destination: '/expertise/branding-and-marketing',
+          source: '/expertise/branding-and-marketing',
+          destination: '/expertise/branding-marketing-and-seo',
           permanent: true,
         },
       ];

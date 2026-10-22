@@ -198,7 +198,7 @@ export default function PitchDeck() {
       </div>
 
       <div className="md:hidden disable-gsap-mobile w-full flex flex-col h-svh  pb-4">
-        <div className="w-full h-28 pb-4 flex items-end ">
+        <div className="w-full h-24 pb-4 flex items-end ">
           <div className="w-full flex items-center justify-between gap-1 h-1">
             {Array.from({ length: TOTAL_SLIDES }).map((_, index) => (
               <div 
@@ -214,7 +214,7 @@ export default function PitchDeck() {
             ))}
           </div>
         </div>
-        <div className="w-full h-[calc(100%-7rem)] relative">
+        <div className="w-full h-[calc(100%-6rem)] relative">
           <Swiper
             modules={[Autoplay]}
             autoplay={{ delay: 5000, disableOnInteraction: false }}

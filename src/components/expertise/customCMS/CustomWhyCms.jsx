@@ -120,9 +120,11 @@ const CustomWhyCms = () => {
                 </div>
                 <div className=" top-8 absolute  md:hidden z-10 padding py-0! space-y-2">
                     <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Why custom</h2>
+                    <p className='max-w-xs  leading-tight opacity-80'>Software that fits your team, not the other way round.</p>
                 </div>
                 <div className=" max-sm:hidden z-10 padding py-0! space-y-2">
                     <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Why custom</h2>
+                    <p className='max-w-xs text-xl leading-tight opacity-80'>Software that fits your team, not the other way round.</p>
                 </div>
                 <div
                     className="arc_container"

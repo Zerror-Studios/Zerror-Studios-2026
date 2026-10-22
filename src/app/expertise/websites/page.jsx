@@ -69,13 +69,12 @@ const page = () => {
       />
       <DetailedExpertiseHero
         expertiseName="Websites worth stopping for"
-        expertiseHeading={<>Designed and built<br /> by the same people.</>}
+        expertiseHeading={<>Moves like a story. <br />Loads like nothing.</>}
         btnsLabels={["Design", "Motion", "Build", "Search"]}
         heroIcons={heroIcons}
         introHeading={<>You get about three seconds before someone decides you're worth their time. We make them count.</>}
         introText="Motion with meaning, detail that rewards attention, and speed that never asks anyone to wait."
         videoSrc={heroVideo}
-        supportingText="Every site is custom, designed and built by one team. What you approve is what goes live."
         features={[
           { label: "Bounce rate", value: "-41%" },
           { label: "Load time", value: "< 1.6s" },

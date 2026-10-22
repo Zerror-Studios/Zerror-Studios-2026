@@ -69,17 +69,17 @@ const page = () => {
         introText="We design and build the whole store, down to a checkout that doesn't lose the sale."
         videoSrc={heroVideo}
         features={[
-          { label: "Revenue growth", value: "" },
-          { label: "YoY", value: "+350%" },
+          { label: "Revenue growth (YoY)", value: "+350%" },
           { label: "Traffic growth", value: "+165%" },
           { label: "Average order value", value: "↑" },
-          { label: " Repeat purchases", value: "↑" },
+          { label: "Repeat purchases", value: "↑" },
+          { label: "Online stores launched", value: "80+" },
+          { label: "Platforms", value: "Shopify + Zcom" },
         ]}
       />
       <EcommPlatformCompare />
       <EcommCmsCards />
       <EcommPriceSection />
-      <WebDevProcess {...ECOMMERCE_PROCESS} />
       <WebDevClients />
     </>
   )

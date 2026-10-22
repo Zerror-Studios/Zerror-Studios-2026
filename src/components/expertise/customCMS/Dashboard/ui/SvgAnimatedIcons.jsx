@@ -79,187 +79,97 @@ export const TrendDownArrow = ({ className = "w-3 h-3" }) => (
   </svg>
 );
 
-// Distinct Sparkline Mini Line Charts for Top Metric Cards
-export const IncomeSparkline = () => (
-  <div className="w-28 h-11">
+// Mini line charts for the KPI tiles; one calm palette instead of mixed gradients
+const Sparkline = ({ id, line, color }) => (
+  <div className="w-24 h-10">
     <svg viewBox="0 0 110 42" className="w-full h-full overflow-visible">
       <defs>
-        <linearGradient id="incomeAreaGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.0" />
-        </linearGradient>
-        <linearGradient id="incomeStrokeGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#2563EB" />
-          <stop offset="100%" stopColor="#06B6D4" />
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.18" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
         </linearGradient>
       </defs>
-      <path
-        d="M 0,32 Q 20,38 35,20 T 70,24 T 90,8 T 110,4 L 110,42 L 0,42 Z"
-        fill="url(#incomeAreaGrad)"
-      />
-      <path
-        d="M 0,32 Q 20,38 35,20 T 70,24 T 90,8 T 110,4"
-        fill="none"
-        stroke="url(#incomeStrokeGrad)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <circle cx="110" cy="4" r="2.5" fill="#3B82F6" />
+      <path d={`${line} L 110,42 L 0,42 Z`} fill={`url(#${id})`} />
+      <path d={line} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </div>
 );
 
-export const ProfitSparkline = () => (
-  <div className="w-28 h-11">
-    <svg viewBox="0 0 110 42" className="w-full h-full overflow-visible">
-      <defs>
-        <linearGradient id="profitAreaGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#EC4899" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#EC4899" stopOpacity="0.0" />
-        </linearGradient>
-        <linearGradient id="profitStrokeGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#F43F5E" />
-          <stop offset="100%" stopColor="#D946EF" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M 0,12 Q 25,32 45,15 T 75,30 T 95,14 T 110,22 L 110,42 L 0,42 Z"
-        fill="url(#profitAreaGrad)"
-      />
-      <path
-        d="M 0,12 Q 25,32 45,15 T 75,30 T 95,14 T 110,22"
-        fill="none"
-        stroke="url(#profitStrokeGrad)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <circle cx="110" cy="22" r="2.5" fill="#EC4899" />
-    </svg>
-  </div>
+export const IncomeSparkline = ({ isDark }) => (
+  <Sparkline id="spark-income" color={isDark ? "#7b93ff" : "#002bba"} line="M 0,32 Q 20,38 35,20 T 70,24 T 90,8 T 110,4" />
 );
 
-export const CustomersSparkline = () => (
-  <div className="w-28 h-11">
-    <svg viewBox="0 0 110 42" className="w-full h-full overflow-visible">
-      <defs>
-        <linearGradient id="customersAreaGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.0" />
-        </linearGradient>
-        <linearGradient id="customersStrokeGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#6366F1" />
-          <stop offset="100%" stopColor="#A855F7" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M 0,35 Q 25,28 45,22 T 80,12 T 110,5 L 110,42 L 0,42 Z"
-        fill="url(#customersAreaGrad)"
-      />
-      <path
-        d="M 0,35 Q 25,28 45,22 T 80,12 T 110,5"
-        fill="none"
-        stroke="url(#customersStrokeGrad)"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <circle cx="110" cy="5" r="2.5" fill="#8B5CF6" />
-    </svg>
-  </div>
+export const ProfitSparkline = ({ isDark }) => (
+  <Sparkline id="spark-profit" color={isDark ? "#94a3b8" : "#64748b"} line="M 0,12 Q 25,32 45,15 T 75,30 T 95,14 T 110,22" />
 );
 
-export const SparklineGraph = ({ type = "income" }) => {
-  if (type === "profit") return <ProfitSparkline />;
-  if (type === "customers") return <CustomersSparkline />;
-  return <IncomeSparkline />;
+export const CustomersSparkline = ({ isDark }) => (
+  <Sparkline id="spark-customers" color={isDark ? "#34d399" : "#059669"} line="M 0,35 Q 25,28 45,22 T 80,12 T 110,5" />
+);
+
+export const SparklineGraph = ({ type = "income", isDark }) => {
+  if (type === "profit") return <ProfitSparkline isDark={isDark} />;
+  if (type === "customers") return <CustomersSparkline isDark={isDark} />;
+  return <IncomeSparkline isDark={isDark} />;
 };
 
-// Sales Analytics Dual Bar Chart with GSAP Entry Animation
-export const SalesAnalyticsBarChart = () => {
+// Sales bar chart; colours come from the dashboard theme, not the OS dark mode
+export const SalesAnalyticsBarChart = ({ isDark = false }) => {
   const chartRef = useRef(null);
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"];
   const incomeData = [65, 75, 60, 50, 58, 65, 60, 74, 60];
   const profitData = [38, 66, 44, 32, 50, 38, 52, 56, 46];
+  const incomeColor = isDark ? "#4d6fff" : "#002bba";
+  const profitColor = isDark ? "#334155" : "#CBD5E1";
 
   useGSAP(() => {
     gsap.fromTo(
       ".analytics-bar",
-      { scaleY: 0, opacity: 0 },
-      {
-        scaleY: 1,
-        opacity: 1,
-        transformOrigin: "bottom",
-        duration: 0.8,
-        stagger: 0.03,
-        ease: "back.out(1.2)"
-      }
+      { scaleY: 0 },
+      { scaleY: 1, transformOrigin: "bottom", duration: 0.7, stagger: 0.025, ease: "power3.out" }
     );
   }, { scope: chartRef });
 
   return (
-    <div ref={chartRef} className="w-full h-56 pt-4 flex flex-col justify-between">
-      {/* Bars Container */}
-      <div className="flex-1 flex items-end justify-between px-2 gap-2">
+    <div ref={chartRef} className="relative w-full h-48 md:h-56 flex flex-col">
+      {/* Gridlines */}
+      <div className="absolute inset-x-0 top-0 bottom-6 flex flex-col justify-between pointer-events-none">
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className={`border-t border-dashed ${isDark ? "border-white/[0.06]" : "border-slate-100"}`} />
+        ))}
+      </div>
+      <div className="relative flex-1 flex items-end justify-between gap-1 md:gap-2">
         {months.map((month, idx) => (
-          <div key={idx} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group cursor-pointer">
-            <div className="w-full flex items-end justify-center gap-1.5 h-44 border-b border-gray-100 dark:border-white/10 pb-1">
-              {/* Income Bar (Solid Soft Blue) */}
-              <div
-                className="analytics-bar w-3 md:w-3.5 bg-blue-600 dark:bg-blue-500 rounded-t-sm transition-opacity group-hover:opacity-85"
-                style={{ height: `${incomeData[idx]}%` }}
-              ></div>
-              {/* Profit Bar (Soft Muted Slate) */}
-              <div
-                className="analytics-bar w-3 md:w-3.5 bg-slate-300 dark:bg-slate-600 rounded-t-sm transition-opacity group-hover:opacity-85"
-                style={{ height: `${profitData[idx]}%` }}
-              ></div>
-            </div>
-            <span className="text-[11px] font-medium text-gray-500 dark:text-gray-400">{month}</span>
+          <div key={month} className="flex-1 h-full flex items-end justify-center gap-1 group cursor-pointer">
+            <div className="analytics-bar w-2 md:w-3 rounded-t-[3px] transition-opacity group-hover:opacity-80" style={{ height: `${incomeData[idx]}%`, background: incomeColor }} />
+            <div className="analytics-bar w-2 md:w-3 rounded-t-[3px] transition-opacity group-hover:opacity-80" style={{ height: `${profitData[idx]}%`, background: profitColor }} />
           </div>
+        ))}
+      </div>
+      <div className={`flex justify-between gap-1 md:gap-2 pt-2 border-t ${isDark ? "border-white/10" : "border-slate-200"}`}>
+        {months.map((month) => (
+          <span key={month} className={`flex-1 text-center text-[10px] md:text-[11px] ${isDark ? "text-slate-500" : "text-slate-400"}`}>{month}</span>
         ))}
       </div>
     </div>
   );
 };
 
-// Top Categories Animated Donut Chart matching reference image
-export const EcommDonutChart = ({ timeFilter = "Monthly" }) => {
+// Category donut; ring centred in its viewBox and started from 12 o'clock
+export const DONUT_COLORS = ["#002bba", "#4d6fff", "#a9baff", "#dbe2ff"];
+
+export const EcommDonutChart = ({ timeFilter = "Monthly", isDark = false }) => {
   const donutRef = useRef(null);
 
   // Circumference = 2 * PI * 32 = 201
   const filterPresets = {
-    "All time": {
-      displayPct: "40%",
-      label: "T-shirts",
-      segments: [
-        { stroke: "#2563EB", array: "77.4 201", offset: 0 },
-        { stroke: "#64748B", array: "53.3 201", offset: -80.4 },
-        { stroke: "#93C5FD", array: "33.2 201", offset: -136.7 },
-        { stroke: "#CBD5E1", array: "25.1 201", offset: -172.9 },
-      ]
-    },
-    "Weekly": {
-      displayPct: "30%",
-      label: "T-shirts",
-      segments: [
-        { stroke: "#2563EB", array: "57.3 201", offset: 0 },
-        { stroke: "#64748B", array: "53.3 201", offset: -60.3 },
-        { stroke: "#93C5FD", array: "45.3 201", offset: -116.6 },
-        { stroke: "#CBD5E1", array: "33.2 201", offset: -164.9 },
-      ]
-    },
-    "Monthly": {
-      displayPct: "18%",
-      label: "T-shirts",
-      segments: [
-        { stroke: "#2563EB", array: "41.2 201", offset: 0 },
-        { stroke: "#64748B", array: "67.4 201", offset: -44.2 },
-        { stroke: "#93C5FD", array: "47.3 201", offset: -114.6 },
-        { stroke: "#CBD5E1", array: "33.2 201", offset: -164.9 },
-      ]
-    }
+    "All time": { displayPct: "40%", label: "Kurtas", segments: [["77.4 201", 0], ["53.3 201", -80.4], ["33.2 201", -136.7], ["25.1 201", -172.9]] },
+    "Weekly": { displayPct: "30%", label: "Kurtas", segments: [["57.3 201", 0], ["53.3 201", -60.3], ["45.3 201", -116.6], ["33.2 201", -164.9]] },
+    "Monthly": { displayPct: "21%", label: "Kurtas", segments: [["41.2 201", 0], ["67.4 201", -44.2], ["47.3 201", -114.6], ["33.2 201", -164.9]] },
   };
 
   const currentPreset = filterPresets[timeFilter] || filterPresets["Monthly"];
+  const colors = isDark ? ["#4d6fff", "#7b93ff", "#334155", "#1e293b"] : DONUT_COLORS;
 
   useGSAP(() => {
     gsap.fromTo(
@@ -276,32 +186,33 @@ export const EcommDonutChart = ({ timeFilter = "Monthly" }) => {
 
     gsap.fromTo(
       ".donut-text-content",
-      { scale: 0.6, opacity: 0, y: 4 },
-      { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }
+      { scale: 0.85, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.4, ease: "power2.out" }
     );
   }, { scope: donutRef, dependencies: [timeFilter] });
 
   return (
-    <div ref={donutRef} className="relative w-44 h-44 mx-auto flex  items-center justify-center  ">
-      <svg viewBox="0 0 88 88" className="">
-        {currentPreset.segments.map((seg, idx) => (
+    <div ref={donutRef} className="relative w-40 h-40 mx-auto flex items-center justify-center">
+      <svg viewBox="0 0 88 88" className="w-full h-full -rotate-90">
+        <circle cx="44" cy="44" r="32" fill="transparent" stroke={isDark ? "rgba(255,255,255,0.05)" : "#f1f5f9"} strokeWidth="12" />
+        {currentPreset.segments.map(([array, offset], idx) => (
           <circle
             key={idx}
-            cx="50"
-            cy="50"
+            cx="44"
+            cy="44"
             r="32"
             fill="transparent"
-            stroke={seg.stroke}
-            strokeWidth="14"
-            strokeDasharray={seg.array}
-            data-offset={seg.offset}
+            stroke={colors[idx]}
+            strokeWidth="12"
+            strokeDasharray={array}
+            data-offset={offset}
             className="donut-segment hover:opacity-80 transition-opacity cursor-pointer"
           />
         ))}
       </svg>
-      <div className="donut-text-content text-center  absolute  pointer-events-none">
-        <p className="text-xl font-medium text-gray-400">{currentPreset.displayPct}</p>
-        <p className="text-[10px] text-gray-400 font-semibold uppercase">{currentPreset.label}</p>
+      <div className="donut-text-content text-center absolute pointer-events-none">
+        <p className={`text-xl font-semibold leading-none ${isDark ? "text-white" : "text-slate-900"}`}>{currentPreset.displayPct}</p>
+        <p className={`text-[10px] mt-1 font-medium uppercase tracking-wide ${isDark ? "text-slate-400" : "text-slate-500"}`}>{currentPreset.label}</p>
       </div>
     </div>
   );

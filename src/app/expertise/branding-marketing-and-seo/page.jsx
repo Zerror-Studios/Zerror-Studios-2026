@@ -13,7 +13,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "Branding, social media and SEO | Zerror Studios",
   description: "Brand identity, social media, campaigns, and SEO and AI search, run month to month by the studio that builds your website.",
-  path: "/expertise/branding-and-marketing",
+  path: "/expertise/branding-marketing-and-seo",
 });
 
 const heroVideo = "/videos/expertise/branding.mp4"
@@ -87,10 +87,8 @@ const page = () => {
           { label: "Search-ready page score", value: "93" },
         ]}
       />
-      <BrandingWhyUs />
       <BrandingDisciplines />
       <BrandingWorkflowSection />
-      <WebDevProcess {...BRANDING_PROCESS} />
       <WebDevClients />
     </>
   )

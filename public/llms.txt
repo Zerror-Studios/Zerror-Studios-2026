@@ -12,7 +12,7 @@ Contact: admin@zerrorstudios.com
 - [Websites](https://www.zerrorstudios.com/expertise/websites): custom websites designed and built by one team, with SEO and AI search built in
 - [eCommerce](https://www.zerrorstudios.com/expertise/ecommerce): custom Shopify stores and Zcom
 - [Software and tools](https://www.zerrorstudios.com/expertise/software-and-tools): custom CMS, dashboards and internal tools
-- [Branding, marketing and SEO](https://www.zerrorstudios.com/expertise/branding-and-marketing): identity, social media, campaigns, SEO and AI search
+- [Branding, marketing and SEO](https://www.zerrorstudios.com/expertise/branding-marketing-and-seo): identity, social media, campaigns, SEO and AI search
 - [Contact](https://www.zerrorstudios.com/contact): start a project
 - [Pitch deck](https://www.zerrorstudios.com/pitchdeck)
 

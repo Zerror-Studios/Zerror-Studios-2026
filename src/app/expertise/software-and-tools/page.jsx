@@ -88,7 +88,6 @@ const page = () => {
       <CustomWhyCms />
       <CustomTechinicalCards />
       <CustomsCmsExplore />
-      <WebDevProcess {...SOFTWARE_PROCESS} />
       <WebDevClients line="Your business is unique. Your CMS should be too." />
     </>
   )

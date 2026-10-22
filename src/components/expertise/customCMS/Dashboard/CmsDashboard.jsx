@@ -8,17 +8,20 @@ import ProductsTab from "./tabs/ProductsTab";
 import PaymentsTab from "./tabs/PaymentsTab";
 import AnalyticsTab from "./tabs/AnalyticsTab";
 import CustomersTab from "./tabs/CustomersTab";
+import { getTokens } from "./ui/tokens";
+
+const DEFAULT_THEME = "light";
 
 export default function CmsDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const [searchTerm, setSearchTerm] = useState("");
-  const [theme, setTheme] = useState("dark"); // "light" | "dark"
+  const [theme, setTheme] = useState(DEFAULT_THEME); // "light" | "dark"
   const [isDemoActive, setIsDemoActive] = useState(false);
 
   const containerRef = useRef(null);
-  const isDark = theme === "dark";
+  const t = getTokens(theme === "dark");
 
-  // Automatically disable demo and show "Try Interactive Demo" button when dashboard scrolls out of screen view
+  // Reset the demo (and theme) once the dashboard scrolls out of view
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -26,7 +29,7 @@ export default function CmsDashboard() {
       ([entry]) => {
         if (!entry.isIntersecting) {
           setIsDemoActive(false);
-          setTheme("dark")
+          setTheme(DEFAULT_THEME);
         }
       },
       { threshold: 0.15 }
@@ -36,63 +39,61 @@ export default function CmsDashboard() {
     return () => observer.disconnect();
   }, []);
 
+  // Clear search when switching tabs so results never look empty by surprise
+  const changeTab = (id) => {
+    setActiveTab(id);
+    setSearchTerm("");
+  };
+
   const renderActiveTabContent = () => {
+    const props = { searchTerm, theme };
     switch (activeTab) {
-      case "overview":
-        return <OverviewTab searchTerm={searchTerm} theme={theme} />;
       case "products":
-        return <ProductsTab searchTerm={searchTerm} theme={theme} />;
+        return <ProductsTab {...props} />;
       case "payments":
-        return <PaymentsTab searchTerm={searchTerm} theme={theme} />;
+        return <PaymentsTab {...props} />;
       case "analytics":
-        return <AnalyticsTab searchTerm={searchTerm} theme={theme} />;
+        return <AnalyticsTab {...props} />;
       case "customers":
-      case "settings":
-        return <CustomersTab searchTerm={searchTerm} theme={theme} />;
+        return <CustomersTab {...props} />;
       default:
-        return <OverviewTab searchTerm={searchTerm} theme={theme} />;
+        return <OverviewTab {...props} />;
     }
   };
 
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full rounded-xl border overflow-hidden shadow-2xl flex flex-col lg:flex-row font-sans relative transition-colors duration-300 ${isDark
-          ? "bg-[#090D16] text-white border-white/15"
-          : "bg-[#F4F6F9] text-gray-900 border-gray-200/90"
-        }`}
+      className={`w-full h-full rounded-xl md:rounded-2xl border overflow-hidden shadow-2xl flex flex-col lg:flex-row font-sans relative transition-colors duration-300 ${t.shell}`}
     >
-      {/* Try Demo Blue Overlay (Disappears smoothly when clicked, reappears smoothly when scrolled out of view) */}
+      {/* "Try the demo" overlay; fades away on click, returns when scrolled out of view */}
       <div
-        className={`absolute inset-0 z-50 backdrop-blur-xs flex flex-col items-center justify-center p-6 text-center transition-all duration-300 ease-in-out ${
-          isDemoActive
-            ? "opacity-0 pointer-events-none scale-95"
-            : "opacity-100 pointer-events-auto scale-100"
-        }`}
+        className={`absolute inset-0 z-50 backdrop-blur-[3px] flex flex-col items-center justify-center p-6 text-center transition-all duration-300 ease-in-out ${t.overlay} ${isDemoActive
+          ? "opacity-0 pointer-events-none scale-[0.98]"
+          : "opacity-100 pointer-events-auto scale-100"
+          }`}
       >
-        <div className="pt-3">
+        <div
+          className={`w-full max-w-sm rounded-2xl border p-6 sm:p-8 flex flex-col items-center gap-4 shadow-[0_20px_50px_-12px_rgba(16,24,40,0.25)] transition-transform duration-300 ${t.card}`}
+        >
+          <div className="space-y-2">
+            <h3 className={` font-medium text-2xl ${t.strong}`}>
+              Explore a custom CMS
+            </h3>
+            <p className={`text-base leading-tight ${t.muted}`}>
+              Click through products, payments, analytics and customers in a working sample dashboard, built the way we build yours.
+            </p>
+          </div>
           <Button
             title="Try the demo"
-            variant="fill"
             onClick={() => setIsDemoActive(true)}
           />
         </div>
       </div>
 
-      {/* Sidebar Component */}
-      <DashboardSidebar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        theme={theme}
-        setTheme={setTheme}
-      />
+      <DashboardSidebar activeTab={activeTab} setActiveTab={changeTab} theme={theme} />
 
-      {/* Main Dashboard Container */}
-      <div
-        className={`flex-1 flex flex-col min-w-0 overflow-hidden transition-colors duration-300 ${isDark ? "bg-[#0B0F19]" : "bg-[#F8FAFC]"
-          }`}
-      >
-        {/* Header Component */}
+      <div className={`flex-1 flex flex-col min-w-0 min-h-0 overflow-hidden transition-colors duration-300 ${t.main}`}>
         <DashboardHeader
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -102,15 +103,14 @@ export default function CmsDashboard() {
           setIsDemoActive={setIsDemoActive}
         />
 
-        {/* Scrollable Viewport with Lenis scroll protection */}
+        {/* Scrollable viewport; Lenis is kept out so it scrolls on its own */}
         <main
           data-lenis-prevent="true"
-          className={`flex-1 overflow-y-auto p-4 md:p-6 space-y-6 scrollbar-thin transition-colors duration-300 ${isDark
-              ? "scrollbar-thumb-white/10 scrollbar-track-transparent"
-              : "scrollbar-thumb-gray-200 scrollbar-track-transparent"
-            }`}
+          className="flex-1 min-h-0 overflow-y-auto p-3 sm:p-4 md:p-6"
         >
-          {renderActiveTabContent()}
+          <div key={activeTab} className="max-w-6xl mx-auto">
+            {renderActiveTabContent()}
+          </div>
         </main>
       </div>
     </div>

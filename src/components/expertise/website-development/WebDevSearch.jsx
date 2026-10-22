@@ -153,7 +153,7 @@ const WebDevSearch = () => {
                 </div>
 
                 <p className="">
-                    Ongoing SEO? <Link href="/expertise/branding-and-marketing" className="underline underline-offset-2 hover:opacity-70 transition-opacity duration-300">See Branding and marketing.</Link>
+                    Ongoing SEO? <Link href="/expertise/branding-marketing-and-seo" className="underline underline-offset-2 hover:opacity-70 transition-opacity duration-300">See Branding, marketing and SEO.</Link>
                 </p>
             </div>
         </div>

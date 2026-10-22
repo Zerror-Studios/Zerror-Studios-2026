@@ -1,10 +1,9 @@
 "use client";
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 import { columns as oneTeamItems } from './WebDevOneTeam';
 import { services } from './WebDevExperiencesCards';
 import { items as searchItems } from './WebDevSearch';
@@ -118,54 +117,42 @@ const siteIcons = [DesignIcon, DevelopmentIcon, ScrollIcon, SearchAiIcon, Testin
 // One team, in every site, and search: one spec sheet instead of three card grids
 const chapters = [
     {
-        label: "One team",
-        heading: <>One team, <br className="max-sm:hidden" /> end to end.</>,
-        statement: "No handover between a design team and a dev team. The motion and detail you approve are what goes live.",
+        label: "No handover",
+        heading: <>No handover. <br className="max-sm:hidden" /> No lost detail.</>,
+        statement: "Design and development sit in one team, on one project, from the first sketch. The motion and detail you sign off are exactly what goes live.",
         rows: oneTeamItems.map(({ title, line, Icon }) => ({ title, line, Icon })),
     },
     {
-        label: "In every site",
-        heading: <>In every <br className="max-sm:hidden" /> site.</>,
-        statement: "Not add-ons. Part of the build. Six things every site gets, whatever its size.",
+        label: "Every site",
+        heading: <>Six things. <br className="max-sm:hidden" /> Every site.</>,
+        statement: "Not add-ons, not upsells. Whether it's five pages or fifty, these come as part of the build.",
         rows: services.map(({ title, description }, i) => ({ title, line: description, Icon: siteIcons[i] })),
     },
     {
         label: "Search",
-        heading: <>Search, <br className="max-sm:hidden" /> built in.</>,
-        statement: "Found on Google. Quoted by AI. Every site is set up for search engines and AI assistants from day one.",
+        heading: <>Found on Google. <br className="max-sm:hidden" /> Quoted by AI.</>,
+        statement: "Search isn't a phase after launch. Every page is set up for search engines and AI assistants before it goes live.",
         rows: searchItems.map(({ title, line, Icon }) => ({ title, line, Icon })),
         footer: (
             <p>
-                Ongoing SEO? <Link href="/expertise/branding-and-marketing" className="underline underline-offset-2 hover:opacity-70 transition-opacity duration-300">See Branding and marketing.</Link>
+                Ongoing SEO? <Link href="/expertise/branding-marketing-and-seo" className="underline underline-offset-2 hover:opacity-70 transition-opacity duration-300">See Branding, marketing and SEO.</Link>
             </p>
         ),
     },
 ];
 
-// Hairline row; fills with a blue pixel grid on hover and flips to white
-const SpecRow = ({ row }) => {
-    const [isHovered, setIsHovered] = useState(false);
+// Clean grid cell: icon, title and line, separated by hairlines
+const SpecCell = ({ row }) => {
     const { Icon } = row;
 
     return (
-        <div
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="spec_row group relative overflow-hidden border-t border-[#002bba20]"
-        >
-            <PixelGridCanvas
-                isActive={isHovered}
-                boxSize={24}
-                color="#002bba"
-                duration={0.9}
-                className="absolute max-sm:hidden inset-0 w-full h-full pointer-events-none z-0"
-            />
-            <div className="relative z-10 grid grid-cols-[1fr_2.5rem] md:grid-cols-[1fr_1fr_3rem] items-center gap-x-4 gap-y-2 py-5 md:py-7 md:px-4 transition-colors duration-300 md:group-hover:text-white">
-                <h4 className="secondary-font text-2xl md:text-4xl leading-none">{row.title}</h4>
-                <div className="w-8 h-8 md:w-10 md:h-10 justify-self-end md:order-last opacity-70 transition-opacity duration-300 group-hover:opacity-100">
-                    <Icon />
-                </div>
-                <p className="col-span-2 md:col-span-1 leading-tight opacity-70 md:opacity-80 md:max-w-[85%]">{row.line}</p>
+        <div className="spec_row group md:odd:last:col-span-2 flex rounded-xl flex-col gap-6 md:gap-20 p-6  bg-[#002bba10] border border-[#002bba]/15">
+            <div className="w-9 h-9 md:w-14 md:h-14 opacity-70 transition-opacity duration-300 group-hover:opacity-100">
+                <Icon />
+            </div>
+            <div className="space-y-2">
+                <h4 className="secondary-font text-2xl md:text-3xl leading-none">{row.title}</h4>
+                <p className="leading-tight max-w-sm">{row.line}</p>
             </div>
         </div>
     );
@@ -194,20 +181,24 @@ const WebDevInEveryBuild = () => {
     return (
         <div ref={container} className="w-full relative text_blue py-8 md:py-16 border-b">
             {chapters.map((chapter, ci) => (
-                <div key={ci} className="spec_chapter padding w-full md:grid grid-cols-[28%_72%] first:pt-0 last:pb-0 py-8 md:py-16">
+                <div key={ci} className="spec_chapter padding w-full md:grid grid-cols-2 first:pt-0 last:pb-0 py-8 md:py-16">
                     {/* Pinned while this chapter's rows scroll past */}
                     <div className="md:sticky md:top-28 self-start space-y-4 md:space-y-6 pb-8 md:pb-0 md:pr-12">
                         <h2 data-para-effect className="primary-font text-5xl leading-none">{chapter.heading}</h2>
-                        <p className="leading-tight opacity-80 md:max-w-[90%]">{chapter.statement}</p>
+                        <p className=" text-xl leading-tight  md:max-w-[70%]">{chapter.statement}</p>
                     </div>
 
                     <div className="w-full">
-                        {chapter.rows.map((row, ri) => (
-                            <SpecRow key={ri} row={row} />
-                        ))}
-                        <div className="border-t border-[#002bba20] pt-5">
-                            {chapter.footer}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {chapter.rows.map((row, ri) => (
+                                <SpecCell key={ri} row={row} />
+                            ))}
                         </div>
+                        {chapter.footer && (
+                            <div className="pt-5">
+                                {chapter.footer}
+                            </div>
+                        )}
                     </div>
                 </div>
             ))}

@@ -10,7 +10,7 @@ export default function sitemap() {
     '/expertise/websites',
     '/expertise/ecommerce',
     '/expertise/software-and-tools',
-    '/expertise/branding-and-marketing',
+    '/expertise/branding-marketing-and-seo',
     '/pitchdeck',
   ].map((route) => ({
     url: absoluteUrl(route),

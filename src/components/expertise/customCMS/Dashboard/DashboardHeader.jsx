@@ -1,64 +1,53 @@
 "use client";
 import React from "react";
 import { SearchIcon, NotificationIcon, SunIcon, MoonIcon } from "./ui/SvgAnimatedIcons";
+import { getTokens } from "./ui/tokens";
+import { navTabs } from "./DashboardSidebar";
 
-export default function DashboardHeader({ searchTerm, setSearchTerm, theme, setTheme, setIsDemoActive }) {
+export default function DashboardHeader({ searchTerm, setSearchTerm, activeTab, theme, setTheme, setIsDemoActive }) {
   const isDark = theme === "dark";
+  const t = getTokens(isDark);
+  const title = navTabs.find((n) => n.id === activeTab)?.label || "Overview";
 
   return (
-    <header
-      className={`h-16 px-4 md:px-6 border-b flex items-center justify-between gap-4 shrink-0 transition-colors duration-300 font-sans ${isDark ? "bg-[#0B0F19] border-white/10 text-white" : "bg-white border-gray-200/80 text-gray-900"
-        }`}
-    >
-      {/* Search Input */}
-      <div className="relative flex-1 max-w-md">
+    <header className={`h-14 md:h-16 px-4 md:px-6 border-b flex items-center gap-3 md:gap-4 shrink-0 backdrop-blur transition-colors duration-300 ${t.header}`}>
+      <h2 className={`hidden md:block text-[15px] font-semibold shrink-0 ${t.strong}`}>{title}</h2>
+
+      {/* Search */}
+      <div className="relative flex-1 md:max-w-xs md:ml-auto">
+        <SearchIcon className={`absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 ${t.subtle}`} />
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search products, documents..."
-          className={`w-full pl-4 pr-10 py-2 text-xs rounded-full transition-all focus:outline-none ${isDark
-              ? "bg-white/5 border border-white/10 text-gray-200 placeholder-gray-400 focus:bg-white/10 focus:border-blue-500"
-              : "bg-gray-100/80 border border-transparent text-gray-800 placeholder-gray-400 focus:bg-white focus:border-gray-300 focus:ring-1 focus:ring-gray-300"
-            }`}
+          placeholder="Search…"
+          aria-label="Search"
+          className={`w-full pl-8 pr-3 py-2 text-xs rounded-lg border transition-colors focus:outline-none ${t.input}`}
         />
-        <SearchIcon className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
       </div>
 
-      {/* Header Right Actions */}
-      <div className="flex items-center gap-2">
-        {/* Sun / Moon Theme Toggle Button */}
+      <div className="flex items-center gap-1.5 shrink-0">
         <button
           onClick={() => setTheme(isDark ? "light" : "dark")}
-          className={`p-2 rounded-full transition-all duration-200 ${isDark
-              ? "bg-white/10 hover:bg-white/20 text-amber-400 border border-white/15"
-              : "bg-gray-100 hover:bg-gray-200/80 text-indigo-600 border border-gray-200/60"
-            }`}
-          title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          className={`p-2 rounded-lg transition-colors ${t.iconBtn}`}
+          aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          title={isDark ? "Light mode" : "Dark mode"}
         >
           {isDark ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
         </button>
 
-        {/* Notification Bell */}
-        <button
-          className={`relative p-2 rounded-full transition-colors ${isDark
-              ? "bg-white/5 hover:bg-white/10 text-gray-200 border border-white/10"
-              : "bg-gray-100/80 hover:bg-gray-200/60 text-gray-600"
-            }`}
-        >
+        <button className={`relative p-2 rounded-lg transition-colors max-sm:hidden ${t.iconBtn}`} aria-label="Notifications">
           <NotificationIcon className="w-4 h-4" />
-          <span className="absolute top-0 right-0 w-2 h-2 rounded-full bg-rose-500"></span>
+          <span className={`absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-[#002bba] ring-2 ${isDark ? "ring-[#0F131B]" : "ring-white"}`} />
         </button>
+
         {setIsDemoActive && (
           <button
             onClick={() => setIsDemoActive(false)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-bold transition-all duration-200 ${isDark
-                ? "bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30"
-                : "bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200"
-              }`}
-            title="Close demo"
+            className={`flex items-center gap-1.5 px-2.5 md:px-3 py-2 rounded-lg text-xs font-medium transition-colors ${t.btnSecondary}`}
+            aria-label="Close demo"
           >
-            <span className="text-[11px] font-black">✕</span>
+            <span className="text-[11px] leading-none">✕</span>
             <span className="hidden sm:inline">Close demo</span>
           </button>
         )}

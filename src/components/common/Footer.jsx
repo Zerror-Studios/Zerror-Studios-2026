@@ -18,7 +18,7 @@ const serviceLinks = [
   { label: "Websites", href: "/expertise/websites" },
   { label: "eCommerce", href: "/expertise/ecommerce" },
   { label: "Software and tools", href: "/expertise/software-and-tools" },
-  { label: "Branding and marketing", href: "/expertise/branding-and-marketing" },
+  { label: "Branding, marketing and SEO", href: "/expertise/branding-marketing-and-seo" },
 ];
 
 // Placeholder URLs from site config until the final profiles arrive.

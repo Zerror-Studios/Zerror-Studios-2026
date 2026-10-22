@@ -40,7 +40,7 @@ const CustomsCmsExplore = () => {
         <div className="w-full   padding pt-0! text-white ">
           <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
             <div className="">
-              <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>See one in action</h2>
+              <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>See one in <br /> action</h2>
             </div>
             <div className="text-xs max-sm:hidden pt-4">
               <p data-para-effect className="font-thin">A sample dashboard.</p>

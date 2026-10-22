@@ -301,7 +301,7 @@ const OurTeam = () => {
               {/* Image */}
               <div className="w-full relative aspect-4/5">
                 <div
-                  className={`card_border absolute inset-0 border border-black/10 transition-opacity duration-300 pointer-events-none z-20 ${
+                  className={`card_border absolute inset-0 border border-[#002bba50] transition-opacity duration-300 pointer-events-none z-20 ${
                     hoveredIndex !== null && hoveredIndex !== index
                       ? "opacity-100"
                       : "opacity-0"

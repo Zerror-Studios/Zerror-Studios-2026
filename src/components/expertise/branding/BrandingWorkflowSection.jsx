@@ -26,7 +26,7 @@ const STEPS = [
     num: "01",
     tabTitle: "Plan",
     heading: "Plan",
-    desc: "One calendar, approved before the month starts.",
+    desc: "We map out the month's posts, campaigns and key dates in one shared calendar, and you approve it before anything goes live.",
     icon: RiCalendarEventLine,
   },
   {
@@ -34,7 +34,7 @@ const STEPS = [
     num: "02",
     tabTitle: "Instagram",
     heading: "Instagram",
-    desc: "Carousels and Reels, on schedule.",
+    desc: "Carousels and Reels designed in-house, in your voice, and posted on the days we agreed.",
     icon: RiInstagramLine,
   },
   {
@@ -42,7 +42,7 @@ const STEPS = [
     num: "03",
     tabTitle: "LinkedIn",
     heading: "LinkedIn",
-    desc: "Posts for the founder and the business.",
+    desc: "Thought-leadership posts for the founder and updates for the company page, written to sound like you.",
     icon: RiLinkedinBoxLine,
   },
   {
@@ -50,7 +50,7 @@ const STEPS = [
     num: "04",
     tabTitle: "Search and report",
     heading: "Search and report",
-    desc: "SEO work, and a short report on what moved.",
+    desc: "Ongoing SEO on your site, then a short monthly report on what moved, what didn't, and what comes next.",
     icon: RiLineChartLine,
   },
 ];
@@ -123,18 +123,18 @@ export default function BrandingWorkflowSection() {
       <div className="padding w-full space-y-12 md:space-y-16">
 
         {/* ── Heading Section (Matches BrandingWhyUs layout) ── */}
-        <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%] items-start">
-          <div>
-            <h2 data-para-effect className="primary-font text-5xl leading-none">
-              How a month runs
-            </h2>
+        <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+          <div className="">
+            <h2 data-para-effect className="primary-font text-5xl leading-none">How a <br /> month runs</h2>
           </div>
           <div className="text-xs max-sm:hidden pt-4">
+            <p className="font-thin">Plan, post,</p>
+            <p className="font-thin">measure, repeat.</p>
           </div>
           <div className="text-3xl md:pl-2">
-            <h3 data-para-effect className="leading-tight font-medium">
-              <span className="opacity-0 secondary-font max-sm:hidden pointer-events-none">...............</span>
-              Plan, post, measure, repeat.
+            <h3 data-para-effect className="secondary-font">
+              <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
+              One calendar, four steps, and a report at the end of every month.
             </h3>
           </div>
         </div>

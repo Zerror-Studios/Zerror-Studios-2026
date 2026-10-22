@@ -188,7 +188,7 @@ const EcommCmsCards = () => {
                                     <h4 className='text-3xl primary-font leading-none '>
                                         {card.title}
                                     </h4>
-                                    <p className='leading-tight text-white/90 text-sm'>
+                                    <p className='leading-tight text-white/90 text-lg'>
                                         {card.desc}
                                     </p>
                                 </div>

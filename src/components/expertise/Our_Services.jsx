@@ -28,154 +28,161 @@ const servicesContent = [
   },
   {
     id: 4,
-    title: "Branding and marketing",
-    href: "/expertise/branding-and-marketing",
+    title: "Branding, marketing and SEO",
+    href: "/expertise/branding-marketing-and-seo",
     description: "Seen, found, remembered. A full identity with logo, colour, type and voice, then social, campaigns and SEO, run every month by the team that made it.",
   },
 ];
 
+const IMAGE_SOURCES = [
+  "/images/homePage/services/website_development.svg",
+  "/images/homePage/services/ecommerce.svg",
+  "/images/homePage/services/customcms.svg",
+  "/images/homePage/services/branding.svg",
+]
+const STRIPS = 32
+
 const Our_Services = () => {
   const canvasRef = useRef(null)
   const parentRef = useRef(null)
-  const stateRef = useRef({ progress: 0 })
-  const imagesRef = useRef([])
-  const cropRef = useRef({ sx: 0, sy: 0, sw: 0, sh: 0 })
-  const drawRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
+    const ctx = canvas.getContext("2d", { alpha: true })
 
-    const recalcCrop = () => {
-      const imgs = imagesRef.current
-      if (!imgs.length || !imgs[0].complete) return
-      const img = imgs[0]
-      const dpr = window.devicePixelRatio || 1
-      const imgRatio = img.width / img.height
-      const canvasRatio = canvas.width / canvas.height
+    const state = { progress: 0 }
+    let svgs = []      // original decoded SVG images
+    let frames = []    // SVGs pre-rendered at exact canvas pixel size (cover-cropped)
+    let lastKey = null
+    let tween = null
+    let destroyed = false
 
-      let sx, sy, sw, sh
-      if (imgRatio > canvasRatio) {
-        sh = img.height
-        sw = sh * canvasRatio
-        sx = (img.width - sw) / 2
-        sy = 0
-      } else {
-        sw = img.width
-        sh = sw / canvasRatio
-        sx = 0
-        sy = (img.height - sh) / 2
+    // Render each SVG once at the canvas' exact pixel size, so per-frame drawing
+    // is a cheap 1:1 copy with no scaling and stays vector-sharp.
+    const buildFrames = () => {
+      if (!svgs.length) return
+      const W = canvas.width
+      const H = canvas.height
+      frames = svgs.map((img) => {
+        const iw = img.naturalWidth || W
+        const ih = img.naturalHeight || H
+        const canvasRatio = W / H
+        let sx = 0, sy = 0, sw = iw, sh = ih
+        if (iw / ih > canvasRatio) {
+          sw = ih * canvasRatio
+          sx = (iw - sw) / 2
+        } else {
+          sh = iw / canvasRatio
+          sy = (ih - sh) / 2
+        }
+        const off = document.createElement("canvas")
+        off.width = W
+        off.height = H
+        const octx = off.getContext("2d")
+        octx.imageSmoothingQuality = "high"
+        octx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H)
+        return off
+      })
+      lastKey = null
+    }
+
+    const draw = () => {
+      if (frames.length < 2) return
+      const W = canvas.width
+      const H = canvas.height
+      const TOTAL = frames.length - 1
+      const progress = state.progress
+      const segment = Math.min(TOTAL - 1, Math.floor(progress))
+      const t = progress - segment
+
+      const wH = window.innerHeight
+      const cH = canvas.clientHeight
+      const t_start = 0.5 - cH / (2 * wH)
+      const t_end = 0.5 + cH / (2 * wH)
+      const t_active = Math.max(0, Math.min(1, (t - t_start) / (t_end - t_start)))
+
+      // Skip identical frames (e.g. while scrolling between transitions)
+      const key = segment + ":" + t_active.toFixed(4)
+      if (key === lastKey) return
+      lastKey = key
+
+      const current = frames[segment]
+      const next = frames[segment + 1]
+
+      ctx.clearRect(0, 0, W, H)
+
+      // Fast paths: transition not started / finished
+      if (t_active === 0) { ctx.drawImage(current, 0, 0); return }
+      if (t_active === 1) { ctx.drawImage(next, 0, 0); return }
+
+      const stripH = H / STRIPS
+      const animDuration = 3 / STRIPS
+      const stagger = (1 - animDuration) / (STRIPS - 1)
+
+      for (let i = 0; i < STRIPS; i++) {
+        const revI = STRIPS - 1 - i
+        const dstY = Math.floor(revI * stripH)
+        const stripPx = Math.floor((revI + 1) * stripH) - dstY
+
+        const r = Math.max(0, Math.min(1, (t_active - i * stagger) / animDuration))
+
+        // Source rect == dest rect (frames match canvas size), so no clip/save needed
+        const h1 = Math.min(stripPx, Math.ceil(stripPx * (1 - r)) + 1)
+        if (r < 1) ctx.drawImage(current, 0, dstY, W, h1, 0, dstY, W, h1)
+
+        const h2 = Math.min(stripPx, Math.ceil(stripPx * r) + 1)
+        if (r > 0) ctx.drawImage(next, 0, dstY, W, h2, 0, dstY, W, h2)
       }
-      cropRef.current = { sx, sy, sw, sh }
     }
 
     const resizeCanvas = () => {
       const width = window.innerWidth
       const isMobile = width < 768
       const isTablet = width >= 768 && width < 1024
-      const size = isMobile ? 250 : isTablet ? 300 : 400
-      const dpr = window.devicePixelRatio || 1
+      const size = isMobile ? 300 : isTablet ? 360 : 480
+      // Match the screen's density, capped at 2x to keep per-frame cost low
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const px = Math.round(size * dpr)
 
       canvas.style.width = `${size}px`
       canvas.style.height = `${size}px`
-      canvas.width = size * dpr
-      canvas.height = size * dpr
+      if (canvas.width !== px) {
+        canvas.width = px
+        canvas.height = px
+        buildFrames()
+      }
+      lastKey = null
+      draw()
+    }
 
-      recalcCrop()
-
-      if (drawRef.current) drawRef.current()
+    let resizeRaf = 0
+    const onResize = () => {
+      cancelAnimationFrame(resizeRaf)
+      resizeRaf = requestAnimationFrame(resizeCanvas)
     }
 
     resizeCanvas()
-    window.addEventListener("resize", resizeCanvas)
-    return () => window.removeEventListener("resize", resizeCanvas)
-  }, [])
+    window.addEventListener("resize", onResize)
 
-  useEffect(() => {
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext("2d")
-    const STRIPS = 32
-    const imageSources = [
-      "/images/homePage/services/website_development.svg",
-      "/images/homePage/services/ecommerce.svg",
-      "/images/homePage/services/customcms.svg",
-      "/images/homePage/services/branding.svg",
-    ]
-
-    let loaded = 0
-
-    function draw() {
-      const { sx, sy, sw, sh } = cropRef.current
-      const imgs = imagesRef.current
-      if (!imgs.length || !sw || !sh) return
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      const stripSrcH = sh / STRIPS
-      const stripDstH = canvas.height / STRIPS
-      const TOTAL = imgs.length - 1
-      const progress = stateRef.current.progress
-      const segment = Math.min(TOTAL - 1, Math.floor(progress))
-      const t = progress - segment
-
-      const current = imgs[segment]
-      const next = imgs[segment + 1]
-      if (!current || !next) return
-
-      const wH = window.innerHeight;
-      const cH = canvas.clientHeight;
-      const t_start = 0.5 - cH / (2 * wH);
-      const t_end = 0.5 + cH / (2 * wH);
-
-      const t_active = (t - t_start) / (t_end - t_start);
-
-      const animDuration = 3 / STRIPS;
-      const stagger = (1 - animDuration) / (STRIPS - 1);
-
-      for (let i = 0; i < STRIPS; i++) {
-        const revI = STRIPS - 1 - i
-
-        const srcY = Math.floor(sy + revI * stripSrcH)
-        const nextSrcY = Math.floor(sy + (revI + 1) * stripSrcH)
-        const curStripSrcH = nextSrcY - srcY
-
-        const dstY = Math.floor(revI * stripDstH)
-        const nextDstY = Math.floor((revI + 1) * stripDstH)
-        const curStripDstH = nextDstY - dstY
-
-        const delay = i * stagger
-        let r = (t_active - delay) / animDuration
-        r = Math.max(0, Math.min(1, r))
-
-        const h1 = curStripDstH * (1 - r)
-        if (h1 > 0) {
-          ctx.save()
-          ctx.beginPath()
-          ctx.rect(0, dstY, canvas.width, Math.ceil(h1) + 1)
-          ctx.clip()
-          ctx.drawImage(current, sx, srcY, sw, curStripSrcH, 0, dstY, canvas.width, curStripDstH + 1)
-          ctx.restore()
-        }
-
-        const h2 = curStripDstH * r
-        if (h2 > 0) {
-          ctx.save()
-          ctx.beginPath()
-          ctx.rect(0, dstY, canvas.width, Math.ceil(h2) + 1)
-          ctx.clip()
-          ctx.drawImage(next, sx, srcY, sw, curStripSrcH, 0, dstY, canvas.width, curStripDstH + 1)
-          ctx.restore()
-        }
-      }
-    }
-
-    drawRef.current = draw
-
-    function initScroll() {
-      const TOTAL = imagesRef.current.length - 1
-      gsap.to(stateRef.current, {
-        progress: TOTAL,
-        ease: "linear",
+    Promise.all(
+      IMAGE_SOURCES.map(
+        (src) =>
+          new Promise((resolve) => {
+            const img = new Image()
+            img.decoding = "async"
+            img.onload = () => resolve(img)
+            img.onerror = () => resolve(null)
+            img.src = src
+          })
+      )
+    ).then((imgs) => {
+      if (destroyed) return
+      svgs = imgs.filter(Boolean)
+      buildFrames()
+      tween = gsap.to(state, {
+        progress: svgs.length - 1,
+        ease: "none",
         scrollTrigger: {
           trigger: parentRef.current,
           start: "top top",
@@ -185,40 +192,18 @@ const Our_Services = () => {
         },
         onUpdate: draw,
       })
-    }
-
-    imageSources.forEach((src, idx) => {
-      const img = new Image()
-      img.src = src
-      img.onload = () => {
-        loaded++
-        imagesRef.current[idx] = img
-
-        if (loaded === imageSources.length) {
-          const first = imagesRef.current[0]
-          const dpr = window.devicePixelRatio || 1
-          const imgRatio = first.width / first.height
-          const canvasRatio = canvas.width / canvas.height
-
-          let sx, sy, sw, sh
-          if (imgRatio > canvasRatio) {
-            sh = first.height
-            sw = sh * canvasRatio
-            sx = (first.width - sw) / 2
-            sy = 0
-          } else {
-            sw = first.width
-            sh = sw / canvasRatio
-            sx = 0
-            sy = (first.height - sh) / 2
-          }
-          cropRef.current = { sx, sy, sw, sh }
-          initScroll()
-          draw()
-        }
-      }
-      imagesRef.current[idx] = img
+      draw()
     })
+
+    return () => {
+      destroyed = true
+      cancelAnimationFrame(resizeRaf)
+      window.removeEventListener("resize", onResize)
+      if (tween) {
+        tween.scrollTrigger?.kill()
+        tween.kill()
+      }
+    }
   }, [])
 
   useGSAP(() => {
@@ -244,12 +229,15 @@ const Our_Services = () => {
   return (
     <div ref={parentRef} className={`serv_page_paren  w-full padding z-10 bg-white relative py-0! h-[400vh] `}>
 
-      <div className="sticky w-full h-screen top-0 left-0 pointer-events-none z-[-1] center  ">
-        <canvas
-          ref={canvasRef}
-          className="block"
-          style={{ willChange: "transform", transform: "translateZ(0)" }}
-        />
+      {/* Canvas: centered on mobile, right half on desktop */}
+      <div className="sticky w-full h-screen top-0 left-0 pointer-events-none z-[-1] flex items-center justify-center md:justify-end">
+        <div className="w-full md:w-1/2 flex items-center justify-center">
+          <canvas
+            ref={canvasRef}
+            className="block"
+            style={{ willChange: "transform", transform: "translateZ(0)" }}
+          />
+        </div>
       </div>
 
       <div className="-mt-[100vh]">
@@ -257,21 +245,21 @@ const Our_Services = () => {
           return (
             <div
               key={index}
-              className={`w-full h-screen flex justify-start pt-8 md:pt-16 border-t last:border-b border-black/50  `}
+              className="w-full h-screen flex items-start md:items-center pt-10 md:pt-0 border-t last:border-b border-black/50"
             >
-              <div className="w-full space-y-5 md:space-y-0 md:grid grid-cols-[65%_35%]">
-                {/* Left */}
-                <div className="  md:w-1/2 space-y-5">
-                  <h2 data-para-effect className=" md:w-[85%] text-5xl text_blue primary-font">
-                    {item.title}
-                  </h2>
+              {/* Left: content */}
+              <div className="w-full md:w-1/2 md:pr-16 lg:pr-24 flex flex-col gap-5 md:gap-8">
+                <span className="text-sm md:text-base secondary-font text_blue">
+                  {String(index + 1).padStart(2, "0")} / {String(servicesContent.length).padStart(2, "0")}
+                </span>
+                <h2 data-para-effect className="text-5xl text_blue primary-font">
+                  {item.title}
+                </h2>
+                <p data-para-effect className="text-3xl secondary-font text_blue ">
+                  {item.description}
+                </p>
+                <div className="pt-2">
                   <Button link={item.href} title="Explore" />
-                </div>
-                {/* Right */}
-                <div className=" space-y-5 md:space-y-10 ">
-                  <h3 data-para-effect className=" text-3xl secondary-font  text_blue">
-                    {item.description}
-                  </h3>
                 </div>
               </div>
             </div>

@@ -118,7 +118,7 @@ export const caseStudies = [
         year: "2026",
         category: "Film Production House",
         services: ["Websites"],
-        cover_img: "/images/projects/salmaankhan/cover_img.webp",
+        cover_img: "/images/projects/salmaankhan/cover.jpg",
         cover_vid: "/images/projects/salmaankhan/show_reel.mp4",
         tagline: "An official home for the studio behind Bajrangi Bhaijaan, Bharat and Dabangg 3.",
         keywords: ["Cinematic web", "Film catalogue", "Motion", "Headless CMS"],
