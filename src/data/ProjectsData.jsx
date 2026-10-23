@@ -381,7 +381,7 @@ export const caseStudies = [
         year: "2026",
         category: "Fashion Label",
         services: ["eCommerce"],
-        cover_img: "/images/projects/Label Nobo/cover_img.webp",
+        cover_img: "/images/projects/Label Nobo/cover.jpg",
         cover_vid: "/images/projects/Label Nobo/show_reel.mp4",
         tagline: "A store for the label that believes fashion has no boundaries.",
         keywords: ["Fashion eCommerce", "Shopify", "Collections", "Celebrity edits"],
