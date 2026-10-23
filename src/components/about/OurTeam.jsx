@@ -47,7 +47,7 @@ const teamMembers = [
   {
     id: 6,
     name: "Ayush Kumar Ahirwar",
-    role: "Frontend Developer",
+    role: "Junior Fullstack Developer",
     img: "/images/outTeam/ayush.png",
   },
   {
