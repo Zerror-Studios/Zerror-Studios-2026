@@ -23,7 +23,7 @@ const CATEGORY_MAP = {
         ["Disrptve", "WineeMedia", "Manifest", "Esquire India"].includes(item.title) ||
         item.category?.toLowerCase().includes("marketing") || item.category?.toLowerCase().includes("magazine"),
     "Film & Production": (item) =>
-        ["25 Rupiya Production", "Salmaan Khan Films", "Shivdutt das art foundation"].includes(item.title) ||
+        ["25 Rupiya Production", "Salman Khan Films", "Shivdutt das art foundation"].includes(item.title) ||
         item.category?.toLowerCase().includes("production") || item.category?.toLowerCase().includes("movie") || item.category?.toLowerCase().includes("art"),
     "Web & Digital": (item) =>
         ["Disrptve", "Bro's Moving", "Esquire India", "Manifest", "WineeMedia"].includes(item.title) ||
@@ -161,10 +161,17 @@ const WorksGrid = () => {
                                             className={`transition-all  primary-font duration-300 text_blue inline-block text-left cursor-pointer ${
                                                 isActive
                                                     ? "opacity-100 scale-100"
-                                                    : "opacity-30 hover:opacity-80"
+                                                    : "opacity-30 hover:opacity-80 max-sm:opacity-100"
                                             }`}
                                         >
-                                            {category}, 
+                                            <span className="relative inline-block">
+                                                {category}
+                                                <span
+                                                    className={`sm:hidden absolute left-0 bottom-0 w-full h-0.5 bg-current origin-left transition-transform duration-500 ${
+                                                        isActive ? "scale-x-100" : "scale-x-0"
+                                                    }`}
+                                                />
+                                            </span>,
                                         </button>
                                     </span>
                                 </div>

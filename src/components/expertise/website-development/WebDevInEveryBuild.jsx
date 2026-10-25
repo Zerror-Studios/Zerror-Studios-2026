@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -118,19 +118,19 @@ const siteIcons = [DesignIcon, DevelopmentIcon, ScrollIcon, SearchAiIcon, Testin
 const chapters = [
     {
         label: "No handover",
-        heading: <>No handover. <br className="max-sm:hidden" /> No lost detail.</>,
+        heading: ["No handover.", "No lost detail."],
         statement: "Design and development sit in one team, on one project, from the first sketch. The motion and detail you sign off are exactly what goes live.",
         rows: oneTeamItems.map(({ title, line, Icon }) => ({ title, line, Icon })),
     },
     {
         label: "Every site",
-        heading: <>Six things. <br className="max-sm:hidden" /> Every site.</>,
+        heading: ["Six things.", "Every site."],
         statement: "Not add-ons, not upsells. Whether it's five pages or fifty, these come as part of the build.",
         rows: services.map(({ title, description }, i) => ({ title, line: description, Icon: siteIcons[i] })),
     },
     {
         label: "Search",
-        heading: <>Found on Google. <br className="max-sm:hidden" /> Quoted by AI.</>,
+        heading: ["Found on Google.", "Quoted by AI."],
         statement: "Search isn't a phase after launch. Every page is set up for search engines and AI assistants before it goes live.",
         rows: searchItems.map(({ title, line, Icon }) => ({ title, line, Icon })),
         footer: (
@@ -160,6 +160,16 @@ const SpecCell = ({ row }) => {
 
 const WebDevInEveryBuild = () => {
     const container = useRef(null);
+    // SplitText breaks at every <br>, even a CSS-hidden one, so drop it from the DOM on small screens
+    const [isSmall, setIsSmall] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia("(max-width: 639px)");
+        const update = () => setIsSmall(mq.matches);
+        update();
+        mq.addEventListener("change", update);
+        return () => mq.removeEventListener("change", update);
+    }, []);
 
     useGSAP(() => {
         gsap.utils.toArray(".spec_chapter").forEach((chapter) => {
@@ -184,7 +194,9 @@ const WebDevInEveryBuild = () => {
                 <div key={ci} className="spec_chapter padding w-full md:grid grid-cols-2 first:pt-0 last:pb-0 py-8 md:py-16">
                     {/* Pinned while this chapter's rows scroll past */}
                     <div className="md:sticky md:top-28 self-start space-y-4 md:space-y-6 pb-8 md:pb-0 md:pr-12">
-                        <h2 data-para-effect className="primary-font text-5xl leading-none">{chapter.heading}</h2>
+                        <h2 data-para-effect className="primary-font text-5xl leading-none">
+                            {isSmall ? chapter.heading.join(" ") : <>{chapter.heading[0]}<br />{chapter.heading[1]}</>}
+                        </h2>
                         <p className=" text-xl leading-tight  md:max-w-[70%]">{chapter.statement}</p>
                     </div>
 

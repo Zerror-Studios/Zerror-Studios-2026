@@ -19,7 +19,7 @@ const PrivacyPage = () => {
     <LegalPage title="Privacy policy" updated="19 October 2026">
       <LegalSection>
         <p>
-          This policy explains what personal information Zerror Studios collects through zerrorstudios.com, why, and what you can ask us to do with it. Zerror Studios is a partnership firm based at B/32 Elco Arcade, Hill Road, Bandra West, Mumbai 400050, India. It is written with India&apos;s Digital Personal Data Protection Act, 2023 in mind.
+          This policy explains what personal information Zerror Studios collects through zerrorstudios.com, why, and what you can ask us to do with it. Zerror Studios is a partnership firm in India. It is written with India&apos;s Digital Personal Data Protection Act, 2023 in mind.
         </p>
       </LegalSection>
 
@@ -91,8 +91,6 @@ const PrivacyPage = () => {
           Email: {mail}
           <br />
           Phone: <a href="tel:+917738802437" className="underline underline-offset-4 decoration-1">+91 77388 02437</a>
-          <br />
-          Post: B/32 Elco Arcade, Hill Road, Bandra West, Mumbai 400050
         </p>
       </LegalSection>
     </LegalPage>

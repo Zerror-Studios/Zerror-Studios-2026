@@ -14,7 +14,7 @@ const TermsPage = () => {
     <LegalPage title="Terms of use" updated="19 October 2026">
       <LegalSection>
         <p>
-          These terms apply to your use of zerrorstudios.com, run by Zerror Studios, B/32 Elco Arcade, Hill Road, Bandra West, Mumbai 400050, India. By using the site, you agree to them.
+          These terms apply to your use of zerrorstudios.com, run by Zerror Studios. By using the site, you agree to them.
         </p>
       </LegalSection>
 

@@ -70,7 +70,7 @@ const HeroSection = () => {
       </div>
 
       <div className="w-full aboutTitle flex -mt-[100vh] py-44 max-sm:pb-20  ">
-        <h1 className=" heading_split text-5xl md:text-8xl  leading-none  primary-font text_blue w-[80%]">
+        <h1 className=" heading_split text-5xl md:text-8xl   leading-none  primary-font text_blue md:w-[80%]">
           A studio for brands that refuse to look average.
         </h1>
       </div>

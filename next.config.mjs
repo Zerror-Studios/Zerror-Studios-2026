@@ -38,6 +38,11 @@
           destination: '/expertise/branding-marketing-and-seo',
           permanent: true,
         },
+        {
+          source: '/work/:old(salmaan-khan-films|salmaan-khan|salman-khan-films)',
+          destination: '/work/salman-khan',
+          permanent: true,
+        },
       ];
     },
     experimental: {

@@ -113,7 +113,7 @@ export const caseStudies = [
     {
         id: 2,
         title: "Salman Khan Films",
-        slug: "salmaan-khan-films",
+        slug: "salman-khan-films",
         liveLink: "https://www.salmankhanfilms.com/",
         year: "2026",
         category: "Film Production House",

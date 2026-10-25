@@ -180,9 +180,9 @@ const OurWork = () => {
                 <div className=" text-3xl  md:pl-2">
                     <h3 data-para-effect className="secondary-font">
                         <span className='opacity-0  max-sm:hidden pointer-events-none'>...............</span>
-                        Work where design and technology move as one. No handoffs, no compromises, nothing lost in
-                        translation — every project built with structure, precision, and the patience to sweat details most
-                        people never notice. Built to perform. Built to last.
+                        Brands, websites and online stores, designed and built by one team. The people who sketch
+                        your idea are the people who launch it, so nothing gets lost along the way. A few we&apos;re
+                        proud of.
 
                     </h3>
                 </div>

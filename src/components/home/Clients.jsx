@@ -59,10 +59,12 @@ const ClientCtaBox = () => {
 
     return (
         <div className="w-full aspect-square bg_blue text-white border border-[#002bba]/10 p-2 md:p-4 flex flex-col justify-between items-start">
-            <h3 className="secondary-font text-xl md:text-3xl leading-tight">
+            <h3 className="secondary-font text-xl md:text-3xl leading-none">
                 Your brand <br /> could be next.
             </h3>
+            <div className="max-sm:scale-75 max-sm:-translate-x-4 max-sm:translate-y-2">
             <Button variant="white" title="Start a project" onClick={openProjectForm} />
+            </div>
         </div>
     );
 };

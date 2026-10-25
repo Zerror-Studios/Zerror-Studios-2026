@@ -22,14 +22,6 @@ const organizationSchema = {
       "email": siteConfig.contact.email,
       "foundingDate": "2022-02",
       "description": "A design studio in Mumbai building brands, websites, online stores, software and marketing.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": siteConfig.address.street,
-        "addressLocality": siteConfig.address.city,
-        "addressRegion": siteConfig.address.state,
-        "postalCode": siteConfig.address.postalCode,
-        "addressCountry": siteConfig.address.country
-      },
       // Placeholder profiles until the final Instagram and LinkedIn URLs arrive.
       "sameAs": [
         siteConfig.socials.instagram,

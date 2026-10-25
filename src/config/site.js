@@ -35,14 +35,6 @@ export const siteConfig = {
     phone: "+917738802437",
     email: "admin@zerrorstudios.com",
   },
-  address: {
-    street: "B/32 Elco Arcade, Hill Road, Bandra West",
-    city: "Mumbai",
-    state: "Maharashtra",
-    postalCode: "400050",
-    country: "IN",
-    full: "B/32 Elco Arcade, Hill Road, Bandra West, Mumbai 400050",
-  },
   // Placeholder URLs until the final Instagram and LinkedIn links arrive.
   socials: {
     facebook: "",

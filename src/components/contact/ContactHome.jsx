@@ -24,7 +24,6 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const LAST_STEP = 4;
 const SENT_STEP = 5;
-const STUDIO_ADDRESS = "B/32 Elco Arcade, Hill Road, Bandra West, Mumbai 400050";
 
 const buttonClass =
     "bg-white text_blue px-8 py-3 rounded-lg font-medium hover:bg-[#002bba] hover:text-white! hover:border-white border transition-colors ";

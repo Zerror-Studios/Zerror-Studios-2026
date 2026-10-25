@@ -17,25 +17,36 @@ const Hero = () => {
 
     if (window.innerWidth > 1020) return
 
-    gsap.to(
-      ".mob_split_hero_title",
-      {
-        opacity: 1,
-        ease: "power2.out"
-      }
-    );
+    // same line reveal as GlobalParaReveal: each line slides up out of its own hidden wrapper
+    let Mob_split_lines;
+    document.fonts.ready.then(() => {
+      const title = document.querySelector(".mob_split_hero_title");
+      if (!title) return;
 
-    const Mob_split_lines = SplitText.create(".mob_split_hero_title", {
-      type: "lines",
+      Mob_split_lines = SplitText.create(title, {
+        type: "lines",
+        linesClass: "split-line",
+      });
+
+      Mob_split_lines.lines.forEach((line) => {
+        const wrapper = document.createElement("div")
+        wrapper.style.overflow = "hidden"
+        line.parentNode.insertBefore(wrapper, line)
+        wrapper.appendChild(line)
+      })
+
+      gsap.set(Mob_split_lines.lines, { yPercent: 110, x: 10, willChange: "transform" })
+      gsap.set(title, { opacity: 1 })
+
+      gsap.to(Mob_split_lines.lines, {
+        yPercent: 0,
+        x: 0,
+        duration: 1,
+        delay: 0.5,
+        stagger: 0.08,
+        ease: "expo.out",
+      })
     });
-
-    gsap.from(Mob_split_lines.lines, {
-      yPercent: 50,
-      opacity: 0,
-      delay: 0.5,
-      stagger: 0.03,
-      ease: "expo.out",
-    })
 
     gsap.to(
       [".abt_paren", ".site-background"],
@@ -53,6 +64,7 @@ const Hero = () => {
       }
     );
 
+    return () => Mob_split_lines?.revert();
   }, [isMobile]);
 
   useGSAP(() => {
@@ -177,8 +189,8 @@ const Hero = () => {
       )}
 
       {isMobile && (
-        <div className=" hero_mob_txt  w-full relative z-10 overflow-hidden  md:hidden! pt-[calc(50svh)]! padding pb-[33vh]! text-white  ">
-          <p aria-hidden="true" className=" mob_split_hero_title opacity-0  text-[15.5vw] leading-[15vw]   md:text-[12vw] font-bold origin-bottom-left ">We build brands that people stop for, remember, and come back to.</p>
+        <div className=" hero_mob_txt  w-full h-svh pb-10 flex items-end relative z-10 overflow-hidden  md:hidden! padding text-white mb-24  ">
+          <p aria-hidden="true" className=" mob_split_hero_title w-full opacity-0  text-[15vw] leading-[14vw]   md:text-[12vw] font-bold origin-bottom-left ">We build brands that people stop for, remember, and come back to.</p>
         </div>
       )}
 
