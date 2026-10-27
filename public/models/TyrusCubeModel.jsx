@@ -2,15 +2,20 @@ import React, { useEffect, useRef } from 'react'
 import { useLoader, useFrame } from '@react-three/fiber'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger'
-import { createGLTFLoader } from '@/components/lib/gltfLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 gsap.registerPlugin(ScrollTrigger)
+
+// The dice uses no Draco/KTX2 compression, so a plain GLTFLoader is enough
+// (no decoders to fetch, no extra WebGL context). Fetch starts as soon as this chunk loads.
+export const MODEL_URL = '/models/Tyrus_dice.glb'
+useLoader.preload(GLTFLoader, MODEL_URL)
 
 export default function TyrusCubeModel(props) {
   const scrollRef = useRef()
   const dragRef = useRef()
 
-  const gltf = useLoader(createGLTFLoader, '/models/Tyrus_dice.glb')
+  const gltf = useLoader(GLTFLoader, MODEL_URL)
   const { nodes, materials } = gltf
 
   const dragTarget = useRef({ x: 0, y: 0 })

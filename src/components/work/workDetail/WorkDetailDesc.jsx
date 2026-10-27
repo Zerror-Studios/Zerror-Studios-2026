@@ -36,16 +36,16 @@ const WorkDetailDesc = () => {
     })
 
     return (
-        <div className="w-full py-16! md:py-24! text_blue  padding md:grid grid-cols-[80%_20%]">
+        <div className="w-full py-section! text_blue  padding md:grid grid-cols-[80%_20%]">
             <div className=" md:w-[60%]  space-y-10">
-                <p className='wrk_anim_txt primary-font text-5xl md:text-8xl '>
+                <p className='wrk_anim_txt h1'>
                     Disrupting the Norm
                 </p>
-                <div className="  space-y-5  capitalize leading-tight text-lg">
-                    <div className="">
+                <div className="space-y-5  capitalize para">
+                    <div>
                         <p className='wrk_anim_txt font-medium'>This project reimagines how digital products should feel and function. By blending clear strategy, thoughtful design, and robust engineering, we created an experience that removes friction and elevates interaction.</p>
                     </div>
-                    <div className="">
+                    <div>
                         <p className='wrk_anim_txt font-medium'>This project reimagines how digital products should feel and function. By blending clear strategy, thoughtful design, and robust engineering, we created an experience that removes friction and elevates interaction.</p>
                     </div>
                 </div>
@@ -54,20 +54,20 @@ const WorkDetailDesc = () => {
             <div className="space-y-10 pt-20 grid grid-cols-2 md:grid-cols-1">
                 <div className="space-y-5 md:space-y-0">
                     <div className="space-y-1">
-                        <p className='wrk_anim_txt font-semibold text-xl uppercase'>CLIENT</p>
+                        <p className='wrk_anim_txt h6 uppercase'>CLIENT</p>
                         <p className='wrk_anim_txt'>Disrptve</p>
                     </div>
                     <div className="space-y-1 md:hidden">
-                        <p className='wrk_anim_txt  font-semibold text-xl uppercase'>team</p>
-                        <div className="">
+                        <p className='wrk_anim_txt  h6 uppercase'>team</p>
+                        <div>
                             <p className='wrk_anim_txt'>Product Design </p>
                             <p className='wrk_anim_txt'> Development</p>
                         </div>
                     </div>
                 </div>
                 <div className="space-y-1">
-                    <p className='wrk_anim_txt font-semibold text-xl uppercase'>Project type</p>
-                    <div className="">
+                    <p className='wrk_anim_txt h6 uppercase'>Project type</p>
+                    <div>
                         <p className='wrk_anim_txt'>Product Build</p>
                         <p className='wrk_anim_txt'>Full-Stack App</p>
                         <p className='wrk_anim_txt'>Scalable Platform</p>
@@ -76,8 +76,8 @@ const WorkDetailDesc = () => {
                     </div>
                 </div>
                 <div className="space-y-2 max-sm:hidden">
-                    <p className='wrk_anim_txt  font-semibold text-xl uppercase'>team</p>
-                    <div className="">
+                    <p className='wrk_anim_txt  h6 uppercase'>team</p>
+                    <div>
                         <p className='wrk_anim_txt'>Product Design </p>
                         <p className='wrk_anim_txt'> Development</p>
                     </div>

@@ -81,9 +81,9 @@ const ColorPalette = () => {
                     {/* Header & Colors */}
                     <div className="flex flex-col gap-3">
                         <div className="flex items-center justify-between">
-                            <h3 style={{ color: activeColor }} className="text-2xl font-bold tracking-tight">
+                            <div style={{ color: activeColor }} className="text-2xl font-bold tracking-tight">
                                 Color Palette
-                            </h3>
+                            </div>
                             <span className="text-xs px-2.5 py-1 rounded border border-gray-200 uppercase font-mono text-gray-500">
                                 {activeColor}
                             </span>
@@ -122,9 +122,9 @@ const ColorPalette = () => {
 
                     {/* Typography Hierarchy (H1 to H6) */}
                     <div className="flex flex-col gap-2 pt-3 flex-1 justify-center">
-                        <h4 className="text-xs uppercase font-mono tracking-wider text-gray-400">
+                        <div className="text-xs uppercase font-mono tracking-wider text-gray-400">
                             Typography Hierarchy (H1 - H6)
-                        </h4>
+                        </div>
                         <div className="space-y-2 bg-gray-50/50 p-4 rounded-xl border border-gray-100 flex flex-col justify-between flex-1">
                             {[
                                 { tag: 'H1', label: 'Heading H1', size: 'text-3xl md:text-4xl' },
@@ -154,9 +154,9 @@ const ColorPalette = () => {
                 <div className="flex flex-col justify-between h-full overflow-hidden border-t lg:border-t-0 lg:border-l lg:border-r border-gray-100 lg:px-6 py-2 lg:py-0">
                     <div className="flex flex-col  pb-5 gap-2">
                         <div className="flex items-center justify-between">
-                            <h3 className="text-xl font-bold tracking-tight text-gray-900">
+                            <div className="text-xl font-bold tracking-tight text-gray-900">
                                 Font Family Options
-                            </h3>
+                            </div>
                             <span className="text-xs font-semibold px-2 py-0.5 rounded bg-gray-100" style={{ color: activeColor }}>
                                 {activeFont.name}
                             </span>
@@ -209,9 +209,9 @@ const ColorPalette = () => {
                     {/* 1. Border Radius Drag Selector */}
                     <div className="flex flex-col gap-2">
                         <div className="flex justify-between items-center">
-                            <h4 className="text-xs uppercase  text-gray-400 flex items-center gap-2">
+                            <div className="text-xs uppercase  text-gray-400 flex items-center gap-2">
                                 Button Border Radius
-                            </h4>
+                            </div>
                             <span
                                 className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-white border border-gray-200 shadow-2xs"
                                 style={{ color: activeColor }}
@@ -268,18 +268,18 @@ const ColorPalette = () => {
 
                     {/* 2. Buttons System (Primary & Secondary Variants) */}
                     <div className="flex flex-col gap-3 pt-2 flex-1 justify-center">
-                        <h4 className="text-xs uppercase  text-gray-400 flex items-center gap-2">
+                        <div className="text-xs uppercase  text-gray-400 flex items-center gap-2">
                             Button Style System
                             <div className="h-px bg-gray-100 flex-1"></div>
-                        </h4>
+                        </div>
 
                         <div className="space-y-4 ">
                             {/* Primary Buttons */}
                             <div>
                                 <div className="flex justify-between items-center mb-2">
-                                    <h5 className="text-xs font-semibold" style={{ color: activeColor }}>
+                                    <div className="text-xs font-semibold" style={{ color: activeColor }}>
                                         Primary Button Variants
-                                    </h5>
+                                    </div>
                                     <span className="text-[10px] font-mono text-gray-400">50 PX</span>
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
@@ -331,9 +331,9 @@ const ColorPalette = () => {
                             {/* Secondary Buttons */}
                             <div>
                                 <div className="flex justify-between items-center mb-2">
-                                    <h5 className="text-xs font-semibold" style={{ color: activeColor }}>
+                                    <div className="text-xs font-semibold" style={{ color: activeColor }}>
                                         Secondary Button Variants
-                                    </h5>
+                                    </div>
                                     <span className="text-[10px] font-mono text-gray-400">38 PX</span>
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
@@ -386,10 +386,10 @@ const ColorPalette = () => {
 
                     {/* 3. Icon Style System */}
                     <div className="flex flex-col gap-2 pt-2 ">
-                        <h4 className="text-xs uppercase  text-gray-400 flex items-center gap-2">
+                        <div className="text-xs uppercase  text-gray-400 flex items-center gap-2">
                             Icon Style System
                             <div className="h-px bg-gray-100 flex-1"></div>
-                        </h4>
+                        </div>
 
                         <div className="grid grid-cols-2 gap-2">
                             {/* Line */}

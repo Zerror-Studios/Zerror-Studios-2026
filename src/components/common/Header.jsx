@@ -265,7 +265,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="flex-1 flex justify-center relative h-3 items-center text-center whitespace-nowrap overflow-hidden">
-                  <p className={`absolute text-sm  text-white font-medium uppercase  ${openMenu ? "-translate-y-full" : ""} transition-all duration-300 ease-out `}>Menu</p>
+                  <p className={`absolute para-sm  text-white font-medium uppercase  ${openMenu ? "-translate-y-full" : ""} transition-all duration-300 ease-out `}>Menu</p>
                 </div>
 
                 <div onClick={(e) => setOpenMenu(!openMenu)} className={`ros_paren flex flex-col justify-center items-end w-25 transition-all duration-150 ease-out ${openMenu ? "gap-y-0" : " gap-y-1.5 group-hover:gap-y-2"} `}>
@@ -364,7 +364,7 @@ const Header = () => {
                       onMouseEnter={() => setHoveredMenuBtn('pitchdeck')}
                       onMouseLeave={() => setHoveredMenuBtn(null)}
                       onClick={() => setOpenMenu(false)}
-                      className="group relative overflow-hidden w-full rounded-sm py-4 text-xs center border border-[#ffffff50] bg-transparent text-[#ffffff] hover:text-black transition-colors duration-300 uppercase flex"
+                      className="group relative overflow-hidden w-full rounded-sm py-4 label center border border-[#ffffff50] bg-transparent text-[#ffffff] hover:text-black transition-colors duration-300 uppercase flex"
                     >
                       <PixelGridCanvas
                         isActive={hoveredMenuBtn === 'pitchdeck'}
@@ -384,7 +384,7 @@ const Header = () => {
                       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"auto"}'
                       onMouseEnter={() => setHoveredMenuBtn('call')}
                       onMouseLeave={() => setHoveredMenuBtn(null)}
-                      className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm text-xs uppercase py-4 center cursor-pointer"
+                      className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm label uppercase py-4 center cursor-pointer"
                     >
                       <PixelGridCanvas
                         isActive={hoveredMenuBtn !== 'call'}
@@ -401,7 +401,7 @@ const Header = () => {
                       onClick={() => {
                         setShowProjectForm(true);
                       }}
-                      className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm text-xs uppercase py-4 center cursor-pointer"
+                      className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm label uppercase py-4 center cursor-pointer"
                     >
                       <PixelGridCanvas
                         isActive={hoveredMenuBtn !== 'project'}
@@ -420,7 +420,7 @@ const Header = () => {
 
                   {projectStatus === "sent" ? (
                     <div className="flex flex-col gap-4 text-white text-left">
-                      <p className="text-xl leading-tight">{FORM_MESSAGES.sentTitle}</p>
+                      <p className="para-lg">{FORM_MESSAGES.sentTitle}</p>
                       <p className="text-white/80 leading-tight">{FORM_MESSAGES.sentText}</p>
                       <ViewTransitionLink
                         href="/work"
@@ -428,7 +428,7 @@ const Header = () => {
                         onMouseEnter={() => setHoveredMenuBtn('sent')}
                         onMouseLeave={() => setHoveredMenuBtn(null)}
                         onClick={() => setOpenMenu(false)}
-                        className="group relative overflow-hidden w-full rounded-sm py-4 mt-2 text-xs center border border-[#ffffff50] bg-transparent text-[#ffffff] hover:text-black transition-colors duration-300 uppercase flex"
+                        className="group relative overflow-hidden w-full rounded-sm py-4 mt-2 label center border border-[#ffffff50] bg-transparent text-[#ffffff] hover:text-black transition-colors duration-300 uppercase flex"
                       >
                         <PixelGridCanvas
                           isActive={hoveredMenuBtn === 'sent'}
@@ -454,7 +454,7 @@ const Header = () => {
                               key={kind}
                               type="button"
                               onClick={() => handleToggleKind(kind)}
-                              className={`px-3 py-1.5 text-sm  pb-1  rounded border transition-all duration-200 cursor-pointer ${isActive
+                              className={`px-3 py-1.5 para-sm  pb-1  rounded border transition-all duration-200 cursor-pointer ${isActive
                                 ? "bg-[#fcf7f2] border-[#fcf7f2] text-black"
                                 : "bg-transparent border-white/20 text-white hover:bg-white/10"
                                 }`}
@@ -537,7 +537,7 @@ const Header = () => {
                           setProjectStatus("idle");
                           setProjectErrors({});
                         }}
-                        className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm text-xs uppercase py-4 center cursor-pointer"
+                        className="group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm label uppercase py-4 center cursor-pointer"
                       >
                         <PixelGridCanvas
                           isActive={hoveredMenuBtn !== 'cancel'}
@@ -554,7 +554,7 @@ const Header = () => {
                         aria-busy={projectLoading}
                         onMouseEnter={() => setHoveredMenuBtn('submit')}
                         onMouseLeave={() => setHoveredMenuBtn(null)}
-                        className={`group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm text-xs uppercase py-4 center ${projectLoading ? "cursor-wait" : "cursor-pointer"}`}
+                        className={`group relative overflow-hidden bg-transparent text-black hover:text-[#ffffff] border border-[#ffffff50] transition-colors duration-300 rounded-sm label uppercase py-4 center ${projectLoading ? "cursor-wait" : "cursor-pointer"}`}
                       >
                         <PixelGridCanvas
                           isActive={hoveredMenuBtn !== 'submit'}
@@ -569,7 +569,7 @@ const Header = () => {
                       </button>
                     </div>
 
-                    <p className="text-xs text-white/50 text-left">
+                    <p className="label text-white/50 text-left">
                       By sending this, you agree to our{" "}
                       <ViewTransitionLink
                         href="/privacy"

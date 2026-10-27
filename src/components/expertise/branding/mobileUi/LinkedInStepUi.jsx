@@ -59,7 +59,7 @@ export default function LinkedInStepUi() {
           </div>
           <div>
             <div className="flex items-center gap-1">
-              <h5 className="text-xs   text-white leading-none">Zerror Studios</h5>
+              <div className="text-xs   text-white leading-none">Zerror Studios</div>
               <span className="text-[9px] text-white/50">• 1st</span>
             </div>
             <p className="text-[9px] text-white/60 leading-tight mt-0.5 line-clamp-1">
@@ -93,9 +93,9 @@ export default function LinkedInStepUi() {
         </div>
 
         <div className="z-10 py-1">
-          <h4 className="  text-xs sm:text-sm text-white leading-snug">
+          <div className="  text-xs sm:text-sm text-white leading-snug">
             How one team runs your brand, social and search
-          </h4>
+          </div>
           <p className="text-[9px] text-white/80 mt-0.5 font-light">
             Identity, content and SEO, planned as one.
           </p>

@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   Spacing scale. Use these instead of one-off values (py-12, mt-24…).
+   Each token becomes Tailwind utilities: py-section, pt-section, mt-block,
+   space-y-block, pt-hero, p-card, etc. Values switch at md below.
+   ------------------------------------------------------------------ */
+@theme {
+  --spacing-section: 2rem;  /* top/bottom padding of every section */
+  --spacing-block: 1.5rem;    /* section header → content, and between big blocks in a section */
+  --spacing-block-half: calc(var(--spacing-block) / 2); /* half of block; follows it at every breakpoint */
+  --spacing-hero: 8rem;     /* top padding of a page hero, clears the fixed header */
+  --spacing-card: 1.5rem;   /* inner padding of cards */
+}
+@media (min-width: 768px) {
+  :root {
+    --spacing-section: 4rem;
+    --spacing-block: 4rem;
+    --spacing-hero: 11rem;
+    --spacing-card: 2.5rem;
+  }
+}
+
 * {
   scroll-behavior: smooth;
   user-select: none;
@@ -310,14 +331,33 @@ button {
   color: red;
 }
 
-/* Page transition using view transition api */
+/* Page transition: React's <ViewTransition default="page-fade"> in SiteLayout.
+   The old page fades out, then the new one fades in. */
 
-::view-transition-old(root) {
-  animation: page-fade-out 0.5s ease-in forwards;
+::view-transition-old(.page-fade) {
+  animation: page-fade-out 0.4s cubic-bezier(0.4, 0, 1, 1) both;
 }
 
+::view-transition-new(.page-fade) {
+  animation: page-fade-in 0.55s cubic-bezier(0, 0, 0.2, 1) 0.3s both;
+}
+
+/* Fade only, no size/position morph between the two pages */
+::view-transition-group(.page-fade) {
+  animation-duration: 0s;
+}
+
+/* Everything outside the page content (header) stays still */
+::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: page-fade-in 0.5s ease-out forwards;
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(.page-fade),
+  ::view-transition-new(.page-fade) {
+    animation: none;
+  }
 }
 
 @keyframes page-fade-out {

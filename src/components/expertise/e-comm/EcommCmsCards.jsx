@@ -14,6 +14,7 @@ import SearchAiArchAnim from './cmsCardAnimations/SearchAiArchAnim';
 import IpOwnershipAnim from './cmsCardAnimations/IpOwnershipAnim';
 import AiCoachAnim from './cmsCardAnimations/AiCoachAnim';
 import ChatControlAnim from './cmsCardAnimations/ChatControlAnim';
+import SectionHeader from "@/components/common/SectionHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -145,23 +146,15 @@ const EcommCmsCards = () => {
 
     return (
         <div data-hide-header ref={containerRef} className="w-full h-auto md:h-[200vw] relative">
-            <div className='w-full md:sticky md:top-0 overflow-hidden mt-8! md:mt-16! max-sm:pb-8 h-auto md:h-screen flex gap-y-10 md:gap-y-[5vh] flex-col justify-center'>
+            <div className='w-full md:sticky md:top-0 overflow-hidden mt-section! max-sm:pb-section h-auto md:h-screen flex gap-y-10 md:gap-y-[5vh] flex-col justify-center'>
                 <div className="w-full   padding py-0!  text_blue ">
-                    <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
-                        <div className="">
-                            <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Meet Zcom.</h2>
-                        </div>
-                        <div className="text-xs max-sm:hidden pt-4">
-                            <p className='font-thin'>Your store.</p>
-                            <p className='font-thin'>Our team. Built-in AI.</p>
-                        </div>
-                        <div className="text-3xl md:pl-2">
-                            <h3 data-para-effect className="">
-                                <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                                One store, designed for your brand, run by one team, with AI that helps it sell.
-                            </h3>
-                        </div>
-                    </div>
+                    <SectionHeader
+                        title="Meet Zcom."
+                        titleClassName="capitalize"
+                        lines={["Your store.", "Our team. Built-in AI."]}
+                    >
+                        One store, designed for your brand, run by one team, with AI that helps it sell.
+                    </SectionHeader>
                 </div>
 
                 <div ref={sliderRef} className="padding py-0! w-full flex gap-x-5 md:will-change-transform overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none [&::-webkit-scrollbar]:hidden">
@@ -183,12 +176,12 @@ const EcommCmsCards = () => {
                                     fill
                                     className={`object-cover absolute z-0 ${card.brightness || ""}`}
                                 />
-                                <AnimComponent />
-                                <div className={`p-6 md:p-10 ${isTop ? "pb-0" : ""} space-y-2 relative z-20`}>
-                                    <h4 className='text-3xl primary-font leading-none '>
+                                <div className="ui-mock contents"><AnimComponent /></div>
+                                <div className={`p-card ${isTop ? "pb-0" : ""} space-y-2 relative z-20`}>
+                                    <h3 className="h4">
                                         {card.title}
-                                    </h4>
-                                    <p className='leading-tight text-white/90 text-lg'>
+                                    </h3>
+                                    <p className='text-white/90 para'>
                                         {card.desc}
                                     </p>
                                 </div>

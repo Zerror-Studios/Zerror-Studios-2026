@@ -1,4 +1,5 @@
 "use client";
+import Br from "@/components/common/Br";
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
@@ -12,7 +13,7 @@ const defaultImages = [
 
 const WebDevProjectsSwiper = ({
     images = defaultImages,
-    heading = <>Design Your <br /> Business Now</>
+    heading = <>Design Your <Br /> Business Now</>
 }) => {
     const containerRef = useRef(null);
     const marqueeTrackRef = useRef(null);
@@ -213,7 +214,7 @@ const WebDevProjectsSwiper = ({
     return (
         <div
             onMouseLeave={handleMouseLeaveContainer}
-            ref={containerRef} className="w-full  py-8 md:py-16 space-y-16 relative overflow-hidden select-none">
+            ref={containerRef} className="w-full  py-section space-y-block relative overflow-hidden select-none">
             {/* Background Graphic */}
             <div className="absolute w-full h-full inset-0 pointer-events-none">
                 <Image src="/images/expertisePage/website-development/swiper_bg.png" alt="Swiper bg Graphic" fill className="cover" />
@@ -221,7 +222,7 @@ const WebDevProjectsSwiper = ({
 
             {/* Section Heading */}
             <div>
-                <h2 data-para-effect className="text-3xl md:text-5xl text-center text-white primary-font leading-tight relative z-10">
+                <h2 data-para-effect className="h3 text-center text-white relative z-10">
                     {heading}
                 </h2>
             </div>
@@ -230,7 +231,7 @@ const WebDevProjectsSwiper = ({
             <div className="py-0 relative">
                 <div
                     ref={dragBtnRef}
-                    className="drag_btn max-sm:hidden fixed top-0 left-0 pointer-events-none text-sm rounded-lg z-50  opacity-0 text-white overflow-hidden bg-white-20 backdrop-blur-xs"
+                    className="drag_btn max-sm:hidden fixed top-0 left-0 pointer-events-none para-sm rounded-lg z-50  opacity-0 text-white overflow-hidden bg-white-20 backdrop-blur-xs"
                 >
                     <div className="px-3.5 py-1.5 ">
                         DRAG

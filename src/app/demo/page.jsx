@@ -141,7 +141,7 @@ const DemoPage = () => {
   }, []);
 
   return (
-    <div className="w-full bg-[#050608] text-white min-h-screen relative font-sans overflow-x-hidden selection:bg-[#002bba] selection:text-white">
+    <div className="ui-mock w-full bg-[#050608] text-white min-h-screen relative font-sans overflow-x-hidden selection:bg-[#002bba] selection:text-white">
       {/* ─────────────────────────────────────────────────────────────
           STATIC GLASS LENS REFRACTION SVG FILTER (Crisp, no wobble)
       ───────────────────────────────────────────────────────────── */}

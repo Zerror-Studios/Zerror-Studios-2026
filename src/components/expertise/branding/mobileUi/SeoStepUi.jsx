@@ -104,7 +104,7 @@ export default function SeoStepUi() {
             <RiLineChartLine size={14} className="text-white" />
           </div>
           <div>
-            <h4 className="font-bold text-xs leading-tight">SEO analytics</h4>
+            <div className="font-bold text-xs leading-tight">SEO analytics</div>
             <span className="text-[8px] text-white/50 font-mono">zerrorstudios.com</span>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function SeoStepUi() {
             <div>
               <span className="text-[9px] text-white/50 uppercase font-mono tracking-wider">Organic Traffic</span>
               <div className="flex items-baseline gap-1.5">
-                <h4 className="text-base font-bold text-white leading-tight">14,237</h4>
+                <div className="text-base font-bold text-white leading-tight">14,237</div>
                 <span className="text-[9px] font-mono text-emerald-400 flex items-center gap-0.5">
                   <RiArrowRightUpLine size={9} />+340%
                 </span>

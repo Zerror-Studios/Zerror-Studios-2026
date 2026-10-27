@@ -77,9 +77,9 @@ export default function CmsDashboard() {
           className={`w-full max-w-sm rounded-2xl border p-6 sm:p-8 flex flex-col items-center gap-4 shadow-[0_20px_50px_-12px_rgba(16,24,40,0.25)] transition-transform duration-300 ${t.card}`}
         >
           <div className="space-y-2">
-            <h3 className={` font-medium text-2xl ${t.strong}`}>
+            <div className={` font-medium text-2xl ${t.strong}`}>
               Explore a custom CMS
-            </h3>
+            </div>
             <p className={`text-base leading-tight ${t.muted}`}>
               Click through products, payments, analytics and customers in a working sample dashboard, built the way we build yours.
             </p>

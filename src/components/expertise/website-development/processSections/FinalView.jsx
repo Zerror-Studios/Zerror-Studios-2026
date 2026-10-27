@@ -312,9 +312,9 @@ const FinalView = () => {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
 
                                         <div className="relative z-20 max-w-xl text-white">
-                                            <h1 className={`${isMobileMode ? 'text-xl font-serif' : 'text-3xl sm:text-6xl font-serif'} leading-tight mb-1.5 sm:mb-4 drop-shadow-md`}>
+                                            <div className={`${isMobileMode ? 'text-xl font-serif' : 'text-3xl sm:text-6xl font-serif'} leading-tight mb-1.5 sm:mb-4 drop-shadow-md`}>
                                                 {hero.title}
-                                            </h1>
+                                            </div>
                                             <p className={`${isMobileMode ? 'text-[10px] line-clamp-2' : 'text-xs sm:text-sm'} text-gray-200 leading-relaxed mb-3 sm:mb-6 max-w-md drop-shadow`}>
                                                 {hero.subtitle}
                                             </p>
@@ -347,7 +347,7 @@ const FinalView = () => {
                             <div id="products-section" className={`${isMobileMode ? 'p-3' : 'p-6 sm:p-12'} flex flex-col items-center text-black`}>
                                 <div className="text-center mb-3 sm:mb-8">
                                     <p className="text-[9px] sm:text-xs font-semibold tracking-widest uppercase mb-1 text_blue">Curated Selection</p>
-                                    <h2 className={`${isMobileMode ? 'text-lg font-serif' : 'text-2xl sm:text-3xl font-serif'} mb-1 sm:mb-3`}>Featured Collections</h2>
+                                    <div className={`${isMobileMode ? 'text-lg font-serif' : 'text-2xl sm:text-3xl font-serif'} mb-1 sm:mb-3`}>Featured Collections</div>
                                     <p className="text-[10px] sm:text-sm text-gray-500 max-w-lg leading-relaxed">
                                         Every piece begins with a single tension, precision against ease, structure against movement.
                                     </p>
@@ -428,9 +428,9 @@ const FinalView = () => {
 
                                                 {/* Product Info */}
                                                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-0.5 gap-0.5">
-                                                    <h4 className="text-[10px] sm:text-xs font-semibold text-gray-900 group-hover:text_blue transition-colors line-clamp-1">
+                                                    <div className="text-[10px] sm:text-xs font-semibold text-gray-900 group-hover:text_blue transition-colors line-clamp-1">
                                                         {product.title}
-                                                    </h4>
+                                                    </div>
                                                     <span className="text-[10px] sm:text-xs font-bold text-gray-900">{product.priceFormatted}</span>
                                                 </div>
 
@@ -463,7 +463,7 @@ const FinalView = () => {
                                     {!isMobileMode && (
                                         <>
                                             <div>
-                                                <h4 className="font-semibold uppercase tracking-widest text-[11px] mb-3 text-gray-300">Shop</h4>
+                                                <div className="font-semibold uppercase tracking-widest text-[11px] mb-3 text-gray-300">Shop</div>
                                                 <ul className="space-y-1.5 text-gray-400 text-[11px]">
                                                     <li className="hover:text-white cursor-pointer">New Arrivals</li>
                                                     <li className="hover:text-white cursor-pointer">Best Sellers</li>
@@ -472,7 +472,7 @@ const FinalView = () => {
                                                 </ul>
                                             </div>
                                             <div>
-                                                <h4 className="font-semibold uppercase tracking-widest text-[11px] mb-3 text-gray-300">Client Care</h4>
+                                                <div className="font-semibold uppercase tracking-widest text-[11px] mb-3 text-gray-300">Client Care</div>
                                                 <ul className="space-y-1.5 text-gray-400 text-[11px]">
                                                     <li className="hover:text-white cursor-pointer">Shipping & Delivery</li>
                                                     <li className="hover:text-white cursor-pointer">Returns & Exchanges</li>
@@ -483,7 +483,7 @@ const FinalView = () => {
                                         </>
                                     )}
                                     <div>
-                                        <h4 className="font-semibold uppercase tracking-widest text-[10px] mb-1.5 text-gray-300">Newsletter</h4>
+                                        <div className="font-semibold uppercase tracking-widest text-[10px] mb-1.5 text-gray-300">Newsletter</div>
                                         <div className="flex gap-1.5">
                                             <input
                                                 type="email"
@@ -555,7 +555,7 @@ const FinalView = () => {
                                 <div className="flex justify-between items-center pb-3 border-b border-gray-100">
                                     <div className="flex items-center gap-1.5">
                                         <RiShoppingBagLine size={16} className="text_blue" />
-                                        <h3 className="font-semibold text-xs sm:text-base">Shopping Bag ({totalCartCount})</h3>
+                                        <div className="font-semibold text-xs sm:text-base">Shopping Bag ({totalCartCount})</div>
                                     </div>
                                     <button
                                         onClick={() => setIsCartOpen(false)}
@@ -577,7 +577,7 @@ const FinalView = () => {
                                                 <img src={item.imgMain} alt={item.title} className="w-12 h-16 object-cover rounded-md" />
                                                 <div className="flex-1 flex flex-col justify-between">
                                                     <div className="flex justify-between items-start">
-                                                        <h4 className="text-[10px] sm:text-xs font-semibold text-gray-900">{item.title}</h4>
+                                                        <div className="text-[10px] sm:text-xs font-semibold text-gray-900">{item.title}</div>
                                                         <button onClick={() => updateQty(item.id, -item.qty)} className="text-gray-400 hover:text-red-500">
                                                             <RiDeleteBin6Line size={12} />
                                                         </button>
@@ -642,7 +642,7 @@ const FinalView = () => {
                                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xl font-bold">
                                     <RiCheckLine size={28} />
                                 </div>
-                                <h3 className="text-base sm:text-xl font-bold text-gray-900">Order Placed! 🎉</h3>
+                                <div className="text-base sm:text-xl font-bold text-gray-900">Order Placed! 🎉</div>
                                 <p className="text-[10px] sm:text-xs text-gray-500 leading-relaxed">
                                     Thank you for exploring the final interactive design interface of nobo.
                                 </p>
@@ -667,7 +667,7 @@ const FinalView = () => {
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <div className="flex justify-between items-center mb-2.5">
-                                    <h3 className="font-semibold text-xs">Search Catalog</h3>
+                                    <div className="font-semibold text-xs">Search Catalog</div>
                                     <button onClick={() => setIsSearchOpen(false)} className="p-1 hover:bg-gray-100 rounded-full">
                                         <RiCloseLine size={16} />
                                     </button>

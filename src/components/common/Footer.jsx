@@ -2,24 +2,10 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 const year = new Date().getFullYear();
-
-const mainLinks = [
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Pitch deck", href: "/pitchdeck" },
-];
-
-const serviceLinks = [
-  { label: "Websites", href: "/expertise/websites" },
-  { label: "eCommerce", href: "/expertise/ecommerce" },
-  { label: "Software and tools", href: "/expertise/software-and-tools" },
-  { label: "Branding, marketing and SEO", href: "/expertise/branding-marketing-and-seo" },
-];
 
 // Placeholder URLs from site config until the final profiles arrive.
 const socialLinks = [
@@ -29,8 +15,6 @@ const socialLinks = [
 
 const smallPrintLinks = [
   { label: `© ${year} Zerror Studios` },
-  { label: "Privacy policy", href: "/privacy" },
-  { label: "Terms of use", href: "/terms" },
 ];
 
 const FooterLink = ({ link, className = "", ...rest }) => {
@@ -135,14 +119,7 @@ const footerRows = [
         hover: "group-hover:bottom-[80%]",
       },
       {},
-      {
-        links: mainLinks,
-        align: "absolute top-[5%] left-[5%] right-[5%]",
-      },
-      {
-        links: serviceLinks,
-        align: "absolute top-[5%] left-[5%] right-[5%]",
-      },
+      {},
       { img: "/svg/r.svg", hover: "hover:pb-10" },
       {
         text: "Refine through feedback.",
@@ -158,6 +135,7 @@ const footerRows = [
         links: socialLinks,
         align: "absolute bottom-[5%] left-[5%] right-[5%]",
       },
+      {},
       {
         links: smallPrintLinks,
         align: "absolute bottom-[5%] left-[5%] right-[5%]",
@@ -173,11 +151,7 @@ const mobileFooterData = [
   , {}
   , {
     label: "I", alignment: "flex items-end"
-  }, {
-    links: serviceLinks, alignment: ""
-  }, {}, {
-    links: mainLinks, alignment: ""
-  }, {}, {}, {
+  }, {}, {}, {}, {}, {}, {
     links: socialLinks, alignment: " justify-end"
   }
   , {
@@ -234,7 +208,7 @@ const Footer = () => {
                   )}
 
                   {item.links && (
-                    <div className={`flex flex-col gap-1 text-xs font-thin leading-tight tracking-wider uppercase text-[#f6f8ff] ${item.align}`}>
+                    <div className={`flex flex-col gap-1 label font-thin tracking-wider uppercase text-[#f6f8ff] ${item.align}`}>
                       {item.links.map((link, li) => (
                         <FooterLink
                           key={li}
@@ -249,7 +223,7 @@ const Footer = () => {
                   {item.text && (
                     <span
                       ref={(el) => (flickerRefs.current.push(el))}
-                      className={` flicker text-xs font-thin leading-tight tracking-wider  uppercase text-[#f6f8ff]  transition-all duration-300  ${item.align}
+                      className={` flicker label font-thin tracking-wider  uppercase text-[#f6f8ff]  transition-all duration-300  ${item.align}
                         ${item.hover}
                      `}
                       style={{
@@ -281,7 +255,7 @@ const Footer = () => {
               return (
                 <div
                   ref={(el) => (flickerRefs.current.push(el))}
-                  key={index} className={` h-[25svh] flicker ${item.alignment} p-3 border border-white/10 rounded-md text-xs font-thin uppercase`}>
+                  key={index} className={` h-[25svh] flicker ${item.alignment} p-3 border border-white/10 rounded-md label font-thin uppercase`}>
                   <p>
                     {item.label}
                   </p>
@@ -298,7 +272,7 @@ const Footer = () => {
                       ref={(el) => (flickerRefs.current.push(el))}
                       key={i}
                       link={link}
-                      className="flicker text-xs w-fit"
+                      className="flicker label w-fit"
                     />
                   ))}
                 </div>

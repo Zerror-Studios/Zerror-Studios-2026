@@ -5,6 +5,8 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 gsap.registerPlugin(ScrollTrigger)
 
 // Looping line icons, animated with SVG so they keep moving without JS
@@ -89,13 +91,13 @@ const SearchCard = ({ item, i }) => {
             />
             <div className="relative z-10 p-6 md:p-8 space-y-16 md:space-y-24 transition-colors duration-500 md:group-hover:text-white">
                 <div className="flex items-start justify-between">
-                    <p className="text-3xl">0{i + 1}</p>
+                    <p className="para-lead">0{i + 1}</p>
                     <div className="w-10 h-10 md:w-12 md:h-12 opacity-80 transition-all duration-500 group-hover:opacity-100 group-hover:scale-110">
                         <Icon />
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <h4 className="text-xl md:text-2xl font-semibold">{item.title}</h4>
+                    <h4 className="h5 font-semibold">{item.title}</h4>
                     <p className="font-medium leading-tight opacity-70 w-[85%]">{item.line}</p>
                 </div>
             </div>
@@ -123,26 +125,15 @@ const WebDevSearch = () => {
     }, { scope: container });
 
     return (
-        <div ref={container} className="w-full relative border-b text_blue py-8 md:py-16 space-y-8 md:space-y-16">
+        <div ref={container} className="w-full relative border-b text_blue py-section space-y-block">
 
             <div className="w-full padding">
-                <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                    <div>
-                        <h2 data-para-effect className="primary-font text-5xl leading-none">
-                            Search, <br /> built in
-                        </h2>
-                    </div>
-                    <div className="text-xs max-sm:hidden pt-4">
-                        <p className="font-thin">Found on Google.</p>
-                        <p className="font-thin">Quoted by AI.</p>
-                    </div>
-                    <div className="text-3xl md:pl-2">
-                        <h3 data-para-effect className="secondary-font">
-                            <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
-                            Every site is set up for search engines and AI assistants from day one.
-                        </h3>
-                    </div>
-                </div>
+                <SectionHeader
+                    title={<>Search, <Br /> built in</>}
+                    lines={["Found on Google.", "Quoted by AI."]}
+                >
+                    Every site is set up for search engines and AI assistants from day one.
+                </SectionHeader>
             </div>
 
             <div className="w-full padding space-y-8">
@@ -152,7 +143,7 @@ const WebDevSearch = () => {
                     ))}
                 </div>
 
-                <p className="">
+                <p>
                     Ongoing SEO? <Link href="/expertise/branding-marketing-and-seo" className="underline underline-offset-2 hover:opacity-70 transition-opacity duration-300">See Branding, marketing and SEO.</Link>
                 </p>
             </div>

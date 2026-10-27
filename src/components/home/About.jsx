@@ -4,12 +4,25 @@ import gsap from 'gsap'
 import React from 'react'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import SplitText from 'gsap/dist/SplitText';
+import SectionHeader from '@/components/common/SectionHeader';
+import Br from "@/components/common/Br";
+import { dropHiddenBreaks } from "@/lib/splitText";
 gsap.registerPlugin(ScrollTrigger);
 const About = () => {
 
     useGSAP(() => {
-        const wrk_split_wrd = SplitText.create(".wrk_split_wrd", { type: "words, chars" });
-        gsap.set(wrk_split_wrd.words, { y: 50, opacity: 0, display: "inline-block" })
+        // "What we do" header: same line-by-line clip as the global para reveal
+        dropHiddenBreaks(".wrk_split_wrd")
+        const wrk_split_wrd = SplitText.create(".wrk_split_wrd", { type: "lines", linesClass: "split-line", mask: "lines" });
+        gsap.set(wrk_split_wrd.lines, { yPercent: 110, x: 10, willChange: "transform" })
+        const wrkReveal = gsap.to(wrk_split_wrd.lines, {
+            yPercent: 0,
+            x: 0,
+            duration: 1,
+            stagger: 0.08,
+            ease: "expo.out",
+            paused: true,
+        })
         const abt_spt_1 = SplitText.create(".abt_spt_1", { type: "words, chars" });
         const abt_spt_2 = SplitText.create(".abt_spt_2", { type: "words, chars" });
         const abt_spt_3 = SplitText.create(".abt_spt_3", { type: "words, chars" });
@@ -212,11 +225,12 @@ const About = () => {
                 opacity: 0,
                 duration: 0.001
             }, ">")
-            .to(wrk_split_wrd.words, {
-                y: 0,
-                opacity: 1,
-                stagger: 0.01
+            // Plays (not scrubbed) once the panel fills the screen; reverses when scrolling back
+            .call(() => {
+                if (tl.scrollTrigger?.direction === -1) wrkReveal.reverse()
+                else wrkReveal.play()
             })
+            .to({}, { duration: 0.5 })
     })
 
 
@@ -227,22 +241,22 @@ const About = () => {
                 <div className="sticky top-0 center w-full h-screen overflow-hidden">
                     <div className="circ_1 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <h3 className=' abt_spt_1 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Creativity</h3>
+                            <p className=' abt_spt_1 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Creativity</p>
                         </div>
                     </div>
                     <div className="circ_2 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <h3 className='abt_spt_2 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Efficiency</h3>
+                            <p className='abt_spt_2 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Efficiency</p>
                         </div>
                     </div>
                     <div className="circ_3 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <h3 className='abt_spt_3 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Entertainment</h3>
+                            <p className='abt_spt_3 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Entertainment</p>
                         </div>
                     </div>
                     <div className="circ_4 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
-                            <h3 className='abt_spt_4 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Empathy</h3>
+                            <p className='abt_spt_4 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Empathy</p>
                         </div>
                     </div>
 
@@ -297,21 +311,14 @@ const About = () => {
                     </div>
 
                     <div className=" works_paren_header center fixed overflow-hidden z-10  top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0 h-0 rounded-xs  md:rounded-lg bg-white">
-                        <div className=" works_paren_header_in w-full  padding text_blue space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                            <div className="">
-                                <h2 className=' wrk_split_wrd  primary-font   text-5xl  leading-none'>What <br />we do</h2>
-                            </div>
-                            <div className="text-xs max-sm:hidden pt-4">
-                                <p className='wrk_split_wrd font-thin '>Everything a brand needs.</p>
-                                <p className='wrk_split_wrd font-thin '>One studio.</p>
-                            </div>
-                              <div className=" max-sm:hidden text-3xl pl-2">
-                                <h3 className=" wrk_split_wrd secondary-font"> <span className='opacity-0 pointer-events-none' aria-hidden="true">..............</span> The brand, the website, the store and the tools behind them, made by one team in Mumbai. The people who design it are the people who build it.</h3>
-                            </div>
-                            <div className=" md:hidden text-3xl " aria-hidden="true">
-                                <h3 className=" wrk_split_wrd secondary-font"> The brand, the website, the store and the tools behind them, made by one team in Mumbai. The people who design it are the people who build it.</h3>
-                            </div>
-                        </div>
+                        <SectionHeader
+                            title={<>What <Br />We Do</>}
+                            lines={["Everything a brand needs.", "One studio."]}
+                            splitClass="wrk_split_wrd"
+                            className="works_paren_header_in w-screen! shrink-0 padding text_blue"
+                        >
+                            The brand, the website, the store and the tools behind them, made by one team in Mumbai. The people who design it are the people who build it.
+                        </SectionHeader>
                     </div>
 
                 </div>

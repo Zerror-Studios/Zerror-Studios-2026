@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Calendar, { buildCalendar } from './processSections/Calendar';
 import MobileCalendar from './processSections/MobileCalendar';
+import SectionHeader from '@/components/common/SectionHeader';
+import Br from "@/components/common/Br";
 
 /**
  * Process section shared by the four service pages.
@@ -39,36 +41,19 @@ const WebDevProcess = ({
         <div data-hide-header className="w-full relative">
 
             {/* Section Header */}
-            <div className="w-full padding pt-8! md:pt-16! text_blue">
-                <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                    <div>
-                        <h2 data-para-effect className="primary-font text-5xl leading-none">
-                        How it usually <br /> runs
-                        </h2>
-                    </div>
-                    <div className="text-xs max-sm:hidden pt-4">
-                        {lines.map((line, i) => (
-                            <p key={i} className="font-thin">{line}</p>
-                        ))}
-                    </div>
-                    <div className="text-3xl md:pl-2">
-                        {paragraph && (
-                            <h3 data-para-effect className="secondary-font">
-                                <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
-                                {paragraph}
-                            </h3>
-                        )}
-                    </div>
-                </div>
+            <div className="w-full padding pt-section! text_blue">
+                <SectionHeader title={<>How it usually <Br /> runs</>} lines={lines}>
+                    {paragraph}
+                </SectionHeader>
             </div>
 
             {/* Process Calendar */}
-            {isMobile === true && <MobileCalendar columns={columns} events={events} />}
-            {isMobile === false && <Calendar columns={columns} events={events} rowCount={rowCount} days={days} />}
+            {isMobile === true && <div className="ui-mock contents"><MobileCalendar columns={columns} events={events} days={days} /></div>}
+            {isMobile === false && <div className="ui-mock contents"><Calendar columns={columns} events={events} rowCount={rowCount} days={days} /></div>}
 
             {footnote && (
-                <div className="w-full padding pb-8 md:pb-12 text_blue">
-                    <p className="">{footnote}</p>
+                <div className="w-full padding pb-section text_blue">
+                    <p>{footnote}</p>
                 </div>
             )}
         </div>

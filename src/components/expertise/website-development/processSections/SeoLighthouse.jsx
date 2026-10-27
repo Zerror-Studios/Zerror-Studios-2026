@@ -285,9 +285,9 @@ const SeoLighthouse = () => {
                                 </div>
                             </div>
 
-                            <h3 className="text-lg text-gray-800 mb-1">
+                            <div className="text-lg text-gray-800 mb-1">
                                 Auditing {TARGET_URL}
-                            </h3>
+                            </div>
                             <p className="text-xs text-gray-400 mb-6 h-5 transition-all">
                                 {AUDIT_STEPS[analysisStep]}
                             </p>
@@ -318,10 +318,10 @@ const SeoLighthouse = () => {
                                         </span>
                                         <span className="text-xs text-gray-400">Tested on Next.js 16 Production Build</span>
                                     </div>
-                                    <h2 className="text-lg text-gray-800 flex items-center gap-2">
+                                    <div className="text-lg text-gray-800 flex items-center gap-2">
                                         <span>https://{TARGET_URL}</span>
                                         <RiCheckLine size={20} className="text-emerald-600 shrink-0" />
-                                    </h2>
+                                    </div>
                                 </div>
 
                                 <div className="flex items-center gap-3 self-start md:self-auto">
@@ -396,10 +396,10 @@ const SeoLighthouse = () => {
                                 {/* Core Web Vitals Metrics Breakdown (5 cols) */}
                                 <div className="lg:col-span-5 bg-white rounded-xl p-4 border border-gray-100 shadow-2xs flex flex-col justify-between">
                                     <div className="flex items-center justify-between mb-3">
-                                        <h3 className="text-xs text-gray-700 flex items-center gap-1.5">
+                                        <div className="text-xs text-gray-700 flex items-center gap-1.5">
                                             <RiFlashlightLine size={15} className="text_blue" />
                                             <span>Core Web Vitals Metrics</span>
-                                        </h3>
+                                        </div>
                                         <span className="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
                                             Fast ⚡
                                         </span>
@@ -461,9 +461,9 @@ const SeoLighthouse = () => {
                                             </div>
 
                                             {/* Blue Clickable Title Tag */}
-                                            <h4 className="text-sm text-[#1a0dab] hover:underline cursor-pointer leading-tight mb-1.5">
+                                            <div className="text-sm text-[#1a0dab] hover:underline cursor-pointer leading-tight mb-1.5">
                                                 Website design and development in Mumbai | Zerror Studios
-                                            </h4>
+                                            </div>
 
                                             {/* Meta Description */}
                                             <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">

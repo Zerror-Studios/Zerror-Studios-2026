@@ -293,10 +293,10 @@ const AwsDeploy = () => {
                                     </span>
                                     <span className="text-xs text-gray-400">Continuous CI/CD Pipeline</span>
                                 </div>
-                                <h1 className="text-lg sm:text-xl text-white flex items-center gap-2">
+                                <div className="text-lg sm:text-xl text-white flex items-center gap-2">
                                     <span>Deploy Next.js Application to AWS Cloud</span>
                                     <RiRocketLine size={18} className="text-[#FF9900]" />
-                                </h1>
+                                </div>
                                 <p className="text-xs text-gray-400 mt-0.5">
                                     Connect GitHub repository, verify Next.js runtime, and configure production environment secrets.
                                 </p>
@@ -317,10 +317,10 @@ const AwsDeploy = () => {
                             {/* Left Card: Git Connection & Framework Auto-Detect */}
                             <div className="bg-[#161F2E] border border-[#2B384A] rounded-xl p-4 sm:p-5 flex flex-col justify-between space-y-4">
                                 <div>
-                                    <h3 className="text-xs text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <div className="text-xs text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
                                         <RiGithubFill size={16} className="text-white" />
                                         <span>Source Repository & Branch</span>
-                                    </h3>
+                                    </div>
 
                                     {/* Repo Card */}
                                     <div className="bg-[#0D131C] border border-[#28364A] rounded-lg p-3 space-y-2">
@@ -389,10 +389,10 @@ const AwsDeploy = () => {
                             <div className="bg-[#161F2E] border border-[#2B384A] rounded-xl p-4 sm:p-5 flex flex-col justify-between space-y-4">
                                 <div>
                                     <div className="flex items-center justify-between mb-3">
-                                        <h3 className="text-xs text-gray-300 uppercase tracking-wider flex items-center gap-2">
+                                        <div className="text-xs text-gray-300 uppercase tracking-wider flex items-center gap-2">
                                             <RiLockLine size={16} className="text-[#FF9900]" />
                                             <span>Environment Credentials (AWS KMS)</span>
-                                        </h3>
+                                        </div>
                                         <span className="text-[10px] text-emerald-400 bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded">
                                             Encrypted
                                         </span>
@@ -458,10 +458,10 @@ const AwsDeploy = () => {
                                     <RiTerminalBoxFill size={18} />
                                 </div>
                                 <div>
-                                    <h2 className="text-sm text-white flex items-center gap-2">
+                                    <div className="text-sm text-white flex items-center gap-2">
                                         <span>AWS CodeBuild & Amplify Build Terminal</span>
                                         <span className="w-2 h-2 rounded-full bg-[#FF9900] animate-ping" />
-                                    </h2>
+                                    </div>
                                     <p className="text-[11px] text-gray-400">
                                         Streaming real-time continuous deployment logs for <span className="text-white font-mono">zerror-studios-2026</span>
                                     </p>
@@ -573,10 +573,10 @@ const AwsDeploy = () => {
                                         </span>
                                     </div>
 
-                                    <h2 className="text-xl sm:text-2xl text-white flex items-center gap-2">
+                                    <div className="text-xl sm:text-2xl text-white flex items-center gap-2">
                                         <span>Zerror Studios Production</span>
                                         <RiShieldCheckLine size={20} className="text-emerald-400 shrink-0" />
-                                    </h2>
+                                    </div>
 
                                     {/* Prominent Live Domain Bar */}
                                     <div className="flex items-center gap-2 pt-1">
@@ -741,9 +741,9 @@ const AwsDeploy = () => {
                                                 <span className="text-[10px] font-mono text-[#00A4E4] bg-blue-950/70 border border-blue-800/60 px-2 py-0.5 rounded">
                                                     PRODUCTION PREVIEW
                                                 </span>
-                                                <h3 className="text-xl sm:text-2xl tracking-tight text-white mt-1">
+                                                <div className="text-xl sm:text-2xl tracking-tight text-white mt-1">
                                                     Zerror Studios | Digital experience platform
-                                                </h3>
+                                                </div>
                                                 <p className="text-xs text-gray-400 mt-0.5">
                                                     Award-winning digital studio crafting hyper-fast Next.js websites & 3D interactive applications.
                                                 </p>
@@ -779,10 +779,10 @@ const AwsDeploy = () => {
                             <div className="bg-[#151D2A] border border-[#273549] rounded-xl p-4 sm:p-5 space-y-4 animate-fadeIn">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <h3 className="text-sm text-white flex items-center gap-2">
+                                        <div className="text-sm text-white flex items-center gap-2">
                                             <span>Amazon Route 53 DNS Configuration</span>
                                             <RiShieldCheckLine size={16} className="text-emerald-400" />
-                                        </h3>
+                                        </div>
                                         <p className="text-xs text-gray-400">
                                             Configured DNS records for apex domain and www subdomain with AWS Certificate Manager (ACM).
                                         </p>
@@ -832,10 +832,10 @@ const AwsDeploy = () => {
                             <div className="bg-[#151D2A] border border-[#273549] rounded-xl p-4 sm:p-5 space-y-4 animate-fadeIn">
                                 <div className="flex items-center justify-between">
                                     <div>
-                                        <h3 className="text-sm text-white flex items-center gap-2">
+                                        <div className="text-sm text-white flex items-center gap-2">
                                             <span>CloudFront Global Edge Performance</span>
                                             <RiPulseLine size={16} className="text-[#00A4E4]" />
-                                        </h3>
+                                        </div>
                                         <p className="text-xs text-gray-400">
                                             Real-time traffic telemetry and low-latency delivery metrics across North America, Europe & Asia.
                                         </p>

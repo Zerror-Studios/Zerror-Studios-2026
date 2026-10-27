@@ -4,6 +4,7 @@ import React from 'react'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import SectionHeader from "@/components/common/SectionHeader";
 gsap.registerPlugin(ScrollTrigger)
 
 const features = [
@@ -51,33 +52,26 @@ const EcommPriceSection = () => {
         })
     })
     return (
-        <div className="w-full padding py-8! md:py-16! text_blue">
+        <div className="w-full padding py-section! text_blue">
 
             {/* ── Heading, matches InfoSection.jsx ──────────── */}
-            <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                <div className="">
-                    <h2 data-para-effect className='capitalize primary-font text-5xl leading-none'>Why Zcom</h2>
-                </div>
-                <div className="text-xs max-sm:hidden pt-4">
-                </div>
-                <div className=" text-3xl md:pl-2">
-                    <h3 data-para-effect className="">
-                        <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                        Ready-made platforms are built for everyone. Zcom is built for you.
-                    </h3>
-                </div>
-            </div>
+            <SectionHeader
+                title="Why Zcom"
+                titleClassName="capitalize"
+            >
+                Ready-made platforms are built for everyone. Zcom is built for you.
+            </SectionHeader>
 
             {/* ── Comparison Table ────────────────────────────── */}
-            <div className="price_section_table w-full mt-12 md:mt-20 border border-[#002bba]/20 rounded-xl overflow-hidden">
+            <div className="price_section_table w-full mt-block border border-[#002bba]/20 rounded-xl overflow-hidden">
 
                 {/* Table header */}
                 <div className="w-full grid grid-cols-[3fr_1fr_1fr] md:grid-cols-[2fr_1fr_1fr] bg_blue text-white">
                     <div className="px-4 md:px-10 py-4 md:py-6 flex items-center">
-                        <p className="text-base md:text-xl  primary-font">Features</p>
+                        <p className="h6">Features</p>
                     </div>
                     <div className="px-4 md:px-10 py-4 md:py-6 flex items-center justify-center">
-                        <p className="text-xs md:text-base font-semibold uppercase tracking-wider">Zcom</p>
+                        <p className="para-sm font-semibold uppercase tracking-wider">Zcom</p>
                     </div>
                     <div className="px-4 md:px-10 py-4 md:py-6 flex items-center justify-center gap-2">
                         <img src="/icons/shopify.svg" className='w-24' alt="Shopify Icon" />
@@ -92,7 +86,7 @@ const EcommPriceSection = () => {
                             } transition-colors duration-200 hover:bg-[#eef1ff]`}
                     >
                         <div className="px-4 md:px-10 py-5 md:py-7 flex items-center">
-                            <p className="text-base md:text-xl text-[#002bba]">{feature.name}</p>
+                            <p className="para-lg text-[#002bba]">{feature.name}</p>
                         </div>
                         <div className=" sclw_1 px-4 md:px-10 py-5 md:py-7 flex items-center justify-center">
                             {feature.zcom ? <CheckIcon /> : <CrossIcon />}

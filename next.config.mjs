@@ -45,6 +45,11 @@
         },
       ];
     },
+    images: {
+      // Serve every next/image at quality 90 (Next's default is 75, which softens covers and photos).
+      // Next snaps any requested quality to the closest value in this list.
+      qualities: [90],
+    },
     experimental: {
       viewTransition: true,
     },

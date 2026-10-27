@@ -109,9 +109,9 @@ function AnalyticsAnswerAnim() {
                 {/* 2. Main SEO Settings Modal (Foreground, Centered / Right-Shifted) */}
                 <div className="relative z-20 w-[80%] sm:w-[86%] ml-auto bg-white rounded-xl translate-y-5 p-3.5 sm:p-4 shadow-[0_16px_36px_rgba(0,0,0,0.35)] border border-slate-100 text-slate-800">
                     {/* Modal Title */}
-                    <h4 className="text-center font-bold text-slate-900 text-xs sm:text-sm tracking-tight mb-2.5 font-sans">
+                    <div className="text-center font-bold text-slate-900 text-xs sm:text-sm tracking-tight mb-2.5 font-sans">
                         Search settings
-                    </h4>
+                    </div>
 
                     {/* Search Setting Input Bar */}
                     <div className="bg-[#f4f6fa] rounded-xl px-2.5 py-1.5 flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 border border-slate-200/60 mb-2">

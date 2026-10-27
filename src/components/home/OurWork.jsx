@@ -1,13 +1,15 @@
 "use client"
 import gsap from "gsap";
 import CustomEase from "gsap/dist/CustomEase";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from 'react'
 import Button from "../common/Button";
 import { caseStudies } from "@/data/ProjectsData";
 import useDevice from "../hooks/useDevice";
 import Image from "next/image";
 import PixelGridCanvas from "../common/PixelGridCanvas";
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 
 const INNER_PADDING = 60;
 gsap.registerPlugin(CustomEase);
@@ -167,27 +169,16 @@ const OurWork = () => {
     };
 
     return (
-        <div className="  noise-bg  work_paren w-full py-8 md:py-16 space-y-8 md:space-y-16 relative z-10 bg_blue">
+        <div className="  noise-bg  work_paren w-full py-section space-y-block relative z-10 bg_blue">
 
-            <div className="w-full  padding z-20 relative text-white space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                <div className="">
-                    <h2 data-para-effect className='   primary-font   text-5xl  leading-none'>Selected  <br />Works</h2>
-                </div>
-                <div className="text-xs max-sm:hidden pt-4">
-                    <p className=' font-thin '>Thoughtful Design.</p>
-                    <p className=' font-thin '>Technology that holds.</p>
-                </div>
-                <div className=" text-3xl  md:pl-2">
-                    <h3 data-para-effect className="secondary-font">
-                        <span className='opacity-0  max-sm:hidden pointer-events-none'>...............</span>
-                        Brands, websites and online stores, designed and built by one team. The people who sketch
-                        your idea are the people who launch it, so nothing gets lost along the way. A few we&apos;re
-                        proud of.
-
-                    </h3>
-                </div>
-            </div>
-            <div className="w-full z-20 relative grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-5">
+            <SectionHeader
+                title={<>Selected <Br />Works</>}
+                lines={["Thoughtful Design.", "Technology that holds."]}
+                className="padding z-20 relative text-white"
+            >
+                Brands, websites and online stores, designed and built by one team. The people who sketch your idea are the people who launch it, so nothing gets lost along the way. A few we&apos;re proud of.
+            </SectionHeader>
+            <div className="w-full z-20 relative grid grid-cols-1 md:grid-cols-2 padding gap-x-5 gap-y-6">
                 {caseStudies.slice(0, 4).map((item, i) => (
                     <Link
                         href={`/work/${item.slug}`}
@@ -224,10 +215,10 @@ const OurWork = () => {
                             />
                         </div>
 
-                        <div className="w-full text-white">
+                        <div className="w-full pt-1 text-white">
                             <div className="flex  justify-between">
-                                <h4 className="text-xl  primary-font  uppercase">{item.title}</h4>
-                                <h4 className="text-xl primary-font  uppercase">{item.year}</h4>
+                                <h3 className="h6 uppercase">{item.title}</h3>
+                                <p className="h6 uppercase">{item.year}</p>
                             </div>
                             <p className="leading-none">{item.category}</p>
                         </div>

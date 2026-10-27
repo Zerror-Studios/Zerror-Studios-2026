@@ -4,11 +4,10 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import LenisScroll from "@/components/common/LenisScroll";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, ViewTransition } from "react";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { ViewTransitions } from "next-view-transitions";
 import GlobalParaReveal from "@/components/animation/GlobalParaReveal";
 import GlobalImgReveal from "@/components/animation/GlobalImgReveal";
 import GlobalHeaderHide from "@/components/animation/GlobalHeaderHide";
@@ -37,7 +36,9 @@ export default function SiteLayout({ children }) {
     return () => resizeObserver.disconnect();
   }, []);
 
-  useEffect(() => {
+  // Layout effect so the new page is already at the top when the view transition
+  // captures it; otherwise it would fade in at the old scroll position and jump.
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
 
     if (window.lenis) {
@@ -60,7 +61,6 @@ export default function SiteLayout({ children }) {
 
   return (
     <ProjectFormProvider>
-      <ViewTransitions>
         <LenisScroll>
 
           <GlobalImgReveal />
@@ -72,15 +72,20 @@ export default function SiteLayout({ children }) {
             <Header />
           </header>
 
-          <main>
-            {children}
-          </main>
+          {/* Page content and footer fade out / in on navigation (styles in globals.css, .page-fade).
+              The header sits outside so it stays put. Keyed by route with enter/exit only, so
+              in-page updates (e.g. a lazy component like the About dice loading in) don't
+              trigger a full-page crossfade. */}
+          <ViewTransition key={pathname} default="none" enter="page-fade" exit="page-fade">
+            <main>
+              {children}
+            </main>
 
-          <footer>
-            {!skipFooterPaths.includes(pathname) && <Footer />}
-          </footer>
+            <footer>
+              {!skipFooterPaths.includes(pathname) && <Footer />}
+            </footer>
+          </ViewTransition>
         </LenisScroll>
-      </ViewTransitions>
     </ProjectFormProvider>
   );
 }

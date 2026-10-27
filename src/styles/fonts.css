@@ -1,41 +1,11 @@
 /* rock grotesk */
 @font-face {
-  font-family: grotesk-thin;
-  font-display: swap;
-  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Thin.woff2);
-}
-@font-face {
-  font-family: grotesk-light;
-  font-display: swap;
-  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Light.woff2);
-}
-@font-face {
   font-family: grotesk-regular;
   font-display: swap;
   src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Regular.woff2);
 }
-@font-face {
-  font-family: grotesk-medium;
-  font-display: swap;
-  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Medium.woff2);
-}
-@font-face {
-  font-family: grotesk-bold;
-  font-display: swap;
-  src: url(../../public/fonts/roc-grotesk/Roc\ Grotesk\ Bold.woff2);
-}
 
 /* Alt Riviera */
-@font-face {
-  font-family: riviera-extralight;
-  font-display: swap;
-  src: url(../../public/fonts/alt_riviera/ALTRiviera-Extralight.otf);
-}
-@font-face {
-  font-family: riviera-light;
-  font-display: swap;
-  src: url(../../public/fonts/alt_riviera/ALTRiviera-Light.otf);
-}
 @font-face {
   font-family: riviera-regular;
   font-display: swap;
@@ -45,83 +15,6 @@
   font-family: riviera-medium;
   font-display: swap;
   src: url(../../public/fonts/alt_riviera/ALTRiviera-Medium.otf);
-}
-@font-face {
-  font-family: riviera-bold;
-  font-display: swap;
-  src: url(../../public/fonts/alt_riviera/ALTRiviera-Bold.otf);
-}
-@font-face {
-  font-family: riviera-extrabold;
-  font-display: swap;
-  src: url(../../public/fonts/alt_riviera/ALTRiviera-Extrabold.otf);
-}
-
-/* helvetica Font */
-@font-face {
-  font-family: helvetica-light;
-  font-display: swap;
-  src: url(../../public/fonts/helvetica/HelveticaNeueLight.otf);
-}
-@font-face {
-  font-family: helvetica-medium;
-  font-display: swap;
-  src: url(../../public/fonts/helvetica/HelveticaNeueMedium.otf);
-}
-
-/* IBM Font */
-@font-face {
-  font-family: ibm-regular;
-  font-display: swap;
-  src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf);
-}
-@font-face {
-  font-family: ibm-medium;
-  font-display: swap;
-  src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-Medium.ttf);
-}
-@font-face {
-  font-family: ibm-semibold;
-  font-display: swap;
-  src: url(../../public/fonts/IBM_Plex_Sans/IBMPlexSans-SemiBold.ttf);
-}
-
-/* Spirit sharp */
-@font-face {
-  font-family: spirit;
-  font-display: swap;
-  src: url(../../public/fonts/spirits/fonnts.com-Spirits-Sharp-Light.otf);
-}
-
-/* PP Neu */
-@font-face {
-  font-family: pp-semibold;
-  font-display: swap;
-  src: url(../../public/fonts/pp_neu/67fcd4974b30a00d13095558_PPNeueMontreal-SemiBold.otf);
-}
-@font-face {
-  font-family: pp-regular;
-  font-display: swap;
-  src: url(../../public/fonts/pp_neu/67fcd4974b30a00d13095559_PPNeueMontreal-Regular.otf);
-}
-@font-face {
-  font-family: pp-medium;
-  font-display: swap;
-  src: url(../../public/fonts/pp_neu/67fcd4974b30a00d1309555a_PPNeueMontreal-Medium.otf);
-}
-
-/* Perfectly Nineties */
-
-@font-face {
-  font-family: pfn-italic;
-  font-display: swap;
-  src: url(../../public/fonts/perfectly_nineties/67fcd59c403eb3237ee8acf8_PerfectlyNineties-Italic.otf);
-}
-
-@font-face {
-  font-family: pfn-regular;
-  font-display: swap;
-  src: url(../../public/fonts/perfectly_nineties/67fcd59caa79d68d8f41d825_PerfectlyNineties-Regular.otf);
 }
 
 :root {
@@ -147,7 +40,62 @@ body{
   font-family: riviera-regular, sans-serif;
   font-style: italic;
 }
-.grotsek-thin {
-  font-family: grotesk-thin, sans-serif;
-}
 
+/* ------------------------------------------------------------------
+   Type scale. Use these instead of Tailwind text-* sizes.
+   Headings: riviera-medium. Body text: grotesk-regular (set on body).
+   Base layer, so a Tailwind utility on the element can still override.
+   ------------------------------------------------------------------ */
+@layer base {
+  /* Headings. The tag gives the default size; .h1–.h6 give that size to any element
+     (e.g. <p className="h2">, or an <h4> that should look like an h6). */
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: riviera-medium, sans-serif;
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  h1, .h1 { font-size: 3.5rem; }      /* page hero title */
+  h2, .h2 { font-size: 2.75rem; }      /* section heading */
+  h3, .h3 { font-size: 1.875rem; }  /* large sub-heading, names, stats */
+  h4, .h4 { font-size: 1.875rem; }  /* card title */
+  h5, .h5 { font-size: 1.5rem; }    /* small sub-heading */
+  h6, .h6 { font-size: 1.25rem; }   /* project title / year in cards */
+
+  /* Paragraphs: grotesk-regular, also when put on a heading tag (e.g. <h3 className="para-lead">). */
+  .para-lead, .para-lg, .para, .para-sm, .label {
+    font-family: grotesk-regular, sans-serif;
+    font-weight: normal;
+  }
+  .para-lead { font-size: 1.5rem; line-height: 1.15; }   /* intro beside a section heading */
+  .para-lg   { font-size: 1.25rem;  line-height: 1.25; }  /* description under a heading */
+  .para      { font-size: 1rem;     line-height: 1.4; }   /* body copy */
+  .para-sm   { font-size: 0.75rem;  line-height: 1.3; }   /* stat labels, categories, buttons, pills */
+  .label     { font-size: 0.75rem;  line-height: 1.3; }   /* section labels, tags, dates, footer */
+
+  @media (min-width: 768px) {
+    h1, .h1 { font-size: 6rem; }
+  h2, .h2 { font-size: 3rem; }      /* section heading */
+    h3, .h3 { font-size: 3rem; }
+    h5, .h5 { font-size: 1.875rem; }
+    .para   { font-size: 1.125rem; }
+    .para-sm { font-size: 0.875rem; }
+  .para-lead { font-size: 1.875rem; line-height: 1.2; }   /* intro beside a section heading */
+  }
+
+  /* A heading tag inside a paragraph wrapper takes the wrapper's style
+     (e.g. <div className="para-lead"><h3>…</h3></div>). */
+  :is(.para-lead, .para-lg, .para, .para-sm, .label) :is(h1, h2, h3, h4, h5, h6) {
+    font: inherit;
+    line-height: inherit;
+  }
+
+  /* Opt-out: mock app screens (dashboards, phones, browser windows) and the pitch deck keep their own type. */
+  .ui-mock :is(h1, h2, h3, h4, h5, h6) {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+}

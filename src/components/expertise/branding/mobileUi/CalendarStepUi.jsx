@@ -42,7 +42,7 @@ export default function CalendarStepUi() {
             {currentMonth.short}
           </div>
           <div>
-            <h4 className=" text-xs sm:text-sm leading-tight">{currentMonth.long}</h4>
+            <div className=" text-xs sm:text-sm leading-tight">{currentMonth.long}</div>
             <span className="text-[10px] text-white/60">Content and campaign plan</span>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function CalendarStepUi() {
                 {evt.day}
               </div>
               <div>
-                <h5 className="text-[11px] sm:text-xs  text-white leading-tight">{evt.title}</h5>
+                <div className="text-[11px] sm:text-xs  text-white leading-tight">{evt.title}</div>
                 <span className={`text-[9px] px-2 py-0.5 rounded-full inline-block mt-1  ${evt.color}`}>
                   {evt.tag}
                 </span>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { caseStudies } from '@/data/ProjectsData';
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 
 const CATEGORIES = [
     "All Work",
@@ -83,8 +83,8 @@ const WorkCard = ({ item, index, isGlobalPixelActive, triggerStagger }) => {
             {/* Info Bar */}
             <div className="w-full text_blue">
                 <div className="flex justify-between">
-                    <h4 className="text-xl primary-font uppercase">{item.title}</h4>
-                    <h4 className="text-xl primary-font uppercase">{item.year}</h4>
+                    <h2 className="h6 uppercase">{item.title}</h2>
+                    <p className="h6 uppercase">{item.year}</p>
                 </div>
                 <p className="leading-none">{item.category}</p>
             </div>
@@ -146,11 +146,11 @@ const WorksGrid = () => {
     );
 
     return (
-        <section className="w-full pt-[40vh] padding select-none pb-8 md:pb-16">
+        <section className="w-full pt-[40vh] padding select-none pb-section">
             <div>
                 {/* Header Filter Section with Y-Axis Intro Translate */}
-                <div className="mb-8 md:mb-14 overflow-hidden" ref={filterContainerRef}>
-                    <div className="text-3xl sm:text-5xl flex flex-wrap  gap-2">
+                <div className="mb-block overflow-hidden " ref={filterContainerRef}>
+                    <div className="h3 flex flex-wrap  gap-2">
                         {CATEGORIES.map((category, idx) => {
                             const isActive = activeCategory === category;
                             return (
@@ -160,14 +160,14 @@ const WorksGrid = () => {
                                             onClick={() => handleCategoryChange(category)}
                                             className={`transition-all  primary-font duration-300 text_blue inline-block text-left cursor-pointer ${
                                                 isActive
-                                                    ? "opacity-100 scale-100"
-                                                    : "opacity-30 hover:opacity-80 max-sm:opacity-100"
+                                                    ? " scale-100"
+                                                    : ""
                                             }`}
                                         >
                                             <span className="relative inline-block">
                                                 {category}
                                                 <span
-                                                    className={`sm:hidden absolute left-0 bottom-0 w-full h-0.5 bg-current origin-left transition-transform duration-500 ${
+                                                    className={`absolute left-0 bottom-0 w-full h-0.5 bg-current origin-left transition-transform duration-500 ${
                                                         isActive ? "scale-x-100" : "scale-x-0"
                                                     }`}
                                                 />
@@ -194,7 +194,7 @@ const WorksGrid = () => {
                 </div>
 
                 {filteredProjects.length === 0 && (
-                    <div className="py-24 text-center text-zinc-500 font-mono text-sm uppercase tracking-wider">
+                    <div className="py-section text-center text-zinc-500 font-mono para-sm uppercase tracking-wider">
                         No projects found in this category.
                     </div>
                 )}

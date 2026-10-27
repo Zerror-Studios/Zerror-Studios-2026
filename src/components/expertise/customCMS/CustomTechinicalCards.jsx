@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import SectionHeader from "@/components/common/SectionHeader";
 gsap.registerPlugin(ScrollTrigger)
 
 // Looping line icons, animated with SVG; stroke follows the card's text colour
@@ -144,19 +145,19 @@ const TechCard = ({ card, className }) => {
         <div
             className={`${className} relative group rounded-2xl border border-[#002bba]/15 overflow-hidden`}
         >
-            <div className="w-full h-full p-8 md:p-10 flex flex-col justify-between rounded-2xl min-h-[20rem] md:min-h-[450px] bg-[#002bba10] group-hover:bg-[#002bba] transition-colors duration-500 ease-out text-[#002bba] group-hover:text-white relative z-10">
+            <div className="w-full h-full p-card flex flex-col justify-between rounded-2xl min-h-[20rem] md:min-h-[450px] bg-[#002bba10] group-hover:bg-[#002bba] transition-colors duration-500 ease-out text-[#002bba] group-hover:text-white relative z-10">
                 <div className="flex justify-between items-start gap-4 relative z-10">
-                    <h4 data-para-effect className="text-5xl font-bold max-w-[80%] uppercase leading-tight tracking-tight text-[#002bba] group-hover:text-white transition-colors duration-500 ease-out">
+                    <p data-para-effect className="h2 font-bold max-w-[80%] uppercase tracking-tight text-[#002bba] group-hover:text-white transition-colors duration-500 ease-out">
                         {card.num}
-                    </h4>
+                    </p>
                     <div className="shrink-0 text-[#002bba] group-hover:text-white transition-colors duration-500 ease-out">
-                        <Icon size={44} />
+                        <Icon size={80} />
                     </div>
                 </div>
                 <div className="mt-16 relative z-10 text-[#002bba] group-hover:text-white transition-colors duration-500 ease-out">
-                    <p className="text-3xl font-bold mb-3">{card.title}</p>
+                    <h3 className="h4  mb-3">{card.title}</h3>
                     <div className="w-full h-px bg-current opacity-20 mb-5"></div>
-                    <p className="text-xl font-medium leading-tight opacity-90">
+                    <p className="para-lg font-medium opacity-90">
                         {card.desc}
                     </p>
                 </div>
@@ -187,28 +188,17 @@ const CustomTechinicalCards = () => {
 
     return (
         <div className="w-full border-t border-[#002bba] ">
-            <div className="padding py-8! md:py-16! text_blue">
+            <div className="padding py-section! text_blue">
                 {/* Heading section styled like InfoSection */}
-                <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                    <div className="">
-                        <h2 data-para-effect className='primary-font text-5xl leading-none'>
-                            How it is built
-                        </h2>
-                    </div>
-                    <div className="text-xs max-sm:hidden">
-                        <p data-para-effect className="font-thin">Chosen to last.</p>
-                        <p data-para-effect className="font-thin">Not to impress.</p>
-                    </div>
-                    <div className=" text-3xl md:pl-2">
-                        <h3 data-para-effect className="secondary-font">
-                            <span className='opacity-0 max-sm:hidden pointer-events-none' aria-hidden="true">...............</span>
-                            Your content lives in one place and reaches every screen. Your team logs in to what they need, and it keeps up on your busiest day.
-                        </h3>
-                    </div>
-                </div>
+                <SectionHeader
+                    title="How it is built"
+                    lines={["Chosen to last.", "Not to impress."]}
+                >
+                    Your content lives in one place and reaches every screen. Your team logs in to what they need, and it keeps up on your busiest day.
+                </SectionHeader>
 
                 {/* Cards Grid */}
-                <div className=" tech_crd_paren w-full mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div className=" tech_crd_paren w-full mt-block grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {/* Left Column (display: contents below md, so cards stack 01, 02, 03, 04 on mobile via order) */}
                     <div className="max-md:contents flex flex-col gap-4 md:gap-6">
                         {[technicalCards[0], technicalCards[2]].map((card, index) => (

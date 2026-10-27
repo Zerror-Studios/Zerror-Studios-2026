@@ -120,16 +120,16 @@ const CustomProof = () => {
                     className="proof_panel relative md:sticky md:top-0 md:h-screen w-full md:overflow-hidden bg-white border-t border-[#002bba20]"
                     style={{ zIndex: index + 1 }}
                 >
-                    <div className="proof_inner origin-top w-full md:h-full padding py-6! md:py-10! flex flex-col-reverse md:flex-row items-center gap-6 md:gap-16">
+                    <div className="proof_inner origin-top w-full md:h-full padding py-section! flex flex-col-reverse md:flex-row items-center gap-6 md:gap-16">
                         {/* Left: content */}
                         <div className="w-full md:w-1/2 flex flex-col gap-4 md:gap-7">
 
                             <div className="space-y-3">
-                                <h3 data-para-effect className="primary-font text-3xl md:text-5xl leading-none">{item.name}</h3>
-                                <p className="text-xl leading-tight  md:max-w-[80%]">{item.line}</p>
+                                <h2 className="h3" data-para-effect>{item.name}</h2>
+                                <p className="para-lg  md:max-w-[80%]">{item.line}</p>
                             </div>
 
-                            <ul className="max-sm:hidden space-y-2 leading-tight max-w-xl text-xl">
+                            <ul className="max-sm:hidden space-y-2 max-w-xl para-lg">
                                 {item.points.map((point) => (
                                     <li key={point} className="flex gap-3">
                                         <span className="mt-2 w-1.5 h-1.5 shrink-0 bg-current" />
@@ -141,8 +141,8 @@ const CustomProof = () => {
                             <div className="grid grid-cols-3 border-t border-[#002bba20] pt-4 md:pt-6">
                                 {item.stats.map((stat) => (
                                     <div key={stat.label} className="pr-3">
-                                        <p className="primary-font text-3xl md:text-5xl leading-none">{stat.value}</p>
-                                        <p className="mt-2 text-xs md:text-sm leading-tight ">{stat.label}</p>
+                                        <p className="h3">{stat.value}</p>
+                                        <p className="mt-2 para-sm">{stat.label}</p>
                                     </div>
                                 ))}
                             </div>

@@ -8,6 +8,7 @@ export const metadata = createPageMetadata("/expertise");
 const page = () => {
   return (
     <>
+      <h1 className="sr-only">What we do</h1>
       <Our_Services />
     </>
   )

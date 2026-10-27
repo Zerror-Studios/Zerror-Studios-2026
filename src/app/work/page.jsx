@@ -12,7 +12,7 @@ export const metadata = createMetadata({
 const page = () => {
   return (
     <>
-      <h1 className='opacity-0 fixed pointer-events-none'>Explore Latest Work</h1>
+      <h1 className='sr-only'>Our work</h1>
       <WorksGrid />
     </>
   );

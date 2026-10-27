@@ -56,10 +56,14 @@ const ImageEffect = () => {
       .to({}, { duration: 0.5 })
       .to(headingRef.current, { opacity: 0, y: -40, ease: "power2.in" });
 
-    // 2. Then the five reasons come in one by one
-    textRefs.current.forEach((text) => {
-      textTl.to(text, { opacity: 1, transform: "translateY(0)" });
-    });
+    // 2. Then the five reasons: one by one on desktop, all together on mobile
+    if (window.innerWidth < 768) {
+      textTl.to(textRefs.current, { opacity: 1, transform: "translateY(0)" });
+    } else {
+      textRefs.current.forEach((text) => {
+        textTl.to(text, { opacity: 1, transform: "translateY(0)" });
+      });
+    }
   });
 
   return (
@@ -67,9 +71,9 @@ const ImageEffect = () => {
       {/* -mt-[100vh] overlaps HeroSection's trailing spacer (keeps the dice sticky until this reaches top) */}
       <div className="w-full relative -mt-[100vh]">
         {/* Sticky signature layer with snake background — the video card slides over it */}
-        <div className="canvas_space sticky top-0 h-screen w-full flex justify-center items-end pb-20 overflow-hidden">
+        <div className="canvas_space sticky top-0 h-screen w-full flex justify-center items-center overflow-hidden">
           <BackgroundSnake />
-          <Signature className="w-60 relative z-10" />
+          <Signature className="w-60 translate-y-44 relative z-10" />
         </div>
 
         {/* Sticky background scene */}
@@ -90,15 +94,15 @@ const ImageEffect = () => {
             </div>
           </div>
 
-          <div ref={txtScrollBgRef} className="txt_scroll_bg  padding py-0! w-full h-[500vh] relative z-[80] ">
-            <div className="sticky top-0 h-screen flex justify-center gap-y-12 flex-col w-full pointer-events-none">
+          <div ref={txtScrollBgRef} className="txt_scroll_bg  padding py-0! w-full h-[250vh] md:h-[500vh] relative z-[80] ">
+            <div className="sticky top-0 h-screen flex justify-center gap-y-6 md:gap-y-12 flex-col w-full pointer-events-none">
               {/* Heading: centred overlay, shown and hidden before the stats */}
               <div
                 ref={headingRef}
                 className="absolute inset-0 center flex-col text-center text-white opacity-0"
               >
                 <p className="uppercase font-medium">WHY US?</p>
-                <h2 className="text-5xl primary-font leading-none font-medium">
+                <h2 className="font-medium">
                   In Numbers
                 </h2>
               </div>
@@ -127,12 +131,12 @@ const ImageEffect = () => {
                 <div
                   key={i}
                   ref={(el) => (textRefs.current[i] = el)}
-                  className="animate-text translate-y-5 max-w-2xl mx-auto text-center opacity-0"
+                  className="animate-text translate-y-5 max-sm:mb-5 max-w-2xl mx-auto text-center opacity-0"
                 >
-                  <h3 className="text-3xl md:text-5xl primary-font  text-white ">
+                  <p className="h3 text-white">
                     {item.heading}
-                  </h3>
-                  <p className="text-base md:text-xl text-white">
+                  </p>
+                  <p className="para-lg text-white">
                     {item.desc}
                   </p>
                 </div>

@@ -321,9 +321,9 @@ const GoogleMeet = () => {
                                 <img className="w-10 h-10 object-contain" src="/logo_white.svg" alt="Zerror" style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(85%) saturate(3780%) hue-rotate(227deg) brightness(88%) contrast(106%)' }} />
                             </div>
 
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 tracking-tight">
+                            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 tracking-tight">
                                 You left the call
-                            </h2>
+                            </div>
                             <p className="text-xs sm:text-sm text-gray-500 max-w-md mb-8 leading-relaxed">
                                 Thank you for exploring Zerror Studios' interactive website development workflow demo.
                             </p>
@@ -363,9 +363,9 @@ const GoogleMeet = () => {
                                             <RiPhoneFill size={28} className="rotate-[135deg]" />
                                         </div>
 
-                                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                                        <div className="text-xl sm:text-2xl font-bold text-gray-900">
                                             Leave the Meeting?
-                                        </h3>
+                                        </div>
                                         <p className="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-xs">
                                             Would you like to schedule a dedicated project call with Zerror Studios or end this meeting now?
                                         </p>
@@ -482,7 +482,7 @@ const GoogleMeet = () => {
                                 <div className={`bg-white rounded-md flex flex-col overflow-hidden transition-[width,border,shadow] duration-500 ease-in-out origin-right border-gray-200 ${isChatOpen ? 'w-[35%] border ' : 'w-0 border-none'}`}>
                                     <div className={`flex flex-col h-full w-full min-w-[20rem] transition-opacity duration-300 ${isChatOpen ? 'opacity-100 delay-[300ms]' : 'opacity-0 delay-[300ms]'}`}>
                                         <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50 text-black">
-                                            <h3 className="font-semibold">In-call messages</h3>
+                                            <div className="font-semibold">In-call messages</div>
                                             <RiCloseLine
                                                 size={20}
                                                 className="cursor-pointer text-gray-500 hover:bg-gray-200 rounded-full p-0.5 transition-colors"

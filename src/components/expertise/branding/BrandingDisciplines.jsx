@@ -1,4 +1,6 @@
 import React from 'react';
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 
 // Looping line icons for each "what's included" box, animated with SVG like the website-development icons
 const Svg = ({ children }) => (
@@ -261,25 +263,16 @@ const STACK_STEP = 6; // rem
 
 const BrandingDisciplines = () => {
     return (
-        <div data-hide-header className="w-full bg_blue py-8 md:py-16 text-white">
-            <div className="padding sticky w-full space-y-12 md:space-y-16">
+        <div data-hide-header className="w-full bg_blue py-section text-white">
+            <div className="padding sticky w-full space-y-block">
 
                 {/* ── Heading (matches about/InfoSection layout) ── */}
-                <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-                    <div className="">
-                        <h2 data-para-effect className="primary-font text-5xl leading-none">What <br /> we do</h2>
-                    </div>
-                    <div className="text-xs max-sm:hidden pt-4">
-                        <p className="font-thin">Five disciplines,</p>
-                        <p className="font-thin">one team.</p>
-                    </div>
-                    <div className="text-3xl md:pl-2">
-                        <h3 data-para-effect className="secondary-font">
-                            <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
-                            Identity, content, campaigns, search and growth, run by the same people.
-                        </h3>
-                    </div>
-                </div>
+                <SectionHeader
+                    title={<>What <Br /> we do</>}
+                    lines={["Five disciplines,", "one team."]}
+                >
+                    Identity, content, campaigns, search and growth, run by the same people.
+                </SectionHeader>
 
                 {/* ── Stacking discipline cards (sticky on desktop) ── */}
                 <div className="w-full relative">
@@ -292,31 +285,33 @@ const BrandingDisciplines = () => {
                             <div className="py-6 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
                                 {/* Left: number + title */}
                                 <div className="flex items-start gap-x-5">
-                                    <h3 className="text-3xl md:text-5xl font-bold leading-none primary-font shrink-0">
+                                    <p data-para-effect className="h3 font-bold shrink-0">
                                         {item.num}
-                                    </h3>
-                                    <h3 className="text-3xl md:text-5xl font-bold primary-font uppercase leading-none">
+                                    </p>
+                                    <h3 data-para-effect className="font-bold uppercase">
                                         {item.title}
                                     </h3>
                                 </div>
 
                                 {/* Right: what's included + description */}
                                 <div className="flex flex-col gap-6 md:gap-8 md:pt-24">
-                                    <p className="text-3xl">
+                                    <p className="para-lead">
                                         {item.desc}
                                     </p>
-                                    <ul className="grid grid-cols-3 gap-2 md:gap-3">
+                                    {/* Desktop: 3-column grid. Mobile: full-bleed snap scroller of 85vw cards,
+                                        each snapping to the page's left edge (1rem, same as the text above). */}
+                                    <ul className="max-md:flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:-mx-4 max-md:px-4 max-md:scroll-px-4 scroller_none [scrollbar-width:none] md:grid md:grid-cols-3 gap-3">
                                         {item.list.map((listItem, i) => {
                                             const Icon = item.icons[i];
                                             return (
                                                 <li
                                                     key={i}
-                                                    className="bg-white text_blue rounded-lg p-3 md:p-5 flex flex-col justify-between gap-6 md:gap-10 min-h-32 md:min-h-40"
+                                                    className="bg-white text_blue rounded-lg p-5 flex flex-col justify-between gap-6 md:gap-10 md:min-h-40 max-md:w-[85vw] max-sm:space-y-12 max-md:shrink-0 max-md:snap-start max-md:snap-always"
                                                 >
-                                                    <span className="w-9 h-9 md:w-12 md:h-12 block">
+                                                    <span className="w-16 h-16 md:w-12 md:h-12 block">
                                                         <Icon />
                                                     </span>
-                                                    <span className="text-sm md:text-xl leading-tight">{listItem}</span>
+                                                    <span className="para-lg font-semibold">{listItem}</span>
                                                 </li>
                                             );
                                         })}

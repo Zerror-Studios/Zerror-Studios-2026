@@ -149,11 +149,11 @@ const FigmaApprovedDesign = () => {
                                         {/* Left Side: Content */}
                                         <div className="w-1/2 flex flex-col justify-center px-16 py-12">
                                             <div className="relative p-6 -ml-6">
-                                                <h1 
+                                                <div 
                                                     className="text-7xl font-serif leading-[1.1] mb-6 text-black"
                                                 >
                                                     The New <br /> Standard.
-                                                </h1>
+                                                </div>
                                                 <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-sm">
                                                     Elevate your everyday wardrobe with our latest collection of premium, sustainably sourced essentials.
                                                 </p>
@@ -244,7 +244,7 @@ const FigmaApprovedDesign = () => {
                                                             style={{ backgroundColor: activeColor }}
                                                         >Add To Bag</div>
                                                     </div>
-                                                    <h4 className="text-xs font-semibold mb-1 group-hover:underline">{product.title}</h4>
+                                                    <div className="text-xs font-semibold mb-1 group-hover:underline">{product.title}</div>
                                                     <p className="text-[10px] text-gray-500 mb-2">2 colors</p>
                                                     <p className="text-xs font-semibold">{product.price}</p>
                                                 </div>
@@ -280,11 +280,11 @@ const FigmaApprovedDesign = () => {
                                         {/* Top Content */}
                                         <div className="w-full flex flex-col justify-center px-6 py-8 text-center">
                                             <div className="relative p-4">
-                                                <h1 
+                                                <div 
                                                     className="text-5xl font-serif leading-[1.1] mb-4 text-black"
                                                 >
                                                     The New <br /> Standard.
-                                                </h1>
+                                                </div>
                                                 <p className="text-gray-500 text-xs leading-relaxed mb-6">
                                                     Elevate your everyday wardrobe with our latest collection of premium essentials.
                                                 </p>
@@ -358,7 +358,7 @@ const FigmaApprovedDesign = () => {
                                                             style={{ backgroundColor: activeColor }}
                                                         >Add To Bag</div>
                                                     </div>
-                                                    <h4 className="text-[10px] font-semibold mb-1 truncate">{product.title}</h4>
+                                                    <div className="text-[10px] font-semibold mb-1 truncate">{product.title}</div>
                                                     <p className="text-[10px] font-semibold">{product.price}</p>
                                                 </div>
                                             ))}

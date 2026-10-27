@@ -122,9 +122,9 @@ export default function InstagramStepUi({ liked, likeCount, toggleLike }) {
         </div>
 
         <div className="my-auto z-10 py-1">
-          <h4 className="text-base sm:text-lg font-black text-white uppercase tracking-tight leading-snug drop-shadow-md">
+          <div className="text-base sm:text-lg font-black text-white uppercase tracking-tight leading-snug drop-shadow-md">
             "Design That Speaks. <br /> Search That Wins."
-          </h4>
+          </div>
           <p className="text-[9px] text-white/80 mt-1 font-light max-w-[180px] mx-auto leading-tight">
             A look people recognise, used the same way everywhere.
           </p>

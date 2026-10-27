@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 import gsap from "gsap";
 import SplitText from "gsap/dist/SplitText";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 import Button from "../common/Button";
 import Select from "../common/Select";
 import { Input } from "../common/Input";
 import { FORM_MESSAGES, STUDIO_EMAIL, failureKind, isValidEmail, isValidPhone } from "@/lib/formMessages";
 import { trackLead } from "@/lib/analytics";
 import { notifySuccess, showFailure, showFieldErrors } from "@/lib/notify";
+import Br from "@/components/common/Br";
 gsap.registerPlugin(SplitText);
 
 const Form = ({ closeForm }) => {
@@ -90,8 +91,8 @@ const Form = ({ closeForm }) => {
         <button onClick={closeForm} aria-label="Close" className="absolute cursor-pointer leading-none right-10 top-10 text-2xl z-10">✕</button>
 
         <div className="w-full space-y-5 mb-10 md:mb-0 md:space-y-0 md:h-full flex flex-col justify-between ">
-          <div className="">
-            <h2 className=' primary-font text-3xl md:text-5xl   leading-none'>  Become a <br /> Zerrorian </h2>
+          <div>
+            <h2 className='h3'>  Become a <Br /> Zerrorian </h2>
           </div>
           <div className="w-full">
             <p className="text-[#f6f8ff9d] select-none  font-thin">
@@ -107,7 +108,7 @@ const Form = ({ closeForm }) => {
 
         {status === "sent" ? (
           <div className="w-full flex flex-col justify-center text-white" role="status" aria-live="polite">
-            <p className="primary-font text-2xl md:text-3xl leading-tight">
+            <p className="h5">
               {FORM_MESSAGES.careersSent}
             </p>
           </div>

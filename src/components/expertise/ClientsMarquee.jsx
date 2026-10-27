@@ -1,6 +1,6 @@
 import React from 'react'
 import Marquee from 'react-fast-marquee'
-import Image from 'next/image'
+import ClientLogo from '../common/ClientLogo'
 
 export const clientsData = [
     {
@@ -83,7 +83,7 @@ const ClientsMarquee = () => {
                 <Marquee gradientWidth={40}>
                     {clientsData.map((item, i) => (
                         <div key={i} className=" w-40 md:w-52 md:mx-8">
-                            <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
+                            <ClientLogo src={item.icon} title={item.title} className="w-full text-[#002bba]" />
                         </div>
                     ))}
                 </Marquee>

@@ -11,7 +11,7 @@ export default function DashboardHeader({ searchTerm, setSearchTerm, activeTab, 
 
   return (
     <header className={`h-14 md:h-16 px-4 md:px-6 border-b flex items-center gap-3 md:gap-4 shrink-0 backdrop-blur transition-colors duration-300 ${t.header}`}>
-      <h2 className={`hidden md:block text-[15px] font-semibold shrink-0 ${t.strong}`}>{title}</h2>
+      <div className={`hidden md:block text-[15px] font-semibold shrink-0 ${t.strong}`}>{title}</div>
 
       {/* Search */}
       <div className="relative flex-1 md:max-w-xs md:ml-auto">

@@ -10,6 +10,7 @@ import TicketEffect from '@/components/home/TicketEffect'
 import React from 'react'
 
 import { createMetadata } from "@/lib/seo";
+import Br from "@/components/common/Br";
 
 export const metadata = createMetadata({
   title: "Custom CMS, dashboards and tools | Zerror Studios",
@@ -65,7 +66,7 @@ const page = () => {
         expertiseName="Software shaped to the business"
         expertiseHeading={
           <>
-            Built around <br /> how you work.
+            Built around <Br /> how you work.
           </>
         }
         btnsLabels={["Custom CMS", "Dashboards", "Internal tools"]}

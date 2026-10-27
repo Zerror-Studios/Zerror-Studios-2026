@@ -159,14 +159,14 @@ function LoyaltySystemAnim() {
 
                     {/* Title & Description */}
                     <div className="mt-2.5 mb-2 px-0.5">
-                        <h4 
+                        <div 
                             key={`title-${currentIdx}`} 
                             className=" text-black text-xs sm:text-sm leading-none  font-sans anim-text-fade"
                         >
                             {activeCourse.title}
                             <br />
                             {activeCourse.subtitle}
-                        </h4>
+                        </div>
                     </div>
 
                     {/* Divider & Metadata (Hours + Beginner level) */}

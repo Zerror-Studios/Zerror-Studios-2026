@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
+import { dropHiddenBreaks } from "@/lib/splitText"
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -26,6 +27,8 @@ const GlobalParaReveal = () => {
             el.dataset.splitInitialized = "true"
 
             const scroller = el.closest(".overflow-y-scroll") || el.closest(".overflow-y-auto") || window
+
+            dropHiddenBreaks(el)
 
             const split = new SplitText(el, {
               type: "lines",

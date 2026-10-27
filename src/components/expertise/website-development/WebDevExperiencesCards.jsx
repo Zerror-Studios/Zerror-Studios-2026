@@ -14,6 +14,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 
 export const services = [
     {
@@ -107,7 +109,7 @@ const ServiceCard = ({ service }) => {
                 </div>
 
                 <div className="flex flex-col mt-12 space-y-2 relative z-10">
-                    <h4 className="text-xl font-semibold text-[#002bba] group-hover:text-white transition-colors duration-300">
+                    <h4 className="h6 font-semibold text-[#002bba] group-hover:text-white transition-colors duration-300">
                         {service.title}
                     </h4>
                     <p className="font-medium leading-tight w-[85%] text-[#002bba]/80 group-hover:text-white/90 transition-colors duration-300">
@@ -137,24 +139,15 @@ const WebDevExperiencesCards = () => {
     })
     return (
         <>
-            <div ref={containerRef} className="w-full  relative text_blue flex py-8 md:py-16 space-y-8 md:space-y-16 flex-col">
+            <div ref={containerRef} className="w-full  relative text_blue flex py-section space-y-block flex-col">
 
                 <div className="w-full relative z-10   padding  shrink-0 ">
-                    <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
-                        <div className="">
-                            <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>In every <br /> site</h2>
-                        </div>
-                        <div className="text-xs max-sm:hidden pt-4">
-                            <p data-para-effect className="font-thin">Not add-ons.</p>
-                            <p data-para-effect className="font-thin">Part of the build.</p>
-                        </div>
-                        <div className="text-3xl md:pl-2">
-                            <h3 data-para-effect className="secondary-font">
-                                <span className="opacity-0 max-sm:hidden pointer-events-none" aria-hidden="true">...............</span>
-                                Six things every site gets, whatever its size. Design, build, motion, search, testing and care, all from the same team.
-                            </h3>
-                        </div>
-                    </div>
+                    <SectionHeader
+                        title={<>In every <Br /> site</>}
+                        lines={["Not add-ons.", "Part of the build."]}
+                    >
+                        Six things every site gets, whatever its size. Design, build, motion, search, testing and care, all from the same team.
+                    </SectionHeader>
                 </div>
 
                 <div className=" padding relative z-10 flex-1 w-full grid grid-cols-1 md:grid-cols-3  auto-rows-fr  items-stretch gap-5 text_blue">

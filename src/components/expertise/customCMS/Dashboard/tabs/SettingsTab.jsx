@@ -60,10 +60,10 @@ export default function SettingsTab() {
       <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl space-y-4">
         <div className="flex items-center justify-between border-b border-white/10 pb-3">
           <div>
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <div className="text-sm font-bold text-white flex items-center gap-2">
               <ShieldIcon className="w-4 h-4 text-blue-400" />
               API Secret Keys & Access Control
-            </h3>
+            </div>
             <p className="text-[11px] text-gray-400">Headless API keys used for Next.js / GraphQL endpoints</p>
           </div>
           <span className="text-[10px] text-blue-400 font-mono px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">
@@ -93,7 +93,7 @@ export default function SettingsTab() {
 
       {/* Role-Based Access Control (RBAC) */}
       <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl space-y-4">
-        <h3 className="text-sm font-bold text-white">Team Roles & Access Policy</h3>
+        <div className="text-sm font-bold text-white">Team Roles & Access Policy</div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           {Object.entries(roles).map(([key, role]) => (
@@ -103,7 +103,7 @@ export default function SettingsTab() {
             >
               <div>
                 <div className="flex items-center gap-2">
-                  <h4 className="font-bold text-white text-xs">{role.name}</h4>
+                  <div className="font-bold text-white text-xs">{role.name}</div>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-gray-300 font-mono">
                     {role.users} Users
                   </span>
@@ -128,7 +128,7 @@ export default function SettingsTab() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Webhooks Manager */}
         <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl space-y-4 text-xs">
-          <h3 className="text-sm font-bold text-white">Automated Webhooks</h3>
+          <div className="text-sm font-bold text-white">Automated Webhooks</div>
           <p className="text-[11px] text-gray-400">Triggers Vercel / Cloudflare build pipeline on publish</p>
 
           <div>
@@ -161,10 +161,10 @@ export default function SettingsTab() {
         {/* Global Edge Cache Control */}
         <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl space-y-4 text-xs flex flex-col justify-between">
           <div>
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <div className="text-sm font-bold text-white flex items-center gap-2">
               <SparklesIcon className="w-4 h-4 text-amber-400" />
               Global Edge CDN Cache Purge
-            </h3>
+            </div>
             <p className="text-[11px] text-gray-400 mt-1">
               Instantly invalidate static HTML cache across all 300+ CDN edge nodes globally.
             </p>

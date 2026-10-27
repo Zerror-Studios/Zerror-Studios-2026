@@ -132,12 +132,12 @@ const FigmaWireframe = () => {
                                                 <div className="w-2 h-2 bg-white border border-[#0EA5E9] absolute -bottom-1 -left-1 opacity-0 group-hover:opacity-100"></div>
                                                 <div className="w-2 h-2 bg-white border border-[#0EA5E9] absolute -bottom-1 -right-1 opacity-0 group-hover:opacity-100"></div>
 
-                                                <h1
+                                                <div
                                                     className="text-7xl font-serif leading-[1.1] mb-6 transition-colors duration-300"
                                                     style={{ color: activeColor }}
                                                 >
                                                     The New <br /> Standard.
-                                                </h1>
+                                                </div>
                                                 <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-sm">
                                                     Elevate your everyday wardrobe with our latest collection of premium, sustainably sourced essentials.
                                                 </p>
@@ -214,7 +214,7 @@ const FigmaWireframe = () => {
                                                             style={{ backgroundColor: activeColor }}
                                                         ></div>
                                                     </div>
-                                                    <h4 className="text-xs font-semibold mb-1 group-hover:underline">Product Title {i}</h4>
+                                                    <div className="text-xs font-semibold mb-1 group-hover:underline">Product Title {i}</div>
                                                     <p className="text-[10px] text-gray-500 mb-2">2 colors</p>
                                                     <p className="text-xs font-semibold">₹ 12,500.00</p>
                                                 </div>
@@ -255,12 +255,12 @@ const FigmaWireframe = () => {
                                                 <div className="w-2 h-2 bg-white border border-[#0EA5E9] absolute -bottom-1 -left-1 opacity-0 group-hover:opacity-100"></div>
                                                 <div className="w-2 h-2 bg-white border border-[#0EA5E9] absolute -bottom-1 -right-1 opacity-0 group-hover:opacity-100"></div>
 
-                                                <h1
+                                                <div
                                                     className="text-5xl font-serif leading-[1.1] mb-4 transition-colors duration-300"
                                                     style={{ color: activeColor }}
                                                 >
                                                     The New <br /> Standard.
-                                                </h1>
+                                                </div>
                                                 <p className="text-gray-500 text-xs leading-relaxed mb-6">
                                                     Elevate your everyday wardrobe with our latest collection of premium essentials.
                                                 </p>
@@ -319,7 +319,7 @@ const FigmaWireframe = () => {
                                                             style={{ backgroundColor: activeColor }}
                                                         ></div>
                                                     </div>
-                                                    <h4 className="text-[10px] font-semibold mb-1">Product {i}</h4>
+                                                    <div className="text-[10px] font-semibold mb-1">Product {i}</div>
                                                     <p className="text-[10px] font-semibold">₹ 12,500</p>
                                                 </div>
                                             ))}

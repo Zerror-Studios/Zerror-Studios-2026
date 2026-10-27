@@ -2,7 +2,7 @@
 import { caseStudies } from '@/data/ProjectsData'
 import Image from 'next/image'
 import React from 'react'
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 
 const MobileWorkListing = () => {
     return (
@@ -23,8 +23,8 @@ const MobileWorkListing = () => {
 
                     <div className="w-full text_blue">
                         <div className="flex  justify-between">
-                            <h4 className="text-xl  leading-none primary-font  uppercase">{item.title}</h4>
-                            <h4 className="text-xl  leading-none primary-font  uppercase">{item.year}</h4>
+                            <h4 className="h6 uppercase">{item.title}</h4>
+                            <h4 className="h6 uppercase">{item.year}</h4>
                         </div>
                         <p className="leading-none">{item.category}</p>
                     </div>

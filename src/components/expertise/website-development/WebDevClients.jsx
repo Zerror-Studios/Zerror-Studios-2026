@@ -1,11 +1,14 @@
 "use client";
-import { RiArrowLeftLine, RiArrowRightLine, RiDoubleQuotesR } from '@remixicon/react'
+import { RiDoubleQuotesR } from '@remixicon/react'
+import SliderArrows from '@/components/common/SliderArrows';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import SectionHeader from '@/components/common/SectionHeader';
 import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import Br from "@/components/common/Br";
 gsap.registerPlugin(ScrollTrigger)
 
 export const clientsData = [
@@ -77,7 +80,7 @@ export const clientsData = [
 const ClientTestimonialCard = ({ item }) => {
     return (
         <div
-            className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#002bba10] group-[.swiper-slide-active]:bg-[#002bba] group-[.swiper-slide-active]:text-white! group p-6 md:p-8 text_blue transition-colors duration-500 ease-out group-[.swiper-slide-active]:border-[#002bba]"
+            className="relative w-full items-stretch md:aspect-[4/3] overflow-hidden rounded-[1rem] border border-[#002bba]/15 bg-[#002bba10] group-[.swiper-slide-active]:bg-[#002bba] group-[.swiper-slide-active]:text-white! group p-card text_blue transition-colors duration-500 ease-out group-[.swiper-slide-active]:border-[#002bba]"
         >
             <div className="relative z-10 flex h-full flex-col justify-between gap-10">
                 <div className="flex items-start justify-between gap-4">
@@ -89,7 +92,7 @@ const ClientTestimonialCard = ({ item }) => {
                         </div>
                         <div>
                             <p className="font-semibold leading-none">{item.author}</p>
-                            <p className="mt-1 text-xs uppercase opacity-60">{item.designation}</p>
+                            <p className="mt-1 label uppercase opacity-60">{item.designation}</p>
                         </div>
                     </div>
 
@@ -98,18 +101,18 @@ const ClientTestimonialCard = ({ item }) => {
                     </div>
                 </div>
 
-                <h3 className='max-w-[92%] text-2xl leading-none md:text-3xl '>
+                <p className='text-[1.5rem] md:text-[1.875rem] leading-none '>
                     {item.desc}
-                </h3>
+                </p>
 
-                <div className="flex items-end justify-between gap-4 border-t border-[#002bba]/15 group-[.swiper-slide-active]:border-white/30 transition-colors duration-500 ease-out pt-5">
+                <div className="flex  justify-between gap-4 border-t border-[#002bba]/15 group-[.swiper-slide-active]:border-white/30 transition-colors duration-500 ease-out pt-5">
                     <div>
                         <p className="uppercase">{item.company}</p>
-                        <p className="mt-1 text-sm font-medium capitalize opacity-60">{item.metricLabel}</p>
+                        <p className="para-sm font-medium capitalize opacity-60">{item.metricLabel}</p>
                     </div>
 
                     <div className="text-right">
-                        <p className="primary-font text-5xl leading-none">{item.metric}</p>
+                        <p className="h2">{item.metric}</p>
                     </div>
                 </div>
             </div>
@@ -138,43 +141,20 @@ const WebDevClients = ({ line = null }) => {
     })
 
     return (
-        <div className='my-8 md:my-16 space-y-8 md:space-y-16'>
+        <div className='my-section space-y-block'>
             <div className="w-full   padding   text_blue ">
-                <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
-                    <div className="">
-                        <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>What clients <br /> say</h2>
-                    </div>
-                    <div className="text-xs max-sm:hidden pt-4">
-                        <p className='font-thin'>In their words.</p>
-                    </div>
-                    <div className="   flex items-end md:justify-end gap-x-1 md:gap-x-4 ">
-                        <button
-                            aria-label="Previous slide"
-                            disabled={isBeginning}
-                            onClick={() => swiperRef.current?.slidePrev()}
-                            className={`prev_button shrink-0 px-8 py-3 border-[#002bba] text-[#002bba]  center rounded-full border transition-all duration-300
-                            ${isBeginning
-                                    ? "opacity-40 cursor-not-allowed!"
-                                    : "group hover:bg-[#002bba] hover:text-white! hover:border-[#002bba]"
-                                }`}
-                        >
-                            <RiArrowLeftLine size={20} />
-                        </button>
-
-                        <button
-                            aria-label="Next slide"
-                            disabled={isEnd}
-                            onClick={() => swiperRef.current?.slideNext()}
-                            className={`next_button shrink-0 px-8 py-3 border-[#002bba] text-[#002bba]  center rounded-full border transition-all duration-300
-                                ${isEnd
-                                    ? "opacity-40 cursor-not-allowed!"
-                                    : "group hover:bg-[#002bba] hover:text-white! hover:border-[#002bba]"
-                                }`}
-                        >
-                            <RiArrowRightLine size={20} />
-                        </button>
-                    </div>
-                </div>
+                <SectionHeader
+                    title={<>What clients <Br /> say</>}
+                    lines={["In their words."]}
+                    aside={
+                        <SliderArrows
+                            onPrev={() => swiperRef.current?.slidePrev()}
+                            onNext={() => swiperRef.current?.slideNext()}
+                            isBeginning={isBeginning}
+                            isEnd={isEnd}
+                        />
+                    }
+                />
             </div>
             <div ref={containerRef} className="padding ">
                 <Swiper

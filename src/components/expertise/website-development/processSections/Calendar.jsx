@@ -42,6 +42,8 @@ export const buildCalendar = (steps = []) => {
                 col,
                 row: useDays && ev.day ? DAYS.indexOf(ev.day) : ev.row ?? col,
                 title: ev.title,
+                line: ev.line || step.line,
+                when,
                 tag: dayName ? `${columns[col].label} · ${dayName}` : columns[col].label,
                 content,
                 stage: ev.stage,
@@ -66,7 +68,7 @@ const renderContent = (text) => {
     if (!text) return null;
     return text.split('\n').map((line, i) => {
         if (line.startsWith('### ')) {
-            return <h3 key={i} className="text-xl md:text-2xl mb-3 ">{line.replace('### ', '')}</h3>;
+            return <div key={i} className="text-xl md:text-2xl mb-3 ">{line.replace('### ', '')}</div>;
         }
         if (line.startsWith('**') && line.includes('**', 2)) {
             const parts = line.split('**');
@@ -194,7 +196,7 @@ const EventCard = ({
                 onClick={togglePopup}
                 ref={labelRef} className="card_label w-full cursor-pointer h-full flex flex-col justify-between relative">
                 <div className='w-full h-full flex flex-col justify-between'>
-                    <h4 className="font-thin text-[8px] sm:text-xs md:text-base leading-[1.1] md:leading-normal max-sm:line-clamp-2 overflow-hidden">{title}</h4>
+                    <div className="font-thin text-[8px] sm:text-xs md:text-base leading-[1.1] md:leading-normal max-sm:line-clamp-2 overflow-hidden">{title}</div>
                     <div className="justify-end p-0.5 md:p-1 flex items-end w-full">
                         <div
                             className={`size-3.5 md:size-5 bg-white center rounded-sm text_blue transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}

@@ -1,5 +1,4 @@
 import React from "react";
-import DiceCanvas from "@/components/about/DiceCanvas";
 import HeroSection from "@/components/about/HeroSection";
 import ImageEffect from "@/components/about/ImageEffect";
 import InfoSection from "@/components/about/InfoSection";

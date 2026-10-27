@@ -29,7 +29,7 @@ export default function DashboardSidebar({ activeTab, setActiveTab, theme }) {
           YS
         </div>
         <div className="leading-tight min-w-0">
-          <h4 className={`text-[13px] font-semibold truncate ${t.strong}`}>Your store</h4>
+          <div className={`text-[13px] font-semibold truncate ${t.strong}`}>Your store</div>
           <span className={`text-[11px] ${t.muted}`}>Admin</span>
         </div>
       </div>

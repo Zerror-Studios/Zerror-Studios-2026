@@ -14,7 +14,7 @@ export const Card = ({ t, className = "", children }) => (
 export const CardHeader = ({ t, title, sub, action }) => (
     <div className="flex items-start justify-between gap-3 mb-4">
         <div className="min-w-0">
-            <h3 className={`text-[13px] font-semibold ${t.strong}`}>{title}</h3>
+            <div className={`text-[13px] font-semibold ${t.strong}`}>{title}</div>
             {sub && <p className={`text-[11px] mt-0.5 ${t.muted}`}>{sub}</p>}
         </div>
         {action}

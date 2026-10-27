@@ -10,16 +10,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import SplitText from "gsap/dist/SplitText";
+import { dropHiddenBreaks } from "@/lib/splitText";
 import HeroScene from "@/components/Scene/HeroScene.jsx";
 import {
     FORM_MESSAGES,
-    STUDIO_EMAIL,
     isValidEmail,
     isValidPhone,
     failureKind,
 } from "@/lib/formMessages";
 import { notifySuccess, showFailure, showFieldErrors } from "@/lib/notify";
 import { trackLead } from "@/lib/analytics";
+import Br from "@/components/common/Br";
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const LAST_STEP = 4;
@@ -42,18 +43,6 @@ const validateStep = (step, data) => {
     return errors;
 };
 
-const SidePanel = ({ className = "" }) => (
-    <div className={`text-white ${className}`}>
-        <p className="secondary-font text-2xl mb-3">Rather write?</p>
-        <a
-            href={`mailto:${STUDIO_EMAIL}`}
-            className="block hover:text-blue-200 transition-colors underline underline-offset-4"
-        >
-            {STUDIO_EMAIL}
-        </a>
-    </div>
-);
-
 const ContactHome = () => {
 
     const [Num, SetNum] = useState(1);
@@ -73,6 +62,7 @@ const ContactHome = () => {
     });
 
     useGSAP(() => {
+        dropHiddenBreaks(".heading_split");
         const heading_split = SplitText.create(".heading_split", {
             type: "lines",
             linesClass: "split-line"
@@ -185,12 +175,13 @@ const ContactHome = () => {
         SetNum(Num + 1);
     };
 
+    // Desktop stacks every step in a fixed-height box; on mobile the active step sits in the flow so the page takes its height
     const stepClass = (step) =>
-        `absolute inset-0 transition-all duration-500 ${Num === step ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'}`;
+        `transition-all duration-500 ${Num === step ? 'relative md:absolute md:inset-0 opacity-100 translate-x-0' : 'absolute inset-0 opacity-0 translate-x-full pointer-events-none'}`;
 
     const sendFooter = (
         <div className="space-y-4">
-            <p className="text-white text-sm">
+            <p className="text-white para-sm">
                 By sending this, you agree to our{" "}
                 <Link href="/privacy" className="underline underline-offset-4 hover:text-blue-200 transition-colors">
                     Privacy policy
@@ -206,21 +197,20 @@ const ContactHome = () => {
                 <HeroScene />
             </div>
 
-            <div className="  bg_blue relative w-full h-[100svh] max-sm:h-auto max-sm:min-h-[100svh] flex flex-col md:flex-row overflow-hidden">
+            <div className="bg_blue relative w-full md:h-[100svh] flex flex-col md:flex-row overflow-hidden">
                 {/* Left */}
-                <div className=" content_box padding md:pr-0! md:pb-5  max-sm:hidden w-full md:w-1/2 h-[100svh] flex flex-col justify-between relative z-10">
-                    <SidePanel className="flex justify-center h-1/2 flex-col" />
-                    <h1 className=" w-full heading_split  primary-font text-5xl md:text-8xl text-white">
-                        Tell us about <br />
+                <div className=" content_box padding md:pr-0! md:pb-5 w-full md:w-1/2 h-[50svh] md:h-[100svh] flex flex-col justify-end relative z-10">
+                    <h1 className="w-full heading_split text-white">
+                        Tell us about <Br />
                         your brand.
                     </h1>
                 </div>
 
                 {/* Right */}
-                <div className=" w-full  relative z-10 md:w-1/2 h-[100svh] max-sm:h-auto max-sm:flex-col flex justify-end items-center padding md:pb-5 md:pl-0!  md:items-end  relative">
-                    <div className="w-full pt-6 md:pt-0 h-[80vh] relative">
+                <div className="w-full relative z-10 md:w-1/2 md:h-[100svh] max-md:flex-col flex justify-end items-center padding md:pb-5 md:pl-0! md:items-end max-md:pt-hero max-md:pb-section">
+                    <div className="w-full md:h-[80vh] relative">
                         {/* Sections with smooth transitions */}
-                        <div className="w-full h-full relative " aria-live="polite">
+                        <div className="w-full md:h-full relative" aria-live="polite">
                             <div className={stepClass(1)} inert={Num !== 1}>
                                 <FormSection formData={formData} setFormData={setFormData} errors={errors} />
                             </div>
@@ -243,7 +233,7 @@ const ContactHome = () => {
                         {/* BTN-Section */}
                         <div
                             className={`w-full flex items-center ${Num == 1 && "justify-end"} ${Num == SENT_STEP && "hidden"
-                                }  justify-between absolute -botttom-5 md:bottom-0`}
+                                }  justify-between max-md:mt-block md:absolute md:bottom-0`}
                         >
                             <button
                                 type="button"
@@ -276,9 +266,6 @@ const ContactHome = () => {
                             </button>
                         </div>
                     </div>
-
-                    {/* Side panel on mobile, below the form */}
-                    <SidePanel className="sm:hidden w-full mt-24 pb-8" />
                 </div>
             </div>
         </>

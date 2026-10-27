@@ -9,6 +9,7 @@ import TicketEffect from '@/components/home/TicketEffect'
 import React from 'react'
 
 import { createMetadata } from "@/lib/seo";
+import Br from "@/components/common/Br";
 
 export const metadata = createMetadata({
   title: "Branding, social media and SEO | Zerror Studios",
@@ -69,7 +70,7 @@ const page = () => {
       />
       <DetailedExpertiseHero
         expertiseName="Found first. Remembered longer. "
-        expertiseHeading={<>Be found. <br /> Be remembered.</>}
+        expertiseHeading={<>Be found. <Br /> Be remembered.</>}
         btnsLabels={["Identity", "Social", "Campaigns", "Search"]}
         heroIcons={heroIcons}
         introHeading={<>A brilliant website nobody finds is a well-kept secret. We make sure yours isn't.</>}

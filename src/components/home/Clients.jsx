@@ -4,6 +4,10 @@ import { clientsData } from '../expertise/ClientsMarquee';
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 import { useProjectForm } from '@/context/ProjectFormContext';
 import Button from '../common/Button';
+import { RiArrowRightUpLine } from '@remixicon/react';
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
+import ClientLogo from "@/components/common/ClientLogo";
 
 const studioNumbers = [
     { prefix: "Since", value: "2022" },
@@ -29,26 +33,15 @@ const ClientBox = ({ item }) => {
                 className="absolute max-sm:hidden inset-0 w-full h-full pointer-events-none z-0"
             />
 
-            {/* Logos are white silhouettes — use them as a mask so they take the brand color */}
-            <div
-                role="img"
-                aria-label={item.title}
-                className={`client-icon w-full h-full relative z-10 bg-[#002bba] transition-colors duration-300 ${
-                    isHovered ? "md:bg-white" : ""
-                }`}
-                style={{
-                    WebkitMaskImage: `url(${item.icon})`,
-                    maskImage: `url(${item.icon})`,
-                    WebkitMaskSize: "100% 100%",
-                    maskSize: "100% 100%",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskRepeat: "no-repeat",
-                }}
+            <ClientLogo
+                src={item.icon}
+                title={item.title}
+                className={`client-icon w-full relative z-10 text-[#002bba] transition-colors duration-300 ${isHovered ? "md:text-white" : ""
+                    }`}
             />
-            <div className={`w-full max-sm:hidden uppercase absolute z-20 bottom-0 flex justify-between p-2 transition-colors duration-300 ${
-                isHovered ? "text-white" : "text_blue"
-            }`}>
-                <h5 className="secondary-font leading-none">{item.title}</h5>
+            <div className={`w-full max-sm:hidden uppercase absolute z-20 bottom-0 flex justify-between p-2 transition-colors duration-300 ${isHovered ? "text-white" : "text_blue"
+                }`}>
+                <p className="para">{item.title}</p>
             </div>
         </div>
     );
@@ -58,13 +51,23 @@ const ClientCtaBox = () => {
     const { openProjectForm } = useProjectForm();
 
     return (
-        <div className="w-full aspect-square bg_blue text-white border border-[#002bba]/10 p-2 md:p-4 flex flex-col justify-between items-start">
-            <h3 className="secondary-font text-xl md:text-3xl leading-none">
-                Your brand <br /> could be next.
-            </h3>
-            <div className="max-sm:scale-75 max-sm:-translate-x-4 max-sm:translate-y-2">
-            <Button variant="white" title="Start a project" onClick={openProjectForm} />
+        <div
+            onClick={openProjectForm}
+            className="w-full aspect-square bg_blue text-white border border-[#002bba]/10 p-2 md:p-4 flex flex-col justify-between items-start">
+            <p className="secondary-font h5 max-sm:text-[1.25rem]!">
+                Your brand <Br /> could be next.
+            </p>
+            <div className="max-sm:hidden">
+                <Button variant="white" title="Start a project" onClick={openProjectForm} />
             </div>
+            {/* Mobile: just an arrow; the card is too small for the full button */}
+            <button
+                type="button"
+                aria-label="Start a project"
+                className="md:hidden! size-7 center rounded-full border border-white text-white active:bg-white active:text-[#002bba] transition-colors"
+            >
+                <RiArrowRightUpLine size={14} />
+            </button>
         </div>
     );
 };
@@ -81,33 +84,25 @@ const Clients = () => {
 
     return (
         <>
-        <div className='clients_paren relative z-10   py-8 md:py-16 space-y-8 md:space-y-16 text_blue w-full bg-white '>
+            <div className='clients_paren relative z-10   py-section space-y-block text_blue w-full bg-white '>
 
-            <div className=" padding w-full z-20 relative text_blue space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
-                <div className="">
-                    <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Our <br /> clients</h2>
+                <SectionHeader
+                    title={<>Our <Br /> clients</>}
+                    lines={["The company", "we keep."]}
+                    className="padding z-20 relative text_blue"
+                >
+                    Publishers, film houses, fashion labels and founders on their first launch. More than 100 brands since 2022.
+                </SectionHeader>
+
+                <div className=" padding relative z-10 w-full grid grid-cols-3 md:grid-cols-5 ">
+                    {clientsData.map((item, i) => (
+                        <ClientBox key={i} item={item} />
+                    ))}
+                    <ClientCtaBox />
                 </div>
-                <div className="text-xs max-sm:hidden pt-4">
-                    <p data-para-effect className=' font-thin'>The company </p>
-                    <p data-para-effect className=' font-thin'>we keep.</p>
-                </div>
-                <div className="text-3xl md:pl-2">
-                    <h3 data-para-effect className="secondary-font">
-                        <span className="opacity-0 max-sm:hidden pointer-events-none" aria-hidden="true">...............</span>
-                        Publishers, film houses, fashion labels and founders on their first launch. More than 100 brands since 2022.
-                    </h3>
-                </div>
+
+
             </div>
-
-            <div className=" padding relative z-10 w-full grid grid-cols-3 md:grid-cols-5 ">
-                {clientsData.map((item, i) => (
-                    <ClientBox key={i} item={item} />
-                ))}
-                <ClientCtaBox />
-            </div>
-
-         
-        </div>
         </>
 
     )

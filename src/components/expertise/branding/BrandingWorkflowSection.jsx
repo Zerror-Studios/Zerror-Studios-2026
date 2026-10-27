@@ -15,6 +15,8 @@ import CalendarStepUi from "./mobileUi/CalendarStepUi";
 import InstagramStepUi from "./mobileUi/InstagramStepUi";
 import LinkedInStepUi from "./mobileUi/LinkedInStepUi";
 import SeoStepUi from "./mobileUi/SeoStepUi";
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -119,25 +121,16 @@ export default function BrandingWorkflowSection() {
   };
 
   return (
-    <div data-hide-header className="w-full pt-8 md:pt-16 text_blue relative ">
-      <div className="padding w-full space-y-12 md:space-y-16">
+    <div data-hide-header className="w-full pt-section text_blue relative ">
+      <div className="padding w-full space-y-block">
 
         {/* ── Heading Section (Matches BrandingWhyUs layout) ── */}
-        <div className="w-full space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-          <div className="">
-            <h2 data-para-effect className="primary-font text-5xl leading-none">How a <br /> month runs</h2>
-          </div>
-          <div className="text-xs max-sm:hidden pt-4">
-            <p className="font-thin">Plan, post,</p>
-            <p className="font-thin">measure, repeat.</p>
-          </div>
-          <div className="text-3xl md:pl-2">
-            <h3 data-para-effect className="secondary-font">
-              <span className="opacity-0 max-sm:hidden pointer-events-none">...............</span>
-              One calendar, four steps, and a report at the end of every month.
-            </h3>
-          </div>
-        </div>
+        <SectionHeader
+            title={<>How a <Br /> month runs</>}
+            lines={["Plan, post,", "measure, repeat."]}
+        >
+            One calendar, four steps, and a report at the end of every month.
+        </SectionHeader>
 
         {/* ── Scroll-based Interactive Workflow Container (400vh Track on Desktop) ── */}
         <div ref={containerRef} className="w-full md:h-[400vh] relative">
@@ -167,7 +160,7 @@ export default function BrandingWorkflowSection() {
                             <Icon size={18} />
                           </div>
                           <div>
-                            <h4 className="font-bold text-lg sm:text-3xl leading-tight">{step.tabTitle}</h4>
+                            <h3 className="font-bold h5">{step.tabTitle}</h3>
                           </div>
                         </div>
                       </div>
@@ -179,7 +172,7 @@ export default function BrandingWorkflowSection() {
                           }`}
                       >
                         <div className="overflow-hidden">
-                          <p className="text-base sm:text-xl font-light leading-relaxed text-white/90">
+                          <p className="para-lg font-light text-white/90">
                             {step.desc}
                           </p>
                         </div>
@@ -214,7 +207,7 @@ export default function BrandingWorkflowSection() {
                     </div>
 
                     {/* Animated Screen Content Area */}
-                    <div ref={screenRef} className="flex-1 w-full bg-[#0d0f17] text-white overflow-hidden flex flex-col relative">
+                    <div ref={screenRef} className="ui-mock flex-1 w-full bg-[#0d0f17] text-white overflow-hidden flex flex-col relative">
                       {activeStep === 0 && <CalendarStepUi />}
                       {activeStep === 1 && (
                         <InstagramStepUi

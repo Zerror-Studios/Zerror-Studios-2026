@@ -9,6 +9,7 @@ import { createMetadata } from "@/lib/seo";
 import WebDevProcess from '@/components/expertise/website-development/WebDevProcess'
 import WebDevInEveryBuild from '@/components/expertise/website-development/WebDevInEveryBuild'
 import { WEBSITE_PROCESS } from '@/components/expertise/website-development/processSections/websiteProcess'
+import Br from "@/components/common/Br";
 
 export const metadata = createMetadata({
   title: "Website design and development in Mumbai | Zerror Studios",
@@ -69,7 +70,7 @@ const page = () => {
       />
       <DetailedExpertiseHero
         expertiseName="Websites worth stopping for"
-        expertiseHeading={<>Moves like a story. <br />Loads like nothing.</>}
+        expertiseHeading={<>Moves like a story. <Br />Loads like nothing.</>}
         btnsLabels={["Design", "Motion", "Build", "Search"]}
         heroIcons={heroIcons}
         introHeading={<>You get about three seconds before someone decides you're worth their time. We make them count.</>}

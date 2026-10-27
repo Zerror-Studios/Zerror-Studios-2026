@@ -6,11 +6,11 @@ const ThanksSection = () => {
   return (
    <div className="w-full h-full flex flex-col ">
       <div className="w-full h-fit  text-white gap-8 flex flex-col items-start">
-        <h3 className=" secondary-font text-3xl">
+        <h2 className="para-lead">
           {FORM_MESSAGES.sentTitle}
-        </h3>
+        </h2>
 
-        <p className=' text-lg md:text-xl'>{FORM_MESSAGES.sentText}</p>
+        <p className='para-lg'>{FORM_MESSAGES.sentText}</p>
 
         <Link
           href="/work"

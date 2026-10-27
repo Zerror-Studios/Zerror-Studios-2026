@@ -1,7 +1,7 @@
 "use client";
 import { RiArrowRightUpLine } from '@remixicon/react'
 import gsap from 'gsap'
-import { Link } from 'next-view-transitions'
+import Link from 'next/link';
 import React, { useState } from 'react'
 import PixelGridCanvas from './PixelGridCanvas'
 
@@ -21,19 +21,24 @@ const Button = ({
     const isBlack = variant === "black"
     const restColor = isBlack ? "#000000" : "#002bba"
 
+    // On mobile the arrow is always shown (see the max-md: classes below), so only desktop animates it in and out
+    const isMobile = () => window.matchMedia("(max-width: 767px)").matches
+
     const ButtonHover = (e) => {
         setIsHovered(true)
-        const tl = gsap.timeline()
         const target = e.currentTarget;
         const arrowParen = target.querySelector('.arrow_paren');
         const arrowInner = target.querySelector('.arrow_inner');
         const textEl = target.querySelector('.btn_text');
         const iconEl = target.querySelector('.arrow_inner');
 
-        tl.to(target, { gap: "1rem", ease: "expo.out", duration: .3 })
-        tl.to(arrowParen, { width: "1.5rem", ease: "expo.out", duration: .3 }, "<")
-        tl.to(arrowInner, { y: 0, ease: "expo.out", duration: .3 })
-        tl.to(target, { gap: ".25rem", ease: "expo.out", duration: .3 })
+        if (!isMobile()) {
+            const tl = gsap.timeline()
+            tl.to(target, { gap: "1rem", ease: "expo.out", duration: .3 })
+            tl.to(arrowParen, { width: "1.5rem", ease: "expo.out", duration: .3 }, "<")
+            tl.to(arrowInner, { y: 0, ease: "expo.out", duration: .3 })
+            tl.to(target, { gap: ".25rem", ease: "expo.out", duration: .3 })
+        }
 
         gsap.to(textEl, { color: "#ffffff", duration: 0.3 })
         gsap.to(iconEl, { color: "#ffffff", duration: 0.3 })
@@ -41,24 +46,26 @@ const Button = ({
 
     const ButtonLeave = (e) => {
         setIsHovered(false)
-        const tl = gsap.timeline()
         const target = e.currentTarget;
         const arrowParen = target.querySelector('.arrow_paren');
         const arrowInner = target.querySelector('.arrow_inner');
         const textEl = target.querySelector('.btn_text');
         const iconEl = target.querySelector('.arrow_inner');
 
-        tl.to(target, { gap: "1rem", ease: "expo.out", duration: .3 })
-        tl.to(arrowInner, { y: "100%", ease: "expo.out", duration: .3 }, "<")
-        tl.to(arrowParen, { width: "0rem", ease: "expo.out", duration: .3 })
-        tl.to(target, { gap: "0", ease: "expo.out", duration: .3 }, "<")
+        if (!isMobile()) {
+            const tl = gsap.timeline()
+            tl.to(target, { gap: "1rem", ease: "expo.out", duration: .3 })
+            tl.to(arrowInner, { y: "100%", ease: "expo.out", duration: .3 }, "<")
+            tl.to(arrowParen, { width: "0rem", ease: "expo.out", duration: .3 })
+            tl.to(target, { gap: "0", ease: "expo.out", duration: .3 }, "<")
+        }
 
         gsap.to(textEl, { color: restColor, duration: 0.3 })
         gsap.to(iconEl, { color: restColor, duration: 0.3 })
     }
 
     const buttonClasses = `
-    button_paren px-3 whitespace-nowrap secondary-font  md:px-4 py-1.5 md:py-2 text-xs md:text-sm flex items-center 
+    button_paren px-3 whitespace-nowrap  md:px-4 py-1.5 md:py-2 para-sm flex items-center max-md:gap-1
      uppercase rounded-md ${isBlack ? "text-black" : "text_blue"} relative overflow-hidden
     ${variant === "fill"
             ? "bg-white"
@@ -86,8 +93,8 @@ const Button = ({
                 className="absolute inset-0 w-full h-full pointer-events-none z-0 "
             />
             <p className="btn_text translate-y-[.05rem] relative z-10">{title}</p>
-            <div className="arrow_paren w-0 overflow-hidden relative z-10">
-                <div className="arrow_inner translate-y-full">
+            <div className="arrow_paren w-0 max-md:w-6 overflow-hidden relative z-10">
+                <div className="arrow_inner translate-y-full max-md:translate-y-0">
                     <RiArrowRightUpLine size={20} />
                 </div>
             </div>

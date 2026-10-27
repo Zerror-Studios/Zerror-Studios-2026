@@ -73,7 +73,7 @@ export default function CustomersTab({ searchTerm, theme }) {
                 <div className="flex items-center gap-3 min-w-0">
                   <Avatar t={t} label={gw.icon} />
                   <div className="min-w-0">
-                    <h4 className={`text-xs font-medium ${t.strong}`}>{gw.title}</h4>
+                    <div className={`text-xs font-medium ${t.strong}`}>{gw.title}</div>
                     <p className={`text-[11px] truncate ${t.muted}`}>{gw.desc}</p>
                   </div>
                 </div>

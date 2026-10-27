@@ -21,9 +21,9 @@ const SocialSection = ({ formData, setFormData, children }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-10 flex flex-col">
-        <h3 className=" secondary-font   text-3xl">
+        <h2 className="para-lead">
           How did you find us?
-        </h3>
+        </h2>
 
         {/* Next */}
         <div className="grid grid-cols-2 gap-4  w-full">
@@ -50,7 +50,7 @@ const SocialSection = ({ formData, setFormData, children }) => {
                 </div>
 
                 <div className="flex justify-end">
-                  <span className={`text-sm font-medium uppercase ${isSelected ? 'text-white' : 'text-blue-700'
+                  <span className={`para-sm font-medium uppercase ${isSelected ? 'text-white' : 'text-blue-700'
                     }`}>
                     {name}
                   </span>

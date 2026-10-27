@@ -174,7 +174,7 @@ export default function PitchDeck() {
   });
 
   return (
-    <main className="relative padding py-0! md:p-0!">
+    <main className="ui-mock relative padding py-0! md:p-0!">
       <BackButton />
 
       <div className="fixed max-sm:hidden right-6 top-1/2 -translate-y-1/2 z-[999] flex justify-center w-14">

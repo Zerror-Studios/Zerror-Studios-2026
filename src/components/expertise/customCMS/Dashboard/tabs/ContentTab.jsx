@@ -199,7 +199,7 @@ export default function ContentTab({ searchTerm }) {
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#121827] border border-white/10 rounded-2xl w-full max-w-md p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-              <h3 className="text-sm font-bold text-white">Create New CMS Entry</h3>
+              <div className="text-sm font-bold text-white">Create New CMS Entry</div>
               <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-white">✕</button>
             </div>
             <form onSubmit={handleAddArticle} noValidate className="space-y-4 text-xs">

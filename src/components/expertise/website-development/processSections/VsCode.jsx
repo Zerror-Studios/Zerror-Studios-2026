@@ -9,7 +9,7 @@ import {
 } from '@remixicon/react';
 
 const codeSnippets = {
-    jsx: `import React from 'react';\nimport './Hero.css';\n\nexport const Hero = () => {\n  return (\n    <div className="hero-container">\n      <h1 className="hero-title">\n        The New <br /> Standard.\n      </h1>\n      <p className="hero-subtitle">\n        Elevate your everyday wardrobe.\n      </p>\n      <button className="shop-btn">Shop Now</button>\n      <div className="slider-wrapper">\n         <img src="hero_1.jpg" alt="Hero" />\n      </div>\n    </div>\n  );\n};\n`,
+    jsx: `import React from 'react';\nimport './Hero.css';\n\nexport const Hero = () => {\n  return (\n    <div className="hero-container">\n      <div className="hero-title">\n        The New <br /> Standard.\n      </div>\n      <p className="hero-subtitle">\n        Elevate your everyday wardrobe.\n      </p>\n      <button className="shop-btn">Shop Now</button>\n      <div className="slider-wrapper">\n         <img src="hero_1.jpg" alt="Hero" />\n      </div>\n    </div>\n  );\n};\n`,
     css: `.hero-container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  text-align: center;\n  padding: 4rem 2rem;\n}\n\n.hero-title {\n  font-size: 3rem;\n  font-family: serif;\n  color: #000;\n}\n\n.shop-btn {\n  background: #000;\n  color: #fff;\n  padding: 1rem 2rem;\n  text-transform: uppercase;\n  letter-spacing: 0.1em;\n  transition: all 0.3s;\n}\n`
 };
 
@@ -276,9 +276,9 @@ const VsCode = () => {
                                         <div className="flex flex-col w-full h-full">
                                             {/* Top Content */}
                                             <div className="w-full flex flex-col justify-center px-6 py-6 text-center bg-white z-10">
-                                                <h1 className="text-4xl font-serif leading-[1.1] mb-3 text-black">
+                                                <div className="text-4xl font-serif leading-[1.1] mb-3 text-black">
                                                     The New <br /> Standard.
-                                                </h1>
+                                                </div>
                                                 <p className="text-gray-500 text-[10px] leading-relaxed mb-4 px-2">
                                                     Elevate your everyday wardrobe with our latest collection of premium essentials.
                                                 </p>

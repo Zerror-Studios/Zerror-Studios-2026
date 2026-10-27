@@ -1,4 +1,5 @@
 "use client";
+import Br from "@/components/common/Br";
 import React, { useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -275,7 +276,7 @@ const OurTeam = () => {
 
 
   return (
-    <div className="w-full relative pb-8 md:pb-16">
+    <div className="w-full relative pb-section">
       <div className=" form_blur_overlay opacity-0 fixed top-0 left-0 z-[9999] backdrop-blur-xs pointer-events-none w-full h-screen"></div>
       <div className="w-full padding">
         <div className="grid gap-x-2  gap-y-6 md:gap-x-4 md:gap-y-10  md:gap-20 grid-cols-2  md:grid-cols-4">
@@ -301,7 +302,7 @@ const OurTeam = () => {
               {/* Image */}
               <div className="w-full relative aspect-4/5">
                 <div
-                  className={`card_border absolute inset-0 border border-[#002bba50] transition-opacity duration-300 pointer-events-none z-20 ${
+                  className={`card_border absolute inset-0 lg:border border-[#002bba50] transition-opacity duration-300 pointer-events-none z-20 ${
                     hoveredIndex !== null && hoveredIndex !== index
                       ? "opacity-100"
                       : "opacity-0"
@@ -311,14 +312,14 @@ const OurTeam = () => {
                   <img
                     src={member.img}
                     alt={member.name}
-                    className="cover brightness-[1.4]"
+                    className="cover mix-blend-hard-light brightness-75"
                   />
                 ) : (
                   // TODO: placeholder until the photo arrives
                   <div
                     role="img"
                     aria-label={member.name}
-                    className="absolute inset-0 center bg-[#002bba]/5 text_blue primary-font text-5xl md:text-7xl leading-none select-none"
+                    className="absolute inset-0 center bg-[#002bba]/5 text_blue h2 select-none"
                   >
                     {initials(member.name)}
                   </div>
@@ -327,9 +328,9 @@ const OurTeam = () => {
 
               {/* Text */}
               <div>
-                <h4 className="text-xl leading-none primary-font mt-3 uppercase text_blue">
+                <h3 className="h6 mt-3 uppercase text_blue">
                   {member.name}
-                </h4>
+                </h3>
                 <p className="text_blue leading-none mt-1">{member.role}</p>
               </div>
             </div>
@@ -348,11 +349,8 @@ const OurTeam = () => {
               <Form closeForm={closeForm} />
 
               <div className="dummy_txt absolute pointer-events-none bottom-4 md:bottom-8 left-4 md:left-8 space-y-5 w-[80%]">
-                <h2 className="primary-font leading-none text-3xl md:text-5xl">
-                  Become a <br /> Zerrorian
-                </h2>
-                <p className="leading-tight font-thin">
-                  Good designers, developers and marketers: send us your work.
+                <p className="h3">
+                  Become a <Br /> Zerrorian
                 </p>
               </div>
             </div>

@@ -8,6 +8,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import SplitText from 'gsap/dist/SplitText';
 import Image from 'next/image';
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 
 const projectsData = [
     {
@@ -94,23 +96,21 @@ const MoreProjects = () => {
 
     return (
         <div>
-            <div className=" more_project_header w-screen space-y-12 md:space-y-0  py-10! md:py-24!  padding text_blue md:grid grid-cols-[28%_30%_42%]">
-                <div className="">
-                    <p className=' more_project_header_split_wrd text-5xl md:text-6xl  capitalize primary-font leading-none'>selected <br /> works</p>
-                </div>
-                <div className="text-xs max-sm:hidden pt-4">
-                    <p className='more_project_header_split_wrd font-thin'>Brands we’ve </p>
-                    <p className='more_project_header_split_wrd font-thin'>worked with.</p>
-                </div>
-                <div className=" text-2xl md:text-4xl  md:pl-2">
-                    <p className=" more_project_header_split_wrd font-medium   "> <span className='opacity-0 max-sm:hidden pointer-events-none'>.........................</span> We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful.</p>
-                </div>
-            </div>
+            <SectionHeader
+                title={<>selected <Br /> works</>}
+                as="p"
+                titleClassName="h2 capitalize"
+                lines={["Brands we’ve", "worked with."]}
+                splitClass="more_project_header_split_wrd"
+                className="more_project_header w-screen py-section! padding text_blue"
+            >
+                We work with startups, studios, and growing brands to design and build digital products that are clear, scalable, and impactful.
+            </SectionHeader>
 
             <div className="padding py-0! relative ">
 
                 <div
-                    className="drag_btn fixed top-0 left-0 pointer-events-none text-sm bg-white/15 backdrop-blur-[1.25rem] rounded-lg z-[10] px-3 py-1.5 opacity-0 scale-100">
+                    className="drag_btn fixed top-0 left-0 pointer-events-none para-sm bg-white/15 backdrop-blur-[1.25rem] rounded-lg z-[10] px-3 py-1.5 opacity-0 scale-100">
                     <p className="font-medium">DRAG</p>
                 </div>
 
@@ -134,10 +134,10 @@ const MoreProjects = () => {
                                 </div>
                                 <div className="mt-2">
                                     <div className="w-full flex items-center justify-between">
-                                        <p className="text-xl font-semibold  uppercase">{item.title}</p>
-                                        <p className="text-xl font-semibold  uppercase">2025</p>
+                                        <p className="h6  uppercase">{item.title}</p>
+                                        <p className="h6  uppercase">2025</p>
                                     </div>
-                                    <p className="text-sm">{item.category}</p>
+                                    <p className="para-sm">{item.category}</p>
 
                                 </div>
                             </div>

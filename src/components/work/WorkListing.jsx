@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { Vertex, Fragment } from "@/shaders/plpShaders/PLPShaderGLSL";
-import { useTransitionRouter } from "next-view-transitions";
+import { useRouter } from "next/navigation";
 import { caseStudies } from "@/data/ProjectsData";
 gsap.registerPlugin(useGSAP);
 
@@ -441,7 +441,7 @@ function Scene({ fov, meshRef, snapRef, onCardClick }) {
 }
 
 const WorkListing = () => {
-  const router = useTransitionRouter();
+  const router = useRouter();
   const meshRef = useRef();
   const snapRef = useRef(null);
   const [fov, setFov] = useState(75);
@@ -518,26 +518,26 @@ const WorkListing = () => {
 
         {/* Project info — top right */}
         <div className=" uppercase space-y-1 pointer-events-auto">
-          <h2 className="opacity-0 proj-title primary-font text-2xl  md:text-3xl font-medium leading-none">
+          <h2 className="opacity-0 proj-title h5 font-medium">
             {caseStudies[0].title}
           </h2>
-          <h3 className="opacity-0 proj-category secondary-font capitalize   font-medium leading-none">
+          <h3 className="opacity-0 proj-category para capitalize font-medium">
             {caseStudies[0].category}
           </h3>
-          <h3 className="opacity-0 proj-year secondary-font   font-medium leading-none">
+          <h3 className="opacity-0 proj-year para font-medium">
             {caseStudies[0].year}
           </h3>
         </div>
 
         {/* Index — bottom left */}
         <div className=" current_id_paren opacity-0 flex text-end items-end">
-          <h2 className="proj-index primary-font  text-3xl   md:text-5xl  leading-none">
+          <h2 className="proj-index h3">
             {padIndex(1)}
           </h2>
-          <h2 className=" text-3xl primary-font  md:text-5xl  leading-none">
+          <h2 className="h3">
             {`/`}
           </h2>
-          <h3 className=" primary-font text-xl  md:text-3xl  mb-0.5 md:mb-1 leading-none">{caseStudies.length}</h3>
+          <h3 className="h5 mb-0.5 md:mb-1">{caseStudies.length}</h3>
         </div>
 
       </div>

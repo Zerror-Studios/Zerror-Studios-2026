@@ -14,7 +14,7 @@ const FormSection = ({ formData, setFormData, errors = {} }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-18 flex flex-col">
-        <h3 className="  secondary-font   text-3xl">Who are you?</h3>
+        <h2 className="para-lead">Who are you?</h2>
 
         {/* Form */}
         <div className="w-full">

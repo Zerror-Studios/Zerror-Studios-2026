@@ -14,7 +14,7 @@ const BudgetSection = ({ formData, setFormData }) => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-18 flex flex-col">
-        <h3 className="  secondary-font   text-3xl">Rough budget?</h3>
+        <h2 className="para-lead">Rough budget?</h2>
 
         <ChoiceList
           name="budget"

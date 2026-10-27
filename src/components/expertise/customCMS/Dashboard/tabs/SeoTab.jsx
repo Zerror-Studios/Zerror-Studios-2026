@@ -23,10 +23,10 @@ export default function SeoTab({ searchTerm }) {
         {/* Live SEO Optimization Checklist */}
         <div className="lg:col-span-2 p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl flex flex-col justify-between">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <div className="text-sm font-bold text-white flex items-center gap-2">
               <SparklesIcon className="w-4 h-4 text-emerald-400" />
               Automated SEO Audit Checklist
-            </h3>
+            </div>
             <span className="text-[11px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
               Passed 9 / 9 Checks
             </span>
@@ -57,7 +57,7 @@ export default function SeoTab({ searchTerm }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Editor Controls */}
         <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl space-y-4 text-xs">
-          <h3 className="text-sm font-bold text-white mb-2">Meta Title & Snippet Live Editor</h3>
+          <div className="text-sm font-bold text-white mb-2">Meta Title & Snippet Live Editor</div>
 
           <div>
             <div className="flex justify-between mb-1">
@@ -112,7 +112,7 @@ export default function SeoTab({ searchTerm }) {
 
         {/* Live Search & Social Card Simulator */}
         <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl space-y-4">
-          <h3 className="text-sm font-bold text-white">Live Search Engine Preview</h3>
+          <div className="text-sm font-bold text-white">Live Search Engine Preview</div>
 
           {/* Google Preview Card */}
           <div className="p-4 rounded-xl bg-[#202124] border border-gray-700/50 space-y-1">
@@ -120,9 +120,9 @@ export default function SeoTab({ searchTerm }) {
               <span className="w-4 h-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-[9px] font-bold">G</span>
               <span>{canonicalUrl}</span>
             </div>
-            <h4 className="text-sm font-medium text-[#8ab4f8] hover:underline cursor-pointer leading-snug line-clamp-1">
+            <div className="text-sm font-medium text-[#8ab4f8] hover:underline cursor-pointer leading-snug line-clamp-1">
               {metaTitle || "Page Title Here"}
-            </h4>
+            </div>
             <p className="text-[11px] text-[#bdc1c6] leading-relaxed line-clamp-2">
               {metaDesc || "Enter description above..."}
             </p>
@@ -133,7 +133,7 @@ export default function SeoTab({ searchTerm }) {
             <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Social Share Card (Twitter / LinkedIn)</span>
             <div className="rounded-lg bg-blue-950 border border-blue-500/20 h-28 flex flex-col justify-end p-3">
               <span className="text-[10px] font-bold text-blue-300 uppercase">zerrorstudios.com</span>
-              <h5 className="text-xs font-bold text-white truncate">{metaTitle}</h5>
+              <div className="text-xs font-bold text-white truncate">{metaTitle}</div>
             </div>
           </div>
         </div>

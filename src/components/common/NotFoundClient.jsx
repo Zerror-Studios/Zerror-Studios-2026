@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 
 export default function NotFoundClient() {
   // Hide footer when on 404
@@ -18,7 +18,7 @@ export default function NotFoundClient() {
     <main className="w-full h-[100svh] flex flex-col items-center pt-20 justify-center  text_blue relative overflow-hidden">
       
       {/* 404 Graphic */}
-      <div className="flex gap-4 md:gap-10 items-center justify-center mb-12 scale-75 md:scale-100 relative">
+      <div className="flex gap-4 md:gap-10 items-center justify-center mb-block scale-75 md:scale-100 relative">
         
         {/* First 4 */}
         <div className="relative">
@@ -38,21 +38,21 @@ export default function NotFoundClient() {
       </div>
 
       <div className="flex flex-col items-center gap-6 text-center px-4">
-        <span className="text-[10px] uppercase tracking-widest px-3 py-1 bg-gray-200/50 rounded-md font-mono text-gray-500">
+        <span className="label uppercase tracking-widest px-3 py-1 bg-gray-200/50 rounded-md font-mono text-gray-500">
           Page not found
         </span>
         
-        <h1 className="text-2xl md:text-3xl font-light text_blue mt-2">
+        <h1 className="h5 font-light text_blue mt-2">
           This page took a day off.
         </h1>
 
-        <p className="leading-tight max-w-md text-base text_blue -mt-2">
+        <p className="max-w-md para text_blue -mt-2">
           The link may be old, or the page has moved.
         </p>
 
         <Link
           href="/"
-          className="mt-4 uppercase text-[10px] tracking-[0.2em] px-8 py-3 border border-dashed border-current hover:bg-[#002bba] hover:text-white hover:border-[#002bba] transition-all duration-300"
+          className="mt-4 uppercase label tracking-[0.2em] px-8 py-3 border border-dashed border-current hover:bg-[#002bba] hover:text-white hover:border-[#002bba] transition-all duration-300"
         >
           Back to home
         </Link>

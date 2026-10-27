@@ -77,7 +77,7 @@ export default function MediaTab({ searchTerm }) {
           <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-3 group-hover:scale-110 transition-transform">
             <UploadCloudIcon className="w-6 h-6" />
           </div>
-          <h3 className="text-xs font-bold text-white mb-1">Upload Media Assets</h3>
+          <div className="text-xs font-bold text-white mb-1">Upload Media Assets</div>
           <p className="text-[11px] text-gray-400 mb-4">
             Drag & drop high-res images, SVGs, videos, or PDFs. Auto-compressed to WebP on Edge CDN.
           </p>
@@ -109,10 +109,10 @@ export default function MediaTab({ searchTerm }) {
       {/* Media Grid */}
       <div className="p-5 rounded-2xl bg-[#0F1524]/90 border border-white/10 shadow-xl">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-bold text-white flex items-center gap-2">
+          <div className="text-sm font-bold text-white flex items-center gap-2">
             <SparklesIcon className="w-4 h-4 text-blue-400" />
             Media Asset Library ({filteredAssets.length})
-          </h3>
+          </div>
           <span className="text-[11px] text-emerald-400 font-semibold bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
             WebP Auto-Conversion Active
           </span>
@@ -158,7 +158,7 @@ export default function MediaTab({ searchTerm }) {
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#121827] border border-white/10 rounded-2xl w-full max-w-lg p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-4">
-              <h3 className="text-sm font-bold text-white">Asset Details & CDN Config</h3>
+              <div className="text-sm font-bold text-white">Asset Details & CDN Config</div>
               <button onClick={() => setSelectedAsset(null)} className="text-gray-400 hover:text-white">✕</button>
             </div>
 

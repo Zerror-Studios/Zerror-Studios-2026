@@ -5,6 +5,8 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 import CmsDashboard from "./Dashboard/CmsDashboard";
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,27 +37,18 @@ const CustomsCmsExplore = () => {
       className="relative overflow-hidden bg_blue"
     >
 
-      <div className="py-8! md:py-16! space-y-12 " style={{ position: "relative", zIndex: 10 }}>
+      <div className="py-section! space-y-block " style={{ position: "relative", zIndex: 10 }}>
 
         <div className="w-full   padding pt-0! text-white ">
-          <div className="w-full space-y-12 md:space-y-0  md:grid grid-cols-[28%_30%_42%]">
-            <div className="">
-              <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>See one in <br /> action</h2>
-            </div>
-            <div className="text-xs max-sm:hidden pt-4">
-              <p data-para-effect className="font-thin">A sample dashboard.</p>
-              <p data-para-effect className="font-thin">Click around.</p>
-            </div>
-            <div className=" text-3xl  md:pl-2">
-              <h3 data-para-effect className="secondary-font">
-                <span className='opacity-0 max-sm:hidden pointer-events-none' aria-hidden="true">...............</span>
-                Add a product, check a payment, see who your customers are. Yours is built around the screens your team uses every day.
-              </h3>
-            </div>
-          </div>
+          <SectionHeader
+              title={<>See one in <Br /> action</>}
+              lines={["A sample dashboard.", "Click around."]}
+          >
+              Add a product, check a payment, see who your customers are. Yours is built around the screens your team uses every day.
+          </SectionHeader>
         </div>
 
-        <div className=" padding md:p-0! cms-dashboard-wrapper">
+        <div className="ui-mock padding md:p-0! cms-dashboard-wrapper">
           <div className="md:w-[80%] h-[90vh] mx-auto">
             <CmsDashboard />
           </div>

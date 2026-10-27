@@ -6,6 +6,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import SplitText from "gsap/dist/SplitText";
 import { useGSAP } from "@gsap/react";
 import useDevice from "../hooks/useDevice";
+import SectionHeader from "@/components/common/SectionHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -189,30 +190,19 @@ const Hero = () => {
       )}
 
       {isMobile && (
-        <div className=" hero_mob_txt  w-full h-svh pb-10 flex items-end relative z-10 overflow-hidden  md:hidden! padding text-white mb-24  ">
-          <p aria-hidden="true" className=" mob_split_hero_title w-full opacity-0  text-[15vw] leading-[14vw]   md:text-[12vw] font-bold origin-bottom-left ">We build brands that people stop for, remember, and come back to.</p>
+        <div className=" hero_mob_txt  w-full h-svh pb-10 flex items-end relative z-10 overflow-hidden  md:hidden! padding text-white mb-section  ">
+          <h1 aria-hidden="true" className=" mob_split_hero_title w-full opacity-0  origin-bottom-left ">We build brands that people stop for, remember, and come back to.</h1>
         </div>
       )}
 
 
       <div className=" abt_paren opacity-0 relative z-10  w-full   padding py-0! text-white ">
-        <div className="w-full  space-y-12 md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
-          <div className="">
-            <h2 data-para-effect className='primary-font  text-5xl  leading-none'>The studio</h2>
-          </div>
-
-          <div className=" max-sm:hidden text-xs pt-4">
-            <p className='font-thin'>Brands,</p>
-            <p className='font-thin'>built whole.</p>
-          </div>
-          <div className=" text-3xl  md:pl-2">
-            <h3 data-para-effect className="secondary-font">
-              <span className='opacity-0  max-sm:hidden pointer-events-none'>...............</span>
-              A design studio in Mumbai. Since 2022, we have built brands for publishers, film houses, fashion labels
-              and founders on day one.
-            </h3>
-          </div>
-        </div>
+        <SectionHeader
+            title="The studio"
+            lines={["Brands,", "built whole."]}
+        >
+            A design studio in Mumbai. Since 2022, we have built brands for publishers, film houses, fashion labels and founders on day one.
+        </SectionHeader>
       </div>
 
     </div>

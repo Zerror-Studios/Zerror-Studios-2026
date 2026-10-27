@@ -9,6 +9,7 @@ import { ECOMMERCE_PROCESS } from '@/components/expertise/website-development/pr
 import TicketEffect from '@/components/home/TicketEffect'
 
 import { createMetadata } from "@/lib/seo";
+import Br from "@/components/common/Br";
 
 export const metadata = createMetadata({
   title: "Custom Shopify stores and Zcom | Zerror Studios",
@@ -62,7 +63,7 @@ const page = () => {
       />
       <DetailedExpertiseHero
         expertiseName="Commerce that earns the cart"
-        expertiseHeading={<>Stores built to sell. <br /> And to look like you.</>}
+        expertiseHeading={<>Stores built to sell. <Br /> And to look like you.</>}
         btnsLabels={["Shopify", "Zcom", "Checkout"]}
         heroIcons={heroIcons}
         introHeading={<>A store should make buying feel easy, and true to the brand.</>}

@@ -3,10 +3,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image'
 import gsap from 'gsap'
 import SplitText from 'gsap/dist/SplitText'
+import { dropHiddenBreaks } from "@/lib/splitText";
 import { useGSAP } from '@gsap/react'
 import Matter from 'matter-js';
 import { clientsData } from './ClientsMarquee';
 import VelocityMarquee from '../common/VelocityMarquee';
+import ClientLogo from '../common/ClientLogo';
 import BackgroundSnake from '../animation/BackgroundSnake';
 import PixelGridCanvas from '../common/PixelGridCanvas';
 
@@ -33,6 +35,7 @@ const DetailedExpertiseHero = ({
 
     // Initialize GSAP typography split text
     useGSAP(() => {
+        dropHiddenBreaks(".heading_split");
         const heading_split = SplitText.create(".heading_split", {
             type: "lines",
             linesClass: "split-line"
@@ -250,7 +253,7 @@ const DetailedExpertiseHero = ({
                                     <img
                                         src={icon.src}
                                         alt="Expertise icon"
-                                        className=""
+                                       
                                     />
                                 </div>
                             );
@@ -259,8 +262,8 @@ const DetailedExpertiseHero = ({
                 </div>
 
                 <div className=" w-full h-full flex flex-col items-center justify-center text_blue gap-y-5 text-center relative z-10">
-                    <p className='paragraph_split uppercase text-xs'>[ {expertiseName} ] </p>
-                    <h1 className='heading_split text-5xl md:text-8xl primary-font '>{expertiseHeading}</h1>
+                    <p className='paragraph_split uppercase label'>[ {expertiseName} ] </p>
+                    <h1 className='heading_split'>{expertiseHeading}</h1>
                     <div className="flex flex-wrap gap-2 justify-center">
                         {btnsLabels.map((item, i) => (
                             <button
@@ -268,7 +271,7 @@ const DetailedExpertiseHero = ({
                                 ref={(el) => (buttonRefs.current[item] = el)}
                                 onMouseEnter={() => handleButtonHover(item)}
                                 onMouseLeave={() => setActiveHoverLabel(null)}
-                                className="blink_btn group relative overflow-hidden text-xs uppercase px-4 py-2 border-[#002bba15] border bg-[#002bba10] leading-none transition-colors duration-300 rounded-sm cursor-pointer text-[#002bba] hover:text-white"
+                                className="blink_btn group relative overflow-hidden label uppercase px-4 py-2 border-[#002bba15] border bg-[#002bba10] transition-colors duration-300 rounded-sm cursor-pointer text-[#002bba] hover:text-white"
                             >
                                 <PixelGridCanvas
                                     isActive={activeHoverLabel === item}
@@ -289,18 +292,18 @@ const DetailedExpertiseHero = ({
                 <video className='cover' loop autoPlay muted playsInline src={videoSrc}></video>
             </div>
 
-            <div className="padding text_blue py-12 md:py-24 space-y-12 md:space-y-24">
+            <div className="padding text_blue py-section space-y-block">
                 {/* Heading in col 1, features in col 2 */}
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 items-start gap-5 md:gap-10">
                     <div className="flex flex-col justify-between h-full">
-                        <h3 data-para-effect className='text-3xl md:text-5xl md:pr-32 leading-none'>{introHeading}</h3>
-                            <p className='text-xl max-sm:mt-2 max-w-lg leading-tight '>{introText}</p>
+                        <p data-para-effect className='h3 md:pr-32'>{introHeading}</p>
+                            <p className='para-lg max-sm:mt-2 max-w-lg'>{introText}</p>
                     </div>
 
                     <div className="flex flex-col w-full">
                         {features.map((stat, i) => (
                             <div key={i} className="flex justify-between items-center first:pt-0 py-4 border-b border-[#002bba20] last:border-b-0">
-                                <span data-para-effect className="text-xl font-medium">{stat.label}</span>
+                                <span data-para-effect className="para-lg font-medium">{stat.label}</span>
                                 <span className=" font-semibold ">{stat.value}</span>
                             </div>
                         ))}
@@ -313,7 +316,7 @@ const DetailedExpertiseHero = ({
                     <div className="flex items-center gap-10 md:gap-20 px-5 md:px-10 h-24 md:h-32">
                         {clientsData.map((item, i) => (
                             <div key={i} className="w-32 md:w-70 shrink-0">
-                                <Image src={item.icon} width={128} height={128} className="w-full h-auto object-contain" style={{ filter: "brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(5885%) hue-rotate(228deg) brightness(80%)" }} alt={item.title} />
+                                <ClientLogo src={item.icon} title={item.title} className="w-full text-[#002bba]" />
                             </div>
                         ))}
                     </div>

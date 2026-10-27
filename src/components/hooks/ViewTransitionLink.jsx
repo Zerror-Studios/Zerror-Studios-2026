@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransitionRouter } from "next-view-transitions";
+import { useRouter } from "next/navigation";
 
 export default function ViewTransitionLink({
   href,
@@ -10,7 +10,7 @@ export default function ViewTransitionLink({
   children,
   ...props
 }) {
-  const router = useTransitionRouter();
+  const router = useRouter();
 
   const handleClick = (e) => {
     e.preventDefault();

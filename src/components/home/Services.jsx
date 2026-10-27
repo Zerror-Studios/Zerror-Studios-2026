@@ -5,6 +5,8 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger'
 import SplitText from 'gsap/dist/SplitText'
 import React, { useEffect } from 'react'
 import useDevice from '../hooks/useDevice'
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,7 +112,7 @@ const Services = () => {
   return (
     <>
       <div className="w-full relative py-16 px-5 md:p-0 md:h-screen z-10 bg-white center text-center">
-        <h1 className="max-sm:text-[#002bba] text-5xl md:text-8xl  pb-5 leading-none primary-font md:w-[70%] md:bg-clip-text md:text-transparent md:bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
+        <h1 className="max-sm:text-[#002bba] pb-5 md:w-[70%] md:bg-clip-text md:text-transparent md:bg-[url('/images/homePage/mask_img.webp')] bg-fixed bg-cover bg-center">
           To build zero-error digital products where design and technology move as one.
         </h1>
       </div>
@@ -133,7 +135,7 @@ const Services = () => {
               className={`service-item  w-full group center flex-col gap-y-5  text-center h-full  max-sm:border-t max-sm:border-[#D3D3D3] max-sm:py-8 ${i === 0 || i === 1 ? "" : "md:border-t border-[#D3D3D3]"
                 }`}
             >
-              <h3 className="text-3xl primary-font uppercase  w-[80%] md:w-[40%]  text_blue leading-none transition-all duration-300">
+              <h3 className="h4 uppercase  w-[80%] md:w-[40%]  text_blue transition-all duration-300">
                 {item.title}
               </h3>
 
@@ -177,21 +179,14 @@ const Services = () => {
         })}
 
         <div className=" noise-bg max-sm:hidden! expand_circ overflow-hidden size-3.5 z-10 center absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shrink-0 bg_blue rounded-full ">
-          <div className="w-screen relative z-10  padding text-white grid grid-cols-[28%_30%_42%]">
-            <div className="">
-              <h2 className=' split_wrd primary-font   text-5xl  leading-none'>Our <br /> Clients</h2>
-            </div>
-            <div className="text-xs pt-4">
-              <p className='split_wrd font-thin'>Brands we’ve </p>
-              <p className='split_wrd font-thin'>worked with.</p>
-            </div>
-            <div className="text-3xl  pl-2">
-              <h3 className="split_wrd secondary-font">
-                <span className='opacity-0 pointer-events-none' aria-hidden="true">...........................</span>
-                We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.
-              </h3>
-            </div>
-          </div>
+          <SectionHeader
+              title={<>Our <Br /> Clients</>}
+              lines={["Brands we’ve", "worked with."]}
+              splitClass="split_wrd"
+              className="w-screen relative z-10 padding text-white grid"
+          >
+              We collaborate with teams that value clarity, structure, and long-term scalability. From early-stage startups to evolving brands, each partnership is approached as a system — built to perform, adapt, and grow over time.
+          </SectionHeader>
         </div>
 
       </div>

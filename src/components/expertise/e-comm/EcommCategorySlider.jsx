@@ -7,6 +7,8 @@ import Image from "next/image";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 gsap.registerPlugin(ScrollTrigger)
 
 const categories = ["Fashion", "Jewellery", "Health", "Food", "Lifestyle"];
@@ -91,31 +93,24 @@ const EcommCategorySlider = () => {
     return (
         <div
             ref={containerRef}
-            className="w-full bg_blue relative overflow-hidden py-8! md:py-16! mt-8! md:mt-16!"
+            className="w-full bg_blue relative overflow-hidden py-section! mt-section!"
         >
             <div className="w-full   padding py-0!  text-white ">
-                <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b  md:grid grid-cols-[28%_30%_42%]">
-                    <div className="">
-                        <h2 data-para-effect className=' capitalize primary-font   text-5xl  leading-none'>Shopify or a <br /> custom platform? </h2>
-                    </div>
-                    <div className="text-xs max-sm:hidden pt-4">
-                    </div>
-                    <div className=" text-3xl  md:pl-2">
-                        <h3 data-para-effect className="">
-                            <span className='opacity-0 secondary-font max-sm:hidden pointer-events-none'>...............</span>
-                            We're not platform loyalists. Shopify is right for most stores, and we build it well. But some
-                            businesses don't fit a template — and forcing them never ends well.
-                        </h3>
-                    </div>
-                </div>
+                <SectionHeader
+                    title={<>Shopify or a <Br /> custom platform?</>}
+                    titleClassName="capitalize"
+                    className="pb-block border-white/50 border-b"
+                >
+                    We're not platform loyalists. Shopify is right for most stores, and we build it well. But some businesses don't fit a template — and forcing them never ends well.
+                </SectionHeader>
             </div>
 
-            <div className="padding pb-0! pt-8! md:pt-12! flex flex-wrap gap-3">
+            <div className="padding pb-0! pt-block! flex flex-wrap gap-3">
                 {categories.map((cat) => (
                     <button
                         key={cat}
                         onClick={() => handleCategoryClick(cat)}
-                        className={`ecomm_cat_pill px-5 py-2 pb-1.5 rounded-full text-sm  uppercase  border transition-all duration-300 cursor-pointer ${activeCategory === cat
+                        className={`ecomm_cat_pill px-5 py-2 pb-1.5 rounded-full para-sm  uppercase  border transition-all duration-300 cursor-pointer ${activeCategory === cat
                             ? "bg-white font-semibold text-[#002bba] border-white"
                             : "bg-transparent text-white border-white/40 hover:border-white hover:bg-white/10"
                             }`}
@@ -126,7 +121,7 @@ const EcommCategorySlider = () => {
             </div>
 
             <div
-                className="ecomm_cat_slider_wrap mt-8 md:mt-12 padding py-0!"
+                className="ecomm_cat_slider_wrap mt-block padding py-0!"
                 style={{
                     opacity: isFading ? 0 : 1,
                     transition: "opacity 0.3s ease",

@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react'
 import Image from 'next/image';
 import { useParams, notFound } from 'next/navigation';
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -10,14 +10,18 @@ import SplitText from 'gsap/dist/SplitText';
 import { caseStudies } from '@/data/ProjectsData';
 import Button from '@/components/common/Button';
 import PixelGridCanvas from '@/components/common/PixelGridCanvas';
+import SectionHeader from '@/components/common/SectionHeader';
+import SliderArrows from '@/components/common/SliderArrows';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
 // One heading + points block in the scrolling right column
 const StoryBlock = ({ heading, children }) => (
-    <div className="border-t border-[#002bba20] pt-6 md:pt-8 space-y-4 md:space-y-6">
-        <h2 className="secondary-font text-3xl md:text-4xl leading-none">{heading}</h2>
-        <div className="space-y-3 text-xl leading-tight md:max-w-[85%]">{children}</div>
+    <div className="border-t border-[#002bba]/20 first:pt-0 first:border-none max-sm:pt-4 pt-block space-y-4">
+        <h2 className="h4">{heading}</h2>
+        <div className="para-lg space-y-3">{children}</div>
     </div>
 );
 
@@ -32,14 +36,14 @@ const MoreCard = ({ item }) => {
         >
             <div className="w-full relative aspect-video bg_blue overflow-hidden">
                 <div className="cover relative  transition-all duration-300">
-                    <Image src={item.cover_img} alt={`${item.title} website`} className="cover group-hover:scale-105 transition-all duration-300" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                    <Image src={item.cover_img} alt={`${item.title} website`} className="cover group-hover:scale-105 transition-all duration-300" fill sizes="(max-width: 768px) 85vw, 50vw" />
                 </div>
            
             </div>
             <div className="w-full">
                 <div className="flex justify-between gap-4">
-                    <h4 className="text-xl primary-font uppercase">{item.title}</h4>
-                    <h4 className="text-xl primary-font uppercase">{item.year}</h4>
+                    <h3 className="h6 uppercase">{item.title}</h3>
+                    <p className="h6 uppercase">{item.year}</p>
                 </div>
                 <p className="leading-none">{item.category}</p>
             </div>
@@ -51,12 +55,21 @@ const WorkDetail = () => {
     const { slug } = useParams()
     const index = caseStudies.findIndex((p) => p.slug === slug)
     const project = caseStudies[index]
-    // Next three case studies, wrapping round to the start
-    const moreProjects = index < 0 ? [] : [1, 2]
-        .map((n) => caseStudies[(index + n) % caseStudies.length])
+    // Every other case study, starting with the next one and wrapping round to the start
+    const moreProjects = index < 0 ? [] : caseStudies
+        .map((_, n) => caseStudies[(index + 1 + n) % caseStudies.length])
         .filter((p) => p.slug !== slug)
 
     const containerRef = useRef(null)
+
+    // More work carousel
+    const swiperRef = useRef(null)
+    const [isBeginning, setIsBeginning] = useState(true)
+    const [isEnd, setIsEnd] = useState(false)
+    const updateEdges = (swiper) => {
+        setIsBeginning(swiper.isBeginning)
+        setIsEnd(swiper.isEnd)
+    }
 
     useGSAP(() => {
         if (!project) return;
@@ -97,14 +110,14 @@ const WorkDetail = () => {
             />
 
             {/* Hero: name, tagline and live link */}
-            <section className="wd_hero opacity-0 padding w-full min-h-[65vh] pt-36 md:pt-44 pb-10  flex flex-col justify-end">
-                <div className="flex items-end justify-between">
-                    <div className="">
-                        <h1 className="wd_heading primary-font text-5xl md:text-8xl leading-none">{project.title}</h1>
-                        <p className="wd_fade text-xl leading-tight md:max-w-[70%]">{project.tagline}</p>
+            <section className="wd_hero opacity-0 padding w-full h-[65vh] md:h-[80vh]  pt-hero pb-section  flex flex-col justify-end">
+                <div className="md:flex items-end justify-between">
+                    <div>
+                        <h1 className="wd_heading">{project.title}</h1>
+                        <p className="wd_fade para-lg md:max-w-[70%]">{project.tagline}</p>
                     </div>
                     {project.liveLink && (
-                        <div className="wd_fade w-[15%] flex justify-end mt-6 md:mt-8">
+                        <div className="wd_fade md:w-[15%] md:flex justify-end mt-block">
                             <Button title="View live site" link={project.liveLink} />
                         </div>
                     )}
@@ -112,7 +125,7 @@ const WorkDetail = () => {
             </section>
 
             {/* Cover: video when there is one, image otherwise */}
-            <div data-hide-header className="wd_media w-full aspect-video border-t border-b border-[#002bba10] overflow-hidden bg-[#002bba10]">
+            <div data-hide-header className="wd_media w-full aspect-video border-t border-b border-[#002bba]/10 overflow-hidden bg-[#002bba]/10">
                 {project.cover_vid ? (
                     <video src={project.cover_vid} poster={project.cover_img} loop autoPlay muted playsInline className="cover" />
                 ) : (
@@ -121,13 +134,14 @@ const WorkDetail = () => {
             </div>
 
             {/* Details: facts pinned left, story scrolls right */}
-            <section className="padding py-12 md:py-24 ">
-                <div className="w-full md:grid grid-cols-2 ">
-                    <aside className="md:sticky md:top-28 self-start space-y-6 md:space-y-8 pb-12 md:pb-0 md:pr-44">
+            {/* Same 28 / 30 / 42 grid as the section headers: facts in the first column, story in the intro column */}
+            <section className="padding py-section">
+                <div className="w-full space-y-block md:space-y-0 md:grid grid-cols-[28%_30%_42%]">
+                    <aside className="md:sticky md:top-28 self-start space-y-block">
                         {project.keywords?.length > 0 && (
                             <div className="flex flex-wrap gap-2">
                                 {project.keywords.map((k) => (
-                                    <span key={k} className="text-xs uppercase px-4 py-2 border border-[#002bba15] bg-[#002bba10] leading-none rounded-sm">{k}</span>
+                                    <span key={k} className="label uppercase px-4 py-2  border-[#002bba15] border bg-[#002bba10] rounded-sm">{k}</span>
                                 ))}
                             </div>
                         )}
@@ -138,15 +152,15 @@ const WorkDetail = () => {
                                 ["Services", project.services?.join(", ")],
                                 ["Year", project.year],
                             ].filter(([, v]) => v).map(([label, value]) => (
-                                <div key={label} className="flex justify-between gap-6 py-3 border-b border-[#002bba20] first:border-t">
-                                    <span className="text-xs uppercase font-thin pt-1">{label}</span>
-                                    <span className="font-medium text-right">{value}</span>
+                                <div key={label} className="flex justify-between gap-6 py-3 border-b border-[#002bba]/20 first:border-t">
+                                    <span className="label uppercase font-thin pt-1">{label}</span>
+                                    <span className="para text-right">{value}</span>
                                 </div>
                             ))}
                         </div>
                     </aside>
 
-                    <div className="space-y-12 md:space-y-16 ">
+                    <div className="md:col-start-3 md:pl-2 space-y-block">
                         <StoryBlock heading="About the client">
                             <p>{project.about}</p>
                             <p>{project.whatTheyDo}</p>
@@ -167,14 +181,43 @@ const WorkDetail = () => {
                 </div>
             </section>
 
-            {/* More work: next three case studies, styled like the home page Our Work cards */}
+            {/* More work: every other case study in a carousel, styled like the home page Our Work cards */}
             {moreProjects.length > 0 && (
-                <section className="w-full py-8 md:py-16 space-y-8 md:space-y-16 border-t border-[#002bba20]">
+                <section className="w-full py-section space-y-block border-t border-[#002bba]/20">
+                    <div className="padding">
+                        <SectionHeader
+                            title="Every brand is different"
+                            lines={["Other brands", "we've built."]}
+                            aside={
+                                <SliderArrows
+                                    onPrev={() => swiperRef.current?.slidePrev()}
+                                    onNext={() => swiperRef.current?.slideNext()}
+                                    isBeginning={isBeginning}
+                                    isEnd={isEnd}
+                                />
+                            }
+                        />
+                    </div>
 
-                    <div className="padding w-full grid grid-cols-1 md:grid-cols-2 gap-5">
-                        {moreProjects.map((item) => (
-                            <MoreCard key={item.slug} item={item} />
-                        ))}
+                    <div className="padding">
+                        <Swiper
+                            onSwiper={(swiper) => {
+                                swiperRef.current = swiper
+                                updateEdges(swiper)
+                            }}
+                            onSlideChange={updateEdges}
+                            onResize={updateEdges}
+                            slidesPerView="auto"
+                            spaceBetween={10}
+                            breakpoints={{ 768: { spaceBetween: 20 } }}
+                            grabCursor
+                        >
+                            {moreProjects.map((item) => (
+                                <SwiperSlide key={item.slug} className="w-[100%]! md:w-[calc(50%-10px)]!">
+                                    <MoreCard item={item} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </section>
             )}

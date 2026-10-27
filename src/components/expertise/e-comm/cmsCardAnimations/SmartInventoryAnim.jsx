@@ -263,9 +263,9 @@ function SmartInventoryAnim() {
                         {/* Title & Description */}
                         <div className="mb-1.5 shrink-0">
                             <div className="flex items-center justify-between">
-                                <h2 className="text-[11px] sm:text-xs md:text-sm font-bold text-[#170b3b] leading-tight truncate">
+                                <div className="text-[11px] sm:text-xs md:text-sm font-bold text-[#170b3b] leading-tight truncate">
                                     Products (50)
-                                </h2>
+                                </div>
                                 <button className='bg-[#3b82f6] text-white text-[8px] px-1 py-1 rounded-sm leading-none'>+ Add</button>
                             </div>
                             <p className="text-[7px] sm:text-[8px] text-slate-400 leading-tight truncate">

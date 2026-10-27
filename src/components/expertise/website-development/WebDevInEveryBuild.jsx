@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
+import Br from '@/components/common/Br';
 import Link from 'next/link'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -141,35 +142,68 @@ const chapters = [
     },
 ];
 
-// Clean grid cell: icon, title and line, separated by hairlines
+// Clean grid cell: icon, title and line. On mobile it is a square card in a snap scroller.
 const SpecCell = ({ row }) => {
     const { Icon } = row;
 
     return (
-        <div className="spec_row group md:odd:last:col-span-2 flex rounded-xl flex-col gap-6 md:gap-20 p-6  bg-[#002bba10] border border-[#002bba]/15">
-            <div className="w-9 h-9 md:w-14 md:h-14 opacity-70 transition-opacity duration-300 group-hover:opacity-100">
+        <div className="spec_row group md:odd:last:col-span-2 flex rounded-xl flex-col justify-between gap-6 md:gap-20 p-6 bg-[#002bba10] border border-[#002bba]/15 max-md:w-[85vw] max-md:max-w-80 max-md:aspect-square max-md:shrink-0 max-md:snap-start">
+            <div className="w-24 h-24 md:w-14 md:h-14">
                 <Icon />
             </div>
             <div className="space-y-2">
-                <h4 className="secondary-font text-2xl md:text-3xl leading-none">{row.title}</h4>
+                <h3 className="secondary-font font-semibold h5">{row.title}</h3>
                 <p className="leading-tight max-w-sm">{row.line}</p>
             </div>
         </div>
     );
 };
 
+// Desktop: two-column grid. Mobile: horizontal snap scroller with a counter and progress bar.
+const SpecRows = ({ rows }) => {
+    const scrollerRef = useRef(null);
+    const [active, setActive] = useState(0);
+
+    const onScroll = () => {
+        const el = scrollerRef.current;
+        const card = el?.firstElementChild;
+        if (!card) return;
+        const step = card.offsetWidth + parseFloat(getComputedStyle(el).columnGap || 0);
+        // At the far end the last card can't snap to the start, so count it as reached
+        const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 2;
+        setActive(atEnd ? rows.length - 1 : Math.round(el.scrollLeft / step));
+    };
+
+    return (
+        <>
+            <div
+                ref={scrollerRef}
+                onScroll={onScroll}
+                className="max-md:flex max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:-mx-4 max-md:px-4 max-md:scroll-px-4 scroller_none [scrollbar-width:none] md:grid md:grid-cols-2 gap-3 md:gap-5"
+            >
+                {rows.map((row, ri) => (
+                    <SpecCell key={ri} row={row} />
+                ))}
+            </div>
+
+            {/* Mobile position indicator */}
+            <div className="md:hidden flex items-center gap-4 pt-5">
+                <span className="text-xs tabular-nums shrink-0">
+                    {String(active + 1).padStart(2, "0")} / {String(rows.length).padStart(2, "0")}
+                </span>
+                <div className="relative h-px flex-1 bg-[#002bba]/15">
+                    <div
+                        className="absolute inset-y-0 left-0 bg_blue transition-[width] duration-300 ease-out"
+                        style={{ width: `${((active + 1) / rows.length) * 100}%` }}
+                    />
+                </div>
+            </div>
+        </>
+    );
+};
+
 const WebDevInEveryBuild = () => {
     const container = useRef(null);
-    // SplitText breaks at every <br>, even a CSS-hidden one, so drop it from the DOM on small screens
-    const [isSmall, setIsSmall] = useState(false);
-
-    useEffect(() => {
-        const mq = window.matchMedia("(max-width: 639px)");
-        const update = () => setIsSmall(mq.matches);
-        update();
-        mq.addEventListener("change", update);
-        return () => mq.removeEventListener("change", update);
-    }, []);
 
     useGSAP(() => {
         gsap.utils.toArray(".spec_chapter").forEach((chapter) => {
@@ -189,23 +223,19 @@ const WebDevInEveryBuild = () => {
     }, { scope: container });
 
     return (
-        <div ref={container} className="w-full relative text_blue py-8 md:py-16 border-b">
+        <div ref={container} className="w-full relative text_blue py-section border-b">
             {chapters.map((chapter, ci) => (
-                <div key={ci} className="spec_chapter padding w-full md:grid grid-cols-2 first:pt-0 last:pb-0 py-8 md:py-16">
+                <div key={ci} className="spec_chapter padding w-full md:grid grid-cols-2 first:pt-0 last:pb-0 py-section">
                     {/* Pinned while this chapter's rows scroll past */}
-                    <div className="md:sticky md:top-28 self-start space-y-4 md:space-y-6 pb-8 md:pb-0 md:pr-12">
-                        <h2 data-para-effect className="primary-font text-5xl leading-none">
-                            {isSmall ? chapter.heading.join(" ") : <>{chapter.heading[0]}<br />{chapter.heading[1]}</>}
+                    <div className="md:sticky md:top-28 self-start space-y-4 md:space-y-6 pb-block md:pb-0 md:pr-12">
+                        <h2 data-para-effect>
+                            {chapter.heading[0]} <Br />{chapter.heading[1]}
                         </h2>
-                        <p className=" text-xl leading-tight  md:max-w-[70%]">{chapter.statement}</p>
+                        <p className="para-lg  md:max-w-[70%]">{chapter.statement}</p>
                     </div>
 
                     <div className="w-full">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            {chapter.rows.map((row, ri) => (
-                                <SpecCell key={ri} row={row} />
-                            ))}
-                        </div>
+                        <SpecRows rows={chapter.rows} />
                         {chapter.footer && (
                             <div className="pt-5">
                                 {chapter.footer}

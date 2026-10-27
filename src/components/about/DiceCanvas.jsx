@@ -1,23 +1,30 @@
 "use client";
-import { Environment, OrbitControls } from '@react-three/drei';
+import { Environment, useEnvironment } from '@react-three/drei';
 import TyrusCubeModel from './../../../public/models/TyrusCubeModel';
 import { Canvas } from '@react-three/fiber';
-import { useGSAP } from '@gsap/react';
+import { useEffect } from 'react';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const DiceCanvas = () => {
+// Self-hosted copy of drei's "studio" preset (the preset downloads it from a slow third-party CDN)
+export const ENV_URL = "/hdri/studio_small_03_1k.hdr";
+useEnvironment.preload({ files: ENV_URL });
 
-  useGSAP(() => {
-
+// Mounts only once the model and lighting have loaded (the scene suspends until then),
+// so the fade starts when there is something to show.
+const FadeInWhenReady = () => {
+  useEffect(() => {
     gsap.to(".tyrus_canvas", {
       opacity: 1,
       ease: "expo.out",
       duration: .8,
-      delay: 1.5
     })
-  })
+  }, [])
+  return null
+}
+
+const DiceCanvas = () => {
 
   const isMobile =
     typeof window !== "undefined" &&
@@ -30,7 +37,8 @@ const DiceCanvas = () => {
         dpr={[1, 2]}
       >
         <TyrusCubeModel />
-        <Environment preset="studio" />
+        <Environment files={ENV_URL} />
+        <FadeInWhenReady />
       </Canvas>
   );
 };

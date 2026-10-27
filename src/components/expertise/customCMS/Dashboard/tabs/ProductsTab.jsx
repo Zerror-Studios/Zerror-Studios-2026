@@ -72,7 +72,7 @@ export default function ProductsTab({ searchTerm, theme }) {
         {/* Toolbar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
-            <h3 className={`text-[13px] font-semibold ${t.strong}`}>Products</h3>
+            <div className={`text-[13px] font-semibold ${t.strong}`}>Products</div>
             <p className={`text-[11px] mt-0.5 ${t.muted}`}>{filtered.length} of {products.length} items</p>
           </div>
           <button
@@ -133,7 +133,7 @@ export default function ProductsTab({ searchTerm, theme }) {
           >
             <div className="flex items-start justify-between mb-5">
               <div>
-                <h3 id="add-product-title" className={`text-sm font-semibold ${t.strong}`}>Add product</h3>
+                <div id="add-product-title" className={`text-sm font-semibold ${t.strong}`}>Add product</div>
                 <p className={`text-[11px] mt-0.5 ${t.muted}`}>It goes live in your store straight away.</p>
               </div>
               <button onClick={() => setIsModalOpen(false)} aria-label="Close" className={`p-1 rounded-md ${t.muted} ${t.hover}`}>✕</button>

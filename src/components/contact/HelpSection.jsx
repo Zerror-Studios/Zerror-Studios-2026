@@ -8,9 +8,9 @@ const HelpSection = ({ formData, setFormData, errors = {} }) => {
     <div className="w-full h-full flex flex-col">
       <div className="w-full h-fit  text-white gap-18 flex flex-col">
         <div>
-          <h3 className="  secondary-font   text-3xl">
+          <h2 className="para-lead">
             What do you need? <span className="text-red-500">*</span>
-          </h3>
+          </h2>
           <p className="text-white mt-3">Pick one or more.</p>
         </div>
 

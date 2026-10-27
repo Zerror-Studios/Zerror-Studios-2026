@@ -34,6 +34,8 @@ import {
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import SectionHeader from "@/components/common/SectionHeader";
+import Br from "@/components/common/Br";
 gsap.registerPlugin(ScrollTrigger);
 
 /* ══════════════════════════ DATA ══════════════════════════ */
@@ -467,7 +469,7 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
     const scoreColor = getScoreColor(score);
 
     return (
-        <div className={`dashboard-panel rounded-2xl overflow-hidden border bg-white shadow-xl transition-[border-color,box-shadow] duration-500 flex flex-col ${isWinner ? "border-[#002bba]/50 shadow-2xl ring-2 ring-[#002bba]/20" : "border-black/10"}`}>
+        <div className={`ui-mock dashboard-panel rounded-2xl overflow-hidden border bg-white shadow-xl transition-[border-color,box-shadow] duration-500 flex flex-col ${isWinner ? "border-[#002bba]/50 shadow-2xl ring-2 ring-[#002bba]/20" : "border-black/10"}`}>
             {/* ─── Dashboard Title Bar ─── */}
             <div className="flex items-center justify-between px-5 py-3 border-b border-black/10 bg-black/[0.02]">
                 <div className="flex items-center gap-2.5">
@@ -492,7 +494,7 @@ const DashboardPanel = ({ platform, data, icon: PlatformIcon, activeTab, isWinne
             <div className="px-6 py-4 border-b border-black/10 bg-white">
                 <div className="flex items-center justify-between">
                     <div>
-                        <h4 className="text-3xl md:text-4xl text-black font-semibold">{platform}</h4>
+                        <div className="text-3xl md:text-4xl text-black font-semibold">{platform}</div>
                         <p className="text-sm text-black opacity-70 mt-1">{data.tagline}</p>
                     </div>
                     <div className="flex py-2 items-center gap-3">
@@ -674,30 +676,20 @@ const EcommPlatformCompare = () => {
     }, [activeTab]);
 
     return (
-        <div ref={containerRef} className="w-full bg_blue relative overflow-hidden pt-8! md:pt-16!">
+        <div ref={containerRef} className="w-full bg_blue relative overflow-hidden pt-section!">
 
             {/* ── Heading ── */}
             <div className="w-full padding py-0! text-white">
-                <div className="w-full space-y-12 pb-12 border-white/50 md:space-y-0 border-b md:grid grid-cols-[28%_30%_42%]">
-                    <div>
-                        <h2 data-para-effect className="primary-font text-5xl">
-                            Shopify <br /> or Zcom?
-                        </h2>
-                    </div>
-                    <div className="text-xs max-sm:hidden pt-4"></div>
-                    <div className="text-3xl md:pl-2">
-                        <h3 data-para-effect>
-                            <span className="opacity-0 secondary-font max-sm:hidden pointer-events-none">
-                                ..................
-                            </span>
-                            Both are custom-designed by us. The difference is who runs the platform underneath.
-                        </h3>
-                    </div>
-                </div>
+                <SectionHeader
+                    title={<>Shopify <Br /> or Zcom?</>}
+                    className="pb-block border-white/50 border-b"
+                >
+                    Both are custom-designed by us. The difference is who runs the platform underneath.
+                </SectionHeader>
             </div>
 
             {/* ── Tabs ── */}
-            <div className="compare-tabs-wrap padding pb-0! pt-8! md:pt-12! flex flex-wrap gap-3">
+            <div className="compare-tabs-wrap padding pb-0! pt-block! flex flex-wrap gap-3">
                 {tabs.map((t) => {
                     const Icon = t.icon;
                     return (
@@ -719,7 +711,7 @@ const EcommPlatformCompare = () => {
             </div>
 
             {/* ── Dashboard Panels ── */}
-            <div ref={panelsRef} className="dashboards-wrap padding py-0! my-8 md:my-12">
+            <div ref={panelsRef} className="dashboards-wrap padding py-0! my-block">
                 <div className="dashboards-compare-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-y-0 lg:gap-x-6">
                     <DashboardPanel
                         platform="Zcom"

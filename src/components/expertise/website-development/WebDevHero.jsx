@@ -1,3 +1,4 @@
+import Br from "@/components/common/Br";
 import Button from '@/components/common/Button'
 import Image from 'next/image'
 import React from 'react'
@@ -7,8 +8,8 @@ const WebDevHero = () => {
         <>
             <div className="w-full h-screen center capitalize text_blue gap-y-5 text-center primary-font flex-col">
                 <p>Website Development</p>
-                <h1 className='text-8xl'>Build Your Website <br /> With Ease</h1>
-                <p className=''>Not just websites, we create experiences people remember.</p>
+                <h1>Build Your Website <Br /> With Ease</h1>
+                <p>Not just websites, we create experiences people remember.</p>
                 <Button title="Start Building" link="/contact" />
             </div>
             <div className="w-full center">

@@ -119,12 +119,12 @@ const CustomWhyCms = () => {
                     />
                 </div>
                 <div className=" top-8 absolute  md:hidden z-10 padding py-0! space-y-2">
-                    <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Why custom</h2>
-                    <p className='max-w-xs  leading-tight opacity-80'>Software that fits your team, not the other way round.</p>
+                    <h2 data-para-effect>Why custom</h2>
+                    <p className='max-w-xs para-lg opacity-80'>Software that fits your team, not the other way round.</p>
                 </div>
                 <div className=" max-sm:hidden z-10 padding py-0! space-y-2">
-                    <h2 data-para-effect className=' primary-font   text-5xl  leading-none'>Why custom</h2>
-                    <p className='max-w-xs text-xl leading-tight opacity-80'>Software that fits your team, not the other way round.</p>
+                    <h2 data-para-effect>Why custom</h2>
+                    <p className='max-w-xs para-lg opacity-80'>Software that fits your team, not the other way round.</p>
                 </div>
                 <div
                     className="arc_container"
@@ -141,9 +141,9 @@ const CustomWhyCms = () => {
                                 "--index": index,
                             }}
                         >
-                            <span className=" primary-font text-5xl md:text-8xl translate-y-2.5 arc_num">{item.num}</span>
+                            <span className="h1 translate-y-2.5 arc_num">{item.num}</span>
                             <div className="arc_text flex flex-col max-w-[18rem] w-[18rem] space-y-2 md:max-w-sm whitespace-normal">
-                                <h4 className="font-bold text-3xl">{item.title}</h4>
+                                <h3 className="h4 font-bold">{item.title}</h3>
                                 <p className=" leading-tight">{item.desc}</p>
                             </div>
                         </div>
