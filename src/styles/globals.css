@@ -366,7 +366,10 @@ button {
 
   ::view-transition-group(site-header),
   ::view-transition-old(site-header),
-  ::view-transition-new(site-header) {
+  ::view-transition-new(site-header),
+  ::view-transition-group(.page-trigger),
+  ::view-transition-old(.page-trigger),
+  ::view-transition-new(.page-trigger) {
     animation: none;
   }
 

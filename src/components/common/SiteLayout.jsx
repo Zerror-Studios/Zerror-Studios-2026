@@ -96,6 +96,15 @@ export default function SiteLayout({ children }) {
             <Header />
           </header>
 
+          {/* React only starts a view transition when a boundary animates, so with .page-fade
+              off on phones nothing would run. This 1px boundary triggers it and the root
+              snapshot fades instead (see globals.css). */}
+          {pageTransition === "none" && (
+            <ViewTransition key={`vt-trigger-${pathname}`} default="none" enter="page-trigger" exit="page-trigger">
+              <div aria-hidden="true" className="fixed top-0 left-0 size-px pointer-events-none" />
+            </ViewTransition>
+          )}
+
           <ViewTransition key={pathname} default="none" enter={pageTransition} exit={pageTransition}>
             <main>
               {children}

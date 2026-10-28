@@ -45,7 +45,7 @@ const Slide12 = () => {
 
           {/* Middle: Overview */}
           <div className="lg:col-span-6 md:pr-10">
-            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">OVERVIEW</h3>
+            <h3 data-para-effect className=" uppercase font-semibold text-sm mb-2 text-white">OVERVIEW</h3>
             <p data-para-effect className=" leading-tight text-sm ">
               Deveshe Dreams partnered with us to build a completely custom e-commerce platform reflecting the exclusivity, craftsmanship, and intentionality of their limited-collection fashion model. Traditional e-commerce systems built for mass retail couldn't support their operational workflows or premium brand positioning. We designed a proprietary platform tailored specifically to their business — combining sophisticated digital storytelling with custom infrastructure for pre-orders, collection drops, inventory management, and customer experience. The result was a significant transformation in both brand perception and business performance.
             </p>
@@ -53,7 +53,7 @@ const Slide12 = () => {
 
           {/* Right: Scope of Work */}
           <div className="lg:col-span-2">
-            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">SCOPE OF WORK</h3>
+            <h3 data-para-effect className=" uppercase font-semibold text-sm mb-2 text-white">SCOPE OF WORK</h3>
             <ul data-para-effect className=" space-y-1 text-sm leading-none">
               <li>Custom E-Commerce Platform Development</li>
               <li>Custom Storefront Design & Development</li>

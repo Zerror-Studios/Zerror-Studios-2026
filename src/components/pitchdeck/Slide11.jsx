@@ -45,7 +45,7 @@ const Slide11 = () => {
 
           {/* Middle: Overview */}
           <div className="lg:col-span-6 md:pr-10">
-            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">OVERVIEW</h3>
+            <h3 data-para-effect className=" uppercase font-semibold text-sm mb-2 text-white">OVERVIEW</h3>
             <p data-para-effect className=" leading-tight text-sm ">
               Salman Khan Films partnered with us to create a premium digital showcase reflecting the scale, prestige, and timelessness of one of Bollywood's most recognized production houses. Rather than building a trend-driven entertainment website, the focus was on crafting a refined and cinematic digital experience designed to remain visually relevant across multiple film cycles. Through custom design, intentional motion, and restrained visual storytelling, we developed a platform that continues to feel contemporary years after launch.
             </p>
@@ -53,7 +53,7 @@ const Slide11 = () => {
 
           {/* Right: Scope of Work */}
           <div className="lg:col-span-2">
-            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">SCOPE OF WORK</h3>
+            <h3 data-para-effect className=" uppercase font-semibold text-sm mb-2 text-white">SCOPE OF WORK</h3>
             <ul data-para-effect className=" space-y-1 text-sm leading-none">
               <li>Custom Website Design & Development</li>
               <li>Creative Direction & Digital Experience Design</li>

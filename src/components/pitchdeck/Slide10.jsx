@@ -44,7 +44,7 @@ const Slide10 = () => {
 
           {/* Middle: Overview */}
           <div className="lg:col-span-6 md:pr-10">
-            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">OVERVIEW</h3>
+            <h3 data-para-effect className=" uppercase font-semibold text-sm mb-2 text-white">OVERVIEW</h3>
             <p data-para-effect className=" leading-tight text-sm ">
               Manifest partnered with us to migrate from a restrictive WordPress setup to a fully custom publishing platform built for scalability, performance, and long-term growth. The challenge wasn't just redesigning the experience — it was preserving five years of SEO authority, editorial content, media assets, and search rankings without downtime or data loss. We engineered a custom migration infrastructure and rebuilt the platform from the ground up, enabling a seamless transition with zero disruption to readers while significantly improving performance, flexibility, and publishing capabilities. The result was a 200% increase in traffic post-launch alongside a completely preserved content ecosystem.
             </p>
@@ -52,7 +52,7 @@ const Slide10 = () => {
 
           {/* Right: Scope of Work */}
           <div className="lg:col-span-2">
-            <h3 data-para-effect className=" uppercase text-sm mb-2 text-white">SCOPE OF WORK</h3>
+            <h3 data-para-effect className=" uppercase font-semibold text-sm mb-2 text-white">SCOPE OF WORK</h3>
             <ul data-para-effect className=" space-y-1 text-sm leading-none">
               <li>Custom CMS Development</li>
               <li>Wordpress Migration Infrastructure</li>

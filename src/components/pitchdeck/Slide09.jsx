@@ -40,7 +40,7 @@ const Slide09 = () => {
 
           {/* Middle: Overview */}
           <div className="lg:col-span-6 md:pr-10">
-            <h3 data-para-effect className=" uppercase text-sm  mb-2 text-white">OVERVIEW</h3>
+            <h3 data-para-effect className=" uppercase text-sm font-semibold  mb-2 text-white">OVERVIEW</h3>
             <p data-para-effect className=" leading-tight text-sm ">
               RPSG Media partnered with us to launch the India editions of The Hollywood Reporter, Esquire, and Robb Report through a completely custom publishing ecosystem built for scale, speed, and brand distinction. Instead of relying on restrictive templates, we developed a unified backend with tailored CMS workflows and custom websites for each publication, optimized individually for breaking news, editorial storytelling, and luxury curation. The result: 500+ editors publishing seamlessly, 3M+ monthly users, and all three brands reaching #1 category rankings within 12 months.
             </p>
@@ -48,7 +48,7 @@ const Slide09 = () => {
 
           {/* Right: Scope of Work */}
           <div className="lg:col-span-2">
-            <h3 data-para-effect className=" uppercase  mb-2 text-sm text-white">SCOPE OF WORK</h3>
+            <h3 data-para-effect className=" uppercase  mb-2 font-semibold text-sm text-white">SCOPE OF WORK</h3>
             <ul data-para-effect className=" space-y-1 text-sm leading-none">
               <li>Custom CMS Development</li>
               <li>Custom Website Design & Development</li>
