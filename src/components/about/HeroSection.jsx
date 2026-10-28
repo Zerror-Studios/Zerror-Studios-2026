@@ -13,6 +13,7 @@ import { preload } from "react-dom";
 // three.js is heavy: load the dice in its own chunk so the hero text renders and animates first
 const DiceCanvas = dynamic(() => import("./DiceCanvas"), { ssr: false });
 import PixelGridCanvas from "@/components/common/PixelGridCanvas";
+import Signature from "./Signature";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -87,7 +88,7 @@ const HeroSection = () => {
         {showDice && <DiceCanvas />}
       </div>
 
-      <div className="w-full aboutTitle flex -mt-[100vh] py-44 max-sm:pb-20  ">
+      <div className="w-full aboutTitle flex -mt-[100vh] pt-hero pb-section h-[65vh] md:h-[80vh]  items-center  ">
         <h1 className="heading_split text_blue md:w-[80%]">
           A studio for brands that refuse to look average.
         </h1>
@@ -149,7 +150,10 @@ const HeroSection = () => {
 
       {/* Extends the dice's sticky range by one screen; ImageEffect overlaps this with -mt-[100vh],
           so the dice un-sticks exactly when the signature section reaches top top */}
-      <div className="h-screen w-full pointer-events-none" aria-hidden="true" />
+      <div className="h-screen center w-full pointer-events-none" aria-hidden="true">
+        <Signature className="w-60 md:hidden translate-y-44 relative z-10" />
+
+      </div>
     </div>
   );
 };

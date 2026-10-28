@@ -31,7 +31,16 @@ const About = () => {
         const txt_anime_2 = SplitText.create(".txt_anime_2", { type: "words, chars" });
         gsap.set([txt_anime.chars, txt_anime_2.words], { yPercent: 100, display: "inline-block" })
 
+        // Phones: distance from the screen centre down to the circles' centre. The ZERROR
+        // word starts there (on the circles) and rises to the centre as it scales up.
+        const circleOffset = () => {
+            const circ = document.querySelector(".circ_1")
+            if (!circ?.offsetParent) return 0
+            return circ.offsetTop + circ.offsetHeight / 2 - circ.offsetParent.clientHeight / 2
+        }
+
         if (window.innerWidth < 750) {
+            gsap.set(".div_scale", { y: circleOffset })
             gsap.set(".circ_1", { x: "-20vw" })
             gsap.set(".circ_2", { x: "35vw" })
             gsap.set(".circ_3", { x: "80vw" })
@@ -134,9 +143,16 @@ const About = () => {
                 }, "<+=0.1")
                 .to(".div_scale", {
                     scale: 1.5,
+                    y: 0,
                     ease: "expo.out",
                     duration: 1
                 })
+                .to(".abt_mob_head", {
+                    opacity: 0,
+                    y: -40,
+                    ease: "power2.out",
+                    duration: 0.5
+                }, "<")
         }
 
 
@@ -239,22 +255,32 @@ const About = () => {
             <div className=" about_paren   text-white z-10   w-full h-[800vh] md:h-[700vh] relative ">
 
                 <div className="sticky top-0 center w-full h-screen overflow-hidden">
-                    <div className="circ_1 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
+                    {/* Phones: "The studio" header sits at the top of this screen, circles at the bottom */}
+                    <div className="abt_mob_head min-[750px]:hidden absolute top-0 left-0 w-full padding pt-28">
+                        <SectionHeader
+                            title="The studio"
+                            lines={["Brands,", "built whole."]}
+                        >
+                            A design studio in Mumbai. Since 2022, we have built brands for publishers, film houses, fashion labels and founders on day one.
+                        </SectionHeader>
+                    </div>
+
+                    <div className="circ_1 size-[50vw] md:size-[22vw] mob_cir center  absolute max-[750px]:bottom-[16vh]  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
                             <p className=' abt_spt_1 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Creativity</p>
                         </div>
                     </div>
-                    <div className="circ_2 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
+                    <div className="circ_2 size-[50vw] md:size-[22vw] mob_cir center  absolute max-[750px]:bottom-[16vh]  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
                             <p className='abt_spt_2 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Efficiency</p>
                         </div>
                     </div>
-                    <div className="circ_3 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
+                    <div className="circ_3 size-[50vw] md:size-[22vw] mob_cir center  absolute max-[750px]:bottom-[16vh]  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
                             <p className='abt_spt_3 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Entertainment</p>
                         </div>
                     </div>
-                    <div className="circ_4 size-[50vw] md:size-[22vw] mob_cir center  absolute  border border-white rounded-full">
+                    <div className="circ_4 size-[50vw] md:size-[22vw] mob_cir center  absolute max-[750px]:bottom-[16vh]  border border-white rounded-full">
                         <div className="block w-fit overflow-hidden">
                             <p className='abt_spt_4 text-[5vw] md:text-3xl uppercase secondary-font font-semibold '>Empathy</p>
                         </div>

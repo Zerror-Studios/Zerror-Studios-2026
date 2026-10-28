@@ -6,7 +6,7 @@
    space-y-block, pt-hero, p-card, etc. Values switch at md below.
    ------------------------------------------------------------------ */
 @theme {
-  --spacing-section: 2rem;  /* top/bottom padding of every section */
+  --spacing-section: 3rem;  /* top/bottom padding of every section */
   --spacing-block: 1.5rem;    /* section header → content, and between big blocks in a section */
   --spacing-block-half: calc(var(--spacing-block) / 2); /* half of block; follows it at every breakpoint */
   --spacing-hero: 8rem;     /* top padding of a page hero, clears the fixed header */
@@ -14,7 +14,7 @@
 }
 @media (min-width: 768px) {
   :root {
-    --spacing-section: 4rem;
+    --spacing-section: 4.5rem;
     --spacing-block: 4rem;
     --spacing-hero: 11rem;
     --spacing-card: 2.5rem;
@@ -353,9 +353,37 @@ button {
   animation: none;
 }
 
+/* Phones and touch devices: SiteLayout turns off .page-fade there (snapshotting the
+   whole page runs them out of memory and the tab reloads). Fade the root snapshot
+   instead, which is only viewport-sized, and give the header its own snapshot so it
+   stays still. Media query must match the one in SiteLayout. */
+@media (max-width: 1023px), (pointer: coarse) {
+  /* Only while a transition runs: a view-transition-name makes the header a backdrop
+     root, which stops its backdrop-blur from blurring the page behind it */
+  html:active-view-transition .header_wrapper {
+    view-transition-name: site-header;
+  }
+
+  ::view-transition-group(site-header),
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) {
+    animation: none;
+  }
+
+  ::view-transition-old(root) {
+    animation: page-fade-out 0.4s cubic-bezier(0.4, 0, 1, 1) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-fade-in 0.55s cubic-bezier(0, 0, 0.2, 1) 0.3s both;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(.page-fade),
-  ::view-transition-new(.page-fade) {
+  ::view-transition-new(.page-fade),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
     animation: none;
   }
 }

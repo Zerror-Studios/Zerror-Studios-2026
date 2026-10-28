@@ -41,7 +41,7 @@ const SectionHeader = ({
       </div>
 
       {!wideTitle && (
-        <div className="label max-sm:hidden pt-4">
+        <div className="label max-sm:hidden pt-2">
           {lines.map((line, i) => (
             <p key={i} {...anim} className={cx(splitClass, "font-thin")}>
               {line}

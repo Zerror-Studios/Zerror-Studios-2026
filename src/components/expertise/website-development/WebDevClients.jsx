@@ -2,6 +2,7 @@
 import { RiDoubleQuotesR } from '@remixicon/react'
 import SliderArrows from '@/components/common/SliderArrows';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from 'swiper/modules';
 import "swiper/css";
 import SectionHeader from '@/components/common/SectionHeader';
 import React, { useRef, useState } from 'react'
@@ -126,6 +127,15 @@ const WebDevClients = ({ line = null }) => {
     const [isEnd, setIsEnd] = useState(false);
     const swiperRef = useRef(null);
     const containerRef = useRef()
+    const [activeSlide, setActiveSlide] = useState(0);
+
+    // Fill of the active pagination pill, driven by the autoplay timer (set directly, no re-render)
+    const dotFillRefs = useRef([]);
+    const updateDotFill = (swiper, _time, progress) => {
+        dotFillRefs.current.forEach((el, i) => {
+            if (el) el.style.transform = `scaleX(${i === swiper.realIndex ? 1 - progress : 0})`;
+        });
+    };
 
     useGSAP(() => {
         gsap.from(".clien_crds", {
@@ -147,12 +157,15 @@ const WebDevClients = ({ line = null }) => {
                     title={<>What clients <Br /> say</>}
                     lines={["In their words."]}
                     aside={
-                        <SliderArrows
-                            onPrev={() => swiperRef.current?.slidePrev()}
-                            onNext={() => swiperRef.current?.slideNext()}
-                            isBeginning={isBeginning}
-                            isEnd={isEnd}
-                        />
+                        // Phones use the dots under the slider instead
+                        <div className="max-md:hidden">
+                            <SliderArrows
+                                onPrev={() => swiperRef.current?.slidePrev()}
+                                onNext={() => swiperRef.current?.slideNext()}
+                                isBeginning={isBeginning}
+                                isEnd={isEnd}
+                            />
+                        </div>
                     }
                 />
             </div>
@@ -176,7 +189,11 @@ const WebDevClients = ({ line = null }) => {
                     onSlideChange={(swiper) => {
                         setIsBeginning(swiper.isBeginning);
                         setIsEnd(swiper.isEnd);
+                        setActiveSlide(swiper.realIndex);
                     }}
+                    onAutoplayTimeLeft={updateDotFill}
+                    modules={[Autoplay]}
+                    autoplay={{ delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                     spaceBetween={30}
                     slidesPerView={"auto"}
                     grabCursor
@@ -195,6 +212,29 @@ const WebDevClients = ({ line = null }) => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
+                {/* Pagination: phones only, one per card. The active one is a pill that fills with the autoplay timer */}
+                <div className="md:hidden flex justify-center items-center gap-2 pt-6">
+                    {clientsData.map((item, i) => {
+                        const isActive = i === activeSlide;
+                        return (
+                            <button
+                                key={item.id}
+                                type="button"
+                                aria-label={`Go to slide ${i + 1}`}
+                                aria-current={isActive}
+                                onClick={() => swiperRef.current?.slideToLoop(i)}
+                                className={`relative h-2 rounded-full overflow-hidden transition-[width,background-color] duration-300 ${isActive ? "w-8 bg-[#002bba]/25" : "w-2 bg-[#002bba]/25"}`}
+                            >
+                                <span
+                                    ref={(el) => { dotFillRefs.current[i] = el; }}
+                                    className="absolute inset-0 bg-[#002bba] origin-left"
+                                    style={{ transform: "scaleX(0)" }}
+                                />
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     )

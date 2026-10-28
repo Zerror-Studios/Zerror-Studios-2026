@@ -4,7 +4,7 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import LenisScroll from "@/components/common/LenisScroll";
 import { usePathname } from "next/navigation";
-import { useEffect, useLayoutEffect, ViewTransition } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, ViewTransition } from "react";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -20,6 +20,20 @@ export default function SiteLayout({ children }) {
   const pathname = usePathname();
 
   const skipFooterPaths = ["/deck", "/contact", "/pitchdeck"];
+
+  // On phones the page fade snapshots the whole page (WebGL canvases included) twice,
+  // which runs mobile browsers out of memory and they reload the tab. There the
+  // viewport-sized root snapshot fades instead (see globals.css).
+  const [pageTransition, setPageTransition] = useState("page-fade");
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
+    const update = () => setPageTransition(mq.matches ? "none" : "page-fade");
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";
@@ -48,6 +62,16 @@ export default function SiteLayout({ children }) {
       });
     }
 
+    // Browsers without view transitions (e.g. iOS < 18) still get a fade-in
+    if (!isFirstRender.current && !document.startViewTransition) {
+      gsap.fromTo(
+        "main, footer",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, ease: "power1.out", clearProps: "opacity" }
+      );
+    }
+    isFirstRender.current = false;
+
     const timeout = setTimeout(() => {
       ScrollTrigger.refresh();
 
@@ -72,11 +96,7 @@ export default function SiteLayout({ children }) {
             <Header />
           </header>
 
-          {/* Page content and footer fade out / in on navigation (styles in globals.css, .page-fade).
-              The header sits outside so it stays put. Keyed by route with enter/exit only, so
-              in-page updates (e.g. a lazy component like the About dice loading in) don't
-              trigger a full-page crossfade. */}
-          <ViewTransition key={pathname} default="none" enter="page-fade" exit="page-fade">
+          <ViewTransition key={pathname} default="none" enter={pageTransition} exit={pageTransition}>
             <main>
               {children}
             </main>

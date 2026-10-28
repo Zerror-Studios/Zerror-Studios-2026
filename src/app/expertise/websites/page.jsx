@@ -89,7 +89,10 @@ const page = () => {
       />
       <WebDevProjectsSwiper heading={<>See it move.</>} />
       <WebDevInEveryBuild />
-      <WebDevProcess {...WEBSITE_PROCESS} />
+      {/* Hidden on mobile */}
+      <div className="max-md:hidden">
+        <WebDevProcess {...WEBSITE_PROCESS} />
+      </div>
       <WebDevClients />
     </>
   )

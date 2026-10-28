@@ -3,6 +3,8 @@ import Br from "@/components/common/Br";
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 const defaultImages = [
     { img: "/images/expertisePage/website-development/webdev_swiper/img1.svg" },
@@ -19,6 +21,7 @@ const WebDevProjectsSwiper = ({
     const marqueeTrackRef = useRef(null);
     const dragBtnRef = useRef(null);
     const slidesRef = useRef([]);
+    const mobileSlidesRef = useRef([]);
 
     const imageList = images && images.length > 0 ? images : defaultImages;
 
@@ -26,6 +29,27 @@ const WebDevProjectsSwiper = ({
     const displaySlides = Array.from({ length: repeatCount }).flatMap(() => imageList);
 
     useEffect(() => {
+        const mm = gsap.matchMedia();
+
+        // Mobile: images stacked vertically, each fading in as it scrolls into view
+        mm.add("(max-width: 767px)", () => {
+            mobileSlidesRef.current.forEach((el) => {
+                if (!el) return;
+                gsap.fromTo(el, { opacity: 0 }, {
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse",
+                    },
+                });
+            });
+        });
+
+        // Desktop: infinite draggable marquee
+        mm.add("(min-width: 768px)", () => {
         const container = containerRef.current;
         const track = marqueeTrackRef.current;
         const dragBtn = dragBtnRef.current;
@@ -200,6 +224,9 @@ const WebDevProjectsSwiper = ({
             track.removeEventListener("pointercancel", handlePointerUp);
             cancelAnimationFrame(animationFrameId);
         };
+        });
+
+        return () => mm.revert();
     }, [imageList.length]);
 
     const handleMouseLeaveContainer = () => {
@@ -228,7 +255,25 @@ const WebDevProjectsSwiper = ({
             </div>
 
             {/* Floating DRAG Cursor & Marquee Container */}
-            <div className="py-0 relative">
+            {/* Mobile: one of each image, stacked */}
+            <div className="md:hidden padding relative z-10 flex flex-col gap-4">
+                {imageList.map((item, i) => (
+                    <div
+                        key={i}
+                        ref={(el) => (mobileSlidesRef.current[i] = el)}
+                        className="w-full aspect-video relative rounded-xl overflow-hidden opacity-0"
+                    >
+                        <Image
+                            fill
+                            src={typeof item === 'string' ? item : item.img || item.src}
+                            alt={`Slide ${i + 1}`}
+                            className="cover"
+                        />
+                    </div>
+                ))}
+            </div>
+
+            <div className="max-md:hidden py-0 relative">
                 <div
                     ref={dragBtnRef}
                     className="drag_btn max-sm:hidden fixed top-0 left-0 pointer-events-none para-sm rounded-lg z-50  opacity-0 text-white overflow-hidden bg-white-20 backdrop-blur-xs"

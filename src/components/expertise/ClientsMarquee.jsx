@@ -82,8 +82,8 @@ const ClientsMarquee = () => {
             <div className="  flex items-center">
                 <Marquee gradientWidth={40}>
                     {clientsData.map((item, i) => (
-                        <div key={i} className=" w-40 md:w-52 md:mx-8">
-                            <ClientLogo src={item.icon} title={item.title} className="w-full text-[#002bba]" />
+                        <div key={i} className="md:mx-8">
+                            <ClientLogo src={item.icon} title={item.title} className="w-80  md:w-52 text-[#002bba]" />
                         </div>
                     ))}
                 </Marquee>

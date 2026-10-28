@@ -191,12 +191,13 @@ const Hero = () => {
 
       {isMobile && (
         <div className=" hero_mob_txt  w-full h-svh pb-10 flex items-end relative z-10 overflow-hidden  md:hidden! padding text-white mb-section  ">
-          <h1 aria-hidden="true" className=" mob_split_hero_title w-full opacity-0  origin-bottom-left ">We build brands that people stop for, remember, and come back to.</h1>
+          <h1 aria-hidden="true" className=" mob_split_hero_title w-full opacity-0  origin-bottom-left ">We build brands that people stop for, remember, & come back to.</h1>
         </div>
       )}
 
 
-      <div className=" abt_paren opacity-0 relative z-10  w-full   padding py-0! text-white ">
+      {/* On phones this header lives inside the About pinned screen instead (About.jsx) */}
+      <div className=" abt_paren opacity-0 relative z-10  w-full   padding py-0! text-white max-[750px]:hidden ">
         <SectionHeader
             title="The studio"
             lines={["Brands,", "built whole."]}

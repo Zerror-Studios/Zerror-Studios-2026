@@ -1,7 +1,24 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const BackgroundSnake = () => {
+    const [isMobile, setIsMobile] = useState(null);
+
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 767px)');
+        const update = () => setIsMobile(mq.matches);
+        update();
+        mq.addEventListener('change', update);
+        return () => mq.removeEventListener('change', update);
+    }, []);
+
+    // Skip on mobile, and until the viewport check has run
+    if (isMobile !== false) return null;
+
+    return <SnakeCanvas />;
+}
+
+const SnakeCanvas = () => {
     const canvasRef = useRef(null);
 
     useEffect(() => {

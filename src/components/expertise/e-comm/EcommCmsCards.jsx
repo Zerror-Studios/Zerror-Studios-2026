@@ -166,7 +166,7 @@ const EcommCmsCards = () => {
                         const cardElement = (
                             <div
                                 key={card.id}
-                                className={`w-[80vw] md:w-[65vh] cms_crd snap-center md:snap-align-none relative overflow-hidden aspect-3/4 sm:aspect-square shrink-0 flex flex-col ${
+                                className={`w-[80vw] md:w-[65vh] cms_crd snap-center md:snap-align-none relative overflow-hidden aspect-6/7 sm:aspect-square shrink-0 flex flex-col ${
                                     isTop ? "justify-start" : "justify-end"
                                 } text-white rounded-2xl transform-gpu will-change-transform`}
                             >

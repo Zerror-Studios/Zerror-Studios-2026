@@ -16,7 +16,10 @@ const ImageEffect = () => {
   const textRefs = useRef([]);
 
   useGSAP(() => {
+    const mm = gsap.matchMedia();
 
+    // Desktop only. Mobile is a static full-screen video with the numbers on top.
+    mm.add("(min-width: 768px)", () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: flipCardBgRef.current,
@@ -56,14 +59,11 @@ const ImageEffect = () => {
       .to({}, { duration: 0.5 })
       .to(headingRef.current, { opacity: 0, y: -40, ease: "power2.in" });
 
-    // 2. Then the five reasons: one by one on desktop, all together on mobile
-    if (window.innerWidth < 768) {
-      textTl.to(textRefs.current, { opacity: 1, transform: "translateY(0)" });
-    } else {
-      textRefs.current.forEach((text) => {
-        textTl.to(text, { opacity: 1, transform: "translateY(0)" });
-      });
-    }
+    // 2. Then the five reasons, one by one
+    textRefs.current.forEach((text) => {
+      textTl.to(text, { opacity: 1, transform: "translateY(0)" });
+    });
+    });
   });
 
   return (
@@ -73,13 +73,14 @@ const ImageEffect = () => {
         {/* Sticky signature layer with snake background — the video card slides over it */}
         <div className="canvas_space sticky top-0 h-screen w-full flex justify-center items-center overflow-hidden">
           <BackgroundSnake />
-          <Signature className="w-60 translate-y-44 relative z-10" />
+          <Signature className="w-60 translate-y-44 hidden md:block relative z-10" />
         </div>
 
         {/* Sticky background scene */}
         <div ref={flipCardBgRef} className="flip_card_bg relative">
-          <div className="  w-full h-screen sticky top-0 center ">
-            <div ref={cardVIRef} className=" w-75 h-100   cardVI center overflow-hidden relative  ">
+          <div className="w-full h-screen md:sticky top-0 center">
+            {/* Full screen on mobile; small card that expands on desktop */}
+            <div ref={cardVIRef} className="w-full h-screen md:w-75 md:h-100 cardVI center overflow-hidden relative">
               <div className="absolute w-screen h-screen center">
 
                 {/* Video */}
@@ -89,23 +90,26 @@ const ImageEffect = () => {
                   loop
                   playsInline
                   src="/videos/about_video.mp4"
-                  className="cover abt_vid brightness-100"></video>
+                  className="cover abt_vid brightness-50 md:brightness-100"></video>
               </div>
             </div>
           </div>
 
-          <div ref={txtScrollBgRef} className="txt_scroll_bg  padding py-0! w-full h-[250vh] md:h-[500vh] relative z-[80] ">
-            <div className="sticky top-0 h-screen flex justify-center gap-y-6 md:gap-y-12 flex-col w-full pointer-events-none">
-              {/* Heading: centred overlay, shown and hidden before the stats */}
+          {/* Mobile: one screen pulled up over the video so the numbers sit on it */}
+          <div ref={txtScrollBgRef} className="txt_scroll_bg  padding py-0! w-full h-screen max-md:-mt-[100vh] md:h-[500vh] relative z-[80] ">
+            {/* Mobile: heading top left, numbers in a 2-col grid at the bottom. Desktop: centred column */}
+            <div className="md:sticky top-0 h-screen flex flex-col justify-between md:justify-center py-section w-full pointer-events-none">
+              {/* Heading: top left on mobile; centred overlay on desktop, shown and hidden before the stats */}
               <div
                 ref={headingRef}
-                className="absolute inset-0 center flex-col text-center text-white opacity-0"
+                className="flex flex-col text-white md:absolute md:inset-0 md:items-center md:justify-center md:text-center md:opacity-0"
               >
                 <p className="uppercase font-medium">WHY US?</p>
-                <h2 className="font-medium">
+                <h2 data-para-effect className="font-medium">
                   In Numbers
                 </h2>
               </div>
+              <div className="grid grid-cols-[60%_40%] gap-x-4 gap-y-8 md:flex md:flex-col md:gap-y-12">
               {[
                 {
                   heading: "Since 2022",
@@ -131,9 +135,10 @@ const ImageEffect = () => {
                 <div
                   key={i}
                   ref={(el) => (textRefs.current[i] = el)}
-                  className="animate-text translate-y-5 max-sm:mb-5 max-w-2xl mx-auto text-center opacity-0"
+                  className={`animate-text text-left md:text-center md:max-w-2xl md:mx-auto md:translate-y-5 md:opacity-0 ${i === 4 ? "col-span-2" : ""}`}
                 >
-                  <p className="h3 text-white">
+                  {/* .h2 is 3rem on desktop, same as .h3, so only mobile gets bigger */}
+                  <p data-para-effect className="h2 text-white">
                     {item.heading}
                   </p>
                   <p className="para-lg text-white">
@@ -141,6 +146,7 @@ const ImageEffect = () => {
                   </p>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </div>

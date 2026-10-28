@@ -13,6 +13,7 @@ import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 import SectionHeader from '@/components/common/SectionHeader';
 import SliderArrows from '@/components/common/SliderArrows';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
@@ -55,10 +56,11 @@ const WorkDetail = () => {
     const { slug } = useParams()
     const index = caseStudies.findIndex((p) => p.slug === slug)
     const project = caseStudies[index]
-    // Every other case study, starting with the next one and wrapping round to the start
+    // The next 5 case studies, wrapping round to the start
     const moreProjects = index < 0 ? [] : caseStudies
         .map((_, n) => caseStudies[(index + 1 + n) % caseStudies.length])
         .filter((p) => p.slug !== slug)
+        .slice(0, 5)
 
     const containerRef = useRef(null)
 
@@ -66,9 +68,18 @@ const WorkDetail = () => {
     const swiperRef = useRef(null)
     const [isBeginning, setIsBeginning] = useState(true)
     const [isEnd, setIsEnd] = useState(false)
+    const [activeSlide, setActiveSlide] = useState(0)
     const updateEdges = (swiper) => {
         setIsBeginning(swiper.isBeginning)
         setIsEnd(swiper.isEnd)
+        setActiveSlide(swiper.activeIndex)
+    }
+    // Fill of the active pagination pill, driven by the autoplay timer (set directly, no re-render)
+    const dotFillRefs = useRef([])
+    const updateDotFill = (swiper, _time, progress) => {
+        dotFillRefs.current.forEach((el, i) => {
+            if (el) el.style.transform = `scaleX(${i === swiper.activeIndex ? 1 - progress : 0})`
+        })
     }
 
     useGSAP(() => {
@@ -186,15 +197,18 @@ const WorkDetail = () => {
                 <section className="w-full py-section space-y-block border-t border-[#002bba]/20">
                     <div className="padding">
                         <SectionHeader
-                            title="Every brand is different"
+                            title="More Work"
                             lines={["Other brands", "we've built."]}
                             aside={
-                                <SliderArrows
-                                    onPrev={() => swiperRef.current?.slidePrev()}
-                                    onNext={() => swiperRef.current?.slideNext()}
-                                    isBeginning={isBeginning}
-                                    isEnd={isEnd}
-                                />
+                                // Phones use the dots under the slider instead
+                                <div className="max-md:hidden">
+                                    <SliderArrows
+                                        onPrev={() => swiperRef.current?.slidePrev()}
+                                        onNext={() => swiperRef.current?.slideNext()}
+                                        isBeginning={isBeginning}
+                                        isEnd={isEnd}
+                                    />
+                                </div>
                             }
                         />
                     </div>
@@ -207,6 +221,10 @@ const WorkDetail = () => {
                             }}
                             onSlideChange={updateEdges}
                             onResize={updateEdges}
+                            onAutoplayTimeLeft={updateDotFill}
+                            modules={[Autoplay]}
+                            autoplay={{ delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                            rewind
                             slidesPerView="auto"
                             spaceBetween={10}
                             breakpoints={{ 768: { spaceBetween: 20 } }}
@@ -218,6 +236,29 @@ const WorkDetail = () => {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+
+                        {/* Pagination: phones only, one per card. The active one is a pill that fills with the autoplay timer */}
+                        <div className="md:hidden flex justify-center items-center gap-2 pt-6">
+                            {moreProjects.map((item, i) => {
+                                const isActive = i === activeSlide
+                                return (
+                                    <button
+                                        key={item.slug}
+                                        type="button"
+                                        aria-label={`Go to slide ${i + 1}`}
+                                        aria-current={isActive}
+                                        onClick={() => swiperRef.current?.slideTo(i)}
+                                        className={`relative h-2 rounded-full overflow-hidden transition-[width,background-color] duration-300 ${isActive ? "w-8 bg-[#002bba]/25" : "w-2 bg-[#002bba]/25"}`}
+                                    >
+                                        <span
+                                            ref={(el) => { dotFillRefs.current[i] = el }}
+                                            className="absolute inset-0 bg-[#002bba] origin-left"
+                                            style={{ transform: "scaleX(0)" }}
+                                        />
+                                    </button>
+                                )
+                            })}
+                        </div>
                     </div>
                 </section>
             )}

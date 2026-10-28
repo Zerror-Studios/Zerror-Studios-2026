@@ -253,7 +253,7 @@ const DetailedExpertiseHero = ({
                                     <img
                                         src={icon.src}
                                         alt="Expertise icon"
-                                       
+
                                     />
                                 </div>
                             );
@@ -297,13 +297,13 @@ const DetailedExpertiseHero = ({
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 items-start gap-5 md:gap-10">
                     <div className="flex flex-col justify-between h-full">
                         <p data-para-effect className='h3 md:pr-32'>{introHeading}</p>
-                            <p className='para-lg max-sm:mt-2 max-w-lg'>{introText}</p>
+                        <p className='para-lg max-sm:mt-2 max-w-lg'>{introText}</p>
                     </div>
 
                     <div className="flex flex-col w-full">
                         {features.map((stat, i) => (
                             <div key={i} className="flex justify-between items-center first:pt-0 py-4 border-b border-[#002bba20] last:border-b-0">
-                                <span data-para-effect className="para-lg font-medium">{stat.label}</span>
+                                <span className="para-lg font-medium">{stat.label}</span>
                                 <span className=" font-semibold ">{stat.value}</span>
                             </div>
                         ))}
@@ -315,7 +315,7 @@ const DetailedExpertiseHero = ({
                 <VelocityMarquee baseSpeed={25}>
                     <div className="flex items-center gap-10 md:gap-20 px-5 md:px-10 h-24 md:h-32">
                         {clientsData.map((item, i) => (
-                            <div key={i} className="w-32 md:w-70 shrink-0">
+                            <div key={i} className="w-48 md:w-70 shrink-0">
                                 <ClientLogo src={item.icon} title={item.title} className="w-full text-[#002bba]" />
                             </div>
                         ))}

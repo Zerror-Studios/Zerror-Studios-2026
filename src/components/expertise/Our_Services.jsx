@@ -157,7 +157,9 @@ const Our_Services = () => {
     const resizeCanvas = () => {
       const width = window.innerWidth
       const isTablet = width >= 768 && width < 1024
-      const size = isMobile ? Math.min(300, width - 32) : isTablet ? 360 : 480
+      // Mobile: also capped by the space left between the title and the description
+      const room = canvas.parentElement?.clientHeight || 300
+      const size = isMobile ? Math.min(300, width - 32, room) : isTablet ? 360 : 480
       // Match the screen's density, capped at 2x to keep per-frame cost low
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       const px = Math.round(size * dpr)
@@ -181,6 +183,9 @@ const Our_Services = () => {
 
     resizeCanvas()
     window.addEventListener("resize", onResize)
+    // Mobile: the space for the canvas changes with each service's description length
+    const roomObserver = new ResizeObserver(onResize)
+    if (canvas.parentElement) roomObserver.observe(canvas.parentElement)
 
     Promise.all(
       IMAGE_SOURCES.map(
@@ -251,6 +256,7 @@ const Our_Services = () => {
       destroyed = true
       cancelAnimationFrame(resizeRaf)
       window.removeEventListener("resize", onResize)
+      roomObserver.disconnect()
       if (tween) {
         tween.scrollTrigger?.kill()
         tween.kill()
@@ -326,23 +332,45 @@ const Our_Services = () => {
     const item = servicesContent[activeIndex]
     return (
       <div ref={parentRef} className="serv_page_paren w-full padding z-10 border-t  border-[#002bba] bg-white relative py-0! h-[400vh]">
-        <div className="sticky top-0 h-dvh flex flex-col justify-between pt-24 pb-10">
+        {/* Everything fits one screen: progress bar, title, canvas, description */}
+        <div ref={mobileContentRef} className="sticky top-0 h-screen flex flex-col gap-5 pt-24 pb-8">
 
-          {/* Content: top */}
-          <div key={activeIndex} ref={mobileContentRef} className="flex flex-col gap-4">
-            <span data-mobile-reveal className=" text_blue">
-              {String(activeIndex + 1).padStart(2, "0")} / {String(servicesContent.length).padStart(2, "0")}
-            </span>
-            <h2 data-mobile-reveal className="text_blue">{item.title}</h2>
-            <p data-mobile-reveal className="para-lead text_blue">{item.description}</p>
-            <div data-mobile-cta className="pt-1">
-              <Button link={item.href} title="Explore" />
+          {/* Progress: one checkpoint per service, filled as each scroll part is reached */}
+          <div
+            className="relative shrink-0 h-3 flex items-center"
+            role="progressbar"
+            aria-label="Services"
+            aria-valuemin={1}
+            aria-valuemax={servicesContent.length}
+            aria-valuenow={activeIndex + 1}
+          >
+            <div className="absolute inset-x-0 h-px bg-[#002bba]/20" />
+            <div
+              className="absolute left-0 h-px bg-[#002bba] transition-[width] duration-700 ease-in-out"
+              style={{ width: `${(activeIndex / (servicesContent.length - 1)) * 100}%` }}
+            />
+            <div className="relative w-full flex justify-between">
+              {servicesContent.map((service, i) => (
+                <span
+                  key={service.id}
+                  className={`size-3 rounded-full border border-[#002bba] transition-colors duration-500 ${i <= activeIndex ? "bg-[#002bba]" : "bg-white"}`}
+                />
+              ))}
             </div>
           </div>
 
-          {/* Canvas: bottom */}
-          <div className="w-full flex items-center justify-center pointer-events-none">
+          <h2 key={`title-${activeIndex}`} data-mobile-reveal className="shrink-0 text_blue">{item.title}</h2>
+
+          {/* Canvas: takes whatever height is left */}
+          <div className="flex-1 min-h-0 w-full flex items-center justify-center pointer-events-none">
             <canvas ref={canvasRef} className="block" />
+          </div>
+
+          <div key={`desc-${activeIndex}`} className="shrink-0 flex flex-col gap-4">
+            <p data-mobile-reveal className="para-lead text_blue">{item.description}</p>
+            <div data-mobile-cta>
+              <Button link={item.href} title="Explore" />
+            </div>
           </div>
         </div>
       </div>

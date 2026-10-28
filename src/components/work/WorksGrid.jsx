@@ -7,15 +7,15 @@ import PixelGridCanvas from '@/components/common/PixelGridCanvas';
 import Link from 'next/link';
 
 const CATEGORIES = [
-    "All Work",
+    "All",
+    "Web & Digital",
     "Brand & Identity",
     "Content & Marketing",
     "Film & Production",
-    "Web & Digital"
 ];
 
 const CATEGORY_MAP = {
-    "All Work": () => true,
+    "All": () => true,
     "Brand & Identity": (item) =>
         ["Studio Akto", "I White Korea", "Deveshe Dreams", "JustNosh", "Shivdutt das art foundation"].includes(item.title) ||
         item.category?.toLowerCase().includes("brand") || item.category?.toLowerCase().includes("studio") || item.category?.toLowerCase().includes("fashion"),
@@ -93,7 +93,7 @@ const WorkCard = ({ item, index, isGlobalPixelActive, triggerStagger }) => {
 };
 
 const WorksGrid = () => {
-    const [activeCategory, setActiveCategory] = useState("All Work");
+    const [activeCategory, setActiveCategory] = useState("All");
     const [isGlobalPixelActive, setIsGlobalPixelActive] = useState(false);
     const [triggerStagger, setTriggerStagger] = useState(0);
     const isTransitioningRef = useRef(false);
@@ -146,11 +146,11 @@ const WorksGrid = () => {
     );
 
     return (
-        <section className="w-full pt-[40vh] padding select-none pb-section">
+        <section className="w-full padding select-none pb-section">
             <div>
                 {/* Header Filter Section with Y-Axis Intro Translate */}
-                <div className="mb-block overflow-hidden " ref={filterContainerRef}>
-                    <div className="h3 flex flex-wrap  gap-2">
+                <div className=" h-[65vh] md:h-[80vh] flex items-end pt-hero pb-section overflow-hidden " ref={filterContainerRef}>
+                    <div className="h2 flex flex-wrap max-md:flex-col max-md:items-start gap-2">
                         {CATEGORIES.map((category, idx) => {
                             const isActive = activeCategory === category;
                             return (
